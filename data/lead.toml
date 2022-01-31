@@ -1,0 +1,22 @@
+enable = "true"
+
+[[item]]
+	link ="/about/"
+	linktext ="Click Me"
+	image = "/img/site/category/general.jpg"
+	title = "About This Site"
+	content = "Discover the driving forces for the existance of this site."
+
+[[item]]
+	link ="/profile/"
+	linktext ="Click Me"
+	image = "/img/site/category/physics.jpg"
+	title = "Our Team"
+	content = "Team is quite the exageration for a one-man project. You can find out more about me by following the white rabbit."
+
+[[item]]
+	link ="/project/"
+	linktext ="Explore"
+	image = "/img/site/category/cryengine.jpg"
+	title = "Our Projects"
+	content = "How long can it take to read about one or two projects? This link has got to be a click, for sure."

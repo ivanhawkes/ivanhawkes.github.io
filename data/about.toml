@@ -1,0 +1,67 @@
+enable = "true"
+heading = "About"
+
+[[corevalue]]
+	icon ="notes"
+	title = "Mindfulness"
+	description = "Use meditation and be in the moment. Live life with the concentration and awareness it deserves."
+
+[[corevalue]]
+	icon ="notes"
+	title = "Reform"
+	description = "Use earthworks to change the face of the land, slowing the flow of water and allowing it to penetrate the soil."
+
+[[corevalue]]
+	icon ="notes"
+	title = "Preserve"
+	description = "Preserve the best of everything that is presently here. Be smart about selecting which existing parts are beneficial and which could be improved or should be replaced."
+
+[[corevalue]]
+	icon ="notes"
+	title = "Enrich"
+	description = "Use regenerative techniques to improve the nature of the land. Bring in new elements that will enrich both the soil and harvests. Nourish the spirit through connection to nature. Compost more."
+
+[[corevalue]]
+	icon ="notes"
+	title = "Invest"
+	description = "Invest in the things that really matter. Turn finances primarily towards the purchase of trees, shrubs, bushes and seeds. Purchase tools and build structures that allow us to multiply our efforts at regeneration. Be thrifty and resourceful."
+
+[[corevalue]]
+	icon ="notes"
+	title = "Propagate"
+	description = "Learn and apply propagation techniques to multiply the amount of plants we have available. Save seed, take cuttings, divide roots. Always plan at least two seasons ahead."
+
+[[corevalue]]
+	icon ="notes"
+	title = "Homesteading"
+	description = "Learn about ways to preserve food, brew beer, and be more self sufficient. Reduce wastage. Re-use containers and stop energy wastage from shipping, storing and displaying foodstuffs. Avoid the myth of recycling by not consuming to begin with. Become closer to the produce we consume."
+
+[[corevalue]]
+	icon ="notes"
+	title = "Independance"
+	description = "Find ways to reduce our dependance on corporations and governments. Improve community bonds. Share with neighboors and friends. Reduce reliance on the cash economy."
+
+[[corevalue]]
+	icon ="explore"
+	title = "Inception"
+	description = "By spending time to conceive, nurture and then develop new ideas we help to bring innovative products into the world."
+
+[[corevalue]]
+	icon ="build"
+	title = "Advancement"
+	description = "We examine existing ideas and find ways to extend and improve upon them."
+
+[[corevalue]]
+	icon ="face"
+	title = "Democratisation"
+	description = "A large part of our creed is to make tools, techniques and knowledge available to as wide an audience as possible. One key tactic is to make products open source; another is writing articles to spread our knowledge further."
+
+[[corevalue]]
+	icon ="eject"
+	title = "Iconoclasm"
+	description = "Old ideas and methods need to be continually re-evaluated. Those no longer worth keeping must be destroyed."
+
+[[corevalue]]
+	icon ="extension"
+	title = "Mentoring"
+	description = "Preparing the next generation to take over our work. We encourage, teach and nurture new talent and allow it to flourish."

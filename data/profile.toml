@@ -1,0 +1,17 @@
+enable = "true"
+heading = "Profile"
+
+[[person]]
+	avatar ="/img/author/ivan-hawkes.png"
+	name = "Ivan Hawkes"
+	profile = "ivan-hawkes"
+	position = "Lead Programmer"
+	description = "Mostly harmless. (he / him) (true neutral)"
+	homepage = "http://hawkes.info/"
+	github = "ivanhawkes"
+	bitbucket = "ivanhawkes"
+	twitter = "ivanhawkes"
+	youtube = "channel/UClCTxhonVVsYb7qmqv4dldg"
+	facebook = "ivan.hawkes"
+	linkedin = "ivan-hawkes-a8386338"
+	pinterest = "ivanhawkes"

@@ -8,7 +8,6 @@ summary:
 image: /img/site/category/general.jpg
 image-thumbnail: /img/site/category/general.jpg
 author: "Ivan Hawkes"
-draft: true
 ---
 
 I've been self hosting this site on my own personal web server for quite a few years now. It's not convenient, but it is cheap, which is always a good motivation for me. Today I'd like to talk about moving this site from self hosting to [Github Pages](https://pages.github.com/).

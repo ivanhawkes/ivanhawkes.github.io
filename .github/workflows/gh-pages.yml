@@ -33,6 +33,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           #publish_branch: master
           publish_dir: ./public
-          #cname: www.hawkes.info
+          cname: www.hawkes.info
           keep_files: false
           

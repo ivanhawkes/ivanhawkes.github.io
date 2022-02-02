@@ -1,0 +1,472 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel=apple-touch-icon href=/img/apple-icon.png>
+<link rel=icon href=/img/favicon.png>
+<title>Life Reboot</title>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Controlling an Animated Character in CRYENGINE using C++">
+<meta name=twitter:description content="Controlling an Animated Character in CRYENGINE using C++">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+<div class=container-fluid>
+<a class=navbar-brand href=https://ivanhawkes.github.io>Ivan Hawkes</a>
+<button class=navbar-toggler type=button data-bs-toggle=collapse data-bs-target=#navbarSupportedContent aria-controls=navbarSupportedContent aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="collapse navbar-collapse" id=navbarSupportedContent>
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class=nav-item>
+<a href=https://ivanhawkes.github.iopost class="nav-link d-flex align-items-center">
+<i class=bi-stickies></i>&#160;Posts
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.ioproject class="nav-link d-flex align-items-center">
+<i class=bi-kanban></i>&#160;Our Projects
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.ioprofile class="nav-link d-flex align-items-center">
+<i class=bi-file-earmark-person></i>&#160;Our Team
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.iorecipe class="nav-link d-flex align-items-center">
+<i class=bi-egg-fried></i>&#160;Recipes
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.iogarden class="nav-link d-flex align-items-center">
+<i class=bi-tree></i>&#160;Garden
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.ioplant class="nav-link d-flex align-items-center">
+<i class=bi-flower1></i>&#160;Plants
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.ioabout class="nav-link d-flex align-items-center">
+<i class=bi-person-lines-fill></i>&#160;About Us
+</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<div class=container>
+<div class=container>
+<div class=row>
+<div class="col text-center">
+<h1>Controlling an Animated Character in CRYENGINE using C++</h1>
+<div class=card>
+<div class="card-header card-header-image">
+<a href=#pablo>
+<img src=/img/site/category/programming.jpg class=card-img-top alt>
+</a>
+<div class=colored-shadow style=background-image:url(/img/site/category/programming.jpg);opacity:1></div>
+</div>
+<div class=card-body>
+<p class=text-start></p>
+</div>
+</div>
+</div>
+</div>
+<div class=row>
+<div class=col-12>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class=col-6>
+<p class=h6>
+By Ivan Hawkes<br>July 10, 2016
+</p>
+</div>
+<div class="col-6 text-end">
+<a href="https://www.facebook.com/sharer/sharer.php?u=ivan.hawkes" class=btn target=_blank>
+<i class=bi-facebook style=font-size:32px></i>
+</a>
+<a href="https://twitter.com/intent/tweet?url=%40ivanhawkes" class=btn target=_blank>
+<i class=bi-twitter style=font-size:32px></i>
+</a>
+<a href="https://www.linkedin.com/shareArticle?mini=true&url=ivan-hawkes-a8386338" class=btn target=_blank>
+<i class=bi-linkedin style=font-size:32px></i></a>
+<a href="http://www.pinterest.com/pin/find/?url=ivanhawkes" class=btn target=_blank>
+<i class=bi-pinterest style=font-size:32px></i></a>
+</div>
+</div>
+<div class=row>
+<div class=col-12>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class=col>
+<p>Making an animated character move around the screen in CRYENGINE requires many thousands of lines of code and a lot of time and dedication. This series of articles will show you how to control a character animated in CRYENGINE Mannequin using C++ code.</p>
+<p>We will eventually cover the entire process from taking player input, through the movement controllers, into the character movement state machine, and finally passing the desired movement into the CAnimatedCharacter component. Side topics will include interacting with an orbit camera, items and inventory.</p>
+<p>Code will be provided as we progress. The code is liable to change over time, as this is based on a work in progress. You will be able to utilise this code as the basis for your own projects.</p>
+<p>The goal is to eventually create an SDK for the <strong>Action RPG</strong> genre that is capable of being expanded using plugins, or modified to particular needs. We will be using GameZero as our starting point, and adding all the features required over time to support Action RPG. The project is currently known by the code name, <strong>Chrysalis</strong>.</p>
+<p>In order to keep the articles and code short and focused there will be very little in the way of implementation of AI, vehicles, and weapons. Instead, stub code will be provided that can be expanded by your own team to implement the specifics for your project.</p>
+<p>By the time this series is complete the code provided should be mature enough and capable enough to create a &ldquo;walking simulator&rdquo; genre game with support for a flashlight, inventory and other genre tropes.</p>
+<p>At some point I expect to make a Git repository available with a copy of the code which is available for forking. This is not a priority yet, as it will need to change quite a lot and that&rsquo;s work I don&rsquo;t need to add to my current pile.</p>
+<p>The source files for this article are available:</p>
+<ul>
+<li>Code for <a href="https://www.dropbox.com/s/ow4z9vygkrkz1j6/PlayerInput.zip?dl=0">Player Input</a></li>
+<li><a href="https://www.dropbox.com/s/rybm1dvzi6uaj6d/assets.zip?dl=0">Asset files</a> needed to support player input</li>
+</ul>
+<h2 id=overview>Overview</h2>
+<p>Our primary goal is to capture player input, understand it, filter it and constrain it according to environmental factors, and then pass that into the animation system to drive the character on screen. In order to achieve that goal we will need to:</p>
+<ul>
+<li>Provide a component that implements a player interface</li>
+<li>Provide a component that implements player input</li>
+<li>Provide a component that implements a character interface</li>
+<li>Provide a component that implements cameras and their handling</li>
+<li>Provide for core features of AI, vehicles and weapons so our character can utilise these when added to the project</li>
+</ul>
+<p>In addition to this we will want:</p>
+<ul>
+<li>An entity sensing system that knows which entities are nearby and which ones we can interact with</li>
+<li>Doors, locks, pickable objects, flashlights, compass, etc</li>
+</ul>
+<h1 id=required-skills>Required Skills</h1>
+<h2 id=code>Code</h2>
+<p>This series is not aimed at beginners; you will be required to have core skills and knowledge in order to make use of the articles. We will not be covering how to achieve these goals in Lua or Flowgraph or C#. All code will be provided as C++, with the exception of times when a little Lua glue is useful.</p>
+<p>I recommend at least two years of C++ coding experience in a work environment or as a full time hobby. If you have experience in other C based languages you might be able to leverage that. In which case, just a few months of C++ should be sufficient, as long as you have a good understanding of memory management issues, templates, compilation and build.</p>
+<p>You should have an understanding of component entity systems, game loops, threading and other general game code skills.</p>
+<p>In addition to that you should have knowledge specific to building and running CRYENGINE - in particular, <strong>CRYWAF</strong>, setting up new projects, <strong>GameZero</strong> and some inkling of what is happening in the <strong>GameSDK</strong> code.</p>
+<h2 id=math-skills>Math Skills</h2>
+<p>You must have a core understanding of the math required. Specifically, you will need to understand:</p>
+<ul>
+<li>high school level algebra and arithmetic</li>
+<li>matrices</li>
+<li>vectors</li>
+<li>quaternions</li>
+</ul>
+<p>In addition it will be helpful if you are able to visualise 3D concepts and the results of applying rotations and translation to an object in a virtual 3D space.</p>
+<p>I have written a basic introduction to <a href=https://hawkes.info/2014/06/21/matrices-vectors-quaternions-and-cryengine-3/>matrices, vectors and quaternions</a> to help get you started. Further learning is recommended beyond that in order to improve your understanding.</p>
+<h2 id=the-end-game>The End Game</h2>
+<p>Although it will take thousands of lines of code to reach, our end game is a surprisingly simple looking structure that is passed to the animation engine. For reference, I am providing it here:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>SCharacterMoveRequest</span>
+{
+	ECharacterMoveType        type;
+	Vec3                      velocity;
+	Quat                      rotation;
+	SPredictedCharacterStates prediction;
+	<span style=color:#66d9ef>bool</span>                      allowStrafe;
+	<span style=color:#66d9ef>float</span>                     proceduralLeaning;
+	<span style=color:#66d9ef>bool</span>                      jumping;
+};
+</code></pre></div><p>Each frame we need to calculate the fields of this structure and pass that into the animated character component which is a part of our <strong>game object</strong>. That <strong>component</strong> will take care of syncing up our physical movement with the character animations, to provide the illusion of movement. It will also handle passing the requested movement down into CryPhysics, moving the character. What might come as a surprise however is that it doesn&rsquo;t actually rotate the entity - only the direction it &ldquo;appears&rdquo; to be looking. You will need to combine this and a simple entity rotation in order to complete the task of &ldquo;rotating&rdquo; a character.</p>
+<p>There&rsquo;s a lot more involved, but we can get to that later e.g. aim poses, look poses, weapon aim, etc. For now, let&rsquo;s get started by adding an input handler to the project.</p>
+<h2 id=player-input-handling>Player Input Handling</h2>
+<p>A game with no input controls is not a very good game. The first step is therefore to provide an input system that will handle the standard input devices players would expect. Currently there is support for keyboard, mouse and XBox controller.</p>
+<p>I have implemented player input as a <strong>game object extension</strong> - or in other words, a <strong>component</strong>. This has the advantage of keeping the code decoupled, simple and responsive to known events. A disadvantage is not having control over when the input entity is processed - so we can&rsquo;t guarantee it receives it&rsquo;s events before any entity that uses the input - leading to a one frame latency on input. This is within acceptable parameters for an Action RPG game.</p>
+<p>In order to use the component you will need to register it. I handle this in <strong>CGameRegistration::RegisterGameObjects</strong> - a function that registers all the game objects Chrysalis uses.</p>
+<p>Add a line similar to the following to your registration code:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp>RegisterGameObject<span style=color:#f92672>&lt;</span>CPlayerInput<span style=color:#f92672>&gt;</span>(<span style=color:#e6db74>&#34;PlayerInput&#34;</span>, <span style=color:#e6db74>&#34;&#34;</span>, eGORF_HiddenInEditor);
+</code></pre></div><p>I prefer to define strict interfaces and ensure any implementation follows those interfaces. The interface for player input is simple enough:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>/**
+</span><span style=color:#75715e>\file d:\CRYENGINE\Code\ChrysalisSDK\Actor\Player\Input\IPlayerInput.h
+</span><span style=color:#75715e>
+</span><span style=color:#75715e>Declares the IPlayerInput interface.
+</span><span style=color:#75715e>**/</span>
+<span style=color:#75715e>#pragma once
+</span><span style=color:#75715e></span>
+<span style=color:#75715e>#include</span> <span style=color:#75715e>&lt;IGameObject.h&gt;</span><span style=color:#75715e>
+</span><span style=color:#75715e></span>
+<span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>IPlayerInput</span> <span style=color:#f92672>:</span> <span style=color:#66d9ef>public</span> IGameObjectExtension
+{
+	<span style=color:#66d9ef>enum</span> <span style=color:#a6e22e>EInputType</span>
+	{
+		NULL_INPUT <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>,
+		PLAYER_INPUT,
+		NETPLAYER_INPUT,
+		AI_INPUT,
+		DEDICATED_INPUT,
+
+		LAST_INPUT_TYPE,
+	};
+
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IPlayerInput() {};
+
+	<span style=color:#75715e>/**
+</span><span style=color:#75715e>	Reset the movements to zero state.
+</span><span style=color:#75715e>	*/</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>ResetMovementState</span>() <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+
+	<span style=color:#75715e>/**
+</span><span style=color:#75715e>	Reset the actions resulting from movement state to zero state.
+</span><span style=color:#75715e>	*/</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>ResetActionState</span>() <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+
+	<span style=color:#75715e>/**
+</span><span style=color:#75715e>	Given the current input state, calculate a vector that represents the direction the player wishes their
+</span><span style=color:#75715e>	character to move. The vector is normalised. Movement will only be affected along the X and Y axis,
+</span><span style=color:#75715e>	since we are not presently processing Z input (up). This should be sufficient for most RPG style games.
+</span><span style=color:#75715e>
+</span><span style=color:#75715e>	\param baseRotation The vector will be calculated using this rotation as a base and then applying the input
+</span><span style=color:#75715e>	requests relative to this direction.
+</span><span style=color:#75715e>
+</span><span style=color:#75715e>	\return The calculated movement direction.
+</span><span style=color:#75715e>	**/</span>
+	<span style=color:#66d9ef>virtual</span> Vec3 <span style=color:#a6e22e>GetMovement</span>(<span style=color:#66d9ef>const</span> Quat<span style=color:#f92672>&amp;</span> baseRotation) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+
+	<span style=color:#75715e>/**
+</span><span style=color:#75715e>	Given the current input state, calculate an angular vector that represents the rotation the player has requested
+</span><span style=color:#75715e>	using the mouse / xbox controller / etc.
+</span><span style=color:#75715e>
+</span><span style=color:#75715e>	This is typically used to rotate the character and the camera.
+</span><span style=color:#75715e>
+</span><span style=color:#75715e>	\return The rotation.
+</span><span style=color:#75715e>	**/</span>
+	<span style=color:#66d9ef>virtual</span> Ang3 <span style=color:#a6e22e>GetRotationDelta</span>() <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+
+	<span style=color:#75715e>/**
+</span><span style=color:#75715e>	Gets pitch delta.
+</span><span style=color:#75715e>
+</span><span style=color:#75715e>	\return The pitch delta.
+</span><span style=color:#75715e>	**/</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>float</span> <span style=color:#a6e22e>GetPitchDelta</span>() <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+
+	<span style=color:#75715e>/**
+</span><span style=color:#75715e>	Gets yaw delta.
+</span><span style=color:#75715e>
+</span><span style=color:#75715e>	\return The yaw delta.
+</span><span style=color:#75715e>	**/</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>float</span> <span style=color:#a6e22e>GetYawDelta</span>() <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+
+	<span style=color:#75715e>/**
+</span><span style=color:#75715e>	Gets number of times the player has requested a change in zoom level since the last frame. Cameras can query this
+</span><span style=color:#75715e>	value and use it to adjust their zoom.
+</span><span style=color:#75715e>
+</span><span style=color:#75715e>	\return The zoom delta.
+</span><span style=color:#75715e>	**/</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>float</span> <span style=color:#a6e22e>GetZoomDelta</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+
+	<span style=color:#75715e>// ***
+</span><span style=color:#75715e></span>	<span style=color:#75715e>// *** HMD based head tracking. Provide the ability to handle head movement separate to body movement.
+</span><span style=color:#75715e></span>	<span style=color:#75715e>// ***
+</span><span style=color:#75715e></span>
+	<span style=color:#66d9ef>virtual</span> Vec3 <span style=color:#a6e22e>GetHeadMovement</span>(<span style=color:#66d9ef>const</span> Quat<span style=color:#f92672>&amp;</span> baseRotation) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+
+	<span style=color:#66d9ef>virtual</span> Ang3 <span style=color:#a6e22e>GetHeadRotationDelta</span>() <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>float</span> <span style=color:#a6e22e>GetHeadPitchDelta</span>() <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>float</span> <span style=color:#a6e22e>GetHeadYawDelta</span>() <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><p>There is an enum provided, <strong>EInputType</strong>, which is used to differentiate the sort of input we are accepting. It&rsquo;s not actually used yet - since the only input type supported currently is <strong>EInputType::PLAYER_INPUT</strong>.</p>
+<p>The input component is stateful, so a pair of reset state functions are provided whose job it is to clear down the state every frame.</p>
+<p><strong>IPlayerInput::GetMovement</strong> is responsible for checking the state of the directional keys and determining a direction and distance in which the player wishes to move. You are able to pass in a base rotation which will be used as the base for the returned vector. This allows the function to calculate the movement in local space, and then apply that to the base rotation, giving a result in world space or whichever space you passed in.</p>
+<p>For convenience we will return a unit vector. This can be multiplied by later functions when the character speed has been determined to find the distance and direction the character should move.</p>
+<p>Next, there are four functions that return state which has been affected by the mouse or a controller. The component tracks changes in <strong>pitch</strong>, <strong>yaw</strong> and <strong>zoom</strong> and you can query for these changes on a per frame basis.</p>
+<p>Finally, there are stubs for functions I expect to need to handle tracking HMD devices like the Oculus Rift and HTC Vive. These will return head movement data on a per frame basis.</p>
+<h2 id=player-input-implementation>Player Input Implementation</h2>
+<p>An implementation of player input has been provided in <strong>PlayerInput.h</strong> and <strong>PlayerInput.cpp</strong>.</p>
+<p>The first thing to notice is that it is a <strong>CGameObjectExtensionHelper</strong> class that implements the <strong>IPlayerInput</strong> and <strong>IActionListener</strong> interfaces.</p>
+<p>We&rsquo;re not doing anything noteworthy as a component, beyond providing an implementation for Update and PrePhysics - and PrePhysics is not presently in use and might even be deprecated in future.</p>
+<p>The interesting stuff all happens in the <strong>Update</strong> and <strong>GetMovement</strong> functions, along with the various callbacks for the action maps. Speaking of which, we need to take a short detour and look at action maps.</p>
+<h3 id=action-maps>Action Maps</h3>
+<p>Action maps are a controller independent way of assigning input events to code that is triggered when that input occurs. I&rsquo;m not going to cover it here, since it&rsquo;s pretty well documented in the official documentation.</p>
+<p>In short, you just need to supply a little bit of game code that can be called every time an input event occurs e.g. WASD, jump, fire weapon. You can register a function(s) that will be called every time one of these events occurs. In fact, since it&rsquo;s a &ldquo;Listener&rdquo;, also known as publish / subscribe you can actually have a multitude of these if you wish.</p>
+<p>e.g. in Game.cpp we have a routine to load our initial action maps which is shown here for reference.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>void</span> CGame<span style=color:#f92672>::</span>LoadActionMaps(<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span><span style=color:#f92672>*</span> filename)
+{
+	IActionMapManager<span style=color:#f92672>*</span> pActionMapManager <span style=color:#f92672>=</span> m_pGameFramework<span style=color:#f92672>-&gt;</span>GetIActionMapManager();
+
+	<span style=color:#66d9ef>if</span> (pActionMapManager)
+	{
+		pActionMapManager<span style=color:#f92672>-&gt;</span>RegisterActionMapEventListener(m_pGameActionMaps);
+		<span style=color:#66d9ef>if</span> (pActionMapManager<span style=color:#f92672>-&gt;</span>InitActionMaps(filename))
+		{
+			pActionMapManager<span style=color:#f92672>-&gt;</span>EnableActionMap(<span style=color:#e6db74>&#34;default&#34;</span>, true);
+			pActionMapManager<span style=color:#f92672>-&gt;</span>EnableActionMap(<span style=color:#e6db74>&#34;player&#34;</span>, true);
+			pActionMapManager<span style=color:#f92672>-&gt;</span>Enable(true);
+		}
+		<span style=color:#66d9ef>else</span>
+		{
+			CryFatalError(<span style=color:#e6db74>&#34;CGame::LoadActionMaps() Invalid action maps setup&#34;</span>);
+		}
+	}
+}
+</code></pre></div><p>Typically you will register several action maps; enabling and disabling them as needed e.g. when switching to the UI.</p>
+<p>You can learn more about <a href=https://hawkes.info/2014/03/07/introducing-cryengine-3-event-listeners/>event listeners</a> and <a href=https://hawkes.info/2014/03/15/cryengine-3-system-event-dispatcher/>event dispatchers</a> in a pair of earlier articles.</p>
+<h3 id=register-action-maps>Register Action Maps</h3>
+<p>Our player input will need to register a bunch of action maps, binding those actions to function callbacks. This is done in the <strong>CPlayerInput::RegisterActionMaps</strong> function provided. Each action is bound to a specific callback function that is responsible for changing game state and any other handling specific for that action e.g.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>bool</span> CPlayerInput<span style=color:#f92672>::</span>OnActionMoveLeft(EntityId entityId, <span style=color:#66d9ef>const</span> ActionId<span style=color:#f92672>&amp;</span> actionId, <span style=color:#66d9ef>int</span> activationMode, <span style=color:#66d9ef>float</span> value)
+{
+	<span style=color:#66d9ef>if</span> (activationMode <span style=color:#f92672>==</span> eAAM_OnRelease)
+	{
+		m_movementStateFlags <span style=color:#f92672>&amp;=</span> <span style=color:#f92672>~</span>EMovementStateFlags<span style=color:#f92672>::</span>Left;
+	}
+	<span style=color:#66d9ef>else</span> <span style=color:#a6e22e>if</span> (activationMode <span style=color:#f92672>&amp;&amp;</span> (eAAM_OnPress <span style=color:#960050;background-color:#1e0010>&#39;&#39;</span> eAAM_OnHold))
+	{
+		m_movementStateFlags <span style=color:#960050;background-color:#1e0010>&#39;</span><span style=color:#f92672>=</span> EMovementStateFlags<span style=color:#f92672>::</span>Left;
+	}
+
+	<span style=color:#66d9ef>return</span> false;
+}
+</code></pre></div><p>and&mldr;</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>// XBox controller rotation is handled differently. Movements on the thumb stick set a value for
+</span><span style=color:#75715e>// rotation that should be applied every frame update.
+</span><span style=color:#75715e></span><span style=color:#66d9ef>bool</span> CPlayerInput<span style=color:#f92672>::</span>OnActionXIRotateYaw(EntityId entityId, <span style=color:#66d9ef>const</span> ActionId<span style=color:#f92672>&amp;</span> actionId, <span style=color:#66d9ef>int</span> activationMode, <span style=color:#66d9ef>float</span> value)
+{
+<span style=color:#66d9ef>float</span> radians <span style=color:#f92672>=</span> DEG2RAD(value);
+
+<span style=color:#66d9ef>if</span> (abs(radians) <span style=color:#f92672>&lt;</span> m_xiYawFilter)
+m_xiYawDelta <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0f</span>;
+<span style=color:#66d9ef>else</span>
+m_xiYawDelta <span style=color:#f92672>=</span> radians;
+
+<span style=color:#66d9ef>return</span> false;
+}
+</code></pre></div><h3 id=cplayerinputupdate>CPlayerInput::Update</h3>
+<p>Each frame, on the Update call, we compute a few values, store some state as well as state for the &ldquo;last frame&rdquo;, and then zero state out - ready for the next cycle. It&rsquo;s safe to query for this state now - it will be stable right up until the next Update.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>void</span> CPlayerInput<span style=color:#f92672>::</span>Update(SEntityUpdateContext<span style=color:#f92672>&amp;</span> ctx, <span style=color:#66d9ef>int</span> updateSlot)
+{
+<span style=color:#75715e>// We can just add up all the acculmated requests to find out how much pitch / yaw is being requested.
+</span><span style=color:#75715e>// It&#39;s also a good time to filter out any small movement requests to stabilise the camera / etc.
+</span><span style=color:#75715e></span>m_lastPitchDelta <span style=color:#f92672>=</span> m_mousePitchDelta <span style=color:#f92672>+</span> m_xiPitchDelta;
+<span style=color:#66d9ef>if</span> (abs(m_lastPitchDelta) <span style=color:#f92672>&lt;</span> m_pitchFilter)
+m_lastPitchDelta <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0f</span>;
+m_lastYawDelta <span style=color:#f92672>=</span> m_mouseYawDelta <span style=color:#f92672>+</span> m_xiYawDelta;
+<span style=color:#66d9ef>if</span> (abs(m_lastYawDelta) <span style=color:#f92672>&lt;</span> m_yawFilter)
+m_lastYawDelta <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0f</span>;
+
+<span style=color:#75715e>// Circle of life!
+</span><span style=color:#75715e></span>m_mousePitchDelta <span style=color:#f92672>=</span> m_xiPitchDelta <span style=color:#f92672>=</span> m_mouseYawDelta <span style=color:#f92672>=</span> m_xiYawDelta <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0f</span>;
+
+<span style=color:#75715e>// Handle zoom level changes, result is stored for query by cameras on Update.
+</span><span style=color:#75715e></span>m_lastZoomDelta <span style=color:#f92672>=</span> m_zoomDelta;
+m_zoomDelta <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0f</span>;
+}
+</code></pre></div><p>Most of the code supplied is pretty obvious and easy to read, so we will only cover one last routine in detail.</p>
+<p><strong>CPlayerInput::GetMovement</strong> is responsible for taking all the state changes, a base rotation, and returning the direction and distance the player wished to move. This is implemented in the simplest and fastest way I could think of.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp>Vec3 CPlayerInput<span style=color:#f92672>::</span>GetMovement(<span style=color:#66d9ef>const</span> Quat<span style=color:#f92672>&amp;</span> baseRotation)
+{
+<span style=color:#66d9ef>bool</span> allowMovement <span style=color:#f92672>=</span> true;
+Quat quatRelativeDirection;
+Vec3 vecMovement <span style=color:#f92672>=</span> Vec3(<span style=color:#ae81ff>0.0f</span>, <span style=color:#ae81ff>0.0f</span>, <span style=color:#ae81ff>0.0f</span>);
+
+<span style=color:#75715e>// Take the mask and turn it into a vector to indicate the direction we need to pan independent of the
+</span><span style=color:#75715e>// present camera direction.
+</span><span style=color:#75715e></span><span style=color:#66d9ef>switch</span> (m_movementStateFlags)
+{
+<span style=color:#66d9ef>case</span> EMovementStateFlags<span style=color:#f92672>::</span>Forward:
+quatRelativeDirection <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateIdentity();
+<span style=color:#66d9ef>break</span>;
+
+<span style=color:#66d9ef>case</span> (EMovementStateFlags<span style=color:#f92672>::</span>Forward <span style=color:#960050;background-color:#1e0010>&#39;</span> EMovementStateFlags<span style=color:#f92672>::</span>Right) <span style=color:#f92672>:</span>
+quatRelativeDirection <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateRotationZ(DEG2RAD(<span style=color:#ae81ff>45.0f</span>));
+<span style=color:#66d9ef>break</span>;
+
+<span style=color:#66d9ef>case</span> EMovementStateFlags<span style=color:#f92672>::</span>Right:
+quatRelativeDirection <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateRotationZ(DEG2RAD(<span style=color:#ae81ff>90.0f</span>));
+<span style=color:#66d9ef>break</span>;
+
+<span style=color:#66d9ef>case</span> (EMovementStateFlags<span style=color:#f92672>::</span>Backward <span style=color:#960050;background-color:#1e0010>&#39;</span> EMovementStateFlags<span style=color:#f92672>::</span>Right) <span style=color:#f92672>:</span>
+quatRelativeDirection <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateRotationZ(DEG2RAD(<span style=color:#ae81ff>135.0f</span>));
+<span style=color:#66d9ef>break</span>;
+
+<span style=color:#66d9ef>case</span> EMovementStateFlags<span style=color:#f92672>::</span>Backward:
+quatRelativeDirection <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateRotationZ(DEG2RAD(<span style=color:#ae81ff>180.0f</span>));
+<span style=color:#66d9ef>break</span>;
+
+<span style=color:#66d9ef>case</span> (EMovementStateFlags<span style=color:#f92672>::</span>Backward <span style=color:#960050;background-color:#1e0010>&#39;</span> EMovementStateFlags<span style=color:#f92672>::</span>Left) <span style=color:#f92672>:</span>
+quatRelativeDirection <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateRotationZ(DEG2RAD(<span style=color:#ae81ff>225.0f</span>));
+<span style=color:#66d9ef>break</span>;
+
+<span style=color:#66d9ef>case</span> EMovementStateFlags<span style=color:#f92672>::</span>Left:
+quatRelativeDirection <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateRotationZ(DEG2RAD(<span style=color:#ae81ff>270.0f</span>));
+<span style=color:#66d9ef>break</span>;
+
+<span style=color:#66d9ef>case</span> (EMovementStateFlags<span style=color:#f92672>::</span>Forward <span style=color:#960050;background-color:#1e0010>&#39;</span> EMovementStateFlags<span style=color:#f92672>::</span>Left) <span style=color:#f92672>:</span>
+quatRelativeDirection <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateRotationZ(DEG2RAD(<span style=color:#ae81ff>315.0f</span>));
+<span style=color:#66d9ef>break</span>;
+
+<span style=color:#66d9ef>default</span><span style=color:#f92672>:</span>
+quatRelativeDirection <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateIdentity();
+allowMovement <span style=color:#f92672>=</span> false;
+<span style=color:#66d9ef>break</span>;
+}
+
+<span style=color:#75715e>// Create a vector based on key direction. This is computed in local space for the base rotation.
+</span><span style=color:#75715e></span><span style=color:#66d9ef>if</span> (allowMovement)
+vecMovement <span style=color:#f92672>=</span> Vec3(baseRotation.GetFwdX(), baseRotation.GetFwdY(), <span style=color:#ae81ff>0.0f</span>).GetNormalized() <span style=color:#f92672>*</span> quatRelativeDirection;
+
+<span style=color:#66d9ef>return</span> vecMovement;
+}
+</code></pre></div><p>We start with the assumption that there is no movement. A simple switch statement checks the movement state flags, which in essence are tracking the WASD keys you currently have pressed down. There are only eight valid states for this, and we test each using bitwise operations on enumerations of the possible states. If there&rsquo;s a match, then a quaternion (rotation) is calculated in local space, relative to the character. This is multiplied to create a unit vector based on the base rotation.</p>
+<p>The end result is a vector that indicates the direction (unit only) you want the character to move based on an arbitrary rotation e.g. camera, current direction they are facing, etc.</p>
+<p>This result can be queried by other components in the game, and it will return consistent results from frame to frame. For example, your player rotation code and camera rotation code can know they are using the same values assuming they perform the query in the same event e.g. Update or PrePhysicsUpdate.</p>
+<h2 id=assets>Assets</h2>
+<p>I haven&rsquo;t mentioned anything about the assets bundled with this article yet. You will need to extract the files from the asset folder into your game asset folder. You may need to merge their contents with your own if you have modified the default ones shipping with CRYENGINE.</p>
+<p>These files are starting points for your own customisations of the XML config. In particular defaultprofile.xml is used to map keypresses to action map events. It&rsquo;s worth taking some time to work through these files and get an idea of their purpose.</p>
+<h2 id=summary>Summary</h2>
+<p>With all that in place you should now be able to track player keypresses and translate that directly into a desired movement direction.</p>
+<p>We will build on this code in future articles. I&rsquo;m sure there are things missing, and sections which are just glossed over. Leave comments and I will try and address any key issues; just be aware this isn&rsquo;t a comprehensive guide and there is still a lot more information that needs to follow.</p>
+</div>
+</div>
+<div class=row>
+<div class=col-12>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class=col>
+<p class=h6>
+Discover more posts like this:
+</p>
+<p class=h6>
+<a class="btn btn-primary" href=/tags/c++>
+C++
+</a>
+<a class="btn btn-primary" href=/tags/chrysalis>
+Chrysalis
+</a>
+<a class="btn btn-primary" href=/tags/cryengine3>
+CryEngine3
+</a>
+<a class="btn btn-primary" href=/tags/game-programming>
+Game Programming
+</a>
+</p>
+</div>
+</div>
+<div class=row>
+<div class=col>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-6 text-start">
+Previous:<br><a href=https://ivanhawkes.github.io/post/cryengine-3-7-source-control-and-perforce/> CRYENGINE 3.7 Source Control and Perforce</a>
+</div>
+<div class="col-6 text-end">
+Next:<br><a href=https://ivanhawkes.github.io/post/first-person-and-action-rpg-cameras/> First Person and Action RPG Cameras</a>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class=row>
+<div class=col>
+<hr>
+</div>
+</div>
+<nav class="navbar navbar-expand-lg">
+<div class=container-fluid>
+&copy; 2021 Ivan Hawkes all rights reserved.
+</div>
+</nav>
+</footer>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css integrity=sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3 crossorigin=anonymous>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css integrity=sha384-7ynz3n3tAGNUYFZD3cWe5PDcE36xj85vyFkawcF6tIwxvIecqKvfwLiaFdizhPpN crossorigin=anonymous>
+<link rel=stylesheet type=text/css href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+</body>
+</html>

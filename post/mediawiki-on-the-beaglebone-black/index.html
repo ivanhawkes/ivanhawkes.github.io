@@ -1,0 +1,184 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel=apple-touch-icon href=/img/apple-icon.png>
+<link rel=icon href=/img/favicon.png>
+<title>Life Reboot</title>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="MediaWiki on the Beaglebone Black">
+<meta name=twitter:description content="There&rsquo;s been a lot of excitement over the past 2 years regarding the Raspberry Pi. The Pi is a wonderful piece of hardware / software with a great community behind it. I&rsquo;m definitely a fan and would happily recommend one to a friend, but there&rsquo;s another player that is possibly even more exciting for the hardcore nerds - the BeagleBone Black (BB).">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+<div class=container-fluid>
+<a class=navbar-brand href=https://ivanhawkes.github.io>Ivan Hawkes</a>
+<button class=navbar-toggler type=button data-bs-toggle=collapse data-bs-target=#navbarSupportedContent aria-controls=navbarSupportedContent aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="collapse navbar-collapse" id=navbarSupportedContent>
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class=nav-item>
+<a href=https://ivanhawkes.github.iopost class="nav-link d-flex align-items-center">
+<i class=bi-stickies></i>&#160;Posts
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.ioproject class="nav-link d-flex align-items-center">
+<i class=bi-kanban></i>&#160;Our Projects
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.ioprofile class="nav-link d-flex align-items-center">
+<i class=bi-file-earmark-person></i>&#160;Our Team
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.iorecipe class="nav-link d-flex align-items-center">
+<i class=bi-egg-fried></i>&#160;Recipes
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.iogarden class="nav-link d-flex align-items-center">
+<i class=bi-tree></i>&#160;Garden
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.ioplant class="nav-link d-flex align-items-center">
+<i class=bi-flower1></i>&#160;Plants
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.ioabout class="nav-link d-flex align-items-center">
+<i class=bi-person-lines-fill></i>&#160;About Us
+</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<div class=container>
+<div class=container>
+<div class=row>
+<div class="col text-center">
+<h1>MediaWiki on the Beaglebone Black</h1>
+<div class=card>
+<div class="card-header card-header-image">
+<a href=#pablo>
+<img src=/img/site/category/general.jpg class=card-img-top alt>
+</a>
+<div class=colored-shadow style=background-image:url(/img/site/category/general.jpg);opacity:1></div>
+</div>
+<div class=card-body>
+<p class=text-start></p>
+</div>
+</div>
+</div>
+</div>
+<div class=row>
+<div class=col-12>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class=col-6>
+<p class=h6>
+By Ivan Hawkes<br>August 8, 2014
+</p>
+</div>
+<div class="col-6 text-end">
+<a href="https://www.facebook.com/sharer/sharer.php?u=ivan.hawkes" class=btn target=_blank>
+<i class=bi-facebook style=font-size:32px></i>
+</a>
+<a href="https://twitter.com/intent/tweet?url=%40ivanhawkes" class=btn target=_blank>
+<i class=bi-twitter style=font-size:32px></i>
+</a>
+<a href="https://www.linkedin.com/shareArticle?mini=true&url=ivan-hawkes-a8386338" class=btn target=_blank>
+<i class=bi-linkedin style=font-size:32px></i></a>
+<a href="http://www.pinterest.com/pin/find/?url=ivanhawkes" class=btn target=_blank>
+<i class=bi-pinterest style=font-size:32px></i></a>
+</div>
+</div>
+<div class=row>
+<div class=col-12>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class=col>
+<p>There&rsquo;s been a lot of excitement over the past 2 years regarding the Raspberry Pi. The Pi is a wonderful piece of hardware / software with a great community behind it. I&rsquo;m definitely a fan and would happily recommend one to a friend, but there&rsquo;s another player that is possibly even more exciting for the hardcore nerds - the BeagleBone Black (BB).</p>
+<p>While the Pi is a great teaching tool, and capable in it&rsquo;s own right, it is eclipsed by the BB. On paper they don&rsquo;t seem too different but there are a couple of small things that make the BB better suited to slightly heavier work loads like running a (very) small PHP web site.</p>
+<p>First up, the Pi (original) shares resources between the network and USB leading to truly awful network USB drive access. Network and USB have to duke it out to provide services - not good!</p>
+<p>Hooking up a decent sized USB2 hard drive to a Pi and accessing that over the network seems like a great idea, until you try it. I could never seem to push it past 50-60 mbit transfer speeds, and often it was closer to 30 mbit. That&rsquo;s appalling for backups, file servers, well&mldr;basically anything more demanding than a single / dual user media server. Trust me, you don&rsquo;t want to push your 150GB backup or 25 x 0.5 GB episodes of some high def anime you just downloaded.</p>
+<p>The second thing is that the Pi has an Arm6 CPU while the BB has an Arm Cortex A8 (Arm7) which can run twice as fast at the same clock speeds.</p>
+<p>Surprise twist, the BB also gives you 2GB of flash RAM on the board, so you don&rsquo;t even need to add a USB drive or Micro-SD card - unless you want to. These little things all add up to an improved experience when trying to get your little SoC to do something useful for your home / small business. Don&rsquo;t dismiss the 2GB onboard, you can do an awful lot with 2GB of storage on a Linux machine.</p>
+<p>I&rsquo;ve been running a personal copy of MediaWiki for a while now to help me design a game system I am working on. It&rsquo;s basically an idea scratch pad so I need it to be up and running 24 / 7 and reasonably responsive so I don&rsquo;t forget my ideas before I have a chance to jot them down. I had it running on Nginx, PHP, MySql on the Pi and while it was usable it was just a little too sluggish feeling. Typical page times were between 1.2 and 1.8 seconds, which is just above my threshold of tolerance. It was time to try it out on one of the shiny new BB I bought (three! :D)</p>
+<p>I set about installing MediaWiki as per the usual source code instructions, same as I did for the Pi with one small change. On the Pi I had switched to using Nginx due to it&rsquo;s rep as a fast, low overhead, server. This time, I went with Apache2 simply because it was already setup and I figured I had a little headroom. Turns out I was right.</p>
+<p>Once MediaWiki was setup I imported my site - a fairly small one with about 60 documents. Immediately, I noticed it was just that little bit more responsive feeling. Not fast, but&mldr;better.</p>
+<p>With the software loaded I tried editing, viewing, searching for pages. According to Chrome&rsquo;s testing tools it now serves most pages up within 900ms, a decent improvement. Static content comes back so fast I would miss it if I blinked. The default Apache page serves up in 25 ms average.</p>
+<p>Hitting the &lsquo;Random Page&rsquo; link several times in a row generally returns a page in about 800 ms, but sometimes much faster if it&rsquo;s in the cache (APC for PHP is setup).</p>
+<p>All in all, it&rsquo;s faster, and&mldr;fast enough for this simple purpose.</p>
+<p>I&rsquo;ve got PHPMyAdmin running on it, and a few other things. To be honest, it all runs faster than it would hosted in the Cloud somewhere on high end servers.</p>
+<p>I can highly recommend using these BB as single purpose LAMP servers. They are cheap enough to buy one for every LAMP service you think you might need. I have one for a download server which pulls down my weekly anime fix and stores it on my network attached drives. I have another one for experimental work - like running Go applications, it also has a current build of MongoDB. My final one, runs MediaWiki for me.</p>
+<p>Each runs well and performs it&rsquo;s selected task far better than you might imagine a tiny PC could do. Check them out, the future is small.</p>
+</div>
+</div>
+<div class=row>
+<div class=col-12>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class=col>
+<p class=h6>
+Discover more posts like this:
+</p>
+<p class=h6>
+<a class="btn btn-primary" href=/tags/beaglebone-black>
+Beaglebone Black
+</a>
+<a class="btn btn-primary" href=/tags/lamp>
+LAMP
+</a>
+<a class="btn btn-primary" href=/tags/mediawiki>
+MediaWiki
+</a>
+<a class="btn btn-primary" href=/tags/raspberry-pi>
+Raspberry Pi
+</a>
+</p>
+</div>
+</div>
+<div class=row>
+<div class=col>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-6 text-start">
+Previous:<br><a href=https://ivanhawkes.github.io/post/matrices-vectors-quaternions-and-cryengine-3/> Matrices, Vectors, Quaternions and CryEngine 3</a>
+</div>
+<div class="col-6 text-end">
+Next:<br><a href=https://ivanhawkes.github.io/post/a-short-introduction-to-using-blacklists-and-substitutions-on-cryengine-flowgraph-nodes/> CRYENGINE Flowgraphs - Blacklists and Substitutions</a>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class=row>
+<div class=col>
+<hr>
+</div>
+</div>
+<nav class="navbar navbar-expand-lg">
+<div class=container-fluid>
+&copy; 2021 Ivan Hawkes all rights reserved.
+</div>
+</nav>
+</footer>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css integrity=sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3 crossorigin=anonymous>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css integrity=sha384-7ynz3n3tAGNUYFZD3cWe5PDcE36xj85vyFkawcF6tIwxvIecqKvfwLiaFdizhPpN crossorigin=anonymous>
+<link rel=stylesheet type=text/css href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+</body>
+</html>

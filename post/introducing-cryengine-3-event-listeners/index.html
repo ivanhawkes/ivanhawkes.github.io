@@ -1,0 +1,559 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel=apple-touch-icon href=/img/apple-icon.png>
+<link rel=icon href=/img/favicon.png>
+<title>Life Reboot</title>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Introducing CryEngine 3 Event Listeners">
+<meta name=twitter:description content="In this article I will introduce you to event handling within CryEngine 3 and give a brief overview of the many listeners you can utilise within your project.">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+<div class=container-fluid>
+<a class=navbar-brand href=https://ivanhawkes.github.io>Ivan Hawkes</a>
+<button class=navbar-toggler type=button data-bs-toggle=collapse data-bs-target=#navbarSupportedContent aria-controls=navbarSupportedContent aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="collapse navbar-collapse" id=navbarSupportedContent>
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class=nav-item>
+<a href=https://ivanhawkes.github.iopost class="nav-link d-flex align-items-center">
+<i class=bi-stickies></i>&#160;Posts
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.ioproject class="nav-link d-flex align-items-center">
+<i class=bi-kanban></i>&#160;Our Projects
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.ioprofile class="nav-link d-flex align-items-center">
+<i class=bi-file-earmark-person></i>&#160;Our Team
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.iorecipe class="nav-link d-flex align-items-center">
+<i class=bi-egg-fried></i>&#160;Recipes
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.iogarden class="nav-link d-flex align-items-center">
+<i class=bi-tree></i>&#160;Garden
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.ioplant class="nav-link d-flex align-items-center">
+<i class=bi-flower1></i>&#160;Plants
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.ioabout class="nav-link d-flex align-items-center">
+<i class=bi-person-lines-fill></i>&#160;About Us
+</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<div class=container>
+<div class=container>
+<div class=row>
+<div class="col text-center">
+<h1>Introducing CryEngine 3 Event Listeners</h1>
+<div class=card>
+<div class="card-header card-header-image">
+<a href=#pablo>
+<img src=/img/site/category/cryengine.jpg class=card-img-top alt>
+</a>
+<div class=colored-shadow style=background-image:url(/img/site/category/cryengine.jpg);opacity:1></div>
+</div>
+<div class=card-body>
+<p class=text-start></p>
+</div>
+</div>
+</div>
+</div>
+<div class=row>
+<div class=col-12>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class=col-6>
+<p class=h6>
+By Ivan Hawkes<br>March 7, 2014
+</p>
+</div>
+<div class="col-6 text-end">
+<a href="https://www.facebook.com/sharer/sharer.php?u=ivan.hawkes" class=btn target=_blank>
+<i class=bi-facebook style=font-size:32px></i>
+</a>
+<a href="https://twitter.com/intent/tweet?url=%40ivanhawkes" class=btn target=_blank>
+<i class=bi-twitter style=font-size:32px></i>
+</a>
+<a href="https://www.linkedin.com/shareArticle?mini=true&url=ivan-hawkes-a8386338" class=btn target=_blank>
+<i class=bi-linkedin style=font-size:32px></i></a>
+<a href="http://www.pinterest.com/pin/find/?url=ivanhawkes" class=btn target=_blank>
+<i class=bi-pinterest style=font-size:32px></i></a>
+</div>
+</div>
+<div class=row>
+<div class=col-12>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class=col>
+<p>In this article I will introduce you to event handling within CryEngine 3 and give a brief overview of the many listeners you can utilise within your project.</p>
+<p>Learning the CryEngine code can be daunting at first. It&rsquo;s large, non-trivial and complex. Approximately 220,000 lines of C++ are provided with the CryEngine FreeSDK, and much of that is densely packed headers. A good first step is to purchase one or more of the books which introduce you to programming with the engine. I have personally read and can recommend:</p>
+<ul>
+<li><a href=http://amzn.to/1mZHaHo title="CryENGINE Game Programming with C++, C#, and Lua">CryENGINE Game Programming with C++, C#, and Lua</a></li>
+<li><a href=http://amzn.to/1cFKv4y title=" CryENGINE 3 Game Development: Beginner">CryENGINE 3 Game Development: Beginner&rsquo;s Guide</a></li>
+<li><a href=http://amzn.to/1njxlk3 title="CryENGINE 3 Cookbook">CryENGINE 3 Cookbook</a></li>
+</ul>
+<p>Each of them has their strengths and weaknesses, and despite overlaps in some areas of content you should more than get your money&rsquo;s worth from reading them. They&rsquo;re a steal if you buy them for Kindle. For this article I will assume you have at least basic knowledge of CryEngine, and decent C++ skills.</p>
+<p>Let&rsquo;s get started!</p>
+<p>One of the key design patterns you will see throughout the CryEngine SDK is the <a href=http://en.wikipedia.org/wiki/Observer_pattern title="Observer Pattern">observer pattern</a>. In this pattern one object maintains a list of dependant objects and is responsible for notifying them of changes in it&rsquo;s state. Within CryEngine they are generally denoted as classes and structs whose name end in <strong>Listener</strong> e.g. IGameRulesKillListener.</p>
+<p>Before writing any code you should become familiar, at least generally, with each of the listeners which are available. But first, let&rsquo;s look at how you attach yourself to a subject class as a listening object.</p>
+<p>Perhaps the first listener you might come across is <strong>IGameFrameworkListener</strong>. An IGameFrameworkListener is an object that listens for events from the framework. These are high level type events, such as when the game is saved or loaded, when a level ends or at the end of the update cycle. In order to start listening to these events you need to register yourself with the subject. Typically, this would be done during the init phase for your object.</p>
+<p>First, you need to make sure your object inherits from IGameFrameworkListener, so add that to your listening class declaration. Next, add the pure virtual methods declared within the listener struct / class. In this case you would add a set of declarations similar to these:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>// IGameFramework
+</span><span style=color:#75715e></span><span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnPostUpdate</span> (<span style=color:#66d9ef>float</span> fDeltaTime) {};
+<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnSaveGame</span> (ISaveGame<span style=color:#f92672>*</span> pSaveGame) {};
+<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnLoadGame</span> (ILoadGame<span style=color:#f92672>*</span> pLoadGame) {};
+<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnLevelEnd</span> (<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span><span style=color:#f92672>*</span> nextLevel) {};
+<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnActionEvent</span> (<span style=color:#66d9ef>const</span> SActionEvent<span style=color:#f92672>&amp;</span> event) {};
+<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnPreRender</span>() {};
+</code></pre></div><p>I&rsquo;ve stubbed most of mine out for now with empty implementations. If you don&rsquo;t do that be sure to add the definition of the functions into your cpp file or your compile will fail.</p>
+<p>Then, somewhere in the code, most likely within the init routine, you will make a call to <strong>RegisterListener</strong> on the game framework e.g.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>if</span>(IGame <span style=color:#f92672>*</span>pGame <span style=color:#f92672>=</span> gEnv<span style=color:#f92672>-&gt;</span>pGame)
+{
+	pGame<span style=color:#f92672>-&gt;</span>GetIGameFramework()<span style=color:#f92672>-&gt;</span>RegisterListener(<span style=color:#66d9ef>this</span>, <span style=color:#e6db74>&#34;CFlowSaveGameNode&#34;</span>, FRAMEWORKLISTENERPRIORITY_DEFAULT);
+}
+</code></pre></div><p>You will also need to add a piece of code to unregister the listener when you are unloaded e.g.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp>g_pGame<span style=color:#f92672>-&gt;</span>GetIGameFramework()<span style=color:#f92672>-&gt;</span>UnregisterListener(<span style=color:#66d9ef>this</span>);
+</code></pre></div><p>Once that is all compiled and running you should be able to see your implementations of the virtual functions being called at the appropriate points in the code execution. Pretty easy so far! The hard part is knowing what interfaces CryTek have made available for you to listen with.</p>
+<h2 id=list-of-known-observers>List of Known Observers</h2>
+<p>I&rsquo;ve run Doxygen on the gamesdk code to get an idea of what is available. At this time roughly forty classes are declared as listeners. I&rsquo;ll give a brief summary of each of them below.</p>
+<h2 id=span-stylefont-size117emline-height15emibasiceventlistenerspan>IBasicEventListener</h2>
+<p>Provides access to basic events, such as entering and leaving a menu, mouse clicks, or keyboard character input.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>IBasicEventListener</span>
+{
+	<span style=color:#66d9ef>enum</span> <span style=color:#a6e22e>EAction</span>
+	{
+		eA_Default,
+		eA_None,
+		eA_ActivateAndEat
+	};
+
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IBasicEventListener();
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnClose</span>(HWND hWnd) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnMouseActivate</span>(HWND hWnd) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnEnterSizeMove</span>(HWND hWnd) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnExitSizeMove</span>(HWND hWnd) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnEnterMenuLoop</span>(HWND hWnd) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnExitMenuLoop</span>(HWND hWnd) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnHotKey</span>(HWND hWnd) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnSycChar</span>(HWND hWnd) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnChar</span>(HWND hWnd, WPARAM wParam) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnIMEChar</span>(HWND hWnd) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnSysKeyDown</span>(HWND hWnd, WPARAM wParam, LPARAM lParam) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnSetCursor</span>(HWND hWnd) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnMouseMove</span>(HWND hWnd, LPARAM lParam) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnLeftButtonDown</span>(HWND hWnd, LPARAM lParam) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnLeftButtonUp</span>(HWND hWnd, LPARAM lParam) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnLeftButtonDoubleClick</span>(HWND hWnd, LPARAM lParam) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnMouseWheel</span>(HWND hWnd, LPARAM lParam, <span style=color:#66d9ef>short</span> WheelDelta) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnMove</span>(HWND hWnd, LPARAM lParam) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnSize</span>(HWND hWnd, LPARAM lParam) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnActivate</span>(HWND hWnd, WPARAM wParam) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnSetFocus</span>(HWND hWnd) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnKillFocus</span>(HWND hWnd) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnWindowPositionChanged</span>(HWND hWnd) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnWindowStyleChanged</span>(HWND hWnd) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnInputLanguageChanged</span>(HWND hWnd, WPARAM wParam, LPARAM lParam) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> EAction <span style=color:#a6e22e>OnSysCommand</span>(HWND hWnd, WPARAM wParam) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=idatalistener>IDataListener</h3>
+<p>This is utilised by patching and downloading objects. It provides a simple interface to inform you when a download completes or if it fails.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>IDataListener</span>
+{
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>DataDownloaded</span> (CDownloadableResourcePtr inResource) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>DataFailedToDownload</span> (CDownloadableResourcePtr inResource) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IDataListener ();
+};
+</code></pre></div><h3 id=idatapatcherlistener>IDataPatcherListener</h3>
+<p>Used by the CDataPatchDownloader class.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>IDataPatcherListener</span>
+{
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>DataPatchAvailable</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>DataPatchNotAvailable</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IDataPatcherListener () {}
+};
+</code></pre></div><h3 id=ienvironmentalweaponeventlistener>IEnvironmentalWeaponEventListener</h3>
+<p>Unknown at time of writing.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>IEnvironmentalWeaponEventListener</span>
+{
+	<span style=color:#75715e>// Called when Rip anim is started
+</span><span style=color:#75715e></span>	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnRipStart</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+
+	<span style=color:#75715e>// Called at the point within the rip action that the actual &#39;detach/Unroot&#39; occurs
+</span><span style=color:#75715e></span>	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnRipDetach</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+
+	<span style=color:#75715e>// Called at the end of the rip anim
+</span><span style=color:#75715e></span>	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnRipEnd</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IEnvironmentalWeaponEventListener () {};
+};
+</code></pre></div><h3 id=ifiremodelistener>IFireModeListener</h3>
+<p>Only used within the CFireMode class.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>IFireModeListener</span>
+{
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IFireModeListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnFireModeDeleted</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnFireModeActivated</span> (<span style=color:#66d9ef>bool</span> activated) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=igamelobbyeventlistener>IGameLobbyEventListener</h3>
+<p>Used within the anti-cheat code.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IGameLobbyEventListener</span>
+{
+<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IGameLobbyEventListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>InsertedUser</span> (CryUserID userId, <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span><span style=color:#f92672>*</span> userName) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>SessionChanged</span> (<span style=color:#66d9ef>const</span> CrySessionHandle inOldSession, <span style=color:#66d9ef>const</span> CrySessionHandle inNewSession) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=igamerulesactoractionlistener>IGameRulesActorActionListener</h3>
+<p>Used by the game rules routines. Purpose is unknown at time of writing.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IGameRulesActorActionListener</span>
+{
+<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IGameRulesActorActionListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnAction</span> (<span style=color:#66d9ef>const</span> ActionId<span style=color:#f92672>&amp;</span> actionId, <span style=color:#66d9ef>int</span> activationMode, <span style=color:#66d9ef>float</span> value) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=igamerulesclientconnectionlistener>IGameRulesClientConnectionListener</h3>
+<p>This notifies you of client connection events.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IGameRulesClientConnectionListener</span>
+{
+<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IGameRulesClientConnectionListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnClientConnect</span> (<span style=color:#66d9ef>int</span> channelId, <span style=color:#66d9ef>bool</span> isReset, EntityId playerId) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnClientDisconnect</span> (<span style=color:#66d9ef>int</span> channelId, EntityId playerId) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnClientEnteredGame</span> (<span style=color:#66d9ef>int</span> channelId, <span style=color:#66d9ef>bool</span> isReset, EntityId playerId) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnOwnClientEnteredGame</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=igamerulesclientscorelistener>IGameRulesClientScoreListener</h3>
+<p>Notification event for when a client scores.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IGameRulesClientScoreListener</span>
+{
+	<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IGameRulesClientScoreListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>ClientScoreEvent</span> (EGameRulesScoreType type, <span style=color:#66d9ef>int</span> points, EXPReason inReason, <span style=color:#66d9ef>int</span> currentTeamScore) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=igameruleskilllistener>IGameRulesKillListener</h3>
+<p>Notification of when an entity is killed.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IGameRulesKillListener</span>
+{
+<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IGameRulesKillListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnEntityKilledEarly</span> (<span style=color:#66d9ef>const</span> HitInfo<span style=color:#f92672>&amp;</span> hitInfo) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnEntityKilled</span> (<span style=color:#66d9ef>const</span> HitInfo<span style=color:#f92672>&amp;</span> hitInfo) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=igamerulesmodulermilistener>IGameRulesModuleRMIListener</h3>
+<p>Purpose is unknown at time of writing.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IGameRulesModuleRMIListener</span>
+{
+<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IGameRulesModuleRMIListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnSingleEntityRMI</span> (CGameRules<span style=color:#f92672>::</span>SModuleRMIEntityParams params) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnDoubleEntityRMI</span> (CGameRules<span style=color:#f92672>::</span>SModuleRMITwoEntityParams params) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnEntityWithTimeRMI</span> (CGameRules<span style=color:#f92672>::</span>SModuleRMIEntityTimeParams params) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnSvClientActionRMI</span> (CGameRules<span style=color:#f92672>::</span>SModuleRMISvClientActionParams params, EntityId fromEid) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=igamerulespickuplistener>IGameRulesPickupListener</h3>
+<p>Notification for entities picking up and dropping items.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IGameRulesPickupListener</span>
+{
+<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IGameRulesPickupListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnItemPickedUp</span> (EntityId itemId, EntityId actorId) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnItemDropped</span> (EntityId itemId, EntityId actorId) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnPickupEntityAttached</span> (EntityId entityId, EntityId actorId) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnPickupEntityDetached</span> (EntityId entityId, EntityId actorId, <span style=color:#66d9ef>bool</span> isOnRemove) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=igamerulesplayerstatslistener>IGameRulesPlayerStatsListener</h3>
+<p>Purpose is unknown at time of writing.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IGameRulesPlayerStatsListener</span>
+{
+<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IGameRulesPlayerStatsListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>ClPlayerStatsNetSerializeReadDeath</span> (<span style=color:#66d9ef>const</span> SGameRulesPlayerStat<span style=color:#f92672>*</span> s, uint16 prevDeathsThisRound, uint8 prevFlags) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=igamerulesrevivedlistener>IGameRulesRevivedListener</h3>
+<p>It appears to be a notification of when an entity is revived.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IGameRulesRevivedListener</span>
+{
+<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IGameRulesRevivedListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>EntityRevived</span> (EntityId entityId) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=igamerulesroundslistener>IGameRulesRoundsListener</h3>
+<p>Used by the game rules code.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IGameRulesRoundsListener</span>
+{
+<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IGameRulesRoundsListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnRoundStart</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnRoundEnd</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnSuddenDeath</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>ClRoundsNetSerializeReadState</span> (<span style=color:#66d9ef>int</span> newState, <span style=color:#66d9ef>int</span> curState) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnRoundAboutToStart</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=igamerulesstatelistener>IGameRulesStateListener</h3>
+<p>Used by the game rules code.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IGameRulesStateListener</span>
+{
+<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IGameRulesStateListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnIntroStart</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnGameStart</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnGameEnd</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnStateEntered</span> (IGameRulesStateModule<span style=color:#f92672>::</span>EGR_GameState newGameState) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=igamerulessurvivorcountlistener>IGameRulesSurvivorCountListener</h3>
+<p>Used by the game rules code.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IGameRulesSurvivorCountListener</span>
+{
+<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IGameRulesSurvivorCountListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>SvSurvivorCountRefresh</span> (<span style=color:#66d9ef>int</span> count, <span style=color:#66d9ef>const</span> EntityId survivors[], <span style=color:#66d9ef>int</span> numKills) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=igamerulesteamchangedlistener>IGameRulesTeamChangedListener</h3>
+<p>Used by the game rules code.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IGameRulesTeamChangedListener</span>
+{
+<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IGameRulesTeamChangedListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnChangedTeam</span> (EntityId entityId, <span style=color:#66d9ef>int</span> oldTeamId, <span style=color:#66d9ef>int</span> newTeamId) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=ihudeventlistener>IHUDEventListener</h3>
+<p>This handles event notifications from the HUD.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>IHUDEventListener</span>
+{
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IHUDEventListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnHUDEvent</span> (<span style=color:#66d9ef>const</span> SHUDEvent<span style=color:#f92672>&amp;</span> event) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=imeleecollisionhelperlistener>IMeleeCollisionHelperListener</h3>
+<p>This can be seen in class CPickAndThrowWeapon where it responds helps to calculate hits from a thrown weapon.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>IMeleeCollisionHelperListener</span>
+{
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IMeleeCollisionHelperListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnSuccesfulHit</span> (<span style=color:#66d9ef>const</span> ray_hit<span style=color:#f92672>&amp;</span> hitResult) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnFailedHit</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=imppathfollowinglistener>IMPPathFollowingListener</h3>
+<p>Used by path finding managers for notification of when a path is completed.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>IMPPathFollowingListener</span>
+{
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnPathCompleted</span> (EntityId attachedEntityId) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IMPPathFollowingListener () {};
+};
+</code></pre></div><h3 id=ipatchpakmanagerlistener>IPatchPakManagerListener</h3>
+<p>Only known use is by the dedicated server to know permissions have changed and that it is time to quit.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IPatchPakManagerListener</span>
+{
+<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IPatchPakManagerListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>UpdatedPermissionsNowAvailable</span> () <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=iplayereventlistener>IPlayerEventListener</h3>
+<p>Notification of actions undertaken by the player. This includes support for entering and exiting vehicles, switching between first and third person cameras, picking up, dropping and using items, death and stance changes, among others.</p>
+<p>It also handles special moves for the player. Currently only jump and sprint are defined.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>IPlayerEventListener</span>
+{
+	<span style=color:#66d9ef>enum</span> <span style=color:#a6e22e>ESpecialMove</span>
+	{
+		eSM_Jump <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>,
+		eSM_SpeedSprint,
+	};
+
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IPlayerEventListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnEnterVehicle</span> (IActor<span style=color:#f92672>*</span> pActor, <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span><span style=color:#f92672>*</span> strVehicleClassName, <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span><span style=color:#f92672>*</span> strSeatName, <span style=color:#66d9ef>bool</span> bThirdPerson) {};
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnExitVehicle</span> (IActor<span style=color:#f92672>*</span> pActor) {};
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnToggleThirdPerson</span> (IActor<span style=color:#f92672>*</span> pActor, <span style=color:#66d9ef>bool</span> bThirdPerson) {};
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnItemDropped</span> (IActor<span style=color:#f92672>*</span> pActor, EntityId itemId) {};
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnItemPickedUp</span> (IActor<span style=color:#f92672>*</span> pActor, EntityId itemId) {};
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnItemUsed</span> (IActor<span style=color:#f92672>*</span> pActor, EntityId itemId) {};
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnStanceChanged</span> (IActor<span style=color:#f92672>*</span> pActor, EStance stance) {};
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnSpecialMove</span> (IActor<span style=color:#f92672>*</span> pActor, ESpecialMove move) {};
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnDeath</span> (IActor<span style=color:#f92672>*</span> pActor, <span style=color:#66d9ef>bool</span> bIsGod) {};
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnObjectGrabbed</span> (IActor<span style=color:#f92672>*</span> pActor, <span style=color:#66d9ef>bool</span> bIsGrab, EntityId objectId, <span style=color:#66d9ef>bool</span> bIsNPC, <span style=color:#66d9ef>bool</span> bIsTwoHanded) {};
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnHealthChanged</span> (IActor<span style=color:#f92672>*</span> pActor, <span style=color:#66d9ef>float</span> newHealth) {};
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnRevive</span> (IActor<span style=color:#f92672>*</span> pActor, <span style=color:#66d9ef>bool</span> bIsGod) {};
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnSpectatorModeChanged</span> (IActor<span style=color:#f92672>*</span> pActor, uint8 mode) {};
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnPickedUpPickableAmmo</span> (IActor<span style=color:#f92672>*</span> pActor, IEntityClass<span style=color:#f92672>*</span> pAmmoType, <span style=color:#66d9ef>int</span> count) {}
+};
+</code></pre></div><h3 id=iplayerprogressioneventlistener>IPlayerProgressionEventListener</h3>
+<p>The OnEvent function listens for important game events such as EMP blasts, first blood kills and stealth kills. It is only used by the CPersistantStats class to keep a tally of these events.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>IPlayerProgressionEventListener</span>
+{
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IPlayerProgressionEventListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnEvent</span> (EPPType type, <span style=color:#66d9ef>bool</span> skillKill, <span style=color:#66d9ef>void</span><span style=color:#f92672>*</span> data) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=iplayerupdatelistener>IPlayerUpdateListener</h3>
+<p>Listener interface for player updates.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>IPlayerUpdateListener</span>
+{
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IPlayerUpdateListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>Update</span> (<span style=color:#66d9ef>float</span> fFrameTime) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=iprivategamelistener>IPrivateGameListener</h3>
+<p>Used by the lobby manager for setting private games.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>IPrivateGameListener</span>
+{
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IPrivateGameListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>SetPrivateGame</span> (<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>bool</span> privateGame) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=iprojectilelistener>IProjectileListener</h3>
+<p>Here be dragons. The OnLaunch function is called whenever a projectile is launched. OnProjectilePhysicsPostStep has warnings about thread safety and doesn&rsquo;t look like it is meant for external use.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>IProjectileListener</span>
+{
+	<span style=color:#75715e>// NB: Must be physics-thread safe IF its called from the physics OnPostStep
+</span><span style=color:#75715e></span>	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnProjectilePhysicsPostStep</span> (CProjectile<span style=color:#f92672>*</span> pProjectile, EventPhysPostStep<span style=color:#f92672>*</span> pEvent, <span style=color:#66d9ef>int</span> bPhysicsThread) {}
+
+	<span style=color:#75715e>// Called from Main thread
+</span><span style=color:#75715e></span>	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnLaunch</span> (CProjectile<span style=color:#f92672>*</span> pProjectile, <span style=color:#66d9ef>const</span> Vec3<span style=color:#f92672>&amp;</span> pos, <span style=color:#66d9ef>const</span> Vec3<span style=color:#f92672>&amp;</span> velocity) {}
+
+<span style=color:#66d9ef>protected</span><span style=color:#f92672>:</span>
+	<span style=color:#75715e>// Should never be called
+</span><span style=color:#75715e></span>	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IProjectileListener () {}
+};
+</code></pre></div><h3 id=recordingsystemlistener>RecordingSystemListener</h3>
+<p>Purpose is unknown at time of writing.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>IRecordingSystemListener</span>
+{
+<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IRecordingSystemListener() {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnPlaybackRequested</span>( <span style=color:#66d9ef>const</span> SPlaybackRequest<span style=color:#f92672>&amp;</span> info ) {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnPlaybackStarted</span>( <span style=color:#66d9ef>const</span> SPlaybackInfo<span style=color:#f92672>&amp;</span> info ) {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnPlaybackEnd</span>( <span style=color:#66d9ef>const</span> SPlaybackInfo<span style=color:#f92672>&amp;</span> info ) {}
+};
+</code></pre></div><h3 id=isquadeventlistener>ISquadEventListener</h3>
+<p>Squad managment notifications.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>ISquadEventListener</span>
+{
+<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#75715e>// Local squad events
+</span><span style=color:#75715e></span>	<span style=color:#66d9ef>enum</span> <span style=color:#a6e22e>ESquadEventType</span>
+	{
+		eSET_CreatedSquad,
+		eSET_MigratedSquad,
+		eSET_JoinedSquad,
+		eSET_LeftSquad,
+	};
+
+<span style=color:#66d9ef>public</span><span style=color:#f92672>:</span>
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>ISquadEventListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>AddedSquaddie</span> (CryUserID userId) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>RemovedSquaddie</span> (CryUserID userId) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>UpdatedSquaddie</span> (CryUserID userId) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>SquadLeaderChanged</span> (CryUserID userId) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>SquadEvent</span> (ISquadEventListener<span style=color:#f92672>::</span>ESquadEventType eventType) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=iuicontrolschemelistener>IUIControlSchemeListener</h3>
+<p>This appears to be a notification of when the user changes the game controls.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>IUIControlSchemeListener</span>
+{
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>IUIControlSchemeListener() {};
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>bool</span> <span style=color:#a6e22e>OnControlSchemeChanged</span>(<span style=color:#66d9ef>const</span> EControlScheme controlScheme) <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>;
+};
+</code></pre></div><h3 id=sgameruleslistener>SGameRulesListener</h3>
+<p>Notification of important game rule events.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>struct</span> <span style=color:#a6e22e>SGameRulesListener</span>
+{
+	<span style=color:#66d9ef>virtual</span> <span style=color:#f92672>~</span>SGameRulesListener () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>GameOver</span> (EGameOverType localWinner, <span style=color:#66d9ef>bool</span> isClientSpectator) {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>EnteredGame</span> () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>EndGameNear</span> (EntityId id) {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>ClientEnteredGame</span> (EntityId clientId) {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>ClientDisconnect</span> (EntityId clientId) {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>OnActorDeath</span> (CActor<span style=color:#f92672>*</span> pActor) {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>SvOnTimeLimitExpired</span> () {}
+	<span style=color:#66d9ef>virtual</span> <span style=color:#66d9ef>void</span> <span style=color:#a6e22e>ClTeamScoreFeedback</span> (<span style=color:#66d9ef>int</span> teamId, <span style=color:#66d9ef>int</span> prevScore, <span style=color:#66d9ef>int</span> newScore) {}
+	<span style=color:#66d9ef>void</span> <span style=color:#a6e22e>GetMemoryUsage</span> (ICrySizer<span style=color:#f92672>*</span> pSizer) <span style=color:#66d9ef>const</span> {}
+};
+</code></pre></div><h2 id=final-thoughts>Final Thoughts</h2>
+<p>That&rsquo;s just a brief description of each of the observer declarations I was able to find. Hopefully this will give you an idea of what sort of events you can subscribe to and how they are used within existing code. I encourage you to work your way through the source files, it&rsquo;s currently the best documentation we have available.</p>
+</div>
+</div>
+<div class=row>
+<div class=col-12>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class=col>
+<p class=h6>
+Discover more posts like this:
+</p>
+<p class=h6>
+<a class="btn btn-primary" href=/tags/c>
+C#
+</a>
+<a class="btn btn-primary" href=/tags/cryengine-3>
+CryEngine 3
+</a>
+<a class="btn btn-primary" href=/tags/cryengine3>
+CryEngine3
+</a>
+<a class="btn btn-primary" href=/tags/event>
+event
+</a>
+<a class="btn btn-primary" href=/tags/gamesdk.dll>
+gamesdk.dll
+</a>
+<a class="btn btn-primary" href=/tags/listener>
+listener
+</a>
+<a class="btn btn-primary" href=/tags/observer-pattern>
+observer pattern
+</a>
+<a class="btn btn-primary" href=/tags/software-development>
+Software Development
+</a>
+</p>
+</div>
+</div>
+<div class=row>
+<div class=col>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-6 text-start">
+Previous:<br><a href=https://ivanhawkes.github.io/post/adding-new-actions-to-cryengine-3-freesdk/> Adding New Actions to CryEngine 3 FreeSDK</a>
+</div>
+<div class="col-6 text-end">
+Next:<br><a href=https://ivanhawkes.github.io/post/cryengine-3-system-event-dispatcher/> CryEngine 3 System Event Dispatcher</a>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class=row>
+<div class=col>
+<hr>
+</div>
+</div>
+<nav class="navbar navbar-expand-lg">
+<div class=container-fluid>
+&copy; 2021 Ivan Hawkes all rights reserved.
+</div>
+</nav>
+</footer>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css integrity=sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3 crossorigin=anonymous>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css integrity=sha384-7ynz3n3tAGNUYFZD3cWe5PDcE36xj85vyFkawcF6tIwxvIecqKvfwLiaFdizhPpN crossorigin=anonymous>
+<link rel=stylesheet type=text/css href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+</body>
+</html>

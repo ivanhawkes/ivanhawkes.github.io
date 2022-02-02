@@ -1,0 +1,404 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<link rel=apple-touch-icon href=/img/apple-icon.png>
+<link rel=icon href=/img/favicon.png>
+<title>Life Reboot</title>
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="Chrysalis Update for 2020-08-02">
+<meta name=twitter:description content="I cover recent progress on Chrysalis.">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+<div class=container-fluid>
+<a class=navbar-brand href=https://ivanhawkes.github.io>Ivan Hawkes</a>
+<button class=navbar-toggler type=button data-bs-toggle=collapse data-bs-target=#navbarSupportedContent aria-controls=navbarSupportedContent aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="collapse navbar-collapse" id=navbarSupportedContent>
+<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<li class=nav-item>
+<a href=https://ivanhawkes.github.iopost class="nav-link d-flex align-items-center">
+<i class=bi-stickies></i>&#160;Posts
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.ioproject class="nav-link d-flex align-items-center">
+<i class=bi-kanban></i>&#160;Our Projects
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.ioprofile class="nav-link d-flex align-items-center">
+<i class=bi-file-earmark-person></i>&#160;Our Team
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.iorecipe class="nav-link d-flex align-items-center">
+<i class=bi-egg-fried></i>&#160;Recipes
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.iogarden class="nav-link d-flex align-items-center">
+<i class=bi-tree></i>&#160;Garden
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.ioplant class="nav-link d-flex align-items-center">
+<i class=bi-flower1></i>&#160;Plants
+</a>
+</li>
+<li class=nav-item>
+<a href=https://ivanhawkes.github.ioabout class="nav-link d-flex align-items-center">
+<i class=bi-person-lines-fill></i>&#160;About Us
+</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<div class=container>
+<div class=container>
+<div class=row>
+<div class="col text-center">
+<h1>Chrysalis Update for 2020-08-02</h1>
+<div class=card>
+<div class="card-header card-header-image">
+<a href=#pablo>
+<img src=/img/site/category/programming.jpg class=card-img-top alt>
+</a>
+<div class=colored-shadow style=background-image:url(/img/site/category/programming.jpg);opacity:1></div>
+</div>
+<div class=card-body>
+<p class=text-start></p>
+</div>
+</div>
+</div>
+</div>
+<div class=row>
+<div class=col-12>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class=col-6>
+<p class=h6>
+By Ivan Hawkes<br>August 2, 2020
+</p>
+</div>
+<div class="col-6 text-end">
+<a href="https://www.facebook.com/sharer/sharer.php?u=ivan.hawkes" class=btn target=_blank>
+<i class=bi-facebook style=font-size:32px></i>
+</a>
+<a href="https://twitter.com/intent/tweet?url=%40ivanhawkes" class=btn target=_blank>
+<i class=bi-twitter style=font-size:32px></i>
+</a>
+<a href="https://www.linkedin.com/shareArticle?mini=true&url=ivan-hawkes-a8386338" class=btn target=_blank>
+<i class=bi-linkedin style=font-size:32px></i></a>
+<a href="http://www.pinterest.com/pin/find/?url=ivanhawkes" class=btn target=_blank>
+<i class=bi-pinterest style=font-size:32px></i></a>
+</div>
+</div>
+<div class=row>
+<div class=col-12>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class=col>
+<p>In this article I will cover recent progress on my project, <a href=https://github.com/ivanhawkes/Chrysalis>Chrysalis</a>.</p>
+<p>As I am still working on a major feature, any code or progress spoken of will be based on this <a href=https://github.com/ivanhawkes/Chrysalis/commit/440868f086acf06cb6826c72940aaa5df60457b2>commit</a>.</p>
+<p>Last time, I spoke about putting the EnTT ECS system into Chrysalis. The idea was to use this as a way to prototype spells and eventually items, which might in turn have one or more spells they can cast. Since then I&rsquo;ve decided to use it as the basis for pretty much all interation in the game.</p>
+<p>Now, a spell system is a great idea for an RPG, but it&rsquo;s outside the scope of my initial plan - which is to write enough code to support a decent walking simulator. I started out by hard coding an interaction class for each specific interaction I thought the player might use e.g. &ldquo;use&rdquo;, &ldquo;take&rdquo;, &ldquo;drop&rdquo;, &ldquo;open&rdquo;. As I wrote the code I started to see everything as a spell instead. After all, what is a spell but a set of pre-conditions that determine if a character can perform some special action in the world. Once you start looking at needing to do range checks for opening a door or picking up a piece of paper it starts to make sense to have those occur in the same framework you&rsquo;d use for throwing a fireball.</p>
+<p>So a spell is:</p>
+<ul>
+<li>one or more conditionals e.g.
+<ul>
+<li>range check</li>
+<li>qi (mana) check</li>
+<li>timing check, how long since last used</li>
+<li>reagent check, does this effect need you to already possess a key or wolfsbane?</li>
+</ul>
+</li>
+<li>feedback
+<ul>
+<li>animation for the caster</li>
+<li>sound effects</li>
+<li>particle effects</li>
+<li>potentially spawn some geometry that needs to move in time with the spellcasting</li>
+<li>swap out weapon for interaction item e.g. compass, sickle</li>
+</ul>
+</li>
+<li>action
+<ul>
+<li>damage occurs to other character</li>
+<li>qi is spent</li>
+<li>target is affected by animation, sound effect, etc</li>
+</ul>
+</li>
+</ul>
+<p>By the time I&rsquo;ve written the code to open a door I&rsquo;m a long way towards having the base of a decent spell casting system. A good door opening sequence will need a range check, offer a UI option to trigger the action, then start an animation on the character - potentially needing IK for the hand positioning, trigger some environmental sound, rotate the door, and re-calculate the navmesh. Since I will eventually want some spells inside the game, I may as well get the bones of it written.</p>
+<p>Previously I spoke about adding health and qi components to an actor, and showed some XML prototypes for some typical spells. The simulation already had a couple of systems for applying damage and heals. It now has systems for applying damage, heals, spending qi, regenerating qi, DoTs, HoTs, casting a spell by it&rsquo;s name, and systems for watching &ldquo;world&rdquo; / &ldquo;interaction&rdquo; spells. You can now write a little bit of XML which defines a spell and have the player be able to execute it just by invoking it&rsquo;s name. For testing I have a bunch of them bound to my input keys 0-9 and F1-F12.</p>
+<p>For example:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-xml data-lang=xml>  <span style=color:#f92672>&lt;entity&gt;</span>
+    <span style=color:#f92672>&lt;components&gt;</span>
+      <span style=color:#f92672>&lt;name</span> <span style=color:#a6e22e>CryXmlVersion=</span><span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;Scorch&#34;</span> <span style=color:#a6e22e>displayName=</span><span style=color:#e6db74>&#34;Scorch&#34;</span><span style=color:#f92672>/&gt;</span>
+      <span style=color:#f92672>&lt;spell</span> <span style=color:#a6e22e>CryXmlVersion=</span><span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#a6e22e>spell-rewire=</span><span style=color:#e6db74>&#34;damage&#34;</span> <span style=color:#a6e22e>minRange=</span><span style=color:#e6db74>&#34;0&#34;</span> <span style=color:#a6e22e>maxRange=</span><span style=color:#e6db74>&#34;30&#34;</span> <span style=color:#a6e22e>castDuration=</span><span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#a6e22e>cooldown=</span><span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#a6e22e>globalCooldown=</span><span style=color:#e6db74>&#34;0&#34;</span> <span style=color:#a6e22e>sourceTargetType=</span><span style=color:#e6db74>&#34;self&#34;</span> <span style=color:#a6e22e>targetTargetType=</span><span style=color:#e6db74>&#34;singleTarget&#34;</span> <span style=color:#a6e22e>spellCastPayload=</span><span style=color:#e6db74>&#34;onCompletion&#34;</span><span style=color:#f92672>/&gt;</span>
+      <span style=color:#f92672>&lt;damage</span> <span style=color:#a6e22e>CryXmlVersion=</span><span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#a6e22e>targetTargetType=</span><span style=color:#e6db74>&#34;target&#34;</span> <span style=color:#a6e22e>quantity=</span><span style=color:#e6db74>&#34;12&#34;</span> <span style=color:#a6e22e>damageType=</span><span style=color:#e6db74>&#34;fire&#34;</span><span style=color:#f92672>/&gt;</span>
+      <span style=color:#f92672>&lt;damage-over-time</span> <span style=color:#a6e22e>CryXmlVersion=</span><span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#a6e22e>targetTargetType=</span><span style=color:#e6db74>&#34;target&#34;</span> <span style=color:#a6e22e>quantity=</span><span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#a6e22e>damageType=</span><span style=color:#e6db74>&#34;fire&#34;</span> <span style=color:#a6e22e>duration=</span><span style=color:#e6db74>&#34;10&#34;</span> <span style=color:#a6e22e>interval=</span><span style=color:#e6db74>&#34;1.5&#34;</span><span style=color:#f92672>/&gt;</span>
+      <span style=color:#f92672>&lt;utilise-qi</span> <span style=color:#a6e22e>CryXmlVersion=</span><span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#a6e22e>targetTargetType=</span><span style=color:#e6db74>&#34;source&#34;</span> <span style=color:#a6e22e>quantity=</span><span style=color:#e6db74>&#34;11&#34;</span><span style=color:#f92672>/&gt;</span>
+    <span style=color:#f92672>&lt;/components&gt;</span>
+  <span style=color:#f92672>&lt;/entity&gt;</span>
+
+  <span style=color:#f92672>&lt;entity&gt;</span>
+    <span style=color:#f92672>&lt;components&gt;</span>
+      <span style=color:#f92672>&lt;name</span> <span style=color:#a6e22e>CryXmlVersion=</span><span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#a6e22e>name=</span><span style=color:#e6db74>&#34;Flashlight&#34;</span> <span style=color:#a6e22e>displayName=</span><span style=color:#e6db74>&#34;Flashlight&#34;</span><span style=color:#f92672>/&gt;</span>
+      <span style=color:#f92672>&lt;spell</span> <span style=color:#a6e22e>CryXmlVersion=</span><span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#a6e22e>spell-rewire=</span><span style=color:#e6db74>&#34;none&#34;</span> <span style=color:#a6e22e>minRange=</span><span style=color:#e6db74>&#34;0&#34;</span> <span style=color:#a6e22e>maxRange=</span><span style=color:#e6db74>&#34;30&#34;</span> <span style=color:#a6e22e>castDuration=</span><span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#a6e22e>cooldown=</span><span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#a6e22e>globalCooldown=</span><span style=color:#e6db74>&#34;0&#34;</span> <span style=color:#a6e22e>sourceTargetType=</span><span style=color:#e6db74>&#34;self&#34;</span> <span style=color:#a6e22e>targetTargetType=</span><span style=color:#e6db74>&#34;singleTarget&#34;</span> <span style=color:#a6e22e>spellCastPayload=</span><span style=color:#e6db74>&#34;immediate&#34;</span><span style=color:#f92672>/&gt;</span>
+      <span style=color:#f92672>&lt;render-light</span> <span style=color:#a6e22e>CryXmlVersion=</span><span style=color:#e6db74>&#34;2&#34;</span> <span style=color:#a6e22e>lensFlareName=</span><span style=color:#e6db74>&#34;&#34;</span> <span style=color:#a6e22e>attachToSun=</span><span style=color:#e6db74>&#34;false&#34;</span> <span style=color:#a6e22e>flareEnable=</span><span style=color:#e6db74>&#34;true&#34;</span> <span style=color:#a6e22e>flareFOV=</span><span style=color:#e6db74>&#34;360&#34;</span> <span style=color:#a6e22e>attenuationBulbSize=</span><span style=color:#e6db74>&#34;0.1&#34;</span> <span style=color:#a6e22e>ignoreVisAreas=</span><span style=color:#e6db74>&#34;false&#34;</span> <span style=color:#a6e22e>affectVolumetricFog=</span><span style=color:#e6db74>&#34;true&#34;</span> <span style=color:#a6e22e>volumetricFogOnly=</span><span style=color:#e6db74>&#34;false&#34;</span> <span style=color:#a6e22e>onlyAffectThisArea=</span><span style=color:#e6db74>&#34;true&#34;</span> <span style=color:#a6e22e>linkToSkyColor=</span><span style=color:#e6db74>&#34;false&#34;</span> <span style=color:#a6e22e>ambient=</span><span style=color:#e6db74>&#34;false&#34;</span> <span style=color:#a6e22e>fogRadialLobe=</span><span style=color:#e6db74>&#34;0&#34;</span> <span style=color:#a6e22e>GIMode=</span><span style=color:#e6db74>&#34;none&#34;</span> <span style=color:#a6e22e>diffuseMultiplier=</span><span style=color:#e6db74>&#34;12.0&#34;</span> <span style=color:#a6e22e>specularMultiplier=</span><span style=color:#e6db74>&#34;12.0&#34;</span> <span style=color:#a6e22e>shadowSpec=</span><span style=color:#e6db74>&#34;None&#34;</span> <span style=color:#a6e22e>shadowBias=</span><span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#a6e22e>shadowSlopeBias=</span><span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#a6e22e>shadownResolution=</span><span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#a6e22e>shadowUpdateMin=</span><span style=color:#e6db74>&#34;4&#34;</span> <span style=color:#a6e22e>shadowMinRes=</span><span style=color:#e6db74>&#34;0&#34;</span> <span style=color:#a6e22e>shadowUpdateRatio=</span><span style=color:#e6db74>&#34;0&#34;</span> <span style=color:#a6e22e>style=</span><span style=color:#e6db74>&#34;0&#34;</span> <span style=color:#a6e22e>speed=</span><span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#a6e22e>shape=</span><span style=color:#e6db74>&#34;point&#34;</span> <span style=color:#a6e22e>twoSided=</span><span style=color:#e6db74>&#34;false&#34;</span> <span style=color:#a6e22e>texturePath=</span><span style=color:#e6db74>&#34;chrysalis/textures/lights/flashlight_projector.dds&#34;</span> <span style=color:#a6e22e>width=</span><span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#a6e22e>height=</span><span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#a6e22e>nearPlane=</span><span style=color:#e6db74>&#34;0&#34;</span> <span style=color:#a6e22e>materialPath=</span><span style=color:#e6db74>&#34;&#34;</span> <span style=color:#a6e22e>angle=</span><span style=color:#e6db74>&#34;6.2831855&#34;</span> <span style=color:#a6e22e>radius=</span><span style=color:#e6db74>&#34;13&#34;</span> <span style=color:#a6e22e>fovAngle=</span><span style=color:#e6db74>&#34;0.3&#34;</span> <span style=color:#a6e22e>effectSlotMaterial=</span><span style=color:#e6db74>&#34;&#34;</span><span style=color:#f92672>&gt;</span>
+        <span style=color:#f92672>&lt;Color</span> <span style=color:#a6e22e>r=</span><span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#a6e22e>g=</span><span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#a6e22e>b=</span><span style=color:#e6db74>&#34;1&#34;</span> <span style=color:#a6e22e>a=</span><span style=color:#e6db74>&#34;1&#34;</span><span style=color:#f92672>/&gt;</span>
+      <span style=color:#f92672>&lt;/render-light&gt;</span>
+    <span style=color:#f92672>&lt;/components&gt;</span>
+  <span style=color:#f92672>&lt;/entity&gt;</span>
+
+</code></pre></div><p>Here you can see the markup used to define a Scorch spell which will apply immediate damage and a DoT effect. Beneath it is some test XML for a flashlight. The render-light component will be used in places where I want to spawn a new light into the world e.g. a flare or a floating light that hovers around a character&rsquo;s head.</p>
+<p>I want to make the system flexible, so I&rsquo;m trying to avoid tying spell casting to the character or actor components. Instead, I&rsquo;ve added two new components, and the actor grabs one of each when it initialises itself. Although you could argue the two components might be best as one, I&rsquo;ve split them out into two parts for ultimate flexibility and to keep each one as focused as possible. The new components are:</p>
+<ul>
+<li>SpellbookComponent</li>
+<li>SpellParticipantComponent</li>
+</ul>
+<p>A spellbook is a simple list of spell names which defines the spells you are allowed to cast. There&rsquo;s no GUI for accessing the list at present, and there won&rsquo;t be anything for a very long time. The code for selecting the spell to cast is also hard coded for now, just so I can test things quickly. Now, the interesting thing about the spellbook component is that it allows you to track spells you can cast, but also spells others can use from your spellbook on you. What what? By keeping a list of public and private spells I can allow typical RPG spellcasting, but also allow for things like a quicktime event to be triggered by another character e.g. your spellbook has &ldquo;chokehold&rdquo; in it, which might be enabled when someone has snuck up behind you and is in range for a sleeper hold.</p>
+<p>Additionally, it will allow inanimate objects to offer interaction e.g. a radio might have a &ldquo;play-audio&rdquo; spell that triggers an audio event. By making the only requirement for having a list of spells a single component it should offer a good deal of flexibility.</p>
+<p>The SpellParticipantComponent is the other half of this equation. If you want to cast spells, then you will need this component. The same applies to having a spell cast upon you. Previously the restriction was for any interaction to require at least one actor, and this would be generally true, but doing it this way would allow, for example, a teapot to have a spell that triggers an earthquake if you pick it up.</p>
+<p>The spell participant has health, qi, and a name - which are the minimum components I would expect to need. It seems odd to move these from the actor, but doing so means I can add a spell to a door that allows you to cause it to self destruct for instance. Alternatively, you might be able to just fireball down the door, and have it destruct when it&rsquo;s health drops to zero.</p>
+<p>Back to the code.</p>
+<p>I now have three registries for the simulation. <strong>Actors</strong>, <strong>SpellPrototypes</strong> and <strong>Spellcasting</strong>. Spell participants have components created for them in the &ldquo;actor&rdquo; registry in EnTT. At a minimum they have their name, health and qi added. To cast a spell, I&rsquo;m copying a prototype of the spell from the SpellPrototypes registry to the Spellcasting registry. Anything on the Spellcasting registry is now considered to be a spell &ldquo;in flight&rdquo;.</p>
+<p>The systems simply run over the Spellcasting registry each frame or tick and look to see if the spells they know about are casting right now. They apply damages, heals, or initiate and control a world spell e.g. open door. The damage and heal stuff is close to working as intended. It needs a little adjustment so they apply at the correct time in the spell cast, which I will handle soon. The world spells are being executed with simple test code that is just posting a message into the log. Until the feedback parts are in place there is nothing to see, but it&rsquo;s happening.</p>
+<p>The big challenge is the part I am now up to - feedback. It requires me to create some sort of spell execution context that will track the spell as it&rsquo;s being cast and ensure all the feedback effects are being triggered. It&rsquo;s all well and good to be able to cast a spell with an up-front damage and a DoT component and have the simulation track that and the caster&rsquo;s qi regeneration&mldr;but no-one will care until they see the hands waving about, and a firey ball exploding into existance and rushing towards the enemy.</p>
+<p>We might as well close out with a little code. I&rsquo;m reasonably pleased with how clean the code is considering we&rsquo;re working with simple components which are almost POD in nature. Let&rsquo;s have a look at what it takes to make a spell cast work.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>/** Queues a spell onto the spellcasting registry - where it will later be processed by the systems. */</span>
+<span style=color:#66d9ef>void</span> CSimulation<span style=color:#f92672>::</span>CastSpellByName(<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>char</span><span style=color:#f92672>*</span> spellName, entt<span style=color:#f92672>::</span>entity sourceEntity, entt<span style=color:#f92672>::</span>entity targetEntity,
+	EntityId crySourceEntityId, EntityId cryTargetEntityId)
+{
+	<span style=color:#66d9ef>auto</span> spellEntity <span style=color:#f92672>=</span> GetSpellByName(spellName);
+	<span style=color:#66d9ef>if</span> (spellEntity <span style=color:#f92672>!=</span> entt<span style=color:#f92672>::</span>null)
+	{
+		<span style=color:#66d9ef>auto</span> newEntity <span style=color:#f92672>=</span> m_spellcastingRegistry.create();
+
+		m_spellRegistry.visit(spellEntity, [<span style=color:#66d9ef>this</span>, spellEntity, newEntity](<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>auto</span> type_id)
+			{ stampFunctionMap[type_id](m_spellRegistry, spellEntity, m_spellcastingRegistry, newEntity); });
+
+		<span style=color:#75715e>// Do fixups.
+</span><span style=color:#75715e></span>		RewireSpell(m_spellcastingRegistry, newEntity, sourceEntity, targetEntity, crySourceEntityId, cryTargetEntityId);
+
+		<span style=color:#75715e>// We supply them an execution context.
+</span><span style=color:#75715e></span>		m_spellcastingRegistry.emplace<span style=color:#f92672>&lt;</span>ECS<span style=color:#f92672>::</span>SpellcastExecution<span style=color:#f92672>&gt;</span>(newEntity);
+
+		<span style=color:#75715e>// Adjust their qi cast timer.
+</span><span style=color:#75715e></span>		<span style=color:#66d9ef>auto</span><span style=color:#f92672>&amp;</span> qi <span style=color:#f92672>=</span> m_actorRegistry.get<span style=color:#f92672>&lt;</span>ECS<span style=color:#f92672>::</span>Qi<span style=color:#f92672>&gt;</span>(sourceEntity);
+		qi.timeSinceLastSpellcast <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0f</span>;
+	}
+}
+</code></pre></div><p>This function takes in the name of the spell and a pair of entity identifiers for each entity system - a target and a source of the cast. It queries for the spell prototype and if it exists it makes a clone of it on the spell casting registry. Then it does some rewiring magic, and gives it a spell context to help control it&rsquo;s execution. Finally, we adjust the caster&rsquo;s qi component, just marking the fact a spell has been cast. This lets me implement the 5 second rule for qi regeneration from World of Warcraft.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>/** Takes a reference to a spell and applies the needed fixups. This is mainly going to fix up the source and targets
+</span><span style=color:#75715e>	for now. */</span>
+<span style=color:#66d9ef>void</span> CSimulation<span style=color:#f92672>::</span>RewireSpell(entt<span style=color:#f92672>::</span>registry<span style=color:#f92672>&amp;</span> spellcastingRegistry, entt<span style=color:#f92672>::</span>entity spellEntity, entt<span style=color:#f92672>::</span>entity sourceEntity, entt<span style=color:#f92672>::</span>entity targetEntity,
+	EntityId crySourceEntityId, EntityId cryTargetEntityId)
+{
+	ECS<span style=color:#f92672>::</span>Spell<span style=color:#f92672>&amp;</span> spell <span style=color:#f92672>=</span> spellcastingRegistry.get<span style=color:#f92672>&lt;</span>ECS<span style=color:#f92672>::</span>Spell<span style=color:#f92672>&gt;</span>(spellEntity);
+
+	entt<span style=color:#f92672>::</span>entity source {entt<span style=color:#f92672>::</span>null};
+	entt<span style=color:#f92672>::</span>entity target {entt<span style=color:#f92672>::</span>null};
+	EntityId sourceEntityId {INVALID_ENTITYID};
+	EntityId targetEntityId {INVALID_ENTITYID};
+
+	<span style=color:#75715e>// The source should almost always be the real source of the spell.
+</span><span style=color:#75715e></span>	<span style=color:#66d9ef>if</span> (spell.sourceTargetType <span style=color:#f92672>!=</span> ECS<span style=color:#f92672>::</span>TargetType<span style=color:#f92672>::</span>none)
+	{
+		source <span style=color:#f92672>=</span> sourceEntity;
+		sourceEntityId <span style=color:#f92672>=</span> crySourceEntityId;
+	}
+	<span style=color:#66d9ef>else</span>
+	{
+		source <span style=color:#f92672>=</span> entt<span style=color:#f92672>::</span>null;
+		sourceEntityId <span style=color:#f92672>=</span> INVALID_ENTITYID;
+	}
+
+	<span style=color:#66d9ef>switch</span> (spell.targetTargetType)
+	{
+		<span style=color:#75715e>// Targetting the caster.
+</span><span style=color:#75715e></span>		<span style=color:#66d9ef>case</span> ECS<span style=color:#f92672>::</span>TargetType<span style=color:#f92672>::</span>self:
+			target <span style=color:#f92672>=</span> sourceEntity;
+			targetEntityId <span style=color:#f92672>=</span> crySourceEntityId;
+			<span style=color:#66d9ef>break</span>;
+
+			<span style=color:#75715e>// Not targetted at an entity.
+</span><span style=color:#75715e></span>		<span style=color:#66d9ef>case</span> ECS<span style=color:#f92672>::</span>TargetType<span style=color:#f92672>::</span>none:
+		<span style=color:#66d9ef>case</span> ECS<span style=color:#f92672>::</span>TargetType<span style=color:#f92672>::</span>cone:
+		<span style=color:#66d9ef>case</span> ECS<span style=color:#f92672>::</span>TargetType<span style=color:#f92672>::</span>column:
+		<span style=color:#66d9ef>case</span> ECS<span style=color:#f92672>::</span>TargetType<span style=color:#f92672>::</span>sourceBasedAOE:
+		<span style=color:#66d9ef>case</span> ECS<span style=color:#f92672>::</span>TargetType<span style=color:#f92672>::</span>groundTargettedAOE:
+			target <span style=color:#f92672>=</span> entt<span style=color:#f92672>::</span>null;
+			targetEntityId <span style=color:#f92672>=</span> INVALID_ENTITYID;
+			<span style=color:#66d9ef>break</span>;
+
+			<span style=color:#75715e>// Targetting the selected entity.
+</span><span style=color:#75715e></span>		<span style=color:#66d9ef>default</span><span style=color:#f92672>:</span>
+			target <span style=color:#f92672>=</span> targetEntity;
+			targetEntityId <span style=color:#f92672>=</span> cryTargetEntityId;
+			<span style=color:#66d9ef>break</span>;
+	}
+
+	<span style=color:#75715e>// The source and target for the spell need to be added to the entity.
+</span><span style=color:#75715e></span>	spellcastingRegistry.emplace<span style=color:#f92672>&lt;</span>ECS<span style=color:#f92672>::</span>SourceAndTarget<span style=color:#f92672>&gt;</span>(spellEntity, source, target, sourceEntityId, targetEntityId);
+}
+</code></pre></div><p>Rewire is responsible for making changes to the prototype before the spell is executed. It&rsquo;s mostly interested in making sure the target ids are set according to expectations. It could however take on other tasks as needed.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>void</span> CSimulation<span style=color:#f92672>::</span>Update(<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>float</span> deltaTime)
+{
+	<span style=color:#75715e>// Run the ticks no more often than this interval.
+</span><span style=color:#75715e></span>	<span style=color:#66d9ef>static</span> <span style=color:#66d9ef>const</span> <span style=color:#66d9ef>float</span> tickInterval {<span style=color:#ae81ff>0.5f</span>};
+
+	<span style=color:#75715e>// Track the amount of time that has gone since we last run the tick code.
+</span><span style=color:#75715e></span>	<span style=color:#66d9ef>static</span> <span style=color:#66d9ef>float</span> passedTime {<span style=color:#ae81ff>0.0f</span>};
+
+	<span style=color:#75715e>// Update the things which should be handled immediately e.g direct damage and heals.
+</span><span style=color:#75715e></span>	UpdateImmediate(deltaTime);
+
+	<span style=color:#75715e>// Check if we need to tick.
+</span><span style=color:#75715e></span>	passedTime <span style=color:#f92672>+=</span> deltaTime;
+	<span style=color:#66d9ef>if</span> (passedTime <span style=color:#f92672>&gt;=</span> tickInterval)
+	{
+		<span style=color:#75715e>// Perform a tick.
+</span><span style=color:#75715e></span>		<span style=color:#75715e>// HACK: NOTE: This is just an approximation of how much time has passed. It will always be out by almost a frame&#39;s
+</span><span style=color:#75715e></span>		<span style=color:#75715e>// worth of time. For now, it appears better to have the tick nice and steady, even if it lags behind reality a bit.
+</span><span style=color:#75715e></span>		UpdateTick(tickInterval);
+
+		<span style=color:#75715e>// HACK: We decrement by the interval size, so it will catch up if we miss some frames.
+</span><span style=color:#75715e></span>		passedTime <span style=color:#f92672>-=</span> tickInterval;
+	}
+
+	<span style=color:#75715e>// Update the spell casts.
+</span><span style=color:#75715e></span>	UpdateWorldSpellcasts(deltaTime);
+}
+
+
+<span style=color:#66d9ef>void</span> CSimulation<span style=color:#f92672>::</span>UpdateImmediate(<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>float</span> deltaTime)
+{
+	<span style=color:#75715e>// Simluate some direct heals and direct damage.
+</span><span style=color:#75715e></span>	ECS<span style=color:#f92672>::</span>SystemApplyDamage(m_spellcastingRegistry, m_actorRegistry);
+	ECS<span style=color:#f92672>::</span>SystemApplyHeal(m_spellcastingRegistry, m_actorRegistry);
+	ECS<span style=color:#f92672>::</span>SystemHealthCheck(m_spellcastingRegistry, m_actorRegistry);
+
+	<span style=color:#75715e>// Simluate some direct qi use and replenishment.
+</span><span style=color:#75715e></span>	ECS<span style=color:#f92672>::</span>SystemApplyQiUtilisation(m_spellcastingRegistry, m_actorRegistry);
+	ECS<span style=color:#f92672>::</span>SystemApplyQiReplenishment(m_spellcastingRegistry, m_actorRegistry);
+}
+
+
+<span style=color:#66d9ef>void</span> CSimulation<span style=color:#f92672>::</span>UpdateTick(<span style=color:#66d9ef>const</span> <span style=color:#66d9ef>float</span> deltaTime)
+{
+	<span style=color:#75715e>// Health ticks.
+</span><span style=color:#75715e></span>	ECS<span style=color:#f92672>::</span>SystemApplyDamageOverTime(deltaTime, m_spellcastingRegistry, m_actorRegistry);
+	ECS<span style=color:#f92672>::</span>SystemApplyHealOverTime(deltaTime, m_spellcastingRegistry, m_actorRegistry);
+	ECS<span style=color:#f92672>::</span>SystemHealthCheck(m_spellcastingRegistry, m_actorRegistry);
+
+	<span style=color:#75715e>// Qi ticks.
+</span><span style=color:#75715e></span>	ECS<span style=color:#f92672>::</span>SystemApplyQiUtilisationOverTime(deltaTime, m_spellcastingRegistry, m_actorRegistry);
+	ECS<span style=color:#f92672>::</span>SystemApplyQiReplenishmentOverTime(deltaTime, m_spellcastingRegistry, m_actorRegistry);
+
+	<span style=color:#75715e>// Update the actors qi, health, whatever.
+</span><span style=color:#75715e></span>	UpdateActors(deltaTime);
+}
+</code></pre></div><p>We&rsquo;re using the update event from CryEngine to process the simulation each frame. Spells are split into two camps, ones that need processing each frame and ones that can wait for an internal tick to occur. For now the tick is happening once every 0.5 seconds. This would be easy to adjust in future. It might be useful at some point to have 20 ticks a second for some things, and others handled just once a second e.g. DoTs. This will do for testing and prototyping.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>SystemUpdateActors</span>(<span style=color:#66d9ef>float</span> dt, entt<span style=color:#f92672>::</span>registry<span style=color:#f92672>&amp;</span> actorRegistry)
+{
+	<span style=color:#75715e>// Allow the qi to regenerate naturally.
+</span><span style=color:#75715e></span>	<span style=color:#66d9ef>auto</span> view <span style=color:#f92672>=</span> actorRegistry.view<span style=color:#f92672>&lt;</span>ECS<span style=color:#f92672>::</span>Qi<span style=color:#f92672>&gt;</span>();
+	<span style=color:#66d9ef>for</span> (<span style=color:#66d9ef>auto</span><span style=color:#f92672>&amp;</span> entity : view)
+	{
+		<span style=color:#75715e>// Get the components..
+</span><span style=color:#75715e></span>		<span style=color:#66d9ef>auto</span><span style=color:#f92672>&amp;</span> qi <span style=color:#f92672>=</span> view.get<span style=color:#f92672>&lt;</span>ECS<span style=color:#f92672>::</span>Qi<span style=color:#f92672>&gt;</span>(entity);
+
+		<span style=color:#75715e>// Accumulate the time since the last spell cast.
+</span><span style=color:#75715e></span>		qi.timeSinceLastSpellcast <span style=color:#f92672>+=</span> dt;
+
+		<span style=color:#75715e>// Give them a 5 second timeout after casting a spell before they can regenerate.
+</span><span style=color:#75715e></span>		<span style=color:#66d9ef>if</span> (qi.timeSinceLastSpellcast <span style=color:#f92672>&gt;=</span> <span style=color:#ae81ff>5.0f</span>)
+		{
+			<span style=color:#75715e>// Check for over-replenishment.
+</span><span style=color:#75715e></span>			<span style=color:#66d9ef>float</span> newModifier <span style=color:#f92672>=</span> qi.qi.modifiers <span style=color:#f92672>+</span> (qi.qi.base <span style=color:#f92672>*</span> qi.qiRegenerationPerSecond <span style=color:#f92672>*</span> dt);
+			<span style=color:#66d9ef>if</span> (newModifier <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0.0f</span>)
+			{
+				<span style=color:#75715e>// It was an over-replenishment.
+</span><span style=color:#75715e></span>				qi.qi.modifiers <span style=color:#f92672>=</span> <span style=color:#ae81ff>0.0f</span>;
+			}
+			<span style=color:#66d9ef>else</span>
+			{
+				qi.qi.modifiers <span style=color:#f92672>=</span> newModifier;
+			}
+		}
+	}
+}
+
+</code></pre></div><p>Last we have a simple routine which is running on the 0.5 second tick. It&rsquo;s just doing some housekeeping for participants. Presently it is only concerned with ensuring they have a qi regeneration mechanic. This is mostly so I can test easily without constantly running out of qi. I suppose I should add a &ldquo;qi-potion&rdquo; spell at some point to simulate drinking a qi restoration potion. With this system it will be quite easy to add such a potion. It might be a nice demo for the system once I have an animation in place for swigging from the pot.</p>
+<p>That&rsquo;s pretty much all the interesting parts covered. There&rsquo;s been a lot more boring pieces of code written and some parts have been abandoned, re-written, or are being re-purposed. The foundation is in place. There&rsquo;s some more heavy lifting to come with feedback and control, but then finally the good part - showing off something happening in what was previously a static world.</p>
+</div>
+</div>
+<div class=row>
+<div class=col-12>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class=col>
+<p class=h6>
+Discover more posts like this:
+</p>
+<p class=h6>
+<a class="btn btn-primary" href=/tags/c++>
+C++
+</a>
+<a class="btn btn-primary" href=/tags/chrysalis>
+Chrysalis
+</a>
+<a class="btn btn-primary" href=/tags/cryengine-5.6>
+CRYENGINE 5.6
+</a>
+<a class="btn btn-primary" href=/tags/game-programming>
+Game Programming
+</a>
+</p>
+</div>
+</div>
+<div class=row>
+<div class=col>
+<hr>
+</div>
+</div>
+<div class=row>
+<div class="col-6 text-start">
+Previous:<br><a href=https://ivanhawkes.github.io/post/adding-an-ecs-to-chrysalis/> Adding EnTT ECS to Chrysalis</a>
+</div>
+<div class="col-6 text-end">
+Next:<br><a href=https://ivanhawkes.github.io/post/moving-into-ubuntu/> Moving into a Fresh Ubuntu Install</a>
+</div>
+</div>
+</div>
+</div>
+<footer>
+<div class=row>
+<div class=col>
+<hr>
+</div>
+</div>
+<nav class="navbar navbar-expand-lg">
+<div class=container-fluid>
+&copy; 2021 Ivan Hawkes all rights reserved.
+</div>
+</nav>
+</footer>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css integrity=sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3 crossorigin=anonymous>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css integrity=sha384-7ynz3n3tAGNUYFZD3cWe5PDcE36xj85vyFkawcF6tIwxvIecqKvfwLiaFdizhPpN crossorigin=anonymous>
+<link rel=stylesheet type=text/css href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+</body>
+</html>

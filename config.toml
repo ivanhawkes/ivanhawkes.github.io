@@ -1,4 +1,4 @@
-baseURL = "https://ivanhawkes.github.io"
+baseURL = "https://ivanhawkes.github.io/"
 # baseURL = "https://www.hawkes.info/"
 languageCode = "en-us"
 theme = "hawkes-hugo-theme"

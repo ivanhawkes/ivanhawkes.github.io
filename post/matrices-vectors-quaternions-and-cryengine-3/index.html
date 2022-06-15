@@ -1,426 +1,131 @@
-<!doctype html><html>
-<head>
-<meta charset=utf-8>
-<meta name=viewport content="width=device-width,initial-scale=1">
-<link rel=apple-touch-icon href=/img/apple-icon.png>
-<link rel=icon href=/img/favicon.png>
-<title>Life Reboot</title>
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="Matrices, Vectors, Quaternions and CryEngine 3">
-<meta name=twitter:description content="This article will introduce you to matrices, vectors and quaternions and how you can use them for programming games using the CryEngine SDK. You will only need a basic understanding of mathematics, beginner level c++ and a general knowledge of the CryEngine SDK; in particular, the gamesdk.dll code which is written in c++.">
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-<div class=container-fluid>
-<a class=navbar-brand href=https://www.hawkes.info/>Ivan Hawkes</a>
+<!doctype html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><link rel=apple-touch-icon href=/img/apple-icon.png><link rel=icon href=/img/favicon.png><title>Life Reboot</title><meta name=twitter:card content="summary"><meta name=twitter:title content="Matrices, Vectors, Quaternions and CryEngine 3"><meta name=twitter:description content="This article will introduce you to matrices, vectors and quaternions and how you can use them for programming games using the CryEngine SDK. You will only need a basic understanding of mathematics, beginner level c++ and a general knowledge of the CryEngine SDK; in particular, the gamesdk.dll code which is written in c++."></head><body><nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top"><div class=container-fluid><a class=navbar-brand href=https://ivanhawkes.github.io/>Ivan Hawkes</a>
 <button class=navbar-toggler type=button data-bs-toggle=collapse data-bs-target=#navbarSupportedContent aria-controls=navbarSupportedContent aria-expanded=false aria-label="Toggle navigation">
-<span class=navbar-toggler-icon></span>
-</button>
-<div class="collapse navbar-collapse" id=navbarSupportedContent>
-<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-<li class=nav-item>
-<a href=https://www.hawkes.info/post class="nav-link d-flex align-items-center">
-<i class=bi-stickies></i>&#160;Posts
-</a>
-</li>
-<li class=nav-item>
-<a href=https://www.hawkes.info/project class="nav-link d-flex align-items-center">
-<i class=bi-kanban></i>&#160;Our Projects
-</a>
-</li>
-<li class=nav-item>
-<a href=https://www.hawkes.info/profile class="nav-link d-flex align-items-center">
-<i class=bi-file-earmark-person></i>&#160;Our Team
-</a>
-</li>
-<li class=nav-item>
-<a href=https://www.hawkes.info/recipe class="nav-link d-flex align-items-center">
-<i class=bi-egg-fried></i>&#160;Recipes
-</a>
-</li>
-<li class=nav-item>
-<a href=https://www.hawkes.info/garden class="nav-link d-flex align-items-center">
-<i class=bi-tree></i>&#160;Garden
-</a>
-</li>
-<li class=nav-item>
-<a href=https://www.hawkes.info/plant class="nav-link d-flex align-items-center">
-<i class=bi-flower1></i>&#160;Plants
-</a>
-</li>
-<li class=nav-item>
-<a href=https://www.hawkes.info/about class="nav-link d-flex align-items-center">
-<i class=bi-person-lines-fill></i>&#160;About Us
-</a>
-</li>
-</ul>
-</div>
-</div>
-</nav>
-<div class=container>
-<div class=container>
-<div class=row>
-<div class="col text-center">
-<h1>Matrices, Vectors, Quaternions and CryEngine 3</h1>
-<div class=card>
-<div class="card-header card-header-image">
-<a href=#pablo>
-<img src=/img/site/category/physics.jpg class=card-img-top alt>
-</a>
-<div class=colored-shadow style=background-image:url(/img/site/category/physics.jpg);opacity:1></div>
-</div>
-<div class=card-body>
-<p class=text-start></p>
-</div>
-</div>
-</div>
-</div>
-<div class=row>
-<div class=col-12>
-<hr>
-</div>
-</div>
-<div class=row>
-<div class=col-6>
-<p class=h6>
-By Ivan Hawkes<br>June 21, 2014
-</p>
-</div>
-<div class="col-6 text-end">
-<a href="https://www.facebook.com/sharer/sharer.php?u=ivan.hawkes" class=btn target=_blank>
-<i class=bi-facebook style=font-size:32px></i>
-</a>
-<a href="https://twitter.com/intent/tweet?url=%40ivanhawkes" class=btn target=_blank>
-<i class=bi-twitter style=font-size:32px></i>
-</a>
-<a href="https://www.linkedin.com/shareArticle?mini=true&url=ivan-hawkes-a8386338" class=btn target=_blank>
-<i class=bi-linkedin style=font-size:32px></i></a>
-<a href="http://www.pinterest.com/pin/find/?url=ivanhawkes" class=btn target=_blank>
-<i class=bi-pinterest style=font-size:32px></i></a>
-</div>
-</div>
-<div class=row>
-<div class=col-12>
-<hr>
-</div>
-</div>
-<div class=row>
-<div class=col>
-<p>This article will introduce you to matrices, vectors and quaternions and how you can use them for programming games using the <a href=http://cryengine.com title=CryEngine>CryEngine SDK</a>. You will only need a basic understanding of mathematics, beginner level c++ and a general knowledge of the CryEngine SDK; in particular, the gamesdk.dll code which is written in c++.</p>
-<p>Example code will be taken from the work I am presently doing to implement various types of third person camera views.</p>
-<p>The code is stored in a Git repository on <a href=https://bitbucket.org/ivanhawkes/plugin-camera title="Plugin Camera Code">BitBucket</a>.</p>
-<p>The article is not looking to be a comprehensive guide to matrics, vectors and quaternions, but rather introduce them in a way that is relevant to authors of 3D games.</p>
-<h2 id=it-all-starts-with-a-point>It All Starts With a Point</h2>
-<p>Before we can introduce the stars of the show we need to lay out a little groundwork. <a href=http://en.wikipedia.org/ title=Wikipedia>Wikipedia</a> defines a <a href=http://en.wikipedia.org/wiki/Cartesian_coordinate_system title="Cartesian Coordinate System">cartesian coordinate system</a> as:</p>
-<blockquote>
-<p>A Cartesian coordinate system is a coordinate system that specifies each point uniquely in a plane by a pair of numerical coordinates, which are the signed distances from the point to two fixed perpendicular directed lines, measured in the same unit of length. Each reference line is called a coordinate axis or just axis of the system, and the point where they meet is its origin, usually at ordered pair (0, 0). The coordinates can also be defined as the positions of the perpendicular projections of the point onto the two axes, expressed as signed distances from the origin.</p>
-</blockquote>
-<p>All of which is all a little overwhelming.</p>
-<p>Instead of that huge explanation, just think of a piece of graph paper or a map with grid lines drawn on it. Cartesian coordinates are how you can refer to any single point on that map. For example, in a typical team deathmatch the location of the red base might be at (23, 12) and the blue base might be at (134, 120).</p>
-<p>When writing a 3D game you need to extend that map into a third dimension, one that represents height or depth. Now your coordinates might look more like (23, 12, 18) and (134, 120, 18) where the first two values for each location represent it&rsquo;s X, Y position and the third represents Z, it&rsquo;s height above the origin.</p>
-<p>You can represent any point in space in a 3D game using just three coordinates - X, Y and Z.</p>
-<p>When using c++ you might think about storing each set of coordinates as a struct, but it turns out there&rsquo;s a better way.</p>
-<h2 id=matrices>Matrices</h2>
-<p>Matrices is the plural form of the word &lsquo;<a href=http://en.wikipedia.org/wiki/Matrix_(mathematics) title=Matrix>matrix</a>&rsquo;. There is a whole branch of mathematics dedicated to matrices and their many uses.</p>
-<p>During my 10th year of school I took an entire semester of matrices and vectors. The teacher was coasting through his last years before retirement,the subject matter was dry and uninteresting and seemed to have little practical application in my daily life. At the same time I was learning differentiation and integration in another mathematics class. I assumed that once that semester was over I would never see either of them again and so paid the least amount of attention practical. And I was right, at least until I wanted to write some 3D software and then matrices and vectors came back with a vengeance, and a new friend - the <a href=http://en.wikipedia.org/wiki/Quaternion title=Quaternion>quaternion</a>. Happily, I never saw differentiation and integration again.</p>
-<p>There&rsquo;s a <a href=http://en.wikipedia.org/wiki/Matrix_(mathematics) title=Matrices>comprehensive definition of matrices</a> at Wikipedia, but I&rsquo;m going to cut right through all that and tell you the only thing you really need to know about them. In simple terms, matrices are one or more dimensional arrays. In CryEngine those arrays are almost always going to contain floating point numbers that represent a coordinate in three or four dimensions. We&rsquo;ll get back to why they can have four dimensions when I introduce you to quaternions. For now it&rsquo;s enough to know that the sorts of matrix you are likely to run into when working with CryEngine are:</p>
-<ul>
-<li>vector - 1 x 3 floats</li>
-<li>quaternion - 1 x 4 floats</li>
-<li>matrix34 (e.g. world matrix) - 3 x 4 floats</li>
-</ul>
-<p>The good people of CryTek have already done all the hard work and implemented a comprehensive and fast set of classes and operations that deal with matrices for you. You can concentrate on the high level details of how to use them and ignore the low level details of how to implement them.</p>
-<p>Before we move on I should mention that the reason points, vectors, quaternions and the like are expressed as matrices is because matrices have a few very useful operations that can be performed on them.</p>
-<ul>
-<li>Matrices can be added to or subtracted from each other</li>
-<li>Matrices can be scaled</li>
-<li>Matricies can be multiplied by other matrices</li>
-</ul>
-<p>These operations will help us to perform 3D movements such as translation (move), rotation and scaling.</p>
-<h2 id=vectors>Vectors</h2>
-<p>Wikipedia, ever the fan of brevity and clarity provides an introductory paragraph on <a href=http://en.wikipedia.org/wiki/Euclidean_vector title="Vector Definition">vectors</a>:</p>
-<blockquote>
-<p>In mathematics, physics, and engineering, a Euclidean vector (sometimes called a geometric or spatial vector, or-as here-simply a vector) is a geometric quantity having magnitude (or length) and direction expressed numerically as tuples [ x, y, z ] splitting the entire quantity into its orthogonal-axis components.</p>
-</blockquote>
-<p>In layman terms a vector can be thought of simply as an arrow pointing somewhere. The arrow has both length and direction but it does not have an origin. A vector is always an offset from a position, it doesn&rsquo;t actually define a position in space - but rather a distance and a direction. You will use vectors to translate (move) things around in the 3D space.</p>
-<p>Vectors are represented in CryEngine as a one dimensional array with three floating point elements [x, y, z]. For example, a vector that represents an offset of 1 metre in the positive x direction would be [1.0f, 0.0f, 0.0f]. In camera space that would equate for a position 1 metre to the right of the present position.</p>
-<h2 id=euler-angles>Euler Angles</h2>
-<p>Once again we begin with a <a href=http://en.wikipedia.org/wiki/Euler_angles title="Wikipedia Definition of Euler Angles">definition from Wikipedia</a>:</p>
-<blockquote>
-<p>The Euler angles are three angles introduced by Leonhard Euler to describe the orientation of a rigid body.To describe such an orientation in 3-dimensional Euclidean space three parameters are required. They can be given in several ways, Euler angles being one of them. Euler angles are also used to represent the orientation of a frame of reference (typically, a coordinate system or basis) relative to another. They are typically denoted as <em>α</em>, <em>β</em>, <em>γ</em>, or <img src=2794c7dc86ef9681d291abec7bc11de4.png alt="\varphi, \theta, \psi">.</p>
-</blockquote>
-<p>Hopefully you did geometry in school and recognise that Euler angles are those familiar old friends represented with degrees and radians. If not, now is the time to hit Wikipedia.</p>
-<h2 id=quaternions>Quaternions</h2>
-<p>Let&rsquo;s have a quick read of the <a href=http://en.wikipedia.org/wiki/Quaternion title="Wikipedia - Quaternion">Wikipedia definition for quaternions</a>&mldr;I&rsquo;m quoting a generous chunk here so you can drink deeply at the well of confusion:</p>
-<blockquote>
-<p>In mathematics, the quaternions are a number system that extends the complex numbers. They were first described by Irish mathematician William Rowan Hamilton in 1843 and applied to mechanics in three-dimensional space. A feature of quaternions is that multiplication of two quaternions is noncommutative. Hamilton defined a quaternion as the quotient of two directed lines in a three-dimensional space or equivalently as the quotient of two vectors.</p>
-<p>Quaternions find uses in both theoretical and applied mathematics, in particular for calculations involving three-dimensional rotations such as in three-dimensional computer graphics and computer vision. In practical applications, they can be used alongside other methods, such as Euler angles and rotation matrices, or as an alternative to them depending on the application.</p>
-<p>In modern mathematical language, quaternions form a four-dimensional associative normed division algebra over the real numbers, and therefore also a domain. In fact, the quaternions were the first noncommutative division algebra to be discovered. The algebra of quaternions is often denoted by H (for Hamilton), or in blackboard bold by <img src=827d1849944680ea19cd0ea9ee4d598b.png alt="\mathbb H"> (Unicode U+210D, ℍ). It can also be given by the Clifford algebra classifications Cℓ0,2(R) ≅ Cℓ03,0(R). The algebra H holds a special place in analysis since, according to the Frobenius theorem, it is one of only two finite-dimensional division rings containing the real numbers as a proper subring, the other being the complex numbers. These rings are also Euclidean Hurwitz algebras, of which quaternions are the largest associative algebra.</p>
-<p>The unit quaternions can therefore be thought of as a choice of a group structure on the 3-sphere S3 that gives the group Spin(3), which is isomorphic to SU(2)</p>
-</blockquote>
-<p>Seriously&mldr;! You need a degree in mathematics just to work out the explanation for quaternions. Luckily you don&rsquo;t need to understand everything about them in order to start working with them. Let&rsquo;s cut to the chase.</p>
-<p>Quaternions take advantage of some cool properties of complex numbers and a fourth dimension of space (imaginary) in order to quickly, easily and accurately allow you to rotate stuff in three dimensional space. If you want to rotate it, think quaternions.</p>
-<p>There is a truly excellent and complete explanation of quaternions involving <a href=http://acko.net/blog/animate-your-way-to-glory-pt2/ title="Animate Your Way To Glory">blowing up the Death Star</a> from Star Wars. Do yourself a favour and spend an hour working through the flash animation tutorial. It&rsquo;s both fun and informative.</p>
-<h2 id=putting-it-all-together>Putting It All Together</h2>
-<p>CryEngine, like many other 3D game engines represents everything inside the game world using just these basic building blocks; every entity within the game has a position, a rotation and a scale.</p>
-<ul>
-<li>Position is represented with a Vec3 - a type definition for a vector</li>
-<li>Rotation is represented with a Quat - a type definition for a quaternion</li>
-<li>Scale is represented with a Vec3 - a type definition for a vector which allows independent scaling in all three dimensions</li>
-</ul>
-<p>It&rsquo;s time to look at some real code and see not only what we can do with these concepts, but also how to do it using CryEngine. I&rsquo;m using code from my camera project because it uses a fair amount of different concepts in a way that is easy to understand.</p>
-<p>We&rsquo;ll be looking at what steps are needed in order to implement an action RPG style of camera. This sort of camera freely orbits around the player following the outline of an imaginary sphere that surrounds the player. The player can zoom in and out, and rotate around their character while adjusting their pitch and yaw. Each game frame CryEngine will make a call to our camera routine and ask us to calculate the position and rotation of the camera relative to the player&rsquo;s character. We&rsquo;ll start with a look at the entire function and then break it down from there:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp>CCameraPose ActionRPGCamera<span style=color:#f92672>::</span>UpdateView(<span style=color:#66d9ef>const</span> CPlayer <span style=color:#f92672>&amp;</span>clientPlayer, SViewParams <span style=color:#f92672>&amp;</span>viewParams, <span style=color:#66d9ef>float</span> frameTime)
-{
-    <span style=color:#66d9ef>if</span> (gEnv <span style=color:#f92672>&amp;&amp;</span> gEnv<span style=color:#f92672>-&gt;</span>pGame <span style=color:#f92672>&amp;&amp;</span> gEnv<span style=color:#f92672>-&gt;</span>pGame<span style=color:#f92672>-&gt;</span>GetIGameFramework() <span style=color:#f92672>&amp;&amp;</span> m_isEnabled <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>!</span>gEnv<span style=color:#f92672>-&gt;</span>IsCutscenePlaying())
-    {
-        <span style=color:#75715e>// Make sure we have an actor and are in third person mode.
-</span><span style=color:#75715e></span>        IActor <span style=color:#f92672>*</span>pClient <span style=color:#f92672>=</span> gEnv<span style=color:#f92672>-&gt;</span>pGame<span style=color:#f92672>-&gt;</span>GetIGameFramework()<span style=color:#f92672>-&gt;</span>GetClientActor();
-        <span style=color:#66d9ef>if</span> (pClient <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>!</span>pClient<span style=color:#f92672>-&gt;</span>IsThirdPerson())
-            <span style=color:#66d9ef>return</span> CCameraPose(viewParams.position, viewParams.rotation);
-
-        <span style=color:#75715e>// Should we invert pitch movements?
-</span><span style=color:#75715e></span>        <span style=color:#66d9ef>float</span> invertYAxis <span style=color:#f92672>=</span> cl_tpvInvertYAxis <span style=color:#f92672>?</span> <span style=color:#ae81ff>1.0</span> <span style=color:#f92672>:</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1.0</span>;
-
-        <span style=color:#75715e>// XBox controller yaw / pitch deltas need processing.
-</span><span style=color:#75715e></span>        ApplyXIPitchYaw(frameTime);
-
-        <span style=color:#75715e>// Calculate pitch and yaw movements to apply both prior to and after positioning the camera.
-</span><span style=color:#75715e></span>        Quat quatPreTransYP <span style=color:#f92672>=</span> Quat(Ang3(DEG2RAD(cl_tpvViewPitch <span style=color:#f92672>*</span> invertYAxis), <span style=color:#ae81ff>0.0f</span>, DEG2RAD(cl_tpvViewYaw)));
-        Quat quatPostTransYP <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateRotationXYZ(Ang3(DEG2RAD(cl_tpvViewPitch <span style=color:#f92672>*</span> invertYAxis <span style=color:#f92672>*</span> m_reversePitchTilt), <span style=color:#ae81ff>0.0f</span>, <span style=color:#ae81ff>0.0f</span>));
-
-        <span style=color:#75715e>// Target and aim position come from the entity position.
-</span><span style=color:#75715e></span>        Vec3 vecTargetInitialPosition;
-        Vec3 vecTargetInitialAimPosition;
-        GetTargetPositions(m_pEntity, m_targetBoneName, m_targetAimBoneName, vecTargetInitialPosition, vecTargetInitialAimPosition);
-
-        <span style=color:#75715e>// The distance from the view to the target.
-</span><span style=color:#75715e></span>        <span style=color:#66d9ef>float</span> zoomDistance <span style=color:#f92672>=</span> m_targetDistance <span style=color:#f92672>*</span> abs(cl_tpvZoom);
-
-        <span style=color:#75715e>// Work out where to place the new initial position. We will be using a unit vector facing forward Y
-</span><span style=color:#75715e></span>        <span style=color:#75715e>// as the starting place and applying rotations from the target bone and player camera movements.
-</span><span style=color:#75715e></span>        Quat quatTargetRotationGoal <span style=color:#f92672>=</span> m_quatTargetRotation <span style=color:#f92672>*</span> quatPreTransYP;
-        Quat quatTargetRotation <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateSlerp(m_quatLastTargetRotation, quatTargetRotationGoal, frameTime <span style=color:#f92672>*</span> m_slerpSpeed);
-        m_quatLastTargetRotation <span style=color:#f92672>=</span> quatTargetRotation;
-        Vec3 vecViewPosition <span style=color:#f92672>=</span> vecTargetInitialPosition <span style=color:#f92672>+</span> (quatTargetRotation <span style=color:#f92672>*</span> (Vec3(<span style=color:#ae81ff>0.0f</span>, <span style=color:#ae81ff>1.0f</span>, <span style=color:#ae81ff>0.0f</span>) <span style=color:#f92672>*</span> zoomDistance));
-
-        <span style=color:#75715e>// By default, we try and aim the camera at the target, taking into account
-</span><span style=color:#75715e></span>        <span style=color:#75715e>// the current mouse yaw and pitch values. If, by chance, the target and the view position
-</span><span style=color:#75715e></span>        <span style=color:#75715e>// are the same, then we cheat and use the initial target rotation - which should provide an
-</span><span style=color:#75715e></span>        <span style=color:#75715e>// acceptable result, hopefully. Avoid this by not allowing to zoom too close to the target.
-</span><span style=color:#75715e></span>        Vec3 vecAimAtTarget <span style=color:#f92672>=</span> (vecTargetInitialAimPosition <span style=color:#f92672>-</span> vecViewPosition).GetNormalized();
-        Quat quatViewRotationGoal <span style=color:#f92672>=</span> vecAimAtTarget.IsZero() <span style=color:#f92672>?</span> quatTargetRotation : Quat<span style=color:#f92672>::</span>CreateRotationVDir(vecAimAtTarget);
-
-        <span style=color:#75715e>// Use a slerp to smooth out fast camera rotations.
-</span><span style=color:#75715e></span>        Quat quatViewRotation <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateSlerp(m_quatLastViewRotation, quatViewRotationGoal, frameTime <span style=color:#f92672>*</span> m_slerpSpeed);
-
-        <span style=color:#75715e>// Applying a camera translation at this point will move both the camera and the place it is aiming. We
-</span><span style=color:#75715e></span>        <span style=color:#75715e>// want to do this using camera space.
-</span><span style=color:#75715e></span>        vecViewPosition <span style=color:#f92672>+=</span> quatViewRotation <span style=color:#f92672>*</span> m_postTransOffset;
-        Vec3 vecTargetAimPosition <span style=color:#f92672>=</span> vecTargetInitialAimPosition <span style=color:#f92672>+</span> quatViewRotation <span style=color:#f92672>*</span> m_postTransOffset;
-
-        <span style=color:#75715e>// Gimbal style rotation after it&#39;s moved into it&#39;s initial position.
-</span><span style=color:#75715e></span>        Quat quatOrbitRotation <span style=color:#f92672>=</span> quatViewRotation <span style=color:#f92672>*</span> quatPostTransYP;
-
-        <span style=color:#75715e>// Perform a collision detection. Note, any collisions will disallow use of interpolated
-</span><span style=color:#75715e></span>        <span style=color:#75715e>// camera movement.
-</span><span style=color:#75715e></span>        CollisionDetection(vecTargetAimPosition, vecViewPosition);
-
-        <span style=color:#75715e>// Track the last known camera position.
-</span><span style=color:#75715e></span>        m_vecLastPosition <span style=color:#f92672>=</span> vecViewPosition;
-        m_quatLastViewRotation <span style=color:#f92672>=</span> quatViewRotation;
-
-<span style=color:#75715e>#ifdef _DEBUG
-</span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> (m_isDebugAllowed)
-        {
-            <span style=color:#75715e>// Initial position for our target.
-</span><span style=color:#75715e></span>            gEnv<span style=color:#f92672>-&gt;</span>pRenderer<span style=color:#f92672>-&gt;</span>GetIRenderAuxGeom()<span style=color:#f92672>-&gt;</span>DrawSphere(vecTargetInitialPosition, <span style=color:#ae81ff>0.16f</span>, ColorB(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>128</span>));
-
-            <span style=color:#75715e>// Position at which we are aiming.
-</span><span style=color:#75715e></span>            gEnv<span style=color:#f92672>-&gt;</span>pRenderer<span style=color:#f92672>-&gt;</span>GetIRenderAuxGeom()<span style=color:#f92672>-&gt;</span>DrawSphere(vecTargetAimPosition, <span style=color:#ae81ff>0.12f</span>, ColorB(<span style=color:#ae81ff>255</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>));
-        }
-<span style=color:#75715e>#endif
-</span><span style=color:#75715e></span>
-        <span style=color:#75715e>// Return our new calculated camera pose.
-</span><span style=color:#75715e></span>        <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>CCameraPose</span>(m_vecLastPosition, quatOrbitRotation);
-    }
-
-    <span style=color:#75715e>// Worst case! We return a view based on the view params that were passed in.
-</span><span style=color:#75715e></span>    <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>CCameraPose</span>(viewParams.position, viewParams.rotation);
-}
-</code></pre></div><p>Prior to this routine being called various member values are already loaded with details of the entity that represents our player and the amount of yaw and pitch to be applied to the view.</p>
-<p>I start off by making a quick call to a routine to take XBox controller movements into account and also figure out if the player prefers to invert their mouse pitch movements (flight simulator style).</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>// Should we invert pitch movements?
-</span><span style=color:#75715e></span><span style=color:#66d9ef>float</span> invertYAxis <span style=color:#f92672>=</span> cl_tpvInvertYAxis <span style=color:#f92672>?</span> <span style=color:#ae81ff>1.0</span> <span style=color:#f92672>:</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1.0</span>;
-
-<span style=color:#75715e>// XBox controller yaw / pitch deltas need processing.
-</span><span style=color:#75715e></span>ApplyXIPitchYaw (frameTime);
-</code></pre></div><p>Prior to positioning the camera I calculate a pair of quaternions which will be used to rotate it, before and after initial positioning is calculated.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>// Calculate pitch and yaw movements to apply both prior to and after positioning the camera.
-</span><span style=color:#75715e></span>Quat quatPreTransYP <span style=color:#f92672>=</span> Quat (Ang3 (DEG2RAD (cl_tpvViewPitch <span style=color:#f92672>*</span> invertYAxis), <span style=color:#ae81ff>0.0f</span>, DEG2RAD (cl_tpvViewYaw)));
-Quat quatPostTransYP <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateRotationXYZ (Ang3 (DEG2RAD (cl_tpvViewPitch <span style=color:#f92672>*</span> invertYAxis <span style=color:#f92672>*</span> m_reversePitchTilt), <span style=color:#ae81ff>0.0f</span>, <span style=color:#ae81ff>0.0f</span>));
-</code></pre></div><p>These two statements demonstrate two of the many different methods of creating a quaternion. In the first statement you can see I am taking values for pitch and yaw (tracked separately by an input handler), expressing them in radians and converting the result to an angle (Ang3). I then use a constructor that takes an angle as a parameter and returns the desired quaternion.</p>
-<p>The second statement shows something very similar. In this case I want to produce a rotation that only affects the x axis, which when applied to a player camera will affect the pitch of that camera. Applying a rotation (after initially positioning the camera) gives me the ability to simulate the effect of the camera being mounted on a <a href=http://en.wikipedia.org/wiki/Gimbal title="Wikipedia - Gimbal">gimbal</a>. In this case I am only using it to adjust their pitch by a fractional amount in the opposite direction, which gives the camera a nicer movement when decent factors are applied.</p>
-<p>We now have our first two quaternions which represent a rotation of some form in three dimensions.</p>
-<p>Skipping a little of the code which is simply retrieving the coordinates of our entity we come to:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>// The distance from the view to the target.
-</span><span style=color:#75715e></span><span style=color:#66d9ef>float</span> zoomDistance <span style=color:#f92672>=</span> m_targetDistance <span style=color:#f92672>*</span> abs (cl_tpvZoom);
-</code></pre></div><p>There&rsquo;s nothing complex happening here. I am simply calculating how far away to place the camera based on the present amount of zoom. The result, zoomDistance, is the distance away in metres to place the camera.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>// Work out where to place the new initial position. We will be using a unit vector facing forward Y
-</span><span style=color:#75715e>// as the starting place and applying rotations from the target bone and player camera movements.
-</span><span style=color:#75715e></span>Quat quatTargetRotationGoal <span style=color:#f92672>=</span> m_quatTargetRotation <span style=color:#f92672>*</span> quatPreTransYP;
-Quat quatTargetRotation <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateSlerp (m_quatLastTargetRotation, quatTargetRotationGoal, frameTime <span style=color:#f92672>*</span> m_slerpSpeed);
-m_quatLastTargetRotation <span style=color:#f92672>=</span> quatTargetRotation;
-Vec3 vecViewPosition <span style=color:#f92672>=</span> vecTargetInitialPosition <span style=color:#f92672>+</span> (quatTargetRotation <span style=color:#f92672>*</span> (Vec3 (<span style=color:#ae81ff>0.0f</span>, <span style=color:#ae81ff>1.0f</span>, <span style=color:#ae81ff>0.0f</span>) <span style=color:#f92672>*</span> zoomDistance));
-</code></pre></div><p>Now we are trying to calculate where the view position should be, but first you need to know what happens when you multiply a vector, add / subtract a vector or multiply a quaternion.</p>
-<p>Remember, a vector is just a representation of a direction and a distance. Adding two vectors together will give a result vector that represents the same coordinate translation as the two vectors combined. For example:</p>
-<p>The player starts play at the origin (0.0, 0.0, 0.0). In the first frame they move along a vector (0.0, 1.0, 0.0) which represents 1 meter forward (in camera space, this is from the viewpoint of the player in first person mode). In the second frame they move along a vector (2.0, 0.0, 3.0). In camera space this represents a movement 2 metres to the right and 3 metres in height.</p>
-<p>The result of adding both these vectors together is the vector (2.0, 1.0, 3.0) which represents a displacement (movement) of 2 metres to the right, 1 metre forward and 3 metres upwards.</p>
-<p>Adding a third vector (0.0, -1.0, 0.0) - a step 1 metre backwards, results in the vector (2.0, 0.0, 3.0).</p>
-<p>Vectors can be added together in any order and still give the same result. When subtracting one vector from another however, the order counts.</p>
-<p>v1 + v2 = v2 + v1</p>
-<p>v1 - v2 ≠ v2 - v1</p>
-<p>In the example above we were still adding the vectors, but we stepped backwards because the sign of Y was negative, in this case -1.0.</p>
-<p>Subtraction of two vectors may also be performed by adding the opposite of the second vector to the first vector, that is, <strong>a − b = a + (−b)</strong>.</p>
-<p>Be careful when subtracting vectors.</p>
-<p>We&rsquo;ll skip over the code for handling the Spherical Linear Interpolation (SLERP).</p>
-<p>We can see that the first part is trying to add two vectors <strong>vecTargetInitialPosition</strong> and the result of the expression <strong>m_quatTargetRotation * quatPreTransYP * (Vec3 (0.0f, 1.0f, 0.0f) * zoomDistance)</strong></p>
-<p>Time to break down that expression. Operator precedence rules apply and so the first part to look at is <strong>m_quatTargetRotation * quatPreTransYP</strong>. We are multiplying two quaternions together, the result of which will be a third quaternion which represents their total combined rotations.</p>
-<p>NOTE: When multiply two quaternions, order counts: <strong>q1 * q2 ≠ q2 * q1</strong>. Swapping the order of those two quaternions will lead to different results.</p>
-<p>To understand the result of multiplying q1 by q2, imagine a chair which is a few metres from you and facing towards you. In this case q1 represents the chair&rsquo;s initial rotation e.g. (0.0, 0.0, 180.0) [in degrees] - which for our example is all four legs on the floor and the seat facing towards you. Now imagine someone walking up to that chair, and without moving it, just turning it to face partly away from you. e.g. (0.0, 0.0, 45.0) [in degrees] - the chair now faces off to one side. That rotation is represented by q2 in the equation <strong>q1 * q2</strong>. The result of <strong>q1 * q2</strong> is a quaternion that represents both of the rotations made to the chair - the initial one which turned it towards you, and the second one where it is turned away at a 45 degree angle.</p>
-<p>NOTE: you will need to convert degrees to radians when constructing a quaternion based on Euler angles since CryEngine uses radians - and humans usually find degrees easier to work with.</p>
-<p>You should now understand that the expression <strong>m_quatTargetRotation * quatPreTransYP</strong> will give you a quaternion that represents the entitiy&rsquo;s initial rotation and, in this case, a second rotation based on pitch and yaw values.</p>
-<h3 id=what-happens-when-you-multiply-a-vector-by-a-scalar>What happens when you multiply a vector by a scalar?</h3>
-<p>The result is a vector whose length is equal to the original vector&rsquo;s length multiplied by the scalar.</p>
-<p>Let&rsquo;s try that as an example instead. If you have a vector that represents a movement of 2.5 metres in some direction and you multiply that vector by a scalar value, for example 4.0, the result will be a vector with the same direction as the original and a length of 10.0 metres.</p>
-<p>The same applies for division of a vector by a scalar. Where things get interesting is when you divide a vector by the scalar value of it&rsquo;s length, the result is a unit vector.</p>
-<h3 id=unit-vector>Unit Vector?</h3>
-<p>A unit vector is just a vector whose length is 1.0. It can have any values for direction, so long as that results in a length of 1.0.</p>
-<p>The handy thing about unit vectors is that they allow you to calculate other vectors that have the same direction, and different lengths.</p>
-<h3 id=what-happens-when-you-multiply-a-quaternion-by-a-vector>What happens when you multiply a quaternion by a vector?</h3>
-<p>Multiplying a quaternion by a vector results in a vector of the same length, but whose direction has been rotated in space. An example might help make it clear.</p>
-<p>Let&rsquo;s get back to that line of code:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp>Vec3 vecViewPosition <span style=color:#f92672>=</span> vecTargetInitialPosition <span style=color:#f92672>+</span> (quatTargetRotation <span style=color:#f92672>*</span> (Vec3 (<span style=color:#ae81ff>0.0f</span>, <span style=color:#ae81ff>1.0f</span>, <span style=color:#ae81ff>0.0f</span>) <span style=color:#f92672>*</span> zoomDistance));
-</code></pre></div><p>The expression:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp>Vec3 (<span style=color:#ae81ff>0.0f</span>, <span style=color:#ae81ff>1.0f</span>, <span style=color:#ae81ff>0.0f</span>) <span style=color:#f92672>*</span> zoomDistance
-</code></pre></div><p>is multiplying a vector and a scalar so we know the result is going to be another vector. The Vec3 constructor creates a vector that represents a movement forward of 1 metre in camera space. Multiplying that by the zoomDistance gives us a vector that represents a forward movement of x metres, where x is the distance we wanted to place the camera away from the player.</p>
-<p>We already learnt that <strong>m_quatTargetRotation * quatPreTransYP</strong> will give us a rotation that represents the camera, pitch and yaw in world space. When we multiply that by <strong>Vec3 (0.0f, 1.0f, 0.0f)</strong> we get a vector representing a movement 1 metre forward in world space. Finally, multiplying that vector by zoomDistance gives us a movement of zoomDistance forward in world space. Pretty cool for one little line of code!</p>
-<p>All together, that line takes the initial position of the target and their initial rotation, applies pitch and yaw, and then calculates a position that would be zoomDistance metres away in that direction.</p>
-<p>Vectors and quaternions pack a hell of a punch.</p>
-<h3 id=hows-my-aim>How&rsquo;s My Aim?</h3>
-<p>We have an initial position for the camera now, but we don&rsquo;t know which direction it should aim - it&rsquo;s rotation. The next couple of lines handle that.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>// By default, we try and aim the camera at the target, taking into account
-</span><span style=color:#75715e>// the current mouse yaw and pitch values. If, by chance, the target and the view position
-</span><span style=color:#75715e>// are the same, then we cheat and use the initial target rotation - which should provide an
-</span><span style=color:#75715e>// acceptable result, hopefully. Avoid this by not allowing to zoom too close to the target.
-</span><span style=color:#75715e></span>Vec3 vecAimAtTarget <span style=color:#f92672>=</span> (vecTargetInitialAimPosition <span style=color:#f92672>-</span> vecViewPosition).GetNormalized ();
-Quat quatViewRotationGoal <span style=color:#f92672>=</span> vecAimAtTarget.IsZero () <span style=color:#f92672>?</span> m_quatTargetRotation <span style=color:#f92672>*</span> quatPreTransYP : Quat<span style=color:#f92672>::</span>CreateRotationVDir (vecAimAtTarget);
-</code></pre></div><p>The first thing we want to do is work out where to aim, and it&rsquo;s done in two steps.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp>(vecTargetInitialAimPosition <span style=color:#f92672>-</span> vecViewPosition)
-</code></pre></div><p>Here we are subtracting one vector from another, resulting in a third vector. By taking the position of the camera we just calculated and subtracting the position of the target we want to aim towards, we get the vector that represents their difference. Put simply, it&rsquo;s like an arrow that points from one directly to the other. It&rsquo;s a bit long though for the next step, since it&rsquo;s length is the distance between the two points. We make a call to GetNormalized () which returns a unit vector whose direction points from the aim position towards the target position. That vector can then be turned into a quaternion which is going to be useful shortly&mldr;but there&rsquo;s a hiccup here.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp>Quat quatViewRotationGoal <span style=color:#f92672>=</span> vecAimAtTarget.IsZero () <span style=color:#f92672>?</span> m_quatTargetRotation <span style=color:#f92672>*</span> quatPreTransYP : Quat<span style=color:#f92672>::</span>CreateRotationVDir (vecAimAtTarget);
-</code></pre></div><p>We want to turn the vector into a quaternion , but sometimes that vector might be the zero vector, and that is going to cause assertion errors. We check for that possibility and set a default quaternion if it arises (and I seem to recall that default is a crappy one), otherwise we pass the vector into a quaternion constructor and out pops a lovely quaternion representing our intended rotation for the camera around the player.</p>
-<p>Well, it&rsquo;s not quite the direction, we are going to apply some <a href=http://en.wikipedia.org/wiki/Spherical_linear_interpolation title="Wikipedia - Spherical Linear Interpolation">spherical linear interpolation</a> first just to smooth out any fast movements.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>// Use a slerp to smooth out fast camera rotations.
-</span><span style=color:#75715e></span>Quat quatViewRotation <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateSlerp (m_quatLastViewRotation, quatViewRotationGoal, frameTime <span style=color:#f92672>*</span> m_slerpSpeed);
-</code></pre></div><p>This line is just taking the last rotation value, the present goal rotational value, and interpolating between them according to the frameTime parameter and a slerp speed paramteter (range 0.0f to 1.0f). This causes the camera to lag a little behind where the player wants the camera to be (the goal) but in the process smooths out it&rsquo;s path.</p>
-<p>A few lines further up the page you can revist the line:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp>Quat quatTargetRotation <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateSlerp (m_quatLastTargetRotation, quatTargetRotationGoal, frameTime <span style=color:#f92672>*</span> m_slerpSpeed);
-</code></pre></div><p>Based on the line we just examined, we can see that this one is also creating a slerp between a pair of rotations using both the frameTime and an external speed factor.</p>
-<p>The first line is providing smooth interpolation for movements that change the direction in which the view camera is going to be positioned relative to the target. The second line is doing the same thing in reverse. When the camera is moved to it&rsquo;s new position and we attempt to aim the camera towards the aim target - this interpolation smooths out the rotation of the view camera from the last view direction towards our new goal view direction.</p>
-<p>We could probably get away without the second interpolation, the one on the view camera rotation, but it does make things nice and butter smooth, so it&rsquo;s worth the extra effort.</p>
-<p>You can get a better feel for how spherical linear interpolation affects the camera movements by using small values for slerpSpeed. Anything below 15 will start to become noticeable, and below 5 it&rsquo;s quite obvious how the interpolation allows the camera to transition from one position to another while following a spherical path.</p>
-<p>After the camera is positioned I give them the chance to apply a small translation offset, which is great for implementing &lsquo;over the shoulder&rsquo; style cameras.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>// Applying a camera translation at this point will move both the camera and the place it is aiming. We
-</span><span style=color:#75715e>// want to do this using camera space.
-</span><span style=color:#75715e></span>vecViewPosition <span style=color:#f92672>+=</span> quatViewRotation <span style=color:#f92672>*</span> m_postTransOffset;
-Vec3 vecTargetAimPosition <span style=color:#f92672>=</span> vecTargetInitialAimPosition <span style=color:#f92672>+</span> quatViewRotation <span style=color:#f92672>*</span> m_postTransOffset;
-</code></pre></div><p>There&rsquo;s nothing too challenging for you there. I move both the camera position and the place it&rsquo;s aiming. The angles stay the same but the player now always stays a little bit to the left and below the aiming position. You can offset the camera in any direction / distance you like - but having the player a little lower and to the left is pretty standard.</p>
-<p>One last rotation is applied, allowing for gimbal movements based on some quaternions we set up earlier.</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>// Gimbal style rotation after it&#39;s moved into it&#39;s initial position.
-</span><span style=color:#75715e></span>Quat quatOrbitRotation <span style=color:#f92672>=</span> quatViewRotation <span style=color:#f92672>*</span> quatPostTransYP;
-</code></pre></div><p>Once again we multiply one quaternion by another to get a result that combines both rotations into one.</p>
-<p>Finally, there&rsquo;s a little black box magic to work out if the camera is being occluded by terrain or geometry (collision detection).</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=color:#75715e>// Perform a collision detection. Note, any collisions will disallow use of interpolated
-</span><span style=color:#75715e>// camera movement.
-</span><span style=color:#75715e></span>CollisionDetection (vecTargetAimPosition, vecViewPosition);
-</code></pre></div><p>I&rsquo;m not going to cover the details today because my current implementation is too basic and doesn&rsquo;t do a good job of repositioning the camera. The basic idea however is using raycasting to work out if anything is blocking the view, and if so, to reposition the camera in front of the blocking geometry.</p>
-<p>The last few lines just return a camera pose (position and rotation values) based on our previous calculations. Our work here is done.</p>
-<h2 id=summary>Summary</h2>
-<p>Hopefully that&rsquo;s enough to get you started playing with and understanding matrices, vectors and quaternions. You can improve your understanding by visiting the links to Wikipedia articles, checking out the animation <a href=http://acko.net/blog/animate-your-way-to-glory-pt2/ title="Animate Your Way To Glory">blowing up the Death Star</a>, studying the full <a href=https://bitbucket.org/ivanhawkes/plugin-camera title="Third Person Camera">camera code source </a>or just hacking around on your own.</p>
-</div>
-</div>
-<div class=row>
-<div class=col-12>
-<hr>
-</div>
-</div>
-<div class=row>
-<div class=col>
-<p class=h6>
-Discover more posts like this:
-</p>
-<p class=h6>
-<a class="btn btn-primary" href=/tags/cryengine-3>
-CryEngine 3
-</a>
-<a class="btn btn-primary" href=/tags/cryengine3>
-CryEngine3
-</a>
-<a class="btn btn-primary" href=/tags/mathematics>
-Mathematics
-</a>
-<a class="btn btn-primary" href=/tags/matrices>
-matrices
-</a>
-<a class="btn btn-primary" href=/tags/matrix>
-matrix
-</a>
-<a class="btn btn-primary" href=/tags/quaternions>
-quaternions
-</a>
-<a class="btn btn-primary" href=/tags/software-development>
-Software Development
-</a>
-<a class="btn btn-primary" href=/tags/third-person-camera>
-third person camera
-</a>
-<a class="btn btn-primary" href=/tags/vectors>
-vectors
-</a>
-</p>
-</div>
-</div>
-<div class=row>
-<div class=col>
-<hr>
-</div>
-</div>
-<div class=row>
-<div class="col-6 text-start">
-Previous:<br><a href=https://www.hawkes.info/post/wd-mybook-live-vs-raspberry-pi-as-a-linux-server/> WD MyBook Live vs Raspberry Pi as a Linux Server</a>
-</div>
-<div class="col-6 text-end">
-Next:<br><a href=https://www.hawkes.info/post/mediawiki-on-the-beaglebone-black/> MediaWiki on the Beaglebone Black</a>
-</div>
-</div>
-</div>
-</div>
-<footer>
-<div class=row>
-<div class=col>
-<hr>
-</div>
-</div>
-<nav class="navbar navbar-expand-lg">
-<div class=container-fluid>
-&copy; 2021 Ivan Hawkes all rights reserved.
-</div>
-</nav>
-</footer>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css integrity=sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3 crossorigin=anonymous>
-<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>
-<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css integrity=sha384-7ynz3n3tAGNUYFZD3cWe5PDcE36xj85vyFkawcF6tIwxvIecqKvfwLiaFdizhPpN crossorigin=anonymous>
-<link rel=stylesheet type=text/css href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
-</body>
-</html>
+<span class=navbar-toggler-icon></span></button><div class="collapse navbar-collapse" id=navbarSupportedContent><ul class="navbar-nav me-auto mb-2 mb-lg-0"><li class=nav-item><a href=https://ivanhawkes.github.io/post class="nav-link d-flex align-items-center"><i class=bi-stickies></i>&#160;Posts</a></li><li class=nav-item><a href=https://ivanhawkes.github.io/project class="nav-link d-flex align-items-center"><i class=bi-kanban></i>&#160;Our Projects</a></li><li class=nav-item><a href=https://ivanhawkes.github.io/profile class="nav-link d-flex align-items-center"><i class=bi-file-earmark-person></i>&#160;Our Team</a></li><li class=nav-item><a href=https://ivanhawkes.github.io/recipe class="nav-link d-flex align-items-center"><i class=bi-egg-fried></i>&#160;Recipes</a></li><li class=nav-item><a href=https://ivanhawkes.github.io/garden class="nav-link d-flex align-items-center"><i class=bi-tree></i>&#160;Garden</a></li><li class=nav-item><a href=https://ivanhawkes.github.io/plant class="nav-link d-flex align-items-center"><i class=bi-flower1></i>&#160;Plants</a></li><li class=nav-item><a href=https://ivanhawkes.github.io/about class="nav-link d-flex align-items-center"><i class=bi-person-lines-fill></i>&#160;About Us</a></li></ul></div></div></nav><div class=container><div class=container><div class=row><div class="col text-center"><h1>Matrices, Vectors, Quaternions and CryEngine 3</h1><div class=card><div class="card-header card-header-image"><a href=#pablo><img src=/img/site/category/physics.jpg class=card-img-top alt></a><div class=colored-shadow style=background-image:url(/img/site/category/physics.jpg);opacity:1></div></div><div class=card-body><p class=text-start></p></div></div></div></div><div class=row><div class=col-12><hr></div></div><div class=row><div class=col-6><p class=h6>By Ivan Hawkes<br>June 21, 2014</p></div><div class="col-6 text-end"><a href="https://www.facebook.com/sharer/sharer.php?u=ivan.hawkes" class=btn target=_blank><i class=bi-facebook style=font-size:32px></i></a>
+<a href="https://twitter.com/intent/tweet?url=%40ivanhawkes" class=btn target=_blank><i class=bi-twitter style=font-size:32px></i></a>
+<a href="https://www.linkedin.com/shareArticle?mini=true&url=ivan-hawkes-a8386338" class=btn target=_blank><i class=bi-linkedin style=font-size:32px></i></a>
+<a href="http://www.pinterest.com/pin/find/?url=ivanhawkes" class=btn target=_blank><i class=bi-pinterest style=font-size:32px></i></a></div></div><div class=row><div class=col-12><hr></div></div><div class=row><div class=col><p>This article will introduce you to matrices, vectors and quaternions and how you can use them for programming games using the <a href=http://cryengine.com title=CryEngine>CryEngine SDK</a>. You will only need a basic understanding of mathematics, beginner level c++ and a general knowledge of the CryEngine SDK; in particular, the gamesdk.dll code which is written in c++.</p><p>Example code will be taken from the work I am presently doing to implement various types of third person camera views.</p><p>The code is stored in a Git repository on <a href=https://bitbucket.org/ivanhawkes/plugin-camera title="Plugin Camera Code">BitBucket</a>.</p><p>The article is not looking to be a comprehensive guide to matrics, vectors and quaternions, but rather introduce them in a way that is relevant to authors of 3D games.</p><h2 id=it-all-starts-with-a-point>It All Starts With a Point</h2><p>Before we can introduce the stars of the show we need to lay out a little groundwork. <a href=http://en.wikipedia.org/ title=Wikipedia>Wikipedia</a> defines a <a href=http://en.wikipedia.org/wiki/Cartesian_coordinate_system title="Cartesian Coordinate System">cartesian coordinate system</a> as:</p><blockquote><p>A Cartesian coordinate system is a coordinate system that specifies each point uniquely in a plane by a pair of numerical coordinates, which are the signed distances from the point to two fixed perpendicular directed lines, measured in the same unit of length. Each reference line is called a coordinate axis or just axis of the system, and the point where they meet is its origin, usually at ordered pair (0, 0). The coordinates can also be defined as the positions of the perpendicular projections of the point onto the two axes, expressed as signed distances from the origin.</p></blockquote><p>All of which is all a little overwhelming.</p><p>Instead of that huge explanation, just think of a piece of graph paper or a map with grid lines drawn on it. Cartesian coordinates are how you can refer to any single point on that map. For example, in a typical team deathmatch the location of the red base might be at (23, 12) and the blue base might be at (134, 120).</p><p>When writing a 3D game you need to extend that map into a third dimension, one that represents height or depth. Now your coordinates might look more like (23, 12, 18) and (134, 120, 18) where the first two values for each location represent it&rsquo;s X, Y position and the third represents Z, it&rsquo;s height above the origin.</p><p>You can represent any point in space in a 3D game using just three coordinates - X, Y and Z.</p><p>When using c++ you might think about storing each set of coordinates as a struct, but it turns out there&rsquo;s a better way.</p><h2 id=matrices>Matrices</h2><p>Matrices is the plural form of the word &lsquo;<a href=http://en.wikipedia.org/wiki/Matrix_(mathematics) title=Matrix>matrix</a>&rsquo;. There is a whole branch of mathematics dedicated to matrices and their many uses.</p><p>During my 10th year of school I took an entire semester of matrices and vectors. The teacher was coasting through his last years before retirement,the subject matter was dry and uninteresting and seemed to have little practical application in my daily life. At the same time I was learning differentiation and integration in another mathematics class. I assumed that once that semester was over I would never see either of them again and so paid the least amount of attention practical. And I was right, at least until I wanted to write some 3D software and then matrices and vectors came back with a vengeance, and a new friend - the <a href=http://en.wikipedia.org/wiki/Quaternion title=Quaternion>quaternion</a>. Happily, I never saw differentiation and integration again.</p><p>There&rsquo;s a <a href=http://en.wikipedia.org/wiki/Matrix_(mathematics) title=Matrices>comprehensive definition of matrices</a> at Wikipedia, but I&rsquo;m going to cut right through all that and tell you the only thing you really need to know about them. In simple terms, matrices are one or more dimensional arrays. In CryEngine those arrays are almost always going to contain floating point numbers that represent a coordinate in three or four dimensions. We&rsquo;ll get back to why they can have four dimensions when I introduce you to quaternions. For now it&rsquo;s enough to know that the sorts of matrix you are likely to run into when working with CryEngine are:</p><ul><li>vector - 1 x 3 floats</li><li>quaternion - 1 x 4 floats</li><li>matrix34 (e.g. world matrix) - 3 x 4 floats</li></ul><p>The good people of CryTek have already done all the hard work and implemented a comprehensive and fast set of classes and operations that deal with matrices for you. You can concentrate on the high level details of how to use them and ignore the low level details of how to implement them.</p><p>Before we move on I should mention that the reason points, vectors, quaternions and the like are expressed as matrices is because matrices have a few very useful operations that can be performed on them.</p><ul><li>Matrices can be added to or subtracted from each other</li><li>Matrices can be scaled</li><li>Matricies can be multiplied by other matrices</li></ul><p>These operations will help us to perform 3D movements such as translation (move), rotation and scaling.</p><h2 id=vectors>Vectors</h2><p>Wikipedia, ever the fan of brevity and clarity provides an introductory paragraph on <a href=http://en.wikipedia.org/wiki/Euclidean_vector title="Vector Definition">vectors</a>:</p><blockquote><p>In mathematics, physics, and engineering, a Euclidean vector (sometimes called a geometric or spatial vector, or-as here-simply a vector) is a geometric quantity having magnitude (or length) and direction expressed numerically as tuples [ x, y, z ] splitting the entire quantity into its orthogonal-axis components.</p></blockquote><p>In layman terms a vector can be thought of simply as an arrow pointing somewhere. The arrow has both length and direction but it does not have an origin. A vector is always an offset from a position, it doesn&rsquo;t actually define a position in space - but rather a distance and a direction. You will use vectors to translate (move) things around in the 3D space.</p><p>Vectors are represented in CryEngine as a one dimensional array with three floating point elements [x, y, z]. For example, a vector that represents an offset of 1 metre in the positive x direction would be [1.0f, 0.0f, 0.0f]. In camera space that would equate for a position 1 metre to the right of the present position.</p><h2 id=euler-angles>Euler Angles</h2><p>Once again we begin with a <a href=http://en.wikipedia.org/wiki/Euler_angles title="Wikipedia Definition of Euler Angles">definition from Wikipedia</a>:</p><blockquote><p>The Euler angles are three angles introduced by Leonhard Euler to describe the orientation of a rigid body.To describe such an orientation in 3-dimensional Euclidean space three parameters are required. They can be given in several ways, Euler angles being one of them. Euler angles are also used to represent the orientation of a frame of reference (typically, a coordinate system or basis) relative to another. They are typically denoted as <em>α</em>, <em>β</em>, <em>γ</em>, or <img src=2794c7dc86ef9681d291abec7bc11de4.png alt="\varphi, \theta, \psi">.</p></blockquote><p>Hopefully you did geometry in school and recognise that Euler angles are those familiar old friends represented with degrees and radians. If not, now is the time to hit Wikipedia.</p><h2 id=quaternions>Quaternions</h2><p>Let&rsquo;s have a quick read of the <a href=http://en.wikipedia.org/wiki/Quaternion title="Wikipedia - Quaternion">Wikipedia definition for quaternions</a>&mldr;I&rsquo;m quoting a generous chunk here so you can drink deeply at the well of confusion:</p><blockquote><p>In mathematics, the quaternions are a number system that extends the complex numbers. They were first described by Irish mathematician William Rowan Hamilton in 1843 and applied to mechanics in three-dimensional space. A feature of quaternions is that multiplication of two quaternions is noncommutative. Hamilton defined a quaternion as the quotient of two directed lines in a three-dimensional space or equivalently as the quotient of two vectors.</p><p>Quaternions find uses in both theoretical and applied mathematics, in particular for calculations involving three-dimensional rotations such as in three-dimensional computer graphics and computer vision. In practical applications, they can be used alongside other methods, such as Euler angles and rotation matrices, or as an alternative to them depending on the application.</p><p>In modern mathematical language, quaternions form a four-dimensional associative normed division algebra over the real numbers, and therefore also a domain. In fact, the quaternions were the first noncommutative division algebra to be discovered. The algebra of quaternions is often denoted by H (for Hamilton), or in blackboard bold by <img src=827d1849944680ea19cd0ea9ee4d598b.png alt="\mathbb H"> (Unicode U+210D, ℍ). It can also be given by the Clifford algebra classifications Cℓ0,2(R) ≅ Cℓ03,0(R). The algebra H holds a special place in analysis since, according to the Frobenius theorem, it is one of only two finite-dimensional division rings containing the real numbers as a proper subring, the other being the complex numbers. These rings are also Euclidean Hurwitz algebras, of which quaternions are the largest associative algebra.</p><p>The unit quaternions can therefore be thought of as a choice of a group structure on the 3-sphere S3 that gives the group Spin(3), which is isomorphic to SU(2)</p></blockquote><p>Seriously&mldr;! You need a degree in mathematics just to work out the explanation for quaternions. Luckily you don&rsquo;t need to understand everything about them in order to start working with them. Let&rsquo;s cut to the chase.</p><p>Quaternions take advantage of some cool properties of complex numbers and a fourth dimension of space (imaginary) in order to quickly, easily and accurately allow you to rotate stuff in three dimensional space. If you want to rotate it, think quaternions.</p><p>There is a truly excellent and complete explanation of quaternions involving <a href=http://acko.net/blog/animate-your-way-to-glory-pt2/ title="Animate Your Way To Glory">blowing up the Death Star</a> from Star Wars. Do yourself a favour and spend an hour working through the flash animation tutorial. It&rsquo;s both fun and informative.</p><h2 id=putting-it-all-together>Putting It All Together</h2><p>CryEngine, like many other 3D game engines represents everything inside the game world using just these basic building blocks; every entity within the game has a position, a rotation and a scale.</p><ul><li>Position is represented with a Vec3 - a type definition for a vector</li><li>Rotation is represented with a Quat - a type definition for a quaternion</li><li>Scale is represented with a Vec3 - a type definition for a vector which allows independent scaling in all three dimensions</li></ul><p>It&rsquo;s time to look at some real code and see not only what we can do with these concepts, but also how to do it using CryEngine. I&rsquo;m using code from my camera project because it uses a fair amount of different concepts in a way that is easy to understand.</p><p>We&rsquo;ll be looking at what steps are needed in order to implement an action RPG style of camera. This sort of camera freely orbits around the player following the outline of an imaginary sphere that surrounds the player. The player can zoom in and out, and rotate around their character while adjusting their pitch and yaw. Each game frame CryEngine will make a call to our camera routine and ask us to calculate the position and rotation of the camera relative to the player&rsquo;s character. We&rsquo;ll start with a look at the entire function and then break it down from there:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>CCameraPose ActionRPGCamera<span style=color:#f92672>::</span>UpdateView(<span style=color:#66d9ef>const</span> CPlayer <span style=color:#f92672>&amp;</span>clientPlayer, SViewParams <span style=color:#f92672>&amp;</span>viewParams, <span style=color:#66d9ef>float</span> frameTime)
+</span></span><span style=display:flex><span>{
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> (gEnv <span style=color:#f92672>&amp;&amp;</span> gEnv<span style=color:#f92672>-&gt;</span>pGame <span style=color:#f92672>&amp;&amp;</span> gEnv<span style=color:#f92672>-&gt;</span>pGame<span style=color:#f92672>-&gt;</span>GetIGameFramework() <span style=color:#f92672>&amp;&amp;</span> m_isEnabled <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>!</span>gEnv<span style=color:#f92672>-&gt;</span>IsCutscenePlaying())
+</span></span><span style=display:flex><span>    {
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Make sure we have an actor and are in third person mode.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        IActor <span style=color:#f92672>*</span>pClient <span style=color:#f92672>=</span> gEnv<span style=color:#f92672>-&gt;</span>pGame<span style=color:#f92672>-&gt;</span>GetIGameFramework()<span style=color:#f92672>-&gt;</span>GetClientActor();
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> (pClient <span style=color:#f92672>&amp;&amp;</span> <span style=color:#f92672>!</span>pClient<span style=color:#f92672>-&gt;</span>IsThirdPerson())
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>return</span> CCameraPose(viewParams.position, viewParams.rotation);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Should we invert pitch movements?
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>float</span> invertYAxis <span style=color:#f92672>=</span> cl_tpvInvertYAxis <span style=color:#f92672>?</span> <span style=color:#ae81ff>1.0</span> <span style=color:#f92672>:</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1.0</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// XBox controller yaw / pitch deltas need processing.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        ApplyXIPitchYaw(frameTime);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Calculate pitch and yaw movements to apply both prior to and after positioning the camera.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        Quat quatPreTransYP <span style=color:#f92672>=</span> Quat(Ang3(DEG2RAD(cl_tpvViewPitch <span style=color:#f92672>*</span> invertYAxis), <span style=color:#ae81ff>0.0f</span>, DEG2RAD(cl_tpvViewYaw)));
+</span></span><span style=display:flex><span>        Quat quatPostTransYP <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateRotationXYZ(Ang3(DEG2RAD(cl_tpvViewPitch <span style=color:#f92672>*</span> invertYAxis <span style=color:#f92672>*</span> m_reversePitchTilt), <span style=color:#ae81ff>0.0f</span>, <span style=color:#ae81ff>0.0f</span>));
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Target and aim position come from the entity position.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        Vec3 vecTargetInitialPosition;
+</span></span><span style=display:flex><span>        Vec3 vecTargetInitialAimPosition;
+</span></span><span style=display:flex><span>        GetTargetPositions(m_pEntity, m_targetBoneName, m_targetAimBoneName, vecTargetInitialPosition, vecTargetInitialAimPosition);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// The distance from the view to the target.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>float</span> zoomDistance <span style=color:#f92672>=</span> m_targetDistance <span style=color:#f92672>*</span> abs(cl_tpvZoom);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Work out where to place the new initial position. We will be using a unit vector facing forward Y
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>// as the starting place and applying rotations from the target bone and player camera movements.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        Quat quatTargetRotationGoal <span style=color:#f92672>=</span> m_quatTargetRotation <span style=color:#f92672>*</span> quatPreTransYP;
+</span></span><span style=display:flex><span>        Quat quatTargetRotation <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateSlerp(m_quatLastTargetRotation, quatTargetRotationGoal, frameTime <span style=color:#f92672>*</span> m_slerpSpeed);
+</span></span><span style=display:flex><span>        m_quatLastTargetRotation <span style=color:#f92672>=</span> quatTargetRotation;
+</span></span><span style=display:flex><span>        Vec3 vecViewPosition <span style=color:#f92672>=</span> vecTargetInitialPosition <span style=color:#f92672>+</span> (quatTargetRotation <span style=color:#f92672>*</span> (Vec3(<span style=color:#ae81ff>0.0f</span>, <span style=color:#ae81ff>1.0f</span>, <span style=color:#ae81ff>0.0f</span>) <span style=color:#f92672>*</span> zoomDistance));
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// By default, we try and aim the camera at the target, taking into account
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>// the current mouse yaw and pitch values. If, by chance, the target and the view position
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>// are the same, then we cheat and use the initial target rotation - which should provide an
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>// acceptable result, hopefully. Avoid this by not allowing to zoom too close to the target.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        Vec3 vecAimAtTarget <span style=color:#f92672>=</span> (vecTargetInitialAimPosition <span style=color:#f92672>-</span> vecViewPosition).GetNormalized();
+</span></span><span style=display:flex><span>        Quat quatViewRotationGoal <span style=color:#f92672>=</span> vecAimAtTarget.IsZero() <span style=color:#f92672>?</span> quatTargetRotation : Quat<span style=color:#f92672>::</span>CreateRotationVDir(vecAimAtTarget);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Use a slerp to smooth out fast camera rotations.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        Quat quatViewRotation <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateSlerp(m_quatLastViewRotation, quatViewRotationGoal, frameTime <span style=color:#f92672>*</span> m_slerpSpeed);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Applying a camera translation at this point will move both the camera and the place it is aiming. We
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>// want to do this using camera space.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        vecViewPosition <span style=color:#f92672>+=</span> quatViewRotation <span style=color:#f92672>*</span> m_postTransOffset;
+</span></span><span style=display:flex><span>        Vec3 vecTargetAimPosition <span style=color:#f92672>=</span> vecTargetInitialAimPosition <span style=color:#f92672>+</span> quatViewRotation <span style=color:#f92672>*</span> m_postTransOffset;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Gimbal style rotation after it&#39;s moved into it&#39;s initial position.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        Quat quatOrbitRotation <span style=color:#f92672>=</span> quatViewRotation <span style=color:#f92672>*</span> quatPostTransYP;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Perform a collision detection. Note, any collisions will disallow use of interpolated
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#75715e>// camera movement.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        CollisionDetection(vecTargetAimPosition, vecViewPosition);
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Track the last known camera position.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        m_vecLastPosition <span style=color:#f92672>=</span> vecViewPosition;
+</span></span><span style=display:flex><span>        m_quatLastViewRotation <span style=color:#f92672>=</span> quatViewRotation;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>#ifdef _DEBUG
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>if</span> (m_isDebugAllowed)
+</span></span><span style=display:flex><span>        {
+</span></span><span style=display:flex><span>            <span style=color:#75715e>// Initial position for our target.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            gEnv<span style=color:#f92672>-&gt;</span>pRenderer<span style=color:#f92672>-&gt;</span>GetIRenderAuxGeom()<span style=color:#f92672>-&gt;</span>DrawSphere(vecTargetInitialPosition, <span style=color:#ae81ff>0.16f</span>, ColorB(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>128</span>));
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>            <span style=color:#75715e>// Position at which we are aiming.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>            gEnv<span style=color:#f92672>-&gt;</span>pRenderer<span style=color:#f92672>-&gt;</span>GetIRenderAuxGeom()<span style=color:#f92672>-&gt;</span>DrawSphere(vecTargetAimPosition, <span style=color:#ae81ff>0.12f</span>, ColorB(<span style=color:#ae81ff>255</span>, <span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>0</span>));
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span><span style=color:#75715e>#endif
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e>// Return our new calculated camera pose.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>        <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>CCameraPose</span>(m_vecLastPosition, quatOrbitRotation);
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e>// Worst case! We return a view based on the view params that were passed in.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>return</span> <span style=color:#a6e22e>CCameraPose</span>(viewParams.position, viewParams.rotation);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>Prior to this routine being called various member values are already loaded with details of the entity that represents our player and the amount of yaw and pitch to be applied to the view.</p><p>I start off by making a quick call to a routine to take XBox controller movements into account and also figure out if the player prefers to invert their mouse pitch movements (flight simulator style).</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>// Should we invert pitch movements?
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>float</span> invertYAxis <span style=color:#f92672>=</span> cl_tpvInvertYAxis <span style=color:#f92672>?</span> <span style=color:#ae81ff>1.0</span> <span style=color:#f92672>:</span> <span style=color:#f92672>-</span><span style=color:#ae81ff>1.0</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// XBox controller yaw / pitch deltas need processing.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>ApplyXIPitchYaw (frameTime);
+</span></span></code></pre></div><p>Prior to positioning the camera I calculate a pair of quaternions which will be used to rotate it, before and after initial positioning is calculated.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>// Calculate pitch and yaw movements to apply both prior to and after positioning the camera.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>Quat quatPreTransYP <span style=color:#f92672>=</span> Quat (Ang3 (DEG2RAD (cl_tpvViewPitch <span style=color:#f92672>*</span> invertYAxis), <span style=color:#ae81ff>0.0f</span>, DEG2RAD (cl_tpvViewYaw)));
+</span></span><span style=display:flex><span>Quat quatPostTransYP <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateRotationXYZ (Ang3 (DEG2RAD (cl_tpvViewPitch <span style=color:#f92672>*</span> invertYAxis <span style=color:#f92672>*</span> m_reversePitchTilt), <span style=color:#ae81ff>0.0f</span>, <span style=color:#ae81ff>0.0f</span>));
+</span></span></code></pre></div><p>These two statements demonstrate two of the many different methods of creating a quaternion. In the first statement you can see I am taking values for pitch and yaw (tracked separately by an input handler), expressing them in radians and converting the result to an angle (Ang3). I then use a constructor that takes an angle as a parameter and returns the desired quaternion.</p><p>The second statement shows something very similar. In this case I want to produce a rotation that only affects the x axis, which when applied to a player camera will affect the pitch of that camera. Applying a rotation (after initially positioning the camera) gives me the ability to simulate the effect of the camera being mounted on a <a href=http://en.wikipedia.org/wiki/Gimbal title="Wikipedia - Gimbal">gimbal</a>. In this case I am only using it to adjust their pitch by a fractional amount in the opposite direction, which gives the camera a nicer movement when decent factors are applied.</p><p>We now have our first two quaternions which represent a rotation of some form in three dimensions.</p><p>Skipping a little of the code which is simply retrieving the coordinates of our entity we come to:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>// The distance from the view to the target.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#66d9ef>float</span> zoomDistance <span style=color:#f92672>=</span> m_targetDistance <span style=color:#f92672>*</span> abs (cl_tpvZoom);
+</span></span></code></pre></div><p>There&rsquo;s nothing complex happening here. I am simply calculating how far away to place the camera based on the present amount of zoom. The result, zoomDistance, is the distance away in metres to place the camera.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>// Work out where to place the new initial position. We will be using a unit vector facing forward Y
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// as the starting place and applying rotations from the target bone and player camera movements.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>Quat quatTargetRotationGoal <span style=color:#f92672>=</span> m_quatTargetRotation <span style=color:#f92672>*</span> quatPreTransYP;
+</span></span><span style=display:flex><span>Quat quatTargetRotation <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateSlerp (m_quatLastTargetRotation, quatTargetRotationGoal, frameTime <span style=color:#f92672>*</span> m_slerpSpeed);
+</span></span><span style=display:flex><span>m_quatLastTargetRotation <span style=color:#f92672>=</span> quatTargetRotation;
+</span></span><span style=display:flex><span>Vec3 vecViewPosition <span style=color:#f92672>=</span> vecTargetInitialPosition <span style=color:#f92672>+</span> (quatTargetRotation <span style=color:#f92672>*</span> (Vec3 (<span style=color:#ae81ff>0.0f</span>, <span style=color:#ae81ff>1.0f</span>, <span style=color:#ae81ff>0.0f</span>) <span style=color:#f92672>*</span> zoomDistance));
+</span></span></code></pre></div><p>Now we are trying to calculate where the view position should be, but first you need to know what happens when you multiply a vector, add / subtract a vector or multiply a quaternion.</p><p>Remember, a vector is just a representation of a direction and a distance. Adding two vectors together will give a result vector that represents the same coordinate translation as the two vectors combined. For example:</p><p>The player starts play at the origin (0.0, 0.0, 0.0). In the first frame they move along a vector (0.0, 1.0, 0.0) which represents 1 meter forward (in camera space, this is from the viewpoint of the player in first person mode). In the second frame they move along a vector (2.0, 0.0, 3.0). In camera space this represents a movement 2 metres to the right and 3 metres in height.</p><p>The result of adding both these vectors together is the vector (2.0, 1.0, 3.0) which represents a displacement (movement) of 2 metres to the right, 1 metre forward and 3 metres upwards.</p><p>Adding a third vector (0.0, -1.0, 0.0) - a step 1 metre backwards, results in the vector (2.0, 0.0, 3.0).</p><p>Vectors can be added together in any order and still give the same result. When subtracting one vector from another however, the order counts.</p><p>v1 + v2 = v2 + v1</p><p>v1 - v2 ≠ v2 - v1</p><p>In the example above we were still adding the vectors, but we stepped backwards because the sign of Y was negative, in this case -1.0.</p><p>Subtraction of two vectors may also be performed by adding the opposite of the second vector to the first vector, that is, <strong>a − b = a + (−b)</strong>.</p><p>Be careful when subtracting vectors.</p><p>We&rsquo;ll skip over the code for handling the Spherical Linear Interpolation (SLERP).</p><p>We can see that the first part is trying to add two vectors <strong>vecTargetInitialPosition</strong> and the result of the expression <strong>m_quatTargetRotation * quatPreTransYP * (Vec3 (0.0f, 1.0f, 0.0f) * zoomDistance)</strong></p><p>Time to break down that expression. Operator precedence rules apply and so the first part to look at is <strong>m_quatTargetRotation * quatPreTransYP</strong>. We are multiplying two quaternions together, the result of which will be a third quaternion which represents their total combined rotations.</p><p>NOTE: When multiply two quaternions, order counts: <strong>q1 * q2 ≠ q2 * q1</strong>. Swapping the order of those two quaternions will lead to different results.</p><p>To understand the result of multiplying q1 by q2, imagine a chair which is a few metres from you and facing towards you. In this case q1 represents the chair&rsquo;s initial rotation e.g. (0.0, 0.0, 180.0) [in degrees] - which for our example is all four legs on the floor and the seat facing towards you. Now imagine someone walking up to that chair, and without moving it, just turning it to face partly away from you. e.g. (0.0, 0.0, 45.0) [in degrees] - the chair now faces off to one side. That rotation is represented by q2 in the equation <strong>q1 * q2</strong>. The result of <strong>q1 * q2</strong> is a quaternion that represents both of the rotations made to the chair - the initial one which turned it towards you, and the second one where it is turned away at a 45 degree angle.</p><p>NOTE: you will need to convert degrees to radians when constructing a quaternion based on Euler angles since CryEngine uses radians - and humans usually find degrees easier to work with.</p><p>You should now understand that the expression <strong>m_quatTargetRotation * quatPreTransYP</strong> will give you a quaternion that represents the entitiy&rsquo;s initial rotation and, in this case, a second rotation based on pitch and yaw values.</p><h3 id=what-happens-when-you-multiply-a-vector-by-a-scalar>What happens when you multiply a vector by a scalar?</h3><p>The result is a vector whose length is equal to the original vector&rsquo;s length multiplied by the scalar.</p><p>Let&rsquo;s try that as an example instead. If you have a vector that represents a movement of 2.5 metres in some direction and you multiply that vector by a scalar value, for example 4.0, the result will be a vector with the same direction as the original and a length of 10.0 metres.</p><p>The same applies for division of a vector by a scalar. Where things get interesting is when you divide a vector by the scalar value of it&rsquo;s length, the result is a unit vector.</p><h3 id=unit-vector>Unit Vector?</h3><p>A unit vector is just a vector whose length is 1.0. It can have any values for direction, so long as that results in a length of 1.0.</p><p>The handy thing about unit vectors is that they allow you to calculate other vectors that have the same direction, and different lengths.</p><h3 id=what-happens-when-you-multiply-a-quaternion-by-a-vector>What happens when you multiply a quaternion by a vector?</h3><p>Multiplying a quaternion by a vector results in a vector of the same length, but whose direction has been rotated in space. An example might help make it clear.</p><p>Let&rsquo;s get back to that line of code:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>Vec3 vecViewPosition <span style=color:#f92672>=</span> vecTargetInitialPosition <span style=color:#f92672>+</span> (quatTargetRotation <span style=color:#f92672>*</span> (Vec3 (<span style=color:#ae81ff>0.0f</span>, <span style=color:#ae81ff>1.0f</span>, <span style=color:#ae81ff>0.0f</span>) <span style=color:#f92672>*</span> zoomDistance));
+</span></span></code></pre></div><p>The expression:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>Vec3 (<span style=color:#ae81ff>0.0f</span>, <span style=color:#ae81ff>1.0f</span>, <span style=color:#ae81ff>0.0f</span>) <span style=color:#f92672>*</span> zoomDistance
+</span></span></code></pre></div><p>is multiplying a vector and a scalar so we know the result is going to be another vector. The Vec3 constructor creates a vector that represents a movement forward of 1 metre in camera space. Multiplying that by the zoomDistance gives us a vector that represents a forward movement of x metres, where x is the distance we wanted to place the camera away from the player.</p><p>We already learnt that <strong>m_quatTargetRotation * quatPreTransYP</strong> will give us a rotation that represents the camera, pitch and yaw in world space. When we multiply that by <strong>Vec3 (0.0f, 1.0f, 0.0f)</strong> we get a vector representing a movement 1 metre forward in world space. Finally, multiplying that vector by zoomDistance gives us a movement of zoomDistance forward in world space. Pretty cool for one little line of code!</p><p>All together, that line takes the initial position of the target and their initial rotation, applies pitch and yaw, and then calculates a position that would be zoomDistance metres away in that direction.</p><p>Vectors and quaternions pack a hell of a punch.</p><h3 id=hows-my-aim>How&rsquo;s My Aim?</h3><p>We have an initial position for the camera now, but we don&rsquo;t know which direction it should aim - it&rsquo;s rotation. The next couple of lines handle that.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>// By default, we try and aim the camera at the target, taking into account
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// the current mouse yaw and pitch values. If, by chance, the target and the view position
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// are the same, then we cheat and use the initial target rotation - which should provide an
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// acceptable result, hopefully. Avoid this by not allowing to zoom too close to the target.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>Vec3 vecAimAtTarget <span style=color:#f92672>=</span> (vecTargetInitialAimPosition <span style=color:#f92672>-</span> vecViewPosition).GetNormalized ();
+</span></span><span style=display:flex><span>Quat quatViewRotationGoal <span style=color:#f92672>=</span> vecAimAtTarget.IsZero () <span style=color:#f92672>?</span> m_quatTargetRotation <span style=color:#f92672>*</span> quatPreTransYP : Quat<span style=color:#f92672>::</span>CreateRotationVDir (vecAimAtTarget);
+</span></span></code></pre></div><p>The first thing we want to do is work out where to aim, and it&rsquo;s done in two steps.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>(vecTargetInitialAimPosition <span style=color:#f92672>-</span> vecViewPosition)
+</span></span></code></pre></div><p>Here we are subtracting one vector from another, resulting in a third vector. By taking the position of the camera we just calculated and subtracting the position of the target we want to aim towards, we get the vector that represents their difference. Put simply, it&rsquo;s like an arrow that points from one directly to the other. It&rsquo;s a bit long though for the next step, since it&rsquo;s length is the distance between the two points. We make a call to GetNormalized () which returns a unit vector whose direction points from the aim position towards the target position. That vector can then be turned into a quaternion which is going to be useful shortly&mldr;but there&rsquo;s a hiccup here.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>Quat quatViewRotationGoal <span style=color:#f92672>=</span> vecAimAtTarget.IsZero () <span style=color:#f92672>?</span> m_quatTargetRotation <span style=color:#f92672>*</span> quatPreTransYP : Quat<span style=color:#f92672>::</span>CreateRotationVDir (vecAimAtTarget);
+</span></span></code></pre></div><p>We want to turn the vector into a quaternion , but sometimes that vector might be the zero vector, and that is going to cause assertion errors. We check for that possibility and set a default quaternion if it arises (and I seem to recall that default is a crappy one), otherwise we pass the vector into a quaternion constructor and out pops a lovely quaternion representing our intended rotation for the camera around the player.</p><p>Well, it&rsquo;s not quite the direction, we are going to apply some <a href=http://en.wikipedia.org/wiki/Spherical_linear_interpolation title="Wikipedia - Spherical Linear Interpolation">spherical linear interpolation</a> first just to smooth out any fast movements.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>// Use a slerp to smooth out fast camera rotations.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>Quat quatViewRotation <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateSlerp (m_quatLastViewRotation, quatViewRotationGoal, frameTime <span style=color:#f92672>*</span> m_slerpSpeed);
+</span></span></code></pre></div><p>This line is just taking the last rotation value, the present goal rotational value, and interpolating between them according to the frameTime parameter and a slerp speed paramteter (range 0.0f to 1.0f). This causes the camera to lag a little behind where the player wants the camera to be (the goal) but in the process smooths out it&rsquo;s path.</p><p>A few lines further up the page you can revist the line:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span>Quat quatTargetRotation <span style=color:#f92672>=</span> Quat<span style=color:#f92672>::</span>CreateSlerp (m_quatLastTargetRotation, quatTargetRotationGoal, frameTime <span style=color:#f92672>*</span> m_slerpSpeed);
+</span></span></code></pre></div><p>Based on the line we just examined, we can see that this one is also creating a slerp between a pair of rotations using both the frameTime and an external speed factor.</p><p>The first line is providing smooth interpolation for movements that change the direction in which the view camera is going to be positioned relative to the target. The second line is doing the same thing in reverse. When the camera is moved to it&rsquo;s new position and we attempt to aim the camera towards the aim target - this interpolation smooths out the rotation of the view camera from the last view direction towards our new goal view direction.</p><p>We could probably get away without the second interpolation, the one on the view camera rotation, but it does make things nice and butter smooth, so it&rsquo;s worth the extra effort.</p><p>You can get a better feel for how spherical linear interpolation affects the camera movements by using small values for slerpSpeed. Anything below 15 will start to become noticeable, and below 5 it&rsquo;s quite obvious how the interpolation allows the camera to transition from one position to another while following a spherical path.</p><p>After the camera is positioned I give them the chance to apply a small translation offset, which is great for implementing &lsquo;over the shoulder&rsquo; style cameras.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>// Applying a camera translation at this point will move both the camera and the place it is aiming. We
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// want to do this using camera space.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>vecViewPosition <span style=color:#f92672>+=</span> quatViewRotation <span style=color:#f92672>*</span> m_postTransOffset;
+</span></span><span style=display:flex><span>Vec3 vecTargetAimPosition <span style=color:#f92672>=</span> vecTargetInitialAimPosition <span style=color:#f92672>+</span> quatViewRotation <span style=color:#f92672>*</span> m_postTransOffset;
+</span></span></code></pre></div><p>There&rsquo;s nothing too challenging for you there. I move both the camera position and the place it&rsquo;s aiming. The angles stay the same but the player now always stays a little bit to the left and below the aiming position. You can offset the camera in any direction / distance you like - but having the player a little lower and to the left is pretty standard.</p><p>One last rotation is applied, allowing for gimbal movements based on some quaternions we set up earlier.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>// Gimbal style rotation after it&#39;s moved into it&#39;s initial position.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>Quat quatOrbitRotation <span style=color:#f92672>=</span> quatViewRotation <span style=color:#f92672>*</span> quatPostTransYP;
+</span></span></code></pre></div><p>Once again we multiply one quaternion by another to get a result that combines both rotations into one.</p><p>Finally, there&rsquo;s a little black box magic to work out if the camera is being occluded by terrain or geometry (collision detection).</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-cpp data-lang=cpp><span style=display:flex><span><span style=color:#75715e>// Perform a collision detection. Note, any collisions will disallow use of interpolated
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// camera movement.
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>CollisionDetection (vecTargetAimPosition, vecViewPosition);
+</span></span></code></pre></div><p>I&rsquo;m not going to cover the details today because my current implementation is too basic and doesn&rsquo;t do a good job of repositioning the camera. The basic idea however is using raycasting to work out if anything is blocking the view, and if so, to reposition the camera in front of the blocking geometry.</p><p>The last few lines just return a camera pose (position and rotation values) based on our previous calculations. Our work here is done.</p><h2 id=summary>Summary</h2><p>Hopefully that&rsquo;s enough to get you started playing with and understanding matrices, vectors and quaternions. You can improve your understanding by visiting the links to Wikipedia articles, checking out the animation <a href=http://acko.net/blog/animate-your-way-to-glory-pt2/ title="Animate Your Way To Glory">blowing up the Death Star</a>, studying the full <a href=https://bitbucket.org/ivanhawkes/plugin-camera title="Third Person Camera">camera code source </a>or just hacking around on your own.</p></div></div><div class=row><div class=col-12><hr></div></div><div class=row><div class=col><p class=h6>Discover more posts like this:</p><p class=h6><a class="btn btn-primary" href=/tags/cryengine-3>CryEngine 3</a>
+<a class="btn btn-primary" href=/tags/cryengine3>CryEngine3</a>
+<a class="btn btn-primary" href=/tags/mathematics>Mathematics</a>
+<a class="btn btn-primary" href=/tags/matrices>matrices</a>
+<a class="btn btn-primary" href=/tags/matrix>matrix</a>
+<a class="btn btn-primary" href=/tags/quaternions>quaternions</a>
+<a class="btn btn-primary" href=/tags/software-development>Software Development</a>
+<a class="btn btn-primary" href=/tags/third-person-camera>third person camera</a>
+<a class="btn btn-primary" href=/tags/vectors>vectors</a></p></div></div><div class=row><div class=col><hr></div></div><div class=row><div class="col-6 text-start">Previous:<br><a href=https://ivanhawkes.github.io/post/wd-mybook-live-vs-raspberry-pi-as-a-linux-server/>WD MyBook Live vs Raspberry Pi as a Linux Server</a></div><div class="col-6 text-end">Next:<br><a href=https://ivanhawkes.github.io/post/mediawiki-on-the-beaglebone-black/>MediaWiki on the Beaglebone Black</a></div></div></div></div><footer><div class=row><div class=col><hr></div></div><nav class="navbar navbar-expand-lg"><div class=container-fluid>&copy; 2021 Ivan Hawkes all rights reserved.</div></nav></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css integrity=sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3 crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css integrity=sha384-7ynz3n3tAGNUYFZD3cWe5PDcE36xj85vyFkawcF6tIwxvIecqKvfwLiaFdizhPpN crossorigin=anonymous><link rel=stylesheet type=text/css href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"></body></html>

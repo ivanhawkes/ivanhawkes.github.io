@@ -15,14 +15,17 @@ A curry that is mild enough for anyone to eat.
 
 # Marinade Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 1/4				| cup				| plain yoghurt
 1				| tbs				| garlic (crushed)
 2				| tbs				| ginger (crushed)
+{{</table>}}
 
 # Sauce Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 1				| whole				| chicken, broken down (skin removed)
@@ -39,6 +42,7 @@ Quantity		| Measure 			| Ingredient
 2				| whole				| bay leaves
 1				| medium			| red onion, sliced
 2				| tbs				| coriander leaves and stems (finely chopped)
+{{</table>}}
 
 ## Preparation
 
@@ -62,7 +66,7 @@ Quantity		| Measure 			| Ingredient
 
 * Add the water to smooth out the paste.
 
-* Add the chicken, simmer till done.
+* Add the chicken, cover and simmer till done.
 
 # Optional method
 

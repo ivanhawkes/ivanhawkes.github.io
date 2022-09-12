@@ -31,7 +31,7 @@ Quantity		| Measure 			| Ingredient
 
 * Stir fry the fermented black bean in pan without oil for around 1 to 2 minutes until they are separated from each other. Transfer out.
 
-* Pour around 1 cup of vegetable oil in wok or pan; add chopped garlic cloves to stir fry over medium fire until you can smell the aroma. Add fried fermented black beans. Use slow fire to continue frying for 5~8 minutes.
+* Pour around 1 cup of vegetable oil in wok or pan; add chopped garlic cloves to stir fry over medium fire until you can smell the aroma. Add fried fermented black beans. Use slow fire to continue frying for 5-8 minutes.
 
 * Add roasted peanuts, sesame seeds, chili pepper powder and Chinese five spice powder in. Mix well.
 

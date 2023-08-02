@@ -14,6 +14,7 @@ A fairly simple herb roasted pork dish.
 
 # Dry Rub
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 3 				| tbs				| fennel seeds
@@ -22,14 +23,17 @@ Quantity		| Measure 			| Ingredient
 2				| tbs				| salt
 3				| cloves			| garlic
 1				| zest				| lemon
+{{</table>}}
 
 # Main Dish
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 3.5				| kg				| pork shoulder, skin on
 2				| tbs				| olive oil
 250				| ml				| dry white wine
+{{</table>}}
 
 # Instructions
 

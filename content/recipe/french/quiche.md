@@ -15,6 +15,7 @@ A basic quiche.
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 1 1/2			| sheets			| shortcrust pastry
@@ -31,6 +32,7 @@ Quantity		| Measure 			| Ingredient
 1/2				| tsp				| smoky paprika
 2				| tsp				| dijon mustard
 1/2				| tsp				| cayenne pepper
+{{</table>}}
 
 # Instructions
 

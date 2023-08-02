@@ -15,6 +15,7 @@ A salty sauce with a large umami kick.
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 1				| cup 				| fermented black beans
@@ -26,6 +27,7 @@ Quantity		| Measure 			| Ingredient
 1				| tsp 				| five spice powder
 1				| tbs 				| soy sauce
 1				| tsp 				| sugar
+{{</table>}}
 
 # Instructions
 

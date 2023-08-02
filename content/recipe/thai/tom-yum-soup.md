@@ -15,6 +15,7 @@ Tom Yum Goong soup is one of the most well known dishes in Thai cuisine, and in 
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 1.5				| litres 			| water
@@ -31,13 +32,16 @@ Quantity		| Measure 			| Ingredient
 8 - 12			| tbs				| fish sauce (depending on your taste)
 8 - 12			| tbs 				| lime juice (10 - 15 limes)
 1				| handful			| coriandor
+{{</table>}}
 
 # Creamy tom yum version
 
+{{<table "table table-striped table-bordered">}}
 Quantity	| Measure 		| Ingredient
 ------------|---------------|-----------
 3			| tbs			| canned Thai roasted chili sauce (nam prik pao)
 10			| tbs			| evaporated milk
+{{</table>}}
 
 Taste test, you may need to add more lime juice or fish sauce as the milk and roasted chili sauce throws off the sourness and saltiness.
 

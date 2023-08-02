@@ -15,6 +15,7 @@ A thoroughly rich and creamy dessert that is certain to please.
 
 # Ingredients:
 
+{{<table "table table-striped table-bordered">}}
 Quantity	| Measure 		| Ingredient
 ------------|---------------|-----------
 125		 	| g 			| chocolate powder
@@ -27,6 +28,7 @@ Quantity	| Measure 		| Ingredient
 1/2	 		| tbs	 		| vanilla essence
 1	 		| pinch 		| salt
 1	 		| whole 		| egg yolk
+{{</table>}}
 
 # Directions:
 

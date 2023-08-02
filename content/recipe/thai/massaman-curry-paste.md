@@ -15,6 +15,7 @@ A classic Thai curry.
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 2				| tbs				| coriander seeds (roasted and ground)
@@ -33,6 +34,7 @@ Quantity		| Measure 			| Ingredient
 2 				| tsp				| sea salt
 2				| tsp				| shrimp paste
 1/2				| tsp				| cardamom (ground)
+{{</table>}}
 
 # Instructions
 

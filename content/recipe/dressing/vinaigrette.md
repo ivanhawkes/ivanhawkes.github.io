@@ -15,6 +15,7 @@ A simple and traditional French salad dressing.
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 1/2				| cup 				| olive oil
@@ -24,6 +25,7 @@ Quantity		| Measure 			| Ingredient
 1				| tbs				| sugar
 1/4				| tbs				| salt
 1/4				| tbs 				| black pepper (fresh ground)
+{{</table>}}
 
 # Instructions
 

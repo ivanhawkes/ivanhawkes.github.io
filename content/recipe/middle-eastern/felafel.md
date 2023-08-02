@@ -15,6 +15,7 @@ This middle eastern dish has many variations. The deep fried balls are crispy an
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 500				| grams				| garbanzo beans (or dry chickpeas)
@@ -28,6 +29,7 @@ Quantity		| Measure 			| Ingredient
 1				| pinch				| ground cardamom
 1/4				| tsp				| black pepper
 1/4				| tsp				| cayenne pepper
+{{</table>}}
 
 # Instructions
 

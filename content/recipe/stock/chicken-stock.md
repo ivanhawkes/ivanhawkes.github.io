@@ -15,6 +15,7 @@ Chicken stock made from necks, wings, backs and drumsticks. This will make a ric
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 1				| tbs				| olive oil
@@ -28,6 +29,7 @@ Quantity		| Measure 			| Ingredient
 1				| 					| bay leaf
 6-8				| litres			| cold water
 1				| tbs				| salt
+{{</table>}}
 
 # Instructions
 

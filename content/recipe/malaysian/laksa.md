@@ -15,6 +15,7 @@ A terrific Malaysian soup. Rich, creamy and warming. It can be served with a ran
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 2				| 					| chicken breasts
@@ -28,6 +29,7 @@ Quantity		| Measure 			| Ingredient
 100				| grams				| bean sprouts
 2-3				| 					| loosely packed fresh Vietnamese mint leaves (garnish)
 2				| tsp				| fried shallots (garnish)
+{{</table>}}
 
 # Instructions
 

@@ -15,6 +15,7 @@ A dressing for a Caesar salad. It's also good for pretty much any salad.
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 4				| whole				| anchovy fillets
@@ -28,6 +29,7 @@ Quantity		| Measure 			| Ingredient
 1				| tbs				| brown sugar
 1/2				| tbs				| salt
 1/2				| tbs 				| black pepper (fresh ground)
+{{</table>}}
 
 # Instructions
 

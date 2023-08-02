@@ -15,6 +15,7 @@ Laksa paste is the key ingredient in a bowl of laksa.
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 6-8				|					| long red chillies (dried)
@@ -30,6 +31,7 @@ Quantity		| Measure 			| Ingredient
 1				| tsp				| vietnamese mint
 2				| tbs				| kaffir lime rind
 1				| tbs				| coriander seeds (ground)
+{{</table>}}
 
 # Instructions
 

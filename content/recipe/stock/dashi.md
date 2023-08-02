@@ -19,11 +19,13 @@ Makes 4 cups.
 
 ## Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 1				| litre				| water (cold)
 10				| cm square piece	| kombu (13-18 grams)
 1/2				| cup				| loosely packed katsuobushi (dried bonito flakes)
+{{</table>}}
 
 * Place the water and the kombu in a pot and let the kombu soak for about 15 minutes.
 
@@ -45,10 +47,12 @@ Makes about 4 cups.
 
 ## Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 4				| cups				| water
 				| 					| Kombu and katsuobushi used in ichiban dashi
+{{</table>}}
 
 * Combine all of the ingredients in a pot.  Place the pot over low heat and cook the mixture for 10 minutes.  Remove the pot from the heat and then strain the stock through a strainer lined with tightly woven cotton cloth or a coffee-filter.
 

@@ -15,6 +15,7 @@ A simple and light batter; suitable for fish and chicken.
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 1/2				| cup				| all-purpose flour
@@ -23,6 +24,7 @@ Quantity		| Measure 			| Ingredient
 1⁄2				| teaspoon			| salt
 3/4				| cup				| soda water (cold)
 1				|					| egg
+{{</table>}}
 
 # Instructions
 

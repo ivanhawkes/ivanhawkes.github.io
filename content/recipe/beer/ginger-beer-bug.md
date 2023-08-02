@@ -16,18 +16,22 @@ A ginger beer bug is the first step to making a traditional ginger beer. It is a
 
 On the first day...
 
+{{<table "table table-striped table-bordered">}}
 Quantity	| Measure 		| Ingredient
 ------------|---------------|-----------
 500 		| ml 			| water (chlorine free) - 2 cups
 125 		| g 			| white sugar - 10 tbs
 25	 		| g 			| organic ginger root - a roughly 5cm long piece
+{{</table>}}
 
 After the bug has been started add these ingredients every day when it is active. This can be done once a week instead if you keep the bug in the fridge. This process should be repeated every day for at least five days. Keep repeating until you have a mature bug.
 
+{{<table "table table-striped table-bordered">}}
 Quantity	| Measure 		| Ingredient
 ------------|---------------|-----------
 25	 		| g 			| sucrose - white sugar (2 tsp)
 25	 		| g 			| organic ginger root - a roughly 5cm long piece
+{{</table>}}
 
 # Directions:
 

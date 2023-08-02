@@ -15,6 +15,7 @@ A Thai red curry using beef.
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 250				| grams				| topside beef sliced thin
@@ -33,6 +34,7 @@ Quantity		| Measure 			| Ingredient
 2				| tbs				| fish sauce (to taste)
 1/4				| bunch				| coriander leaves
 8				| whole				| red birdseye chilies (seeded, thinly sliced)
+{{</table>}}
 
 # Instructions
 

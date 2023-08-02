@@ -15,6 +15,7 @@ Need to make this again with fresh red roasted peppers - see if it improves.
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 3/4				| cup				| roasted red peppers
@@ -28,6 +29,7 @@ Quantity		| Measure 			| Ingredient
 1/3				| cup				| olive oil
 2				| tbs				| white wine vinegar
 2				| tbs				| chopped fresh parsley
+{{</table>}}
 
 # Instructions
 

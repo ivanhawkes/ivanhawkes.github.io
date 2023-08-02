@@ -15,6 +15,7 @@ The mouth watering Chinese pork dish that can be eaten on it's own or added to s
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 2				| kgs				| pork - whole shoulder or collar
@@ -31,6 +32,7 @@ Quantity		| Measure 			| Ingredient
 4				| tbs				| shaoxing wine
 2				| tsp				| sesame oil
 2				| tsp				| ground white pepper
+{{</table>}}
 
 # Instructions
 

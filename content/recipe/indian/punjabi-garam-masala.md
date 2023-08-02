@@ -15,6 +15,7 @@ Punjabi Garam Masala is an Indian spice blend that adds deep aromatic flavours t
 
 # Base Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 1				| tsp				| cumin seeds
@@ -24,6 +25,7 @@ Quantity		| Measure 			| Ingredient
 1/2				| tsp				| black cardamom seeds (badi elacichi)
 3				| sticks			| cinnamon
 3				| whole				| tejpatta leaves (Cinnamomum tamal, Indian Bay Leaf)
+{{</table>}}
 
 # Instructions
 

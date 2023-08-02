@@ -15,6 +15,7 @@ A French salad with tuna, green beans, hard boiled eggs, tomatoes, onion, capers
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 200				| grams				| tuna
@@ -27,6 +28,7 @@ Quantity		| Measure 			| Ingredient
 1/4				| cup				| olives
 1				| tbs				| capers
 6				| whole				| anchovies
+{{</table>}}
 
 # Instructions
 

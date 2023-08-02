@@ -15,6 +15,7 @@ The famous beef soup dish from Vietnam.
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 1				|					| onion (unpeeled and cut in half)
@@ -32,6 +33,7 @@ Quantity		| Measure 			| Ingredient
 1				|					| lime (cut into 4 wedges)
 1/4				| cup 				| hoisin sauce (optional)
 1/4				| cup 				| garlic chili sauce (optional)
+{{</table>}}
 
 # Instructions
 

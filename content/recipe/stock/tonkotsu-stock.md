@@ -25,6 +25,7 @@ Charring the aromatic vegetables adds complexity to the broth.
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 1.5				| kg				| pig trotters, split lengthwise or cut crosswise into 1-inch disks (as your butcher to do this for you)
@@ -37,6 +38,7 @@ Quantity		| Measure 			| Ingredient
 2				| dozen				| scallions, white parts only (reserve greens and light green parts for garnishing finished soup)
 6				| ounces			| whole mushrooms or mushroom scraps
 1/2				| kg				| slab pork fat back
+{{</table>}}
 
 # Instructions
 

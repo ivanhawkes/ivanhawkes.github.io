@@ -15,6 +15,7 @@ A sauce rich with umami flavours which is great for stir frys.
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 1				| tbs				| light soy sauce
@@ -24,6 +25,7 @@ Quantity		| Measure 			| Ingredient
 1/2				| cup 				| beef stock
 2				| tsp 				| corn flour
 1 				| tsp 				| Bonox
+{{</table>}}
 
 # Instructions
 

@@ -15,6 +15,7 @@ Aromatic and herbacious. Red curry paste provides the base flavours for many Tha
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 1				| tsp				| cumin seeds
@@ -33,6 +34,7 @@ Quantity		| Measure 			| Ingredient
 10				| whole				| whole red chilies (dry, large, roasted, seeded & chopped)
 2				| tsp				| shrimp paste
 8				| whole				| red birdseye chilies (seeded) (optional, only add for intense heat)
+{{</table>}}
 
 # Instructions
 

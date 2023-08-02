@@ -15,6 +15,7 @@ Britain's national dish. A curry that is mild enough for anyone to eat.
 
 # Marinade Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 2				| whole				| chicken thighs
@@ -28,6 +29,7 @@ Quantity		| Measure 			| Ingredient
 1 1/2			| tsp				| salt
 1/2				| tsp				| Punjabi garam masala
 1/2				| tsp				| ground turmeric
+{{</table>}}
 
 ## Instructions
 

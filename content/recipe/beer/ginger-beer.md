@@ -15,6 +15,7 @@ A delightful, fizzy traditional ginger beer. This is a lacto ferment so the resu
 
 # Ingredients:
 
+{{<table "table table-striped table-bordered">}}
 Quantity	| Measure 		| Ingredient
 ------------|---------------|-----------
 4 			| L 			| water (chlorine free)
@@ -26,6 +27,7 @@ Quantity	| Measure 		| Ingredient
 12	 		| whole			| cardamom pods
 3	 		| whole			| cloves
 200 		| ml 			| [ginger beer bug](../ginger-beer-bug)
+{{</table>}}
 
 
 # Directions:

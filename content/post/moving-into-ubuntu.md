@@ -54,7 +54,7 @@ imwheel --kill
 
 ##### Key development tools.
 ```bash
-sudo apt install cmake gcc g++ build-essential clang
+sudo apt install cmake cmake-gui gcc g++ build-essential ninja-build clang fonts-hack-ttf
 ```
 
 ##### Arm development.

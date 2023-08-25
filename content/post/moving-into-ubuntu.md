@@ -54,7 +54,7 @@ imwheel --kill
 
 ##### Key development tools.
 ```bash
-sudo apt install cmake cmake-gui gcc g++ build-essential ninja-build clang fonts-hack-ttf
+sudo apt install cmake cmake-gui gcc g++ build-essential ninja ninja-build clang fonts-hack-ttf
 ```
 
 ##### Arm development.
@@ -87,4 +87,24 @@ sudo apt install vulkan-utils
 ##### Media
 ```bash
 sudo apt install handbrake vlc
+```
+
+##### Outboard equipment
+```bash
+sudo apt install midisport-firmware
+```
+
+##### Jack audio and it's development libraries.
+```bash
+sudo apt install qjackctl libjack-dev
+```
+
+##### Python 3.
+```bash
+sudo apt install python3 python3-pip npm nodejs
+```
+
+##### Java Runtime.
+```bash
+sudo apt install default-jre
 ```

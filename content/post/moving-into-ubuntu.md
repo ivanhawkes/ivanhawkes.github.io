@@ -33,6 +33,13 @@ scp ivan@odroid-hc2:~/.ssh/* .ssh
 sudo apt update && sudo apt upgrade
 ```
 
+##### TLDR: Get all the packages...
+```bash
+# Skip a few steps in this process, just pull all the packages.
+sudo apt update && sudo apt upgrade
+sudo apt install git imwheel cmake cmake-gui gcc g++ build-essential ninja-build clang fonts-hack-ttf gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib gdb-multiarch minicom transmission-remote-gtk handbrake vlc midisport-firmware qjackctl libjack-dev python3 python3-pip npm nodejs default-jre vulkan-tools spirv-cross renderdoc
+```
+
 ##### Get Git installed and configured.
 ```bash
 sudo apt install git
@@ -54,7 +61,7 @@ imwheel --kill
 
 ##### Key development tools.
 ```bash
-sudo apt install cmake cmake-gui gcc g++ build-essential ninja ninja-build clang fonts-hack-ttf
+sudo apt install cmake cmake-gui gcc g++ build-essential ninja-build clang fonts-hack-ttf
 ```
 
 ##### Arm development.
@@ -79,9 +86,27 @@ sudo usermod -a -G dialout $USER
 sudo apt install transmission-remote-gtk
 ```
 
+##### Networking for Windows
+```bash
+sudo apt install samba
+
+# Update the firewall rules to allow Samba traffic.
+sudo ufw allow samba
+
+# Give ourselves a password.
+sudo smbpasswd -a $USER
+
+# Connect to your severs.
+# SMB://<server_name>
+
+```
+
 ##### Vulkan development
 ```bash
-sudo apt install vulkan-utils
+# Not currently working - need to fix later.
+sudo add-apt-repository ppa:graphics-drivers/ppa && sudo apt upgrade
+sudo apt install vulkan-tools spirv-cross renderdoc
+sudo apt install nvidia-driver-535 nvidia-settings vulkan vulkan-utils
 ```
 
 ##### Media
@@ -108,3 +133,40 @@ sudo apt install python3 python3-pip npm nodejs
 ```bash
 sudo apt install default-jre
 ```
+
+##### QTile.
+```bash
+pip install qtile
+```
+
+##### Alacritty.
+```bash
+sudo apt install xxx
+```
+
+##### XXX.
+```bash
+sudo add-apt-repository ppa:aslatter/ppa -y
+sudo apt install alacritty
+mkdir $HOME/.config/alacritty
+cd $HOME/.config/alacritty
+wget https://github.com/alacritty/alacritty/releases/download/v0.12.2/alacritty.yml
+sudo npm i -g alacritty-themes
+alacritty-themes
+```
+
+##### Thunar.
+```bash
+sudo apt install thunar
+```
+
+##### XXX.
+```bash
+sudo apt install xxx
+```
+
+##### XXX.
+```bash
+sudo apt install xxx
+```
+

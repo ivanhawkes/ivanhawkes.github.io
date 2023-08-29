@@ -24,12 +24,12 @@ Quantity		| Measure 			| Ingredient
 2				| tsp				| ground cumin
 2				| tsp				| ground coriander
 1				| tsp				| sumac
-1				| tsp				| smoked paprika
-1/2				| tsp				| cayenne
+1/2				| tsp				| smoked paprika
+1/4				| tsp				| cayenne
 2				| tsp				| oregano
 1/2				| tsp				| cinnamon
 1				| tsp				| salt
-1/2				| tsp				| white pepper
+1/4				| tsp				| white pepper
 1				| tsp				| black pepper
 {{</table>}}
 

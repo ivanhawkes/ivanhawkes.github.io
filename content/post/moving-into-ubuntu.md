@@ -37,12 +37,17 @@ sudo apt update && sudo apt upgrade
 ```bash
 # Skip a few steps in this process, just pull all the packages.
 sudo apt update && sudo apt upgrade
-sudo apt install git imwheel cmake cmake-gui gcc g++ build-essential ninja-build clang fonts-hack-ttf gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib gdb-multiarch minicom transmission-remote-gtk handbrake vlc midisport-firmware qjackctl libjack-dev python3 python3-pip npm nodejs default-jre vulkan-tools spirv-cross renderdoc
+
+# We don't want the old Jack daemon.
+sudo apt -y autoremove --purge jackd jackd2 qjackctl
+
+# Bulk install
+sudo apt install git git-lfs imwheel cmake cmake-gui gcc g++ build-essential ninja-build clang fonts-hack-ttf gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib gdb-multiarch minicom transmission-remote-gtk handbrake vlc midisport-firmware qjackctl libjack-dev python3 python3-pip npm nodejs default-jre vulkan-tools spirv-cross renderdoc samba jackd2
 ```
 
 ##### Get Git installed and configured.
 ```bash
-sudo apt install git
+sudo apt install git git-lfs
 git config --global user.email "ivan.hawkes@gmail.com"
 git config --global user.name "Ivan Hawkes"
 ```
@@ -121,7 +126,8 @@ sudo apt install midisport-firmware
 
 ##### Jack audio and it's development libraries.
 ```bash
-sudo apt install qjackctl libjack-dev
+sudo apt install qjackctl libjack-dev jackd2   # a2jmidid needed if using jackd instead.
+sudo usermod -a -G audio ivan
 ```
 
 ##### Python 3.
@@ -141,11 +147,6 @@ pip install qtile
 
 ##### Alacritty.
 ```bash
-sudo apt install xxx
-```
-
-##### XXX.
-```bash
 sudo add-apt-repository ppa:aslatter/ppa -y
 sudo apt install alacritty
 mkdir $HOME/.config/alacritty
@@ -158,6 +159,13 @@ alacritty-themes
 ##### Thunar.
 ```bash
 sudo apt install thunar
+```
+
+##### SAMBA.
+```bash
+sudo apt install samba
+sudo ufw allow samba
+sudo smbpasswd -a $USER
 ```
 
 ##### XXX.

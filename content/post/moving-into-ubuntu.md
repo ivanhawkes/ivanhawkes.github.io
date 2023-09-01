@@ -42,7 +42,7 @@ sudo apt update && sudo apt upgrade
 sudo apt -y autoremove --purge jackd jackd2 qjackctl
 
 # Bulk install
-sudo apt install git git-lfs imwheel cmake cmake-gui gcc g++ build-essential ninja-build clang fonts-hack-ttf gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib gdb-multiarch minicom transmission-remote-gtk handbrake vlc midisport-firmware qjackctl libjack-dev python3 python3-pip npm nodejs default-jre vulkan-tools spirv-cross renderdoc samba jackd2
+sudo apt install git git-lfs imwheel cmake cmake-gui cmake-curses-gui gcc g++ build-essential ninja-build clang fonts-hack-ttf gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib gdb-multiarch minicom transmission-remote-gtk handbrake vlc midisport-firmware qjackctl libjack-dev python3 python3-pip npm nodejs default-jre vulkan-tools spirv-cross renderdoc samba jackd2
 ```
 
 ##### Get Git installed and configured.
@@ -66,7 +66,7 @@ imwheel --kill
 
 ##### Key development tools.
 ```bash
-sudo apt install cmake cmake-gui gcc g++ build-essential ninja-build clang fonts-hack-ttf
+sudo apt install cmake cmake-gui cmake-curses-gui gcc g++ build-essential ninja-build clang fonts-hack-ttf
 ```
 
 ##### Arm development.

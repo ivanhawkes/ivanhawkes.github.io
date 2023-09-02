@@ -168,13 +168,17 @@ sudo ufw allow samba
 sudo smbpasswd -a $USER
 ```
 
-##### XXX.
+##### Pipewire.
 ```bash
-sudo apt install xxx
+sudo apt remove xxx
+sudo apt install pipewire wireplumber pipewire-audio-client-libraries pipewire-pulse libpipewire-0.3-dev libldacbt-{abr,enc}2 libspa-0.2-bluetooth libspa-0.2-jack
 ```
 
-##### XXX.
+##### Discord.
+
+You will need to use a Snap to install Discord.
+
 ```bash
-sudo apt install xxx
+sudo snap install discord
 ```
 

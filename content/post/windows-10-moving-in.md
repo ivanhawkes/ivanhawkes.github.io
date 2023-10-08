@@ -68,16 +68,25 @@ Moving into a fresh Windows 10 installation.
 
 # Software Folder.
 
+# Archive
+
+Akai S6000
+Brekel Kinect Pro Body
+DVD Decrypter
+Floppies
+Sony Playstation Eye
+Visual Basic
+Wilbur
+World Machine Pro
+
 # Miscellaneous
 
 Ableton Live Lite
 AIMP
-Akai S6000
 Aria2
 ASIO4ALL
 Audio
 AVIDemux
-Brekel Kinect Pro Body
 Calibre
 Chicken Systems Translator
 Commodore 64
@@ -85,8 +94,6 @@ Corsair
 CRYENGINE
 dBPowerAmp
 DE10-Nano
-DVD Decrypter
-Floppies
 Fonts
 Fractal Terrains 3
 FreeCAD
@@ -109,14 +116,10 @@ RegexRenamer
 Rigol
 Rocksmith
 Saleae Logic Analyser
-Sony Playstation Eye
 Synthesia
 TL 866 II Plus EEPROM Programmer
 VeeCAD
 Vegas Pro 14 Edit
-Visual Basic
 Vocaluxe
 WD MyBook Live
-Wilbur
 Win Dir Stat
-World Machine Pro

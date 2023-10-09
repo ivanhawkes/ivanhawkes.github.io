@@ -10,7 +10,7 @@ image-thumbnail: /img/site/category/programming.jpg
 author: "Ivan Hawkes"
 ---
 
-Moving into a fresh Windows 10 installation.
+Moving into a fresh Windows 10 installation. Didn't deploy.
 <!--more-->
 
 # Most Important.

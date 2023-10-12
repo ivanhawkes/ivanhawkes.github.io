@@ -62,7 +62,7 @@
 </span></span></code></pre></div><h5 id=pipewire>Pipewire.</h5><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo apt remove xxx
 </span></span><span style=display:flex><span>sudo apt install pipewire wireplumber pipewire-audio-client-libraries pipewire-pulse libpipewire-0.3-dev libldacbt-<span style=color:#f92672>{</span>abr,enc<span style=color:#f92672>}</span><span style=color:#ae81ff>2</span> libspa-0.2-bluetooth libspa-0.2-jack
 </span></span></code></pre></div><h5 id=discord>Discord.</h5><p>You will need to use a Snap to install Discord.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo snap install discord
-</span></span></code></pre></div><h5 id=allow-grub-menu-to-list-other-oss>Allow Grub Menu to List Other OS&rsquo;s.</h5><p>Ubuntu 22.04 disables the other OS probing mechanism for security reasons. We really want it back again.</p><p>NOTE: This doesn&rsquo;t currently work. You need to follow these instructions to edit /etc/grub.d/06_local_colors</p><p>(Edit local colors)[https://askubuntu.com/questions/433839/how-do-i-change-the-font-colours-for-grub]</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Edit grub config file.</span>
+</span></span></code></pre></div><h5 id=allow-grub-menu-to-list-other-oss>Allow Grub Menu to List Other OS&rsquo;s.</h5><p>Ubuntu 22.04 disables the other OS probing mechanism for security reasons. We really want it back again.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Edit grub config file.</span>
 </span></span><span style=display:flex><span>sudo nano /etc/default/grub
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>-- Edit this line to switch the video mode to something more sensible...
@@ -76,6 +76,18 @@
 </span></span><span style=display:flex><span><span style=color:#75715e># Switching the colours to something nicer.     </span>
 </span></span><span style=display:flex><span>GRUB_COLOR_NORMAL<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;light-white/blue&#34;</span>
 </span></span><span style=display:flex><span>GRUB_COLOR_HIGHLIGHT<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;yellow/blue&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>-- Save the file and run...
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>sudo update-grub
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>-- NOTE: The colour changes don<span style=color:#960050;background-color:#1e0010>&#39;</span>t currently work in Ubuntu. Instead, edit one of the config make files directly <span style=color:#66d9ef>for</span> now.
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>sudo nano /etc/grub.d/05_debian_theme
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>                       <span style=color:#75715e># Set a monochromatic theme for Tanglu/Ubuntu.</span>
+</span></span><span style=display:flex><span>                        echo <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>1<span style=color:#e6db74>}</span><span style=color:#e6db74>set menu_color_normal=light-gray/blue&#34;</span>
+</span></span><span style=display:flex><span>                        echo <span style=color:#e6db74>&#34;</span><span style=color:#e6db74>${</span>1<span style=color:#e6db74>}</span><span style=color:#e6db74>set menu_color_highlight=yellow/blue&#34;</span>
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>-- Save the file and run...
 </span></span><span style=display:flex><span>

@@ -179,10 +179,6 @@ sudo snap install discord
 
 Ubuntu 22.04 disables the other OS probing mechanism for security reasons. We really want it back again.
 
-NOTE: This doesn't currently work. You need to follow these instructions to edit /etc/grub.d/06_local_colors
-
-(Edit local colors)[https://askubuntu.com/questions/433839/how-do-i-change-the-font-colours-for-grub]
-
 ```bash
 # Edit grub config file.
 sudo nano /etc/default/grub
@@ -198,6 +194,18 @@ GRUB_DISABLE_OS_PROBER=false
 # Switching the colours to something nicer.     
 GRUB_COLOR_NORMAL="light-white/blue"
 GRUB_COLOR_HIGHLIGHT="yellow/blue"
+
+-- Save the file and run...
+
+sudo update-grub
+
+-- NOTE: The colour changes don't currently work in Ubuntu. Instead, edit one of the config make files directly for now.
+
+sudo nano /etc/grub.d/05_debian_theme
+
+                       # Set a monochromatic theme for Tanglu/Ubuntu.
+                        echo "${1}set menu_color_normal=light-gray/blue"
+                        echo "${1}set menu_color_highlight=yellow/blue"
 
 -- Save the file and run...
 

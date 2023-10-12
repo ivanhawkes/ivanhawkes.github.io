@@ -59,12 +59,27 @@
 </span></span><span style=display:flex><span>sudo npm i -g alacritty-themes
 </span></span><span style=display:flex><span>alacritty-themes
 </span></span></code></pre></div><h5 id=thunar>Thunar.</h5><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo apt install thunar
-</span></span></code></pre></div><h5 id=samba>SAMBA.</h5><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo apt install samba
-</span></span><span style=display:flex><span>sudo ufw allow samba
-</span></span><span style=display:flex><span>sudo smbpasswd -a $USER
 </span></span></code></pre></div><h5 id=pipewire>Pipewire.</h5><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo apt remove xxx
 </span></span><span style=display:flex><span>sudo apt install pipewire wireplumber pipewire-audio-client-libraries pipewire-pulse libpipewire-0.3-dev libldacbt-<span style=color:#f92672>{</span>abr,enc<span style=color:#f92672>}</span><span style=color:#ae81ff>2</span> libspa-0.2-bluetooth libspa-0.2-jack
 </span></span></code></pre></div><h5 id=discord>Discord.</h5><p>You will need to use a Snap to install Discord.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo snap install discord
+</span></span></code></pre></div><h5 id=allow-grub-menu-to-list-other-oss>Allow Grub Menu to List Other OS&rsquo;s.</h5><p>Ubuntu 22.04 disables the other OS probing mechanism for security reasons. We really want it back again.</p><p>NOTE: This doesn&rsquo;t currently work. You need to follow these instructions to edit /etc/grub.d/06_local_colors</p><p>(Edit local colors)[https://askubuntu.com/questions/433839/how-do-i-change-the-font-colours-for-grub]</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span><span style=color:#75715e># Edit grub config file.</span>
+</span></span><span style=display:flex><span>sudo nano /etc/default/grub
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>-- Edit this line to switch the video mode to something more sensible...
+</span></span><span style=display:flex><span>GRUB_GFXMODE<span style=color:#f92672>=</span>800x600x32,auto
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>-- Add these lines...
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Need this to have it auto-detect other OS.</span>
+</span></span><span style=display:flex><span>GRUB_DISABLE_OS_PROBER<span style=color:#f92672>=</span>false
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Switching the colours to something nicer.     </span>
+</span></span><span style=display:flex><span>GRUB_COLOR_NORMAL<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;light-white/blue&#34;</span>
+</span></span><span style=display:flex><span>GRUB_COLOR_HIGHLIGHT<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;yellow/blue&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>-- Save the file and run...
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>sudo update-grub
 </span></span></code></pre></div></div></div><div class=row><div class=col-12><hr></div></div><div class=row><div class=col><p class=h6>Discover more posts like this:</p><p class=h6><a class="btn btn-primary" href=/tags/linux>Linux</a>
 <a class="btn btn-primary" href=/tags/ubuntu>Ubuntu</a></p></div></div><div class=row><div class=col><hr></div></div><div class=row><div class="col-6 text-start">Previous:<br><a href=https://ivanhawkes.github.io/post/chrysalis-update-2020-08-02/>Chrysalis Update for 2020-08-02</a></div><div class="col-6 text-end">Next:<br><a href=https://ivanhawkes.github.io/post/installing-nginx-on-docker/>Installing Nginx using Docker and Portainer</a></div></div></div></div><footer><div class=row><div class=col><hr></div></div><nav class="navbar navbar-expand-lg"><div class=container-fluid>&copy; 2021 Ivan Hawkes all rights reserved.</div></nav></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css integrity=sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3 crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css integrity=sha384-7ynz3n3tAGNUYFZD3cWe5PDcE36xj85vyFkawcF6tIwxvIecqKvfwLiaFdizhPpN crossorigin=anonymous><link rel=stylesheet type=text/css href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"></body></html>

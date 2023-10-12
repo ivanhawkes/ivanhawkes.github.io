@@ -161,13 +161,6 @@ alacritty-themes
 sudo apt install thunar
 ```
 
-##### SAMBA.
-```bash
-sudo apt install samba
-sudo ufw allow samba
-sudo smbpasswd -a $USER
-```
-
 ##### Pipewire.
 ```bash
 sudo apt remove xxx
@@ -182,3 +175,31 @@ You will need to use a Snap to install Discord.
 sudo snap install discord
 ```
 
+##### Allow Grub Menu to List Other OS's.
+
+Ubuntu 22.04 disables the other OS probing mechanism for security reasons. We really want it back again.
+
+NOTE: This doesn't currently work. You need to follow these instructions to edit /etc/grub.d/06_local_colors
+
+(Edit local colors)[https://askubuntu.com/questions/433839/how-do-i-change-the-font-colours-for-grub]
+
+```bash
+# Edit grub config file.
+sudo nano /etc/default/grub
+
+-- Edit this line to switch the video mode to something more sensible...
+GRUB_GFXMODE=800x600x32,auto
+
+-- Add these lines...
+
+# Need this to have it auto-detect other OS.
+GRUB_DISABLE_OS_PROBER=false
+
+# Switching the colours to something nicer.     
+GRUB_COLOR_NORMAL="light-white/blue"
+GRUB_COLOR_HIGHLIGHT="yellow/blue"
+
+-- Save the file and run...
+
+sudo update-grub
+```

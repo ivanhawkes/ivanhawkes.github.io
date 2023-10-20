@@ -81,7 +81,7 @@
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>sudo update-grub
 </span></span><span style=display:flex><span>
-</span></span><span style=display:flex><span>-- NOTE: The colour changes don<span style=color:#960050;background-color:#1e0010>&#39;</span>t currently work in Ubuntu. Instead, edit one of the config make files directly <span style=color:#66d9ef>for</span> now.
+</span></span><span style=display:flex><span>-- NOTE: The colour changes don<span style=color:#e6db74>&#39;&#39;</span>t currently work in Ubuntu. Instead, edit one of the config make files directly <span style=color:#66d9ef>for</span> now.
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>sudo nano /etc/grub.d/05_debian_theme
 </span></span><span style=display:flex><span>
@@ -92,6 +92,19 @@
 </span></span><span style=display:flex><span>-- Save the file and run...
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span>sudo update-grub
+</span></span></code></pre></div><h4 id=raspberry-pi-pico-development>Raspberry Pi Pico Development</h4><h5 id=install-openocd>Install OpenOCD</h5><p>Make sure it&rsquo;s not already installed. Remove it if necesssary.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo apt -y autoremove --purge openocd
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e># Clone the Pico libraries.</span>
+</span></span><span style=display:flex><span>~/nixos-config/users/ivan/.local/bin/clone-pico-libraries.sh
+</span></span></code></pre></div><p>Install from source. Ubunutu 22.04 didn&rsquo;t install all the targets correctly and left it in a non-running state.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo apt install automake autoconf build-essential texinfo libtool libftdi-dev libusb-1.0-0-dev
+</span></span><span style=display:flex><span>cd ~/projects
+</span></span><span style=display:flex><span>git clone --recursive git@github.com:raspberrypi/openocd.git
+</span></span><span style=display:flex><span>cd openocd
+</span></span><span style=display:flex><span>./bootstrap 
+</span></span><span style=display:flex><span>./configure --enable-cmsis-dap-v2 --enable-cmsis-dap
+</span></span><span style=display:flex><span>make -j <span style=color:#ae81ff>24</span>
+</span></span><span style=display:flex><span>sudo make install
+</span></span></code></pre></div><p>NOTE: The ./configure should take those flags but it seemed to produce different output and wouldn&rsquo;t run make afterwards. YMMV.</p><p>Final step is to ensure there is a UDEV rule for the PicoProbe. OpenOCD can&rsquo;t open the probe if you don&rsquo;t provide the rule.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>sudo cp ~/projects/openocd/contrib/60-openocd.rules /etc/udev/rules.d/
 </span></span></code></pre></div></div></div><div class=row><div class=col-12><hr></div></div><div class=row><div class=col><p class=h6>Discover more posts like this:</p><p class=h6><a class="btn btn-primary" href=/tags/linux>Linux</a>
 <a class="btn btn-primary" href=/tags/ubuntu>Ubuntu</a></p></div></div><div class=row><div class=col><hr></div></div><div class=row><div class="col-6 text-start">Previous:<br><a href=https://ivanhawkes.github.io/post/chrysalis-update-2020-08-02/>Chrysalis Update for 2020-08-02</a></div><div class="col-6 text-end">Next:<br><a href=https://ivanhawkes.github.io/post/installing-nginx-on-docker/>Installing Nginx using Docker and Portainer</a></div></div></div></div><footer><div class=row><div class=col><hr></div></div><nav class="navbar navbar-expand-lg"><div class=container-fluid>&copy; 2021 Ivan Hawkes all rights reserved.</div></nav></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css integrity=sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3 crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js integrity=sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM crossorigin=anonymous></script>
 <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.0/font/bootstrap-icons.css integrity=sha384-7ynz3n3tAGNUYFZD3cWe5PDcE36xj85vyFkawcF6tIwxvIecqKvfwLiaFdizhPpN crossorigin=anonymous><link rel=stylesheet type=text/css href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"></body></html>

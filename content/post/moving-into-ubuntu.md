@@ -199,7 +199,7 @@ GRUB_COLOR_HIGHLIGHT="yellow/blue"
 
 sudo update-grub
 
--- NOTE: The colour changes don't currently work in Ubuntu. Instead, edit one of the config make files directly for now.
+-- NOTE: The colour changes don''t currently work in Ubuntu. Instead, edit one of the config make files directly for now.
 
 sudo nano /etc/grub.d/05_debian_theme
 
@@ -210,4 +210,38 @@ sudo nano /etc/grub.d/05_debian_theme
 -- Save the file and run...
 
 sudo update-grub
+```
+
+#### Raspberry Pi Pico Development
+
+##### Install OpenOCD
+
+Make sure it's not already installed. Remove it if necesssary.
+
+```bash
+sudo apt -y autoremove --purge openocd
+
+# Clone the Pico libraries.
+~/nixos-config/users/ivan/.local/bin/clone-pico-libraries.sh
+```
+
+Install from source. Ubunutu 22.04 didn't install all the targets correctly and left it in a non-running state.
+
+```bash
+sudo apt install automake autoconf build-essential texinfo libtool libftdi-dev libusb-1.0-0-dev
+cd ~/projects
+git clone --recursive git@github.com:raspberrypi/openocd.git
+cd openocd
+./bootstrap 
+./configure --enable-cmsis-dap-v2 --enable-cmsis-dap
+make -j 24
+sudo make install
+```
+
+NOTE: The ./configure should take those flags but it seemed to produce different output and wouldn't run make afterwards. YMMV.
+
+Final step is to ensure there is a UDEV rule for the PicoProbe. OpenOCD can't open the probe if you don't provide the rule.
+
+```bash
+sudo cp ~/projects/openocd/contrib/60-openocd.rules /etc/udev/rules.d/
 ```

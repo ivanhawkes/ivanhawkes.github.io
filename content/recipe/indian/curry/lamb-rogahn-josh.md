@@ -26,7 +26,7 @@ Quantity        | Measure           | Ingredient
 1/2             | leg               | lamb (1 inch cubes) approximately 1.8kg
 {{</table>}}
 
-## Instructions
+# Instructions
 
 * Cube the lamb into one inch sized chunks.
 
@@ -34,9 +34,7 @@ Quantity        | Measure           | Ingredient
 
 * Place it in the fridge and let it marinate for a few hours or overnight.
 
-# Sauce
-
-## Ingredients
+# Main Dish Ingredients
 
 Quantity        | Measure           | Ingredient
 ----------------|-------------------|-----------
@@ -51,7 +49,7 @@ Quantity        | Measure           | Ingredient
 4               | tbs               | tomato paste
 2               | tbs               | Kashmiri chiles (ground) or 1/2 tbs cayenne mixed with 1 1/2 tbs sweet paprika
 
-## Instructions
+# Instructions
 
 * Heat the ghee in a frying pan over medium-high heat.
 

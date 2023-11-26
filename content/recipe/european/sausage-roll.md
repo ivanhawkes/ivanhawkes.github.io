@@ -3,7 +3,7 @@ type: post
 category: Recipe
 title: "Sausage Roll"
 date: 2023-11-08
-tags: ["Recipe", "English", "Fast Food"]
+tags: ["Recipe", "European", "Fast Food"]
 author: "Ivan Hawkes"
 portions: 16
 image: /img/site/category/salad.jpg
@@ -16,20 +16,20 @@ A basic sausage roll.
 # Ingredients
 
 {{<table "table table-striped table-bordered">}}
-Quantity		| Measure 			| Ingredient
+Quantity  | Measure    | Ingredient
 ----------------|-------------------|-----------
-500				| grams				| beef mince
-500				| grams				| pork mince
-6				| sheets			| puff pastry
-2				| whole				| eggs
-1				| tbs				| rosemary
-1				| tbs				| sage
-1				| tbs				| thyme
-1				| tbs				| marjoram
-1				| tspn				| salt
-1				| tspn				| ground white pepper
-1				| tspn				| ground black pepper
-1				| tspn				| ground cayenne pepper
+500    | grams    | beef mince
+500    | grams    | pork mince
+2    | whole    | eggs
+6    | sheets   | puff pastry
+1    | tbs    | rosemary
+1    | tbs    | sage
+1    | tbs    | thyme
+1    | tbs    | marjoram
+1    | tspn    | salt
+1    | tspn    | ground white pepper
+1    | tspn    | ground black pepper
+1    | tspn    | ground cayenne pepper
 {{</table>}}
 
 # Instructions

@@ -21,7 +21,7 @@ Quantity        | Measure           | Ingredient
 1/2             | cup               | plain yoghurt
 2               | tbs               | ginger (crushed)
 4               | tbs               | garlic (crushed)
-4               | tsp               | Bin bhuna hua garam masala (see recipe)
+4               | tsp               | Bin bhuna hua garam masala [recipe](../garama-masala/bin-bhuna-hua-garam-masala.md)
 4               | tsp               | salt
 1/2             | leg               | lamb (1 inch cubes) approximately 1.8kg
 {{</table>}}

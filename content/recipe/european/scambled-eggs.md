@@ -10,7 +10,7 @@ image: /img/site/category/salad.jpg
 image-thumbnail: /img/site/category/salad.jpg
 ---
 
-A basic sausage roll.
+Lovely, soft, buttery scrambled eggs.
 <!--more-->
 
 # Ingredients

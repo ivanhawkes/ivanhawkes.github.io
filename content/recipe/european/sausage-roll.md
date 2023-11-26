@@ -16,20 +16,20 @@ A basic sausage roll.
 # Ingredients
 
 {{<table "table table-striped table-bordered">}}
-Quantity  | Measure    | Ingredient
+Quantity        | Measure           | Ingredient
 ----------------|-------------------|-----------
-500    | grams    | beef mince
-500    | grams    | pork mince
-2    | whole    | eggs
-6    | sheets   | puff pastry
-1    | tbs    | rosemary
-1    | tbs    | sage
-1    | tbs    | thyme
-1    | tbs    | marjoram
-1    | tspn    | salt
-1    | tspn    | ground white pepper
-1    | tspn    | ground black pepper
-1    | tspn    | ground cayenne pepper
+500             | grams             | beef mince
+500             | grams             | pork mince
+2               | whole             | eggs
+6               | sheets            | puff pastry
+1               | tbs               | rosemary
+1               | tbs               | sage (ground)
+1               | tbs               | thyme
+1               | tbs               | marjoram
+1               | tsp               | salt
+1               | tsp               | white pepper (ground)
+1               | tsp               | black pepper (ground)
+1               | tsp               | cayenne pepper (ground)
 {{</table>}}
 
 # Instructions

@@ -16,15 +16,15 @@ A simple and traditional French salad dressing.
 # Ingredients
 
 {{<table "table table-striped table-bordered">}}
-Quantity		| Measure 			| Ingredient
+Quantity  | Measure    | Ingredient
 ----------------|-------------------|-----------
-1/2				| cup 				| olive oil
-1/2				| cup				| balsamic vinegar
-2				| tbs				| dijon mustard
-3				| cloves			| garlic (finely diced)
-1				| tbs				| sugar
-1/4				| tbs				| salt
-1/4				| tbs 				| black pepper (fresh ground)
+1/2    | cup     | olive oil
+1/2    | cup    | balsamic vinegar
+2    | tbs    | dijon mustard
+3    | cloves   | garlic (finely diced)
+1    | tbs    | sugar
+1/4    | tbs    | salt
+1/4    | tbs     | black pepper (ground)
 {{</table>}}
 
 # Instructions

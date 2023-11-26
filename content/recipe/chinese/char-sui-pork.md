@@ -16,22 +16,22 @@ The mouth watering Chinese pork dish that can be eaten on it's own or added to s
 # Ingredients
 
 {{<table "table table-striped table-bordered">}}
-Quantity		| Measure 			| Ingredient
+Quantity  | Measure    | Ingredient
 ----------------|-------------------|-----------
-2				| kgs				| pork - whole shoulder or collar
-2				| tbs				| maltose or honey
-2				| tbs				| maltose or honey (for brushing on)
-2				| tbs				| oyster sauce
-2				| tbs				| hoisin sauce
-2				| tbs				| light soy sauce
-2				| tbs				| dark soy sauce
-2				| tsp				| five spice powder
-6				| cloves			| garlic
-1				| tsp				| grated ginger
-4				| pieces			| fermented soy
-4				| tbs				| shaoxing wine
-2				| tsp				| sesame oil
-2				| tsp				| ground white pepper
+2    | kgs    | pork - whole shoulder or collar
+2    | tbs    | maltose or honey
+2    | tbs    | maltose or honey (for brushing on)
+2    | tbs    | oyster sauce
+2    | tbs    | hoisin sauce
+2    | tbs    | light soy sauce
+2    | tbs    | dark soy sauce
+2    | tsp    | five spice powder
+6    | cloves   | garlic
+1    | tsp    | grated ginger
+4    | pieces   | fermented soy
+4    | tbs    | shaoxing wine
+2    | tsp    | sesame oil
+2    | tsp    | white pepper (ground)
 {{</table>}}
 
 # Instructions

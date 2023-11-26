@@ -16,19 +16,19 @@ A dressing for a Caesar salad. It's also good for pretty much any salad.
 # Ingredients
 
 {{<table "table table-striped table-bordered">}}
-Quantity		| Measure 			| Ingredient
+Quantity        | Measure           | Ingredient
 ----------------|-------------------|-----------
-4				| whole				| anchovy fillets
-3				| cloves			| garlic (finely diced)
-2				| whole				| egg yolks
-1				| tbs				| fresh lemon juice
-1				| tbs				| red wine vinegar
-1				| tbs				| worcestershire sauce
-1				| tspn				| dijon mustard
-1/3				| cup 				| olive oil
-1				| tbs				| brown sugar
-1/2				| tbs				| salt
-1/2				| tbs 				| black pepper (fresh ground)
+4               | whole             | anchovy fillets
+3               | cloves            | garlic (finely diced)
+2               | whole             | egg yolks
+1               | tbs               | fresh lemon juice
+1               | tbs               | red wine vinegar
+1               | tbs               | worcestershire sauce
+1               | tsp               | dijon mustard
+1/3             | cup               | olive oil
+1               | tbs               | brown sugar
+1/2             | tbs               | salt
+1/2             | tbs               | black pepper (ground)
 {{</table>}}
 
 # Instructions

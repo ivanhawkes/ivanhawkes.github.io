@@ -22,8 +22,8 @@ Quantity        | Measure           | Ingredient
 2               | tbs               | water
 1               | tsp               | tapioca flour (or cornstarch)
 1/2             | tsp               | salt
-1/2             | tsp               | ground white pepper
-1/2             | tsp               | ground black pepper
+1/2             | tsp               | white pepper (ground)
+1/2             | tsp               | black pepper (ground)
 2               | tbs               | butter
 {{</table>}}
 

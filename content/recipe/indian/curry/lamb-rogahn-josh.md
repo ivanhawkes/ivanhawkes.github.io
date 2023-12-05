@@ -36,6 +36,7 @@ Quantity        | Measure           | Ingredient
 
 # Main Dish Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity        | Measure           | Ingredient
 ----------------|-------------------|-----------
 4               | tbs               | ghee
@@ -48,6 +49,7 @@ Quantity        | Measure           | Ingredient
 2               | cups              | red onion (medium, finely chopped)
 4               | tbs               | tomato paste
 2               | tbs               | Kashmiri chiles (ground) or 1/2 tbs cayenne mixed with 1 1/2 tbs sweet paprika
+{{</table>}}
 
 # Instructions
 

@@ -1,2 +1,3 @@
 public/
 .vs/
+.hugo_build.lock

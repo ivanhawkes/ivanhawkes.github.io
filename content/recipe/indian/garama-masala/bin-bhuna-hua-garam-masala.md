@@ -15,6 +15,7 @@ An untoasted garam masala.
 
 # Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity        | Measure           | Ingredient
 ----------------|-------------------|-----------
 2               | tbs               | coriander seeds
@@ -24,6 +25,7 @@ Quantity        | Measure           | Ingredient
 1/2             | tsp               | cardamom seeds from green or white pods
 2               | whole             | dried bay leaves (Indian)
 1               | tsp               | cayenne chilli (ground)
+{{</table>}}
 
 # Instructions
 

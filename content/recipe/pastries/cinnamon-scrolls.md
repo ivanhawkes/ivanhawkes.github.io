@@ -13,42 +13,42 @@ image-thumbnail: /img/site/category/bread.jpg
 Sweet, doughnut like, cinnamon scrolls with a drizzle of cream cheese icing.
 <!--more-->
 
-# Dough:
+# Dough
 
 {{<table "table table-striped table-bordered">}}
 Quantity	| Measure 		| Ingredient
 ------------|---------------|-----------
-5      		| cups 			| plain flour, sifted, plus extra to dust
+5      		| cups 			| plain flour
 2      		| cups 			| milk, warmed
 1/3    		| cup 			| caster sugar
-100			| grams			| butter, melted
+100			| grams			| butter (softened)
 1			| grams			| salt
 2			| tsp			| dried yeast
 1			| tsp			| baking powder
 1			| tsp			| salt
 {{</table>}}
 
-# Cinnamon butter:
+# Cinnamon butter
 
 {{<table "table table-striped table-bordered">}}
 Quantity	| Measure 		| Ingredient
 ------------|---------------|-----------
-150			| grams			| butter, softened
+150			| grams			| butter (softened)
 1/4    		| cup 			| brown sugar
 2			| tbs			| ground cinnamon
 {{</table>}}
 
-# Cream cheese drizzle:
+# Cream cheese drizzle
 
 {{<table "table table-striped table-bordered">}}
 Quantity	| Measure 		| Ingredient
 ------------|---------------|-----------
-100			| grams			| cream cheese, softened
+100			| grams			| cream cheese (softened)
 1/4    		| cup 			| icing sugar mixture
 2			| tbs 			| milk (optional, to thin mixture)
 {{</table>}}
 
-# Directions:
+# Instructions
 
 * Place yeast, milk, butter and sugar in the bowl of an electric mixer. Stir to combine, then stand for 10 minutes or until bubbles form and yeast has dissolved.
 

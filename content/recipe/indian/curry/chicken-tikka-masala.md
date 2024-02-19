@@ -47,6 +47,7 @@ Quantity		| Measure 			| Ingredient
 
 ## Ingredients
 
+{{<table "table table-striped table-bordered">}}
 Quantity		| Measure 			| Ingredient
 ----------------|-------------------|-----------
 2				| tbs				| ghee
@@ -60,6 +61,7 @@ Quantity		| Measure 			| Ingredient
 1/4				| tsp				| cayenne
 1/4				| tsp				| Punjabi garam masala
 2				| tbs				| coriander leaves and stems (finely chopped for garnish)
+{{</table>}}
 
 ## Instructions
 

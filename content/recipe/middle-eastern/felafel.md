@@ -31,7 +31,7 @@ Quantity		| Measure 			| Ingredient
 1/4				| tsp				| cayenne pepper
 {{</table>}}
 
-# Instructions
+# Directions
 
 Soak dried chickpeas overnight.
 

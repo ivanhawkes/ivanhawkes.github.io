@@ -31,7 +31,7 @@ Quantity		| Measure 			| Ingredient
 2				| tsp				| fried shallots (garnish)
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Heat some oil in a wok over a medium-high heat. Add laksa paste and cook , stirring occasionally for about 2 mins or until you can really start to smell that real laksa fragrance, stir in coconut milk and stock and bring to boil, Reduce heat to medium-low and simmer, uncovered for 5-10 mins.
 

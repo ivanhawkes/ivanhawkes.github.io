@@ -40,7 +40,7 @@ Quantity		| Measure 			| Ingredient
 1/2				| kg				| slab pork fat back
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Place pork and chicken bones in a large stockpot and cover with cold water. Place on a burner over high heat and bring to a boil. Remove from heat as soon as boil is reached.
 

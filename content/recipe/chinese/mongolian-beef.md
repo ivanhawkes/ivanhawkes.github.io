@@ -23,7 +23,7 @@ Quantity		| Measure 			| Ingredient
 1				| whole				| egg
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Place the meat into a bowl
 * Add the soy, flour and egg
@@ -46,7 +46,7 @@ Quantity		| Measure 			| Ingredient
 2				| tsp 				| corn flour
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Combine all the ingredients together and stir well.
 
@@ -65,7 +65,7 @@ Quantity		| Measure 			| Ingredient
 1				| splash			| sesame oil
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Pass the beef through hot oil i.e. deep fry it lightly.
 

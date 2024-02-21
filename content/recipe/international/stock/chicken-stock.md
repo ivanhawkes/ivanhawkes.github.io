@@ -31,7 +31,7 @@ Quantity		| Measure 			| Ingredient
 1				| tbs				| salt
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Optional: brown the chicken either in the stock pot or the oven.
 

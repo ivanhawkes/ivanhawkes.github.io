@@ -33,7 +33,7 @@ Quantity		| Measure 			| Ingredient
 1				| tsp				| black pepper
 {{</table>}}
 
-# Instructions
+# Directions
 
 Mix it all together in a stand mixer.
 

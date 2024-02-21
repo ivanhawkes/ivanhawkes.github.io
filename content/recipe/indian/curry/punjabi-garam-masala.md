@@ -27,7 +27,7 @@ Quantity		| Measure 			| Ingredient
 3				| whole				| tejpatta leaves (Cinnamomum tamal, Indian Bay Leaf)
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Dry toast all the ingrediants in a pan then transfer to a plate to cool.
 

@@ -52,7 +52,7 @@ Quantity		| Measure 			| Ingredient
 
 * Let it marinate for a few hours.
 
-## Instructions
+## Directions
 
 * Dry fry the spices if desired.
 

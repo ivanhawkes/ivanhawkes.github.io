@@ -28,7 +28,7 @@ Quantity		| Measure 			| Ingredient
 1/2				| tsp				| salt
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Lay out the bacon in an air fryer and blast at 200c for 10 minutes or until dried and crispy. Chop into small chunks when ready.
 

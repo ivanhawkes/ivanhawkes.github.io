@@ -27,6 +27,6 @@ Quantity        | Measure           | Ingredient
 1               | tsp               | cayenne chilli (ground)
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Place all the ingredients into a spice grinder and grind to a fine powder.

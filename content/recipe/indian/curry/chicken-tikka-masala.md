@@ -31,7 +31,7 @@ Quantity		| Measure 			| Ingredient
 1/2				| tsp				| ground turmeric
 {{</table>}}
 
-## Instructions
+## Directions
 
 * Dry fry the spices if desired.
 
@@ -63,7 +63,7 @@ Quantity		| Measure 			| Ingredient
 2				| tbs				| coriander leaves and stems (finely chopped for garnish)
 {{</table>}}
 
-## Instructions
+## Directions
 
 * Cook the sauce.
 

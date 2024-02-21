@@ -32,7 +32,7 @@ Quantity        | Measure           | Ingredient
 1               | tsp               | cayenne pepper (ground)
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Mix it all in a large bowl.
 

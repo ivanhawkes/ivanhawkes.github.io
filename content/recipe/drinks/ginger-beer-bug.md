@@ -12,7 +12,7 @@ image-thumbnail: /img/site/category/recipe-book.jpg
 A ginger beer bug is the first step to making a traditional ginger beer. It is a living organism containing yeast from your work area.
 <!--more-->
 
-# Ingredients:
+# Ingredients
 
 On the first day...
 
@@ -33,7 +33,7 @@ Quantity	| Measure 		| Ingredient
 25	 		| g 			| organic ginger root - a roughly 5cm long piece
 {{</table>}}
 
-# Directions:
+# Directions
 
 Try to maintain a clean work space at all times. It doesn't have to be sterile, but any bacteria that is on your tools will end up in the jar and may taint the flavour of the ferment.
 
@@ -45,6 +45,6 @@ Try to maintain a clean work space at all times. It doesn't have to be sterile, 
 
 After a week or so you can place the ferment into the fridge and cover losely with a fitted lid. Do not screw up or afix the lid as this can cause a buildup of pressure and an explosion. Feed the bug every week when it is stored in the fridge.
 
-# Notes:
+# Notes
 
 See also [Ginger Beer](../ginger-beer) recipe.

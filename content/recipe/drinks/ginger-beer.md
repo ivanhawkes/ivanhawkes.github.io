@@ -13,7 +13,7 @@ image-thumbnail: /img/site/category/recipe-book.jpg
 A delightful, fizzy traditional ginger beer. This is a lacto ferment so the results will depend on the lacto bateria in your kitchen and will likely vary from your friend's efforts.
 <!--more-->
 
-# Ingredients:
+# Ingredients
 
 {{<table "table table-striped table-bordered">}}
 Quantity	| Measure 		| Ingredient
@@ -30,7 +30,7 @@ Quantity	| Measure 		| Ingredient
 {{</table>}}
 
 
-# Directions:
+# Directions
 
 * Fill a pot with the water and sugar and start to bring it up to temperature.
 
@@ -52,6 +52,6 @@ Quantity	| Measure 		| Ingredient
 
 * Store the bottles in the fridge to slow down the fermentation. This will give you time to drink the ginger beer before it explodes. If you are keeping for longer than 5 - 7 days consider opening the bottles to release some pressure.
 
-# Notes:
+# Notes
 
 If you don't already have a [ginger beer bug](../ginger-beer-bug) you can learn how to make one with [this recipe](../ginger-beer-bug).

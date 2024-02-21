@@ -48,7 +48,7 @@ Quantity	| Measure 		| Ingredient
 2			| tbs 			| milk (optional, to thin mixture)
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Place yeast, milk, butter and sugar in the bowl of an electric mixer. Stir to combine, then stand for 10 minutes or until bubbles form and yeast has dissolved.
 

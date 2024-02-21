@@ -27,7 +27,7 @@ Quantity		| Measure 			| Ingredient
 1 				| tsp 				| Bonox
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Combine all the ingredients together and stir well.
 

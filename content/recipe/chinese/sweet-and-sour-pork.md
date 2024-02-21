@@ -56,7 +56,7 @@ Quantity		| Measure 			| Ingredient
 3				| stems				| shallot
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Marinate the pork for 1 - 4 hours.
 

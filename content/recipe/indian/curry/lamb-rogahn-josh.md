@@ -26,7 +26,7 @@ Quantity        | Measure           | Ingredient
 1/2             | leg               | lamb (1 inch cubes) approximately 1.8kg
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Cube the lamb into one inch sized chunks.
 
@@ -51,7 +51,7 @@ Quantity        | Measure           | Ingredient
 2               | tbs               | Kashmiri chiles (ground) or 1/2 tbs cayenne mixed with 1 1/2 tbs sweet paprika
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Heat the ghee in a frying pan over medium-high heat.
 

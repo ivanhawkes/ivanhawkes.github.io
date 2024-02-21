@@ -58,7 +58,7 @@ Quantity		| Measure 			| Ingredient
 1/4				| tsp				| fennel seed (optional)
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Slice the pork into large chunks (2-3 cm). Expect a little shrinkage during cooking.
 

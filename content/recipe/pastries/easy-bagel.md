@@ -13,7 +13,7 @@ image-thumbnail: /img/site/category/bread.jpg
 Simple bagels done right—it takes a bit of effort to make them the first time, but it’s easier every time thereafter. And the end result is so very worth the time.
 <!--more-->
 
-# Ingredients:
+# Ingredients
 
 {{<table "table table-striped table-bordered">}}
 Quantity	| Measure 		| Ingredient
@@ -25,7 +25,7 @@ Quantity	| Measure 		| Ingredient
 1			| tbs			| salt
 {{</table>}}
 
-# Directions:
+# Directions
 
 * Combine 1 1/2 cups flour and yeast in a large bowl. Combine 1 1/2 cups water, 3 tablespoons sugar, and salt in a medium bowl; pour over flour mixture.
 * Beat on low speed for 30 seconds, scraping sides of bowl constantly. Beat 3 minutes on high speed.

@@ -29,7 +29,7 @@ Quantity		| Measure 			| Ingredient
 1				| tsp 				| sugar
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Stir fry the fermented black bean in pan without oil for around 1 to 2 minutes until they are separated from each other. Transfer out.
 

@@ -13,7 +13,7 @@ image-thumbnail: /img/site/category/recipe-book.jpg
 A thoroughly rich and creamy dessert that is certain to please.
 <!--more-->
 
-# Ingredients:
+# Ingredients
 
 {{<table "table table-striped table-bordered">}}
 Quantity	| Measure 		| Ingredient
@@ -30,7 +30,7 @@ Quantity	| Measure 		| Ingredient
 1	 		| whole 		| egg yolk
 {{</table>}}
 
-# Directions:
+# Directions
 
 * Place all the ingredients into a blender and mix until smooth.
 

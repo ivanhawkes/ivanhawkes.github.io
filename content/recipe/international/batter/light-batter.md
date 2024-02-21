@@ -26,7 +26,7 @@ Quantity		| Measure 			| Ingredient
 1				|					| egg
 {{</table>}}
 
-# Instructions
+# Directions
 
 * In a mixing bowl, combine the flour, cornstarch, sodium bicarbonate, and salt. Mix together.
 

@@ -8,26 +8,30 @@ summary:
 image: /img/site/category/recipe-book.jpg
 thumbnail-image: /img/site/category/recipe-book.jpg
 author: "Ivan Hawkes"
-draft: true
+draft: false
 ---
 
-# Ingredients:
+# Ingredients
 
-Quantity	| Measure 		| Ingredient
-------------|---------------|-----------
-xxx 		| xxx 			| xxx
-xxx 		| xxx 			| xxx
-xxx 		| xxx 			| xxx
-xxx 		| xxx 			| xxx
-xxx 		| xxx 			| xxx
-xxx 		| xxx 			| xxx
-xxx 		| xxx 			| xxx
-xxx 		| xxx 			| xxx
-xxx 		| xxx 			| xxx
-xxx 		| xxx 			| xxx
+Quantity        | Measure           | Ingredient
+----------------|-------------------|-----------
+250             | ml                | double cream
+Quantity		| Measure 			| Ingredient
+----------------|-------------------|-----------
+xxx		 		| xxx	 			| xxx
+xxx		 		| xxx	 			| xxx
+xxx		 		| xxx	 			| xxx
+xxx		 		| xxx	 			| xxx
+xxx		 		| xxx	 			| xxx
+xxx		 		| xxx	 			| xxx
+xxx		 		| xxx	 			| xxx
+xxx		 		| xxx	 			| xxx
+xxx		 		| xxx	 			| xxx
+xxx		 		| xxx	 			| xxx
+xxx		 		| xxx	 			| xxx
 
-# Directions:
+# Directions
 
 
-# Notes:
+# Notes
 

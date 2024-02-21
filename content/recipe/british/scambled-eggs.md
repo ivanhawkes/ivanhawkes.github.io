@@ -27,7 +27,7 @@ Quantity        | Measure           | Ingredient
 2               | tbs               | butter
 {{</table>}}
 
-# Instructions
+# Directions
 
 * In a bowl add the water and tapioca flour. Mix well.
 

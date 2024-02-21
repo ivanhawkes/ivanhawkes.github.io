@@ -30,7 +30,7 @@ Quantity		| Measure 			| Ingredient
 6				| whole				| anchovies
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Make a vinaigrette. In a jar, place the oil, lemon juice or vinegar, shallots, herbs, and mustard. Cover with a lid and shake until well blended. Add salt and pepper to taste. You can follow the recipe provided http://www.bigoven.com/recipe/vinaigrette/2283662
 

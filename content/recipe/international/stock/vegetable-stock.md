@@ -29,7 +29,7 @@ Quantity		| Measure 			| Ingredient
 1				| tbs				| salt
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Optional: bake the vegetables in the oven to achieve browning.
 

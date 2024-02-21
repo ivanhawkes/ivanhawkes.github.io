@@ -36,7 +36,7 @@ Quantity		| Measure 			| Ingredient
 8				| whole				| red birdseye chilies (seeded) (optional, only add for intense heat)
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Place cumin, coriander, salt and peppercorns in a small frying pan and dry roast over medium heat for 2 minutes or until fragrant. Remove from heat and cool to room temperature.
 

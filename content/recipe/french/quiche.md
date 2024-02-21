@@ -34,7 +34,7 @@ Quantity		| Measure 			| Ingredient
 1/2				| tsp				| cayenne pepper
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Line a greased baking pan with the pastry and weigh it down with some glass beads. Place it in a moderate oven and par bake for about 10-15 minutes. Remove from the oven and allow to cool.
 

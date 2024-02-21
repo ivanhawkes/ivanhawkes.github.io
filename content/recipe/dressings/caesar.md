@@ -31,6 +31,6 @@ Quantity        | Measure           | Ingredient
 1/2             | tbs               | black pepper (ground)
 {{</table>}}
 
-# Instructions
+# Directions
 
 Place all the ingredients in a jar and shake till mixed.

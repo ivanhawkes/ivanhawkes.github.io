@@ -45,7 +45,7 @@ Quantity	| Measure 		| Ingredient
 
 Taste test, you may need to add more lime juice or fish sauce as the milk and roasted chili sauce throws off the sourness and saltiness.
 
-# Instructions
+# Directions
 
 First thing to do is put about 1.5 liters of water in a pot to boil. Then I like to start by squeezing my limes. This is not the first step of the recipe, but it’s best to have your limes squeezed so when you need them later, you don’t need to rush to squeeze them all. Slice about 10 limes and juice them all into a small bowl, and set them aside for later.
 

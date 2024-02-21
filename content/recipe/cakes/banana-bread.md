@@ -33,7 +33,7 @@ Quantity	| Measure 		| Ingredient
 1/4			| tsp			| salt
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Place butter and sugar in the bowl of an electric mixer. Stir to combine.
 
@@ -59,7 +59,7 @@ Quantity	| Measure 		| Ingredient
 1			| tsp			| vanilla extract
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Melt the butter and sugar in a saucepan on moderate heat. Stir constantly.
 

@@ -33,7 +33,7 @@ Quantity		| Measure 			| Ingredient
 1				| tbs				| coriander seeds (ground)
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Place the dried chilies in a heatproof bowl. Cover with boiling water and set aside for 20 minutes to soften. Drain and chop them coarsely.
 

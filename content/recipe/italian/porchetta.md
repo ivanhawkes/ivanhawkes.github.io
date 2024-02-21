@@ -35,6 +35,6 @@ Quantity		| Measure 			| Ingredient
 250				| ml				| dry white wine
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Re-watch the ATK video.

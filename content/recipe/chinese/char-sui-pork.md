@@ -34,7 +34,7 @@ Quantity  | Measure    | Ingredient
 2    | tsp    | white pepper (ground)
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Mix the marinade ingredients together in a bowl.
 

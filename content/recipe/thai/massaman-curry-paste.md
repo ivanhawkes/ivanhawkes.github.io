@@ -36,6 +36,6 @@ Quantity		| Measure 			| Ingredient
 1/2				| tsp				| cardamom (ground)
 {{</table>}}
 
-# Instructions
+# Directions
 
 Pound it out in a mortar and pestle.

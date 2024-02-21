@@ -36,7 +36,7 @@ Quantity		| Measure 			| Ingredient
 8				| whole				| red birdseye chilies (seeded, thinly sliced)
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Place the meat into a bowl. Add 1 tbs of fish sauce and 1/2 tsp sodium bicarbonate. This needs to sit for 15-30 minutes before cooking to tenderise the meat.
 * Take about 1/3 of the coconut milk and add to a hot pan. Boil it for several minutes until the milk splits out of the oil. You will use this oil to fry the paste.

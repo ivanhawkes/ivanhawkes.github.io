@@ -30,7 +30,7 @@ Quantity        | Measure           | Ingredient
 1/2             | leg               | pork (1 inch cubes) approximately 1.8kg
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Cube the pork into one inch sized chunks.
 

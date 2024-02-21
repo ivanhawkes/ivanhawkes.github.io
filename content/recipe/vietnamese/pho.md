@@ -35,7 +35,7 @@ Quantity		| Measure 			| Ingredient
 1/4				| cup 				| garlic chili sauce (optional)
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Preheat oven to 220 degrees celcius.
 

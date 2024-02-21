@@ -31,7 +31,7 @@ Quantity        | Measure           | Ingredient
 1/4             | cup               | brandy
 {{</table>}}
 
-# Instructions
+# Directions
 
 * Melt the butter in the saucepan and add the garlic and shallots. Fry on a low heat for 5 minutes.
 

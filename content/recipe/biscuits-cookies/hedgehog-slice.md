@@ -3,7 +3,7 @@ type: post
 category: Recipe
 title: "Hedgehog Slice"
 date: 2024-03-24
-tags: ["cookies", "slices"]
+tags: ["slices"]
 summary: 
 image: /img/site/category/recipe-book.jpg
 thumbnail-image: /img/site/category/recipe-book.jpg

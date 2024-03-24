@@ -35,7 +35,6 @@ preserveTaxonomyNames = true
   notice = "all rights reserved."
 
 [params.social]
-	twitter = "@ivanhawkes"
 	facebook = "ivan.hawkes"
 	linkedin = "ivan-hawkes-a8386338"
 	youtube = "channel/UClCTxhonVVsYb7qmqv4dldg"
@@ -73,12 +72,6 @@ preserveTaxonomyNames = true
 	Name = "Garden"
 	URL = "garden"
 	Weight = 5
-	
-	[[menu.nav]]
-	Pre = "<i class='bi-flower1'></i>"
-	Name = "Plants"
-	URL = "plant"
-	Weight = 6
 	
 	[[menu.nav]]
 	Pre = "<i class='bi-person-lines-fill'></i>"

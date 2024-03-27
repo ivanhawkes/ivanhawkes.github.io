@@ -4,6 +4,7 @@ category: Recipe
 title: "Chocolate Chip Cookie"
 date: 2024-03-02T02:03:13+10:00
 tags: ["cookies"]
+portions: 16
 summary: 
 image: /img/site/category/recipe-book.jpg
 thumbnail-image: /img/site/category/recipe-book.jpg

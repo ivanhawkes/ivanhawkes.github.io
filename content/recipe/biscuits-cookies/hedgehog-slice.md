@@ -4,6 +4,7 @@ category: Recipe
 title: "Hedgehog Slice"
 date: 2024-03-24
 tags: ["slices"]
+portions: 16
 summary: 
 image: /img/site/category/recipe-book.jpg
 thumbnail-image: /img/site/category/recipe-book.jpg

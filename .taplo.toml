@@ -1,0 +1,18 @@
+# Formatting and syntax checking configuration for Taplo,
+# a TOML language server and formatter.
+include = ["**/*.toml"]
+exclude = []
+
+[formatting]
+    align_entries = true
+    array_trailing_comma = true
+    indent_entries = true
+    alignEntries = true
+    arrayTrailingComma = true
+    indentTables = true
+    indentEntries = true
+    indent_string = "    "
+
+[schema]
+    path = "./path/to/schema.json"
+    enabled = false

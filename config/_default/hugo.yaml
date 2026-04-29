@@ -1,0 +1,88 @@
+baseURL: https://blog.ivanhawkes.dev
+languageCode: en-us
+title: Ivan Hawkes
+theme: be-best
+MetaDataFormat: yaml
+DefaultContentLanguage: en
+
+pagination:
+  disableAliases: false
+  pagerSize: 12
+  path: page
+  pygmentsCodeFences: true
+  preserveTaxonomyNames: true
+
+build:
+  noJSConfigInAssets: false
+  useResourceCacheWhen: fallback
+  buildStats:
+    disableClasses: false
+    disableIDs: false
+    disableTags: false
+    enable: true
+
+  cachebusters:
+    - source: assets/watching/hugo_stats\.json
+      target: styles\.css
+    - source: (postcss|tailwind)\.config\.js
+      target: css
+    - source: assets/.*\.(js|ts|jsx|tsx)
+      target: js
+    - source: assets/.*\.(.*)$
+      target: $1
+
+security:
+  exec:
+    allow:
+      - ^(dart-)?sass(-embedded)?$
+      - ^go$
+      - ^npx$
+      - ^postcss$
+      - ^tailwindcss
+      - ^asciidoctor$
+module:
+  mounts:
+    - source: assets
+      target: assets
+    - disableWatch: false
+      source: hugo_stats.json
+      target: assets/notwatching/hugo_stats.json
+    - source: hugo_stats.json
+      target: assets/watching/hugo_stats.json
+markup:
+  highlight:
+    style: vulcan
+    noClasses: false
+    lineNos: false
+    lineNoStart: 1
+    hl_inline: false
+
+  goldmark:
+    truncate-lines: true
+    renderer:
+      unsafe: true
+    parser:
+      attribute:
+        block: true
+
+sitemap:
+  changeFreq: monthly
+  disable: false
+  filename: sitemap.xml
+  priority: -1
+
+taxonomies:
+  category: categories
+  tag: tags
+  series: series
+
+imagesConfig:
+  command: resize
+  sizes:
+    - 300
+    - 710
+    - 850
+  formats:
+    - jpg
+    - webp
+  useResources: true

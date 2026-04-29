@@ -1,0 +1,15 @@
+theme:
+  darkMode: true
+  responsiveDesign: true
+description:
+  Building software, recipes I like, gardening and sometimes even advice.
+dateFormat: '2006-01-02T15:04:05'
+dateFormatShort: '2006-01-02'
+dateFormatHuman: 2006, Jan 02
+copyright:
+  year: '2026'
+  owner: Ivan Hawkes
+  notice: all rights reserved.
+social:
+  facebook: ivan.hawkes
+  github: ivanhawkes

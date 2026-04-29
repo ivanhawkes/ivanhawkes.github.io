@@ -1,0 +1,3 @@
+[submodule "themes/be-best"]
+	path = themes/be-best
+	url = git@github.com:ivanhawkes/be-best.git

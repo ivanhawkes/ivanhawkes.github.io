@@ -102,7 +102,7 @@ from this:
 
 to this (not same view angle):
 
-![Mudbox Sculpt](editor.webp 'View of the sculpted landscape rendered in CRYENGINE')
+![Mudbox Sculpt](featured.webp 'View of the sculpted landscape rendered in CRYENGINE')
 
 **NOTE:** Usually the flows appear as lighter sections of terrain, but they seem
 too obvious for my taste so I am re-working that part of the machine. Until

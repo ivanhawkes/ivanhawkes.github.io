@@ -35,7 +35,7 @@ little bit of extra land there and try and ensure it was an appropriate size.
 That get's fed into my World Machine, massaged till it's in the shape I want and
 I end up with something along these lines.
 
-![Caldera](dwm.webp)
+![Caldera](featured.webp)
 
 It's not quite right yet, but it's coming along. I've lost part of it's shape,
 and thus the coastline, due to changes I've been having to make ensure a player

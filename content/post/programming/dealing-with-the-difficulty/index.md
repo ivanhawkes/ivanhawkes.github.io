@@ -61,4 +61,4 @@ Here's the model in 3DS Max.
 
 And here it is in Mudbox, ready for sculpting.
 
-![Mudbox Model](mudbox.webp)
+![Mudbox Model](featured.webp)

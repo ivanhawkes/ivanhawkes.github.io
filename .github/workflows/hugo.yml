@@ -4,7 +4,8 @@ name: Deploy Hugo site to Pages
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ['main']
+    branches:
+      - development
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -37,13 +38,13 @@ jobs:
       TZ: Australia/Brisbane
     steps:
       - name: Checkout the code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           submodules: recursive
           fetch-depth: 0
 
       - name: Setup Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@v6
         with:
           go-version: ${{ env.GO_VERSION }}
           cache: false
@@ -64,7 +65,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v5
         with:
-          version: 10
+          version: 10.33.2
 
       - name: Cache pnpm store
         uses: actions/cache@v5
@@ -72,7 +73,7 @@ jobs:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
 
-      - name: Install dependencies
+      - name: Install Node.js dependencies
         run: pnpm install
 
       - name: Install Hugo
@@ -99,23 +100,25 @@ jobs:
 
       - name: Cache restore
         id: cache-restore
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: ${{ runner.temp }}/hugo_cache
           key: hugo-${{ github.run_id }}
-          restore-keys: hugo-
+          restore-keys:
+            hugo-
 
       - name: Build the site
         run: |
-          hugo \
+          hugo build \
             --gc \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/" \
+            --cleanDestinationDir \
+            --baseURL "${{ steps.pages.outputs.base_url }}" \
             --cacheDir "${{ runner.temp }}/hugo_cache"
 
       - name: Cache save
         id: cache-save
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         with:
           path: ${{ runner.temp }}/hugo_cache
           key: ${{ steps.cache-restore.outputs.cache-primary-key }}
@@ -127,11 +130,11 @@ jobs:
 
   # Deployment job
   deploy:
-    needs: build
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

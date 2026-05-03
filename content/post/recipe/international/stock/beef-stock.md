@@ -2,10 +2,9 @@
 author: Ivan Hawkes
 categories:
 - Recipe
-date: '2018-11-28T10:36:12+10:00'
+date: '2018-11-28'
 portions: 10
 tags:
-- Recipe
 - Beef
 - Stock
 title: Beef Stock

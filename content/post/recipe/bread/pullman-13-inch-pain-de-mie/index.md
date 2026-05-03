@@ -3,11 +3,9 @@ author: Ivan Hawkes
 categories:
 - Recipe
 date: '2025-10-29'
-draft: false
 imagecaption: A loaf of pain de mie baked in a pullman loaf pan.
 portions: 20
 tags:
-- Recipe
 - French
 - Bread
 - Loaf

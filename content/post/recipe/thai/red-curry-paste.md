@@ -5,7 +5,6 @@ categories:
 date: '2018-11-27'
 portions: 8
 tags:
-- Recipe
 - Thai
 - Curry
 - Paste

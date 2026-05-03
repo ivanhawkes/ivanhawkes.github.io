@@ -2,10 +2,9 @@
 author: Ivan Hawkes
 categories:
 - Recipe
-date: '2020-10-30T00:22:29+10:00'
+date: '2020-10-30'
 portions: 12
 tags:
-- Recipe
 - French
 - Dressing
 title: Caesar Salad Dressing

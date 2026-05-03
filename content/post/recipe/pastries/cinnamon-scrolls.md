@@ -5,7 +5,6 @@ categories:
 date: '2021-01-03'
 portions: 12
 tags:
-- Recipe
 - Bread
 - Dessert
 title: Cinnamon Scrolls

@@ -5,7 +5,6 @@ categories:
 date: '2025-10-19'
 portions: 8
 tags:
-- Recipe
 - Indian
 title: Garlic, Ginger, Onion Paste
 type: recipe

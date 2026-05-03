@@ -2,7 +2,7 @@
 author: Ivan Hawkes
 categories:
 - Recipe
-date: '2019-05-31T15:30:22+10:00'
+date: '2019-05-31'
 portions: 12
 tags:
 - ginger

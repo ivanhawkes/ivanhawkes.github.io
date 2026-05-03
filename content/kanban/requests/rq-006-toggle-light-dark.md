@@ -2,9 +2,9 @@
 type: 'kanban'
 title: 'Toggle Light / Dark mode'
 description: 'Add a button to toggle light /  dark mode.'
-date: '2026-04-28T22:00:00'
+date: '2026-04-28'
 lastmod:
-author: ''
+author: null
 params:
   sprint: null
   stage: done
@@ -14,7 +14,7 @@ params:
   estimatedtime: 2
   actualtime: 2
   percent: 100
-  priority: 550
+  priority: 350
 ---
 
 Make it easy for the user to select their preferred colour theme.

@@ -5,7 +5,6 @@ categories:
 date: '2021-11-19'
 portions: 4
 tags:
-- Recipe
 - Chinese
 - Sichuan
 - Sauce

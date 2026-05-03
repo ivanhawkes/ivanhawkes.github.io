@@ -5,7 +5,6 @@ categories:
 date: '2019-08-19'
 portions: 4
 tags:
-- Recipe
 - French
 - Quiche
 title: Quiche

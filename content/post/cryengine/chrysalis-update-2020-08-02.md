@@ -2,7 +2,7 @@
 author: Ivan Hawkes
 categories:
 - Programming
-date: '2020-08-02T21:48:08+10:00'
+date: '2020-08-02'
 description: I cover recent progress on Chrysalis.
 tags:
 - C++

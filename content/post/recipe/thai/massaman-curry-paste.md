@@ -2,10 +2,9 @@
 author: Ivan Hawkes
 categories:
 - Recipe
-date: '2018-11-27T00:05:16+10:00'
+date: '2018-11-27'
 portions: 8
 tags:
-- Recipe
 - Thai
 - Curry
 - Paste

@@ -2,7 +2,7 @@
 type: 'kanban'
 title: 'Improve Kanban Section'
 description: 'Improvements to the Kanban section menu.'
-date: '2026-05-01T22:00:00'
+date: '2026-05-01'
 lastmod:
 author: 'Ivan Hawkes'
 categories:
@@ -21,7 +21,7 @@ params:
   estimatedtime: 1.5
   actualtime: 1.5
   percent: 100
-  priority: 550
+  priority: 350
   references:
     - One Missisipi
     - Two Missisipi

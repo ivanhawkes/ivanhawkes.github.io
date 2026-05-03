@@ -3,10 +3,8 @@ author: Ivan Hawkes
 categories:
 - Recipe
 date: '2025-10-29'
-draft: false
 portions: 12
 tags:
-- Recipe
 - American
 - Cheese
 title: American Cheese

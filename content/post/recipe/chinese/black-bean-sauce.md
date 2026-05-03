@@ -2,10 +2,9 @@
 author: Ivan Hawkes
 categories:
 - Recipe
-date: '2018-11-26T23:23:03+10:00'
+date: '2018-11-26'
 portions: 8
 tags:
-- Recipe
 - Chinese
 - Sauce
 - Black Bean

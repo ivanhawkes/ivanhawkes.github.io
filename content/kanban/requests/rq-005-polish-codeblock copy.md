@@ -2,9 +2,9 @@
 type: 'kanban'
 title: 'Polish Codeblock'
 description: 'Improve the codeblock rendering code'
-date: '2026-04-28T22:00:00'
+date: '2026-04-28'
 lastmod:
-author: ''
+author: null
 params:
   sprint: null
   stage: develop
@@ -14,7 +14,7 @@ params:
   estimatedtime: 3
   actualtime: 1
   percent: 0
-  priority: 550
+  priority: 350
 ---
 
 The codeblock rendering code is still a bit rough, especially in terms of

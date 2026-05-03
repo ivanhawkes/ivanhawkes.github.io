@@ -5,7 +5,6 @@ categories:
 date: '2023-12-07'
 portions: 8
 tags:
-- Recipe
 - Salad
 title: Broccoli Bacon Salad
 type: recipe

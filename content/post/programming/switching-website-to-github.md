@@ -1,6 +1,6 @@
 ---
 author: Ivan Hawkes
-date: '2022-02-03T00:01:31+10:00'
+date: '2022-02-03'
 description: How I switched this website over to being hosted on Github.
 title: Switching Website to Github
 ---

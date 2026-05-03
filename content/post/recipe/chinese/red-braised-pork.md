@@ -5,7 +5,6 @@ categories:
 date: '2021-10-14'
 portions: 6
 tags:
-- Recipe
 - Chinese
 - Pork
 - Red Braise

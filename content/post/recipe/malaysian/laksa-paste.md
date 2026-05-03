@@ -2,7 +2,7 @@
 author: Ivan Hawkes
 categories:
 - Recipe
-date: '2018-11-26T23:51:36+10:00'
+date: '2018-11-26'
 portions: 4
 tags:
 - Recipe

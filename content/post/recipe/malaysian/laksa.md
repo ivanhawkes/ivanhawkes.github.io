@@ -2,10 +2,9 @@
 author: Ivan Hawkes
 categories:
 - Recipe
-date: '2018-11-26T23:46:14+10:00'
+date: '2018-11-26'
 portions: 4
 tags:
-- Recipe
 - Malaysian
 - Soup
 title: Laksa

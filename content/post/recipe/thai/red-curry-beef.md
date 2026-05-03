@@ -5,7 +5,6 @@ categories:
 date: '2021-10-25'
 portions: 2
 tags:
-- Recipe
 - Thai
 - Curry
 - Red

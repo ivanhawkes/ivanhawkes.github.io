@@ -5,7 +5,6 @@ categories:
 date: '2023-11-26'
 portions: 1
 tags:
-- Recipe
 - European
 - Breakfast
 title: Scrambled Eggs

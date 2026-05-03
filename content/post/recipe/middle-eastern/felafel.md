@@ -3,10 +3,8 @@ author: Ivan Hawkes
 categories:
 - Recipe
 date: '2018-11-26'
-draft: false
 portions: 12
 tags:
-- Recipe
 - Middle Eastern
 - Vegetarian
 - Vegan

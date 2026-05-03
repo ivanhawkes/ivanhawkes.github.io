@@ -2,7 +2,7 @@
 author: Ivan Hawkes
 categories:
 - Recipe
-date: '2020-02-21T08:28:47+10:00'
+date: '2020-02-21'
 tags:
 - Italian
 - Pork

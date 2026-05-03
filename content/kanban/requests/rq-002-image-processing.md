@@ -2,9 +2,9 @@
 type: 'kanban'
 title: 'Image Processing'
 description: 'Provide image processing to posts.'
-date: '2026-04-28T22:00:00'
+date: '2026-04-28'
 lastmod:
-author: ''
+author: null
 params:
   sprint: null
   stage: develop
@@ -14,7 +14,7 @@ params:
   estimatedtime: 1
   actualtime: 0
   percent: 0
-  priority: 550
+  priority: 350
 ---
 
 The images supplied with a post should be processed to meet with site standards.

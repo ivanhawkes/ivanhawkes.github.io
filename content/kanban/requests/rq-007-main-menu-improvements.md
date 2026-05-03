@@ -2,9 +2,9 @@
 type: 'kanban'
 title: 'Improve Main Menu'
 description: 'Improvements to the main menu.'
-date: '2026-05-01T22:00:00'
+date: '2026-05-01'
 lastmod:
-author: ''
+author: null
 params:
   sprint: null
   stage: done
@@ -14,7 +14,7 @@ params:
   estimatedtime: 2
   actualtime: 4
   percent: 100
-  priority: 550
+  priority: 350
 ---
 
 Make some improvements to the main menu.

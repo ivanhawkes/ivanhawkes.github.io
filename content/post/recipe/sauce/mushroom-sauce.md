@@ -1,17 +1,15 @@
 ---
-author: Ivan Hawkes
+type: recipe
+title: Mushroom Sauce
 categories:
 - Recipe
-date: '2024-05-14T01:32:06+10:00'
+date: '2024-05-14'
 description: null
 portions: 5
+author: Ivan Hawkes
 tags:
-- Recipe
 - Sauce
 - Mushroom
-thumbnail-draft: false
-title: Mushroom Sauce
-type: recipe
 ---
 
 A rich cream and butter sauce infused with earthy mushroom fragrence.

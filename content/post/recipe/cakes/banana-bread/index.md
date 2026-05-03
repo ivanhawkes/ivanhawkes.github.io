@@ -5,7 +5,6 @@ categories:
 date: '2023-12-07'
 portions: 8
 tags:
-- Recipe
 - Cake
 - Dessert
 title: Banana Bread

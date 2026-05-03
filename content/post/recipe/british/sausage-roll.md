@@ -5,7 +5,6 @@ categories:
 date: '2023-11-08'
 portions: 16
 tags:
-- Recipe
 - European
 - Fast Food
 title: Sausage Roll

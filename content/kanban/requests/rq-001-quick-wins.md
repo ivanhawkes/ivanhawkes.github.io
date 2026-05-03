@@ -2,9 +2,9 @@
 type: 'kanban'
 title: 'Quick Wins'
 description: 'A list of simple fast tasks.'
-date: '2026-04-29T11:00:00'
+date: '2026-04-29'
 lastmod:
-author: ''
+author: null
 params:
   sprint: null
   stage: develop
@@ -14,7 +14,7 @@ params:
   estimatedtime: 0
   actualtime: 2
   percent: 0
-  priority: 550
+  priority: 350
 ---
 
 A list of quick wins. These are ephemeral and will not be tracked individually.

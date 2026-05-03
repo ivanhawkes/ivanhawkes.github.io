@@ -2,10 +2,9 @@
 author: Ivan Hawkes
 categories:
 - Recipe
-date: '2018-11-27T00:22:29+10:00'
+date: '2018-11-27'
 portions: 12
 tags:
-- Recipe
 - French
 - Dressing
 title: Vinaigrette Dressing

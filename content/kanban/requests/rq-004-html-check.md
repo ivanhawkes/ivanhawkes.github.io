@@ -2,9 +2,9 @@
 type: 'kanban'
 title: 'HTML Check'
 description: 'Validate the generated HTML'
-date: '2026-04-30T12:00:00'
+date: '2026-04-30'
 lastmod:
-author: ''
+author: null
 params:
   sprint: null
   stage: done
@@ -14,7 +14,7 @@ params:
   estimatedtime: 30
   actualtime: 1
   percent: 100
-  priority: 550
+  priority: 350
 ---
 
 Feed some output pages into the W3 HTML validator and clean up any issues.

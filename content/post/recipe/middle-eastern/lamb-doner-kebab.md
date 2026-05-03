@@ -3,10 +3,8 @@ author: Ivan Hawkes
 categories:
 - Recipe
 date: '2023-08-09'
-draft: false
 portions: 8
 tags:
-- Recipe
 - Middle Eastern
 - Lamb
 title: Lamb Doner Kebab

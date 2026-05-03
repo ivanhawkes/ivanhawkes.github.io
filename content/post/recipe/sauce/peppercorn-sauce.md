@@ -5,7 +5,6 @@ categories:
 date: '2024-02-19'
 portions: 5
 tags:
-- Recipe
 - Sauce
 - Peppercorn
 - Poivre

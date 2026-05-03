@@ -2,10 +2,9 @@
 author: Ivan Hawkes
 categories:
 - Recipe
-date: '2018-11-28T09:58:33+10:00'
+date: '2018-11-28'
 portions: 12
 tags:
-- Recipe
 - Batter
 title: Light Batter
 type: recipe

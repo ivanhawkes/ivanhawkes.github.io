@@ -5,7 +5,6 @@ categories:
 date: '2023-11-26'
 portions: 4
 tags:
-- Recipe
 - Indian
 - Garam Masala
 title: Bin Bhuna Hua Garam Masala

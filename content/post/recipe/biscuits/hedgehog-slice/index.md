@@ -3,13 +3,12 @@ categories:
 - Recipe
 date: '2024-03-24'
 description: null
-draft: false
 portions: 16
 tags:
 - slices
 - chocolate
 - walnuts
-thumbnail-author: Julie Hawkes
+author: Julie Hawkes
 title: Hedgehog Slice
 type: recipe
 ---

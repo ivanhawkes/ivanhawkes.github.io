@@ -5,7 +5,6 @@ categories:
 date: '2022-09-10'
 portions: 4
 tags:
-- Recipe
 - Indian
 - Chicken
 - Curry

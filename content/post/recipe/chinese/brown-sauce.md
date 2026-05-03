@@ -2,10 +2,9 @@
 author: Ivan Hawkes
 categories:
 - Recipe
-date: '2018-11-26T23:00:57+10:00'
+date: '2018-11-26'
 portions: 2
 tags:
-- Recipe
 - Chinese
 - Sauce
 title: Chinese Brown Sauce

@@ -5,7 +5,6 @@ categories:
 date: '2021-09-21'
 portions: 2
 tags:
-- Recipe
 - Chinese
 - Sauce
 title: Mongolian Beef

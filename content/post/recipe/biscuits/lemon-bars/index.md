@@ -3,12 +3,11 @@ categories:
 - Recipe
 date: '2024-03-27'
 description: null
-draft: false
 portions: 16
 tags:
 - slices
 - lemon
-thumbnail-author: Kendra Vaculin
+author: Kendra Vaculin
 title: Lemon Bars
 type: recipe
 ---

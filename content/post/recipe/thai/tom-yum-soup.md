@@ -2,13 +2,12 @@
 author: Ivan Hawkes
 categories:
 - Recipe
-date: '2018-01-26T16:31:20+10:00'
+date: '2018-01-26'
 portions: 4
 tags:
-- Recipe
 - Thai
 - Soup
-- Prawns
+- Seafood
 title: Tom Yum Soup
 type: recipe
 ---

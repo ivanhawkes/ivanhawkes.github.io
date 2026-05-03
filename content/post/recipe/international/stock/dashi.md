@@ -2,10 +2,9 @@
 author: Ivan Hawkes
 categories:
 - Recipe
-date: '2018-11-28T10:54:01+10:00'
+date: '2018-11-28'
 portions: 4
 tags:
-- Recipe
 - Japanese
 - Fish
 - Stock

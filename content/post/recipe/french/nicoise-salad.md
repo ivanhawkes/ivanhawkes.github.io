@@ -2,10 +2,9 @@
 author: Ivan Hawkes
 categories:
 - Recipe
-date: '2018-11-27T00:27:59+10:00'
+date: '2018-11-27'
 portions: 2
 tags:
-- Recipe
 - French
 - Salad
 title: Nicoise Salad

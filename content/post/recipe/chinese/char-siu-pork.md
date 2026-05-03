@@ -3,10 +3,8 @@ author: Ivan Hawkes
 categories:
 - Recipe
 date: '2025-08-14'
-draft: false
 portions: 12
 tags:
-- Recipe
 - Chinese
 - Pork
 - Char Sui

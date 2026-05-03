@@ -3,12 +3,11 @@ categories:
 - Recipe
 date: '2024-03-27'
 description: null
-draft: false
 portions: 25
 tags:
 - slices
 - lemon
-thumbnail-author: Claire Saffitz
+author: Claire Saffitz
 title: Lemon Bars (Claire Saffitz)
 type: recipe
 ---

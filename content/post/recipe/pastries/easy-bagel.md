@@ -2,10 +2,9 @@
 author: Ivan Hawkes
 categories:
 - Recipe
-date: '2018-01-26T16:39:43+10:00'
+date: '2018-01-26'
 portions: 12
 tags:
-- Recipe
 - American
 - Bread
 title: Easy Bagel

@@ -1,4 +1,5 @@
 ---
+title: Building A Cheap Motion Capture Studio
 author: Ivan Hawkes
 categories:
 - general
@@ -13,8 +14,7 @@ tags:
 - Microsoft Kinect
 - Motion Capture
 - PS Eye Camera
-- Software Development
-title: Building A Cheap Motion Capture Studio
+- Programming
 ---
 
 A while back I became interested in motion capture as a means to easily get

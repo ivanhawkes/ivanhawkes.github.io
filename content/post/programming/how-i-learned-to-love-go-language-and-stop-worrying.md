@@ -10,7 +10,7 @@ tags:
 - Languages
 - Ohio Scientific
 - software design
-- Software Development
+- Programming
 - Visual Basic
 title: How I Learned to Love Go (Language) And Stop Worrying
 ---

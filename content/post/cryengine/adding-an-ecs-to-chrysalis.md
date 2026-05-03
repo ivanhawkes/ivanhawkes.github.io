@@ -1,17 +1,16 @@
 ---
+title: Adding EnTT ECS to Chrysalis
 author: Ivan Hawkes
 categories:
-- Programming
+- CRYENGINE
 date: '2019-12-31'
 description: I discuss the process of adding EnTT ECS into Chrysalis.
 tags:
 - C++
 - Chrysalis
-- Cryengine
 - CRYENGINE 5.6
 - Game Programming
-title: Adding EnTT ECS to Chrysalis
-type: post
+- Programming
 ---
 
 In this article I will discuss the process I followed and the results of

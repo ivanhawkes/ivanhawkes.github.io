@@ -1,15 +1,13 @@
 ---
+title: 'CRYENGINE Flowgraphs - Blacklists and Substitutions'
 author: Ivan Hawkes
 categories:
 - CRYENGINE
 date: '2015-03-20'
 tags:
 - CryEngine 3
-- Cryengine
-- FlowGraph
 - Flowgraph
 - Game Programming
-title: 'CRYENGINE Flowgraphs - Blacklists and Substitutions'
 ---
 
 On a large project, such as a game built using CRYENGINE, structure, clarity and

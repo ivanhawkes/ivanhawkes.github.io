@@ -1,16 +1,15 @@
 ---
+title: CRYENGINE 3.7 Source Control and Perforce
 author: Ivan Hawkes
 categories:
-- General
+- CRYENGINE
 date: '2015-05-01'
 tags:
-- Cryengine
 - CryEngine 3
 - Git
 - Perforce
 - Source Control
 - SVN
-title: CRYENGINE 3.7 Source Control and Perforce
 ---
 
 In this article I will try to cover the issue of source control, particularly

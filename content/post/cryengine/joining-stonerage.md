@@ -1,15 +1,14 @@
 ---
+title: Joining StoneRage
 author: Ivan Hawkes
 categories:
 - CRYENGINE
 date: '2013-09-02'
 tags:
-- CryEngine
 - CryEngine 3
 - Game Programming
-- software
+- Software
 - StoneRage
-title: Joining StoneRage
 ---
 
 A few weeks ago I decided to place my own projects on hold and join a team

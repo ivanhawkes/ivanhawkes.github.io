@@ -1,15 +1,14 @@
 ---
+title: How to Make .PAK Files With Your Assets
 author: Ivan Hawkes
 categories:
 - CRYENGINE
 date: '2013-07-25'
 tags:
 - Asset Management
-- Cryengine
 - CryEngine 3
 - Game Programming
-- Software Development
-title: How to Make .PAK Files With Your Assets
+- Programming
 ---
 
 Something that doesn't seem to receive much coverage is what to do with all your

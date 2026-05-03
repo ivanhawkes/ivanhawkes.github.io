@@ -1,17 +1,17 @@
 ---
+title: Switching to CRYENGINE 5.3 New Entity System
 author: Ivan Hawkes
 categories:
-- Programming
+- CRYENGINE
 date: '2017-01-08'
 description: Changing over the Chrysalis code to CRYENGINE 5.3.
 tags:
 - C++
 - Chrysalis
-- Cryengine
 - CRYENGINE 5.2
 - CRYENGINE 5.3
+- Programming
 - Game Programming
-title: Switching to CRYENGINE 5.3 New Entity System
 ---
 
 In this article I will cover the changes I made to

@@ -1,12 +1,12 @@
 ---
+title: Overcoming Inertia
 author: Ivan Hawkes
 categories:
-- Programming
+- CRYENGINE
 date: '2013-01-18'
 tags:
 - CryEngine 3
-- Software Development
-title: Overcoming Inertia
+- Programming
 ---
 
 A few weeks have passed with very little development occurring. I have hit that

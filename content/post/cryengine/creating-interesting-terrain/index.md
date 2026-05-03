@@ -1,4 +1,5 @@
 ---
+title: Creating Interesting Terrain
 author: Ivan Hawkes
 categories:
   - World Design
@@ -6,15 +7,14 @@ date: '2013-02-23'
 description: Learning how to make terrain using World Machine and other tools.
 tags:
   - Create
-  - CryEngine
+  - CRYENGINE
   - CryEngine 3
   - Game Programming
   - Mudbox
   - Photoshop
-  - Software Development
+  - Programming
   - Terrain
   - World Machine
-title: Creating Interesting Terrain
 ---
 
 At first blush terrain might seem like a fairly easy thing to be able to create,

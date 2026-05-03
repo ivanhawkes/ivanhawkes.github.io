@@ -1,11 +1,13 @@
 ---
+type: project
+title: 'Chrysalis - An Action RPG SDK'
 author: Ivan Hawkes
 date: '2018-12-17'
+categories:
+- Projects
 tags:
 - Chrysalis
-- Cryengine
-title: 'Chrysalis - An Action RPG SDK'
-type: project
+- CRYENGINE
 ---
 
 Chrysalis is a plugin for CRYENGINE 5.x, written in C++11, that provides a

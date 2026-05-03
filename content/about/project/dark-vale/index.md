@@ -1,11 +1,13 @@
 ---
+type: project
+title: Dark Vale
 author: Ivan Hawkes
 date: '2018-12-16'
+categories:
+- Projects
 tags:
 - Chrysalis
 - Cryengine
-title: Dark Vale
-type: project
 ---
 
 Travel into Dark Vale and take a look into madness.

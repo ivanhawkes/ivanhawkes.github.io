@@ -1,19 +1,19 @@
 ---
+title: Dealing With The Difficulty
 author: Ivan Hawkes
 categories:
-- Programming
+- CRYENGINE
 date: '2013-04-10'
 tags:
 - 3ds max
-- Cryengine
 - CryEngine 3
+- Programming
 - Game Programming
 - Mudbox
-- Software Development
+- Programming
 - Terrain
 - world building
 - World Machine
-title: Dealing With The Difficulty
 ---
 
 I've been working on my pet project for almost five months now and I must admit

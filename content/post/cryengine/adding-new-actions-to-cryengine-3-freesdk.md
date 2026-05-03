@@ -1,15 +1,14 @@
 ---
+title: Adding New Actions to CryEngine 3 FreeSDK
 author: Ivan Hawkes
 categories:
-- Programming
+- CRYENGINE
 date: '2013-12-09'
 tags:
-- Cryengine
 - CryEngine 3
 - C++
 - Flowgraph
-- Software Development
-title: Adding New Actions to CryEngine 3 FreeSDK
+- Programming
 ---
 
 This tutorial will help you add new actions into CryEngine 3 FreeSDK projects

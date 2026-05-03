@@ -119,7 +119,7 @@ for them until their eventual demise.
 
 During this time I learnt:
 
-- C#
+- C Sharp
 - Server Architecture and Hardware
 - XML / XSLT
 - HTML / CSS

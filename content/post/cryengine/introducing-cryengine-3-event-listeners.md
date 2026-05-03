@@ -1,18 +1,17 @@
 ---
+title: Introducing CryEngine 3 Event Listeners
 author: Ivan Hawkes
 categories:
 - CRYENGINE
 date: '2014-03-07'
 tags:
-- 'C#'
-- Cryengine
+- C Sharp
 - CryEngine 3
 - event
 - gamesdk.dll
 - listener
 - observer pattern
-- Software Development
-title: Introducing CryEngine 3 Event Listeners
+- Programming
 ---
 
 In this article I will introduce you to event handling within CryEngine 3 and

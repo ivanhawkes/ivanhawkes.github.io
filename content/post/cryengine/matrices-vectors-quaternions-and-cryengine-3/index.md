@@ -1,19 +1,19 @@
 ---
+title: Matrices, Vectors, Quaternions and CryEngine 3
 author: Ivan Hawkes
 categories:
-- Math and Physics
+- CRYENGINE
 date: '2014-06-21'
 tags:
-- Cryengine
 - CryEngine 3
 - Mathematics
-- matrices
-- matrix
-- quaternions
-- Software Development
-- third person camera
-- vectors
-title: Matrices, Vectors, Quaternions and CryEngine 3
+- Math and Physics
+- Matrices
+- Matrix
+- Quaternions
+- Programming
+- Third Person Camera
+- Vectors
 ---
 
 This article will introduce you to matrices, vectors and quaternions and how you
@@ -125,7 +125,7 @@ paragraph on
 > In mathematics, physics, and engineering, a Euclidean vector (sometimes called
 > a geometric or spatial vector, or-as here-simply a vector) is a geometric
 > quantity having magnitude (or length) and direction expressed numerically as
-> tuples [ x, y, z ] splitting the entire quantity into its orthogonal-axis
+> tuples \[ x, y, z \] splitting the entire quantity into its orthogonal-axis
 > components.
 
 In layman terms a vector can be thought of simply as an arrow pointing
@@ -135,8 +135,8 @@ a position in space - but rather a distance and a direction. You will use
 vectors to translate (move) things around in the 3D space.
 
 Vectors are represented in CryEngine as a one dimensional array with three
-floating point elements [x, y, z]. For example, a vector that represents an
-offset of 1 metre in the positive x direction would be [1.0f, 0.0f, 0.0f]. In
+floating point elements \[x, y, z\]. For example, a vector that represents an
+offset of 1 metre in the positive x direction would be \[1.0f, 0.0f, 0.0f\]. In
 camera space that would equate for a position 1 metre to the right of the
 present position.
 
@@ -434,10 +434,10 @@ Swapping the order of those two quaternions will lead to different results.
 
 To understand the result of multiplying q1 by q2, imagine a chair which is a few
 metres from you and facing towards you. In this case q1 represents the chair's
-initial rotation e.g. (0.0, 0.0, 180.0) [in degrees] - which for our example is
+initial rotation e.g. (0.0, 0.0, 180.0) in degrees - which for our example is
 all four legs on the floor and the seat facing towards you. Now imagine someone
 walking up to that chair, and without moving it, just turning it to face partly
-away from you. e.g. (0.0, 0.0, 45.0) [in degrees] - the chair now faces off to
+away from you. e.g. (0.0, 0.0, 45.0) in degrees - the chair now faces off to
 one side. That rotation is represented by q2 in the equation **q1 \* q2**. The
 result of **q1 \* q2** is a quaternion that represents both of the rotations
 made to the chair - the initial one which turned it towards you, and the second

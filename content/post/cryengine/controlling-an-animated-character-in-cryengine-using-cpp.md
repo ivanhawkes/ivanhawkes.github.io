@@ -1,16 +1,16 @@
 ---
+title: Controlling an Animated Character in CRYENGINE using C++
 author: Ivan Hawkes
 categories:
-- Programming
+- CRYENGINE
 date: '2016-07-10'
 description: Controlling an Animated Character in CRYENGINE using C++
 tags:
 - C++
 - Chrysalis
-- Cryengine
 - CryEngine 3
+- Programming
 - Game Programming
-title: Controlling an Animated Character in CRYENGINE using C++
 ---
 
 Making an animated character move around the screen in CRYENGINE requires many

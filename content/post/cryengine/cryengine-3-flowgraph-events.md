@@ -1,16 +1,15 @@
 ---
+title: 'CryEngine 3 - Flowgraph Events'
 author: Ivan Hawkes
 categories:
 - CRYENGINE
 date: '2013-06-27'
 tags:
-- 'C#'
-- Cryengine
+- C Sharp
 - CryEngine 3
 - Events
 - FlowGraph
 - Programming
-title: 'CryEngine 3 - Flowgraph Events'
 ---
 
 As you begin to learn how to program for CryEngine 3 you will run into a lot of

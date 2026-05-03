@@ -1,17 +1,16 @@
 ---
+title: Chrysalis Update for 2020-08-02
 author: Ivan Hawkes
 categories:
-- Programming
+- CRYENGINE
 date: '2020-08-02'
 description: I cover recent progress on Chrysalis.
 tags:
 - C++
 - Chrysalis
-- Cryengine
 - CRYENGINE 5.6
+- Programming
 - Game Programming
-title: Chrysalis Update for 2020-08-02
-type: post
 ---
 
 In this article I will cover recent progress on my project,

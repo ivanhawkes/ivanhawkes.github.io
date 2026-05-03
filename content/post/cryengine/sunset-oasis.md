@@ -1,20 +1,19 @@
 ---
+title: Sunset Oasis
 author: Ivan Hawkes
 categories:
 - CRYENGINE
 date: '2012-11-26'
 tags:
-- Cryengine
 - CryEngine 3
 - CTF
-- game engine
+- Game Engine
 - Game Programming
-- gaming
+- Gaming
 - PVP
-- Software Development
+- Programming
 - Sunset Oasis
-- videogames
-title: Sunset Oasis
+- Video Games
 ---
 
 My first effort towards building a CTF style game went a little awry. I tried

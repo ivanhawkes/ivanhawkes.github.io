@@ -1,16 +1,14 @@
 ---
+title: CryEngine 3 System Event Dispatcher
 author: Ivan Hawkes
 categories:
 - CRYENGINE
 date: '2014-03-15'
 tags:
-- Cryengine
 - CryEngine 3
 - Dispatcher
-- event
-- listener
-- Software Development
-title: CryEngine 3 System Event Dispatcher
+- Event Listener
+- Programming
 ---
 
 Earlier this week I wrote about CryEngine listener classes in a brief overview.

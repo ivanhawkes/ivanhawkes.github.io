@@ -57,8 +57,8 @@ DirtGirl "Let's get grubby!"."
 
 Here's the model in 3DS Max.
 
-{{< figure src="3dsmax.png" title="3DS Max Model" >}}
+![3DS Max Model](3dsmax.webp)
 
 And here it is in Mudbox, ready for sculpting.
 
-{{< figure src="mudbox.png" title="Mudbox Model" >}}
+![Mudbox Model](mudbox.webp)

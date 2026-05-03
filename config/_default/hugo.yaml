@@ -12,23 +12,28 @@ pagination:
   pygmentsCodeFences: true
   preserveTaxonomyNames: true
 
+caches:
+  images:
+    dir: :cacheDir/images
+
 build:
   noJSConfigInAssets: false
   useResourceCacheWhen: fallback
+
   buildStats:
+    enable: true
     disableClasses: false
     disableIDs: false
     disableTags: false
-    enable: true
 
   cachebusters:
-    - source: assets/watching/hugo_stats\.json
-      target: styles\.css
-    - source: (postcss|tailwind)\.config\.js
+    - source: 'assets/notwatching/hugo_stats\.json'
       target: css
-    - source: assets/.*\.(js|ts|jsx|tsx)
+    - source: '(postcss|tailwind)\.config\.js'
+      target: css
+    - source: 'themes/.*\.(js|ts|jsx|tsx)$'
       target: js
-    - source: assets/.*\.(.*)$
+    - source: 'assets/.*\.(.*)$'
       target: $1
 
 security:
@@ -44,11 +49,10 @@ module:
   mounts:
     - source: assets
       target: assets
-    - disableWatch: false
+    - disableWatch: true
       source: hugo_stats.json
       target: assets/notwatching/hugo_stats.json
-    - source: hugo_stats.json
-      target: assets/watching/hugo_stats.json
+
 markup:
   highlight:
     style: vulcan
@@ -64,6 +68,10 @@ markup:
     parser:
       attribute:
         block: true
+      wrapStandAloneImageWithinParagraph: false
+    renderHooks:
+      image:
+        useEmbedded: fallback
 
 sitemap:
   changeFreq: monthly

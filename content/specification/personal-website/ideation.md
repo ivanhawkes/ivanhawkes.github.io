@@ -18,7 +18,7 @@ type: specification
 The purpose of this document is to state quite clearly the idea that will be
 further developed into a project.
 
-## Slugline
+## Logline
 
 Describe in as single sentance the purpose of this project.
 
@@ -38,6 +38,27 @@ Break the ideas into major and minor features. State each feature clearly and
 concisely.
 
 Make a new feature Kanban for each major feature.
+
+## Stage
+
+  - design
+  - develop
+  - test
+  - review
+  - deploy
+  - done
+
+## Status
+
+  - pending
+  - in-progress
+  - done
+
+## Grid View
+
+X,y labels and types for kanban are stored in data folder.
+
+Can i have a standard one in the themes folder and override in my local project?
 
 ## Recipes
 
@@ -198,20 +219,6 @@ Identify blockers and dependencies Ensure that your kanban board enables
 immediate identification of blockers and dependencies.
 
 Hours spent vs estimated.
-
-**Status:**
-
-    - test
-    - deploy
-    - working
-    - styled
-    - laid out
-    - broken
-    - pending
-    - in-progress
-    - complete
-
-Free form text status line.
 
 ## User Stories
 
@@ -378,14 +385,6 @@ Sum up at end of Sprint, compare estimates to actual.
 ### Thoughts
 
 Requirements Design / document Development Test Deployment Retrospective
-
-Forbes uses this categorisation:
-
-Product backlog - we know it exists Sprint backlog - it will be done this week
-In progress - getting done now Review - checked for correctness, completion,
-adherence to vision, etc Done - it exists and is completed
-
-story, todo, doing, done
 
 ## Grid View
 

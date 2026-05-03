@@ -154,6 +154,48 @@ Now is a good time to CTRL-D out of the shell and log back in again. This will
 apply group permissions and your .bashrc script to the new shell. You now have
 colour in your shell and access to aliases for "ls -al" and friends.
 
+# Install some improved terminal fonts
+
+```bash
+sudo apt install fonts-jetbrains-mono fonts-hack fonts-terminus fonts-dejavu-mono fonts-cascadia-code fonts-roboto
+
+# There's a ton of fonts we don't need for the terminal. Remove them now.
+sudo rm /usr/share/consolefonts/*Arabic*
+sudo rm /usr/share/consolefonts/*Armenian*
+sudo rm /usr/share/consolefonts/*Cyr*
+sudo rm /usr/share/consolefonts/*Ethiopian*
+sudo rm /usr/share/consolefonts/*Georgian*
+sudo rm /usr/share/consolefonts/*Greek*
+sudo rm /usr/share/consolefonts/*Hebrew*
+sudo rm /usr/share/consolefonts/*Lao*
+sudo rm /usr/share/consolefonts/*Thai*
+sudo rm /usr/share/consolefonts/*Vietnamese*
+
+# We'll use the unicode set, so the latin fonts can go.
+sudo rm /usr/share/consolefonts/*Lat2*
+sudo rm /usr/share/consolefonts/*Lat7*
+sudo rm /usr/share/consolefonts/*Lat15*
+sudo rm /usr/share/consolefonts/*Lat38*
+
+# Set a font using a command.
+setfont /usr/share/consolefonts/Uni2-Terminus32x16.psf.gz
+
+# Alternatively, choose with the UI.
+sudo dpkg-reconfigure console-setup
+
+# Bonus round - grub menu.
+
+# Convert a font for use at the Grub menu.
+grub-mkfont -o /boot/grub/fonts/jetbrains-mono.pf2 -s 32 ./JetBrainsMono-Regular.ttf
+sudo nano /etc/default/grub
+
+# Add this line.
+GRUB_FONT=/boot/grub/fonts/jetbrains-mono.pf2
+
+# Apply the updates.
+sudo update-grub
+```
+
 ## Groups and users
 
 In a home lab setup it's best to stick with basic authentication and user

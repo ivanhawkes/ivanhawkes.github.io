@@ -3,7 +3,6 @@ author: Ivan Hawkes
 categories:
 - Garden
 date: '2021-12-08'
-images: []
 title: White Fuzz
 ---
 

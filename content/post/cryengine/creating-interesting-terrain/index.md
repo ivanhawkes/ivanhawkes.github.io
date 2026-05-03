@@ -1,19 +1,19 @@
 ---
 author: Ivan Hawkes
 categories:
-- World Design
+  - World Design
 date: '2013-02-23'
 description: Learning how to make terrain using World Machine and other tools.
 tags:
-- Create
-- CryEngine
-- CryEngine 3
-- Game Programming
-- Mudbox
-- Photoshop
-- Software Development
-- Terrain
-- World Machine
+  - Create
+  - CryEngine
+  - CryEngine 3
+  - Game Programming
+  - Mudbox
+  - Photoshop
+  - Software Development
+  - Terrain
+  - World Machine
 title: Creating Interesting Terrain
 ---
 
@@ -79,7 +79,7 @@ efforts have been much improved, though there is still room for improvement.
 
 My current machine looks somewhat like the following:
 
-{{< figure src="world-machine.png" title="World Machine" >}}
+![World Machine](world-machine.webp 'World Machine graph')
 
 This allows me to import the low poly sculpt of my desired terrain. In the
 second step I am adding two levels of noise to that model to provide it with
@@ -98,11 +98,11 @@ tweaking it, but so far am liking the results. The machine is turning a simple
 Mudbox sculpt into a fairly decent terrain I can import into CryEngine. We go
 from this:
 
-{{< figure src="mudbox.png" title="Mudbox Sculpt" >}}
+![Mudbox Sculpt](mudbox.webp 'Grid view of a landscape sculpted in Mudbox')
 
 to this (not same view angle):
 
-{{< figure src="editor.png" title="Mudbox Sculpt" >}}
+![Mudbox Sculpt](editor.webp 'View of the sculpted landscape rendered in CRYENGINE')
 
 **NOTE:** Usually the flows appear as lighter sections of terrain, but they seem
 too obvious for my taste so I am re-working that part of the machine. Until

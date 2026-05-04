@@ -9,6 +9,11 @@ tags:
 - Dessert
 title: Banana Bread
 type: recipe
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Banana Bread'
+          caption: 'A photograph of a freshly cooked banana bread.'
 ---
 
 Whenever there are over-ripe bananas in the house, it's time to make this cake.

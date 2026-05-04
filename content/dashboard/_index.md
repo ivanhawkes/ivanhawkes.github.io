@@ -17,7 +17,3 @@ menus:
         240ZM360-280Z"/></svg>
     weight: 900
 ---
-
-## Dashboard
-
-This is where the blurb for a dashboard would go.

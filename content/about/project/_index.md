@@ -17,7 +17,3 @@ menus:
 title: Projects
 type: post
 ---
-
-## Our Projects
-
-Index page for projects.

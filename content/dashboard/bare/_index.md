@@ -16,7 +16,3 @@ menus:
     weight: 960
 title: Bare HTML
 ---
-
-## Bare HTML pages
-
-The bare HTML pages pre-blurb.

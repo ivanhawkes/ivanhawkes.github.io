@@ -15,7 +15,3 @@ menus:
         60Z"/></svg>
     weight: 300
 ---
-
-## Posts
-
-The posts pre-blurb.

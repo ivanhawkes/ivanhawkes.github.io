@@ -28,6 +28,11 @@ mortal brain.
 
 # Quick Wins
 
+- Margin on the body - 2rem
+- Hamburger menu
+- Search integration
+- RSS feed
+- Add resources front matter for each post to give them alt and title attributes
 - Page navigation looks terrible
 - Section pages need banner images, etc to look nice
 - Replace social media icons with Google icons instead of Font Awesome's
@@ -43,4 +48,5 @@ mortal brain.
 - Craft a decent robots.txt file
 - Implement lazy loading of images e.g. {{ lazyimg...
 - Implement LQIP low resolution versions of images for fast page display
-- Put some good default images into the /assets/images folder to use as fallbacks
+- Put some good default images into the /assets/images folder to use as
+  fallbacks

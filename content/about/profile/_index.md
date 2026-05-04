@@ -19,7 +19,3 @@ menus:
 title: Profiles
 type: post
 ---
-
-## Meet the Team Members
-
-Index page for profiles.

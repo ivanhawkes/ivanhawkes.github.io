@@ -30,25 +30,41 @@ status of this project.
 
 {{< kanban-list-short prefix=sp  >}}
 
+### User Stories
+
+{{< kanban-list-short prefix=us  >}}
+
+### Epics
+
+{{< kanban-list-short prefix=ep  >}}
+
 ### Features
 
 {{< kanban-list-short prefix=ft  >}}
+
+### Requests
+
+{{< kanban-list-short prefix=rq  >}}
 
 ### Bugs
 
 {{< kanban-list-short prefix=bg  >}}
 
-### Deliverables
-
-{{< kanban-list-short prefix=dl  >}}
-
 ### Scaffold
 
 {{< kanban-list-short prefix=sf  >}}
 
+### Testing
+
+{{< kanban-list-short prefix=ts  >}}
+
 ### Acceptance
 
 {{< kanban-list-short prefix=ac  >}}
+
+### Deliverables
+
+{{< kanban-list-short prefix=dl  >}}
 
 ### Deployment
 
@@ -57,15 +73,3 @@ status of this project.
 ### Releases
 
 {{< kanban-list-short prefix=rl  >}}
-
-### Testing
-
-{{< kanban-list-short prefix=ts  >}}
-
-### Requests
-
-{{< kanban-list-short prefix=rq  >}}
-
-### User Stories
-
-{{< kanban-list-short prefix=us  >}}

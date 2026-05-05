@@ -1,4 +1,6 @@
 ---
+type: about
+title: About
 date: '2026-04-27'
 description: About us.
 menus:
@@ -19,8 +21,6 @@ menus:
         85T480-480Zm0-80q17 0 28.5-11.5T520-600q0-17-11.5-28.5T480-640q-17
         0-28.5 11.5T440-600q0 17 11.5 28.5T480-560Zm1 240Zm-1-280Z"/></svg>
     weight: 100
-title: About
-type: about
 ---
 
 ## About Us

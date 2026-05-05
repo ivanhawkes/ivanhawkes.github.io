@@ -1,4 +1,6 @@
 ---
+type: post
+title: Projects
 date: '2026-04-27'
 description: Project section.
 menus:
@@ -14,6 +16,4 @@ menus:
         0h-40 400-360Z"/></svg>
     parent: About
     weight: 120
-title: Projects
-type: post
 ---

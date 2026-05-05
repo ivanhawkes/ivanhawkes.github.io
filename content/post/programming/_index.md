@@ -1,4 +1,5 @@
 ---
+title: Programming
 date: '2026-04-27'
 menus:
   main:
@@ -15,7 +16,6 @@ menus:
         400Z"/></svg>
     parent: Posts
     weight: 350
-title: Programming
 ---
 
 ## Programming

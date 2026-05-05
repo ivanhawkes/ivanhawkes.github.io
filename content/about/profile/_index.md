@@ -1,4 +1,6 @@
 ---
+type: post
+title: Profiles
 date: '2026-04-27'
 description: A software developer.
 menus:
@@ -16,6 +18,4 @@ menus:
         56.5Q447-560 480-560t56.5-23.5ZM480-640Zm0 400Z"/></svg>
     parent: About
     weight: 110
-title: Profiles
-type: post
 ---

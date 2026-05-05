@@ -1,4 +1,5 @@
 ---
+title: Bare HTML
 date: '2026-04-23'
 description: Bare HTML pages.
 menus:
@@ -14,5 +15,4 @@ menus:
         0v-240h60v180h100v60H800Z"/></svg>
     parent: Dashboard
     weight: 960
-title: Bare HTML
 ---

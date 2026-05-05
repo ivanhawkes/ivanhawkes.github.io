@@ -1,9 +1,9 @@
 ---
-title: Recipes
-date: '2021-11-21'
+title: French
+date: '2026-05-05'
 menus:
   main:
-    name: Recipes
+    name: French
     params:
       icon:
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path
@@ -15,8 +15,6 @@ menus:
         0-85-35t-35-85v-200h561q5-34 27-59.5t54-36.5l185-62 25 76-185 62q-12
         4-19.5 14.5T720-462v182q0 50-35 85t-85 35H200Zm0-80h400q17 0
         28.5-11.5T640-280v-120H160v120q0 17 11.5 28.5T200-240Zm200-80Z"/></svg>
-    parent: Posts
-    weight: 360
+    parent: Recipes
+    weight: 450
 ---
-
-# Recipes

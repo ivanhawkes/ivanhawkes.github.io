@@ -1,4 +1,5 @@
 ---
+title: General posts
 date: '2026-04-24'
 description: General post section.
 menus:
@@ -11,7 +12,6 @@ menus:
         160h160v-80H640v80Z"/></svg>
     parent: Posts
     weight: 330
-title: General posts
 ---
 
 # General Interest

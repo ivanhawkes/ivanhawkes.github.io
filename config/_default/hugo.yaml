@@ -5,6 +5,34 @@ theme: be-best
 MetaDataFormat: yaml
 DefaultContentLanguage: en
 
+# RSS Feed Copyright
+copyright: © 2026 Ivan Hawkes
+params:
+  author:
+    email: ivan.hawkes@gmail.com
+    name: Ivan Hawkes
+
+# RSS and HTML outputs based on page kind
+outputs:
+  home:
+  - html
+  - rss
+  section:
+  - html
+  - rss
+  taxonomy:
+  - html
+  - rss
+  term:
+  - html
+  - rss
+
+# Limit the amount of entries in the RSS feed
+services:
+  rss:
+    limit: 50
+
+# Control pagination settings
 pagination:
   disableAliases: false
   pagerSize: 12
@@ -12,6 +40,7 @@ pagination:
   pygmentsCodeFences: true
   preserveTaxonomyNames: true
 
+# Enable the use of a cache directory for assets and CSS files
 caches:
   images:
     dir: :cacheDir/images
@@ -36,6 +65,7 @@ build:
     - source: 'assets/.*\.(.*)$'
       target: $1
 
+# Alow various utilities to be run when deployed to GitHub Pages
 security:
   exec:
     allow:
@@ -53,6 +83,7 @@ module:
       source: hugo_stats.json
       target: assets/notwatching/hugo_stats.json
 
+# Control how the codeblocks in markdown are rendered
 markup:
   highlight:
     style: vulcan
@@ -73,24 +104,15 @@ markup:
       image:
         useEmbedded: fallback
 
+# Sitemap settings
 sitemap:
   changeFreq: monthly
   disable: false
   filename: sitemap.xml
   priority: -1
 
+# Create some taxonomies
 taxonomies:
   category: categories
   tag: tags
   series: series
-
-imagesConfig:
-  command: resize
-  sizes:
-    - 300
-    - 710
-    - 850
-  formats:
-    - jpg
-    - webp
-  useResources: true

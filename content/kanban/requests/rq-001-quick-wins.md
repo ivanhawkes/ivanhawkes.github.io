@@ -28,10 +28,9 @@ mortal brain.
 
 # Quick Wins
 
-- Margin on the body - 2rem
 - Hamburger menu
 - Search integration
-- RSS feed
+- Metadata
 - Add resources front matter for each post to give them alt and title attributes
 - Page navigation looks terrible
 - Section pages need banner images, etc to look nice
@@ -40,7 +39,6 @@ mortal brain.
 - Add Google programmable search
   https://programmablesearchengine.google.com/controlpanel/overview?cx=009369891745940219149%3Ahe4cohkrgv4
 - Print mode
-- Fix image handling issue with github
 - Fix menus to be hierarchial
 - Remember the basic buttons variants from ShadCN
   - btn-primary, btn-secondary, btn-accent, btn-ghost, btn-outline, btn-dark,

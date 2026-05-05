@@ -1,6 +1,6 @@
 ---
 type: post
-title: Blog
+title: Posts
 author: Ivan Hawkes
 date: '2026-04-27'
 description: Blog posts.

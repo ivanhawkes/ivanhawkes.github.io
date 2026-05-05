@@ -1,4 +1,5 @@
 ---
+title: Linux posts
 date: '2026-04-24'
 description: Linux post section.
 menus:
@@ -23,7 +24,6 @@ menus:
         0-85-35t-35-85ZM480-689Z"/></svg>
     parent: Posts
     weight: 340
-title: Linux posts
 ---
 
 # Linux

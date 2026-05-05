@@ -1,4 +1,5 @@
 ---
+title: Garden
 date: '2026-04-27'
 menus:
   main:
@@ -15,7 +16,6 @@ menus:
         35Zm120-200Z"/></svg>
     parent: Posts
     weight: 320
-title: Garden
 ---
 
 # Gardening

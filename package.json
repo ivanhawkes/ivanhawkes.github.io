@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "watch": "npx tailwindcss -i themes/be-best/assets/css/main.css -o css/main.css --watch"
+  },
   "dependencies": {
     "@fontsource-variable/source-sans-3": "^5.2.9",
     "@tailwindcss/cli": "^4.2.4",

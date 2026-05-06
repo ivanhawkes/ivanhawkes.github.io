@@ -15,3 +15,11 @@ menus:
         80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
     weight: 50
 ---
+
+This is home.
+
+<!--more-->
+
+# Big Home
+
+This is text on the home page.

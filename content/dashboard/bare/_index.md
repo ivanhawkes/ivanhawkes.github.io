@@ -7,7 +7,8 @@ menus:
     name: Bare
     params:
       icon:
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path
+        <svg xmlns="http://www.w3.org/2000/svg"  width="24px"
+        viewBox="0 -960 960 960"><path
         d="M0-360v-240h60v80h80v-80h60v240h-60v-100H60v100H0Zm310
         0v-180h-70v-60h200v60h-70v180h-60Zm170 0v-200q0-17
         11.5-28.5T520-600h180q17 0 28.5

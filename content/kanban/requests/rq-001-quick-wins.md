@@ -7,9 +7,9 @@ lastmod:
 author: null
 params:
   sprint: null
-  stage: develop
-  status: done
-  completed: done
+  stage: in-progress
+  status: in-progress
+  completed: 0
   due: null
   estimatedtime: 0
   actualtime: 2

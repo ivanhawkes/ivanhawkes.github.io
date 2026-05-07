@@ -1,6 +1,0 @@
-# Ignore generated content.
-public/
-
-package-lock.json
-pnpm-lock.yaml
-yarn.lock

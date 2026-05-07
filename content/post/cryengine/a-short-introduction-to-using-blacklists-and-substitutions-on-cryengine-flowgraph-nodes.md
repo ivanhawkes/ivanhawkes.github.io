@@ -1,19 +1,21 @@
 ---
-title: 'CRYENGINE Flowgraphs - Blacklists and Substitutions'
-author: Ivan Hawkes
-categories:
-- CRYENGINE
-date: '2015-03-20'
-tags:
-- CryEngine 3
-- Flowgraph
-- Game Programming
+  title: 'CRYENGINE Flowgraphs - Blacklists and Substitutions'
+  author: Ivan Hawkes
+  categories:
+    - CRYENGINE
+  date: '2015-03-20'
+  tags:
+    - CryEngine 3
+    - Flowgraph
+    - Game Programming
 ---
 
 On a large project, such as a game built using CRYENGINE, structure, clarity and
 consistency can provide decent gains in productivity by reducing the time it
 takes to comprehend and perform simple tasks. Blacklists and substitutions for
-Flowgraph Nodes are one way to improve these parts of your project.<!--more-->
+Flowgraph Nodes are one way to improve these parts of your project.
+
+<!--more-->
 
 Even an empty CRYENGINE project comes with a large number of supplied FlowGraph
 nodes, typically from CryAction, CryCommon or CryInput. Your project is likely

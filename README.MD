@@ -57,20 +57,20 @@ hugo new content dashboard/admin
 # of the file path, so that needs to be /kanban. You will need
 # to move that folder down from the /dashboard/admin folder if
 # you have just generated that.
-hugo new content kanban/acceptance/ac-001.md
-hugo new content kanban/bugs/bg-001.md
-hugo new content kanban/deliverables/dl-001.md
-hugo new content kanban/deployment/dp-001.md
-hugo new content kanban/epics/ep-001.md
-hugo new content kanban/features/ft-001.md
-hugo new content kanban/ideation/id-001.md
-hugo new content kanban/meta/mt-001.md
-hugo new content kanban/releases/rl-001.md
-hugo new content kanban/requests/rq-001.md
-hugo new content kanban/scaffold/sf-001.md
-hugo new content kanban/specifications/sp-001.md
-hugo new content kanban/testing/ts-001.md
-hugo new content kanban/user-stories/us-001.md
+hugo new content kanban/acceptance/ac-001-test.md --kind acceptance
+hugo new content kanban/bugs/bg-001-test.md --kind bugs
+hugo new content kanban/deliverables/dl-001-test.md --kind deliverables
+hugo new content kanban/deployment/dl-001-test.md --kind deployment
+hugo new content kanban/epics/ep-001-test.md --kind epics
+hugo new content kanban/features/ft-001-test.md --kind features
+hugo new content kanban/ideation/id-001-test.md --kind ideation
+hugo new content kanban/meta/mt-001-test.md --kind meta
+hugo new content kanban/releases/rl-001-test.md --kind releases
+hugo new content kanban/requests/rq-001-test.md --kind requests
+hugo new content kanban/scaffold/sf-001-test.md --kind scaffold
+hugo new content kanban/specifications/sp-001-test.md --kind specifications
+hugo new content kanban/testing/ts-001-test.md --kind testing
+hugo new content kanban/user-stories/us-001-test.md --kind user-stories
 
 # Your new dashboard should now be available at this address:
 # You will need to place a menu entry into the front matter if

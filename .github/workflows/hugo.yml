@@ -48,7 +48,7 @@ jobs:
       - uses: actions/setup-node@v6        
         with:
           node-version: ${{ env.NODE_VERSION }}
-      - run: npm ci
+      - run: npm install
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3

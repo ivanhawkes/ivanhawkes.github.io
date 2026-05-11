@@ -1,6 +1,13 @@
 {
+  "name": "Ivan Hawkes - Blog",
+  "version": "1.0.0",
+  "description": "A blog for a human.",
+  "author": "Ivan Hawkes",
+  "workspaces": [
+    "themes/**"
+  ],
   "scripts": {
-    "build-css": "npx tailwindcss -i assets/css/main.css -o public/css/main.css --watch"
+    "build-css": "npx @tailwindcss/cli -i themes/be-best/assets/css/main.css -o public/css/main.css --watch"
   },
   "dependencies": {
     "@fontsource-variable/source-sans-3": "^5.2.9",

@@ -15,17 +15,17 @@ params:
 # RSS and HTML outputs based on page kind
 outputs:
   home:
-  - html
-  - rss
+    - html
+    - rss
   section:
-  - html
-  - rss
+    - html
+    - rss
   taxonomy:
-  - html
-  - rss
+    - html
+    - rss
   term:
-  - html
-  - rss
+    - html
+    - rss
 
 # Limit the amount of entries in the RSS feed
 services:
@@ -69,12 +69,12 @@ build:
 security:
   exec:
     allow:
-      - ^(dart-)?sass(-embedded)?$
+      - ^node$
       - ^go$
       - ^npx$
       - ^postcss$
       - ^tailwindcss
-      - ^asciidoctor$
+
 module:
   mounts:
     - source: assets

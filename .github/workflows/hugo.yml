@@ -1,5 +1,5 @@
 ## Sample workflow for building and deploying a Hugo site to GitHub Pages
-name: Deploy Hugo site to Pages
+name: Publish the website
 
 on:
   # Runs on pushes targeting the default branch
@@ -19,7 +19,7 @@ permissions:
 ## Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 ## However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
 concurrency:
-  group: 'pages'
+  group: "pages"
   cancel-in-progress: false
 
 ## Default to bash
@@ -31,20 +31,19 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
-
+    
     env:
       GO_VERSION: 1.26.0
       HUGO_VERSION: 0.160.1
       NODE_VERSION: 25.8.0
       TZ: Australia/Brisbane
-
+      
     steps:
-      - name: Checkout the code
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
         with:
           submodules: recursive
           fetch-depth: 0
-
+        
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6        
         with:
@@ -87,8 +86,7 @@ jobs:
         with:
           path: ${{ runner.temp }}/hugo_cache
           key: hugo-${{ github.run_id }}
-          restore-keys:
-            hugo-
+          restore-keys: hugo-
 
       - name: Build the site
         run: |

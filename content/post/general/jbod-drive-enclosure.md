@@ -19,7 +19,7 @@ The dead drives were holding my games library and my backups. I've since moved t
 
 I needed more drive space, but it's stupid expensive still...so, what about a dirty hack? Yes please!
 
-I've added a JBOD (Just A Bunch of Disks) to my media server. It's a modest sized one with room for four drives which it supports by supplying 4 x USB 3.1 devices on the backplane. A single connection to the host PC supports all four drives. At $320 AUD it was pretty affordable, and I like how neat the solution is on my desk.
+I've added a [JBOD](https://www.terra-master.com/products/d4-320) (Just A Bunch of Disks) to my media server. It's a modest sized one with room for four drives which it supports by supplying 4 x USB 3.1 devices on the backplane. A single connection to the host PC supports all four drives. At $320 AUD it was pretty affordable, and I like how neat the solution is on my desk.
 
 Great! But...that's not RAID, I'm still likely to lose all my data...AND...the media folders still don't fit neatly on each drive. There's a bunch of 'wasted' space on each. Time to access what I have.
 

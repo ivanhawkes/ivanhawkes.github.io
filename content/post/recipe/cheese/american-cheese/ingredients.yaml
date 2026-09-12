@@ -1,0 +1,25 @@
+ingredient-list:
+  - dish: Ingredients
+    ingredients:
+      - quantity: "525"
+        measure: "g"
+        ingredient: "shredded cheddar cheese"
+      - quantity: "75"
+        measure: "g"
+        ingredient: "parmesan or similar hard cheese"
+      - quantity: "150"
+        measure: "ml"
+        ingredient: "full cream full (2%)"
+      - quantity: "2"
+        measure: "tbs"
+        ingredient: "butter"
+      - quantity: "1/2"
+        measure: "tsp"
+        ingredient: "salt"
+      - quantity: "4"
+        measure: "tsp"
+        ingredient: "sodium citrate"
+      - quantity: "1"
+        measure: "tsp"
+        ingredient: "Kashmiri chilli powder (optional)"
+        

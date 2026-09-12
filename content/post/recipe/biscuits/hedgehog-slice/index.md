@@ -25,23 +25,6 @@ in these sizes.
 
 <!--more-->
 
-## Ingredients
-
-| Quantity | Measure | Ingredient                                   |
-| -------- | ------- | -------------------------------------------- |
-| 395      | grams   | sweetened condensed milk ( 1 can)            |
-| 250      | grams   | butter (softened)                            |
-| 1/4      | cup     | cocoa powder (25g)                           |
-| 1/4      | cup     | shredded coconut (25g)                       |
-| 2        | cup     | crushed walnuts (250g)                       |
-| 2 1/2    | tbsp    | brown sugar (25g)                            |
-| 1/2      | tsp     | salt (3g)                                    |
-| 2        | packets | marie biscuits (250g each, coarsely chopped) |
-| 1        | tsp     | vanilla extract                              |
-| 1        | tsp     | coffee extract                               |
-| 1        | tsp     | maple syrup extract                          |
-| 250      | grams   | chocolate melts                              |
-
 ## Directions
 
 - Grease a 28cm x 28cm (24cm square for thick) slice pan. Line the pan base and

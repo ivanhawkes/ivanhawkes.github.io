@@ -43,17 +43,7 @@ bubbles before transferring the lemon bars to the oven.
 A final dusting of powdered sugar adds a nice touch, but hold off until you’re
 ready to serve, lest the sugar disappear into the lemony depths.
 
-## Ingredients Crust
-
-| Quantity | Measure | Ingredient                                       |
-| -------- | ------- | ------------------------------------------------ |
-| 1 1/4    | cup     | flour (179 grams)                                |
-| 1/4      | cup     | powdered sugar (28 grams, plus more for dusting) |
-| 1/2      | tsp     | salt                                             |
-| 7        | tbsp    | unsalted butter (100g, cold, cubed)              |
-| 1        | large   | eggs yolk                                        |
-
-## Directions
+## Crust
 
 - Place a rack in middle of oven; preheat to 162° celsius.
 
@@ -74,20 +64,7 @@ ready to serve, lest the sugar disappear into the lemony depths.
   minutes. Let cool 5 minutes (don’t go longer; it needs to be warm when you add
   the lemon mixture).
 
-## Ingredients Filling
-
-| Quantity | Measure | Ingredient                 |
-| -------- | ------- | -------------------------- |
-| 1        | cup     | sugar (200 grams)          |
-| 3        | large   | eggs                       |
-| 1        | large   | eggs yolks                 |
-| 3        | tbsp    | flour (24 grams)           |
-| 2        | tsp     | lemon zest (finely grated) |
-| 2/3      | cup     | lemon juice (156 ml)       |
-| 1/4      | cup     | full cream milk (60 ml)    |
-| 1/2      | tsp     | salt                       |
-
-## Directions
+## Filling
 
 Do this while the crust is baking!
 

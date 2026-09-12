@@ -1,0 +1,32 @@
+ingredient-list:
+  - dish: Dry Rub
+    ingredients:
+      - quantity: "3"
+        measure: "tbs"
+        ingredient: "fennel seeds"
+      - quantity: "1"
+        measure: "tbs"
+        ingredient: "rosemary, minced"
+      - quantity: "2"
+        measure: "tbs"
+        ingredient: "sage, minced, fresh"
+      - quantity: "2"
+        measure: "tbs"
+        ingredient: "salt"
+      - quantity: "3"
+        measure: "cloves"
+        ingredient: "garlic"
+      - quantity: "1"
+        measure: "zest"
+        ingredient: "lemon"
+  - dish: Main Dish
+    ingredients:
+      - quantity: "3.5"
+        measure: "kg"
+        ingredient: "pork shoulder, skin on"
+      - quantity: "2"
+        measure: "tbs"
+        ingredient: "olive oil"
+      - quantity: "250"
+        measure: "ml"
+        ingredient: "dry white wine"

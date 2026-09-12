@@ -1,0 +1,41 @@
+---
+author: Ivan Hawkes
+categories:
+- Recipe
+date: '2018-11-26'
+portions: 4
+tags:
+- Vietnamese
+- Beef
+- Soup
+title: Pho
+type: recipe
+---
+
+The famous beef soup dish from Vietnam.
+
+<!--more-->
+
+## Directions
+
+- Preheat oven to 220 degrees celcius.
+
+- Place beef bones on a baking sheet and roast in the preheated oven until
+  browned, about 1 hour.
+
+- Place onion on a baking sheet and roast in the preheated oven until blackened
+  and soft, about 45 minutes.
+
+- Place bones, onion, ginger, salt, star anise, and fish sauce in a large
+  stockpot and cover with water. Bring to a boil and reduce heat to low. Simmer
+  on low for 6 to 10 hours. Strain the broth into a saucepan and set aside.
+
+- Place rice noodles in large bowl filled with room temperature water and allow
+  to soak for 1 hour. Bring a large pot of water to a boil and after the noodles
+  have soaked, place them in the boiling water for 1 minute. Bring stock to a
+  simmer.
+
+- Divide noodles among 4 serving bowls; top with sirloin, coriander, and green
+  onion. Pour hot broth over the top. Stir and let sit until the beef is
+  partially cooked and no longer pink, 1 to 2 minutes. Serve with bean sprouts,
+  Thai basil, lime wedges, hoisin sauce, and chilli-garlic sauce on the side.

@@ -1,0 +1,21 @@
+ingredient-list:
+  - dish: Ingredients
+    ingredients:
+      - quantity: "1/2"
+        measure: "cup"
+        ingredient: "all-purpose flour"
+      - quantity: "1⁄2"
+        measure: "cup"
+        ingredient: "cornflour"
+      - quantity: "1"
+        measure: "tsp"
+        ingredient: "sodium bicarbonate"
+      - quantity: "1⁄2"
+        measure: "teaspoon"
+        ingredient: "salt"
+      - quantity: "3/4"
+        measure: "cup"
+        ingredient: "soda water (cold)"
+      - quantity: "1"
+        measure: ""
+        ingredient: "egg"

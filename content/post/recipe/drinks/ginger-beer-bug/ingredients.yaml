@@ -1,0 +1,20 @@
+ingredient-list:
+  - dish: Initial Ingredients
+    ingredients:
+      - quantity: "500"
+        measure: "ml"
+        ingredient: "water (chlorine free) - 2 cups"
+      - quantity: "125"
+        measure: "g"
+        ingredient: "white sugar - 10 tbs"
+      - quantity: "25"
+        measure: "g"
+        ingredient: "organic ginger root - a roughly 5cm long piece"
+  - dish: Daily / Weekly Ingredients
+    ingredients:
+      - quantity: "25"
+        measure: "g"
+        ingredient: "sucrose - white sugar (2 tsp)"
+      - quantity: "25"
+        measure: "g"
+        ingredient: "organic ginger root - a roughly 5cm long piece"

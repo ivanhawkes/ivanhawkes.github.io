@@ -16,18 +16,7 @@ A wonderfully hot and spicy dish from Kashmir.
 
 <!--more-->
 
-## Marinade Ingredients
-
-| Quantity | Measure | Ingredient                                                                                    |
-| -------- | ------- | --------------------------------------------------------------------------------------------- |
-| 1/2      | cup     | plain yoghurt                                                                                 |
-| 2        | tbs     | ginger (crushed)                                                                              |
-| 4        | tbs     | garlic (crushed)                                                                              |
-| 4        | tsp     | Bin bhuna hua garam masala [recipe](/recipe/indian/garama-masala/bin-bhuna-hua-garam-masala/) |
-| 4        | tsp     | salt                                                                                          |
-| 1/2      | leg     | lamb (1 inch cubes) approximately 1.8kg                                                       |
-
-## Directions
+## Marinade
 
 - Cube the lamb into one inch sized chunks.
 
@@ -36,22 +25,7 @@ A wonderfully hot and spicy dish from Kashmir.
 
 - Place it in the fridge and let it marinate for a few hours or overnight.
 
-## Main Dish Ingredients
-
-| Quantity | Measure | Ingredient                                                                     |
-| -------- | ------- | ------------------------------------------------------------------------------ |
-| 4        | tbs     | ghee                                                                           |
-| 2        | tbs     | black cumin seed                                                               |
-| 2        | tsp     | fennel                                                                         |
-| 24       | whole   | cloves                                                                         |
-| 8        | whole   | black cardamom pods                                                            |
-| 4        | whole   | bay leaves (Indian, dried or fresh)                                            |
-| 4        | sticks  | cinnamon (3 inches long each)                                                  |
-| 2        | cups    | red onion (medium, finely chopped)                                             |
-| 4        | tbs     | tomato paste                                                                   |
-| 2        | tbs     | Kashmiri chiles (ground) or 1/2 tbs cayenne mixed with 1 1/2 tbs sweet paprika |
-
-## Directions
+## Main Dish
 
 - Heat the ghee in a frying pan over medium-high heat.
 

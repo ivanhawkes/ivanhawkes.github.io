@@ -1,0 +1,18 @@
+ingredient-list:
+  - dish: Ingredients
+    ingredients:
+      - quantity: "4 1/2"
+        measure: "cups"
+        ingredient: "all-purpose flour"
+      - quantity: "2"
+        measure: "packets"
+        ingredient: "active yeast"
+      - quantity: "1 1/2"
+        measure: "cups"
+        ingredient: "warm water"
+      - quantity: "4"
+        measure: "tbs"
+        ingredient: "sugar"
+      - quantity: "1"
+        measure: "tbs"
+        ingredient: "salt"

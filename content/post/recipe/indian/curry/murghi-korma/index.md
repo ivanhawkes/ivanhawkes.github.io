@@ -16,34 +16,7 @@ A curry that is mild enough for anyone to eat.
 
 <!--more-->
 
-## Marinade Ingredients
-
-| Quantity | Measure | Ingredient       |
-| -------- | ------- | ---------------- |
-| 1/4      | cup     | plain yoghurt    |
-| 1        | tbs     | garlic (crushed) |
-| 2        | tbs     | ginger (crushed) |
-
-## Sauce Ingredients
-
-| Quantity | Measure | Ingredient                                  |
-| -------- | ------- | ------------------------------------------- |
-| 1        | whole   | chicken, broken down (skin removed)         |
-| 2        | tbs     | vegetable oil                               |
-| 1/2      | tsp     | whole cloves                                |
-| 1/2      | tsp     | black peppercorn                            |
-| 6        | whole   | green or white cardamom pods                |
-| 3        | whole   | black cardamom pods                         |
-| 1 1/2    | tsp     | salt                                        |
-| 1/2      | tsp     | cayenne                                     |
-| 1/2      | cup     | slivered blanched almonds                   |
-| 1/2      | cup     | water                                       |
-| 3        | sticks  | cinnamon                                    |
-| 2        | whole   | bay leaves                                  |
-| 1        | medium  | red onion, sliced                           |
-| 2        | tbs     | coriander leaves and stems (finely chopped) |
-
-## Preparation
+## Marinade
 
 - Break the chicken down into serving sized parts.
 
@@ -52,7 +25,7 @@ A curry that is mild enough for anyone to eat.
 
 - Let it marinate for a few hours.
 
-### Directions
+## Sauce
 
 - Dry fry the spices if desired.
 

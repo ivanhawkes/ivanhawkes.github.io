@@ -21,19 +21,6 @@ out with some nuttiness.
 
 <!--more-->
 
-## Ingredients
-
-| Quantity | Measure | Ingredient                 |
-| -------- | ------- | -------------------------- |
-| 1        | head    | broccoli (8 cups)          |
-| 4        | slices  | bacon (fried)              |
-| 1        |         | red onion (finely chopped) |
-| 1/2      | cup     | walnuts (roughly chopped)  |
-| 1/2      | cup     | cranberies (dried)         |
-| 1/2      | cup     | mayonaise                  |
-| 2        | tsp     | dijon mustard              |
-| 1/2      | tsp     | salt                       |
-
 ## Directions
 
 - Lay out the bacon in an air fryer and blast at 200c for 10 minutes or until

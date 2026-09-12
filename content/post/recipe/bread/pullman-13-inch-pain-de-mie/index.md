@@ -19,18 +19,6 @@ dough.
 
 <!--more-->
 
-## Ingredients
-
-| Quantity | Measure | Ingredient                 |
-| -------- | ------- | -------------------------- |
-| 562      | grams   | strong white flour         |
-| 9        | grams   | instant yeast              |
-| 50       | grams   | unsalted butter (softened) |
-| 276      | ml      | milk (warm)                |
-| 2        | large   | eggs (100g)                |
-| 50       | grams   | sugar / honey              |
-| 12       | grams   | salt                       |
-
 ## Directions
 
 - In a small bowl combine the salt, sugar, milk, egg, and yeast. Let this stand

@@ -17,33 +17,6 @@ soups and other dishes to bring them to life.
 
 <!--more-->
 
-## Marinade
-
-| Quantity | Measure | Ingredient                      |
-| -------- | ------- | ------------------------------- |
-| 2        | kgs     | pork - whole shoulder or collar |
-| 2        | tbs     | maltose or honey                |
-| 3        | tbs     | brown sugar                     |
-| 2        | tbs     | oyster sauce                    |
-| 2        | tbs     | hoisin sauce                    |
-| 2        | tbs     | light soy sauce                 |
-| 2        | tsp     | five spice powder               |
-| 1        | tsp     | salt                            |
-| 6        | cloves  | garlic                          |
-| 1        | tsp     | grated ginger                   |
-| 4        | pieces  | fermented soy                   |
-| 4        | tbs     | shaoxing wine                   |
-| 2        | tsp     | sesame oil                      |
-| 2        | tsp     | white pepper (ground)           |
-
-## Baste
-
-| Quantity | Measure | Ingredient        |
-| -------- | ------- | ----------------- |
-| 2        | tbs     | maltose or honey  |
-| 1        | tbs     | hot water         |
-| 2        | tbs     | leftover marinade |
-
 ## Directions
 
 - Mix the marinade ingredients together in a bowl.

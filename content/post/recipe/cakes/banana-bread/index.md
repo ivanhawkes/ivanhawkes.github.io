@@ -22,24 +22,6 @@ Whenever there are over-ripe bananas in the house, it's time to make this cake.
 
 ## Cake
 
-| Quantity | Measure | Ingredient                        |
-| -------- | ------- | --------------------------------- |
-| 1 1/2    | cups    | plain flour                       |
-| 125      | grams   | butter (softened)                 |
-| 1/2      | cup     | brown sugar (firmly packed, 220g) |
-| 3        | whole   | bananas (very ripe, mashed)       |
-| 1/2      | cup     | walnuts (coursely chopped, 25g)   |
-| 1        | tbs     | milk                              |
-| 2        | whole   | eggs                              |
-| 1        | grams   | salt                              |
-| 1        | tsp     | vanilla extract                   |
-| 1        | tsp     | baking powder                     |
-| 1        | tsp     | bicarbonate of soda               |
-| 1        | tsp     | cinnamon (ground)                 |
-| 1/4      | tsp     | salt                              |
-
-## Directions
-
 - Place butter and sugar in the bowl of an electric mixer. Stir to combine.
 
 - Adds the eggs and milk. Work it.
@@ -53,16 +35,6 @@ Whenever there are over-ripe bananas in the house, it's time to make this cake.
 - Bake for 25 - 30 minutes.
 
 ## Icing
-
-| Quantity | Measure | Ingredient                        |
-| -------- | ------- | --------------------------------- |
-| 125      | grams   | butter (softened)                 |
-| 1        | cup     | brown sugar (firmly packed, 220g) |
-| 2        | cup     | icing sugar (sifted)              |
-| 1/4      | cup     | milk                              |
-| 1        | tsp     | vanilla extract                   |
-
-## Directions
 
 - Melt the butter and sugar in a saucepan on moderate heat. Stir constantly.
 

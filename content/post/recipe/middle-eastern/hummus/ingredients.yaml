@@ -1,0 +1,40 @@
+ingredient-list:
+  - dish: Brine
+    ingredients:
+      - quantity: "1"
+        measure: "cup"
+        ingredient: "chickpeas (dry)"
+      - quantity: "2.5"
+        measure: "tsp"
+        ingredient: "salt"
+      - quantity: "5"
+        measure: "cups"
+        ingredient: "water"
+  - dish: Hummus
+    ingredients:
+      - quantity: "3"
+        measure: "cups"
+        ingredient: "chickpeas (cooked)"
+      - quantity: "1"
+        measure: "clove"
+        ingredient: "garlic"
+      - quantity: "1"
+        measure: "tsp"
+        ingredient: "salt"
+      - quantity: "1/3"
+        measure: "cup"
+        ingredient: "tahini"
+      - quantity: "1"
+        measure: "whole"
+        ingredient: "lemon (juiced 60ml or so)"
+      - quantity: "3 - 4"
+        measure: "tbsp"
+        ingredient: "water (cold or ice cubes)"
+  - dish: Optional Ingredients
+    ingredients:
+      - quantity: "1/4"
+        measure: "tsp"
+        ingredient: "cumin powder"
+      - quantity: "1/4"
+        measure: "tsp"
+        ingredient: "coriander seeds powdered"

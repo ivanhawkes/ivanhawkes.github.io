@@ -1,0 +1,25 @@
+ingredient-list:
+  - dish: Ingredients
+    ingredients:
+      - quantity: "1"
+        measure: "tbs"
+        ingredient: "light soy sauce"
+      - quantity: "2"
+        measure: "tbs"
+        ingredient: "oyster sauce"
+      - quantity: "2"
+        measure: "tbs"
+        ingredient: "shaoxing wine"
+      - quantity: "1/2"
+        measure: "tsp"
+        ingredient: "chinese five spice"
+      - quantity: "1/2"
+        measure: "cup"
+        ingredient: "beef stock"
+      - quantity: "2"
+        measure: "tsp"
+        ingredient: "corn flour"
+      - quantity: "1"
+        measure: "tsp"
+        ingredient: "Bonox"
+        

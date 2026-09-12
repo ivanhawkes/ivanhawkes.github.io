@@ -1,0 +1,9 @@
+ingredient-list:
+  - dish: Ingredients
+    ingredients:
+      - quantity: "400"
+        measure: "g"
+        ingredient: "garlic"
+      - quantity: "400"
+        measure: "g"
+        ingredient: "ginger"

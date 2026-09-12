@@ -1,0 +1,20 @@
+ingredient-list:
+  - dish: Ichiban Dashi
+    ingredients:
+      - quantity: "1"
+        measure: "litre"
+        ingredient: "water (cold)"
+      - quantity: "10"
+        measure: "cm square piece"
+        ingredient: "kombu (13-18 grams)"
+      - quantity: "1/2"
+        measure: "cup"
+        ingredient: "loosely packed katsuobushi (dried bonito flakes)"
+  - dish: Niban Dashi
+    ingredients:
+      - quantity: "4"
+        measure: "cups"
+        ingredient: "water"
+      - quantity: ""
+        measure: ""
+        ingredient: "Kombu and katsuobushi used in ichiban dashi"

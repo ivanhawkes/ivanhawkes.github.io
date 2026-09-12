@@ -16,22 +16,7 @@ An authentic, spicy and hot vindaloo dish from the Goan community.
 
 <!--more-->
 
-## Marinade Ingredients
-
-| Quantity | Measure           | Ingredient                               |
-| -------- | ----------------- | ---------------------------------------- |
-| 1 1/2    | cup               | cider vinegar or malt vinegar            |
-| 3        | tbs               | cumin seeds                              |
-| 24       | lengthwise slices | ginger (25mm wide, 3mm thick)            |
-| 24       | cloves            | garlic                                   |
-| 24       | whole             | Thai or cayenne chillies (stems removed) |
-| 3        | sticks            | cinnamon (3 inches long each)            |
-| 1 1/2    | tsp               | turmeric (ground)                        |
-| 3        | tsp               | salt                                     |
-| 6        | tbs               | neutral oil                              |
-| 1/2      | leg               | pork (1 inch cubes) approximately 1.8kg  |
-
-## Directions
+## Marinade
 
 - Cube the pork into one inch sized chunks.
 

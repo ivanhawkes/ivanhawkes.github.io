@@ -17,18 +17,6 @@ to many dishes.
 
 <!--more-->
 
-## Base Ingredients
-
-| Quantity | Measure | Ingredient                                          |
-| -------- | ------- | --------------------------------------------------- |
-| 1        | tsp     | cumin seeds                                         |
-| 1        | tbs     | coriander seeds                                     |
-| 1/2      | tsp     | whole black peppercrons                             |
-| 1        | tsp     | cloves                                              |
-| 1/2      | tsp     | black cardamom seeds (badi elacichi)                |
-| 3        | sticks  | cinnamon                                            |
-| 3        | whole   | tejpatta leaves (Cinnamomum tamal, Indian Bay Leaf) |
-
 ## Directions
 
 - Dry toast all the ingrediants in a pan then transfer to a plate to cool.

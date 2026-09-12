@@ -17,45 +17,6 @@ moreish Chinese red braise sauce.
 
 <!--more-->
 
-## Ingredients
-
-| Quantity | Measure | Ingredient                         |
-| -------- | ------- | ---------------------------------- |
-| 1        | kg      | pork belly / shoulder              |
-| 2-3      | cups    | water                              |
-| 4        | cloves  | garlic                             |
-| 2        | cm      | sliced ginger                      |
-| 2        | whole   | shallots, 5cm lengths, whites only |
-| 2        | tbs     | light soy sauce                    |
-| 1/2      | tbs     | dark soy sauce (optional)          |
-| 4        | tbs     | shaoxing wine                      |
-| 1        | tsp     | toasted sessame oil                |
-
-## Caramel
-
-| Quantity | Measure | Ingredient  |
-| -------- | ------- | ----------- |
-| 1/4      | cup     | brown sugar |
-| 1/4      | cup     | water       |
-| 2        | tbs     | oil         |
-
-## Spices
-
-Either use 1 tsp of five spice powder or a selection of the following:
-
-| Quantity | Measure | Ingredient                     |
-| -------- | ------- | ------------------------------ |
-| 1        | tsp     | white pepper                   |
-| 1-2      | whole   | star anise                     |
-| 1        | leaf    | dried bay leaf                 |
-| 1        | stick   | cinnamon                       |
-| 3        | whole   | cloves                         |
-| 15       | whole   | sichuan peppercorns            |
-| 1        | whole   | chinese black cardamom         |
-| 1        | whole   | dried red chilli (optional)    |
-| 1        | whole   | black licorice root (optional) |
-| 1/4      | tsp     | fennel seed (optional)         |
-
 ## Directions
 
 - Slice the pork into large chunks (2-3 cm). Expect a little shrinkage during

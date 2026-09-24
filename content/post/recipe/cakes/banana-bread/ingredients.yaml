@@ -1,5 +1,5 @@
 ingredient-list:
-  - dish: Ingredients
+  - dish: Banana Bread
     ingredients:
       - quantity: "1 1/2"
         measure: "cups"
@@ -40,7 +40,7 @@ ingredient-list:
       - quantity: "1/4"
         measure: "tsp"
         ingredient: "salt"
-  - dish: Ingredients
+  - dish: Icing
     ingredients:
       - quantity: "125"
         measure: "grams"

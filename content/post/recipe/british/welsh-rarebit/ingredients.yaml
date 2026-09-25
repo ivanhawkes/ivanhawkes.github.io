@@ -1,0 +1,46 @@
+ingredient-list:
+  - dish: Ingredients
+    ingredients:
+      - quantity: "4"
+        measure: "slices"
+        ingredient: "sturdy crusty bread (like sourdough or farmhouse white)"
+
+      - quantity: "2"
+        measure: "tbsp"
+        ingredient: "butter"
+
+      - quantity: "2"
+        measure: "tbsp"
+        ingredient: "plain flour"
+
+      - quantity: "1/2"
+        measure: "tsp"
+        ingredient: "English mustard powder"
+
+      - quantity: "1"
+        measure: "tsp"
+        ingredient: "prepared English mustard"
+
+      - quantity: "1/2"
+        measure: "cup"
+        ingredient: "ale or stout (choose a good-quality, flavorful beer)"
+
+      - quantity: "1"
+        measure: "tbsp"
+        ingredient: "Worcestershire sauce"
+
+      - quantity: "220"
+        measure: "g"
+        ingredient: "Sharp Cheddar cheese (grated mature or extra-mature cheddar)"
+
+      - quantity: "1"
+        measure: "pinch"
+        ingredient: "cayenne pepper"
+
+      - quantity: "1"
+        measure: "pinch"
+        ingredient: "salt"
+
+      - quantity: "1"
+        measure: "pinch"
+        ingredient: "black pepper"

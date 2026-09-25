@@ -1,13 +1,13 @@
 ---
 author: Unknown
 categories:
-- Recipe
+  - Recipe
 date: '2026-09-23'
 portions: 4
 tags:
-- Italian
-- Beef
-- Pork
+  - Italian
+  - Beef
+  - Pork
 title: Italian Meatballs in Sauce with Pasta
 type: recipe
 ---
@@ -20,11 +20,13 @@ A classic meatball and pasta recipe.
 
 - Preheat the oven to 190°C (375°F)
 
-- In a large bowl, mix ground beef, breadcrumbs, parmesan, egg, garlic, parsley, oregano, basil, salt, and pepper until well combined
+- In a large bowl, mix ground beef, breadcrumbs, parmesan, egg, garlic, parsley,
+  oregano, basil, salt, and pepper until well combined
 
 - Shape the mixture into meatballs (about 4 cm in diameter)
 
-- Heat olive oil in a large skillet over medium heat. Brown the meatballs on all sides, about 5-7 minutes. Transfer to a baking dish
+- Heat olive oil in a large skillet over medium heat. Brown the meatballs on all
+  sides, about 5-7 minutes. Transfer to a baking dish
 
 - Bake for 15-20 minutes or until cooked through. Set aside
 
@@ -36,9 +38,11 @@ A classic meatball and pasta recipe.
 
 - Add minced garlic and cook for another minute
 
-- Pour in the crushed tomatoes, basil, oregano, thyme, sugar (if using), salt, and pepper
+- Pour in the crushed tomatoes, basil, oregano, thyme, sugar (if using), salt,
+  and pepper
 
-- Simmer the sauce for 20-30 minutes, stirring occasionally. Adjust seasoning to taste
+- Simmer the sauce for 20-30 minutes, stirring occasionally. Adjust seasoning to
+  taste
 
 ## Assembly
 

@@ -6,7 +6,7 @@ categories:
   - Idea
 date: '2026-04-25'
 description:
-  A document that briefyly describes the goals and intents of this project.
+  A document that briefly describes the goals and intents of this project.
 title: Ideation
 type: specification
 ---
@@ -15,69 +15,196 @@ type: specification
 
 ## Purpose
 
-The purpose of this document is to state quite clearly the idea that will be
-further developed into a project.
+The purpose of this document is to state clearly the idea that will be further
+developed into a project. It captures the *why* and *what*; implementation
+detail lives in the technical specification.
 
 ## Logline
-
-Describe in as single sentance the purpose of this project.
 
 > I wish to create an elegant blog that can hold all my project ideas, plans,
 > specifications, and progress.
 
 ## Progress
 
-{{< kanban-list-short prefix=id  >}}
+{{< kanban-list-short prefix=id >}}
+
+## Terminology
+
+A single model is used throughout, so terms never contradict:
+
+- **Stage** — the phase a card is in (see *Stages* below).
+- **Status** — the position *within* a stage: `pending`, `in-progress`, `done`.
+- **Priority** — an integer `0–599` mapped to a swimlane bucket.
+
+Intermediate sub-steps (e.g. started, finished, ship it) are expressed as **tags**,
+not as stages.
 
 ## Expand the Idea
 
-Take each key idea and move it into a section with a heading. Take all the small
-related ideas and move them under that heading.
+Key ideas are grouped into **major features**, each owning a set of **minor
+features**. Every major feature gets its own Kanban board. Each feature below is
+stated clearly and concisely; anything implementation-heavy is pointed to the
+technical specification.
 
-Break the ideas into major and minor features. State each feature clearly and
-concisely.
+### Major feature: Kanban model
 
-Make a new feature Kanban for each major feature.
+The data model that every board, view, and tool consumes.
 
-## Stage
+- **Card IDs** — every deliverable, action, and step has a card and a unique,
+  immutable, idempotent ID. No ID is ever reused.
+- **Stages** — the canonical pipeline a card moves through.
+- **Priority → swimlanes** — a numeric priority maps a card into a priority
+  bucket; see *Swimlanes*.
+- **Milestones** — one card per major milestone, plus cards per requirement so
+  each requirement has a short identifier.
 
-  - design
-  - develop
-  - test
-  - review
-  - deploy
-  - done
+#### Card ID scheme
 
-## Status
+| Prefix | Type            | Example          | Description                              |
+|--------|-----------------|------------------|------------------------------------------|
+| `mt-`  | Meta            | `mt-001`         | Initial steps, things to remember        |
+| `id-`  | Ideation        | `id-001`         | Ideas and concept capture                |
+| `sp-`  | Specification   | `sp-001`         | Specs (requirements, tech, test, design) |
+| `dl-`  | Deliverables    | `dl-001`         | Produced deliverables                    |
+| `sc-`  | Scaffold        | `sc-001`         | Services, repo, skeleton, scaffolding    |
+| `ft-`  | Features        | `ft-001`         | Major and minor features                 |
+| `ac-`  | Acceptance      | `ac-001`         | Criteria required for acceptance         |
+| `dp-`  | Deployment      | `dp-001`         | Steps required to deploy the app         |
+| `bg-`  | Bugs            | `bg-001`         | Linked to GitHub issues                  |
+| `rl-`  | Releases        | `rl-001`         | Versioned releases, tied to GitHub       |
+| `ts-`  | Testing         | `ts-001`         | Test and QA work                         |
+| `rq-`  | Requests        | `rq-001`         | Feature requests and spec changes        |
+| `us-`  | User stories    | `us-001`         | Requirements expressed as user stories   |
 
-  - pending
-  - in-progress
-  - done
+IDs form a **dependency tree** based on GitHub's feature/issue tracking model.
+Each document has its own card (a tech spec may have several). Filenames may be
+longer than the ID — e.g. `ft-001-find-the-wumpus` — with a regex trimming them
+for display, which also makes them easier to pick out in a file manager.
 
-## Grid View
+#### Stages
 
-X,y labels and types for kanban are stored in data folder.
+The standard pipeline (a lightweight Scrum):
 
-Can i have a standard one in the themes folder and override in my local project?
+- ideation
+- requirements / requirements gathering
+- design
+- develop
+- test
+- review
+- deploy
+- done
 
-## Recipes
+`review` is a stage but not always shown in the usual flow. Extra states such as
+*waiting*, *halted / blocked / on-hold*, *code review*, and *accept/reject from
+completion* are supported as needed. Optional **limits** can be set per stage with
+overflow flagged.
 
-Move the ingredients into the front matter. You can use the site to help convert
-them to JSON and an online converter to get that into YAML format.
+### Major feature: Board views
 
-Recipes with two parts can be split into two .md files. Add a 'weight' field if
-one doesn't exist to allow sorting by an arbitrary value.
+How cards are presented and prioritized.
+
+- **Grid view** — X axis = stage (ideation, requirements, …); Y axis = status
+  (pending, in-progress, done). A card's X offset reflects its completion value,
+  e.g. a high-priority, in-progress card sits in its priority lane offset by how
+  far along it is. Grid is chosen over swimlanes because it is easier to build.
+- **Swimlane view** — cards bucketed by priority, highest priority at the top.
+- **"My view" (default)** — default to cards assigned to me, showing all with
+  emphasis on late and high-priority items.
+- **Sort score** — a numeric score ranks cards for sorting:
+  - late: +100
+  - priority: priority ÷ 5
+  - assigned to me: +300 (lets others' cards show too, if useful)
+- **Layout** — tabbed, full-screen, overdue tab open by default. Compact cards with
+  the filename used as the tag (so it isn't typed twice), title on top, and the
+  tag as a hover popup icon. Colour-coded indicators for *late*, *urgent*, and
+  *high priority*.
+- **Dashboard** — a single static page for project health at a glance: stats,
+  how many are behind, open issue counts, etc. It gets its own taxonomy, is not
+  restricted to prose width, and can use the full monitor for wide board views.
+
+### Major feature: Automation
+
+Turning the cards into living, verifiable documentation.
+
+- **Kanban shortcodes** — embed a card link or a mini card, located by searching
+  folders, e.g. `{{</* kanban "kb-001" */>}}`, `{{</* kanban-tiny "kb-001" */>}}`.
+  Search supports partial-name globbing so IDs are short to type. Bonus: embedded
+  SVG icon per card.
+- **Scan-to-docs** — file-scanning code discovers which Kanbans exist, pulls their
+  metadata, and lays out a list of actions from it. Example: a **Summary page**
+  that scans every card and prints name, summary, completion, and lateness,
+  grouped by category (features, documentation, deliverables). If written with
+  shortcodes, the whole thing is verifiable in-progress or on completion.
+- **Taxonomies as JSON** — Hugo taxonomies exported as JSON for use by JS
+  components; RSS feeds (with Kanban progress in the feed if possible); hooks to
+  Discord and similar services. See the technical specification.
+- **Continuous integration** — eslint and Prettier on push/commit (via git hooks
+  so formatting is uniform), plus a build step that regenerates deliverables such
+  as `.pdf` docs into `/static`. See the technical specification.
+- **Meta folder** — a `/Meta` folder serving usefully munged metadata as JSON.
+  Add only when unavoidable.
+
+### Major feature: Tooling
+
+Helpers that are too hard for templates alone.
+
+- **NodeJS REST service** — tracks serial numbers per category so teams don't
+  collide on IDs. Solo developers can run it locally or skip it entirely.
+- **npm utility (TypeScript)** — munges the emitted taxonomies and metadata from
+  Hugo; can be a `package.json` dependency. Could also emit SVG charts (e.g. a
+  candlestick for progress) from a charting library by feeding it the
+  taxonomies.
+- **Scaffolding CLI** — an `npx` command to create a new empty project with this
+  theme installed, plus one to update it inside Hugo (not from `node_modules`,
+  which Hugo can't read). Ship the theme as a GitHub submodule.
+- **In-browser interactivity** — a JS utility using Hugo's real file path as a
+  stem to run system calls from Kanban pages: mark a card complete, move it to
+  the next stage (`git mv src dst` to preserve history — dangerous), or simple
+  edits such as setting priority via a dropdown. Dangerous shell actions go
+  through a small background Node service (router + HTTP server) whose address is
+  in the config. See the technical specification.
+- **Card-generator tools** —
+  - *Idea 1*: a JS page that takes a list of titles and produces copy-paste shell
+    commands to create them, with a dropdown per type and serial number. No saved
+    context — quick and dirty.
+  - *Idea 2*: a lightweight todo app that takes a couple of parameters, stores
+    fields in an array in localStorage, auto-numbers each card type, saves
+    sensible defaults, and formats the shell command (or `hugo new content`) to
+    batch-create cards with minimum typing. Goal: create a big stack of cards
+    fast. Could be hosted as part of the site under construction.
+
+### Major feature: Docs lifecycle
+
+How the project's own content is organised and managed.
+
+- **User stories** — structured as *User / Wants / Because / End result*, using an
+  androgynous name (e.g. *Robin*) so they read like prose: "Robin wants to keep a
+  list of things to do so they can be more productive."
+- **Requirements language** — functional requirements use precise "The system
+  shall" language to remove ambiguity; non-functional requirements define how well
+  the system performs rather than what it does.
+- **Categories / tags / milestones** — categories such as *Deliverable*,
+  *Document*, *Specification*; tags for specifics. Overlap is expected, but aim to
+  keep them mutually exclusive. One card per major milestone:
+  - ideation
+  - refinement
+  - gather requirements
+  - write specs
+  - coding
+  - testing / QA
+  - deployment
+    - staging
+    - production
+- **Sprint planning** — cards carry a `sprint-01` field. At planning, sum time
+  estimates against a ~4 hours/day max; at the end, compare estimates to actual.
 
 ## Swimlanes
 
-Priority value sorts kanban card into swimlane buckets with highest priority at
-the top.
+Priority (an integer `0–599`) sorts a card into a swimlane bucket with the highest
+priority at the top. Bucket ranges live in Hugo config so the blog owner can name
+and tune them:
 
-### Keep the bucket ranges in hugo configuration files:
-
-Names can be set by the blog owner using a set of ranges in hugo.params e.g.
-
-```YAML
+```yaml
 swimlanes:
   broken-in-production:
     name: Broken-in Production
@@ -111,343 +238,25 @@ swimlanes:
     weight: 6
 ```
 
-Convert priority field from number in range 0 to 1000 into list e.g. very low,
-low, mid, high, very high, urgent, etc
-
-This let's have a grid view with axes of priority vs status / completion / stage
-e.g. 350 high priority lane, in-progess with x offset from completion value
-
-Grouping requirements into features and epic i.e. major and minor milestones
-
-Review as a stage, but not shown for my usual flow Others as well e.g waiting,
-halted / blocked / on-hold, code review, acceptance or rejection from completion
-Intermediate stages maybe as tags e.g. started, finished, ship it (to next
-stage)
-
-Feature: limits of how many may be in each stage, flag overflow
-
-### Continuous Integration (CI)
-
-    - eslint on push to github / commit to repo
-
-Prettier on push. Make it all the same...is that possible? Seems like a pre-hook
-is needed on git repo for this. Same for lint. Run build command too to ensure
-most up to date deliverables e,g. Make .pdf files from the docs and put them in
-/static.
-
-Hugo taxonomies exported as json for use by js components. Rss feeds. Kanban
-progress in the rss if possible. Any way to call hooks on Discord and the like?
-
-### Kanban Card Short Names / Ids
-
-Steps to make project. Every single deliverable, action, or step should have a
-kanban card and ID.
-
-    - Meta: mt-001 - capture initial steps as well, short list
-        of things to remember to get started
-    - Ideation: id-001
-    - Specification: sp-001
-    - Deliverables: dl-001
-    - Scaffold: sc-001 - online services,repo, skeleton code, scaffolding
-    - Features: ft-001
-    - Acceptance: ac-001 - criteria needed for acceptance of work
-    - Deployment: dp-001 - steps required to deploy the app
-    - Bugs: bg-001 - link to guthub issues
-    - Releases: rl-001 versioned releases, tie in with
-        github releases
-    - Testing: ts-001
-    - Requests: rq-001 - feature requests and changes to spec
-    - User Stories: us-001
-
-Figure out this list as a tree of dependencies
-
-Base cycle on github features and bug tracking / issues needs
-
-Kanban should be idempotent and immutable, no reusing ids.
-
-Are user stories dependencies? One card for each? A card per requirement and
-thus each requirement must have a short identification
-
-If this is all written into the documentation with shortcodes the whole thing
-should be verifiable when in progress or completed.
-
-Sort by priority, due date, status enum if available.
-
-Shortcode to embed kanban card link and maybe mini kanban, with a search through
-the folders to locate it e.g. {{  kanban "kb-001" }},
-{{  kanban-tiny "kb-001" }}
-
-Search works with partial name globbing to make the name shorter and easier to
-type and remember.
-
-Bonus points if you make embedded svg graphic icons of the kanban.
-
-Each document has its own card, maybe multiple e.g. tech spec
-
-**Categories:**
-
-    - Deliverable
-    - Document
-    - Specification
-
-**Tags:**
-
-    - example tag
-
-Expect some overlap with the tags and categories, though in general we should
-aim to make them mutally exclusive.
-
-One card for each major milestone.
-
-**Milestones:**
-
-    - ideation
-    - refinement
-    - gather requirements
-    - write specs
-    - coding
-    - testing / qa
-    - deployment
-        - staging
-        - production
-
-Board sort order selected by buttons or tabs. Link through taxonomies. Should
-there be a master list of cards somewhere and is that just generated or the docs
-spec it out and flag missing ones.
-
-Identify blockers and dependencies Ensure that your kanban board enables
-immediate identification of blockers and dependencies.
-
-Hours spent vs estimated.
-
-## User Stories
-
-    - User
-    - Wants
-    - Because
-    - End result / benefit
-    - User - action - benefit
-
-Give the user a name (androgynous) to make it more prose-like e.g.
-
-    - Robin wants / needs / must
-    - keep a list of things to do
-    - So they can be more productive
-    - Robin is more productive
-
-### Functional Requirements
-
-Functional requirements use precise “The system shall” language to eliminate
-ambiguity and provide clear criteria.
-
-### Non-Functional Requirements
-
-Non-functional requirements define how well the system performs rather than what
-it does.
-
-Is that the best definition? Search for more.
-
-### Swimlanes
-
-### Support and maintenance
-
-### Dashboard
-
-Make small static dashboard as a single page showing project health, stat's, how
-many are behind, number of issues, everything at a glance.
-
-Create a dashboard taxonomy. Like bare pages but with a little navigation
-available. Not restricted to prose width screen, can use whole monitor if needed
-for wide kanban board viewing.
-
-Eat you own dog food ASAP. Start making kanban cards to plan out stages, put in
-very basic requirements specs, and deliverables, features, etc.
-
-### Scan the files to make the docs
-
-Use file scanning code to see which kanbans exist, and pull metadata from them.
-Use the metadata in the specifications to lay out a list of actions.
-
-e.g. Summary page - scans every kanban, prints out their name, summary,
-completion, lateness into a document. Use a shortcode to place in lists of them
-broken down by category e.g. features, documentation deliverables.
-
-## Quick Wins
-
-Find or make svg collection for priority levels
-
-## NodeJS REST Service
-
-Write a service that tracks the serial numbers for each category so teams can
-work together without grabbing the same ID.
-
-Solo developers can run it locally or skip using it entirely.
-
-## More Ideas
-
-Should have its kanbans at the top, and under that a loose assortment of ideas.
-
-If an idea is good and actionable it becomes a kanban
-
-You should eventually have no loose ideas left, only kanban and the ideas not
-worth making, those get deleted.
-
-Same pattern for requirements, tech spec, etc
-
-Bugs can just go straight in as cards, but nice to track them.
-
-Can have a /Meta folder which serves json files of usefully munged Meta data.
-
-Only add this and its parts when it is unavoidable
-
-Card short summary and derivatives need to handle blank prefix by setting it to
-(.\*) or similar. Add file extension list to the query, md / json / yaml only
-accepted, but only after testing those as pages.
-
-Cycle
-
-Create idea, add to end of page. Turn good ideas into cards. Action the cards.
-Complete the list.
-
-## Tools
-
-### Idea 1
-
-JS page that can take a list of titles and provides code windows to copy the
-shell commands needed to make them. Has drop down for each type, and serial
-number, doesn't save context, just quick and dirty.
-
-### Idea 2
-
-cheap todo app copy that takes a couple of params instead of 1.
-
-stores the fields in an array in local storage
-
-formats a command to run in shell to make all the new files and put in their
-contents
-
-hugo new content xxx or just the raw text
-
-saves counters for each type of kanban card so it can auto number them
-
-ivan wants to create a big stack of cards fast with minimum typing
-
-sensible defaults
-
-could be hosted as part of the site under construction
-
-## Layouts
-
-Default view is tabbed, full screen, overdue open
-
-Overdue, Pending, in progress, done, priority , etc Smaller cards Filename for
-Tag, save typing it twice Title at top Tag might be an on hover popup icon on
-title bar Icon indicators: Late Urgent High priority
-
-Use colours for indicators
-
-Grid layout or swimlanes? Grid is easier
-
-## Scrumm
-
-Try to fit in with scrumm model, though probably a lite version.
-
-Status: renamed to stage instead
-
-Status: position within a stage
-
-Each step has a check to see if it's needed and can skip to next step in cycle.
-
-Discovery Pending Assignment In progress Done
-
-Planning
-
--
-
-Development Pending In progress Done
-
-Sidebar - 90% off to the side, in feed Bug reports New customer requirements
-
-Review Pending In progress Done - back to dev or on to ship
-
-Retrospective What we done book learned
-
-Ship Pending In progress Done
-
-### Sprint Planning
-
-Read cards, sun up all the time estimates, 4 hours per day is likely Max you can
-do. Show cards that match the Sprint. Add Sprint as a field to each card e.g.
-sprint-01.
-
-Sum up at end of Sprint, compare estimates to actual.
-
-### Thoughts
-
-Requirements Design / document Development Test Deployment Retrospective
-
-## Grid View
-
-X, - horizontal - stage Ideation Requirements Etc
-
-y - vertical - status Pending In progress Done
-
-## More
-
-Defaukt kanban view is 'my view'..only stuff assigned to me. Show them all, with
-emphasis on late and high priority
-
-Use score system to rank for sorting
-
-Late, 100 points Priority, divide by 5 and add to score Assigned to me, 300
-points, let's us show others too, maybe not useful for this
-
-I can use longer filename for the cards if I use a regex to trim them for
-display. E.g. ft-001-find-the-wumpus
-
-Easier to pick out the right one in file manager.
-
-## Bkuesky goals
-
-Typescript utility command available from npm which munges the emitted
-taxonomies and Meta from hugo.
-
-Solving problems which are too hard for templates alone. Runs on node.js, can be
-package.json dependency.
-
-Charts that I generate using svg e.g. candlestick for progress...could be an npm
-module based on some charting library. Just feed my taxonomies into it and save
-the output as usable media.
-
-Move a bunch of stuff out of my todoist list and into projects with this as a
-way to manage their creation.
-
-Does the theme have to be in the themes folder? Can it be named and served from
-a default location?
-
-Npx command to scaffold / create new empty project with this theme installed.
-Another that can update it inside hugo...not in the node_modules, because there
-is no way hugo can access it like that.
-
-That said, I should make this as a theme that can be brought in as a github
-submodule.
-
-Json output files need bare base of that sets the content-type header attribute
-
-Google analytics?
-
-Hugo config merge code might be perfect for my single source of truth merge
-code - types of merge: none, shallow, deep.
-
-Js utility that uses real file path from hugo as a stem, and performs system
-calls on it from kanban pages to add interactivity like:
-
-Mark a card complete, move to next stage, using 'git mv src dst' To preserve git
-history. Dangerous.
-
-Simple edits e.g. priority setting via a drop down menu.
-
-Might be able to run small node.js service with router and http server. It runs
-in the background, you put the addr into config file and the js makes calls on
-it for dangerous shell services like 'git mv' and file edits on the front
-matter.
+The priority number is also converted into a readable label (very low, low, mid,
+high, very high, urgent, …). A standard config ships in the themes folder and can
+be overridden in the local project (see *Open Questions*).
+
+## Quick wins
+
+- Find or make an SVG collection for priority levels.
+
+## Open Questions
+
+- Grid-view axis labels and types are stored in the data folder — should a standard
+  set ship in the themes folder with local override?
+- Does the theme have to live in the `themes` folder, or can it be named and
+  served from a default location?
+- Should there be a master list of cards, generated or specified in the docs with
+  missing ones flagged?
+- How to call webhooks (Discord, etc.) from Hugo builds?
+- Is Google Analytics worth adding?
+- Confirm the best definitions for functional vs. non-functional requirements.
+- Should a card have a `blockers`/`dependencies` field so the board surfaces
+  them immediately?
+- How to track hours spent vs. estimated per card?

@@ -1,0 +1,15 @@
+name: My Development Config
+version: 0.0.1
+schema: v1
+
+rules:
+  - uses: backend.md
+  - uses: developer.md
+  - uses: frontend.md
+
+context:
+  - provider: code   
+  - provider: docs
+  - provider: diff
+  - provider: file
+  - provider: terminal

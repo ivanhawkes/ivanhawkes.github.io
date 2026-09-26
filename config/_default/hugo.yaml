@@ -67,6 +67,9 @@ build:
 
 # Alow various utilities to be run when deployed to GitHub Pages
 security:
+  allowContent:
+  - '^text/html$'
+  - '^text/markdown$'
   exec:
     allow:
       - ^node$
@@ -75,6 +78,19 @@ security:
       - ^postcss$
       - ^tailwindcss
 
+node:
+    permissions:
+      allowAddons:
+      - tailwindcss
+      allowChildProcess:
+      - tailwindcss
+      allowRead:
+      - .
+      allowWorker:
+      - tailwindcss
+      allowWrite: []
+      disable: false
+      
 module:
   mounts:
     - source: assets

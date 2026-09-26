@@ -12,3 +12,6 @@ hugo_stats.json
 
 # Krita
 *~
+
+# Nixos flakes
+.devenv/

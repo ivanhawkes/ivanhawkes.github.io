@@ -12,6 +12,7 @@
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = with pkgs; [
         nodejs_24
+        pkgs.pnpm
 	      hugo
       ];
 

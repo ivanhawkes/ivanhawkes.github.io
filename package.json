@@ -9,10 +9,6 @@
   "scripts": {
     "build-css": "npx @tailwindcss/cli -i themes/be-best/assets/css/main.css -o public/css/main.css --watch"
   },
-  "dependencies": {
-  },
-  "devDependencies": {
-  },
   "prettier": {
     "max_line_length": 80,
     "printWidth": 80,

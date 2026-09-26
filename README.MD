@@ -5,11 +5,13 @@ details of my life.
 
 ## Getting started
 
-Make sure you have the required software install on your machine.
+Nixos users with flakes enabled can just use the supplied **flakes.nix** file to get a working environment.
+
+Everyone else: make sure you have the required software install on your machine.
 
 ```bash
 # Use pnpm instead of npm
-npm -g install pnpm
+npm install pnpm
 
 # Now make sure all the project dependancies are installed.
 pnpm i

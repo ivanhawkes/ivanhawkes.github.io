@@ -1,5 +1,5 @@
 {
-  description = "Node.js development environment";
+  description = "HUGO and Node.js for creating a static website.";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -11,12 +11,16 @@
   in {
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = with pkgs; [
-        nodejs_24 # Or nodejs_24, depending on your preferred version
+        nodejs_24
+	      hugo
       ];
 
       shellHook = ''
-        echo "Node.js $(node --version)"
-        echo "npm $(npm --version)"
+        echo "Setting up a Node.js environment"
+        echo "Versions:"
+        echo "  Node.js: $(node --version)"
+        echo "  npm: $(npm --version)"
+        echo "  HUGO: $(hugo version)"
       '';
     };
   };

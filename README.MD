@@ -19,25 +19,24 @@ pnpm i
 
 ## Development
 
+You will need to run a pair of terminals, one for HUGO and the other for a tailwind watcher.
+
+```bash
+# Watch the CSS with Tailwind.
+npx @tailwindcss/cli -i themes/be-best/assets/css/main.css -o static/css/main.css --watch
+
+# Watch the content files with HUGO.
+hugo -D -F server
+```
+
+## Style
+
 Check the CSS is following standards by running StyleInt.
 
 ```bash
 npx stylelint "**/*.css"
 ```
 
-You may wish to format the TOML. I have installed Taplo but I can't find a way
-to integrate it yet. It doesn't respond to the document format key command.
-
-You can run it by hand at the command line.
-
-```bash
-npx taplo format
-```
-
-```bash
-# Running the development environment.
-hugo -D -F server
-```
 
 # Adding a new Kanban card to the stack
 

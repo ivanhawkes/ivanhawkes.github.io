@@ -1,5 +1,5 @@
 baseURL: https://blog.ivanhawkes.dev
-languageCode: en-us
+locale: en-us
 title: Ivan Hawkes
 theme: be-best
 MetaDataFormat: yaml
@@ -37,7 +37,6 @@ pagination:
   disableAliases: false
   pagerSize: 12
   path: page
-  pygmentsCodeFences: true
   preserveTaxonomyNames: true
 
 # Enable the use of a cache directory for assets and CSS files
@@ -65,32 +64,17 @@ build:
     - source: 'assets/.*\.(.*)$'
       target: $1
 
-# Alow various utilities to be run when deployed to GitHub Pages
+# Control the security when HUGO is running.
 security:
   allowContent:
-  - '^text/html$'
-  - '^text/markdown$'
+    - '^text/html$'
+    - '^text/markdown$'
   exec:
     allow:
       - ^node$
       - ^go$
       - ^npx$
-      - ^postcss$
-      - ^tailwindcss
-
-node:
-    permissions:
-      allowAddons:
-      - tailwindcss
-      allowChildProcess:
-      - tailwindcss
-      allowRead:
-      - .
-      allowWorker:
-      - tailwindcss
-      allowWrite: []
-      disable: false
-      
+            
 module:
   mounts:
     - source: assets
@@ -107,6 +91,7 @@ markup:
     lineNos: false
     lineNoStart: 1
     hl_inline: false
+    pygmentsCodeFences: true # Moved to its correct location
 
   goldmark:
     truncate-lines: true

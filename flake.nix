@@ -13,6 +13,7 @@
       buildInputs = with pkgs; [
         nodejs_24
         pkgs.pnpm
+        pkgs.tailwindcss
 	      hugo
       ];
 
@@ -22,6 +23,9 @@
         echo "  Node.js: $(node --version)"
         echo "  npm: $(npm --version)"
         echo "  HUGO: $(hugo version)"
+
+        # Add local node_modules binaries directly to your shell's PATH
+        export PATH="$PWD/node_modules/.bin:$PATH"
       '';
     };
   };

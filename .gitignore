@@ -15,3 +15,4 @@ hugo_stats.json
 
 # Nixos flakes
 .devenv/
+.direnv/

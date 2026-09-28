@@ -10,6 +10,7 @@ tags:
     - Chinese
     - Sauce
 title: Chinese Brown Sauce
+cuisine: Chinese
 type: recipe
 ---
 

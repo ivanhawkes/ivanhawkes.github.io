@@ -11,6 +11,7 @@ tags:
     - Sichuan
     - Sauce
 title: Mapo Tofu
+cuisine: Chinese
 type: recipe
 ---
 

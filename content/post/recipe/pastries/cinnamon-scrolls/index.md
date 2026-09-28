@@ -10,6 +10,7 @@ tags:
     - Bread
     - Dessert
 title: Cinnamon Scrolls
+cuisine: American
 type: recipe
 ---
 

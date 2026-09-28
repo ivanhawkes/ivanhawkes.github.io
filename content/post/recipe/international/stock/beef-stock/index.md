@@ -10,6 +10,7 @@ tags:
     - Beef
     - Stock
 title: Beef Stock
+cuisine: International
 type: recipe
 ---
 

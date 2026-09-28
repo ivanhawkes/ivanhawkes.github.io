@@ -11,6 +11,7 @@ tags:
     - Curry
     - Paste
 title: Red Curry Paste
+cuisine: Thai
 type: recipe
 ---
 

@@ -11,6 +11,7 @@ tags:
     - Vegetarian
     - Vegan
 title: Hummus
+cuisine: Middle Eastern
 type: recipe
 ---
 

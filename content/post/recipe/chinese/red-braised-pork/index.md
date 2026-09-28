@@ -11,6 +11,7 @@ tags:
     - Pork
     - Red Braise
 title: Red Braised Pork
+cuisine: Chinese
 type: recipe
 ---
 

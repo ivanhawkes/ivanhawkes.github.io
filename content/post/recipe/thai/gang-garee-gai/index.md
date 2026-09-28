@@ -11,6 +11,7 @@ tags:
     - Curry
     - Yellow
 title: Gang Garee Gai
+cuisine: Thai
 type: recipe
 ---
 

@@ -11,6 +11,7 @@ tags:
     - Vegetarian
     - Vegan
 title: Felafel
+cuisine: Middle Eastern
 type: recipe
 ---
 

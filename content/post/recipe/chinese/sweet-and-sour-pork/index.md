@@ -11,6 +11,7 @@ tags:
     - Pork
     - Sauce
 title: Sweet and Sour Pork
+cuisine: Chinese
 type: recipe
 ---
 

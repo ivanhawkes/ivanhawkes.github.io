@@ -10,6 +10,7 @@ tags:
     - ginger
     - ferment
 title: Ginger Beer
+cuisine: British
 type: recipe
 ---
 

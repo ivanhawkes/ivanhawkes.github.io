@@ -11,6 +11,7 @@ tags:
     - Malaysian
     - Paste
 title: Laksa Paste
+cuisine: Malaysian
 type: recipe
 ---
 

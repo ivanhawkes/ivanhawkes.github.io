@@ -11,6 +11,7 @@ tags:
     - Beef
     - Pork
 title: Italian Meatballs in Sauce with Pasta
+cuisine: Italian
 type: recipe
 ---
 

@@ -1,6 +1,7 @@
 ---
 type: recipe
 title: Mushroom Sauce
+cuisine: French
 categories:
     - Recipe
 date: '2024-05-14'

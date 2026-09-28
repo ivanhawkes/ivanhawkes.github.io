@@ -9,6 +9,7 @@ cook-time: PT15M
 tags:
     - desert
 title: Chocolate Ice Cream
+cuisine: American
 type: recipe
 ---
 

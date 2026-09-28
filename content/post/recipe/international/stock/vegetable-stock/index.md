@@ -11,6 +11,7 @@ tags:
     - Vegan
     - Stock
 title: Vegetable Stock
+cuisine: International
 type: recipe
 ---
 

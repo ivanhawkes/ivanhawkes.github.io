@@ -12,6 +12,7 @@ tags:
     - Bread
     - Loaf
 title: Pullman Pain De Mie
+cuisine: French
 type: recipe
 ---
 

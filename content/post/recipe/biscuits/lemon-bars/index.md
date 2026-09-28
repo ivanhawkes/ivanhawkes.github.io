@@ -11,6 +11,7 @@ tags:
     - lemon
 author: Kendra Vaculin
 title: Lemon Bars
+cuisine: American
 type: recipe
 ---
 

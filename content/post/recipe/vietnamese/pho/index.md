@@ -11,6 +11,7 @@ tags:
     - Beef
     - Soup
 title: Pho
+cuisine: Vietnamese
 type: recipe
 ---
 

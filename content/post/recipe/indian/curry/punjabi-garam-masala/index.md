@@ -11,6 +11,7 @@ tags:
     - Masala
     - Spices
 title: Punjabi Garam Masala
+cuisine: Indian
 type: recipe
 ---
 

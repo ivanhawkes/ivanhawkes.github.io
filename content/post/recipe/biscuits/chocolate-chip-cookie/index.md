@@ -9,6 +9,7 @@ cook-time: PT13M
 tags:
     - cookies
 title: Chocolate Chip Cookie
+cuisine: American
 type: recipe
 ---
 

@@ -15,6 +15,7 @@ tags:
     - Sauce
     - Beef
 title: Chile Colorado
+cuisine: Mexican
 type: recipe
 ---
 

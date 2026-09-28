@@ -10,6 +10,7 @@ tags:
     - American
     - Cheese
 title: American Cheese
+cuisine: American
 type: recipe
 ---
 

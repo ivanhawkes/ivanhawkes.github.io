@@ -10,6 +10,7 @@ tags:
     - Cake
     - Dessert
 title: Banana Bread
+cuisine: American
 type: recipe
 resources:
     - src: 'featured.webp'

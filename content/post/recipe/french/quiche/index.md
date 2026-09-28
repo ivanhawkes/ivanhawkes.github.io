@@ -10,6 +10,7 @@ tags:
     - French
     - Quiche
 title: Quiche
+cuisine: French
 type: recipe
 ---
 

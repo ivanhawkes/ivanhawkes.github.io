@@ -13,6 +13,7 @@ tags:
     - Bread
     - British
 title: Welsh rarebit
+cuisine: British
 type: recipe
 ---
 

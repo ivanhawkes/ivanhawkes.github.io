@@ -10,6 +10,7 @@ tags:
     - Indian
     - Garam Masala
 title: Bin Bhuna Hua Garam Masala
+cuisine: Indian
 type: recipe
 ---
 

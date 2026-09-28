@@ -11,6 +11,7 @@ tags:
     - Pork
     - Curry
 title: Pork Vindaloo
+cuisine: Indian
 type: recipe
 ---
 

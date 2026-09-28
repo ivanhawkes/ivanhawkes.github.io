@@ -9,6 +9,7 @@ cook-time: PT0M
 tags:
     - Batter
 title: Light Batter
+cuisine: Chinese
 type: recipe
 ---
 

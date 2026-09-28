@@ -10,6 +10,7 @@ tags:
     - Middle Eastern
     - Lamb
 title: Lamb Doner Kebab
+cuisine: Middle Eastern
 type: recipe
 ---
 

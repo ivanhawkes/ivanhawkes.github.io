@@ -11,6 +11,7 @@ tags:
     - Lamb
     - Curry
 title: Lamb Rogahn Josh
+cuisine: Indian
 type: recipe
 ---
 

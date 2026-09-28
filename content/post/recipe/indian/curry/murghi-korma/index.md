@@ -11,6 +11,7 @@ tags:
     - Chicken
     - Curry
 title: Murghi Korma
+cuisine: Indian
 type: recipe
 ---
 

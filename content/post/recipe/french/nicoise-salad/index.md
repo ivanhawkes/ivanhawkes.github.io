@@ -10,6 +10,7 @@ tags:
     - French
     - Salad
 title: Nicoise Salad
+cuisine: French
 type: recipe
 ---
 

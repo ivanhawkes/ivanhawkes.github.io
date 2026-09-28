@@ -11,6 +11,7 @@ tags:
     - Chicken
     - Curry
 title: Chicken Tikka Masala
+cuisine: Indian
 type: recipe
 ---
 

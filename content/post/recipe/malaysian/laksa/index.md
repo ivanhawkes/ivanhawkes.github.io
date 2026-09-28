@@ -10,6 +10,7 @@ tags:
     - Malaysian
     - Soup
 title: Laksa
+cuisine: Malaysian
 type: recipe
 ---
 

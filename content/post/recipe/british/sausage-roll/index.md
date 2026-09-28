@@ -10,6 +10,7 @@ tags:
     - European
     - Fast Food
 title: Sausage Roll
+cuisine: British
 type: recipe
 ---
 

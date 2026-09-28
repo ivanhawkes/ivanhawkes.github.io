@@ -11,6 +11,7 @@ tags:
     - Pork
     - Roast
 title: Porchetta
+cuisine: Italian
 type: recipe
 ---
 

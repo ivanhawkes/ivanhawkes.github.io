@@ -10,6 +10,7 @@ tags:
     - French
     - Dressing
 title: Caesar Salad Dressing
+cuisine: Italian
 type: recipe
 ---
 

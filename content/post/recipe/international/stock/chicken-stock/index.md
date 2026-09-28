@@ -11,6 +11,7 @@ tags:
     - Chicken
     - Stock
 title: Chicken Stock
+cuisine: International
 type: recipe
 ---
 

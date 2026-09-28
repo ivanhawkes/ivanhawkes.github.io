@@ -10,6 +10,7 @@ tags:
     - Chinese
     - Sauce
 title: Mongolian Beef
+cuisine: Chinese
 type: recipe
 ---
 

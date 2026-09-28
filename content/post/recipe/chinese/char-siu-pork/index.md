@@ -11,6 +11,7 @@ tags:
     - Pork
     - Char Sui
 title: Char Siu Pork
+cuisine: Chinese
 type: recipe
 ---
 

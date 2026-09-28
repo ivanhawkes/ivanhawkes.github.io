@@ -10,6 +10,7 @@ tags:
     - European
     - Breakfast
 title: Scrambled Eggs
+cuisine: British
 type: recipe
 ---
 

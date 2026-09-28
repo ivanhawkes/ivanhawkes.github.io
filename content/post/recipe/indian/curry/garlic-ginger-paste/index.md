@@ -9,6 +9,7 @@ cook-time: PT0M
 tags:
     - Indian
 title: Garlic and Ginger Paste
+cuisine: Indian
 type: recipe
 ---
 

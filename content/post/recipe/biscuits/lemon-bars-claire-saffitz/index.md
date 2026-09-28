@@ -11,6 +11,7 @@ tags:
     - lemon
 author: Claire Saffitz
 title: Lemon Bars (Claire Saffitz)
+cuisine: American
 type: recipe
 ---
 

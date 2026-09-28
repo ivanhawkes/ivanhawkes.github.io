@@ -11,6 +11,7 @@ tags:
     - Sauce
     - Black Bean
 title: Black Bean Sauce
+cuisine: Chinese
 type: recipe
 ---
 

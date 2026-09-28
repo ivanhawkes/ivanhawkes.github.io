@@ -11,6 +11,7 @@ tags:
     - Soup
     - Seafood
 title: Tom Yum Soup
+cuisine: Thai
 type: recipe
 ---
 

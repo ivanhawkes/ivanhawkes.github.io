@@ -12,6 +12,7 @@ tags:
     - Pork
     - Stock
 title: Tonkotsu Stock
+cuisine: Japanese
 type: recipe
 ---
 

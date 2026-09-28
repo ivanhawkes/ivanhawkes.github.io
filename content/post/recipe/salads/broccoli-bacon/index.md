@@ -9,6 +9,7 @@ cook-time: PT10M
 tags:
     - Salad
 title: Broccoli Bacon Salad
+cuisine: American
 type: recipe
 resources:
     - src: 'featured.webp'

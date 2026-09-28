@@ -10,6 +10,7 @@ tags:
     - American
     - Bread
 title: Easy Bagel
+cuisine: American
 type: recipe
 ---
 

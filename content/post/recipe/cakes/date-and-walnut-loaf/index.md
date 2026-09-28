@@ -13,6 +13,7 @@ tags:
     - Bread
     - Dessert
 title: Date and Walnut Loaf
+cuisine: British
 type: recipe
 resources:
     - src: 'featured.webp'

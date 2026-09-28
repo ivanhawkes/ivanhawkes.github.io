@@ -10,6 +10,7 @@ tags:
     - French
     - Dressing
 title: Vinaigrette Dressing
+cuisine: French
 type: recipe
 ---
 

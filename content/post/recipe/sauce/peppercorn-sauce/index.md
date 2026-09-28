@@ -12,6 +12,7 @@ tags:
     - Poivre
     - French
 title: Peppercorn Sauce
+cuisine: French
 type: recipe
 ---
 

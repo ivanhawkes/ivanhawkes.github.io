@@ -12,6 +12,7 @@ tags:
     - walnuts
 author: Julie Hawkes
 title: Hedgehog Slice
+cuisine: Australian
 type: recipe
 ---
 

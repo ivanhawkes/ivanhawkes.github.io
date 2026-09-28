@@ -10,6 +10,7 @@ tags:
     - ginger
     - ferment
 title: Ginger Beer Bug
+cuisine: British
 type: recipe
 ---
 

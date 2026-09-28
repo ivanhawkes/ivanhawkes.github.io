@@ -11,6 +11,7 @@ tags:
     - Fish
     - Stock
 title: Dashi
+cuisine: Japanese
 type: recipe
 ---
 

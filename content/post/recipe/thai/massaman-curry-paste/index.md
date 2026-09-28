@@ -11,6 +11,7 @@ tags:
     - Curry
     - Paste
 title: Massaman Curry Paste
+cuisine: Thai
 type: recipe
 ---
 

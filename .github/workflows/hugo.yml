@@ -56,10 +56,23 @@ jobs:
             - name: Install Hugo
               run: |
                   curl -sLJO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
-                  mkdir -p "${HOME}/.local/hugo"
-                  tar -C "${HOME}/.local/hugo" -xf "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+                  mkdir -p "${HOME}/hugo"
+                  tar -C "${HOME}/hugo" -xf "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
                   rm "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
-                  echo "${HOME}/.local/hugo" >> "${GITHUB_PATH}"
+                  echo "${HOME}/hugo" >> "${GITHUB_PATH}"
+                  export HUGO_PATH=${HOME}/hugo/hugo
+                  echo "${HUGO_PATH}"
+                  echo "Version:"
+                  $HUGO_PATH version
+
+              #   git clone --recursive https://github.com/ivanhawkes/ivanhawkes.github.io.git
+              #   cd ivanhawkes.github.io/
+              #   export HUGO_VERSION=0.166.0
+              #   curl -sLJO "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+              #   mkdir -p "${HOME}/hugo"
+              #   tar -C "$HOME/hugo" -xf "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+              #   rm "hugo_extended_${HUGO_VERSION}_linux-amd64.tar.gz"
+              #   echo "${HOME}/hugo" >> "${GITHUB_PATH}"
 
             - name: Setup Go
               uses: actions/setup-go@v6

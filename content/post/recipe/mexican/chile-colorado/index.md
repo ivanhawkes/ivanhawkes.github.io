@@ -4,7 +4,7 @@ categories:
     - Recipe
 date: '2026-09-25'
 imagecaption:
-    A bowl of deep-red Chile Colorado sauce simmered from toasted guajillo and
+    A bowl of deep-red Chile Colorado simmered from toasted guajillo and
     ancho chiles.
 portions: 4
 tags:
@@ -12,7 +12,7 @@ tags:
     - Tex-Mex
     - Sauce
     - Beef
-title: Chile Colorado Sauce
+title: Chile Colorado
 type: recipe
 ---
 

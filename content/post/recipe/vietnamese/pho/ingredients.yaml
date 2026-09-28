@@ -1,5 +1,5 @@
 ingredient-list:
-  - dish: Ingredients
+  - dish: Pho
     ingredients:
       - quantity: '1'
         measure: ''

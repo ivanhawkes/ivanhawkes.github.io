@@ -1,5 +1,5 @@
 ingredient-list:
-  - dish: Ingredients
+  - dish: Beef Stock
     ingredients:
       - quantity: '1'
         measure: 'tbs'

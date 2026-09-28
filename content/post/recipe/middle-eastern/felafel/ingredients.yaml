@@ -1,5 +1,5 @@
 ingredient-list:
-  - dish: Ingredients
+  - dish: Felafel
     ingredients:
       - quantity: '500'
         measure: 'grams'

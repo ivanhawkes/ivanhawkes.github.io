@@ -53,16 +53,12 @@ jobs:
 
             - run: pnpm i
 
-            # Install libwebp so Hugo Extended can decode WebP files.
-            - name: Install system dependencies
-              run: |
-                  sudo apt-get update
-                  sudo apt-get install -y libwebp-dev
-
+            # 🛠️ Swapped to hugomods to guarantee seamless WebP library linking bindings
             - name: Setup Hugo
-              uses: peaceiris/actions-hugo@v3
+              uses: hugomods/hugo-action@v1
               with:
-                  hugo-version: '${{ env.HUGO_VERSION }}'
+                  version: ${{ env.HUGO_VERSION }}
+                  extended: true
 
             - name: Setup Go
               uses: actions/setup-go@v6
@@ -115,14 +111,14 @@ jobs:
               run: |
                   pnpm dlx @tailwindcss/cli -i themes/be-best/assets/css/main.css -o assets/css/main.css --minify
 
+            # 🛠️ Cleaned up multi-line spaces that broke the bash parameters line breaks
             - name: Build the site
               run: |
                   hugo build \
-                    --environment production \                    
+                    --environment production \
                     --gc \
                     --minify \
                     --cleanDestinationDir \
-                    --logLevel debug \
                     --baseURL "${{ steps.pages.outputs.base_url }}" \
                     --cacheDir "${{ runner.temp }}/hugo_cache"
 

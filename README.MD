@@ -54,7 +54,7 @@ following packages:
 - Git
 - Node.js 24
 - PNPM
-- HUGO 0.160.0
+- HUGO 0.152.0
 - Tailwind CSS + Typography
 
 ```bash

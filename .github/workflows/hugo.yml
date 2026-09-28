@@ -60,10 +60,9 @@ jobs:
                   sudo apt-get install -y libwebp-dev
 
             - name: Setup Hugo
-              uses: hugomods/hugo-action@v1
+              uses: peaceiris/actions-hugo@v3
               with:
-                  version: ${{ env.HUGO_VERSION }}
-                  extended: true
+                  hugo-version: '${{ env.HUGO_VERSION }}'
 
             - name: Setup Go
               uses: actions/setup-go@v6

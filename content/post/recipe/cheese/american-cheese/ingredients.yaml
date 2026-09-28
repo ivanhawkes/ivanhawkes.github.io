@@ -11,7 +11,7 @@ ingredient-list:
         measure: 'ml'
         ingredient: 'full cream full (2%)'
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'butter'
       - quantity: '1/2'
         measure: 'tsp'

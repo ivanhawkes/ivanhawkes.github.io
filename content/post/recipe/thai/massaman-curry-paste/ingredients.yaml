@@ -2,7 +2,7 @@ ingredient-list:
   - dish: Massaman Curry Paste
     ingredients:
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'coriander seeds (roasted and ground)'
       - quantity: '2'
         measure: 'tsp'
@@ -29,7 +29,7 @@ ingredient-list:
         measure: 'slices'
         ingredient: 'galangal'
       - quantity: '1'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'coriander root or stalks (chopped)'
       - quantity: '1'
         measure: 'tsp'

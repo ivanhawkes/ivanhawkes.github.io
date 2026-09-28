@@ -5,10 +5,10 @@ ingredient-list:
         measure: 'cup'
         ingredient: 'plain yoghurt'
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'ginger (crushed)'
       - quantity: '4'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'garlic (crushed)'
       - quantity: '4'
         measure: 'tsp'
@@ -24,10 +24,10 @@ ingredient-list:
   - dish: Ingredients
     ingredients:
       - quantity: '4'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'ghee'
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'black cumin seed'
       - quantity: '2'
         measure: 'tsp'
@@ -48,10 +48,10 @@ ingredient-list:
         measure: 'cups'
         ingredient: 'red onion (medium, finely chopped)'
       - quantity: '4'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'tomato paste'
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient:
           'Kashmiri chiles (ground) or 1/2 tbs cayenne mixed with 1 1/2 tbs
           sweet paprika'

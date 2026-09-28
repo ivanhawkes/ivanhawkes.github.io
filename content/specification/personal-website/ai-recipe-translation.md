@@ -47,7 +47,7 @@ ingredients. It will have three key value pairs.
 Quantity refers to the quantity of that ingredient in the dish.
 
 Measure refers to the measurement type that was used to express the quantity.
-For example: tspn, tbspn, grams, cups, whole.
+For example: tspn, tbsp, grams, cups, whole.
 
 Ingredient refers to the remaining text that tells us about the ingredient.
 

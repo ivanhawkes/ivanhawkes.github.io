@@ -2,13 +2,13 @@ ingredient-list:
   - dish: Red Curry Beef
     ingredients:
       - quantity: '250'
-        measure: 'grams'
+        measure: 'g'
         ingredient: 'topside beef sliced thin'
       - quantity: '1/2'
         measure: 'tsp'
         ingredient: 'sodium bicarbonate'
       - quantity: '8'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient:
           'red curry paste (approximately 1/4 the amount in the
           [recipe](/recipe/thai/red-curry-paste/))'
@@ -43,7 +43,7 @@ ingredient-list:
         measure: 'whole'
         ingredient: 'limes'
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'fish sauce (to taste)'
       - quantity: '1/4'
         measure: 'bunch'

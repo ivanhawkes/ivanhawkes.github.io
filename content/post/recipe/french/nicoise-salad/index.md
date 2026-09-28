@@ -23,11 +23,11 @@ capers, and potatos.
   and pepper to taste. You can follow the recipe provided
   http://www.bigoven.com/recipe/vinaigrette/2283662
 
-- Place onion slices in a small bowl and sprinkle with 3 tbs of the vinaigrette
+- Place onion slices in a small bowl and sprinkle with 3 tbsp of the vinaigrette
   (the onions soaking in the vinaigrette will help take some of the bite out of
   them.)
 
-- Place potatos in a large pot and cover with 2 inches of water. Add 1 tbs of
+- Place potatos in a large pot and cover with 2 inches of water. Add 1 tbsp of
   salt. Heat on high to bring to a boil. Lower the heat to maintain a simmer.
   Cook for 10 to 12 minutes or so, until the potatos are fork tender. Drain.
 

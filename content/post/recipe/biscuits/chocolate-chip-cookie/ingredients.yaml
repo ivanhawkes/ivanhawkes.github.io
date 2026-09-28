@@ -2,7 +2,7 @@ ingredient-list:
   - dish: Chocolate Chip Cookie
     ingredients:
       - quantity: '280'
-        measure: 'grams'
+        measure: 'g'
         ingredient: 'plain flour'
       - quantity: '1'
         measure: 'tsp'
@@ -14,10 +14,10 @@ ingredient-list:
         measure: 'tsp'
         ingredient: 'salt'
       - quantity: '170'
-        measure: 'grams'
+        measure: 'g'
         ingredient: 'unsalted butter (softened)'
       - quantity: '150'
-        measure: 'grams'
+        measure: 'g'
         ingredient: 'brown sugar'
       - quantity: '1'
         measure: 'large'
@@ -26,5 +26,5 @@ ingredient-list:
         measure: 'tsp'
         ingredient: 'vanilla extract'
       - quantity: '225'
-        measure: 'grams'
+        measure: 'g'
         ingredient: 'chocolate bits'

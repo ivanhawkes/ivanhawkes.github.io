@@ -1,5 +1,5 @@
 ingredient-list:
-  - dish: Ingredients
+  - dish: Marinade
     ingredients:
       - quantity: '2'
         measure: 'whole'
@@ -8,13 +8,13 @@ ingredient-list:
         measure: 'cup'
         ingredient: 'plain yoghurt'
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'garlic (crushed)'
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'ginger (crushed)'
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'coriander leaves and stems (finely chopped)'
       - quantity: '2'
         measure: 'tsp'
@@ -36,10 +36,10 @@ ingredient-list:
       - quantity: '1/2'
         measure: 'tsp'
         ingredient: 'ground turmeric'
-  - dish: Ingredients
+  - dish: Sauce
     ingredients:
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'ghee'
       - quantity: '1'
         measure: 'whole'
@@ -69,5 +69,5 @@ ingredient-list:
         measure: 'tsp'
         ingredient: 'Punjabi garam masala'
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'coriander leaves and stems (finely chopped for garnish)'

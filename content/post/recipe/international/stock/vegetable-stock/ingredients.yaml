@@ -2,7 +2,7 @@ ingredient-list:
   - dish: Vegetable Stock
     ingredients:
       - quantity: '1'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'olive oil'
       - quantity: '1'
         measure: 'large'
@@ -27,5 +27,5 @@ ingredient-list:
         measure: 'litres'
         ingredient: 'cold water'
       - quantity: '1'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'salt'

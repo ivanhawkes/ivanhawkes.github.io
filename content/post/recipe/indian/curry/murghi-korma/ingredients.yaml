@@ -5,10 +5,10 @@ ingredient-list:
         measure: 'cup'
         ingredient: 'plain yoghurt'
       - quantity: '1'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'garlic (crushed)'
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'ginger (crushed)'
   - dish: Ingredients
     ingredients:
@@ -16,7 +16,7 @@ ingredient-list:
         measure: 'whole'
         ingredient: 'chicken, broken down (skin removed)'
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'vegetable oil'
       - quantity: '1/2'
         measure: 'tsp'
@@ -52,5 +52,5 @@ ingredient-list:
         measure: 'medium'
         ingredient: 'red onion, sliced'
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'coriander leaves and stems (finely chopped)'

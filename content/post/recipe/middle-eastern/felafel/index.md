@@ -45,13 +45,13 @@ Cover the bowl with plastic wrap and refrigerate for 1-2 hours.
 Note: Some people like to add baking soda to the mix to lighten up the texture
 inside of the falafel balls. I don’t usually add it, since the falafel is
 generally pretty fluffy on its own. If you would like to add it, dissolve 2 tsp
-of baking soda in 1 tbs of water and mix it into the falafel mixture after it
+of baking soda in 1 tbsp of water and mix it into the falafel mixture after it
 has been refrigerated.
 
 Fill a skillet with vegetable oil to a depth of 1 ½ inches. I prefer to use
 cooking oil with a high smoke point, like grapeseed. Heat the oil slowly over
 medium heat. Meanwhile, form falafel mixture into round balls or slider-shaped
-patties using wet hands or a falafel scoop. I usually use about 2 tbs of mixture
+patties using wet hands or a falafel scoop. I usually use about 2 tbsp of mixture
 per falafel. You can make them smaller or larger depending on your personal
 preference. The balls will stick together loosely at first, but will bind nicely
 once they begin to fry.
@@ -60,7 +60,7 @@ If the balls won't hold together, place the mixture back in the processor again
 and continue processing to make it more paste-like. Keep in mind that the balls
 will be delicate at first; if you can get them into the hot oil, they will bind
 together and stick. If they still won't hold together, you can try adding 2-3
-tbs of flour or chickpea flour to the mixture. If they still won't hold, add 1-2
+tbsp of flour or chickpea flour to the mixture. If they still won't hold, add 1-2
 eggs to the mix. This should fix any issues you are having.
 
 Before frying my first batch of falafel, I like to fry a test one in the center
@@ -77,9 +77,12 @@ with a plate of hummus and topped with creamy tahini sauce. You can also stuff
 them into a pita.
 
 Troubleshooting: If your falafel is too hard/too crunchy on the outside, there
-are two possible reasons-- 1) you didn't process the mixture enough-- return the
-chickpea mixture to the processor to make it more paste-like. 2) the chickpeas
-you used were old. Try buying a fresher batch of dried chickpeas next time.
+are two possible reasons:
+
+- you didn't process the mixture enough-- return the
+chickpea mixture to the processor to make it more paste-like.
+
+- the chickpeas you used were old. Try buying a fresher batch of dried chickpeas next time.
 
 ## Sesame Falafel Variation
 

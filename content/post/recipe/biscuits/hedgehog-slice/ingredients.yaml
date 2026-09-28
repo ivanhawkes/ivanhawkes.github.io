@@ -2,10 +2,10 @@ ingredient-list:
   - dish: Hedgehog Slice
     ingredients:
       - quantity: '395'
-        measure: 'grams'
+        measure: 'g'
         ingredient: 'sweetened condensed milk ( 1 can)'
       - quantity: '250'
-        measure: 'grams'
+        measure: 'g'
         ingredient: 'butter (softened)'
       - quantity: '1/4'
         measure: 'cup'
@@ -35,5 +35,5 @@ ingredient-list:
         measure: 'tsp'
         ingredient: 'maple syrup extract'
       - quantity: '250'
-        measure: 'grams'
+        measure: 'g'
         ingredient: 'chocolate melts'

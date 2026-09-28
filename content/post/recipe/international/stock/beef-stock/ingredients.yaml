@@ -2,7 +2,7 @@ ingredient-list:
   - dish: Beef Stock
     ingredients:
       - quantity: '1'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'olive oil'
       - quantity: '2'
         measure: 'kg'
@@ -33,5 +33,5 @@ ingredient-list:
         measure: 'litres'
         ingredient: 'cold water'
       - quantity: '1'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'salt'

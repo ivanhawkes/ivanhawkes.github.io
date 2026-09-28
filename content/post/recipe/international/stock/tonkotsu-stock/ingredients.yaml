@@ -10,7 +10,7 @@ ingredient-list:
         measure: 'kg'
         ingredient: 'chicken backs and carcasses, skin and excess fat removed'
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'vegetable oil'
       - quantity: '1'
         measure: 'large'

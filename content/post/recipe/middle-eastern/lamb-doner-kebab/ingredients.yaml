@@ -2,10 +2,10 @@ ingredient-list:
   - dish: Lamb Doner Kebab
     ingredients:
       - quantity: '250'
-        measure: 'grams'
+        measure: 'g'
         ingredient: 'minced lamb (fatty)'
       - quantity: '250'
-        measure: 'grams'
+        measure: 'g'
         ingredient: 'minced beef (fatty)'
       - quantity: '1'
         measure: 'medium'

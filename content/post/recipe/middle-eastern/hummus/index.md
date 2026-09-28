@@ -50,7 +50,7 @@ You can choose to either cook the beans in a pot or a pressure cooker.
 - Allow the pressure cooker to naturally release.
 
 - Remove the skins from the cooked beans. You might need to cook them for a few
-  minutes in water and 1 1/2 tspn baking soda to loosen the skins.
+  minutes in water and 1 1/2 tsp baking soda to loosen the skins.
 
 ### Cook them in a pot
 
@@ -66,7 +66,7 @@ You can choose to either cook the beans in a pot or a pressure cooker.
   they are by smushing some between your fingers.
 
 - Remove the skins from the cooked beans. You might need to cook them for a few
-  minutes in water and 1 1/2 tspn baking soda to loosen the skins.
+  minutes in water and 1 1/2 tsp baking soda to loosen the skins.
 
 Perhaps try some variations with fresh herbs and chillis.
 

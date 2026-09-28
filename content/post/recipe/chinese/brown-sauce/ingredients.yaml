@@ -2,13 +2,13 @@ ingredient-list:
   - dish: Chinese Brown Sauce
     ingredients:
       - quantity: '1'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'light soy sauce'
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'oyster sauce'
       - quantity: '2'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'shaoxing wine'
       - quantity: '1/2'
         measure: 'tsp'

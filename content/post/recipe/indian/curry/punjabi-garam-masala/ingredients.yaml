@@ -5,7 +5,7 @@ ingredient-list:
         measure: 'tsp'
         ingredient: 'cumin seeds'
       - quantity: '1'
-        measure: 'tbs'
+        measure: 'tbsp'
         ingredient: 'coriander seeds'
       - quantity: '1/2'
         measure: 'tsp'

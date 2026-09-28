@@ -117,6 +117,8 @@ jobs:
                   pnpm dlx @tailwindcss/cli -i themes/be-best/assets/css/main.css -o assets/css/main.css --minify
 
             - name: Build the site
+              env:
+                  CGO_ENABLED: 1 # Forces Hugo to compile webp hooks using native C bindings
               run: |
                   hugo build \
                     --environment production \                    

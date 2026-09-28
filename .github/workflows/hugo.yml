@@ -117,6 +117,7 @@ jobs:
                     --environment production \
                     --gc \
                     --minify \
+                    --ignoreCache \
                     --cleanDestinationDir \
                     --baseURL "${{ steps.pages.outputs.base_url }}" \
                     --cacheDir "${{ runner.temp }}/hugo_cache"

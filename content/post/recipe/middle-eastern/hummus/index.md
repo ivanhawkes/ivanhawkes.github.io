@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2025-11-14'
 portions: 12
+prep-time: PT20M
+cook-time: PT1H15M
 tags:
     - Middle Eastern
     - Vegetarian

@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2018-11-27'
 portions: 2
+prep-time: PT20M
+cook-time: PT15M
 tags:
     - French
     - Salad

@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2021-10-25'
 portions: 2
+prep-time: PT10M
+cook-time: PT20M
 tags:
     - Thai
     - Curry

@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2021-09-21'
 portions: 2
+prep-time: PT10M
+cook-time: PT15M
 tags:
     - Chinese
     - Sauce

@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2019-05-31'
 portions: 12
+prep-time: PT15M
+cook-time: PT30M
 tags:
     - ginger
     - ferment

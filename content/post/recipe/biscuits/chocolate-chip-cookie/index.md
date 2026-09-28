@@ -4,6 +4,8 @@ categories:
 date: '2024-03-02'
 description: null
 portions: 16
+prep-time: PT20M
+cook-time: PT13M
 tags:
     - cookies
 title: Chocolate Chip Cookie

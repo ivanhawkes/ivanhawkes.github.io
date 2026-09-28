@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2023-08-09'
 portions: 8
+prep-time: PT20M
+cook-time: PT15M
 tags:
     - Middle Eastern
     - Lamb

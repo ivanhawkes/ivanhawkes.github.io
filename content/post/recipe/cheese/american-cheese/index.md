@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2025-10-29'
 portions: 12
+prep-time: PT20M
+cook-time: PT10M
 tags:
     - American
     - Cheese

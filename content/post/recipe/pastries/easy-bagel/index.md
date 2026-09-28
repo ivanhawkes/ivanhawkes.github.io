@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2018-01-26'
 portions: 12
+prep-time: PT30M
+cook-time: PT35M
 tags:
     - American
     - Bread

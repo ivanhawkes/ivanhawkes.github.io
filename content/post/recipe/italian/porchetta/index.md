@@ -3,6 +3,9 @@ author: Ivan Hawkes
 categories:
     - Recipe
 date: '2020-02-21'
+portions: 4
+prep-time: PT30M
+cook-time: PT2H
 tags:
     - Italian
     - Pork

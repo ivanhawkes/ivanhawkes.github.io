@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2021-10-14'
 portions: 6
+prep-time: PT15M
+cook-time: PT55M
 tags:
     - Chinese
     - Pork

@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2018-11-28'
 portions: 10
+prep-time: PT15M
+cook-time: PT3H
 tags:
     - Vegetarian
     - Vegan

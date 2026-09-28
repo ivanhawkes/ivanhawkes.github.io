@@ -3,6 +3,9 @@ author: Ivan Hawkes
 categories:
     - Recipe
 date: '2019-05-31'
+portions: 4
+prep-time: PT15M
+cook-time: PT0M
 tags:
     - ginger
     - ferment

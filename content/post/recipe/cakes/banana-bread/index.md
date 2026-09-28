@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2023-12-07'
 portions: 8
+prep-time: PT15M
+cook-time: PT35M
 tags:
     - Cake
     - Dessert

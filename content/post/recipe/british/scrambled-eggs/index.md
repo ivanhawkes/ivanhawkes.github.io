@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2023-11-26'
 portions: 1
+prep-time: PT5M
+cook-time: PT5M
 tags:
     - European
     - Breakfast

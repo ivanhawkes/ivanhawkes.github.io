@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2022-09-10'
 portions: 4
+prep-time: PT25M
+cook-time: PT40M
 tags:
     - Indian
     - Chicken

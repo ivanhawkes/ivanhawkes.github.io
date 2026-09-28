@@ -4,6 +4,8 @@ categories:
 date: '2024-03-24'
 description: null
 portions: 16
+prep-time: PT25M
+cook-time: PT10M
 tags:
     - slices
     - chocolate

@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2018-11-26'
 portions: 2
+prep-time: PT5M
+cook-time: PT5M
 tags:
     - Chinese
     - Sauce

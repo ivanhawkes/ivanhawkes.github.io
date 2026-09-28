@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2018-11-27'
 portions: 12
+prep-time: PT5M
+cook-time: PT0M
 tags:
     - French
     - Dressing

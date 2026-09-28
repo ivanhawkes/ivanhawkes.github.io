@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2018-11-26'
 portions: 4
+prep-time: PT15M
+cook-time: PT15M
 tags:
     - Malaysian
     - Soup

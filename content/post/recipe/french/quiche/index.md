@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2019-08-19'
 portions: 4
+prep-time: PT15M
+cook-time: PT55M
 tags:
     - French
     - Quiche

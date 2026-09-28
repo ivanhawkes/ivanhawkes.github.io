@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2021-11-19'
 portions: 4
+prep-time: PT15M
+cook-time: PT15M
 tags:
     - Chinese
     - Sichuan

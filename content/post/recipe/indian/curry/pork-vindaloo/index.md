@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2023-11-26'
 portions: 8
+prep-time: PT20M
+cook-time: PT35M
 tags:
     - Indian
     - Pork

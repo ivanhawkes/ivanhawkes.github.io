@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2023-11-26'
 portions: 4
+prep-time: PT5M
+cook-time: PT0M
 tags:
     - Indian
     - Garam Masala

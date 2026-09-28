@@ -5,6 +5,8 @@ categories:
 date: '2025-10-29'
 imagecaption: A loaf of date and walnut bread baked in a standard loaf pan.
 portions: 4
+prep-time: PT20M
+cook-time: PT45M
 tags:
     - Date
     - Walnut

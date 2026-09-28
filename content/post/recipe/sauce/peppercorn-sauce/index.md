@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2024-02-19'
 portions: 5
+prep-time: PT10M
+cook-time: PT20M
 tags:
     - Sauce
     - Peppercorn

@@ -7,6 +7,8 @@ imagecaption:
     A bowl of deep-red Chile Colorado simmered from toasted guajillo and
     ancho chiles.
 portions: 4
+prep-time: PT15M
+cook-time: PT20M
 tags:
     - Mexican
     - Tex-Mex

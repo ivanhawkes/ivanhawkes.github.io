@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2020-03-12'
 portions: 2
+prep-time: PT20M
+cook-time: PT30M
 tags:
     - Indian
     - Chicken

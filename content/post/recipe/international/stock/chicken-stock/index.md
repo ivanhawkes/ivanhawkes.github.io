@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2018-11-28'
 portions: 10
+prep-time: PT20M
+cook-time: PT5H
 tags:
     - Recipe
     - Chicken

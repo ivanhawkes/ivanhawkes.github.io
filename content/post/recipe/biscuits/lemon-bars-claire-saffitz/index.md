@@ -4,6 +4,8 @@ categories:
 date: '2024-03-27'
 description: null
 portions: 25
+prep-time: PT15M
+cook-time: PT50M
 tags:
     - slices
     - lemon

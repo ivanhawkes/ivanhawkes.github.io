@@ -4,6 +4,8 @@ categories:
     - Recipe
 date: '2018-01-26'
 portions: 4
+prep-time: PT20M
+cook-time: PT20M
 tags:
     - Thai
     - Soup

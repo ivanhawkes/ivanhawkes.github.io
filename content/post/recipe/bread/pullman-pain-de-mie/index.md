@@ -5,6 +5,8 @@ categories:
 date: '2025-10-29'
 imagecaption: A loaf of pain de mie baked in a pullman loaf pan.
 portions: 20
+prep-time: PT15M
+cook-time: PT40M
 tags:
     - French
     - Bread

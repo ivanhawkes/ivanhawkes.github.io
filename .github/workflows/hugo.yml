@@ -43,6 +43,7 @@ jobs:
               with:
                   submodules: recursive
                   fetch-depth: 0
+                  lfs: true
 
             # Modern action: Handles both pnpm and Node.js setup plus caching automatically
             - uses: pnpm/setup@v2

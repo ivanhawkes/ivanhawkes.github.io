@@ -49,7 +49,7 @@ jobs:
               with:
                   version: 11
                   runtime: node@${{ env.NODE_VERSION }}
-                  cache: true
+                  #   cache: true
 
             - run: pnpm i
 
@@ -63,7 +63,7 @@ jobs:
               uses: actions/setup-go@v6
               with:
                   go-version: ${{ env.GO_VERSION }}
-                  cache: false
+                  #   cache: false
 
             - name: Setup Pages
               id: pages
@@ -96,16 +96,15 @@ jobs:
                   echo "key=${key}" >> "$GITHUB_OUTPUT"
                   echo "Cache key: ${key}"
 
-            - name: Cache restore
-              id: cache-restore
-              uses: actions/cache/restore@v5
-              with:
-                  path: ${{ runner.temp }}/hugo_cache
-                  key: ${{ steps.cache-key.outputs.key }}
-                  restore-keys: |
-                      hugo-${{ env.HUGO_VERSION }}-
+            # - name: Cache restore
+            #   id: cache-restore
+            #   uses: actions/cache/restore@v5
+            #   with:
+            #       path: ${{ runner.temp }}/hugo_cache
+            #       key: ${{ steps.cache-key.outputs.key }}
+            #       restore-keys: |
+            #           hugo-${{ env.HUGO_VERSION }}-
 
-            # Note: Changed 'npx' to 'pnpm dlx' to use the workspace's cached/managed executables properly
             - name: Build the CSS using Tailwind CSS
               run: |
                   pnpm dlx @tailwindcss/cli -i themes/be-best/assets/css/main.css -o assets/css/main.css --minify
@@ -119,15 +118,15 @@ jobs:
                     --minify \
                     --ignoreCache \
                     --cleanDestinationDir \
-                    --baseURL "${{ steps.pages.outputs.base_url }}" \
-                    --cacheDir "${{ runner.temp }}/hugo_cache"
+                    --baseURL "${{ steps.pages.outputs.base_url }}" # \
+                    # --cacheDir "${{ runner.temp }}/hugo_cache"
 
-            - name: Cache save
-              id: cache-save
-              uses: actions/cache/save@v5
-              with:
-                  path: ${{ runner.temp }}/hugo_cache
-                  key: ${{ steps.cache-key.outputs.key }}
+            # - name: Cache save
+            #   id: cache-save
+            #   uses: actions/cache/save@v5
+            #   with:
+            #       path: ${{ runner.temp }}/hugo_cache
+            #       key: ${{ steps.cache-key.outputs.key }}
 
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v5

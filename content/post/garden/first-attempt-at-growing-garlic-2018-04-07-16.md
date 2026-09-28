@@ -1,11 +1,11 @@
 ---
 author: Ivan Hawkes
 categories:
-- Garden
+    - Garden
 date: '2018-04-07'
 description: Planting garlic.
 tags:
-- Garlic
+    - Garlic
 title: First Crack at Garlic
 ---
 

@@ -1,20 +1,19 @@
 ---
+title: Joining StoneRage
 author: Ivan Hawkes
 categories:
-- CRYENGINE
+    - CRYENGINE
 date: '2013-09-02'
 tags:
-- CryEngine
-- CryEngine 3
-- Game Programming
-- software
-- StoneRage
-title: Joining StoneRage
+    - CryEngine 3
+    - Game Programming
+    - Software
+    - StoneRage
 ---
 
 A few weeks ago I decided to place my own projects on hold and join a team
 working on a game - specifically the
-[StoneRage](http://mountainwheel.com/games/stonerage/ "StoneRage") game. The
+[StoneRage](http://mountainwheel.com/games/stonerage/ 'StoneRage') game. The
 developers seemed organised and were well advanced in terms of graphic and
 environmental production.
 
@@ -22,7 +21,7 @@ environmental production.
 
 Better still, their code requirements would be a fairly close match to many of
 the things I will need to do to bring
-[Shattered Screens](http://www.shattered-screens.com "Shattered Screens") to
+[Shattered Screens](http://www.shattered-screens.com 'Shattered Screens') to
 completion. This provides me with a great opportunity to work on something fun,
 meet some new people, and get some learning / code written.
 

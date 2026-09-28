@@ -1,26 +1,28 @@
 ---
+title: Building A Cheap Motion Capture Studio
 author: Ivan Hawkes
 categories:
-- general
+    - general
 date: '2013-07-16'
-description: I bought up some cheap PS3 cameras and used iPi Software to make a fairly basic motion capture studio.
+description:
+    I bought up some cheap PS3 cameras and used iPi Software to make a fairly
+    basic motion capture studio.
 tags:
-- Cryengine
-- CryEngine 3
-- Development
-- Game
-- Game Programming
-- Microsoft Kinect
-- Motion Capture
-- PS Eye Camera
-- Software Development
-title: Building A Cheap Motion Capture Studio
+    - Cryengine
+    - CryEngine 3
+    - Development
+    - Game
+    - Game Programming
+    - Microsoft Kinect
+    - Motion Capture
+    - PS Eye Camera
+    - Programming
 ---
 
 A while back I became interested in motion capture as a means to easily get
 basic animations into the game I am working on. Using reasonably priced software
-from [Brekel](http://www.brekel.com/ "Brekel Software") and a cheap Microsoft
-[Xbox Kinect](http://en.wikipedia.org/wiki/Kinect "XBox Kinect") camera you have
+from [Brekel](http://www.brekel.com/ 'Brekel Software') and a cheap Microsoft
+[Xbox Kinect](http://en.wikipedia.org/wiki/Kinect 'XBox Kinect') camera you have
 the beginnings of a motion capture setup.
 
 <!--more-->
@@ -32,7 +34,7 @@ It's cheap, easy to setup and effective enough for simple indie game
 development - and it can be improved upon without breaking most budgets.
 
 Following some links on the net I stumbled on
-[iPi Soft](http://ipisoft.com/ "iPi Software"), an alternative to Brekel that is
+[iPi Soft](http://ipisoft.com/ 'iPi Software'), an alternative to Brekel that is
 able to do a few extra tricks that can push your animation into the next level.
 
 The iPi software is more flexible than Brekel and gives you the ability to ramp

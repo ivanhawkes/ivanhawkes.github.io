@@ -1,18 +1,17 @@
 ---
+title: Introducing CryEngine 3 Event Listeners
 author: Ivan Hawkes
 categories:
-- CRYENGINE
+    - CRYENGINE
 date: '2014-03-07'
 tags:
-- 'C#'
-- Cryengine
-- CryEngine 3
-- event
-- gamesdk.dll
-- listener
-- observer pattern
-- Software Development
-title: Introducing CryEngine 3 Event Listeners
+    - C Sharp
+    - CryEngine 3
+    - event
+    - gamesdk.dll
+    - listener
+    - observer pattern
+    - Programming
 ---
 
 In this article I will introduce you to event handling within CryEngine 3 and
@@ -26,9 +25,9 @@ FreeSDK, and much of that is densely packed headers. A good first step is to
 purchase one or more of the books which introduce you to programming with the
 engine. I have personally read and can recommend:
 
-- [CryENGINE Game Programming with C++, C#, and Lua](http://amzn.to/1mZHaHo "CryENGINE Game Programming with C++, C#, and Lua")
-- [CryENGINE 3 Game Development: Beginner's Guide](http://amzn.to/1cFKv4y " CryENGINE 3 Game Development: Beginner")
-- [CryENGINE 3 Cookbook](http://amzn.to/1njxlk3 "CryENGINE 3 Cookbook")
+- [CryENGINE Game Programming with C++, C#, and Lua](http://amzn.to/1mZHaHo 'CryENGINE Game Programming with C++, C#, and Lua')
+- [CryENGINE 3 Game Development: Beginner's Guide](http://amzn.to/1cFKv4y ' CryENGINE 3 Game Development: Beginner')
+- [CryENGINE 3 Cookbook](http://amzn.to/1njxlk3 'CryENGINE 3 Cookbook')
 
 Each of them has their strengths and weaknesses, and despite overlaps in some
 areas of content you should more than get your money's worth from reading them.
@@ -38,7 +37,7 @@ have at least basic knowledge of CryEngine, and decent C++ skills.
 Let's get started!
 
 One of the key design patterns you will see throughout the CryEngine SDK is the
-[observer pattern](http://en.wikipedia.org/wiki/Observer_pattern "Observer Pattern").
+[observer pattern](http://en.wikipedia.org/wiki/Observer_pattern 'Observer Pattern').
 In this pattern one object maintains a list of dependant objects and is
 responsible for notifying them of changes in it's state. Within CryEngine they
 are generally denoted as classes and structs whose name end in **Listener** e.g.

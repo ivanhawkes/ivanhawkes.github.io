@@ -1,11 +1,11 @@
 ---
 author: Ivan Hawkes
 categories:
-- Garden
+    - Garden
 date: '2018-11-14'
 description: Plants are growing.
 tags:
-- Planting
+    - Planting
 title: Start A Kitchen Garden
 ---
 

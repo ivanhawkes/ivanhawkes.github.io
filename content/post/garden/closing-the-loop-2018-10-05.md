@@ -1,12 +1,12 @@
 ---
 author: Ivan Hawkes
 categories:
-- Garden
+    - Garden
 date: '2018-10-05'
 description: Utilise every resource at your disposal.
 tags:
-- Garden
-- Fertiliser
+    - Garden
+    - Fertiliser
 title: Closing the Loop
 ---
 

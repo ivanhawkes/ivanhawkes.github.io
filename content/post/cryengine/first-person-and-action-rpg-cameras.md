@@ -1,19 +1,18 @@
 ---
+title: First Person and Action RPG Cameras
 author: Ivan Hawkes
 categories:
-- CRYENGINE
+    - CRYENGINE
 date: '2016-09-14'
 description: Handling input and camera management.
 tags:
-- 'C#'
-- C++
-- Camera Code
-- Chrysalis
-- Cryengine
-- CRYENGINE 5.2
-- Game Programming
-- Mathematics
-title: First Person and Action RPG Cameras
+    - C Sharp
+    - C++
+    - Camera Code
+    - Chrysalis
+    - CRYENGINE 5.2
+    - Game Programming
+    - Mathematics
 ---
 
 In this article I will introduce you to view management within CRYENGINE and

@@ -1,23 +1,22 @@
 ---
 author: Ivan Hawkes
 categories:
-- Project Development
+    - Project Development
 date: '2026-04-25'
 description: A quick guide to developing a small application.
 tags:
-- Development
-- Project Management
-- Design
-- Specifications
+    - Development
+    - Project Management
+    - Design
+    - Specifications
 title: Project Development Quick Guide
 type: post
 ---
 
 # Project Development Quick Guide
 
-A quick start guide designed to remind you of the steps needed to
-bring a project to completion. Some are optional, depending on
-the scope of the project.
+A quick start guide designed to remind you of the steps needed to bring a
+project to completion. Some are optional, depending on the scope of the project.
 
 ## Ideation
 
@@ -25,13 +24,13 @@ Come up with an idea. Write it down.
 
 ## Conception
 
-Work the idea over in your head. Think about what problem it solves and
-if it's worth the time and cost to produce.
+Work the idea over in your head. Think about what problem it solves and if it's
+worth the time and cost to produce.
 
 ## Design
 
-Methodically write down all of the things you wish the project could do.
-You can ruthlessly cut this list down as the project progresses.
+Methodically write down all of the things you wish the project could do. You can
+ruthlessly cut this list down as the project progresses.
 
 ## Requirements Specification
 
@@ -48,7 +47,8 @@ not concern itself with how this will be done.
 
 ## Functional Specification
 
-The functional specification describes what you want from your software development.
+The functional specification describes what you want from your software
+development.
 
     - Features
     - Functionality
@@ -165,7 +165,7 @@ The design specification lays out the rules for design.
     - Deploy to production
 
 ## SEO
-    
+
     - Inform the stakeholders
     - Product Launch
     - Gather Usage Metrics

@@ -1,15 +1,14 @@
 ---
+title: Adding New Actions to CryEngine 3 FreeSDK
 author: Ivan Hawkes
 categories:
-- Programming
+    - CRYENGINE
 date: '2013-12-09'
 tags:
-- Cryengine
-- CryEngine 3
-- C++
-- Flowgraph
-- Software Development
-title: Adding New Actions to CryEngine 3 FreeSDK
+    - CryEngine 3
+    - C++
+    - Flowgraph
+    - Programming
 ---
 
 This tutorial will help you add new actions into CryEngine 3 FreeSDK projects
@@ -35,9 +34,9 @@ implementation.
 For this example, I am going to use a FlowNode class, that needs to extend
 itself to handle a couple of action events - namely, mouse key presses. This
 FlowNode is part of the
-[camera plugin](https://github.com/hendrikp/Plugin_Camera "Camera Plugin") for
+[camera plugin](https://github.com/hendrikp/Plugin_Camera 'Camera Plugin') for
 CryEngine, based on the
-[plugin SDK](https://github.com/hendrikp/Plugin_SDK "CryEngine Plugin SDK") from
+[plugin SDK](https://github.com/hendrikp/Plugin_SDK 'CryEngine Plugin SDK') from
 Hendrik.
 
 First things first, whatever class you wish to extend, you need to make sure it
@@ -227,7 +226,7 @@ TActionHandler<CFlowPlayerCameraNode> CFlowPlayerCameraNode::s_actionHandler;
 
 That's the bulk of the changes needed to extend any class to handle it's own
 action mapped events. You can view the complete source as a part of the
-[plugin camera code](https://github.com/hendrikp/Plugin_Camera "Plugin Camera Code").
+[plugin camera code](https://github.com/hendrikp/Plugin_Camera 'Plugin Camera Code').
 
 There's one more step, however. You will need to add a few lines to your
 defaultprofile.xml file. In this particular case you will need to add a pair of

@@ -1,16 +1,15 @@
 ---
+title: 'CryEngine 3 - Flowgraph Events'
 author: Ivan Hawkes
 categories:
-- CRYENGINE
+    - CRYENGINE
 date: '2013-06-27'
 tags:
-- 'C#'
-- Cryengine
-- CryEngine 3
-- Events
-- FlowGraph
-- Programming
-title: 'CryEngine 3 - Flowgraph Events'
+    - C Sharp
+    - CryEngine 3
+    - Events
+    - FlowGraph
+    - Programming
 ---
 
 As you begin to learn how to program for CryEngine 3 you will run into a lot of
@@ -31,16 +30,16 @@ players.
 
 In order to do this I will need to make a few additions to the code base. I'm
 choosing to do this using a slightly modified version of the
-[plug-in engine](https://github.com/hendrikp/Plugin_SDK "plug-in engine") from
-[Hendrik](https://github.com/hendrikp "Hendrik"). The changes I made are very
+[plug-in engine](https://github.com/hendrikp/Plugin_SDK 'plug-in engine') from
+[Hendrik](https://github.com/hendrikp 'Hendrik'). The changes I made are very
 minor, and mainly play into my OCD need for everything to be 'just so'.
 
 The first stop is creating a new set of flowgraph nodes that will help implement
 the desired changes. Helpfully, the
-[plug-in SDK](https://github.com/hendrikp/Plugin_SDK "plug-in SDK") provides a
+[plug-in SDK](https://github.com/hendrikp/Plugin_SDK 'plug-in SDK') provides a
 template of your project with the major functionality already implemented. There
 is also a
-[fork of this project](https://bitbucket.org/shatteredscreens/plug-in-sdk "plug-in SDK")
+[fork of this project](https://bitbucket.org/shatteredscreens/plug-in-sdk 'plug-in SDK')
 which I have created which adds a few little tweaks and improvements. You can
 use either to follow along as all the changes are minor tweaks for now.
 

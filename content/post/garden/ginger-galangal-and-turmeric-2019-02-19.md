@@ -1,11 +1,13 @@
 ---
 author: Ivan Hawkes
 categories:
-- Garden
+    - Garden
 date: '2019-02-19'
-description: Some herbs can be hard to find at the stores. It's time to try and grow these for myself.
+description:
+    Some herbs can be hard to find at the stores. It's time to try and grow
+    these for myself.
 tags:
-- Herbs
+    - Herbs
 title: Ginger, Galangal and Turmeric
 ---
 

@@ -1,6 +1,19 @@
-# Ignore generated content.
+# Hugo Output & Cache
 public/
+resources/
+.hugo_build.lock
+layouts/
 
+# Node.js Dependencies
+node_modules/
 package-lock.json
 pnpm-lock.yaml
-yarn.lock
+
+# Local Environment Variables
+.env
+*.env
+
+# Build Artifacts & System Files
+dist/
+.DS_Store
+Thumbs.db

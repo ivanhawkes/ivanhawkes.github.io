@@ -1,22 +1,22 @@
 ---
 author: Ivan Hawkes
 categories:
-- Programming
+    - Programming
 date: '2013-10-12'
 tags:
-- Go
-- go
-- Language
-- Languages
-- Ohio Scientific
-- software design
-- Software Development
-- Visual Basic
+    - Go
+    - go
+    - Language
+    - Languages
+    - Ohio Scientific
+    - software design
+    - Programming
+    - Visual Basic
 title: How I Learned to Love Go (Language) And Stop Worrying
 ---
 
 There's a new love in my life, and she's petite, versatile, responsive and
-modern - it's the language, [Go](http://golang.org/ "Go Language"). I'm still in
+modern - it's the language, [Go](http://golang.org/ 'Go Language'). I'm still in
 the honeymoon stage, getting to know the ways she likes to play and the things
 she can do for me, but I can tell you now - it's going to be a long romance.
 
@@ -26,14 +26,14 @@ But first, let's have a look back at the types I've been hanging out with in the
 past.
 
 In the very early days I used
-[Microsoft BASIC](http://en.wikipedia.org/wiki/Microsoft_BASIC "Wikipedia - Microsoft BASIC")
+[Microsoft BASIC](http://en.wikipedia.org/wiki/Microsoft_BASIC 'Wikipedia - Microsoft BASIC')
 which shipped in the ROM of my very first PC, the
-[Ohio Scientific C1P - Challenger](http://en.wikipedia.org/wiki/Ohio_Scientific#Challenger "Ohio Scientific Challenger").
+[Ohio Scientific C1P - Challenger](http://en.wikipedia.org/wiki/Ohio_Scientific#Challenger 'Ohio Scientific Challenger').
 It wasn't too long before I was cranking out 6502 assembly code with a
-[line oriented editor](http://en.wikipedia.org/wiki/Line_editor "Line Oriented Editor")
+[line oriented editor](http://en.wikipedia.org/wiki/Line_editor 'Line Oriented Editor')
 to push that machine to it's limits. Years passed and I moved out of home to
 attend
-[QUT University](http://www.qut.edu.au/ "Queensland University of Technology")
+[QUT University](http://www.qut.edu.au/ 'Queensland University of Technology')
 and there I was introduced to, somewhat at gun point, first Pascal, then Modula
 II, and C. The cycle of pain was complete when I learnt C++ for a job.
 
@@ -58,7 +58,7 @@ creating some software for the joy of programming and that's where Go comes in.
 I was looking into how I would go about making a project with near real-time
 data needs, high availability, and scalability. I went to my 'go to' toolkit and
 pulled out C#, made new friends with
-[Mongo DB](http://www.mongodb.org/ "Mongo DB"), dusted off ASP.NET and started
+[Mongo DB](http://www.mongodb.org/ 'Mongo DB'), dusted off ASP.NET and started
 looking into the crusted up scab that is the membership provider for IIS. That,
 combined with the horror of their entity class implementation, the MVC and a
 myriad of other things made me think - sod this; there has to be a better way
@@ -101,5 +101,5 @@ Let's have a look at what makes Go so damn awesome:
 
 If you want a thorough book on the subject that is up to date and packed with
 useful information then take a look at
-[The Way To Go](http://www.amazon.com/gp/product/B0083RVAJW/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B0083RVAJW&linkCode=as2&tag=ivanhawkesper-20 "Amazon - The Way to Go: A Thorough Introduction to the Go Programming Language").
+[The Way To Go](http://www.amazon.com/gp/product/B0083RVAJW/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B0083RVAJW&linkCode=as2&tag=ivanhawkesper-20 'Amazon - The Way to Go: A Thorough Introduction to the Go Programming Language').
 Kindle owners, get the digital copy which is a steal currently at only $3.49.

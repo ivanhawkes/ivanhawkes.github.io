@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build output & artifacts
+dist/
+build/
+bin/
+
+# Lockfiles & generated files
+package-lock.json
+go.sum
+go.mod
+
+# IDE & editor configs
+.idea/
+.vscode/
+.git/
+.github/
+
+# Static assets & content (likely generated or binary)
+assets/
+public/
+resources/
+static/
+#content/
+data/
+#themes/
+
+# Config & misc
+config/
+.gitattributes
+.gitmodules
+LICENSE
+README.MD

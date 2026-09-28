@@ -1,7 +1,7 @@
 enable: 'true'
 heading: Profile
 person:
-  - avatar: /img/author/ivan-hawkes.png
+  - avatar: avatar.webp
     name: Ivan Hawkes
     profile: ivan-hawkes
     position: Developer

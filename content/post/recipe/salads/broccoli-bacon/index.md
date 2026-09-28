@@ -1,14 +1,18 @@
 ---
 author: Julie Hawkes
 categories:
-- Recipe
+    - Recipe
 date: '2023-12-07'
 portions: 8
 tags:
-- Recipe
-- Salad
+    - Salad
 title: Broccoli Bacon Salad
 type: recipe
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Brocoli Bacon Salad'
+          caption: 'A photograph of a bowl of salad.'
 ---
 
 Broccoli adds brightness and crunch, while the bacon adds saltiness and umami to
@@ -16,19 +20,6 @@ this dish. Cranberries bring in some floral notes, and the walnuts round it all
 out with some nuttiness.
 
 <!--more-->
-
-## Ingredients
-
-| Quantity | Measure | Ingredient                 |
-| -------- | ------- | -------------------------- |
-| 1        | head    | broccoli (8 cups)          |
-| 4        | slices  | bacon (fried)              |
-| 1        |         | red onion (finely chopped) |
-| 1/2      | cup     | walnuts (roughly chopped)  |
-| 1/2      | cup     | cranberies (dried)         |
-| 1/2      | cup     | mayonaise                  |
-| 2        | tsp     | dijon mustard              |
-| 1/2      | tsp     | salt                       |
 
 ## Directions
 

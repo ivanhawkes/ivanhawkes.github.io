@@ -1,16 +1,14 @@
 ---
 author: Ivan Hawkes
 categories:
-- Recipe
+    - Recipe
 date: '2025-10-29'
-draft: false
 imagecaption: A loaf of pain de mie baked in a pullman loaf pan.
 portions: 20
 tags:
-- Recipe
-- French
-- Bread
-- Loaf
+    - French
+    - Bread
+    - Loaf
 title: Pullman Pain De Mie
 type: recipe
 ---
@@ -20,18 +18,6 @@ and is baked in a 13 inch Pullman loaf tin. This recipe aims for 1069 grams of
 dough.
 
 <!--more-->
-
-## Ingredients
-
-| Quantity | Measure | Ingredient                 |
-| -------- | ------- | -------------------------- |
-| 562      | grams   | strong white flour         |
-| 9        | grams   | instant yeast              |
-| 50       | grams   | unsalted butter (softened) |
-| 276      | ml      | milk (warm)                |
-| 2        | large   | eggs (100g)                |
-| 50       | grams   | sugar / honey              |
-| 12       | grams   | salt                       |
 
 ## Directions
 

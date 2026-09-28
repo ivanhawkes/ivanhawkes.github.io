@@ -1,17 +1,17 @@
 ---
 author: Ivan Hawkes
 categories:
-- Programming
+    - Programming
 date: '2013-10-19'
 tags:
-- Cloud Computing
-- Go
-- go-restful
-- Google App Engine
-- JSON
-- Language
-- REST
-- XML
+    - Cloud Computing
+    - Go
+    - go-restful
+    - Google App Engine
+    - JSON
+    - Language
+    - REST
+    - XML
 title: Google App Engine, Go and Go-RESTful
 ---
 
@@ -26,9 +26,9 @@ really need far more agility than previously.
 
 After giving it some thought and study I've decided that the way forward is to
 use the
-[Google App Engine](https://developers.google.com/appengine/ "Google App Engine"),
-the shiny new language, [Go](http://golang.org/ "Go"), and the
-[Go-RESTfu](https://github.com/emicklei/go-restful "Go-RESTful")l framework.
+[Google App Engine](https://developers.google.com/appengine/ 'Google App Engine'),
+the shiny new language, [Go](http://golang.org/ 'Go'), and the
+[Go-RESTfu](https://github.com/emicklei/go-restful 'Go-RESTful')l framework.
 Here's my reasoning.
 
 It's a simple fact, that while computers are getting faster year on year,
@@ -64,7 +64,7 @@ over a decade of use, and they make it easy to start off small by giving you
 free access to the tools for small scale apps. Google wins this round.
 
 Now, I have the choice of a few languages which will run on the
-[Google App Engine](https://developers.google.com/appengine/ "Google App Engine").
+[Google App Engine](https://developers.google.com/appengine/ 'Google App Engine').
 PHP and Python are both available, along with the new contender, Go.
 
 I've used PHP a little bit previously, and honestly, it felt very hacky. It
@@ -85,12 +85,12 @@ There was still one piece missing from the puzzle, a framework. Go lacks a lot
 of the polish you might expect from modern tools, in particular UI. If you're
 targeting RESTful apps on the web however, this becomes a bit of a non-issue.
 Still, it needed a few handy tools and that is where
-[Go-RESTful](https://github.com/emicklei/go-restful "Go-RESTful") comes in.
+[Go-RESTful](https://github.com/emicklei/go-restful 'Go-RESTful') comes in.
 
 Go-RESTful provides a toolkit centred around REST based web enabled services.
 Features like regex routing, header handling, error handling, marshalling to and
 from JSON or XML and filters provide the backbone. Bonus round, it's
-[Swagger](http://swagger.wordnik.com/ "Swagger") enabled!
+[Swagger](http://swagger.wordnik.com/ 'Swagger') enabled!
 
 By providing a few hints within your code your project gains the ability to be
 automatically documented using the OPTION verb. Incredibly, it will generate an

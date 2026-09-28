@@ -1,8 +1,8 @@
 ---
 author: Ivan Hawkes
 categories:
-- Electronics
-- Gaming
+    - Electronics
+    - Gaming
 date: '2021-12-15'
 description: Building A Joystick
 title: Building A Joystick

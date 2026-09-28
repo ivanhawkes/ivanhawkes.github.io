@@ -1,15 +1,14 @@
 ---
+title: How to Make .PAK Files With Your Assets
 author: Ivan Hawkes
 categories:
-- CRYENGINE
+    - CRYENGINE
 date: '2013-07-25'
 tags:
-- Asset Management
-- Cryengine
-- CryEngine 3
-- Game Programming
-- Software Development
-title: How to Make .PAK Files With Your Assets
+    - Asset Management
+    - CryEngine 3
+    - Game Programming
+    - Programming
 ---
 
 Something that doesn't seem to receive much coverage is what to do with all your
@@ -41,7 +40,7 @@ CORESCRIPTS.PAK to avoid conflicts. The first thing we will need is to create a
 batch file that can be called which will invoke the resource compiler.
 
 NOTE: You can download all the example files from
-[MediaFire](http://www.mediafire.com/download/3zaa5e4dbdi4894/PackagingExamples.rar "Example Files").
+[MediaFire](http://www.mediafire.com/download/3zaa5e4dbdi4894/PackagingExamples.rar 'Example Files').
 
 For example:
 
@@ -103,7 +102,7 @@ pak_root - defines the output folder for PAK files (required for NAnt build syst
 ```
 
 It looks a little more intimidating than it actually is. Head over to the
-[official documentation](http://freesdk.crydev.net/display/SDKDOC3/Compiling+Assets+for+Multiple+Platforms "Compiling Assets for Multiple Platforms")
+[official documentation](http://freesdk.crydev.net/display/SDKDOC3/Compiling+Assets+for+Multiple+Platforms 'Compiling Assets for Multiple Platforms')
 for a minute to see what all that gubbins is doing.
 
 Let's just hit the important things to get you started, since the rest you can
@@ -156,7 +155,7 @@ spend setting this up early in your project will pay you back tenfold over
 numerous release iterations.
 
 Benefits of this method over using
-[DRHEVEL](https://github.com/returnString/Drehevel "DRHEVEL") are:
+[DRHEVEL](https://github.com/returnString/Drehevel 'DRHEVEL') are:
 
 - total control - you can do anything the RC can do using this
 - you can book these files into source control
@@ -165,6 +164,6 @@ Benefits of this method over using
 - compatibility - no issues with ZIP formats
 - all textures are known to be compressed to the correct format for shipping
 
-[DRHEVEL](https://github.com/returnString/Drehevel "DRHEVEL") can get you most
+[DRHEVEL](https://github.com/returnString/Drehevel 'DRHEVEL') can get you most
 of the way, but if you need that little more control then give this method a
 try.

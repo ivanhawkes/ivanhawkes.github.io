@@ -1,12 +1,12 @@
 ---
 author: Ivan Hawkes
 categories:
-- Administration
+    - Administration
 date: '2021-11-24'
 tags:
-- Linux
-- Ubuntu
-- NGinx
+    - Linux
+    - Ubuntu
+    - NGinx
 title: Installing Nginx using Docker and Portainer
 ---
 
@@ -44,37 +44,40 @@ configure the websites. In this case, I only need to:
 {{< highlight bash >}}
 
 # Update any out of date software.
+
 apt update && apt upgrade
 
 ## Ensure we have Certbot.
+
 apt install certbot python3-certbot-nginx
 
 # Backup the shipped config, replace it with my own,
+
 # and then remove the default site.
-cd /etc/nginx/
-cp nginx.conf nginx.conf.orig
-nano nginx.conf
-rm conf.d/default.conf
+
+cd /etc/nginx/ cp nginx.conf nginx.conf.orig nano nginx.conf rm
+conf.d/default.conf
 
 # Add a proxy for the Plex site.
+
 nano conf.d/plex.conf
 
 # Make a new virtual site for my blog.
-mkdir sites-available
-mkdir sites-enabled
-nano sites-available/hawkes.info
-cd sites-enabled/
-ln -s ../sites-available/hawkes.info hawkes.info
-cat hawkes.info
+
+mkdir sites-available mkdir sites-enabled nano sites-available/hawkes.info cd
+sites-enabled/ ln -s ../sites-available/hawkes.info hawkes.info cat hawkes.info
 cd ..
 
 # Create fresh certificates for the site(s).
+
 certbot --nginx
 
 # Reload the web server.
+
 service nginx reload
 
 # We're done, probably.
+
 exit
 
 {{< /highlight >}}

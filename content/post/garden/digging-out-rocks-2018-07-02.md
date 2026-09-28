@@ -1,9 +1,11 @@
 ---
 author: Ivan Hawkes
 categories:
-- Garden
+    - Garden
 date: '2018-07-02'
-description: It's time to fix the mistakes of the past by digging out all the rocks and starting new garden beds in their place.
+description:
+    It's time to fix the mistakes of the past by digging out all the rocks and
+    starting new garden beds in their place.
 title: Too Much Rock, Too Little Roll
 ---
 

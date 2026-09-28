@@ -1,7 +1,7 @@
 ---
 author: Ivan Hawkes
 categories:
-- Garden
+    - Garden
 date: '2018-10-13'
 description: An update of the small garden just outside my living space door.
 title: Garage Garden Update

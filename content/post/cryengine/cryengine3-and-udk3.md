@@ -1,17 +1,16 @@
 ---
+title: CryEngine3 and UDK3
 author: Ivan Hawkes
 categories:
-- CRYENGINE
+    - CRYENGINE
 date: '2012-11-11'
 tags:
-- Cryengine
-- CryEngine 3
-- Engine
-- Game
-- Game Programming
-- Software Development
-- UDK
-title: CryEngine3 and UDK3
+    - CryEngine 3
+    - Engine
+    - Game
+    - Game Programming
+    - Programming
+    - UDK
 ---
 
 I've been playing games for over 30 years now and I've seen them progress from

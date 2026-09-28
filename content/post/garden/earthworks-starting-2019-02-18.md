@@ -1,11 +1,11 @@
 ---
 author: Ivan Hawkes
 categories:
-- Garden
+    - Garden
 date: '2019-02-18'
 description: Destruction as a form of creation.
 tags:
-- Earthworks
+    - Earthworks
 title: Earthworks
 ---
 

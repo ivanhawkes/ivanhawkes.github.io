@@ -1,16 +1,15 @@
 ---
+title: CRYENGINE 3.7 Source Control and Perforce
 author: Ivan Hawkes
 categories:
-- General
+    - CRYENGINE
 date: '2015-05-01'
 tags:
-- Cryengine
-- CryEngine 3
-- Git
-- Perforce
-- Source Control
-- SVN
-title: CRYENGINE 3.7 Source Control and Perforce
+    - CryEngine 3
+    - Git
+    - Perforce
+    - Source Control
+    - SVN
 ---
 
 In this article I will try to cover the issue of source control, particularly
@@ -76,7 +75,7 @@ merging (those who branch a lot, look elsewhere).
 
 A lot of teams are going to start with SVN because it's easy to get going,
 requires little effort to learn and comes with some very nice tools e.g.
-[TortoiseSVN](http://tortoisesvn.net/ "TortoiseSVN") which have Windows shell
+[TortoiseSVN](http://tortoisesvn.net/ 'TortoiseSVN') which have Windows shell
 integration. It's not too hard to find outside hosting for SVN, though it is
 surprisingly expensive. That said, if you have a decent fast connection, you can
 host an SVN repository on base hardware at home.
@@ -156,7 +155,7 @@ over the top of Perforce.
 Finally, it's worth mentioning, there is a DLL you can download which enables
 CRYENGINE to be Perforce source control aware. It's not a panacea - there will
 still be issues, but if you download the
-[PerforcePlugin.DLL](http://www.cryengine.com/community/download/file.php?id=116880 "Perforce Plugin")
+[PerforcePlugin.DLL](http://www.cryengine.com/community/download/file.php?id=116880 'Perforce Plugin')
 CRYENGINE will connect to a Perforce server and start to handle source control
 for you (drop it into the Bin32/EditorPlugins folder).
 

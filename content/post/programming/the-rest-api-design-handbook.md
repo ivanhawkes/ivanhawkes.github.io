@@ -1,16 +1,16 @@
 ---
 author: Ivan Hawkes
 categories:
-- Programming
+    - Programming
 date: '2013-10-12'
 tags:
-- Amazon
-- API Design Handbook
-- Books
-- Kindle
-- REST
-- Restful
-- Software Development
+    - Amazon
+    - API Design Handbook
+    - Books
+    - Kindle
+    - REST
+    - Restful
+    - Programming
 title: The REST API Design Handbook
 ---
 
@@ -20,7 +20,7 @@ design.
 <!--more-->
 
 The
-[REST API Design Handbook ](http://www.amazon.com/gp/product/B00890OBFI/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B00890OBFI&linkCode=as2&tag=ivanhawkesper-20 "The REST API Design Handbook")
+[REST API Design Handbook ](http://www.amazon.com/gp/product/B00890OBFI/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B00890OBFI&linkCode=as2&tag=ivanhawkesper-20 'The REST API Design Handbook')
 will help you cut through the chatter and get building solid and sensible APIs,
 fast. It's only a few dollars from Amazon if you own a
 [Kindle](http://www.amazon.com/gp/product/B007HCCNJU/ref=as_li_ss_tl?ie=UTF8&camp=1789&creative=390957&creativeASIN=B007HCCNJU&linkCode=as2&tag=ivanhawkesper-20

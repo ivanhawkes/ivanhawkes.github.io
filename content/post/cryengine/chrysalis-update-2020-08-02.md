@@ -1,17 +1,16 @@
 ---
+title: Chrysalis Update for 2020-08-02
 author: Ivan Hawkes
 categories:
-- Programming
-date: '2020-08-02T21:48:08+10:00'
+    - CRYENGINE
+date: '2020-08-02'
 description: I cover recent progress on Chrysalis.
 tags:
-- C++
-- Chrysalis
-- Cryengine
-- CRYENGINE 5.6
-- Game Programming
-title: Chrysalis Update for 2020-08-02
-type: post
+    - C++
+    - Chrysalis
+    - CRYENGINE 5.6
+    - Programming
+    - Game Programming
 ---
 
 In this article I will cover recent progress on my project,
@@ -42,22 +41,22 @@ fireball.
 So a spell is:
 
 - one or more conditionals e.g.
-  - range check
-  - qi (mana) check
-  - timing check, how long since last used
-  - reagent check, does this effect need you to already possess a key or
-    wolfsbane?
+    - range check
+    - qi (mana) check
+    - timing check, how long since last used
+    - reagent check, does this effect need you to already possess a key or
+      wolfsbane?
 - feedback
-  - animation for the caster
-  - sound effects
-  - particle effects
-  - potentially spawn some geometry that needs to move in time with the
-    spellcasting
-  - swap out weapon for interaction item e.g. compass, sickle
+    - animation for the caster
+    - sound effects
+    - particle effects
+    - potentially spawn some geometry that needs to move in time with the
+      spellcasting
+    - swap out weapon for interaction item e.g. compass, sickle
 - action
-  - damage occurs to other character
-  - qi is spent
-  - target is affected by animation, sound effect, etc
+    - damage occurs to other character
+    - qi is spent
+    - target is affected by animation, sound effect, etc
 
 By the time I've written the code to open a door I'm a long way towards having
 the base of a decent spell casting system. A good door opening sequence will

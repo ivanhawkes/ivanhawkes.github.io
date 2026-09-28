@@ -1,0 +1,53 @@
+---
+author: Raghavan Iyer (660 Curries)
+categories:
+    - Recipe
+date: '2023-11-26'
+portions: 8
+tags:
+    - Indian
+    - Lamb
+    - Curry
+title: Lamb Rogahn Josh
+type: recipe
+---
+
+A wonderfully hot and spicy dish from Kashmir.
+
+<!--more-->
+
+## Marinade
+
+- Cube the lamb into one inch sized chunks.
+
+- Add the yoghurt, ginger, garlic, garam masala and salt into a dish with the
+  lamb. Massage the marinade into the lamb.
+
+- Place it in the fridge and let it marinate for a few hours or overnight.
+
+## Main Dish
+
+- Heat the ghee in a frying pan over medium-high heat.
+
+- Toss in all the spices. Stir fry these until they release their aromas, around
+  30 seconds. Immediately add the onion to prevent the spices from burning. Cook
+  until lightly brown, 4 to 6 minutes.
+
+- Add the lamb. Stir occasionally for about 15 minutes. You're looking to see
+  the oil split from the meat.
+
+- Stir in the tomato paste and Kashmiri chillies. Stir and coat the lamb with
+  the paste this forms. Optionally, use a tin of tomatoes if you don't have any
+  tomato paste.
+
+- Deglaze with 2 cups of water. Scrape any fond from the bottom of the pan.
+
+- Pressure cook for 20 minutes. Natural steam release.
+
+- Serve with rice, naan, raita and other accompaniments.
+
+## Notes
+
+I cooked it for 30 minutes the first time. The lamb was very tender, but could
+use less cooking time for best results. Try 20 minutes or 25 minutes next time
+and update the recipe when the best cook time is found.

@@ -1,7 +1,29 @@
+# Node JS
+node_modules/
+
+# Visual Studio Code
+.vs/
+
+# HUGO
 public/
 resources/
-.vs/
 .hugo_build.lock
-node_modules/
-/hugo_stats.json
+hugo_stats.json
 
+# Krita
+*~
+
+# Nixos flakes
+.devenv/
+.direnv/
+
+# Devenv
+.devenv*
+devenv.local.nix
+devenv.local.yaml
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml

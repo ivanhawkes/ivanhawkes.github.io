@@ -1,7 +1,7 @@
 ---
 author: Ivan Hawkes
 categories:
-- FPGA
+    - FPGA
 date: '2022-01-17'
 title: First Steps with FPGA
 ---

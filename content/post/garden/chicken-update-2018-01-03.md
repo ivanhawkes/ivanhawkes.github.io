@@ -1,12 +1,12 @@
 ---
 author: Ivan Hawkes
 categories:
-- Garden
+    - Garden
 date: '2018-01-03'
 description: An update on the joy I feel at owning chickens.
 tags:
-- Chickens
-- Livestock
+    - Chickens
+    - Livestock
 title: Chicken Update
 ---
 

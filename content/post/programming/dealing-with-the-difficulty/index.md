@@ -1,19 +1,19 @@
 ---
+title: Dealing With The Difficulty
 author: Ivan Hawkes
 categories:
-- Programming
+    - CRYENGINE
 date: '2013-04-10'
 tags:
-- 3ds max
-- Cryengine
-- CryEngine 3
-- Game Programming
-- Mudbox
-- Software Development
-- Terrain
-- world building
-- World Machine
-title: Dealing With The Difficulty
+    - 3ds max
+    - CryEngine 3
+    - Programming
+    - Game Programming
+    - Mudbox
+    - Programming
+    - Terrain
+    - world building
+    - World Machine
 ---
 
 I've been working on my pet project for almost five months now and I must admit
@@ -61,4 +61,4 @@ Here's the model in 3DS Max.
 
 And here it is in Mudbox, ready for sculpting.
 
-![Mudbox Model](mudbox.webp)
+![Mudbox Model](featured.webp)

@@ -1,13 +1,13 @@
 ---
 author: Ivan Hawkes
 categories:
-- general
+    - general
 date: '2014-08-08'
 tags:
-- Beaglebone Black
-- LAMP
-- MediaWiki
-- Raspberry Pi
+    - Beaglebone Black
+    - LAMP
+    - MediaWiki
+    - Raspberry Pi
 title: MediaWiki on the Beaglebone Black
 ---
 

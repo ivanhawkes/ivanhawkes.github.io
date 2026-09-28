@@ -1,12 +1,13 @@
 ---
 author: Ivan Hawkes
 categories:
-- Garden
+    - Garden
 date: '2018-06-28'
-description: The garden is just one of the endless tasks that need doing around here.
+description:
+    The garden is just one of the endless tasks that need doing around here.
 tags:
-- Chickens
-- House Improvement
+    - Chickens
+    - House Improvement
 title: Getting Through the "to-do" List
 ---
 

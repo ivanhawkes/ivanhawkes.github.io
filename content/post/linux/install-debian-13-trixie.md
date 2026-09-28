@@ -1,11 +1,11 @@
 ---
 author: Ivan Hawkes
 categories:
-- Administration
+    - Administration
 date: '2026-02-23'
 tags:
-- Linux
-- Debian
+    - Linux
+    - Debian
 title: Install Debian 13 (Trixie)
 ---
 

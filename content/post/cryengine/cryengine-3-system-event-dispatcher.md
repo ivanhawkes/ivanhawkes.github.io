@@ -1,16 +1,14 @@
 ---
+title: CryEngine 3 System Event Dispatcher
 author: Ivan Hawkes
 categories:
-- CRYENGINE
+    - CRYENGINE
 date: '2014-03-15'
 tags:
-- Cryengine
-- CryEngine 3
-- Dispatcher
-- event
-- listener
-- Software Development
-title: CryEngine 3 System Event Dispatcher
+    - CryEngine 3
+    - Dispatcher
+    - Event Listener
+    - Programming
 ---
 
 Earlier this week I wrote about CryEngine listener classes in a brief overview.
@@ -20,14 +18,14 @@ SDK and today I want to go into more depth.
 <!--more-->
 
 I briefly covered the 40 odd listeners that I was able to locate in my article
-[Introducing CryEngine 3 Event Listeners](http://ivan.hawkes.info/2014/03/07/introducing-cryengine-3-event-listeners/ "Introducing CryEngine 3 Event Listeners").
+[Introducing CryEngine 3 Event Listeners](http://ivan.hawkes.info/2014/03/07/introducing-cryengine-3-event-listeners/ 'Introducing CryEngine 3 Event Listeners').
 Today I would like to revisit just one of those listeners,
 **ISystemEventListener**.
 
 ## The Plugin SDK
 
 But first, a little background. I'm a big fan of the
-[Plugin SDK](https://github.com/hendrikp/Plugin_SDK "Plugin SDK"). Being able to
+[Plugin SDK](https://github.com/hendrikp/Plugin_SDK 'Plugin SDK'). Being able to
 write code that just slips into place without requiring changes to the existing
 codebase is...well, awesome. CryEngine SDK is a moving target, and the less
 changes I need to make to the existing codebase, the easier my job will be in
@@ -168,7 +166,7 @@ there or register further listeners as needed. I haven't shown any of that code
 because it is trivial.
 
 Have a look at the new re-factored
-[Third Person Camera](https://github.com/ivanhawkes/Plugin_Camera "Third Person Camera")
+[Third Person Camera](https://github.com/ivanhawkes/Plugin_Camera 'Third Person Camera')
 code to see the how this can help your projects. The main body of the code is
 now (almost) completely decoupled from both the Plugin SDK and the stock Game
 SDK.

@@ -1,11 +1,12 @@
 ---
 author: Ivan Hawkes
 categories:
-- Garden
+    - Garden
 date: '2018-08-02'
-description: I've become that person at parties who always wants to talk about compost.
+description:
+    I've become that person at parties who always wants to talk about compost.
 tags:
-- Compost
+    - Compost
 title: Enthusiastic About Compost
 ---
 

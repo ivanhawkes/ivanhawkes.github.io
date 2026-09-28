@@ -1,12 +1,12 @@
 ---
 author: Ivan Hawkes
 categories:
-- Admin
+    - Admin
 date: '2023-10-09'
 description: Moving into Windows 10 Installation
 tags:
-- Windows 10
-- Installation
+    - Windows 10
+    - Installation
 title: 'Windows 10 - Moving In'
 type: post
 ---
@@ -75,6 +75,6 @@ usually install.
 - [dBPowerAmp](https://www.dbpoweramp.com/)
 - [Oracle Virtualbox](https://www.virtualbox.org/)
 - [RegexRenamer](https://regexrenamer.sourceforge.net/)
-- [TL 866 II Plus EEPROM Programmer]()
+- [TL 866 II Plus EEPROM Programmer](<>)
 - [WD MyBook Live](https://openwrt.org/toh/western_digital/mybooklive)
 - [Win Dir Stat](https://windirstat.net/)

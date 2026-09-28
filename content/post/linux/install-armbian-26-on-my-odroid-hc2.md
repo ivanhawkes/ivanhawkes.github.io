@@ -1,12 +1,12 @@
 ---
 author: Ivan Hawkes
 categories:
-- Administration
+    - Administration
 date: '2026-02-23'
 tags:
-- Linux
-- Debian
-- Armbian
+    - Linux
+    - Debian
+    - Armbian
 title: Installing Armbian 26 on my ODROID-HC2
 ---
 

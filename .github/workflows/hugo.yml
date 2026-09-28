@@ -60,9 +60,9 @@ jobs:
                   sudo apt-get install -y libwebp-dev
 
             - name: Setup Hugo
-              uses: peaceiris/actions-hugo@v3
+              uses: hugomods/hugo-action@v1
               with:
-                  hugo-version: ${{ env.HUGO_VERSION }}
+                  version: ${{ env.HUGO_VERSION }}
                   extended: true
 
             - name: Setup Go
@@ -117,8 +117,6 @@ jobs:
                   pnpm dlx @tailwindcss/cli -i themes/be-best/assets/css/main.css -o assets/css/main.css --minify
 
             - name: Build the site
-              env:
-                  CGO_ENABLED: 1 # Forces Hugo to compile webp hooks using native C bindings
               run: |
                   hugo build \
                     --environment production \                    

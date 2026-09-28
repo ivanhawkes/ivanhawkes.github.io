@@ -53,6 +53,12 @@ jobs:
 
             - run: pnpm i
 
+            # Install libwebp so Hugo Extended can decode WebP files.
+            - name: Install system dependencies
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y libwebp-dev
+
             - name: Setup Hugo
               uses: peaceiris/actions-hugo@v3
               with:

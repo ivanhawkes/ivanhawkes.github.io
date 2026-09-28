@@ -16,7 +16,7 @@ A thoroughly rich and creamy dessert that is certain to please.
 
 <!--more-->
 
-## Directions
+## Chocolate Ice Cream
 
 - Place all the ingredients into a blender and mix until smooth.
 

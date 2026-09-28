@@ -21,7 +21,7 @@ to lower the melting point.
 
 <!--more-->
 
-## Directions
+## American Cheese
 
 - Pour the milk, butter, salt, and sodium citrate into a pan and warm it on a
   medium / high heat.

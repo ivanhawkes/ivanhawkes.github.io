@@ -17,7 +17,7 @@ A fairly traditional lamb kebab recipe.
 
 <!--more-->
 
-## Directions
+## Lamb Doner Kebab
 
 - Mix it all together in a stand mixer. You want to churn the meat until it
   becomes a little sticky and rubbery from the fat breaking down.

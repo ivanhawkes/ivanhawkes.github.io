@@ -16,7 +16,7 @@ A simple paste designed to save you time when preparing Indian dishes.
 
 <!--more-->
 
-## Directions
+## Garlic and Ginger Paste
 
 - Chop up the garlic and ginger.
 

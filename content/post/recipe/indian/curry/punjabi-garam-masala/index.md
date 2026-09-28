@@ -19,7 +19,7 @@ to many dishes.
 
 <!--more-->
 
-## Directions
+## Punjabi Garam Masala
 
 - Dry toast all the ingrediants in a pan then transfer to a plate to cool.
 

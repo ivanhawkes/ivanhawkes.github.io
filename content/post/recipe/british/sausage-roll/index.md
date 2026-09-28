@@ -17,7 +17,7 @@ A basic sausage roll.
 
 <!--more-->
 
-## Directions
+## Sausage Roll
 
 - Mix it all in a large bowl.
 

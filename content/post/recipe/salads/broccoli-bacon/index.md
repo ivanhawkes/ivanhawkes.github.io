@@ -23,7 +23,7 @@ out with some nuttiness.
 
 <!--more-->
 
-## Directions
+## Broccoli Bacon Salad
 
 - Lay out the bacon in an air fryer and blast at 200c for 10 minutes or until
   dried and crispy. Chop into small chunks when ready.

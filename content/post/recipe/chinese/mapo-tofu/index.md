@@ -18,7 +18,7 @@ A classic Sichuan dish made with beef or pork, tofu and chillis.
 
 <!--more-->
 
-## Directions
+## Mapo Tofu
 
 - Cut tofu into square cubes (around 2cms). Bring a large amount of water to a
   boil and then add a pinch of salt. Slide the tofu in and cook for 1 minute.

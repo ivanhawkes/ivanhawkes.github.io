@@ -18,7 +18,7 @@ excel.
 
 <!--more-->
 
-## Directions
+## Beef Stock
 
 - Optional: brown the beef either in the stock pot or the oven.
 

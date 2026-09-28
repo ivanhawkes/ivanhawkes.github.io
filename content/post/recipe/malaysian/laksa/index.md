@@ -18,7 +18,7 @@ range of toppings to suit the individual.
 
 <!--more-->
 
-## Directions
+## Laksa
 
 - Heat some oil in a wok over a medium-high heat. Add laksa paste and cook ,
   stirring occasionally for about 2 mins or until you can really start to smell

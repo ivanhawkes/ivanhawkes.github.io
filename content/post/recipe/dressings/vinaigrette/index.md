@@ -17,6 +17,6 @@ A simple and traditional French salad dressing.
 
 <!--more-->
 
-## Directions
+## Vinaigrette Dressing
 
 Place all the ingredients in a jar and shake till mixed.

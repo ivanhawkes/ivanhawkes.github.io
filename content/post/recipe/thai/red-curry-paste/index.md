@@ -19,7 +19,7 @@ Thai dishes.
 
 <!--more-->
 
-## Directions
+## Red Curry Paste
 
 - Place cumin, coriander, salt and peppercorns in a small frying pan and dry
   roast over medium heat for 2 minutes or until fragrant. Remove from heat and

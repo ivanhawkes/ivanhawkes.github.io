@@ -21,7 +21,7 @@ dough.
 
 <!--more-->
 
-## Directions
+## Pullman Pain De Mie
 
 - In a small bowl combine the salt, sugar, milk, egg, and yeast. Let this stand
   for five minutes.

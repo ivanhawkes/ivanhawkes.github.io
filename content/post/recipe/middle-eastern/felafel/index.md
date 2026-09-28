@@ -20,7 +20,7 @@ herbs to see what suits you.
 
 <!--more-->
 
-## Directions
+## Felafel
 
 Soak dried chickpeas overnight.
 

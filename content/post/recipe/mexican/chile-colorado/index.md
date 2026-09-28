@@ -28,7 +28,7 @@ seasoning for enchiladas and tamales.
 
 <!--more-->
 
-## Directions
+## Chile Colorado
 
 - **Toast the chiles:** Heat a heavy skillet or griddle over medium heat. Lay
   the opened, seeded chiles flat on the dry surface and toast for 10 to 15

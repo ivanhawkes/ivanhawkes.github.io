@@ -27,7 +27,7 @@ that's perfect for breakfast or as a snack.
 
 <!--more-->
 
-## Directions
+## Date and Walnut Loaf
 
 - Preheat your oven to 175°C and grease a standard loaf pan (roughly 23x13 cm).
 - Soak the dates: Place the chopped dates in a bowl. Pour the boiling water and

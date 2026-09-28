@@ -20,7 +20,7 @@ tissue which will break down and increase the luxuriousness of the stock.
 
 <!--more-->
 
-## Directions
+## Chicken Stock
 
 - Optional: brown the chicken either in the stock pot or the oven.
 

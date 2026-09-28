@@ -18,7 +18,7 @@ capers, and potatos.
 
 <!--more-->
 
-## Directions
+## Nicoise Salad
 
 - Make a vinaigrette. In a jar, place the oil, lemon juice or vinegar, shallots,
   herbs, and mustard. Cover with a lid and shake until well blended. Add salt

@@ -24,7 +24,7 @@ that's perfect for any meal.
 
 <!--more-->
 
-## Directions
+## Welsh rarebit
 
 - Toast the bread: Preheat your oven's broiler (or grill) to high. Lightly toast
   the bread slices on both sides until golden and firm. Place them on a baking

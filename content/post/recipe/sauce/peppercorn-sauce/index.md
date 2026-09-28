@@ -21,7 +21,7 @@ This pairs very well with steak and chips.
 
 <!--more-->
 
-## Directions
+## Peppercorn Sauce
 
 - Melt the butter in the saucepan and add the garlic and shallots. Fry on a low
   heat for 5 minutes.

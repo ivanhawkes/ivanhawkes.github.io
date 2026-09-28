@@ -16,7 +16,7 @@ A classic, chewy, Amercian style chocolate chip cookie.
 
 <!--more-->
 
-## Directions
+## Chocolate Chip Cookie
 
 - Whisk the flour, baking soda, cornstarch, and salt together in a large bowl.
   Set aside.

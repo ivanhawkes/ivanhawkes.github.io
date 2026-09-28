@@ -18,7 +18,7 @@ The famous beef soup dish from Vietnam.
 
 <!--more-->
 
-## Directions
+## Pho
 
 - Preheat oven to 220 degrees celcius.
 

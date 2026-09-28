@@ -27,7 +27,7 @@ in these sizes.
 
 <!--more-->
 
-## Directions
+## Hedgehog Slice
 
 - Grease a 28cm x 28cm (24cm square for thick) slice pan. Line the pan base and
   the two longests sides with baking paper. There's no need for grease, this

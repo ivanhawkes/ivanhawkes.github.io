@@ -19,7 +19,7 @@ from your friend's efforts.
 
 <!--more-->
 
-## Directions
+## Ginger Beer
 
 - Fill a pot with the water and sugar and start to bring it up to temperature.
 

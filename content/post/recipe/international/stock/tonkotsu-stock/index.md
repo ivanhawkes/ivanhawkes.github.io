@@ -38,7 +38,7 @@ dark brown.
 
 Charring the aromatic vegetables adds complexity to the broth.
 
-## Directions
+## Tonkotsu Stock
 
 - Place pork and chicken bones in a large stockpot and cover with cold water.
   Place on a burner over high heat and bring to a boil. Remove from heat as soon

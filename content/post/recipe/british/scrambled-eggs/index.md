@@ -17,7 +17,7 @@ Lovely, soft, buttery scrambled eggs.
 
 <!--more-->
 
-## Directions
+## Scrambled Eggs
 
 - In a bowl add the water and tapioca flour. Mix well.
 

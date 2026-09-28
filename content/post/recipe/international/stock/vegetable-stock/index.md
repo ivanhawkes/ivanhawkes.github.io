@@ -18,7 +18,7 @@ A simple vegetable stock.
 
 <!--more-->
 
-## Directions
+## Vegetable Stock
 
 - Optional: bake the vegetables in the oven to achieve browning.
 

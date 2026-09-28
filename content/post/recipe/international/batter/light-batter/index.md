@@ -16,7 +16,7 @@ A simple and light batter; suitable for fish and chicken.
 
 <!--more-->
 
-## Directions
+## Light Batter
 
 - In a mixing bowl, combine the flour, cornstarch, sodium bicarbonate, and salt.
   Mix together.

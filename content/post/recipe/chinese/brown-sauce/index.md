@@ -17,7 +17,7 @@ A sauce rich with umami flavours which is great for stir frys.
 
 <!--more-->
 
-## Directions
+## Chinese Brown Sauce
 
 - Combine all the ingredients together and stir well.
 

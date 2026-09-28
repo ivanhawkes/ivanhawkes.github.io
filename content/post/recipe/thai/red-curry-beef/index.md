@@ -19,7 +19,7 @@ A Thai red curry using beef.
 
 <!--more-->
 
-## Directions
+## Red Curry Beef
 
 - Place the meat into a bowl. Add 1 tbsp of fish sauce and 1/2 tsp sodium
   bicarbonate. This needs to sit for 15-30 minutes before cooking to tenderise

@@ -17,7 +17,7 @@ A basic quiche.
 
 <!--more-->
 
-## Directions
+## Quiche
 
 - Line a greased baking pan with the pastry and weigh it down with some glass
   beads. Place it in a moderate oven and par bake for about 10-15 minutes.

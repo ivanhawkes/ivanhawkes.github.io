@@ -19,7 +19,7 @@ yellow curry.
 
 <!--more-->
 
-## Directions
+## Gang Garee Gai
 
 - Toss the oil into the pan and heat it to 200c. Alternatively, fry out some
   coconut cream until it separates out into oil.

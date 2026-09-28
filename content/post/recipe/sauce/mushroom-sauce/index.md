@@ -20,7 +20,7 @@ This pairs very well with steak and chips.
 
 <!--more-->
 
-## Directions
+## Mushroom Sauce
 
 - Melt the butter in the saucepan with the garlic and shallots. Fry on a low
   heat for 2 minutes.

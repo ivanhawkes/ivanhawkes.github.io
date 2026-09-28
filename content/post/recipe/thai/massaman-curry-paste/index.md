@@ -18,6 +18,6 @@ A classic Thai curry.
 
 <!--more-->
 
-## Directions
+## Massaman Curry Paste
 
 Pound it out in a mortar and pestle.

@@ -19,7 +19,7 @@ time.
 
 <!--more-->
 
-## Directions
+## Easy Bagel
 
 - Combine 1 1/2 cups flour and yeast in a large bowl. Combine 1 1/2 cups water,
   3 tablespoons sugar, and salt in a medium bowl; pour over flour mixture.

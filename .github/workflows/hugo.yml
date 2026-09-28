@@ -119,11 +119,10 @@ jobs:
             - name: Build the site
               run: |
                   hugo build \
+                    --environment production \                    
                     --gc \
                     --minify \
                     --cleanDestinationDir \
-                    --ignoreCache \
-                    --disableLiveReload \
                     --logLevel debug \
                     --baseURL "${{ steps.pages.outputs.base_url }}" \
                     --cacheDir "${{ runner.temp }}/hugo_cache"

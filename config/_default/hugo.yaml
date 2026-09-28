@@ -56,12 +56,12 @@ build:
 
   cachebusters:
     - source: 'assets/notwatching/hugo_stats\.json'
-      target: css
+      target: 'main\.css'
     - source: '(postcss|tailwind)\.config\.js'
-      target: css
+      target: 'main\.css'
     - source: 'themes/.*\.(js|ts|jsx|tsx)$'
       target: js
-    - source: 'assets/.*\.(.*)$'
+    - source: 'assets/css/.*\.(css)$'
       target: $1
 
 # Control the security when HUGO is running.

@@ -53,12 +53,11 @@ jobs:
 
             - run: pnpm i
 
-            # 🛠️ Swapped to hugomods to guarantee seamless WebP library linking bindings
             - name: Setup Hugo
-              uses: hugomods/hugo-action@v1
+              uses: peaceiris/actions-hugo@v3
               with:
-                  version: ${{ env.HUGO_VERSION }}
-                  extended: true
+                  hugo-version: ${{ env.HUGO_VERSION }}
+                  extended: true # CRITICAL: Must be true to process WebP images
 
             - name: Setup Go
               uses: actions/setup-go@v6

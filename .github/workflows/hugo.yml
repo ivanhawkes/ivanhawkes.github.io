@@ -123,8 +123,7 @@ jobs:
                     --minify \
                     --cleanDestinationDir \
                     --ignoreCache \
-                    --debug \
-                    --verbose \                  
+                    --logLevel debug \
                     --baseURL "${{ steps.pages.outputs.base_url }}" \
                     --cacheDir "${{ runner.temp }}/hugo_cache"
 

@@ -17,7 +17,7 @@ Kinds and ID prefixes:
 | acceptance     | ac-    |
 | bugs           | bg-    |
 | deliverables   | dl-    |
-| deployment     | dl-    |
+| deployment     | dp-    |
 | epics          | ep-    |
 | features       | ft-    |
 | ideation       | id-    |

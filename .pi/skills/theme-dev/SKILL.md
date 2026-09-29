@@ -1,6 +1,8 @@
 ---
 name: theme-dev
-description: Work on the be-best Hugo theme: Tailwind CSS builds, layouts, partials, and shortcodes. Use when changing theme styling, markup, or the CSS pipeline.
+description:
+    Work on the be-best Hugo theme. Tailwind CSS builds, layouts, partials, and
+    shortcodes. Use when changing theme styling, markup, or the CSS pipeline.
 ---
 
 # Theme development

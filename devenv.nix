@@ -15,6 +15,7 @@
     # Git LFS for repository management.
     pkgs.git 
     pkgs.git-lfs
+    pkgs.github-cli
 
     # Fast static site generator
     pkgs.hugo             

@@ -15,7 +15,7 @@ params:
     actualtime: 4
     percent: 10
     priority: 350
-    depends-on: null
+    dependencies: null
     references: null
 ---
 

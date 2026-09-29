@@ -1,7 +1,9 @@
 {
-    "compilerOptions": {
-        "paths": {
-            "*": ["../themes/be-best/assets/*"]
-        }
-    }
+ "compilerOptions": {
+  "paths": {
+   "*": [
+    "../themes/be-best/assets/*"
+   ]
+  }
+ }
 }

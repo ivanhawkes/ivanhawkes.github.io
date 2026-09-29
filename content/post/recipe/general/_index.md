@@ -1,8 +1,9 @@
 ---
+title: General
 date: '2026-05-05'
 menus:
     main:
-        name: Mexican
+        name: General
         params:
             icon:
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960
@@ -18,6 +19,5 @@ menus:
                 28.5-11.5T640-280v-120H160v120q0 17 11.5
                 28.5T200-240Zm200-80Z"/></svg>
         parent: Recipes
-        weight: 510
-title: Mexican
+        weight: 460
 ---

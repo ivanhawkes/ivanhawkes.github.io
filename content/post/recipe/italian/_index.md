@@ -19,5 +19,5 @@ menus:
                 28.5-11.5T640-280v-120H160v120q0 17 11.5
                 28.5T200-240Zm200-80Z"/></svg>
         parent: Recipes
-        weight: 465
+        weight: 480
 ---

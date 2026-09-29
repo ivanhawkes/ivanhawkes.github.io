@@ -2,15 +2,15 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT0M
+cuisine: Italian
 date: '2020-10-30'
 portions: 12
 prep-time: PT5M
-cook-time: PT0M
 tags:
     - French
     - Dressing
 title: Caesar Salad Dressing
-cuisine: Italian
 type: recipe
 ---
 

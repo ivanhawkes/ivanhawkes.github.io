@@ -2,16 +2,16 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT9H
+cuisine: Vietnamese
 date: '2018-11-26'
 portions: 4
 prep-time: PT30M
-cook-time: PT9H
 tags:
     - Vietnamese
     - Beef
     - Soup
 title: Pho
-cuisine: Vietnamese
 type: recipe
 ---
 

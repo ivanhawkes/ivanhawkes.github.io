@@ -2,14 +2,14 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT0M
+cuisine: Chinese
 date: '2018-11-28'
 portions: 12
 prep-time: PT10M
-cook-time: PT0M
 tags:
     - Batter
 title: Light Batter
-cuisine: Chinese
 type: recipe
 ---
 

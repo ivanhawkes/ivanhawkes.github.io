@@ -1,18 +1,17 @@
 ---
+author: Julie Hawkes
 categories:
     - Recipe
+cook-time: PT10M
+cuisine: Australian
 date: '2024-03-24'
-description: null
 portions: 16
 prep-time: PT25M
-cook-time: PT10M
 tags:
     - slices
     - chocolate
     - walnuts
-author: Julie Hawkes
 title: Hedgehog Slice
-cuisine: Australian
 type: recipe
 ---
 

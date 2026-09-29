@@ -2,16 +2,16 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT15M
+cuisine: Chinese
 date: '2018-11-26'
 portions: 8
 prep-time: PT10M
-cook-time: PT15M
 tags:
     - Chinese
     - Sauce
     - Black Bean
 title: Black Bean Sauce
-cuisine: Chinese
 type: recipe
 ---
 

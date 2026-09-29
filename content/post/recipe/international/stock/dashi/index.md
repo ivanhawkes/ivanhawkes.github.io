@@ -2,16 +2,16 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT10M
+cuisine: Japanese
 date: '2018-11-28'
 portions: 4
 prep-time: PT15M
-cook-time: PT10M
 tags:
     - Japanese
     - Fish
     - Stock
 title: Dashi
-cuisine: Japanese
 type: recipe
 ---
 

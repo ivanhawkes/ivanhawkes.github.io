@@ -2,15 +2,15 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT15M
+cuisine: Malaysian
 date: '2018-11-26'
 portions: 4
 prep-time: PT15M
-cook-time: PT15M
 tags:
     - Malaysian
     - Soup
 title: Laksa
-cuisine: Malaysian
 type: recipe
 ---
 

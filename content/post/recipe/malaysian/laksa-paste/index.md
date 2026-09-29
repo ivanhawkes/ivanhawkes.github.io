@@ -2,16 +2,16 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT0M
+cuisine: Malaysian
 date: '2018-11-26'
 portions: 4
 prep-time: PT30M
-cook-time: PT0M
 tags:
     - Recipe
     - Malaysian
     - Paste
 title: Laksa Paste
-cuisine: Malaysian
 type: recipe
 ---
 

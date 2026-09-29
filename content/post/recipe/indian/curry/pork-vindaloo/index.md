@@ -1,17 +1,17 @@
 ---
-author: Raghavan Iyer (660 Curries)
+author: Raghavan Iyer
 categories:
     - Recipe
+cook-time: PT35M
+cuisine: Indian
 date: '2023-11-26'
 portions: 8
 prep-time: PT20M
-cook-time: PT35M
 tags:
     - Indian
     - Pork
     - Curry
 title: Pork Vindaloo
-cuisine: Indian
 type: recipe
 ---
 

@@ -1,17 +1,17 @@
 ---
-author: Raghavan Iyer (660 Curries)
+author: Raghavan Iyer
 categories:
     - Recipe
+cook-time: PT5M
+cuisine: Indian
 date: '2019-04-10'
 portions: 2
 prep-time: PT10M
-cook-time: PT5M
 tags:
     - Indian
     - Masala
     - Spices
 title: Punjabi Garam Masala
-cuisine: Indian
 type: recipe
 ---
 

@@ -2,16 +2,16 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT5M
+cuisine: Thai
 date: '2018-11-27'
 portions: 8
 prep-time: PT30M
-cook-time: PT5M
 tags:
     - Thai
     - Curry
     - Paste
 title: Red Curry Paste
-cuisine: Thai
 type: recipe
 ---
 

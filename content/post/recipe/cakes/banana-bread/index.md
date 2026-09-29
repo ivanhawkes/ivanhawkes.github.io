@@ -2,21 +2,21 @@
 author: Julie Hawkes
 categories:
     - Recipe
+cook-time: PT35M
+cuisine: American
 date: '2023-12-07'
 portions: 8
 prep-time: PT15M
-cook-time: PT35M
-tags:
-    - Cake
-    - Dessert
-title: Banana Bread
-cuisine: American
-type: recipe
 resources:
     - src: 'featured.webp'
       params:
           title: 'Banana Bread'
           caption: 'A photograph of a freshly cooked banana bread.'
+tags:
+    - Cake
+    - Dessert
+title: Banana Bread
+type: recipe
 ---
 
 Whenever there are over-ripe bananas in the house, it's time to make this cake.

@@ -2,17 +2,17 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT20M
+cuisine: Thai
 date: '2021-10-25'
 portions: 2
 prep-time: PT10M
-cook-time: PT20M
 tags:
     - Thai
     - Curry
     - Red
     - Beef
 title: Red Curry Beef
-cuisine: Thai
 type: recipe
 ---
 

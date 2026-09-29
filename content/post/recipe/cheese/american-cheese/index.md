@@ -2,15 +2,15 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT10M
+cuisine: American
 date: '2025-10-29'
 portions: 12
 prep-time: PT20M
-cook-time: PT10M
 tags:
     - American
     - Cheese
 title: American Cheese
-cuisine: American
 type: recipe
 ---
 

@@ -2,15 +2,15 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT20M
+cuisine: British
 date: '2023-11-08'
 portions: 16
 prep-time: PT15M
-cook-time: PT20M
 tags:
     - European
     - Fast Food
 title: Sausage Roll
-cuisine: British
 type: recipe
 ---
 

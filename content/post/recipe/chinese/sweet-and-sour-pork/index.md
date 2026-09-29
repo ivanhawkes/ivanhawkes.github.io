@@ -2,16 +2,16 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT25M
+cuisine: Chinese
 date: '2018-11-26'
 portions: 4
 prep-time: PT20M
-cook-time: PT25M
 tags:
     - Chinese
     - Pork
     - Sauce
 title: Sweet and Sour Pork
-cuisine: Chinese
 type: recipe
 ---
 

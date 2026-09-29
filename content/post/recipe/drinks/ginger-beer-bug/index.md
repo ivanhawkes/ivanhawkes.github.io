@@ -2,15 +2,15 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT0M
+cuisine: British
 date: '2019-05-31'
 portions: 4
 prep-time: PT15M
-cook-time: PT0M
 tags:
     - ginger
     - ferment
 title: Ginger Beer Bug
-cuisine: British
 type: recipe
 ---
 

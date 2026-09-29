@@ -2,17 +2,17 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT10H
+cuisine: Japanese
 date: '2018-11-28'
 portions: 10
 prep-time: PT30M
-cook-time: PT10H
 tags:
     - Recipe
     - Japanese
     - Pork
     - Stock
 title: Tonkotsu Stock
-cuisine: Japanese
 type: recipe
 ---
 

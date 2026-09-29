@@ -2,15 +2,15 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT35M
+cuisine: American
 date: '2018-01-26'
 portions: 12
 prep-time: PT30M
-cook-time: PT35M
 tags:
     - American
     - Bread
 title: Easy Bagel
-cuisine: American
 type: recipe
 ---
 

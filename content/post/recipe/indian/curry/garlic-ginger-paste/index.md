@@ -2,14 +2,14 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT0M
+cuisine: Indian
 date: '2025-10-19'
 portions: 8
 prep-time: PT10M
-cook-time: PT0M
 tags:
     - Indian
 title: Garlic and Ginger Paste
-cuisine: Indian
 type: recipe
 ---
 

@@ -1,17 +1,17 @@
 ---
-author: Raghavan Iyer (660 Curries)
+author: Raghavan Iyer
 categories:
     - Recipe
+cook-time: PT45M
+cuisine: Indian
 date: '2023-11-26'
 portions: 8
 prep-time: PT15M
-cook-time: PT45M
 tags:
     - Indian
     - Lamb
     - Curry
 title: Lamb Rogahn Josh
-cuisine: Indian
 type: recipe
 ---
 

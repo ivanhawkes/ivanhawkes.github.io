@@ -2,24 +2,24 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT45M
+cuisine: British
 date: '2025-10-29'
 imagecaption: A loaf of date and walnut bread baked in a standard loaf pan.
 portions: 4
 prep-time: PT20M
-cook-time: PT45M
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Date and Walnut Loaf'
+          caption: 'A photograph of a freshly cooked date and walnut loaf.'
 tags:
     - Date
     - Walnut
     - Bread
     - Dessert
 title: Date and Walnut Loaf
-cuisine: British
 type: recipe
-resources:
-    - src: 'featured.webp'
-      params:
-          title: 'Date and Walnut Loaf'
-          caption: 'A photograph of a freshly cooked date and walnut loaf.'
 ---
 
 This rich and moist date and walnut loaf combines the natural sweetness of dates

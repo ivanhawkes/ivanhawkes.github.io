@@ -2,15 +2,15 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT5M
+cuisine: British
 date: '2023-11-26'
 portions: 1
 prep-time: PT5M
-cook-time: PT5M
 tags:
     - European
     - Breakfast
 title: Scrambled Eggs
-cuisine: British
 type: recipe
 ---
 

@@ -2,15 +2,15 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT15M
+cuisine: Chinese
 date: '2021-09-21'
 portions: 2
 prep-time: PT10M
-cook-time: PT15M
 tags:
     - Chinese
     - Sauce
 title: Mongolian Beef
-cuisine: Chinese
 type: recipe
 ---
 

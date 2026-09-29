@@ -2,16 +2,16 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT1H15M
+cuisine: Middle Eastern
 date: '2025-11-14'
 portions: 12
 prep-time: PT20M
-cook-time: PT1H15M
 tags:
     - Middle Eastern
     - Vegetarian
     - Vegan
 title: Hummus
-cuisine: Middle Eastern
 type: recipe
 ---
 

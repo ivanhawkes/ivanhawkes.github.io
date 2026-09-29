@@ -2,14 +2,14 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT15M
+cuisine: American
 date: '2019-06-29'
 portions: 6
 prep-time: PT10M
-cook-time: PT15M
 tags:
     - desert
 title: Chocolate Ice Cream
-cuisine: American
 type: recipe
 ---
 

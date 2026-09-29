@@ -2,16 +2,16 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT45M
+cuisine: Chinese
 date: '2025-08-14'
 portions: 12
 prep-time: PT20M
-cook-time: PT45M
 tags:
     - Chinese
     - Pork
     - Char Sui
 title: Char Siu Pork
-cuisine: Chinese
 type: recipe
 ---
 

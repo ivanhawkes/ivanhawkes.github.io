@@ -2,16 +2,16 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT55M
+cuisine: Chinese
 date: '2021-10-14'
 portions: 6
 prep-time: PT15M
-cook-time: PT55M
 tags:
     - Chinese
     - Pork
     - Red Braise
 title: Red Braised Pork
-cuisine: Chinese
 type: recipe
 ---
 

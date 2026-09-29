@@ -2,16 +2,16 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT5H
+cuisine: International
 date: '2018-11-28'
 portions: 10
 prep-time: PT20M
-cook-time: PT5H
 tags:
     - Recipe
     - Chicken
     - Stock
 title: Chicken Stock
-cuisine: International
 type: recipe
 ---
 

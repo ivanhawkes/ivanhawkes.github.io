@@ -1,17 +1,17 @@
 ---
-author: Raghavan Iyer (660 Curries)
+author: Raghavan Iyer
 categories:
     - Recipe
+cook-time: PT30M
+cuisine: Indian
 date: '2020-03-12'
 portions: 2
 prep-time: PT20M
-cook-time: PT30M
 tags:
     - Indian
     - Chicken
     - Curry
 title: Chicken Tikka Masala
-cuisine: Indian
 type: recipe
 ---
 

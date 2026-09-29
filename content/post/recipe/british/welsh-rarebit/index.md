@@ -2,18 +2,18 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT10M
+cuisine: British
 date: 2025-09-23
 imagecaption:
     A delicious Welsh rarebit dish with melted cheddar and mustard sauce.
 portions: 4
 prep-time: PT10M
-cook-time: PT10M
 tags:
     - Cheese
     - Bread
     - British
 title: Welsh rarebit
-cuisine: British
 type: recipe
 ---
 

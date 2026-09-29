@@ -2,15 +2,15 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT20M
+cuisine: American
 date: '2021-01-03'
 portions: 12
 prep-time: PT30M
-cook-time: PT20M
 tags:
     - Bread
     - Dessert
 title: Cinnamon Scrolls
-cuisine: American
 type: recipe
 ---
 

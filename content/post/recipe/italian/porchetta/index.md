@@ -2,16 +2,16 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT2H
+cuisine: Italian
 date: '2020-02-21'
 portions: 4
 prep-time: PT30M
-cook-time: PT2H
 tags:
     - Italian
     - Pork
     - Roast
 title: Porchetta
-cuisine: Italian
 type: recipe
 ---
 

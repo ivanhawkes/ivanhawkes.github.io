@@ -2,16 +2,16 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT20M
+cuisine: Thai
 date: '2018-01-26'
 portions: 4
 prep-time: PT20M
-cook-time: PT20M
 tags:
     - Thai
     - Soup
     - Seafood
 title: Tom Yum Soup
-cuisine: Thai
 type: recipe
 ---
 

@@ -1,18 +1,17 @@
 ---
-type: recipe
-title: Mushroom Sauce
-cuisine: French
+author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT20M
+cuisine: French
 date: '2024-05-14'
-description: null
 portions: 5
 prep-time: PT10M
-cook-time: PT20M
-author: Ivan Hawkes
 tags:
     - Sauce
     - Mushroom
+title: Mushroom Sauce
+type: recipe
 ---
 
 A rich cream and butter sauce infused with earthy mushroom fragrence.

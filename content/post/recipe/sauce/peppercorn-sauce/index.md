@@ -2,17 +2,17 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT20M
+cuisine: French
 date: '2024-02-19'
 portions: 5
 prep-time: PT10M
-cook-time: PT20M
 tags:
     - Sauce
     - Peppercorn
     - Poivre
     - French
 title: Peppercorn Sauce
-cuisine: French
 type: recipe
 ---
 

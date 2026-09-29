@@ -2,17 +2,17 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT40M
+cuisine: French
 date: '2025-10-29'
 imagecaption: A loaf of pain de mie baked in a pullman loaf pan.
 portions: 20
 prep-time: PT15M
-cook-time: PT40M
 tags:
     - French
     - Bread
     - Loaf
 title: Pullman Pain De Mie
-cuisine: French
 type: recipe
 ---
 

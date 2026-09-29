@@ -1,17 +1,16 @@
 ---
+author: Claire Saffitz
 categories:
     - Recipe
+cook-time: PT50M
+cuisine: American
 date: '2024-03-27'
-description: null
 portions: 25
 prep-time: PT15M
-cook-time: PT50M
 tags:
     - slices
     - lemon
-author: Claire Saffitz
 title: Lemon Bars (Claire Saffitz)
-cuisine: American
 type: recipe
 ---
 

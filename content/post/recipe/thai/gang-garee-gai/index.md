@@ -2,16 +2,16 @@
 author: Ivan Hawkes
 categories:
     - Recipe
+cook-time: PT20M
+cuisine: Thai
 date: '2025-10-19'
 portions: 8
 prep-time: PT15M
-cook-time: PT20M
 tags:
     - Thai
     - Curry
     - Yellow
 title: Gang Garee Gai
-cuisine: Thai
 type: recipe
 ---
 

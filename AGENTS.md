@@ -70,3 +70,20 @@ hugo new content kanban/requests/rq-XXX-slug.md --kind requests
    `percent`, and `actualtime`.
 4. Commit small, focused changes. CI deploys only from the `posts` branch; the
    theme is committed on its own repo's `features` branch.
+
+## Agent skills
+
+### Issue tracker
+
+Issues and specs are tracked as GitHub Issues in
+`ivanhawkes/ivanhawkes.github.io`. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Five canonical triage labels; each label string is identical to its role name.
+See `docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context: `GLOSSARY.md` at the repo root, ADRs in `docs/adr/`. See
+`docs/agents/domain.md`.

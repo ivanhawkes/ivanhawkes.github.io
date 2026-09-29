@@ -38,7 +38,7 @@ less sweet than usual.
       sit in the flour until completely dry and coated on the outside. This will
       give you a lovely crunchy coating.
 
-    - Option 2: Use a [Light Batter](/recipe/batter/light-batter/) recipe.
+    - Option 2: Use a [Light Batter](/recipe/chinese/light-batter/) recipe.
 
 - Fry the pork in the pre-heated oil. Fry until each piece is golden brown and
   then transfer to the prepared rack.

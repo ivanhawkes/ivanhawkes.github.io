@@ -1,10 +1,10 @@
 ---
-title: General posts
+title: General Interest
 date: '2026-04-24'
 description: General post section.
 menus:
     main:
-        name: General
+        name: General Interest
         params:
             icon:
                 <svg xmlns="http://www.w3.org/2000/svg"  width="24px" viewBox="0

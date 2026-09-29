@@ -12,10 +12,22 @@
 
   # https://devenv.sh/packages/
   packages = [ 
+    # Git LFS for repository management.
     pkgs.git 
     pkgs.git-lfs
-    pkgs.hugo             # Fast static site generator
-    pkgs.tailwindcss      # Standalone Tailwind CSS CLI
+
+    # Fast static site generator
+    pkgs.hugo             
+    
+    # Standalone Tailwind CSS CLI
+    pkgs.tailwindcss
+    
+    # Languages for Pi and the local AI model to use.
+    pkgs.go
+    pkgs.python3
+
+    # Allow downloads from the web.
+    pkgs.curl
   ];
 
   # https://devenv.sh/languages/

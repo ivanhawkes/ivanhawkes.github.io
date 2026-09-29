@@ -69,12 +69,16 @@
         "prettier-plugin-tailwindcss": "^0.8.1",
         "stylelint": "^17.15.0",
         "stylelint-config-standard": "^40.0.0",
-        "stylelint-config-tailwindcss": "^1.0.1"
+        "stylelint-config-tailwindcss": "^1.0.1",
+        "tailwindcss": "^4.3.3"
     },
     "lint-staged": {
         "*.{js,ts,json,css,md,html,yaml}": "prettier --write"
     },
     "allowScripts": {
         "@parcel/watcher@2.5.1": true
+    },
+    "dependencies": {
+        "@earendil-works/pi-coding-agent": "^0.87.1"
     }
 }

@@ -1,3 +1,2 @@
 allowBuilds:
   '@parcel/watcher': true
-  pi-decimals: set this to true or false

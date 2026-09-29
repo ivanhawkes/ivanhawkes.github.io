@@ -13,6 +13,8 @@ resources:
           title: 'Brocoli Bacon Salad'
           caption: 'A photograph of a bowl of salad.'
 tags:
+    - Bacon
+    - Broccoli
     - Salad
 title: Broccoli Bacon Salad
 type: recipe

@@ -8,9 +8,11 @@ date: '2018-11-26'
 portions: 4
 prep-time: PT30M
 tags:
-    - Vietnamese
     - Beef
+    - Noodle
+    - Pho
     - Soup
+    - Vietnamese
 title: Pho
 type: recipe
 ---

@@ -8,9 +8,11 @@ date: '2023-11-26'
 portions: 8
 prep-time: PT20M
 tags:
+    - Goan
     - Indian
     - Pork
-    - Curry
+    - Spicy
+    - Vindaloo
 title: Pork Vindaloo
 type: recipe
 ---

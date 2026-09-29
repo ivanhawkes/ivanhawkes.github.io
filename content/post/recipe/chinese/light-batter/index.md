@@ -9,6 +9,8 @@ portions: 12
 prep-time: PT10M
 tags:
     - Batter
+    - Coating
+    - Deep Fry
 title: Light Batter
 type: recipe
 ---

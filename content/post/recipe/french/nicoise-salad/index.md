@@ -10,6 +10,7 @@ prep-time: PT20M
 tags:
     - French
     - Salad
+    - Tuna
 title: Nicoise Salad
 type: recipe
 ---

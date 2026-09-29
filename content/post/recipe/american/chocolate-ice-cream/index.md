@@ -8,7 +8,9 @@ date: '2019-06-29'
 portions: 6
 prep-time: PT10M
 tags:
-    - desert
+    - Chocolate
+    - Dessert
+    - Ice Cream
 title: Chocolate Ice Cream
 type: recipe
 ---

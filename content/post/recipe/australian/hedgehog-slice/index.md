@@ -8,9 +8,10 @@ date: '2024-03-24'
 portions: 16
 prep-time: PT25M
 tags:
-    - slices
-    - chocolate
-    - walnuts
+    - Chocolate
+    - Dessert
+    - No-Bake
+    - Walnut
 title: Hedgehog Slice
 type: recipe
 ---

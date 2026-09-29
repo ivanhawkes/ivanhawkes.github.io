@@ -8,8 +8,9 @@ date: '2019-04-10'
 portions: 2
 prep-time: PT10M
 tags:
+    - Garam Masala
     - Indian
-    - Masala
+    - Punjabi
     - Spices
 title: Punjabi Garam Masala
 type: recipe

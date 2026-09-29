@@ -8,8 +8,9 @@ date: '2023-11-08'
 portions: 16
 prep-time: PT15M
 tags:
-    - European
-    - Fast Food
+    - British
+    - Pastry
+    - Sausage
 title: Sausage Roll
 type: recipe
 ---

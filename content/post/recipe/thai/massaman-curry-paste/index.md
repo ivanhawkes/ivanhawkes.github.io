@@ -8,9 +8,9 @@ date: '2018-11-27'
 portions: 8
 prep-time: PT20M
 tags:
-    - Thai
-    - Curry
+    - Massaman
     - Paste
+    - Thai
 title: Massaman Curry Paste
 type: recipe
 ---

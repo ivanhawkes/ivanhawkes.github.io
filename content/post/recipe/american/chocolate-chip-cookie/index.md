@@ -7,7 +7,8 @@ date: '2024-03-02'
 portions: 16
 prep-time: PT20M
 tags:
-    - cookies
+    - Chocolate
+    - Cookie
 title: Chocolate Chip Cookie
 type: recipe
 ---

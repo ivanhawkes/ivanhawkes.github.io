@@ -8,6 +8,9 @@ date: '2018-11-26'
 portions: 12
 prep-time: PT30M
 tags:
+    - Chickpea
+    - Deep Fried
+    - Falafel
     - Middle Eastern
     - Vegetarian
     - Vegan

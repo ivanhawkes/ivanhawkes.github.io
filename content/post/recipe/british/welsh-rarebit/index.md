@@ -10,9 +10,10 @@ imagecaption:
 portions: 4
 prep-time: PT10M
 tags:
-    - Cheese
-    - Bread
     - British
+    - Bread
+    - Cheese
+    - Welsh
 title: Welsh rarebit
 type: recipe
 ---

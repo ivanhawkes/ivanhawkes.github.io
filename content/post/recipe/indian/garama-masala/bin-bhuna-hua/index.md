@@ -8,8 +8,9 @@ date: '2023-11-26'
 portions: 4
 prep-time: PT5M
 tags:
-    - Indian
     - Garam Masala
+    - Indian
+    - Spices
 title: Bin Bhuna Hua Garam Masala
 type: recipe
 ---

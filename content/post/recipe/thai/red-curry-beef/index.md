@@ -8,10 +8,11 @@ date: '2021-10-25'
 portions: 2
 prep-time: PT10M
 tags:
-    - Thai
+    - Beef
+    - Coconut Milk
     - Curry
     - Red
-    - Beef
+    - Thai
 title: Red Curry Beef
 type: recipe
 ---

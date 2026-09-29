@@ -8,8 +8,10 @@ date: '2024-05-14'
 portions: 5
 prep-time: PT10M
 tags:
-    - Sauce
+    - Cream
     - Mushroom
+    - Sauce
+    - Steak
 title: Mushroom Sauce
 type: recipe
 ---

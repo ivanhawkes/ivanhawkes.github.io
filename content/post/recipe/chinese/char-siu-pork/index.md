@@ -8,9 +8,10 @@ date: '2025-08-14'
 portions: 12
 prep-time: PT20M
 tags:
+    - Char Siu
     - Chinese
     - Pork
-    - Char Sui
+    - Roast
 title: Char Siu Pork
 type: recipe
 ---

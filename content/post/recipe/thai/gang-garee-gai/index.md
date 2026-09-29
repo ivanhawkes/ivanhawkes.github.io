@@ -8,8 +8,9 @@ date: '2025-10-19'
 portions: 8
 prep-time: PT15M
 tags:
-    - Thai
+    - Chicken
     - Curry
+    - Thai
     - Yellow
 title: Gang Garee Gai
 type: recipe

@@ -10,7 +10,8 @@ prep-time: PT15M
 tags:
     - Chinese
     - Sichuan
-    - Sauce
+    - Spicy
+    - Tofu
 title: Mapo Tofu
 type: recipe
 ---

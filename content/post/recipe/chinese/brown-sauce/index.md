@@ -10,6 +10,7 @@ prep-time: PT5M
 tags:
     - Chinese
     - Sauce
+    - Stir Fry
 title: Chinese Brown Sauce
 type: recipe
 ---

@@ -9,8 +9,9 @@ portions: 8
 prep-time: PT15M
 tags:
     - Indian
+    - Kashmiri
     - Lamb
-    - Curry
+    - Spicy
 title: Lamb Rogahn Josh
 type: recipe
 ---

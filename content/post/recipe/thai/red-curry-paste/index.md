@@ -8,9 +8,10 @@ date: '2018-11-27'
 portions: 8
 prep-time: PT30M
 tags:
-    - Thai
+    - Chilli
     - Curry
     - Paste
+    - Thai
 title: Red Curry Paste
 type: recipe
 ---

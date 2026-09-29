@@ -9,8 +9,8 @@ portions: 4
 prep-time: PT20M
 tags:
     - Chinese
+    - Fried
     - Pork
-    - Sauce
 title: Sweet and Sour Pork
 type: recipe
 ---

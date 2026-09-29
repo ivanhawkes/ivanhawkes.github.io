@@ -8,8 +8,9 @@ date: '2020-10-30'
 portions: 12
 prep-time: PT5M
 tags:
-    - French
+    - Caesar
     - Dressing
+    - Salad
 title: Caesar Salad Dressing
 type: recipe
 ---

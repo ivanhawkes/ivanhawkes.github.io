@@ -8,8 +8,9 @@ date: '2019-05-31'
 portions: 12
 prep-time: PT15M
 tags:
-    - ginger
-    - ferment
+    - Drink
+    - Ferment
+    - Ginger
 title: Ginger Beer
 type: recipe
 ---

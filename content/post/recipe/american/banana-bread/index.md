@@ -13,6 +13,8 @@ resources:
           title: 'Banana Bread'
           caption: 'A photograph of a freshly cooked banana bread.'
 tags:
+    - Banana
+    - Bread
     - Cake
     - Dessert
 title: Banana Bread

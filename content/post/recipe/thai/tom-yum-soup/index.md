@@ -8,9 +8,11 @@ date: '2018-01-26'
 portions: 4
 prep-time: PT20M
 tags:
-    - Thai
-    - Soup
+    - Prawn
     - Seafood
+    - Soup
+    - Spicy
+    - Thai
 title: Tom Yum Soup
 type: recipe
 ---

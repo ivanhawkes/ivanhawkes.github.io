@@ -8,8 +8,9 @@ date: '2024-03-27'
 portions: 25
 prep-time: PT15M
 tags:
-    - slices
-    - lemon
+    - Dessert
+    - Lemon
+    - Shortbread
 title: Lemon Bars (Claire Saffitz)
 type: recipe
 ---

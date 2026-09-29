@@ -8,6 +8,8 @@ date: '2018-11-26'
 portions: 4
 prep-time: PT15M
 tags:
+    - Coconut Milk
+    - Laksa
     - Malaysian
     - Soup
 title: Laksa

@@ -8,8 +8,10 @@ date: '2023-08-09'
 portions: 8
 prep-time: PT20M
 tags:
-    - Middle Eastern
+    - Doner
+    - Kebab
     - Lamb
+    - Middle Eastern
 title: Lamb Doner Kebab
 type: recipe
 ---

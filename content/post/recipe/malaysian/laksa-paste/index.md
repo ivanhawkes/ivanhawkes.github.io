@@ -8,9 +8,11 @@ date: '2018-11-26'
 portions: 4
 prep-time: PT30M
 tags:
-    - Recipe
+    - Chilli
+    - Laksa
     - Malaysian
     - Paste
+    - Spicy
 title: Laksa Paste
 type: recipe
 ---

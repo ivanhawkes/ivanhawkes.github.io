@@ -8,9 +8,9 @@ date: '2018-11-28'
 portions: 10
 prep-time: PT30M
 tags:
-    - Recipe
     - Japanese
     - Pork
+    - Ramen
     - Stock
 title: Tonkotsu Stock
 type: recipe

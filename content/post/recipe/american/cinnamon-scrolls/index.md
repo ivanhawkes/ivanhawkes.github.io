@@ -9,7 +9,9 @@ portions: 12
 prep-time: PT30M
 tags:
     - Bread
+    - Cinnamon
     - Dessert
+    - Pastry
 title: Cinnamon Scrolls
 type: recipe
 ---

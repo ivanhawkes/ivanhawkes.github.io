@@ -8,10 +8,11 @@ date: '2024-02-19'
 portions: 5
 prep-time: PT10M
 tags:
-    - Sauce
+    - French
     - Peppercorn
     - Poivre
-    - French
+    - Sauce
+    - Steak
 title: Peppercorn Sauce
 type: recipe
 ---

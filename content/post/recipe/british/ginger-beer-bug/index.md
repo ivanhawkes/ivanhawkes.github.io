@@ -8,8 +8,10 @@ date: '2019-05-31'
 portions: 4
 prep-time: PT15M
 tags:
-    - ginger
-    - ferment
+    - Drink
+    - Ferment
+    - Ginger
+    - Probiotic
 title: Ginger Beer Bug
 type: recipe
 ---

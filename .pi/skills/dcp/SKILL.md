@@ -22,9 +22,13 @@ repository.
 
     `diff HEAD` covers both staged and unstaged changes against the last commit.
 
-    If there is nothing to commit, stop and say so. Ask for my approval of the
-    diff output before you try and commit. Do not commit and push unless I have
-    given you my approval.
+    If there is nothing to commit, stop and say so.
+
+    **Hard stop:** after showing the diff, ask for my approval and then _stop
+    your turn_. You must wait for my approval in a separate, later message
+    before you run any commit or push command. Never ask for approval and commit
+    or push in the same turn, and never treat silence or a follow-up question as
+    approval.
 
 2. **Commit.** Stage all changes (respecting `.gitignore`; never stage
    `public/`, `resources/`, or `.hugo_build.lock`) and commit with a concise,

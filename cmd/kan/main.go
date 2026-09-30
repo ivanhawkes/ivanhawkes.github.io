@@ -30,7 +30,7 @@ type kind struct {
 var kinds = []kind{
 	{"acceptance", "ac", []string{"acceptance"}},
 	{"bugs", "bg", []string{"bug"}},
-	{"deliverables", "dl", []string{}},
+	{"deliverables", "dl", []string{"deliverable"}},
 	{"deployment", "dp", []string{"deployment"}},
 	{"epics", "ep", []string{"epic"}},
 	{"features", "ft", []string{"feature"}},

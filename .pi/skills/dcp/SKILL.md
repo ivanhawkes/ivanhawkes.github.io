@@ -10,13 +10,17 @@ repository.
 
 # Procedure
 
-1. **Diff.** Show what will be committed:
+1. **Diff.** Show what will be committed. Use a TUI-friendly format: no pager,
+   no ANSI colors, a per-file stat summary, and a compact full diff with minimal
+   context:
 
     ```bash
     git status --porcelain
-    git diff
-    git diff --staged
+    git --no-pager diff HEAD --color=never --stat
+    git --no-pager diff HEAD --color=never -U1
     ```
+
+    `diff HEAD` covers both staged and unstaged changes against the last commit.
 
     If there is nothing to commit, stop and say so. Ask for my approval of the
     diff output before you try and commit. Do not commit and push unless I have

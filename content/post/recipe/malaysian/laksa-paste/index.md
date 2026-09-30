@@ -23,7 +23,7 @@ Laksa paste is the key ingredient in a bowl of laksa.
 
 ## Laksa Paste
 
-- Place the dried chilies in a heatproof bowl. Cover with boiling water and set
+- Place the dried chillies in a heatproof bowl. Cover with boiling water and set
   aside for 20 minutes to soften. Drain and chop them coarsely.
 
 - Place all the ingredients except the shrimp paste into a mortar and pestle and

@@ -24,8 +24,8 @@ There are downsides too:
   out here, thanks to thunderstorms.
 - making a website from scratch is a lot of work
 - maintaining it is also a lot of work
-- you're stuck with the asymetrically bad upload bandwidth your ISP provides for
-  you
+- you're stuck with the asymmetrically bad upload bandwidth your ISP provides
+  for you
 - latency can be an issue
 - you probably don't have professional level monitoring of the site
 - usage stats will be harder to gather without letting some greedy corporation
@@ -42,12 +42,12 @@ since. I write everything as simple markdown pages, and let Hugo churn through
 it and spit out my website.
 
 It's been hosted on an [ODROID-HC2](https://ameridroid.com/products/odroid-hc2)
-from an SDCARD until tonight. That's a machine about as powerful as a mid-range
+from an SD Card until tonight. That's a machine about as powerful as a mid-range
 mobile phone. Even so, it could serve the pages up quickly, because I used NGinx
 as the server, and the machine never had to do anything more complex than load a
 file from disk / cache and spew it to the web.
 
-With all my ducks in a row; I finally decided to switch to using Guthub Pages.
+With all my ducks in a row; I finally decided to switch to using Github Pages.
 They have supported static website generators for a while, but I wanted to use
 Hugo instead of Jekyll, so it has only really become attractive recently.
 

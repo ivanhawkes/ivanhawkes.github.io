@@ -23,7 +23,7 @@ A sauce rich with umami flavours which is great for stir frys.
 
 - Combine all the ingredients together and stir well.
 
-For stir fry: chop up some ginger, garlic and chili to taste, and then add this
+For stir fry: chop up some ginger, garlic and chilli to taste, and then add this
 sauce into the pan after the main ingredients have had time to cook. Continue
 cooking until the sauce thickens.
 

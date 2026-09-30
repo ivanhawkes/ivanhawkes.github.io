@@ -28,7 +28,7 @@ A salty sauce with a large umami kick.
   stir fry over medium fire until you can smell the aroma. Add fried fermented
   black beans. Use slow fire to continue frying for 5-8 minutes.
 
-- Add roasted peanuts, sesame seeds, chili pepper powder and Chinese five spice
+- Add roasted peanuts, sesame seeds, chilli pepper powder and Chinese five spice
   powder in. Mix well.
 
 - Add sugar and light soy sauce in. Combine well. Remove from fire to cool down.

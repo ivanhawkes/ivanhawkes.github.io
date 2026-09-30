@@ -37,15 +37,15 @@ A Thai red curry using beef.
   flavour.
 - Add the rest of the coconut milk and stir to incorporate it.
 - Add the fresh ingredients and nuts, except for the coriander leaves and
-  birdseye chilies.
+  birdseye chillies.
 - Stir and simmer for a few minutes.
 - Add the basil leaves.
 - Simmer for a few minutes.
 - Add the fish sauce and the juice of one lime.
 - Stir and take it off the heat.
-- Finish it with a small handful of coriander leaves and birdseye chilies.
+- Finish it with a small handful of coriander leaves and birdseye chillies.
 
 ## Serving
 
-- Provide slices of lime, extra chili, and a bottle of fish sauce on the table
+- Provide slices of lime, extra chilli, and a bottle of fish sauce on the table
   for guests.

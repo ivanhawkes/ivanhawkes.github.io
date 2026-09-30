@@ -37,7 +37,7 @@ Thai dishes.
   the mixture turns into a fine paste so that you can’t recognise individual
   ingredients.
 
-- Add the chili peppers. Pound it like it's a rental.
+- Add the chilli peppers. Pound it like it's a rental.
 
 - Add shrimp paste. Pound to mix it in the paste.
 
@@ -45,8 +45,8 @@ Thai dishes.
 
 If you have thai basil, take the stems and roots and pound them into the paste.
 
-You can add some thai birdseye chilies if you really want to ramp up the heat.
-Less chilies if you find it too hot for you or your guests. Extra chili can be
+You can add some thai birdseye chillies if you really want to ramp up the heat.
+Less chillies if you find it too hot for you or your guests. Extra chilli can be
 added to each person's bowl when serving if they want to feel the burn.
 
 ## Notes

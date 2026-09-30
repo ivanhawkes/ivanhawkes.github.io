@@ -83,5 +83,5 @@ Charring the aromatic vegetables adds complexity to the broth.
 
 - Finely chop cooked pork fatback and whisk into finished broth. To serve,
   season broth with condiments of your choice (salt, soy sauce, miso, sesame
-  paste, grated fresh garlic, chili oil or a mixture of all, for instance) and
+  paste, grated fresh garlic, chilli oil or a mixture of all, for instance) and
   serve with cooked ramen noodles and toppings as desired.

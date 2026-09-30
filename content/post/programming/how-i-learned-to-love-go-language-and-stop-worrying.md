@@ -85,8 +85,8 @@ Let's have a look at what makes Go so damn awesome:
 - Go has the best implementation of a 'it just works' multi-threading model I've
   seen
 - Go has libraries that support all the workaday labour for web applications
-- Go ditched a lot of old language kruft in the interests of making it faster to
-  read / write / compile and deploy
+- Go ditched a lot of old language kruft (cruft) in the interests of making it
+  faster to read / write / compile and deploy
 - Go enforces warnings as errors to stop lazy peeps from pissing in your code
   pool
 - Go compiles fast - and runs fast, real fast

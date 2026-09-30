@@ -89,7 +89,7 @@ It will at a minimum include:
   value to '4'
 - a list of tags that classify the recipe by style, region, main protein
   ingredient, etc
-- a title which consisely names the recipe
+- a title which concisely names the recipe
 
 The recipe begins with a section of prose that describes the recipe. It should
 include it's region and an indication of how it might taste. That should be

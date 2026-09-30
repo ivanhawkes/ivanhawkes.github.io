@@ -44,13 +44,13 @@ Coarsely break about 10 kaffir lime leaves - no need to cut them, just tear
 them - which is going to help release their flavor. Peel about 5 cloves of
 garlic.
 
-I used about 10 Thai bird chilies (prik kee noo) for this recipe, but you can
+I used about 10 Thai bird chillies (prik kee noo) for this recipe, but you can
 use however many you’d like. First, take off the stem, and then you can either
 just slice them in two pieces, or give them a little pound on your cutting board
 like I did (just be careful of flying seeds). You can also remove the seeds if
-you’d still like the chili flavor but not as much heat.
+you’d still like the chilli flavor but not as much heat.
 
-Throw the lemongrass, galangal, kaffir lime leaves, garlic and chilies into the
+Throw the lemongrass, galangal, kaffir lime leaves, garlic and chillies into the
 water. You can put on the lid just so it starts to boil and release all the herb
 flavors quicker.
 
@@ -92,19 +92,19 @@ For this recipe, I took out about ½ of the tom yum and set it aside as the clea
 version, and then made the other ½ as the creamy version. Turn your heat back on
 low.
 
-Add about 3 heaping tablespoons of Thai roasted chili sauce (nam prik pao
+Add about 3 heaping tablespoons of Thai roasted chilli sauce (nam prik pao
 น้ำพริกเผา) to your soup and stir it in.
 
 Also about 10 tablespoons of evaporated milk.
 
 Mix it all in and let your soup heat up for about 1 minute. At this stage,
-you’ll need to taste test and evaluate. The roasted chili sauce and creaminess
+you’ll need to taste test and evaluate. The roasted chilli sauce and creaminess
 from the evaporated milk will alter the flavors from the clear version, so you
 might need more lime juice and more fish sauce. Just keep taste testing until
 it’s exactly how you like it. And there you have the creamy version of tom yum.
 
 Taste test, you may need to add more lime juice or fish sauce as the milk and
-roasted chili sauce throws off the sourness and saltiness.
+roasted chilli sauce throws off the sourness and saltiness.
 
 ## Notes
 

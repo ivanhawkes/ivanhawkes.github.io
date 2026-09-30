@@ -26,7 +26,7 @@ An authentic, spicy and hot vindaloo dish from the Goan community.
 - Cube the pork into one inch sized chunks.
 
 - Add the vinegar, ginger, garlic, and spices into a blender. Blend into a
-  puree.
+  purée.
 
 - Massage the marinade into the pork.
 

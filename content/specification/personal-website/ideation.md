@@ -130,7 +130,7 @@ Turning the cards into living, verifiable documentation.
   folders, e.g. `{{</* kanban "kb-001" */>}}`,
   `{{</* kanban-tiny "kb-001" */>}}`. Search supports partial-name globbing so
   IDs are short to type. Bonus: embedded SVG icon per card.
-- **Scan-to-docs** — file-scanning code discovers which Kanbans exist, pulls
+- **Scan-to-docs** — file-scanning code discovers which kanbans exist, pulls
   their metadata, and lays out a list of actions from it. Example: a **Summary
   page** that scans every card and prints name, summary, completion, and
   lateness, grouped by category (features, documentation, deliverables). If

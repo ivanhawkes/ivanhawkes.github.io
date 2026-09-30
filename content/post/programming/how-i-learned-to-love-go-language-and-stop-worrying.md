@@ -5,11 +5,9 @@ categories:
 date: '2013-10-12'
 tags:
     - Go
-    - go
-    - Language
     - Languages
     - Ohio Scientific
-    - software design
+    - Software Design
     - Programming
     - Visual Basic
 title: How I Learned to Love Go (Language) And Stop Worrying

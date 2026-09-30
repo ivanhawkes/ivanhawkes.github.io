@@ -57,6 +57,29 @@ Kinds and ID prefixes:
 | testing        | ts-    |
 | user-stories   | us-    |
 
+# Implementation
+
+The `kan` program is implemented in Go at `cmd/kan/main.go`.
+
+Usage:
+
+```
+kan <kind> <title>
+```
+
+The kind may be given as the full kind name (`requests`), its ID prefix (`rq` or
+`rq-`), or a short alias (`request`, `bug`, `user stories`). The title is
+lowercased, dash-separated, and rejected if longer than 30 characters. The next
+serial number is deduced by scanning the kind's folder for existing
+`<prefix>-NNN` cards.
+
+After writing or changing the program, build it and install it to the user's bin
+directory so it is available on the PATH:
+
+```
+go build -o ~/.local/bin/kan ./cmd/kan
+```
+
 # Requirements
 
 You may choose which language you use to write the program from this list:

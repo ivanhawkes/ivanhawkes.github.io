@@ -14,7 +14,7 @@ data as their contents.
 The program should be called `kan` and take the following parameters:
 
 - The `kind` of card to create. A list has been provided later in this document.
-- A short title for the card of up to 30 characters.
+- A short title for the card of up to 40 characters.
 
 The program will deduce which `kind` of card the user wants to create. It will
 execute the correct hugo command, passing in the parameters e.g.
@@ -69,7 +69,7 @@ kan <kind> <title>
 
 The kind may be given as the full kind name (`requests`), its ID prefix (`rq` or
 `rq-`), or a short alias (`request`, `bug`, `user stories`). The title is
-lowercased, dash-separated, and rejected if longer than 30 characters. The next
+lowercased, dash-separated, and rejected if longer than 40 characters. The next
 serial number is deduced by scanning the kind's folder for existing
 `<prefix>-NNN` cards.
 

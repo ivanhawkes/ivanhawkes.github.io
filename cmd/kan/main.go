@@ -47,7 +47,7 @@ var kinds = []kind{
 // serialPattern matches an existing card ID in a kind's folder.
 var serialPattern = regexp.MustCompile(`^([a-z]{2})-(\d{3})(?:[-.].*)?$`)
 
-const maxTitleLen = 30
+const maxTitleLen = 40
 
 func main() {
 	os.Exit(run(os.Args[1:]))

@@ -1,14 +1,42 @@
 ---
 name: kanban-card
 description:
-    Create, move, and update static Kanban cards in content/kanban. Use when
-    adding or tracking work items on the site's kanban board.
+    Create a program that will allow efficient management of kanban cards stored
+    in the project.
 ---
 
-# Kanban card
+# Goal
 
-Cards are markdown files in `content/kanban/<kind>/`. The folder must match the
-kind used at creation time.
+The goal is to write a program that can execute a command line on my behalf,
+saving typing effort and creating consistently named markdown files with kanban
+data as their contents.
+
+The program should be called `kan` and take the following parameters:
+
+- The `kind` of card to create. A list has been provided later in this document.
+- A short title for the card of up to 30 characters.
+
+The program will deduce which `kind` of card the user wants to create. It will
+execute the correct hugo command, passing in the parameters e.g.
+
+```
+hugo new content kanban/requests/rq-022-hunt-the-wumpus.md --kind requests
+```
+
+The name of the markdown file consists of three parts:
+
+- a two letter prefix indicating what sort of content the card contains
+- a serial number. each kind has it's own bucket of serial numbers. The first
+  card of a given type will be assigned serial number `001`. Each subsequent
+  card will receive an auto-incremented value for it's serial number. Numbers
+  are formatted`NNN`, three decimal places, with leading zeroes.
+- The short title provided by the user. The program will convert it to
+  lowercase, and use `-` (dashes) to separate words within the title.
+
+# Kanban Card
+
+Cards are markdown files saved in `content/kanban/<kind>/`. The folder must
+match the kind used at creation time.
 
 Kinds and ID prefixes:
 
@@ -29,35 +57,35 @@ Kinds and ID prefixes:
 | testing        | ts-    |
 | user-stories   | us-    |
 
-## Creating a card
+# Requirements
 
-```bash
-hugo new content kanban/<kind>/<prefix>-NNN-<slug>.md --kind <kind>
+You may choose which language you use to write the program from this list:
+
+- python3
+- node js
+- go lang
+- bash
+
+Below are examples of the command line that the program must be able to execute.
+It needs to be capable of executing each variation of the command as shown
+below.
+
+Within the commands the `test` text is the title of the kanban card, a parameter
+which will have been passed into the program when the user executes it.
+
 ```
-
-The archetype fills in the front matter and a body skeleton. Then fill in:
-
-- `title` and `description` (50 characters or less).
-- `params`: `sprint`, `stage`, `status`, `completed`, `due`, `percent`,
-  `estimatedtime`, `actualtime`, `priority`, `dependencies`, `references`. Use
-  `null` for unset values and `dependencies` (not `depends-on`).
-- The body: a short summary before `<!--more-->`, then goals and acceptance
-  criteria.
-
-Read `references/front-matter.md` for the full field reference and a completed
-example.
-
-## Updating a card
-
-- Status changes: update `status`, `percent`, `completed`, and `actualtime`
-  together; keep them consistent.
-- Moving a card between kinds: move the file to the matching folder and change
-  nothing else unless the front matter also needs it.
-- Dependencies: list other card slugs in `params.dependencies`.
-
-## Viewing state
-
-- Cards render at `/kanban/` and per-bucket pages; the `kanban-list-short`
-  shortcode embeds a table of cards matching an ID prefix into any page.
-- The card template highlights overdue, incomplete cards with a destructive
-  banner.
+hugo new content kanban/acceptance/ac-001-test.md --kind acceptance
+hugo new content kanban/bugs/bg-001-test.md --kind bugs
+hugo new content kanban/deliverables/dl-001-test.md --kind deliverables
+hugo new content kanban/deployment/dl-001-test.md --kind deployment
+hugo new content kanban/epics/ep-001-test.md --kind epics
+hugo new content kanban/features/ft-001-test.md --kind features
+hugo new content kanban/ideation/id-001-test.md --kind ideation
+hugo new content kanban/meta/mt-001-test.md --kind meta
+hugo new content kanban/releases/rl-001-test.md --kind releases
+hugo new content kanban/requests/rq-001-test.md --kind requests
+hugo new content kanban/scaffold/sf-001-test.md --kind scaffold
+hugo new content kanban/specifications/sp-001-test.md --kind specifications
+hugo new content kanban/testing/ts-001-test.md --kind testing
+hugo new content kanban/user-stories/us-001-test.md --kind user-stories
+```

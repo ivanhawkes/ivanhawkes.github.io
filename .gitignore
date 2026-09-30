@@ -28,3 +28,6 @@ devenv.local.yaml
 # pre-commit
 .pre-commit-config.yaml
 assets/jsconfig.json
+
+# This is an artifact of the CSS build and doesn't need to be kept in the repo.
+assets/css/main.css

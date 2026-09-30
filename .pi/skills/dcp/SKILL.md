@@ -18,7 +18,9 @@ repository.
     git diff --staged
     ```
 
-    If there is nothing to commit, stop and say so.
+    If there is nothing to commit, stop and say so. Ask for my approval of the
+    diff output before you try and commit. Do not commit and push unless I have
+    given you my approval.
 
 2. **Commit.** Stage all changes (respecting `.gitignore`; never stage
    `public/`, `resources/`, or `.hugo_build.lock`) and commit with a concise,

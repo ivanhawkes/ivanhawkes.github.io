@@ -2,22 +2,20 @@
 kind: 'kanban'
 title: 'kan: quick kanban creation'
 description: 'kan wraps hugo new to create kanban cards'
-date: '2026-10-01T12:59:06'
-lastmod: null
+date: '2026-10-01'
 author: Ivan Hawkes
-categories: Tools, Utilities
-tags: null
+lastmod: null
 params:
     sprint: null
     stage: done
     status: done
-    completed: 2026-10-01
-    due:
-    percent: 100
     estimatedtime: 4
     actualtime: 0.25
-    priority: 350
+    completed: 2026-10-01
     dependencies: null
+    due:
+    percent: 100
+    priority: 350
     references: null
 ---
 

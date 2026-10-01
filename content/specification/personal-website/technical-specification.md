@@ -35,13 +35,15 @@ components:
       maximum: 80
     date:
       type: string
-      format: date-time
+      format: date
+      example: "2026-10-01"
     author:
       description: string
       maximum: 40
     lastmod:
       type: string
-      format: date-time
+      format: date
+      example: "2026-10-01"
     params:
       sprint:
         type: string
@@ -65,12 +67,12 @@ components:
           - done
       completed:
         type: string
-        enum:
-          - null
-          - true
+        format: date
+        example: "2026-10-01"
       due:
         type: string
-        format: date-time
+        format: date
+        example: "2026-10-01"
       estimatedtime:
         type: number
         format: double
@@ -110,10 +112,11 @@ components:
 
 The fields will be sorted into the following order:
 
-- type
+- kind
 - title
 - description
 - date
+- author
 - lastmod
 - params
 

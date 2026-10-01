@@ -3,18 +3,20 @@ kind: 'kanban'
 title: 'Improve Overall Look'
 description: 'Improvements to the look and feel.'
 date: '2026-05-04'
-lastmod:
 author: 'Ivan Hawkes'
+lastmod:
 params:
     sprint: null
     stage: done
     status: done
-    completed: null
-    due: null
     estimatedtime: 4
     actualtime: 5
+    completed: null
+    dependencies: null
+    due: null
     percent: 100
     priority: 350
+    references: null
 ---
 
 Make some improvements to look and feel of the website.

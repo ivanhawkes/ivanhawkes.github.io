@@ -3,18 +3,20 @@ kind: 'kanban'
 title: 'Hamburger Menu'
 description: 'Add a hamburger menu'
 date: '2026-05-05'
-lastmod:
 author: 'Ivan Hawkes'
+lastmod:
 params:
     sprint: null
     stage: develop
     status: in-progress
-    completed: null
-    due: null
     estimatedtime: 2
     actualtime: 0
+    completed: null
+    dependencies: null
+    due: null
     percent: 0
     priority: 350
+    references: null
 ---
 
 <!--more-->

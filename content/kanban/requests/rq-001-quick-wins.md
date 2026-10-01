@@ -3,18 +3,20 @@ kind: 'kanban'
 title: 'Quick Wins'
 description: 'A list of simple fast tasks.'
 date: '2026-04-29'
+author: Ivan Hawkes
 lastmod:
-author: null
 params:
     sprint: null
-    stage: in-progress
+    stage: develop
     status: in-progress
-    completed: 0
-    due: null
     estimatedtime: 0
     actualtime: 2
+    completed: null
+    dependencies: null
+    due: null
     percent: 0
     priority: 350
+    references: null
 ---
 
 A list of quick wins. These are ephemeral and will not be tracked individually.

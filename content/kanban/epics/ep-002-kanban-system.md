@@ -3,19 +3,19 @@ kind: kanban
 title: Create Kanban System
 description: Create a Kanban system for the site.
 date: '2026-04-29'
-lastmod: null
 author: Ivan Hawkes
+lastmod: null
 params:
     sprint: sp-002
     stage: develop
     status: in-progress
-    completed: 20
-    due: null
     estimatedtime: 100
     actualtime: 40
+    completed: null
+    dependencies: null
+    due: null
     percent: 40
     priority: 350
-    dependencies: null
     references: null
 ---
 

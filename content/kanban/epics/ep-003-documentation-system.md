@@ -3,19 +3,19 @@ kind: kanban
 title: Create Documentation System
 description: Create a documentation system for the site.
 date: '2026-04-30'
-lastmod: null
 author: Ivan Hawkes
+lastmod: null
 params:
     sprint: sp-003
     stage: develop
     status: in-progress
-    completed: 20
-    due: null
     estimatedtime: 40
     actualtime: 4
+    completed: null
+    dependencies: null
+    due: null
     percent: 10
     priority: 350
-    dependencies: null
     references: null
 ---
 

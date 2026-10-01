@@ -2,7 +2,7 @@
 author: Ivan Hawkes
 date: '2026-04-25'
 description: Technical Specification
-title: Technical Specification Copy
+title: Technical Specification
 type: specification
 ---
 

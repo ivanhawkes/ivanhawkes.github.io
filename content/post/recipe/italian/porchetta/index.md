@@ -12,7 +12,7 @@ tags:
     - Pork
     - Roast
 title: Porchetta
-type: recipe
+kind: recipe
 ---
 
 A fairly simple herb roasted pork dish.

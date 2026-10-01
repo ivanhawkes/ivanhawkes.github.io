@@ -3,7 +3,7 @@ author: Ivan Hawkes
 date: '2026-04-25'
 description: AI Recipe Translation Context
 title: AI Recipe Translation Context
-type: specification
+kind: specification
 draft: true
 ---
 
@@ -75,13 +75,13 @@ tags:
   - Bread
   - Loaf
 title: Pullman Pain De Mie
-type: recipe
+kind: recipe
 ```
 
 It will at a minimum include:
 
 - the name of the recipe's author or 'Ivan Hawkes' if that is not known
-- a 'type' entry that is always 'recipe'
+- a 'kind' entry that is always 'recipe'
 - a category specifier that is always a single entry of 'Recipe'
 - the current date in 'yyyy-mm-dd' format
 - a caption for the banner image on the web page

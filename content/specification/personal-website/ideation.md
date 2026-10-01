@@ -8,7 +8,7 @@ date: '2026-04-25'
 description:
     A document that briefly describes the goals and intents of this project.
 title: Ideation
-type: specification
+kind: specification
 ---
 
 # Ideas for the development of my blog site

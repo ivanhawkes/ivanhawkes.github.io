@@ -1,5 +1,5 @@
 ---
-type: 'kanban'
+kind: 'kanban'
 title: 'Polish Codeblock'
 description: 'Improve the codeblock rendering code'
 date: '2026-04-28'

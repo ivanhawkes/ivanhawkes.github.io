@@ -15,7 +15,7 @@ tags:
     - Vegetarian
     - Vegan
 title: Felafel
-type: recipe
+kind: recipe
 ---
 
 This middle eastern dish has many variations. The deep fried balls are crispy
@@ -57,17 +57,17 @@ has been refrigerated.
 Fill a skillet with vegetable oil to a depth of 1 ½ inches. I prefer to use
 cooking oil with a high smoke point, like grapeseed. Heat the oil slowly over
 medium heat. Meanwhile, form falafel mixture into round balls or slider-shaped
-patties using wet hands or a falafel scoop. I usually use about 2 tbsp of mixture
-per falafel. You can make them smaller or larger depending on your personal
-preference. The balls will stick together loosely at first, but will bind nicely
-once they begin to fry.
+patties using wet hands or a falafel scoop. I usually use about 2 tbsp of
+mixture per falafel. You can make them smaller or larger depending on your
+personal preference. The balls will stick together loosely at first, but will
+bind nicely once they begin to fry.
 
 If the balls won't hold together, place the mixture back in the processor again
 and continue processing to make it more paste-like. Keep in mind that the balls
 will be delicate at first; if you can get them into the hot oil, they will bind
 together and stick. If they still won't hold together, you can try adding 2-3
-tbsp of flour or chickpea flour to the mixture. If they still won't hold, add 1-2
-eggs to the mix. This should fix any issues you are having.
+tbsp of flour or chickpea flour to the mixture. If they still won't hold, add
+1-2 eggs to the mix. This should fix any issues you are having.
 
 Before frying my first batch of falafel, I like to fry a test one in the center
 of the pan. If the oil is at the right temperature, it will take 2-3 minutes per
@@ -85,10 +85,11 @@ them into a pita.
 Troubleshooting: If your falafel is too hard/too crunchy on the outside, there
 are two possible reasons:
 
-- you didn't process the mixture enough-- return the
-chickpea mixture to the processor to make it more paste-like.
+- you didn't process the mixture enough-- return the chickpea mixture to the
+  processor to make it more paste-like.
 
-- the chickpeas you used were old. Try buying a fresher batch of dried chickpeas next time.
+- the chickpeas you used were old. Try buying a fresher batch of dried chickpeas
+  next time.
 
 ## Sesame Falafel Variation
 

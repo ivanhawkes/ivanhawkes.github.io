@@ -12,7 +12,7 @@ tags:
     - Pastry
     - Sausage
 title: Sausage Roll
-type: recipe
+kind: recipe
 ---
 
 A basic sausage roll.

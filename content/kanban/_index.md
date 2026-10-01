@@ -1,5 +1,5 @@
 ---
-type: kanban
+kind: kanban
 title: Kanban
 author: Ivan Hawkes
 date: '2026-04-27'

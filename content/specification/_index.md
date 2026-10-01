@@ -1,5 +1,5 @@
 ---
-type: specification
+kind: specification
 title: Specifications
 author: Ivan Hawkes
 date: '2026-04-28'

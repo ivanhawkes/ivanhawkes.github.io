@@ -1,5 +1,5 @@
 ---
-type: kanban
+kind: kanban
 title: Create Documentation System
 description: Create a documentation system for the site.
 date: '2026-04-30'

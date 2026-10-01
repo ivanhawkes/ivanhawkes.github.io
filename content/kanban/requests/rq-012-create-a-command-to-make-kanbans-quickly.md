@@ -1,5 +1,5 @@
 ---
-type: 'kanban'
+kind: 'kanban'
 title: 'kan: quick kanban creation'
 description: 'kan wraps hugo new to create kanban cards'
 date: '2026-10-01T12:59:06'

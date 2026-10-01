@@ -4,7 +4,7 @@ Full front matter for a kanban card:
 
 ```yaml
 ---
-type: 'kanban'
+kind: 'kanban'
 title: 'Short card title'
 description: 'Limit to 50 characters'
 date: '2026-04-29'

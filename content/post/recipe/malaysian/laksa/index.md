@@ -13,7 +13,7 @@ tags:
     - Malaysian
     - Soup
 title: Laksa
-type: recipe
+kind: recipe
 ---
 
 A terrific Malaysian soup. Rich, creamy and warming. It can be served with a

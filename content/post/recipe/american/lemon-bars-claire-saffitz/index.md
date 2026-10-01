@@ -12,7 +12,7 @@ tags:
     - Lemon
     - Shortbread
 title: Lemon Bars (Claire Saffitz)
-type: recipe
+kind: recipe
 ---
 
 A rich version of the lemon bars recipe created by Claire Saffitz.

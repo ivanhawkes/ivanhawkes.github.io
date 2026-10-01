@@ -1,7 +1,7 @@
 ---
 profile: ivan-hawkes
 title: Ivan Hawkes
-type: profile
+kind: profile
 ---
 
 I developed an interest in computers starting in the early 1980's leading me to

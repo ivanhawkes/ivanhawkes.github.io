@@ -1,5 +1,5 @@
 ---
-type: kanban
+kind: kanban
 title: Create Kanban System
 description: Create a Kanban system for the site.
 date: '2026-04-29'

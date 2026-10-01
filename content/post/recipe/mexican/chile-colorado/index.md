@@ -6,8 +6,8 @@ cook-time: PT20M
 cuisine: Mexican
 date: '2026-09-25'
 imagecaption:
-    A bowl of deep-red Chile Colorado simmered from toasted guajillo and
-    ancho chiles.
+    A bowl of deep-red Chile Colorado simmered from toasted guajillo and ancho
+    chiles.
 portions: 4
 prep-time: PT15M
 tags:
@@ -16,7 +16,7 @@ tags:
     - Sauce
     - Beef
 title: Chile Colorado
-type: recipe
+kind: recipe
 ---
 
 Chile Colorado is a classic of Mexican and Tex-Mex cooking, and this recipe

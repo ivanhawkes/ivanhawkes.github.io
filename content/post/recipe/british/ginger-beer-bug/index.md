@@ -13,7 +13,7 @@ tags:
     - Ginger
     - Probiotic
 title: Ginger Beer Bug
-type: recipe
+kind: recipe
 ---
 
 A ginger beer bug is the first step to making a traditional ginger beer. It is a

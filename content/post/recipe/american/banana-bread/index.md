@@ -18,7 +18,7 @@ tags:
     - Cake
     - Dessert
 title: Banana Bread
-type: recipe
+kind: recipe
 ---
 
 Whenever there are over-ripe bananas in the house, it's time to make this cake.

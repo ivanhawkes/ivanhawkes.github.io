@@ -1,5 +1,5 @@
 ---
-type: 'kanban'
+kind: 'kanban'
 title: 'Improve Kanban Section'
 description: 'Improvements to the Kanban section menu.'
 date: '2026-05-01'

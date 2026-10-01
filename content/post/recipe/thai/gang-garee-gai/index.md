@@ -13,7 +13,7 @@ tags:
     - Thai
     - Yellow
 title: Gang Garee Gai
-type: recipe
+kind: recipe
 ---
 
 My version of a yellow chicken Thai curry. It has more spices than a typical

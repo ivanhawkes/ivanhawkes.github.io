@@ -12,7 +12,7 @@ tags:
     - Fish
     - Stock
 title: Dashi Stock
-type: recipe
+kind: recipe
 ---
 
 A basic stock used for a lot of Japanese recipes.

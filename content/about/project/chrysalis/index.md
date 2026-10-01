@@ -1,5 +1,5 @@
 ---
-type: project
+kind: project
 title: 'Chrysalis - An Action RPG SDK'
 author: Ivan Hawkes
 date: '2018-12-17'

@@ -13,7 +13,7 @@ tags:
     - Lamb
     - Middle Eastern
 title: Lamb Doner Kebab
-type: recipe
+kind: recipe
 ---
 
 A fairly traditional lamb kebab recipe.

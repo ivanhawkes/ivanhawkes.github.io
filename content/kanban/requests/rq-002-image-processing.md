@@ -1,5 +1,5 @@
 ---
-type: 'kanban'
+kind: 'kanban'
 title: 'Image Processing'
 description: 'Provide image processing to posts.'
 date: '2026-04-28'

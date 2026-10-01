@@ -11,7 +11,7 @@ tags:
     - French
     - Quiche
 title: Quiche
-type: recipe
+kind: recipe
 ---
 
 A basic quiche.

@@ -12,7 +12,7 @@ tags:
     - Dressing
     - Salad
 title: Caesar Salad Dressing
-type: recipe
+kind: recipe
 ---
 
 A dressing for a Caesar salad. It's also good for pretty much any salad.

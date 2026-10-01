@@ -5,7 +5,7 @@ categories:
 date: '2026-04-25'
 description: Project progress summary
 title: Summary
-type: specification
+kind: specification
 weight: 1
 ---
 

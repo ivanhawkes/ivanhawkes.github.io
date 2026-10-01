@@ -1,5 +1,5 @@
 ---
-type: kanban
+kind: kanban
 title: Personal website redesign
 description: Completely redesign my personal website.
 date: '2026-04-26'

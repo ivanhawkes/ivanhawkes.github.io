@@ -1,5 +1,5 @@
 ---
-type: post
+kind: post
 title: Profiles
 date: '2026-04-27'
 description: A software developer.

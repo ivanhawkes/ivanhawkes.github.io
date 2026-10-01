@@ -13,7 +13,7 @@ tags:
     - Paste
     - Thai
 title: Red Curry Paste
-type: recipe
+kind: recipe
 ---
 
 Aromatic and herbacious. Red curry paste provides the base flavours for many

@@ -1,5 +1,5 @@
 ---
-type: 'kanban'
+kind: 'kanban'
 title: 'Featured Images'
 description: 'Section cards should display featured images'
 date: '2026-05-04'

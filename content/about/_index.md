@@ -1,5 +1,5 @@
 ---
-type: about
+kind: about
 title: About
 date: '2026-04-27'
 description: About us.

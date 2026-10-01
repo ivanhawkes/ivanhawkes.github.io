@@ -3,7 +3,7 @@ author: Ivan Hawkes
 date: '2026-04-25'
 description: Functional Specification
 title: Functional Specification
-type: specification
+kind: specification
 ---
 
 # Functional Specification

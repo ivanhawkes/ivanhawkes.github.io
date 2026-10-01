@@ -1,5 +1,5 @@
 ---
-type: 'kanban'
+kind: 'kanban'
 title: 'Toggle Light / Dark mode'
 description: 'Add a button to toggle light /  dark mode.'
 date: '2026-04-28'

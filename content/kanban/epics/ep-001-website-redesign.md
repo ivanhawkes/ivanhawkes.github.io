@@ -3,8 +3,8 @@ type: kanban
 title: Personal website redesign
 description: Completely redesign my personal website.
 date: '2026-04-26'
-lastmod: null
 author: Ivan Hawkes
+lastmod: null
 params:
     sprint: sp-001
     stage: develop

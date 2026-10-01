@@ -7,7 +7,7 @@ author: 'Ivan Hawkes'
 lastmod:
 params:
     sprint: null
-    stage: done
+    stage: develop
     status: in-progress
     estimatedtime: 6
     actualtime: 4

@@ -11,7 +11,7 @@ params:
     status: done
     estimatedtime: 4
     actualtime: 5
-    completed: null
+    completed: '2026-04-30'
     dependencies: null
     due: null
     percent: 100

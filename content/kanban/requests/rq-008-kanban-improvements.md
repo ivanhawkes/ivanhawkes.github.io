@@ -11,7 +11,7 @@ params:
     status: done
     estimatedtime: 1.5
     actualtime: 1.5
-    completed: null
+    completed: '2026-04-30'
     dependencies:
         - Life
         - The Universe

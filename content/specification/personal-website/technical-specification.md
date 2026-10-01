@@ -19,96 +19,11 @@ formatting the data definitions.
 
 Kanban cards are markdown files with front matter in YAML format. The YAML
 defines the metadata used by the kanban system for tracking the progress of
-tasks. It follows the spec provided below:
+tasks.
 
-```YAML
-components:
-  schemas:
-    kind:
-      type: string
-      maximum: 40
-    title:
-      type: string
-      maximum: 40
-    description:
-      type: string
-      maximum: 80
-    date:
-      type: string
-      format: date
-      example: "2026-10-01"
-    author:
-      description: string
-      maximum: 40
-    lastmod:
-      type: string
-      format: date
-      example: "2026-10-01"
-    params:
-      sprint:
-        type: string
-        maximum: 30
-      stage:
-        type: string
-        enum:
-          - ideation
-          - requirements
-          - design
-          - develop
-          - test
-          - review
-          - deploy
-          - done
-      status:
-        type: string
-        enum:
-          - pending
-          - in-progress
-          - done
-      completed:
-        type: string
-        format: date
-        example: "2026-10-01"
-      due:
-        type: string
-        format: date
-        example: "2026-10-01"
-      estimatedtime:
-        type: number
-        format: double
-        multipleOf: 0.01
-        minimum: 0
-        exclusiveMinimum: true
-        maximum: 2000
-        exclusiveMaximum: true
-      actualtime:
-        type: number
-        format: double
-        multipleOf: 0.01
-        minimum: 0
-        exclusiveMinimum: true
-        maximum: 2000
-        exclusiveMaximum: true
-      percent:
-        type: number
-        format: double
-        multipleOf: 0.01
-        minimum: 0
-        exclusiveMinimum: true
-        maximum: 2000
-        exclusiveMaximum: true
-      priority:
-        type: integer
-        format: int32
-      references:
-        type: array
-        items:
-          type: string
-      dependencies:
-        type: array
-        items:
-          type: string
-```
+[kanban-card-front-matter.yaml](kanban-card-front-matter.yaml) is the definition
+the front matter must conform to. Validate every kanban card against that
+specification and inform me of any deviations.
 
 The fields will be sorted into the following order:
 

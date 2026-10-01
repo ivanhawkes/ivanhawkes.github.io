@@ -1,0 +1,106 @@
+kanban-card:
+  type: object
+  required:
+    - kind
+    - title
+    - description
+    - date
+    - author
+    - params
+  properties:
+    kind:
+      $ref: '#/components/schemas/kind'
+    title:
+      $ref: '#/components/schemas/title'
+    description:
+      $ref: '#/components/schemas/description'
+    date:
+      $ref: '#/components/schemas/date'
+    author:
+      $ref: '#/components/schemas/author'
+    lastmod:
+      $ref: '#/components/schemas/lastmod'
+    params:
+      $ref: '#/components/schemas/params'
+components:
+  schemas:
+    kind:
+      type: string
+      maxLength: 40
+    title:
+      type: string
+      maxLength: 40
+    description:
+      type: string
+      maxLength: 80
+    date:
+      type: string
+      format: date
+      example: '2026-10-01'
+    author:
+      type: string
+      maxLength: 40
+    lastmod:
+      type: ['string', 'null']
+      format: date
+      example: '2026-10-01'
+    params:
+      type: object
+      properties:
+        sprint:
+          type: ['string', 'null']
+          maxLength: 30
+        stage:
+          type: string
+          enum:
+            - ideation
+            - requirements
+            - design
+            - develop
+            - test
+            - review
+            - deploy
+            - done
+        status:
+          type: string
+          enum:
+            - pending
+            - in-progress
+            - done
+        completed:
+          type: ['string', 'null']
+          format: date
+          example: '2026-10-01'
+        due:
+          type: ['string', 'null']
+          format: date
+          example: '2026-10-01'
+        estimatedtime:
+          type: number
+          format: double
+          multipleOf: 0.01
+          minimum: 0
+          maximum: 2000
+        actualtime:
+          type: number
+          format: double
+          multipleOf: 0.01
+          minimum: 0
+          maximum: 2000
+        percent:
+          type: number
+          format: double
+          multipleOf: 0.01
+          minimum: 0
+          maximum: 2000
+        priority:
+          type: integer
+          format: int32
+        references:
+          type: ['array', 'null']
+          items:
+            type: string
+        dependencies:
+          type: ['array', 'null']
+          items:
+            type: string

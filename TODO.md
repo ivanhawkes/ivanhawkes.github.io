@@ -20,7 +20,7 @@ A place where ideas come to die.
   that to .gitignore - in fact a whole .scratch folder can be used
 - a 'monthly' skill that can be run that can just check all the content, tighten
   it up, fix issues, etc
-- squash-merge skill
+- merge-squash skill
     - write a skill that will perform a git merge --squash on the current branch
       and commit it, then push the result
     - allow the skill to rewrite the typical github squash merge summary of each

@@ -10,6 +10,9 @@
   # https://devenv.sh
   env.GREET = "devenv";
 
+  # Enable the native delta integration
+  delta.enable = true;
+
   # https://devenv.sh/packages/
   packages = [
     # Git LFS for repository management.

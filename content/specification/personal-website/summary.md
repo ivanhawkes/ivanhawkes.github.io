@@ -26,6 +26,10 @@ status of this project.
 
 {{< kanban-list-short prefix=id  >}}
 
+### Decision Record
+
+TODO: Write a shortcode to present this information somehow.
+
 ### Specifications
 
 {{< kanban-list-short prefix=sp  >}}

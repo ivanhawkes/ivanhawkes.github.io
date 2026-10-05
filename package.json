@@ -3,9 +3,6 @@
     "version": "1.0.0",
     "description": "A blog for a human.",
     "author": "Ivan Hawkes",
-    "workspaces": [
-        "themes/**"
-    ],
     "scripts": {
         "dev:css": "tailwindcss -i themes/be-best/assets/css/main.css -o assets/css/main.css --watch",
         "dev:hugo": "hugo server -D -F --gc --cleanDestinationDir",
@@ -67,7 +64,7 @@
         "prettier": "3.9.9",
         "prettier-plugin-go-template": "^0.0.15",
         "prettier-plugin-tailwindcss": "^0.8.1",
-        "stylelint": "^17.15.0",
+        "stylelint": "^17.16.0",
         "stylelint-config-standard": "^40.0.0",
         "stylelint-config-tailwindcss": "^1.0.1",
         "tailwindcss": "^4.3.3"

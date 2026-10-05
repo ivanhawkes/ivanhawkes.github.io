@@ -31,11 +31,11 @@
     # Install the Nixos unstable version of Pi Harness.
     pkgs.pi-coding-agent
 
-    # Playwright will allow us to iterate on the web design.
-    #pkgs.playwrightMcp
-
     # Get access to copy and paste.
     pkgs.wl-clipboard
+
+    # Playwright will allow us to iterate on the web design.
+    #pkgs.playwrightMcp
   ];
 
   # 3. Environment Variables (Add the Wayland passthrough here)

@@ -77,8 +77,5 @@
     },
     "allowScripts": {
         "@parcel/watcher@2.5.1": true
-    },
-    "dependencies": {
-        "@earendil-works/pi-coding-agent": "^0.87.1"
     }
 }

@@ -13,21 +13,6 @@
     pkgs.git-lfs
     pkgs.github-cli
 
-    # Fast static site generator
-    pkgs.hugo
-
-    # Standalone Tailwind CSS CLI
-    pkgs.tailwindcss
-
-    # Languages for Pi and the local AI model to use.
-    pkgs.go
-
-    # Allow downloads from the web.
-    pkgs.curl
-
-    # Provide bubblewrap if you plan to use Linux sandboxing features
-    pkgs.bubblewrap
-
     # Install the Nixos unstable version of Pi Harness.
     pkgs.pi-coding-agent
 
@@ -36,6 +21,21 @@
 
     # Playwright will allow us to iterate on the web design.
     #pkgs.playwrightMcp
+
+    # Languages for Pi and the local AI model to use.
+    pkgs.go
+
+    # Allow downloads from the web.
+    pkgs.curl
+
+    # Fast static site generator
+    pkgs.hugo
+
+    # Standalone Tailwind CSS CLI
+    pkgs.tailwindcss
+
+    # Provide bubblewrap if you plan to use Linux sandboxing features
+    pkgs.bubblewrap
   ];
 
   # 3. Environment Variables (Add the Wayland passthrough here)

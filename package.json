@@ -12,7 +12,7 @@
         "build": "pnpm run build:css && pnpm run build:hugo",
         "test:css": "tailwindcss -i themes/be-best/assets/css/main.css -o assets/css/main.css",
         "test:hugo": "hugo build --gc --cleanDestinationDir",
-        "test": "pnpm run test:css && pnpm run serve:hugo",
+        "test": "pnpm run test:css && pnpm run test:hugo",
         "prepare": "husky",
         "format": "prettier --write \"**/*.{js,ts,json,css,md,html,yaml}\""
     },

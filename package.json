@@ -4,14 +4,15 @@
     "description": "A blog for a human.",
     "author": "Ivan Hawkes",
     "scripts": {
-        "dev:css": "tailwindcss -i themes/be-best/assets/css/main.css -o assets/css/main.css --watch",
-        "dev:hugo": "hugo server -D -F --gc --cleanDestinationDir",
+        "css": "tailwindcss -i themes/be-best/assets/css/main.css -o assets/css/main.css",
+        "css-watch": "tailwindcss -i themes/be-best/assets/css/main.css -o assets/css/main.css --watch",
+        "serve": "pnpm run css && hugo server -D -F --gc --cleanDestinationDir",
         "build:css": "tailwindcss -i themes/be-best/assets/css/main.css -o assets/css/main.css --minify",
         "build:hugo": "hugo build --gc --minify --cleanDestinationDir",
         "build": "pnpm run build:css && pnpm run build:hugo",
         "test:css": "tailwindcss -i themes/be-best/assets/css/main.css -o assets/css/main.css",
         "test:hugo": "hugo build --gc --cleanDestinationDir",
-        "test": "pnpm run test:css && pnpm run test:hugo",
+        "test": "pnpm run test:css && pnpm run serve:hugo",
         "prepare": "husky",
         "format": "prettier --write \"**/*.{js,ts,json,css,md,html,yaml}\""
     },
@@ -64,7 +65,7 @@
         "prettier": "3.9.9",
         "prettier-plugin-go-template": "^0.0.15",
         "prettier-plugin-tailwindcss": "^0.8.1",
-        "stylelint": "^17.16.0",
+        "stylelint": "^17.15.0",
         "stylelint-config-standard": "^40.0.0",
         "stylelint-config-tailwindcss": "^1.0.1",
         "tailwindcss": "^4.3.3"

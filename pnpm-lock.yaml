@@ -30,7 +30,7 @@ importers:
         specifier: ^0.8.1
         version: 0.8.1(prettier@3.9.9)
       stylelint:
-        specifier: ^17.16.0
+        specifier: ^17.15.0
         version: 17.16.0(supports-color@10.2.2)
       stylelint-config-standard:
         specifier: ^40.0.0

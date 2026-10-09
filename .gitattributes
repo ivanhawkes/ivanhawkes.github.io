@@ -1,3 +1,10 @@
+# Force all text files to use LF line endings
+* text=auto eol=lf
+
+# Keep Windows-specific files as CRLF if necessary
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
 *.ico filter=lfs diff=lfs merge=lfs -text
 *.jpg filter=lfs diff=lfs merge=lfs -text
 *.kra filter=lfs diff=lfs merge=lfs -text

@@ -25,6 +25,8 @@ tasks.
 the front matter must conform to. Validate every kanban card against that
 specification and inform me of any deviations.
 
+{{< print-code file="kanban-card-front-matter.yaml" >}}
+
 The fields will be sorted into the following order:
 
 - kind

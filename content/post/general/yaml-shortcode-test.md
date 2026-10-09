@@ -5,4 +5,4 @@ type: post
 draft: true
 ---
 
-{{< yaml name="kanban-card-front-matter" >}}
+{{< print-code file="kanban-card-front-matter.yaml" >}}

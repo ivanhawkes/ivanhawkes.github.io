@@ -67,8 +67,10 @@ build:
 # Control the security when HUGO is running.
 security:
   allowContent:
-    - '^text/html$'
     - '^text/markdown$'
+    - '^text/html$'
+    - '^text/yaml$'
+    - '^text/json$'
   exec:
     allow:
       - ^node$

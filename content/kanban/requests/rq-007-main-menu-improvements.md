@@ -1,5 +1,4 @@
 ---
-kind: kanban
 title: 'Improve Main Menu'
 description: 'Improvements to the main menu.'
 date: '2026-05-01'

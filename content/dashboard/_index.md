@@ -1,5 +1,5 @@
 ---
-kind: post
+layout: post
 title: Dashboard
 author: Ivan Hawkes
 date: '2026-04-27'

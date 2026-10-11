@@ -12,7 +12,7 @@ tags:
     - Fried
     - Pork
 title: Sweet and Sour Pork
-kind: recipe
+layout: recipe
 ---
 
 This version of the dish is similar to one from a take-away place, though it is

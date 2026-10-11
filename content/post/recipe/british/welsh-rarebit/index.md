@@ -15,7 +15,7 @@ tags:
     - Cheese
     - Welsh
 title: Welsh rarebit
-kind: recipe
+layout: recipe
 ---
 
 This classic Welsh rarebit recipe combines the richness of melted cheddar cheese

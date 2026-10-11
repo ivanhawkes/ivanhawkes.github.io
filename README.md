@@ -100,9 +100,6 @@ pnpm stylelint "**/*.css"
 # hence the extra path 'admin'. Feel free to move it afterwards.
 hugo new content dashboard/admin
 
-# WARNING: the generated _index.md contains a duplicate `kind:` key that
-# breaks the build. Delete the stray `kind: ` line before building.
-
 # Add a fresh Kanban card, then fill out its front matter. The --kind flag
 # selects the archetype from themes/be-best/archetypes/; without it Hugo
 # falls back to the default template and you get a plain draft, not a card.

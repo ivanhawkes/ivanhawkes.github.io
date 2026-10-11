@@ -13,7 +13,7 @@ tags:
     - No-Bake
     - Walnut
 title: Hedgehog Slice
-kind: recipe
+layout: recipe
 ---
 
 This is a biscuit base chocolate recipe that is fast and easy to make. It keeps

@@ -14,7 +14,7 @@ tags:
     - Soup
     - Vietnamese
 title: Pho
-kind: recipe
+layout: recipe
 ---
 
 The famous beef soup dish from Vietnam.

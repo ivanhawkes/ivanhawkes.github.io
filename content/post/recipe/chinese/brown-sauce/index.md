@@ -12,7 +12,7 @@ tags:
     - Sauce
     - Stir Fry
 title: Chinese Brown Sauce
-kind: recipe
+layout: recipe
 ---
 
 A sauce rich with umami flavours which is great for stir frys.

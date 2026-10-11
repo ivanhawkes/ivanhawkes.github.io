@@ -12,7 +12,7 @@ tags:
     - Chicken
     - Stock
 title: Chicken Stock
-kind: recipe
+layout: recipe
 ---
 
 Chicken stock made from necks, wings, backs and drumsticks. This will make a

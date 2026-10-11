@@ -1,5 +1,4 @@
 ---
-kind: kanban
 title: 'Quick Wins'
 description: 'A list of simple fast tasks.'
 date: '2026-04-29'

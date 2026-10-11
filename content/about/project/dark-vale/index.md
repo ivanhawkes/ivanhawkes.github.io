@@ -1,5 +1,5 @@
 ---
-kind: project
+type: project
 title: Dark Vale
 author: Ivan Hawkes
 date: '2018-12-16'

@@ -3,7 +3,7 @@ author: Ivan Hawkes
 date: '2026-10-06'
 description: A record of each decision made for this project.
 title: Decision Record
-kind: specification
+layout: specification
 ---
 
 # Decision Record

@@ -11,7 +11,7 @@ tags:
     - American
     - Cheese
 title: American Cheese
-kind: recipe
+layout: recipe
 ---
 
 An American cheese product that melts beautifully on hamburgers. Perfect for

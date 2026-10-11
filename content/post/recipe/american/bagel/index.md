@@ -11,7 +11,7 @@ tags:
     - American
     - Bread
 title: Bagel
-kind: recipe
+layout: recipe
 ---
 
 Simple bagels done right—it takes a bit of effort to make them the first time,

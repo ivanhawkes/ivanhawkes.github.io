@@ -13,7 +13,7 @@ tags:
     - Ramen
     - Stock
 title: Tonkotsu Stock
-kind: recipe
+layout: recipe
 ---
 
 Tonkotsu means "pork bone-broth" in Japanese. It is a rich, unctuous dish that

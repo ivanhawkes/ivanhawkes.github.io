@@ -15,7 +15,7 @@ tags:
     - Vegetarian
     - Vegan
 title: Felafel
-kind: recipe
+layout: recipe
 ---
 
 This middle eastern dish has many variations. The deep fried balls are crispy

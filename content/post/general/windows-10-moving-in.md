@@ -8,7 +8,7 @@ tags:
     - Windows 10
     - Installation
 title: 'Windows 10 - Moving In'
-kind: post
+layout: post
 ---
 
 Moving into a fresh Windows 10 installation. A short list of useful software I

@@ -12,7 +12,7 @@ tags:
     - Breakfast
     - Eggs
 title: Scrambled Eggs
-kind: recipe
+layout: recipe
 ---
 
 Lovely, soft, buttery scrambled eggs.

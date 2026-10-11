@@ -1,5 +1,4 @@
 ---
-kind: kanban
 title: 'Hamburger Menu'
 description: 'Add a hamburger menu'
 date: '2026-05-05'

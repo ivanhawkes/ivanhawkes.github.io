@@ -12,7 +12,7 @@ tags:
     - Sauce
     - Black Bean
 title: Black Bean Sauce
-kind: recipe
+layout: recipe
 ---
 
 A salty sauce with a large umami kick.

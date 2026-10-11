@@ -3,7 +3,7 @@ author: Ivan Hawkes
 date: '2026-04-25'
 description: AI Recipe Translation
 title: AI Recipe Translation
-kind: post
+layout: post
 ---
 
 A prompt that can be given to an LLM to quickly translate a recipe into a form
@@ -81,7 +81,7 @@ tags:
     - Bread
     - Loaf
 title: Pullman Pain De Mie
-kind: recipe
+layout: recipe
 ---
 
 It will at a minimum include:

@@ -13,7 +13,7 @@ tags:
     - Dessert
     - Pastry
 title: Cinnamon Scrolls
-kind: recipe
+layout: recipe
 ---
 
 Sweet, doughnut like, cinnamon scrolls with a drizzle of cream cheese icing.

@@ -17,7 +17,7 @@ tags:
     - Broccoli
     - Salad
 title: Broccoli Bacon Salad
-kind: recipe
+layout: recipe
 ---
 
 Broccoli adds brightness and crunch, while the bacon adds saltiness and umami to

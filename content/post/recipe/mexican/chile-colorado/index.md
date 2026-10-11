@@ -16,7 +16,7 @@ tags:
     - Sauce
     - Beef
 title: Chile Colorado
-kind: recipe
+layout: recipe
 ---
 
 Chile Colorado is a classic of Mexican and Tex-Mex cooking, and this recipe

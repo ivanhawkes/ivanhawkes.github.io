@@ -10,7 +10,7 @@ tags:
     - Chocolate
     - Cookie
 title: Chocolate Chip Cookie
-kind: recipe
+layout: recipe
 ---
 
 A classic, chewy, Amercian style chocolate chip cookie.

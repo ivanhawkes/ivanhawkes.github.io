@@ -11,7 +11,7 @@ tags:
     - French
     - Dressing
 title: Vinaigrette Salad Dressing
-kind: recipe
+layout: recipe
 ---
 
 A simple and traditional French salad dressing.

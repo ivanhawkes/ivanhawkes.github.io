@@ -14,7 +14,7 @@ tags:
     - Spicy
     - Thai
 title: Tom Yum Soup
-kind: recipe
+layout: recipe
 ---
 
 Tom Yum Goong soup is one of the most well known dishes in Thai cuisine, and in

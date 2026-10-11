@@ -14,7 +14,7 @@ tags:
     - Vegetarian
     - Vegan
 title: Hummus
-kind: recipe
+layout: recipe
 ---
 
 A middle eastern dish which is smooth, creamy and mildly tasty. Good for serving

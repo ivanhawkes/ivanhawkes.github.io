@@ -1,5 +1,4 @@
 ---
-kind: kanban
 title: 'Improve Overall Look'
 description: 'Improvements to the look and feel.'
 date: '2026-05-04'

@@ -1,15 +1,15 @@
 kanban-card:
   type: object
   required:
-    - kind
+    - layout
     - title
     - description
     - date
     - author
     - params
   properties:
-    kind:
-      $ref: '#/components/schemas/kind'
+    layout:
+      $ref: '#/components/schemas/layout'
     title:
       $ref: '#/components/schemas/title'
     description:
@@ -24,7 +24,7 @@ kanban-card:
       $ref: '#/components/schemas/params'
 components:
   schemas:
-    kind:
+    layout:
       type: string
       maxLength: 40
     title:

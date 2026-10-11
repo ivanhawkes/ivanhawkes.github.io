@@ -12,7 +12,7 @@ tags:
     - Paste
     - Thai
 title: Massaman Curry Paste
-kind: recipe
+layout: recipe
 ---
 
 A classic Thai curry.

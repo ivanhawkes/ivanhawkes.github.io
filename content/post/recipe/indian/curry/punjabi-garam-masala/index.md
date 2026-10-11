@@ -13,7 +13,7 @@ tags:
     - Punjabi
     - Spices
 title: Punjabi Garam Masala
-kind: recipe
+layout: recipe
 ---
 
 Punjabi Garam Masala is an Indian spice blend that adds deep aromatic flavours

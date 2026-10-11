@@ -13,7 +13,7 @@ tags:
     - Lamb
     - Spicy
 title: Lamb Rogahn Josh
-kind: recipe
+layout: recipe
 ---
 
 A wonderfully hot and spicy dish from Kashmir.

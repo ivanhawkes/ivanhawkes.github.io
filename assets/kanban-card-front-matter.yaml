@@ -8,8 +8,6 @@ kanban-card:
     - author
     - params
   properties:
-    layout:
-      $ref: '#/components/schemas/layout'
     title:
       $ref: '#/components/schemas/title'
     description:
@@ -24,9 +22,6 @@ kanban-card:
       $ref: '#/components/schemas/params'
 components:
   schemas:
-    layout:
-      type: string
-      maxLength: 40
     title:
       type: string
       maxLength: 40

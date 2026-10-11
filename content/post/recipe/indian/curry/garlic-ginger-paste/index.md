@@ -13,7 +13,7 @@ tags:
     - Indian
     - Paste
 title: Garlic and Ginger Paste
-layout: recipe
+type: recipe
 ---
 
 A simple paste designed to save you time when preparing Indian dishes.

@@ -12,7 +12,7 @@ tags:
     - Coating
     - Deep Fry
 title: Light Batter
-layout: recipe
+type: recipe
 ---
 
 A simple and light batter; suitable for fish and chicken.

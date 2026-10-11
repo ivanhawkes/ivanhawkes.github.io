@@ -12,7 +12,7 @@ tags:
     - Chicken
     - Curry
 title: Chicken Tikka Masala
-layout: recipe
+type: recipe
 ---
 
 Britain's national dish. A curry that is mild enough for anyone to eat.

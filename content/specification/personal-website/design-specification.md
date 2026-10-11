@@ -3,7 +3,7 @@ author: Ivan Hawkes
 date: '2026-04-25'
 description: Design Specification
 title: Design Specification
-layout: specification
+type: specification
 ---
 
 # Design Specification

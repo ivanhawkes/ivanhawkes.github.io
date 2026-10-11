@@ -12,7 +12,7 @@ tags:
     - Vegan
     - Stock
 title: Vegetable Stock
-layout: recipe
+type: recipe
 ---
 
 A simple vegetable stock.

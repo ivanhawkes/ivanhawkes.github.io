@@ -13,7 +13,7 @@ tags:
     - Bread
     - Loaf
 title: Pullman Pain De Mie
-layout: recipe
+type: recipe
 ---
 
 An enriched French style of bread that is light, fluffy, perfect for sandwiches,

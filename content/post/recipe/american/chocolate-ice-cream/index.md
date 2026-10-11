@@ -12,7 +12,7 @@ tags:
     - Dessert
     - Ice Cream
 title: Chocolate Ice Cream
-layout: recipe
+type: recipe
 ---
 
 A thoroughly rich and creamy dessert that is certain to please.

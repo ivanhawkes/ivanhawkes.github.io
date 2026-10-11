@@ -13,7 +13,7 @@ tags:
     - Pork
     - Roast
 title: Char Siu Pork
-layout: recipe
+type: recipe
 ---
 
 The mouth watering Chinese pork dish that can be eaten on it's own or added to

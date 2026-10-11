@@ -12,7 +12,7 @@ tags:
     - Lemon
     - Shortbread
 title: Lemon Bars
-layout: recipe
+type: recipe
 ---
 
 A lemon custard atop a shortbread crust. Finely balanced between the sweetness

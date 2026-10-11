@@ -12,7 +12,7 @@ tags:
     - Ferment
     - Ginger
 title: Ginger Beer
-layout: recipe
+type: recipe
 ---
 
 A delightful, fizzy traditional ginger beer. This is a lacto ferment so the

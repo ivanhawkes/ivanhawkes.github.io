@@ -12,7 +12,7 @@ tags:
     - Salad
     - Tuna
 title: Nicoise Salad
-layout: recipe
+type: recipe
 ---
 
 A French salad with tuna, green beans, hard boiled eggs, tomatoes, onion,

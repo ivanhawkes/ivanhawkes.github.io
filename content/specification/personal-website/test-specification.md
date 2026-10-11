@@ -3,7 +3,7 @@ author: Ivan Hawkes
 date: '2026-04-25'
 description: Test Specification
 title: Test Specification
-layout: specification
+type: specification
 ---
 
 # Test Specification

@@ -14,7 +14,7 @@ tags:
     - Paste
     - Spicy
 title: Laksa Paste
-layout: recipe
+type: recipe
 ---
 
 Laksa paste is the key ingredient in a bowl of laksa.

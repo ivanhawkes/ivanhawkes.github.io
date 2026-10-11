@@ -14,7 +14,7 @@ tags:
     - Pasta
     - Pork
 title: Italian Meatballs in Sauce with Pasta
-layout: recipe
+type: recipe
 ---
 
 A classic meatball and pasta recipe.

@@ -12,7 +12,7 @@ tags:
     - Chicken
     - Curry
 title: Murghi Korma
-layout: recipe
+type: recipe
 ---
 
 A curry that is mild enough for anyone to eat.

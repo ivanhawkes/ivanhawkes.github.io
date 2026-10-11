@@ -19,7 +19,7 @@ tags:
     - Bread
     - Dessert
 title: Date and Walnut Loaf
-layout: recipe
+type: recipe
 ---
 
 This rich and moist date and walnut loaf combines the natural sweetness of dates

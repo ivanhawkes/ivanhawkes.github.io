@@ -13,7 +13,7 @@ tags:
     - Sauce
     - Steak
 title: Mushroom Sauce
-layout: recipe
+type: recipe
 ---
 
 A rich cream and butter sauce infused with earthy mushroom fragrence.

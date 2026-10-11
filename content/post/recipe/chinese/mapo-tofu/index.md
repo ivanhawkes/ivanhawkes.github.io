@@ -13,7 +13,7 @@ tags:
     - Spicy
     - Tofu
 title: Mapo Tofu
-layout: recipe
+type: recipe
 ---
 
 A classic Sichuan dish made with beef or pork, tofu and chillis.

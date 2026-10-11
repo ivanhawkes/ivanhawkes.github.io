@@ -12,7 +12,7 @@ tags:
     - Pork
     - Red Braise
 title: Red Braised Pork
-layout: recipe
+type: recipe
 ---
 
 This slow braised dish has tender pieces of pork covered with a glistening

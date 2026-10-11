@@ -81,7 +81,7 @@ tags:
     - Bread
     - Loaf
 title: Pullman Pain De Mie
-layout: recipe
+type: recipe
 ---
 
 It will at a minimum include:

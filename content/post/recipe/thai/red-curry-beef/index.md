@@ -14,7 +14,7 @@ tags:
     - Red
     - Thai
 title: Red Curry Beef
-layout: recipe
+type: recipe
 ---
 
 A Thai red curry using beef.

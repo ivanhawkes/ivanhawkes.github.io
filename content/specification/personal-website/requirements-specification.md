@@ -3,7 +3,7 @@ author: Ivan Hawkes
 date: '2026-04-25'
 description: Requirements Specification
 title: Requirements Specification
-layout: specification
+type: specification
 ---
 
 # Requirements Specification

@@ -14,7 +14,7 @@ tags:
     - Sauce
     - Steak
 title: Peppercorn Sauce
-layout: recipe
+type: recipe
 ---
 
 The classic Steak Au Poivre sauce. Rich, creamy and peppery.

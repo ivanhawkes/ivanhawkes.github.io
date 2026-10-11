@@ -17,7 +17,7 @@ tags:
     - Pork
     - Sweet And Sour
 title: Five Spice Sweet and Sour Pork
-layout: recipe
+type: recipe
 ---
 
 A Chinese, Cantonese-style takeaway dish from the Far East: cubes of pork neck

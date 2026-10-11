@@ -12,7 +12,7 @@ tags:
     - Chinese
     - Stir Fry
 title: Mongolian Beef
-layout: recipe
+type: recipe
 ---
 
 A classic stir fried beef dish - popular in Chinese restaurants.

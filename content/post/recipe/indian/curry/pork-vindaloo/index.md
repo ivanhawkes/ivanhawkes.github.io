@@ -14,7 +14,7 @@ tags:
     - Spicy
     - Vindaloo
 title: Pork Vindaloo
-layout: recipe
+type: recipe
 ---
 
 An authentic, spicy and hot vindaloo dish from the Goan community.

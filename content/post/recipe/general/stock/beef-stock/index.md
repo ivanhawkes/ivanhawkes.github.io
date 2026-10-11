@@ -11,7 +11,7 @@ tags:
     - Beef
     - Stock
 title: Beef Stock
-layout: recipe
+type: recipe
 ---
 
 A home made beef stock will give your dishes the depth of flavour required to

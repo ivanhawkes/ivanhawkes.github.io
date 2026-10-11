@@ -12,7 +12,7 @@ tags:
     - Indian
     - Spices
 title: Bin Bhuna Hua Garam Masala
-layout: recipe
+type: recipe
 ---
 
 An untoasted garam masala.

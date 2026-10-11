@@ -15,9 +15,9 @@ title: White Fuzz
 Mushrooms.
 
 I know they are packed full of goodness; and as I've aged I've found myself more
-ameniable to eating them...still, they are not a food I crave or even enjoy.
-That said, they are vital to switching away from a meat based diet (again).
-There's a lot of value in that.
+amenable to eating them...still, they are not a food I crave or even enjoy. That
+said, they are vital to switching away from a meat based diet (again). There's a
+lot of value in that.
 
 Mushrooms are expensive, relatively. I tend to rate the expense of food based
 mostly on the price / kg scale. Vegetables, beans, grains and staples sit right
@@ -45,7 +45,7 @@ grow this stuff at home.
 So what's in the jar?
 
 Well, it's nothing more than some very cheap rye grass seed (bought at a local
-horse food supplier) which I innoculated with yellow oyster mushroom spore (2
+horse food supplier) which I inoculated with yellow oyster mushroom spore (2
 grams). What you see is the result of simply waiting 2 weeks for the spore to do
 it's thing. The supplies of spore I bought will allow me to do this 10 more
 times and cost only $50. I can also just propagate the spore myself for free.
@@ -53,7 +53,7 @@ times and cost only $50. I can also just propagate the spore myself for free.
 Oh wait...where's the mushrooms?
 
 I'm glad you asked. There won't be any of those for a few more weeks. I need to
-pasturize some sugarcane mulch, innoculate it with the grain spore (shown in the
+pasteurise some sugarcane mulch, inoculate it with the grain spore (shown in the
 jars) and wait till it sprouts "fruiting bodies" - or what we call mushrooms.
 
 In a few weeks, instead of 1L jars of grain filled with spores and their network
@@ -69,7 +69,7 @@ The big secret here is this:
 - most of the cost of the market is simply middle men and the time it takes to
   store your product.
 
-If you are willing to go back in time a little, become a home-steader, you can
+If you are willing to go back in time a little, become a homesteader, you can
 save a huge amount of money, eat vastly better food, and help heal our planet.
 Your mushrooms, pickles, ferments, etc will come from local products, really
 really local products.

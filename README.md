@@ -101,7 +101,7 @@ pnpm stylelint "**/*.css"
 hugo new content dashboard/admin
 
 # WARNING: the generated _index.md contains a duplicate `kind:` key that
-# breaks the build. Delete the stray `kind: ""` line before building.
+# breaks the build. Delete the stray `kind: ` line before building.
 
 # Add a fresh Kanban card, then fill out its front matter. The --kind flag
 # selects the archetype from themes/be-best/archetypes/; without it Hugo

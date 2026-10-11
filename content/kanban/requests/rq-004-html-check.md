@@ -1,5 +1,5 @@
 ---
-kind: 'kanban'
+kind: kanban
 title: 'HTML Check'
 description: 'Validate the generated HTML'
 date: '2026-04-30'

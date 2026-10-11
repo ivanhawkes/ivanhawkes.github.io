@@ -1,32 +1,36 @@
 ---
 author: Ivan Hawkes
 date: '2026-04-25'
-description: AI Recipe Translation Context
-title: AI Recipe Translation Context
-kind: specification
-draft: true
+description: AI Recipe Translation
+title: AI Recipe Translation
+kind: post
 ---
 
+A prompt that can be given to an LLM to quickly translate a recipe into a form
+that can be used in this blog.
+
+<!--more-->
+
+Paste the following text into the LLM prompt window:
+
+```
 I want you to translate a recipe into another document format for me. Place the
-results of the translation into two files.
+results of the translation into two files. The files will be saved to a folder in this project `/content/post/recipe/{cuisine}/{title slug}` which you will create.
 
-# Ingredients
+The first file is formatted with correct YAML syntax and is called `ingredients.yaml`. An example of the structure of the file is provided below:
 
-The first file is formatted with correct YAML syntax and is called
-"ingredients.yaml". An example of the structure of the file is provided in the
-block quote below.
-
-```
 ingredient-list:
-  - dish: Ingredients
+  - dish: Pullman Pain De Mie
     ingredients:
-      - quantity: "400"
-        measure: "g"
-        ingredient: "garlic"
-      - quantity: "400"
-        measure: "g"
-        ingredient: "ginger"
-```
+      - quantity: '562'
+        measure: 'g'
+        ingredient: 'strong white flour'
+      - quantity: '276'
+        measure: 'ml'
+        ingredient: 'milk (warm)'
+      - quantity: '2'
+        measure: 'large'
+        ingredient: 'eggs (100g)'
 
 There is one list 'ingredient-list' which contains multiple dishes 'dish' each
 of which has a list of ingredients 'ingredients'.
@@ -60,23 +64,25 @@ The second file is formatted as markdown and is called "index.md". It will be
 used by the HUGO static web site generator as input content to be transformed
 into a static HTML page.
 
-The front matter should be in YAML format. An example is provided in block
-quotes below.
+The front matter should be in YAML format. An example is provided below:
 
-```
+---
 author: Ivan Hawkes
 categories:
-  - Recipe
+    - Recipe
+cook-time: PT40M
+cuisine: French
 date: '2025-10-29'
 imagecaption: A loaf of pain de mie baked in a pullman loaf pan.
-portions: 4
+portions: 20
+prep-time: PT15M
 tags:
-  - French
-  - Bread
-  - Loaf
+    - French
+    - Bread
+    - Loaf
 title: Pullman Pain De Mie
 kind: recipe
-```
+---
 
 It will at a minimum include:
 
@@ -95,13 +101,9 @@ The recipe begins with a section of prose that describes the recipe. It should
 include it's region and an indication of how it might taste. That should be
 followed by this text block (make sure to include the all of the whitespace):
 
-```
-
 <!--more-->
 
 ## Directions
-
-```
 
 The recipe is then described using a bullet point for each step in the recipe.
 You may rewrite the directions to improve clarity.
@@ -132,4 +134,7 @@ Strictly adhere to the following formatting and validation rules:
 Output ONLY the complete script block. Do not include introductory text,
 conversational fluff, or post-code explanations.
 
-[PASTE YOUR RAW RECIPE TEXT HERE]
+** The source recipe text is given below **
+
+{RAW RECIPE TEXT}
+```

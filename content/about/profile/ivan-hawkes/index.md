@@ -1,4 +1,6 @@
 ---
+type: profile
+profile: ivan-hawkes
 author: Ivan Hawkes
 date: '2018-10-05'
 description: A profile for Ivan Hawkes

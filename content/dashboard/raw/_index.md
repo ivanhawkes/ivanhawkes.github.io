@@ -1,10 +1,10 @@
 ---
-title: Bare HTML
+title: Raw HTML
 date: '2026-04-23'
-description: Bare HTML pages.
+description: Raw HTML pages.
 menus:
     development:
-        name: Bare
+        name: Raw HTML
         params:
             icon:
                 <svg xmlns="http://www.w3.org/2000/svg"  width="24px" viewBox="0

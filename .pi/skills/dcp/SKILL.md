@@ -10,14 +10,14 @@ repository.
 
 # Procedure
 
-1. **Diff.** Show what will be committed. Use a TUI-friendly format: no pager,
-   no ANSI colors, a per-file stat summary, and a compact full diff with minimal
-   context:
+1. **Diff.** Show what will be committed. Use a TUI-friendly format: no pager, a
+   per-file stat summary, and a compact full diff with minimal context rendered
+   through `delta` for colourful, syntax-highlighted output:
 
     ```bash
     git status --porcelain
-    git --no-pager diff HEAD --color=never --stat
-    git --no-pager diff HEAD --color=never -U1
+    git --no-pager diff HEAD --stat
+    git --no-pager diff HEAD -U1 | delta
     ```
 
     `diff HEAD` covers both staged and unstaged changes against the last commit.

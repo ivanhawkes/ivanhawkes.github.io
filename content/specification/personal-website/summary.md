@@ -20,56 +20,60 @@ status of this project.
 
 ### Meta
 
-{{< kanban-list-short prefix=mt  >}}
+{{< kanban-list-short prefix=mt >}}
 
 ### Ideation
 
-{{< kanban-list-short prefix=id  >}}
+{{< kanban-list-short prefix=id >}}
+
+### Decision Record
+
+TODO: Write a shortcode to present this information somehow.
 
 ### Specifications
 
-{{< kanban-list-short prefix=sp  >}}
+{{< kanban-list-short prefix=sp >}}
 
 ### User Stories
 
-{{< kanban-list-short prefix=us  >}}
+{{< kanban-list-short prefix=us >}}
 
 ### Epics
 
-{{< kanban-list-short prefix=ep  >}}
+{{< kanban-list-short prefix=ep >}}
 
 ### Features
 
-{{< kanban-list-short prefix=ft  >}}
+{{< kanban-list-short prefix=ft >}}
 
 ### Requests
 
-{{< kanban-list-short prefix=rq  >}}
+{{< kanban-list-short prefix=rq >}}
 
 ### Bugs
 
-{{< kanban-list-short prefix=bg  >}}
+{{< kanban-list-short prefix=bg >}}
 
 ### Scaffold
 
-{{< kanban-list-short prefix=sf  >}}
+{{< kanban-list-short prefix=sf >}}
 
 ### Testing
 
-{{< kanban-list-short prefix=ts  >}}
+{{< kanban-list-short prefix=ts >}}
 
 ### Acceptance
 
-{{< kanban-list-short prefix=ac  >}}
+{{< kanban-list-short prefix=ac >}}
 
 ### Deliverables
 
-{{< kanban-list-short prefix=dl  >}}
+{{< kanban-list-short prefix=dl >}}
 
 ### Deployment
 
-{{< kanban-list-short prefix=dp  >}}
+{{< kanban-list-short prefix=dp >}}
 
 ### Releases
 
-{{< kanban-list-short prefix=rl  >}}
+{{< kanban-list-short prefix=rl >}}

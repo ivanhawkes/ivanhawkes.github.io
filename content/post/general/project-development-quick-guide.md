@@ -10,7 +10,7 @@ tags:
     - Design
     - Specifications
 title: Project Development Quick Guide
-type: post
+layout: post
 ---
 
 # Project Development Quick Guide

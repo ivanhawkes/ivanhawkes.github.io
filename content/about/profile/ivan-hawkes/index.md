@@ -1,7 +1,10 @@
 ---
-profile: ivan-hawkes
-title: Ivan Hawkes
 type: profile
+profile: ivan-hawkes
+author: Ivan Hawkes
+date: '2018-10-05'
+description: A profile for Ivan Hawkes
+title: A profile for Ivan Hawkes
 ---
 
 I developed an interest in computers starting in the early 1980's leading me to

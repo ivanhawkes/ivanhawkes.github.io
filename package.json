@@ -3,12 +3,10 @@
     "version": "1.0.0",
     "description": "A blog for a human.",
     "author": "Ivan Hawkes",
-    "workspaces": [
-        "themes/**"
-    ],
     "scripts": {
-        "dev:css": "tailwindcss -i themes/be-best/assets/css/main.css -o assets/css/main.css --watch",
-        "dev:hugo": "hugo server -D -F --gc --cleanDestinationDir",
+        "css": "tailwindcss -i themes/be-best/assets/css/main.css -o assets/css/main.css",
+        "css-watch": "tailwindcss -i themes/be-best/assets/css/main.css -o assets/css/main.css --watch",
+        "serve": "pnpm run css && hugo server -D -F --gc --cleanDestinationDir",
         "build:css": "tailwindcss -i themes/be-best/assets/css/main.css -o assets/css/main.css --minify",
         "build:hugo": "hugo build --gc --minify --cleanDestinationDir",
         "build": "pnpm run build:css && pnpm run build:hugo",
@@ -77,8 +75,5 @@
     },
     "allowScripts": {
         "@parcel/watcher@2.5.1": true
-    },
-    "dependencies": {
-        "@earendil-works/pi-coding-agent": "^0.87.1"
     }
 }

@@ -13,7 +13,7 @@ in the content tree, queryable via shortcodes.
       programming).
     - `post/recipe/<cuisine>/` - recipes; each recipe directory has `index.md`
       plus an `ingredients.yaml` sidecar.
-    - `kanban/<kind>/` - Kanban cards. One folder per kind: acceptance, bugs,
+    - `kanban/<kind>/` - Kanban cards. One folder per layout: acceptance, bugs,
       deliverables, deployment, epics, features, ideation, meta, releases,
       requests, scaffold, specifications, testing, user-stories. A card's folder
       must match the kind it was created with.

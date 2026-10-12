@@ -1,20 +1,21 @@
 ---
-type: 'kanban'
 title: 'Improve Main Menu'
 description: 'Improvements to the main menu.'
 date: '2026-05-01'
+author: Ivan Hawkes
 lastmod:
-author: null
 params:
     sprint: null
     stage: done
     status: done
-    completed: null
-    due: null
     estimatedtime: 2
     actualtime: 4
+    completed: '2026-04-30'
+    dependencies: null
+    due: null
     percent: 100
     priority: 350
+    references: null
 ---
 
 Make some improvements to the main menu.

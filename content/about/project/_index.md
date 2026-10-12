@@ -1,5 +1,5 @@
 ---
-type: post
+layout: post
 title: Projects
 date: '2026-04-27'
 description: Project section.

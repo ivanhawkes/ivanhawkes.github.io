@@ -1,5 +1,5 @@
 ---
-type: post
+layout: post
 title: Posts
 author: Ivan Hawkes
 date: '2026-04-27'

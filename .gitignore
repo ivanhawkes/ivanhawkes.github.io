@@ -1,21 +1,5 @@
-# Node JS
-node_modules/
-
-# Visual Studio Code
-.vs/
-
-# HUGO
-public/
-resources/
-.hugo_build.lock
-hugo_stats.json
-
-# Krita
-*~
-
-# Nixos flakes
-.devenv/
-.direnv/
+# No secrets here.
+.env
 
 # Devenv
 .devenv*
@@ -25,9 +9,29 @@ devenv.local.yaml
 # direnv
 .direnv
 
+# Visual Studio Code
+.vs/
+
+# Jetbrains
+.idea/
+
 # pre-commit
 .pre-commit-config.yaml
-assets/jsconfig.json
 
 # This is an artifact of the CSS build and doesn't need to be kept in the repo.
 assets/css/main.css
+
+# What is this one for again?
+assets/jsconfig.json
+
+# Node JS
+node_modules/
+
+# HUGO
+public/
+resources/
+.hugo_build.lock
+hugo_stats.json
+
+# Krita
+*~

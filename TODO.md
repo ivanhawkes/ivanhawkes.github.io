@@ -20,15 +20,3 @@ A place where ideas come to die.
   that to .gitignore - in fact a whole .scratch folder can be used
 - a 'monthly' skill that can be run that can just check all the content, tighten
   it up, fix issues, etc
-- merge-squash skill
-    - write a skill that will perform a git merge --squash on the current branch
-      and commit it, then push the result
-    - allow the skill to rewrite the typical github squash merge summary of each
-      commit using markdown for an improved readability
-    - it's likely this means passing the commit message and overriding the
-      auto-generated one
-    - it should use `## <Commit Message>` as a header block for each commit.
-    - files that were changed should be noted in a bulleted list including if it
-      was 'deleted', 'created', 'updated'
-    - the diff output should be beautified using the selected diff improvement
-      tool e.g. an pnpm package that we install to make diffs great again

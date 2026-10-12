@@ -41,8 +41,7 @@ configure the websites. In this case, I only need to:
 
 #####
 
-{{< highlight bash >}}
-
+```bash
 # Update any out of date software.
 
 apt update && apt upgrade
@@ -79,5 +78,4 @@ service nginx reload
 # We're done, probably.
 
 exit
-
-{{< /highlight >}}
+```

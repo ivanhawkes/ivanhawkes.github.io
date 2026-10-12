@@ -67,8 +67,10 @@ build:
 # Control the security when HUGO is running.
 security:
   allowContent:
-    - '^text/html$'
     - '^text/markdown$'
+    - '^text/html$'
+    - '^text/yaml$'
+    - '^text/json$'
   exec:
     allow:
       - ^node$
@@ -78,6 +80,8 @@ security:
 module:
   mounts:
     - source: assets
+      target: assets
+    - source: data
       target: assets
     - disableWatch: true
       source: hugo_stats.json

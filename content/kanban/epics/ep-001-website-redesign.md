@@ -1,21 +1,20 @@
 ---
-type: kanban
 title: Personal website redesign
 description: Completely redesign my personal website.
 date: '2026-04-26'
-lastmod: null
 author: Ivan Hawkes
+lastmod: null
 params:
     sprint: sp-001
     stage: develop
     status: in-progress
-    completed: 20
-    due: null
     estimatedtime: 60
     actualtime: 60
+    completed: null
+    dependencies: null
+    due: null
     percent: 40
     priority: 350
-    dependencies: null
     references: null
 ---
 

@@ -11,8 +11,6 @@ title: Ideation
 type: specification
 ---
 
-# Ideas for the development of my blog site
-
 ## Purpose
 
 The purpose of this document is to state clearly the idea that will be further

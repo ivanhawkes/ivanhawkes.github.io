@@ -6,8 +6,6 @@ title: Test Specification
 type: specification
 ---
 
-# Test Specification
-
 The purpose of a testing specification is to define the approach, scope,
 scenarios, conditions, and acceptance criteria used to verify and validate that
 the solution meets its agreed requirements and specifications. It describes what

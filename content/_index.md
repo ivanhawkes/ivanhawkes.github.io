@@ -17,10 +17,6 @@ menus:
         weight: 50
 ---
 
-This is home.
+# Latest Posts
 
-<!--more-->
-
-# Big Home
-
-This is text on the home page.
+A sampling of the latests posts.

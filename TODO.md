@@ -2,6 +2,7 @@
 
 A place where ideas come to die.
 
+- [ ] Prep work for implementing a carousel again
 - add acceptance criteria for the generated code
     - every kind is represented
     - think of the fail conditions and document them

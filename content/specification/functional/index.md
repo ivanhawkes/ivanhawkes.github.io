@@ -6,8 +6,6 @@ title: Functional Specification
 type: specification
 ---
 
-# Functional Specification
-
 The purpose of a functional specification is to translate the requirements
 defined in the requirements specification into a detailed description of the
 solution’s expected functionality and behaviour, while aligning with the
@@ -154,8 +152,8 @@ improvements.
 
 ## Related Documents
 
-- [Project summary](/specification/personal-website/summary/)
-- [Requirements specification](/specification/personal-website/requirements-specification/)
-- [Technical specification](/specification/personal-website/technical-specification/)
-- [Decision record](/specification/personal-website/decision-record/)
-- [Ideation](/specification/personal-website/ideation/)
+- [Project summary](/specification/summary/)
+- [Requirements specification](/specification/requirements/)
+- [Technical specification](/specification/technical/)
+- [Decision record](/specification/decisions/)
+- [Ideation](/specification/ideation/)

@@ -6,8 +6,6 @@ title: Requirements Specification
 type: specification
 ---
 
-# Requirements Specification
-
 The purpose of a requirements specification is to define what the solution must
 achieve by documenting the business needs, objectives, stakeholder expectations,
 and required capabilities. It establishes the scope and boundaries of the

@@ -6,8 +6,6 @@ title: Decision Record
 type: specification
 ---
 
-# Decision Record
-
 A record of each of the important decisions that were made in the process of
 designing and implementing this project.
 

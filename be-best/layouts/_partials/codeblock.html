@@ -1,0 +1,102 @@
+{{/* prettier-ignore-start */}}
+{{/*
+Renders a highlighted code block using the given options and attributes.
+
+This partial is shared by the render-codeblock.html markup renderer and the
+yaml shortcode so that both produce identical output.
+
+@param {string} content The code to highlight.
+@param {string} lang The language to highlight as.
+@param {bool} [copy=true] Whether to display a copy-to-clipboard button.
+@param {string} [file] The file name to display above the rendered code.
+@param {bool} [details=false] Whether to wrap the highlighted code block within a details element.
+@param {string} [open=""] "open" if the details element should be initially open.
+@param {template.HTML} summary The content of the details summary element, already rendered from Markdown to HTML.
+@param {bool} [trim=true] Whether to trim leading and trailing whitespace from the content.
+@param {string} id A unique ID for the code block.
+@param {string} buttonId A unique ID for the copy button.
+@param {dict} [options] Options passed to transform.Highlight.
+
+@returns {template.HTML}
+*/}}
+{{/* prettier-ignore-end */}}
+{{- $copy := true }}
+{{- if collections.IsSet . "copy" }}
+  {{- if in (slice true "true" 1) .copy }}
+    {{- $copy = true }}
+  {{- else if in (slice false "false" 0) .copy }}
+    {{- $copy = false }}
+  {{- end }}
+{{- end }}
+
+{{- $details := false }}
+{{- if collections.IsSet . "details" }}
+  {{- if in (slice true "true" 1) .details }}
+    {{- $details = true }}
+  {{- else if in (slice false "false" 0) .details }}
+    {{- $details = false }}
+  {{- end }}
+{{- end }}
+
+{{- $open := "" }}
+{{- if collections.IsSet . "open" }}
+  {{- if in (slice true "true" 1) .open }}
+    {{- $open = "open" }}
+  {{- else if in (slice false "false" 0) .open }}
+    {{- $open = "" }}
+  {{- end }}
+{{- end }}
+
+{{- $trim := true }}
+{{- if collections.IsSet . "trim" }}
+  {{- if in (slice true "true" 1) .trim }}
+    {{- $trim = true }}
+  {{- else if in (slice false "false" 0) .trim }}
+    {{- $trim = false }}
+  {{- end }}
+{{- end }}
+
+{{- if $details }}
+  <details class="cursor-pointer" {{ $open }}>
+    <summary>{{ .summary }}</summary>
+  </details>
+{{- end }}
+
+{{/* Get the IDs supplied by the caller so that each code block on a page is unique. */}}
+{{ $codeblockId := .id }}
+{{ $buttonId := .buttonId }}
+
+
+<div
+  class="codeblock render-hook-codeblock not-prose bg-light dark:bg-dark relative container mt-6 mb-8 w-full border border-gray-200 font-mono sm:w-120 md:w-160 dark:border-gray-800">
+  {{- $fileSelectClass := "select-none" }}
+
+  {{- if $copy }}
+    {{- $fileSelectClass = "select-text" }}
+
+    <div class="flex h-10 w-full justify-between bg-gray-600 copy-button">
+      <svg xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 -960 960 960" width="1.5rem" fill="#FFFFFF"><path d="M320-213.33q-27 0-46.83-19.84Q253.33-253 253.33-280v-533.33q0-27 19.84-46.84Q293-880 320-880h413.33q27 0 46.84 19.83Q800-840.33 800-813.33V-280q0 27-19.83 46.83-19.84 19.84-46.84 19.84H320ZM186.67-80q-27 0-46.84-19.83Q120-119.67 120-146.67v-600h66.67v600h480V-80h-480Z"/></svg>
+      <p id="{{ $buttonId }}">Copy</p>
+
+      <div class="h-7 w-full">
+        {{/* SVG was here */}}
+      </div>
+    </div>
+  {{- end }}
+
+  {{- with .file }}
+    <div
+      class="san-serif {{ $fileSelectClass }} inline-block w-full bg-gray-300 py-3 pl-2 text-sm leading-none dark:bg-slate-700">
+      {{ . }}
+    </div>
+  {{- end }}
+
+  <div id="{{ $codeblockId }}" class="highlight w-full code">
+    {{- $content := .content }}
+
+    {{- if $trim }}
+      {{- $content = strings.TrimSpace .content }}
+    {{- end }}
+    {{- transform.Highlight $content .lang (.options | default dict) }}
+  </div>
+</div>

@@ -1,0 +1,11 @@
+# Node JS
+node_modules/
+
+# Visual Studio Code
+.vs/
+
+# Krita
+*~
+
+# Hugo folders
+public/

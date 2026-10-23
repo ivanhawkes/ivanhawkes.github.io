@@ -1,0 +1,16 @@
+{{ define "main" }}
+  {{ partial "page/content.html" . }}
+
+  {{/* Dashboard pages are scratch pages, so the listing links to them
+  instead of embedding their content in cards. */}}
+  <ul class="container space-y-2">
+    {{ range .Pages }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        {{ with .Description }}
+          <span class="text-sm">&mdash; {{ . }}</span>
+        {{ end }}
+      </li>
+    {{ end }}
+  </ul>
+{{ end }}

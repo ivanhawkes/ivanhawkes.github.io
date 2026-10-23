@@ -7,8 +7,8 @@ description:
 
 # Theme development
 
-The theme lives in `themes/be-best/` and is a git submodule (branch `features`).
-Its layout:
+The theme lives in `be-best/` and is a git submodule (branch `features`). Its
+layout:
 
 - `layouts/` - page and section templates; `baseof.html` is the root.
 - `layouts/_partials/` - reusable partials (cards, navigation, meta, kanban,
@@ -35,7 +35,7 @@ pnpm run build:css    # minified production build
 pnpm stylelint "**/*.css"
 ```
 
-The source of truth is `themes/be-best/assets/css/main.css`; edit only that.
+The source of truth is `be-best/assets/css/main.css`; edit only that.
 `assets/css/main.css` in the site root is generated build output and is
 **gitignored** - never edit it by hand and never stage it.
 
@@ -45,10 +45,9 @@ and `pnpm run serve` compiles once then starts `hugo server -D -F`. There are no
 
 ## Submodule commit flow
 
-1. Make theme changes in `themes/be-best/`.
-2. `cd themes/be-best && git add -A && git commit && git push origin features`
-3. In the parent repo, `git add themes/be-best && git commit` (updates the
-   pointer).
+1. Make theme changes in `be-best/`.
+2. `cd be-best && git add -A && git commit && git push origin features`
+3. In the parent repo, `git add be-best && git commit` (updates the pointer).
 4. Validate with `pnpm run test` in the parent repo.
 
 ## HUGO config touchpoints

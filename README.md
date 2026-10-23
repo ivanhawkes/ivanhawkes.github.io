@@ -110,7 +110,7 @@ no serial numbers.
 hugo new content dashboard/admin
 
 # Add a fresh Kanban card, then fill out its front matter. The --kind flag
-# selects the archetype from themes/be-best/archetypes/; without it Hugo
+# selects the archetype from be-best/archetypes/; without it Hugo
 # falls back to the default template and you get a plain draft, not a card.
 # For example:
 hugo new content kanban/01-to-do/p2-ac-test.md --kind acceptance

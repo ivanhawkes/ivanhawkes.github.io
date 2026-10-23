@@ -1,0 +1,9 @@
+<div class="prose w-full prose-neutral prose-custom dark:prose-invert">
+  {{ with .Title }}
+      <h1>{{ . }}</h1>  
+  {{ end }}
+
+  {{ with .Content }}
+      {{ . }}
+  {{ end }}
+</div>  

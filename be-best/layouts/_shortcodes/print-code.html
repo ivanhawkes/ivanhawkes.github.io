@@ -1,0 +1,52 @@
+{{/* prettier-ignore-start */}}
+{{/*
+Renders a data file as a highlighted code block, producing the same output as the
+render-codeblock.html markup renderer.
+
+@param {string} [file] A path to a file, relative to /data.
+@param {string} [lang] Override the highlight language (defaults to "yaml" from the file extension).
+@param {bool} [copy=true] Whether to display a copy-to-clipboard button.
+@param {bool} [details=false] Whether to wrap the highlighted code block within a details element.
+@param {bool} [open=false] Whether to initially display the content of the details element.
+@param {string} [summary=Details] The content of the details summary element rendered from Markdown to HTML.
+@param {bool} [trim=true] Whether to trim leading and trailing whitespace from the file contents.
+
+@returns {template.HTML}
+
+@example
+
+{{< yaml file="profile.yaml" details=true open=true summary="Profile data" >}}
+
+{{/* prettier-ignore-end */}}
+
+{{/* Remove leading/trailing whitespace/newlines from the path */}}
+{{- $file := .Get "file" -}}
+{{- $cleanFile := trim $file " \n\r" -}}
+{{- $filePath := printf "%s" $cleanFile -}}
+
+{{- if $filePath }}
+  {{- $res := resources.Get $filePath }}
+  {{- if $res }}
+    {{- $ext := strings.TrimPrefix "." (path.Ext $file) }}
+    {{- $lang := or (.Get "lang") $ext "yaml" }}
+    {{- $id := $file | urlquery -}}
+
+    {{- partial "codeblock.html" (dict
+      "content" $res.Content
+      "lang" $lang
+      "copy" (.Get "copy")
+      "file" $file
+      "details" (.Get "details")
+      "open" (.Get "open")
+      "summary" (or (.Get "summary") "Details" | .Page.RenderString)
+      "trim" (.Get "trim")
+      "id" (printf "codeblock-%s" $id)
+      "buttonId" (printf "codeblock-button-%s" $id)
+      "options" dict
+    ) }}
+  {{- else }}
+    <p class="text-red-600">print-code shortcode: could not read {{ $filePath }}</p>
+  {{- end }}
+{{- else }}
+  <p class="text-red-600">print-code shortcode: requires a file name (must be accessible from /assets folder)</p>
+{{- end }}

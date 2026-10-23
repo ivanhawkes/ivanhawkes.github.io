@@ -1,0 +1,29 @@
+{{/* Search the page's resources for an image named "featured.webp". If not found,
+  search the parent page's resources. If found, display the image with its
+  dimensions and an optional caption.
+*/}}
+
+{{ $found := false }}
+{{ $image := "" }}
+{{ $prefix := "featured.webp" }}
+
+{{ $image = .Page.Resources.GetMatch $prefix }}
+{{ if $image }}
+  {{ $found = true }}
+{{ else }}
+  {{ $image = .Parent.Page.Resources.GetMatch $prefix }}
+  {{ if $image }}
+    {{ $found = true }}
+  {{ end }}
+{{ end }}
+
+{{ if eq $found true }}
+  {{- $ctx := dict
+    "image" $image
+    "destination" $image.RelPermalink
+    "title" $image.Params.title
+    "alt" $image.Params.caption
+  }}
+
+  {{- partial "/images/image-variants.html" $ctx }}
+{{ end }}

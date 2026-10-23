@@ -1,0 +1,11 @@
+{{ define "main" }}
+  {{ partial "page/content.html" . }}
+
+  <div
+    class="container grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+    {{ range hugo.Data.profile.person }}
+      {{- partial "/images/featured-image" . -}}
+      {{- partial "/profiles/card.html" . -}}
+    {{ end }}
+  </div>
+{{ end }}

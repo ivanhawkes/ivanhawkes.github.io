@@ -1,0 +1,21 @@
+<div class="text-md flex flex-col items-center justify-center mt-4">
+  <ul>
+    <!-- Taxonomy - Categories. -->
+    {{ range $index, $value := .Params.categories }}
+      <li class="inline">
+        {{ if $index }}&ensp;&#9210;&ensp;{{ end }}
+        <a href="/categories/{{ . | urlize }}">{{- $value -}}</a>
+      </li>
+    {{ end }}
+  </ul>
+
+    <!-- Taxonomy - Tags. -->
+  <ul>
+    {{ range $index, $value := .Params.tags }}
+      <li class="inline">
+        {{ if $index }}&ensp;&#9210;&ensp;{{ end }}
+          <a href="/tags/{{ . | urlize }}">{{- $value -}}</a>
+      </li>
+    {{ end }}
+  </ul>
+</div>

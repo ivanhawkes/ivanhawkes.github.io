@@ -22,7 +22,7 @@ in the content tree, queryable via shortcodes.
       the card. Stage is the card's status: there is **no** `status` front
       matter field, so moving the file between stage folders is the status
       change. The board view is the `kanban` section rendered by
-      `themes/be-best/layouts/kanban/section.html`.
+      `be-best/layouts/kanban/section.html`.
     - `specification/personal-website/` - specification documents; can embed
       kanban cards with the `kanban-list-short` shortcode, which matches cards
       by the `p[0-9]-<prefix>-.*` filename pattern. Documents render "No
@@ -31,8 +31,8 @@ in the content tree, queryable via shortcodes.
       example of the shortcode, so leave those empty tables empty.
     - `dashboard/` - development scratch pages (`raw/all-html-elements.html` is
       the CSS test page, `layout: raw`).
-- `themes/be-best/` - the site theme. This is a **git submodule** (branch
-  `features`). Commit changes inside the submodule and push to
+- `be-best/` - the site theme. This is a **git submodule** (branch `features`).
+  Commit changes inside the submodule and push to
   `git@github.com:ivanhawkes/be-best.git` _before_ committing the parent repo's
   submodule pointer.
 - `config/_default/` - Hugo site config (`hugo.yaml`) and params.
@@ -71,10 +71,10 @@ covers only how the program is written.
 
 - Front matter is YAML (`MetaDataFormat: yaml`).
 - New content is created with Hugo archetypes. `--kind <name>` selects
-  `themes/be-best/archetypes/<name>.md`; Hugo does not derive the folder from
-  the kind, so give the full target path. Omit `--kind` and you get the default
-  draft, not a card. Archetypes title-case the filename into `title`, so rewrite
-  it by hand.
+  `be-best/archetypes/<name>.md`; Hugo does not derive the folder from the kind,
+  so give the full target path. Omit `--kind` and you get the default draft, not
+  a card. Archetypes title-case the filename into `title`, so rewrite it by
+  hand.
 - Recipe front matter: `type: recipe`, `cuisine`, `categories`, `tags`, `date`,
   `author`, `portions`, `prep-time`, `cook-time` (ISO 8601 duration, e.g.
   `PT5M`). The `ingredients.yaml` sidecar holds an `ingredient-list`.

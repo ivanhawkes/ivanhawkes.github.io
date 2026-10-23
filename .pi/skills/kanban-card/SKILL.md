@@ -70,5 +70,4 @@ Fields_ section outranks it.
   file ("P2 Us My Card" becomes "My Card"), mirror it in the body heading, and
   reduce the generated timestamp to a plain ISO date.
 - Keep the per-kind table in `cmd/kan/main.go` in sync with the table in the
-  technical specification, and with the archetypes in
-  `themes/be-best/archetypes/`.
+  technical specification, and with the archetypes in `be-best/archetypes/`.

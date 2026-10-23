@@ -1,0 +1,32 @@
+{{/*  TODO: The div causes layout issues. Is it needed for the tables?  */}}
+{{/*  <div class="overflow-x-auto">  */}}
+  <table
+    {{- range $k, $v := .Attributes }}
+      {{- if $v }}
+        {{- printf " %s=%q" $k $v | safeHTMLAttr }}
+      {{- end }}
+    {{- end }}>
+    <thead>
+      {{- range .THead }}
+        <tr>
+          {{- range . }}
+            <th>
+              {{- .Text -}}
+            </th>
+          {{- end }}
+        </tr>
+      {{- end }}
+    </thead>
+    <tbody>
+      {{- range .TBody }}
+        <tr class="odd:bg-gray-100 even:bg-gray-200">
+          {{- range . }}
+            <td{{ with .Alignment }} class="!text-{{ . }}"{{ end }}>
+              {{- .Text -}}
+            </td>
+          {{- end }}
+        </tr>
+      {{- end }}
+    </tbody>
+  </table>
+{{/*  </div>  */}}

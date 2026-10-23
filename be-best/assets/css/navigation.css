@@ -1,0 +1,16 @@
+/* Size and colour the SVG icons */
+.navigation svg {
+    background-color: transparent;
+    fill: var(--primary-foreground);
+    height: 1.75rem;
+    width: 1.75rem;
+    margin: 0.25rem;
+}
+
+/* This puts a little dark circle around the SVG icons */
+.navigation button {
+    background-color: var(--color-primary-800);
+    border-radius: 50%;
+    cursor: pointer;
+    margin: 0.25rem;
+}

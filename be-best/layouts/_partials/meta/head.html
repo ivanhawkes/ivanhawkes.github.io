@@ -1,0 +1,55 @@
+﻿<head>
+  {{- partial "/meta/meta.html" . -}}
+
+  {{ with (templates.Defer (dict "key" "global")) }}
+    {{- partial "/meta/css.html" . -}}
+  {{ end }}
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="/img/apple-icon.png">
+  <link rel="icon" href="/img/favicon.png">
+
+  <!-- Font Awesome -->
+  <script
+    src="https://kit.fontawesome.com/68d3da0283.js"
+    crossorigin="anonymous">
+  </script>
+
+  <!-- Site title -->
+  <title>{{- .Site.Title -}}</title>
+
+  <!-- RSS Feed -->
+  {{ with .OutputFormats.Get "rss" }}
+    {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
+  {{ end }}
+
+  {{/* TypeScript and JavaScript
+  
+  NOTES: Read up on the format option. See if esm is right for our use case.
+  "format" "esm", "iife", "cjs"
+  
+  */}}
+  {{ with resources.Get "js/index.ts" }}
+    {{ $opts := dict
+      "minify" (cond hugo.IsDevelopment false true)
+      "sourceMap" (cond hugo.IsDevelopment "linked" "none")
+      "format" "iife"
+    }}
+    {{ with . | js.Build $opts }}
+      {{ if hugo.IsDevelopment }}
+        <script defer src="{{ .RelPermalink }}"></script>
+      {{ else }}
+        {{ with . | fingerprint }}
+          <script
+            defer
+            src="{{ .RelPermalink }}"
+            integrity="{{ .Data.Integrity }}"
+            crossorigin="anonymous"></script>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{/*  Image processing  */}}
+  {{- partial "/images/image-process.html" . -}}
+</head>

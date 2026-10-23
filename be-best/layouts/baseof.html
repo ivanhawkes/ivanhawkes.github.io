@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}">
+  {{- partial "/meta/head.html" . -}}
+
+
+  <body>
+    {{- partial "/page/header.html" . -}}
+
+
+    <main>
+      {{/*  <div class="container">
+        <h2>Hello World</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis
+          porro iure quaerat aliquam! Optio dolorum in eum provident, facilis
+        </p>
+      </div>
+      <div class="container">
+        <h2>Example Heading</h2>
+        <p>
+          harum hic nam magnam deserunt illum quis dolorum eos ipsum ut natus
+          aspernatur ducimus eos magnam quidem officiis. Laboriosam nemo
+          explicabo delectus, et quos vero cum?
+        </p>
+      </div>
+      <div class="container">
+        <h2>Lorem Ipsum</h2>
+        <p>
+          voluptatum dicta cumque exercitationem soluta beatae porro distinctio,
+          expedita soluta tempore molestiae fuga adipisci rem esse voluptates
+          Officia quos dolorum repellat deserunt voluptas praesentium.
+        </p>
+      </div>  */}}
+
+      {{- block "main" . }}{{- end }}
+    </main>
+
+    {{- partial "/page/footer.html" . -}}
+  </body>
+</html>

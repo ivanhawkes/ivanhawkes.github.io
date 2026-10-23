@@ -1,0 +1,9 @@
+{{ define "main" }}
+  {{- partial "/images/featured-image" . -}}
+
+  {{- partial "/byline/byline.html" . -}}
+
+  {{ partial "page/content.html" . }}
+
+  {{- partial "/navigation/related.html" . -}}
+{{ end }}

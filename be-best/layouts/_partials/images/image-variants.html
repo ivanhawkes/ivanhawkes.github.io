@@ -1,0 +1,47 @@
+{{- $src := .destination -}}
+{{- $image := .image -}}
+{{- $title := .title -}}
+{{- $alt := .alt -}}
+
+{{- $sizeList := slice "320" "640" "960" "1280" "1600" "1920" -}}
+{{- $imageMD5 := md5 $src -}}
+{{- $sizes := "(min-width: 1024px) 100vw, 50vw" -}}
+{{- $blurFormat := "LQIP" -}}
+{{- $hint := "photo" -}}
+{{- $filter := "box" -}}
+{{- $imgClass := "w-full rounded-md h-auto shadow animate-fade" -}}
+
+  {{ with $image }}
+  
+    {{- $divClass := print "relative bigImgDiv imgB-" $imageMD5 "-" $blurFormat -}}
+    {{- $imgRsc := . -}}
+    {{- $actualImg := $imgRsc.Process (print "resize 640x jpg " $filter) -}}
+
+    <div class="{{ $divClass }}" data-pagefind-ignore>
+      <picture data-pagefind-ignore>
+        <source type="image/webp" srcset="
+        {{- with $sizeList -}}
+          {{- range $i, $e := . -}}
+            {{- if ge $imgRsc.Width . -}}
+              {{- if $i }}, {{ end -}}{{- ($imgRsc.Process (print "resize " . "x webp " $hint " " $filter) ).RelPermalink }} {{ . }}w
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}" sizes="{{ $sizes }}" />
+        <source type="image/jpeg" srcset="
+        {{- with $sizeList -}}
+          {{- range $i, $e := . -}}
+            {{- if ge $imgRsc.Width . -}}
+              {{- if $i }}, {{ end -}}{{- ($imgRsc.Process (print "resize " . "x jpg " $filter) ).RelPermalink }} {{ . }}w
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}" sizes="{{ $sizes }}" />
+        <img class="{{ $imgClass }}" src="{{ $actualImg.RelPermalink }}" width="{{ $imgRsc.Width }}" height="{{ $imgRsc.Height }}" alt="{{ $alt }}" title="{{ $alt }}" loading="lazy" data-pagefind-ignore />
+      </picture>
+    </div>
+  {{- end -}} 
+
+{{- with $title -}}
+    <p class="img-caption">
+        {{ $title }}
+    </p>
+{{- end }}

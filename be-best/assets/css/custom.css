@@ -1,0 +1,30 @@
+/* Style the pagination control set. */
+
+.pagination {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    background-color: transparent;
+    font-size: 1.2rem;
+}
+
+.pagination li {
+    display: inline-block;
+    padding: 0 0.33rem;
+}
+
+/* Indent regular lists. */
+ul {
+    padding-left: 1.2rem;
+    list-style-position: inside;
+}
+
+/* Forces nested lists to indent */
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+    padding-left: 2.4rem;
+    margin-bottom: 1rem;
+    list-style-position: inside;
+}

@@ -1,0 +1,43 @@
+{{ $prefix := .Params.prefix }}
+{{ $filter := printf `p[\d]-%s-.*` .Params.prefix }}
+{{ $pages := where .Site.RegularPages "Type" "kanban" }}
+
+{{ $filteredPages := slice }}
+
+{{ range $pages }}
+    {{ if findRE $filter .File.TranslationBaseName }}
+        {{ $filteredPages = $filteredPages | append . }}
+    {{ end }}
+{{ end }}
+
+{{ $sorted := sort $filteredPages "File.TranslationBaseName" "asc" }}
+
+{{ with $sorted }}
+    <table class="w-full">
+        <thead>
+            <tr>
+                <th>Id:</th>
+                <th>Summary:</th>
+                <th>Due:</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{ range . }}
+                {{ $basepath := path.BaseName .Path }}
+
+                {{ $due := "-" }}
+                {{ if .Params.due }}
+                    {{ $due = time.Format .Site.Params.dateFormatHuman .Params.due }}
+                {{ end }}
+
+                <tr class="odd:bg-gray-100 even:bg-gray-200">
+                    <td><a href="{{ .RelPermalink }}">{{- $basepath -}}</a></td>
+                    <td>{{- .Description | truncate 50 -}}</td>
+                    <td>{{- $due -}}</td>
+                </tr>
+            {{ end }}
+        </tbody>
+    </table>
+{{ else }}
+    <p>No documentation was found.</p>
+{{ end }}

@@ -2,7 +2,7 @@
  "compilerOptions": {
   "paths": {
    "*": [
-    "../themes/be-best/assets/*"
+    "../be-best/assets/*"
    ]
   }
  }

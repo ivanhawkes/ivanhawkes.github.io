@@ -1,0 +1,43 @@
+{{/* Retrieve the hyphenated parameters safely */}}
+{{ $isoPrep := index .Params "prep-time" }}
+{{ $isoCook := index .Params "cook-time" }}
+
+{{/* Helper logic to convert ISO 8601 (e.g., PT1H30M) to Go format (e.g., 1h30m) */}}
+{{ $goPrepStr := lower (replaceRE "^P?T?" "" $isoPrep) }}
+{{ $goCookStr := lower (replaceRE "^P?T?" "" $isoCook) }}
+
+{{/* Initialize duration objects */}}
+{{ $prepDuration := 0 }}
+{{ $cookDuration := 0 }}
+
+{{/* Parse strings using time.ParseDuration if they exist */}}
+{{ if $goPrepStr }}
+  {{ $prepDuration = time.ParseDuration $goPrepStr }}
+{{ end }}
+{{ if $goCookStr }}
+  {{ $cookDuration = time.ParseDuration $goCookStr }}
+{{ end }}
+
+{{/* Convert to minutes using the .Minutes method */}}
+{{ $prepMinutes := $prepDuration.Minutes }}
+{{ $cookMinutes := $cookDuration.Minutes }}
+{{ $totalMinutes := add $prepMinutes $cookMinutes }}
+
+{{/* Display Output if times are defined */}}
+{{ if gt $totalMinutes 0.0 }}
+  {{ if gt $prepMinutes 0.0 }}
+    <tr class="odd:bg-gray-100 even:bg-gray-200">
+      <td>Prep Time: {{ printf "%.0f" $prepMinutes }} minutes</td>
+    </tr>
+  {{ end }}
+
+  {{ if gt $cookMinutes 0.0 }}
+    <tr class="odd:bg-gray-100 even:bg-gray-200">
+      <td>Cook Time: {{ printf "%.0f" $cookMinutes }} minutes</td>
+    </tr>
+  {{ end }}
+
+  <tr class="odd:bg-gray-100 even:bg-gray-200">
+    <td>Total: {{ printf "%.0f" $totalMinutes }} minutes</td>
+  </tr>
+{{ end }}

@@ -1,0 +1,20 @@
+{{ define "main" }}
+  {{ partial "page/content.html" . }}
+
+  <div
+    class="container grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+    {{ $paginator := .Paginate .Pages.ByTitle 6 }}
+
+    {{ range $paginator.Pages }}
+      {{- partial "/posts/card.html" . -}}
+    {{ end }}
+  </div>
+
+  {{ if hugo.Data.about.corevalue }}
+    <div>
+      {{ range hugo.Data.about.corevalue }}
+        {{- partial "/about/card.html" . -}}
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}

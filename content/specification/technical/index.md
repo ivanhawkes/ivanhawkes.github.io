@@ -93,9 +93,9 @@ A kind with no cards is normal: the summary document keeps one table per kind,
 so kinds that are not in use render their empty table on purpose.
 
 Adding a kind means adding the three things the kind owns, together:
-`themes/be-best/archetypes/<name>.md`, a row in the table above, and the same
-row in the `kinds` list in `cmd/kan/main.go`. Removing one drops all three, and
-the cards of that kind are reclassified rather than deleted.
+`be-best/archetypes/<name>.md`, a row in the table above, and the same row in
+the `kinds` list in `cmd/kan/main.go`. Removing one drops all three, and the
+cards of that kind are reclassified rather than deleted.
 
 ### Status And Stage
 
@@ -170,10 +170,10 @@ resolved the deviations below.
 Content is organised as Hugo page bundles under `content/`. The content types in
 use are `post`, `recipe`, `kanban`, `specification`, `project`, `profile`,
 `dashboard`, `about` and `bare`, each with a layout directory in
-`themes/be-best/layouts/` and an archetype in `themes/be-best/archetypes/`. A
-bundle keeps the markdown of a page together with the images and other assets it
-uses, which is what makes page-relative resources, featured images and
-per-bundle caches possible.
+`be-best/layouts/` and an archetype in `be-best/archetypes/`. A bundle keeps the
+markdown of a page together with the images and other assets it uses, which is
+what makes page-relative resources, featured images and per-bundle caches
+possible.
 
 Recipes add a sidecar file, `ingredients.yaml`, next to the bundle's `index.md`.
 The recipe front matter carries `cuisine`, `categories`, `tags`, `portions`,
@@ -186,25 +186,24 @@ the listing page.
 
 ## Presentation Layer
 
-The theme is `themes/be-best`, a git submodule that is published on its own
+The theme is `be-best`, a git submodule that is published on its own
 repository's `features` branch. The parent repository records the theme commit
 as a submodule pointer, so a theme change is committed and pushed inside the
 submodule before the parent records it.
 
 Styling is Tailwind CSS v4. The theme's source stylesheet is
-`themes/be-best/assets/css/main.css`; the compiled stylesheet is
-`assets/css/main.css`, which is build output and is not versioned. Hugo writes
-`assets/jsconfig.json` for Tailwind v4 editor intelligence during the CSS build,
-and `hugo_stats.json` records the classes in use; both are build output. The
-theme's scripts are TypeScript in `themes/be-best/assets/js` (menu, sidebar,
-dark mode, and the codeblock copy button), compiled by Hugo into one small
-bundle.
+`be-best/assets/css/main.css`; the compiled stylesheet is `assets/css/main.css`,
+which is build output and is not versioned. Hugo writes `assets/jsconfig.json`
+for Tailwind v4 editor intelligence during the CSS build, and `hugo_stats.json`
+records the classes in use; both are build output. The theme's scripts are
+TypeScript in `be-best/assets/js` (menu, sidebar, dark mode, and the codeblock
+copy button), compiled by Hugo into one small bundle.
 
 ## Interfaces
 
 Content reaches the presentation layer through three documented contracts.
 
-Markdown render hooks, in `themes/be-best/layouts/_markup/`:
+Markdown render hooks, in `be-best/layouts/_markup/`:
 
 - `render-link.html` and `render-table.html` add the classes and attributes that
   the stylesheet expects. Attributes must be separated from the tag name and
@@ -215,7 +214,7 @@ Markdown render hooks, in `themes/be-best/layouts/_markup/`:
 - `render-codeblock.html` renders a highlighted codeblock with a copy button,
   and an optional `details` and `summary` wrapper.
 
-Shortcodes, in `themes/be-best/layouts/_shortcodes/`:
+Shortcodes, in `be-best/layouts/_shortcodes/`:
 
 - `kanban-list-short` takes a `prefix` parameter, selects the Kanban cards whose
   filenames match `p[0-9]-<prefix>-.*` across every stage, and renders a table
@@ -229,8 +228,7 @@ Shortcodes, in `themes/be-best/layouts/_shortcodes/`:
   definitions in this document are reproduced.
 
 The Kanban board itself is the `kanban` section, rendered by
-`themes/be-best/layouts/kanban/section.html` as a responsive grid of card
-partials.
+`be-best/layouts/kanban/section.html` as a responsive grid of card partials.
 
 ## Tooling
 

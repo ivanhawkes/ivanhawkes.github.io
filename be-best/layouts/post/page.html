@@ -1,0 +1,15 @@
+{{ define "main" }}
+  {{- partial "/images/featured-image.html" . -}}
+
+  {{- partial "/components/breadcrumbs.html" . -}}
+
+  <div>
+    {{- partial "/byline/byline.html" . -}}
+  </div>
+
+  {{- partial "/navigation/next-prev-small.html" . -}}
+
+  {{ partial "page/content.html" . }}
+
+  {{- partial "/navigation/related.html" . -}}
+{{ end }}

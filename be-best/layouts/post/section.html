@@ -1,0 +1,17 @@
+{{ define "main" }}
+  {{ partial "page/content.html" . }}
+
+
+  <div
+    class="container grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+    {{ $pages := .Pages.ByDate.Reverse }}
+    {{ $paginator := .Paginate $pages.ByTitle 6 }}
+
+    {{ range $paginator.Pages }}
+
+      {{- partial "/posts/card.html" . -}}
+    {{ end }}
+  </div>
+
+  {{- partial "pagination.html" . -}}
+{{ end }}

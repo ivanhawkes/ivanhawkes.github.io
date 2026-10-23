@@ -1,0 +1,6 @@
+{{ $description := .Description | default .Site.Params.description }}
+
+<div class="w-full rounded-md border bg-card p-2">
+  <p>{{ .title }}</p>
+  <p>{{ $description }}</p>
+</div>

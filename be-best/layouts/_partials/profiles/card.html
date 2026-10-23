@@ -1,0 +1,17 @@
+{{ $description := .Description | default .Site.Params.description }}
+
+<div class="w-full rounded-md border bg-card p-2">
+  <a href="{{ .Permalink }}">
+    {{- partial "/images/featured-image.html" . -}}
+  </a>
+
+  <div>
+    <div class="text-lg">
+      <a href="{{ .Permalink }}/profiles/{{ .profile }}/">{{ .name }}</a>
+    </div>
+    <div>{{ .position }}</div>
+    <div class="text-sm">
+      {{ $description }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="w-full rounded-md border bg-card p-2">
+  <a href="{{ .Permalink }}">
+    {{- partial "/images/featured-image.html" . -}}
+  </a>
+
+  <div>
+    <div class="text-lg">
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </div>
+    <div class="line-clamp-4 text-sm">
+      {{ with .Description }}{{ . }}{{ else }}{{ .Summary | transform.Plainify }}{{ end }}
+    </div>
+  </div>
+</div>

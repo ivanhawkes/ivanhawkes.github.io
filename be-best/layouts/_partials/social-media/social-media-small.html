@@ -1,0 +1,41 @@
+{{ with .github }}
+  <a href="https://github.com/{{ . }}" target="_blank">
+    <i class="fa-brands fa-github"></i>
+    <span>Github</span>
+  </a>
+{{ end }}
+
+{{ with .bitbucket }}
+  <a href="https://bitbucket.com/{{ . }}" target="_blank">
+    <i class="fa-brands fa-bitbucket"></i>
+    <span>Bitbucket</span>
+  </a>
+{{ end }}
+
+{{ with .twitter }}
+  <a href="http://www.twitter.com/{{ . }}/" target="_blank">
+    <i class="fa-brands fa-twitter"></i>
+    <span>Twitter</span>
+  </a>
+{{ end }}
+
+{{ with .youtube }}
+  <a href="https://www.youtube.com/{{ . }}/" target="_blank">
+    <i class="fa-brands fa-youtube"></i>
+    <span>YouTube</span>
+  </a>
+{{ end }}
+
+{{ with .facebook }}
+  <a href="http://www.facebook.com/{{ . }}/" target="_blank">
+    <i class="fa-brands fa-facebook"></i>
+    <span>Facebook</span>
+  </a>
+{{ end }}
+
+{{ with .linkedin }}
+  <a href="https://www.linkedin.com/in/{{ . }}/" target="_blank">
+    <i class="fa-brands fa-linkedin"></i>
+    <span>LinkedIn</span>
+  </a>
+{{ end }}

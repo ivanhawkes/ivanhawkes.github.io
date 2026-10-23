@@ -50,9 +50,9 @@ and `pnpm run serve` compiles once then starts `hugo server -D -F`. There are no
 3. Commit `be-best/` together with the rest of the change; there is no submodule
    pointer and `be-best/` has no remote of its own.
 
-Ignore the leftover `be-best/.git` file: it is a dead gitfile pointing at a
-deleted submodule directory, so `be-best/` is not a git repository. Never run
-git commands inside it.
+`be-best/` is not a git repository - the submodule was merged into this project
+and its leftover `be-best/.git` gitfile was deleted. Never run git commands
+inside it; the repository root commits the theme files.
 
 ## HUGO config touchpoints
 

@@ -13,6 +13,9 @@
     pkgs.git-lfs
     pkgs.github-cli
 
+    # Bring worktrunk into the project.
+    pkgs.worktrunk
+
     # Pi Coding Agent - simple, light, customise for the project.
     pkgs.pi-coding-agent
 
@@ -99,6 +102,21 @@
     echo "  Node.js: $(node --version)"
     echo "  pnpm: $(pnpm --version)"
     echo "  Tailwind: $(tailwindcss --help | head -n 1)"
+
+    # Ensures worktrunk hook bindings exist inside this project's sandbox
+    if [ ! -f ".config/wt.toml" ]; then
+      echo "💡 Run 'wt config create --project' to link this repo."
+    fi
+
+    # Ensure work trunk can copy files from the .gitignore - this is mostly for .env style files.
+    wt step copy-ignored
+
+    # Force the devenv evaluation cache to look at the shared git layer
+    # Keep hooks non-interactive so they don't break Pi's terminal UI
+    if [ -n "$DIRENV_IN_ENVRC" ]; then
+      # Quietly check or configure paths if necessary, avoiding any dynamic stdin blocks
+      true
+    fi
   '';
 
   enterTest = ''

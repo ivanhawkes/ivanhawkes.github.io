@@ -17,6 +17,6 @@ Checklist:
   present and ISO where required; `ingredients.yaml` sidecars match the dish.
 - No build output staged (`public/`, `resources/`, `.hugo_build.lock`).
 - New or changed images are tracked by Git LFS.
-- Theme changes were committed inside the submodule before the parent pointer
-  moved.
+- Theme changes in `be-best/` are plain files of this repository, so they belong
+  in the same commit as the change that needs them.
 - `pnpm run test` passes.

@@ -6,6 +6,6 @@
   their filename carries priority and kind (`p2-us-slug`). There is no `status`
   field - moving the file between stages is the status change, and completion
   sets `params.completionDate`.
-- Theme changes: commit inside `be-best` first, push the submodule, then commit
-  the parent repo pointer.
+- Theme changes: `be-best/` is a plain directory in this repo (not a submodule),
+  so commit theme files together with the rest of the change.
 - Keep replies and commit messages concise.

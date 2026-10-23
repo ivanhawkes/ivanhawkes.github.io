@@ -31,10 +31,11 @@ in the content tree, queryable via shortcodes.
       example of the shortcode, so leave those empty tables empty.
     - `dashboard/` - development scratch pages (`raw/all-html-elements.html` is
       the CSS test page, `layout: raw`).
-- `be-best/` - the site theme. This is a **git submodule** (branch `features`).
-  Commit changes inside the submodule and push to
-  `git@github.com:ivanhawkes/be-best.git` _before_ committing the parent repo's
-  submodule pointer.
+- `be-best/` - the site theme, a plain directory tracked in this repository (it
+  used to be a git submodule; it no longer is, and has no remote of its own).
+  Hugo selects it via `theme: be-best` / `themesDir: '.'` in
+  `config/_default/hugo.yaml`. Theme edits are ordinary files: commit and push
+  them with the rest of the change, in the parent repo, on the current branch.
 - `config/_default/` - Hugo site config (`hugo.yaml`) and params.
 - `assets/` - generated CSS (`main.css`) compiled by Tailwind from the theme.
   Build output; gitignored.
@@ -96,8 +97,8 @@ covers only how the program is written.
    shortcodes.
 3. Implement, validate with `pnpm run test`, then move the card's file to the
    next stage folder, setting `params.completionDate` on completion.
-4. Commit small, focused changes. CI deploys only from the `posts` branch; the
-   theme is committed on its own repo's `features` branch.
+4. Commit small, focused changes, theme files included - `be-best/` is part of
+   this repository. CI deploys only from the `posts` branch.
 
 ## Agent skills
 

@@ -39,9 +39,8 @@ repository.
     git commit -m "<message>"
     ```
 
-    If the change is theme work in `be-best`, commit inside the submodule and
-    push to its `features` branch first, then commit the parent repo's submodule
-    pointer.
+    Theme work in `be-best/` needs no special handling: it is a plain directory
+    of this repository, so `git add -A` picks it up with everything else.
 
 3. **Push.** Push the current branch to its upstream:
 

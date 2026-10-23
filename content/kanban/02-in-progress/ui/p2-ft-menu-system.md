@@ -1,0 +1,24 @@
+---
+title: Menu System
+description: Switch the menu entries to be hierarchial.
+date: '2026-04-28'
+author: Ivan Hawkes
+params:
+    due: null
+    completionDate: null
+    dependencies: null
+    references: null
+---
+
+The menu was hard coded, improve it.
+
+<!--more-->
+
+## Menu System
+
+- [ ] Make it work from front matter in the content
+- [ ] Set the names, parents and weights of all the menus
+- [ ] Update the code to use the new metadata
+- [ ] Make the menu render the hierarchy
+
+## Acceptance Criteria

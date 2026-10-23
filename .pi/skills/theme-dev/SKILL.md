@@ -16,8 +16,10 @@ Its layout:
 - `layouts/_shortcodes/` - shortcodes (`img`, `kanban-list-short`).
 - `layouts/_markup/` - goldmark render overrides (codeblock, image, table, link,
   blockquote).
-- `archetypes/` - content scaffolds per kind; Hugo picks the archetype from the
-  path stem and `--kind`.
+- `archetypes/` - content scaffolds per kind. Hugo picks the archetype from the
+  `--kind` flag (`hugo new content ... --kind issues` ->
+  `archetypes/issues.md`), falling back to the path stem, so the target folder
+  must be spelled out in the path.
 - `assets/css/` - Tailwind source CSS; `assets/js/` - TypeScript assets
   (copy-codeblock, dark-mode, hamburger-menu, sidebar).
 - `static/` - theme static assets (favicons, robots.txt).
@@ -27,13 +29,19 @@ Its layout:
 Tailwind compiles the theme source into the site asset:
 
 ```bash
-pnpm run dev:css    # watch mode: main.css -> assets/css/main.css
-pnpm run build:css  # minified production build
+pnpm run css          # compile once: theme CSS -> assets/css/main.css
+pnpm run css-watch    # watch mode, run alongside the Hugo server
+pnpm run build:css    # minified production build
 pnpm stylelint "**/*.css"
 ```
 
-The generated `assets/css/main.css` is the file committed for the site; never
-edit it by hand.
+The source of truth is `themes/be-best/assets/css/main.css`; edit only that.
+`assets/css/main.css` in the site root is generated build output and is
+**gitignored** - never edit it by hand and never stage it.
+
+`pnpm run test` and `pnpm run build` each compile the CSS before running Hugo,
+and `pnpm run serve` compiles once then starts `hugo server -D -F`. There are no
+`dev:css` / `dev:hugo` scripts.
 
 ## Submodule commit flow
 

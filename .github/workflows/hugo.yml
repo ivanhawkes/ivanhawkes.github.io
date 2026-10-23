@@ -129,6 +129,10 @@ jobs:
                   path: ${{ runner.temp }}/hugo_cache
                   key: ${{ steps.cache-key.outputs.key }}
 
+            # Fails the build before the Pages artifact is uploaded.
+            - name: Validate the generated HTML
+              run: pnpm run test:html
+
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v5
               with:

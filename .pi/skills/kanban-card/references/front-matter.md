@@ -1,28 +1,23 @@
 # Kanban card front matter
 
+Quick reference for filling in a card by hand. The authoritative field list and
+validation rules are _Front Matter Fields_ and _Schema Validation_ in
+`content/specification/technical/index.md`; `pnpm run test:kanban` fails the
+build on any deviation.
+
 Full front matter for a kanban card:
 
 ```yaml
 ---
-title: 'Short card title'
+title: 'Short Card Title'
 description: 'Limit to 50 characters'
 date: '2026-04-29'
-lastmod: null
 author: Ivan Hawkes
-categories: null
-tags: null
 params:
-  sprint: sp-002
-  stage: develop
-  status: in-progress
-  completed: 20
-  due: null
-  percent: 40
-  estimatedtime: 100
-  actualtime: 40
-  priority: 350
-  dependencies: null
-  references: null
+    completionDate: null
+    due: null
+    dependencies: null
+    references: null
 ---
 
 Short summary shown on the card.
@@ -31,24 +26,28 @@ Short summary shown on the card.
 
 Full description, constraints, and assumptions.
 
-# Title
+# Short Card Title
 
-**Goals**
+## Goals
 
-- Goal one
+- [ ] a goal
 
-**Acceptance Criteria**
+## Acceptance Criteria
 
-- Criterion one
+- [ ] all tasks are completed
 ```
 
 Field notes:
 
-- `stage`: design (default), develop, ...
-- `status`: pending (default), in-progress, ...
-- `percent`: 0-100 completion percentage; render a progress bar when > 0.
-- `due`: ISO date; renders a destructive banner when past and incomplete.
-- `dependencies`: list of card slugs, or `null`.
-- `references`: links or slugs related to the card, or `null`.
-- The `kanban-list-short` shortcode lists cards whose path matches a given ID
-  prefix (`<prefix>-`), sorted by path.
+- `title`: at most 40 characters; Hugo title-cases the filename into it, so
+  rewrite it.
+- `description`: one line, 50 characters or less.
+- `date`: the creation date, as a plain ISO date.
+- `due`: when the task is due for completion. ISO date or `null`.
+- `completionDate`: the date on which the task is completed. ISO date or `null`.
+- `dependencies`: list of kanban card ids, or `null`.
+- `references`: kanban card ids related to this card, or `null`.
+
+All four `params` keys are always present, `null` when unused. A card carries no
+other keys: priority, status and kind come from the filename and the stage
+folder, and `layout`, `lastmod`, `categories` and `tags` are forbidden.

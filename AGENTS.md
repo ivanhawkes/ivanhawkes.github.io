@@ -13,13 +13,24 @@ in the content tree, queryable via shortcodes.
       programming).
     - `post/recipe/<cuisine>/` - recipes; each recipe directory has `index.md`
       plus an `ingredients.yaml` sidecar.
-    - `kanban/<kind>/` - Kanban cards. One folder per layout: acceptance, bugs,
-      deliverables, deployment, epics, features, ideation, meta, releases,
-      requests, scaffold, specifications, testing, user-stories. A card's folder
-      must match the kind it was created with.
+    - `kanban/<stage>/` - Kanban cards. The three stages are `01-to-do`,
+      `02-in-progress` (with topic sub-folders: design, features, ui) and
+      `03-done`. A card's filename carries its identity:
+      `p<priority>-<kind-prefix>-<slug>.md`, e.g. `p2-us-html-check.md`. The
+      two-letter kind prefix names the kind (`is` = issues, `ep` = epics, `us` =
+      user-stories, ...) and must match the `--kind` archetype used to create
+      the card. Stage is the card's status: there is **no** `status` front
+      matter field, so moving the file between stage folders is the status
+      change. The board view is the `kanban` section rendered by
+      `themes/be-best/layouts/kanban/section.html`.
     - `specification/personal-website/` - specification documents; can embed
-      kanban cards with the `kanban-list-short` shortcode.
-    - `dashboard/` - the kanban board view (bare layout).
+      kanban cards with the `kanban-list-short` shortcode, which matches cards
+      by the `p[0-9]-<prefix>-.*` filename pattern. Documents render "No
+      documentation was found." for kinds with no cards. Most kinds have no
+      cards on purpose: `summary.md` keeps one table per kind as a worked
+      example of the shortcode, so leave those empty tables empty.
+    - `dashboard/` - development scratch pages (`raw/all-html-elements.html` is
+      the CSS test page, `layout: raw`).
 - `themes/be-best/` - the site theme. This is a **git submodule** (branch
   `features`). Commit changes inside the submodule and push to
   `git@github.com:ivanhawkes/be-best.git` _before_ committing the parent repo's
@@ -34,26 +45,41 @@ in the content tree, queryable via shortcodes.
 ## Commands
 
 ```bash
-pnpm run test         # non-minified build; use to validate changes
-pnpm run build        # minified production build
-pnpm run dev:css      # Tailwind watch mode (run alongside hugo)
-pnpm run dev:hugo     # hugo server
+pnpm run test         # CSS, Hugo, HTML and card schema checks; use to validate changes
+pnpm run test:kanban  # validate card front matter against the schema in assets/
+pnpm run build        # CSS + minified production build
+pnpm run css-watch    # Tailwind watch mode (run alongside hugo)
+pnpm run serve        # compile CSS once, then hugo server -D -F
 pnpm stylelint "**/*.css"
-hugo new content kanban/requests/rq-XXX-slug.md --kind requests
+hugo new content kanban/01-to-do/p2-is-slug.md --kind issues
+go run ./cmd/kan is my card title
 ```
+
+`cmd/kan` is a Go helper that scaffolds cards:
+`go run ./cmd/kan [-p <0-9>] [-s <stage>] <kind> <title words...>`, where the
+kind is its name (`issues`), prefix (`is`) or an alias (`user stories`). New
+cards land in `01-to-do` at priority `2` unless `-stage` / `-priority` say
+otherwise, giving `content/kanban/<stage>/p<priority>-<prefix>-<slug>.md`. The
+prefix plus slug is the card's ID, unique across every stage, so `kan` scans all
+stages and refuses collisions; card names carry no serial numbers. It also
+rewrites Hugo's filename-derived `title:` into a readable title. Card kinds,
+prefixes, file naming and the `kan` command line contract are specified in
+`content/specification/technical/index.md`; `.pi/skills/kanban-card/SKILL.md`
+covers only how the program is written.
 
 ## Conventions
 
 - Front matter is YAML (`MetaDataFormat: yaml`).
-- New content is created with Hugo archetypes; the archetype and `--kind`
-  determine the folder.
+- New content is created with Hugo archetypes. `--kind <name>` selects
+  `themes/be-best/archetypes/<name>.md`; Hugo does not derive the folder from
+  the kind, so give the full target path. Omit `--kind` and you get the default
+  draft, not a card. Archetypes title-case the filename into `title`, so rewrite
+  it by hand.
 - Recipe front matter: `type: recipe`, `cuisine`, `categories`, `tags`, `date`,
   `author`, `portions`, `prep-time`, `cook-time` (ISO 8601 duration, e.g.
   `PT5M`). The `ingredients.yaml` sidecar holds an `ingredient-list`.
-- Kanban cards carry a `params` block with: `sprint`, `stage`, `status`,
-  `completed`, `due`, `percent`, `estimatedtime`, `actualtime`, `priority`,
-  `dependencies`, `references`. The card template renders `dependencies` - keep
-  that spelling.
+- Kanban cards carry a `params` block with: `due`, `completionDate`,
+  `dependencies`, `references`. Unused entries are `null`, not empty.
 - Card descriptions are short (50 characters or less) with a `<!--more-->` body
   after.
 - Images (webp, jpeg, png, svg, etc.) are managed with **Git LFS**; track new
@@ -63,11 +89,12 @@ hugo new content kanban/requests/rq-XXX-slug.md --kind requests
 
 ## Workflow
 
-1. Track work as a kanban card under `kanban/<kind>/`.
+1. Track work as a kanban card in `content/kanban/01-to-do/`, named
+   `p<priority>-<kind>-<slug>.md` and created with `--kind <kind>`.
 2. Document requirements under `specification/`, embedding cards with
    shortcodes.
-3. Implement, validate with `pnpm run test`, then update the card's `status`,
-   `percent`, and `actualtime`.
+3. Implement, validate with `pnpm run test`, then move the card's file to the
+   next stage folder, setting `params.completionDate` on completion.
 4. Commit small, focused changes. CI deploys only from the `posts` branch; the
    theme is committed on its own repo's `features` branch.
 
@@ -85,5 +112,6 @@ See `docs/agents/triage-labels.md`.
 
 ### Domain docs
 
-Single-context: `GLOSSARY.md` at the repo root, ADRs in `docs/adr/`. See
-`docs/agents/domain.md`.
+Single-context. Neither `GLOSSARY.md` nor `docs/adr/` exists yet; the skills
+create them lazily when terms or decisions actually get resolved, so proceed
+without them and do not flag their absence. See `docs/agents/domain.md`.

@@ -27,12 +27,16 @@ asks you to apply the changes.
 
 # Input
 
-The user names the card to examine, usually by its ID (e.g. `rq-005`) or its
-path (`content/kanban/requests/rq-005-polish-codeblock-copy.md`).
+The user names the card to examine, usually by its ID (e.g.
+`p2-us-polish-codeblock-copy`) or its path
+(`content/kanban/01-to-do/p2-us-polish-codeblock-copy.md`).
 
 - If given a path, use it.
-- If given an ID prefix (e.g. `rq-005`), locate the card with
-  `find content/kanban -name "<id>*.md"`.
+- If given a full ID, locate it with `find content/kanban -name "<id>.md"`.
+- If given a partial ID (e.g. `us-polish`, `polish-codeblock`), locate it with
+  `find content/kanban -name "*<text>*.md"`: IDs begin with a `p<N>-` priority
+  token, so they never start with the kind prefix. If several cards match, list
+  them and ask which one.
 - If no card is named, list the cards under `content/kanban/` and ask which one
   to examine.
 
@@ -81,8 +85,8 @@ Examine exactly one card per invocation.
 
     Structure the report per field, and end with a clean consolidated draft of
     the proposed wording for the card's requirement text. Do not propose changes
-    to `params` data values (stage, status, times, dependencies) unless the
-    wording itself depends on them.
+    to `params` data values (`due`, `completionDate`, `dependencies`,
+    `references`) unless the wording itself depends on them.
 
 # Output discipline
 

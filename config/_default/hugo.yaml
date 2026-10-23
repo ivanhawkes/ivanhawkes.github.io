@@ -95,7 +95,7 @@ markup:
     lineNos: false
     lineNoStart: 1
     hl_inline: false
-    pygmentsCodeFences: true # Moved to its correct location
+    pygmentsCodeFences: true
 
   goldmark:
     truncate-lines: true
@@ -114,7 +114,6 @@ sitemap:
   changeFreq: monthly
   disable: false
   filename: sitemap.xml
-  priority: -1
 
 # Create some taxonomies
 taxonomies:

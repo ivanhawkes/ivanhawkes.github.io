@@ -122,15 +122,23 @@ Hyprland running. I didn't know it at the time, but I was tsumu. When I couldn't
 find a direct way to fix the issue I just blew it away and churned to Nixos.
 
 <div>
-  <blockquote>
-    <p>
-        tsumu: In shogi, the verb tsumu (詰む) means "to checkmate". When a game reaches the definitive state of checkmate where the king is trapped and has absolutely no legal moves remaining to escape capture - it is called tsumi (詰み).
-
-Saying "tsunda" is using the past/perfective tense of the verb ("It has
-checkmated" or "It's cornered"). </p>
-<cite><a href="https://en.wikipedia.org/wiki/Tsume_shogi">Source -
-Wikipedia</a></cite>
-  </blockquote>
+    <blockquote>
+        <p>
+            tsumu: In shogi, the verb tsumu (詰む) means "to checkmate". When a
+            game reaches the definitive state of checkmate where the king is
+            trapped and has absolutely no legal moves remaining to escape
+            capture - it is called tsumi (詰み).
+        </p>
+        <p>
+            Saying "tsunda" is using the past/perfective tense of the verb ("It
+            has checkmated" or "It's cornered").
+        </p>
+        <cite>
+            <a href="https://en.wikipedia.org/wiki/Tsume_shogi">
+                Source - Wikipedia
+            </a>
+        </cite>
+    </blockquote>
 </div>
 
 I've run Nixos before, and I liked it, but there was always some barrier of

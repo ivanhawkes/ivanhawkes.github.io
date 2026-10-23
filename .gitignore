@@ -21,7 +21,7 @@ devenv.local.yaml
 # This is an artifact of the CSS build and doesn't need to be kept in the repo.
 assets/css/main.css
 
-# What is this one for again?
+# Hugo writes this for Tailwind v4 editor intelligence during the CSS build.
 assets/jsconfig.json
 
 # Node JS

@@ -13,8 +13,11 @@
     pkgs.git-lfs
     pkgs.github-cli
 
-    # Install the Nixos unstable version of Pi Harness.
+    # Pi Coding Agent - simple, light, customise for the project.
     pkgs.pi-coding-agent
+
+    # Oh My Pi Coding Agent - evaluate for useful features.
+    pkgs.omp
 
     # Get access to copy and paste.
     pkgs.wl-clipboard
@@ -36,6 +39,11 @@
 
     # Provide bubblewrap if you plan to use Linux sandboxing features
     pkgs.bubblewrap
+
+    # Extra command line tools for agents.
+    pkgs.ripgrep
+    pkgs.jq
+    pkgs.fd
   ];
 
   # 3. Environment Variables (Add the Wayland passthrough here)

@@ -12,7 +12,9 @@
         "build": "pnpm run build:css && pnpm run build:hugo",
         "test:css": "tailwindcss -i themes/be-best/assets/css/main.css -o assets/css/main.css",
         "test:hugo": "hugo build --gc --cleanDestinationDir",
-        "test": "pnpm run test:css && pnpm run test:hugo",
+        "test:html": "html-validate \"public/**/*.html\"",
+        "test:kanban": "node scripts/validate-kanban-front-matter.mjs",
+        "test": "pnpm run test:css && pnpm run test:hugo && pnpm run test:html && pnpm run test:kanban",
         "prepare": "husky",
         "format": "prettier --write \"**/*.{js,ts,json,css,md,html,yaml}\""
     },
@@ -60,6 +62,9 @@
     "devDependencies": {
         "@tailwindcss/cli": "^4.3.3",
         "@tailwindcss/typography": "^0.5.20",
+        "ajv": "^8.20.0",
+        "ajv-formats": "^3.0.1",
+        "html-validate": "^11.17.0",
         "husky": "^9.1.7",
         "lint-staged": "^17.6.0",
         "prettier": "3.9.9",
@@ -68,7 +73,8 @@
         "stylelint": "^17.15.0",
         "stylelint-config-standard": "^40.0.0",
         "stylelint-config-tailwindcss": "^1.0.1",
-        "tailwindcss": "^4.3.3"
+        "tailwindcss": "^4.3.3",
+        "yaml": "^2.9.1"
     },
     "lint-staged": {
         "*.{js,ts,json,css,md,html,yaml}": "prettier --write"

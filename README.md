@@ -92,6 +92,15 @@ pnpm stylelint "**/*.css"
 
 ## Adding a new Kanban card to the stack
 
+Cards live in a stage folder - `01-to-do`, `02-in-progress` (optionally under a
+topic sub-folder such as `design/`, `features/`, `ui/`) or `03-done` - and are
+named `p<priority>-<kind-prefix>-<slug>.md`, for example `p2-us-html-check.md`.
+Moving a card's file between stage folders is how its status changes; there is
+no `status` front matter field. The kind is recorded by the two-letter prefix in
+the filename and by the `--kind` archetype it was created with. That prefix plus
+the slug is the card's ID, and it is unique across every stage: card names carry
+no serial numbers.
+
 ```bash
 # Create a dashboard if you haven't done that already. This scaffolds a
 # folder structure and places one initial epic card.
@@ -104,26 +113,38 @@ hugo new content dashboard/admin
 # selects the archetype from themes/be-best/archetypes/; without it Hugo
 # falls back to the default template and you get a plain draft, not a card.
 # For example:
-hugo new content kanban/acceptance/ac-001-test.md --kind acceptance
-hugo new content kanban/bugs/bg-001-test.md --kind bugs
-hugo new content kanban/deliverables/dl-001-test.md --kind deliverables
-hugo new content kanban/deployment/dl-001-test.md --kind deployment
-hugo new content kanban/epics/ep-001-test.md --kind epics
-hugo new content kanban/features/ft-001-test.md --kind features
-hugo new content kanban/ideation/id-001-test.md --kind ideation
-hugo new content kanban/meta/mt-001-test.md --kind meta
-hugo new content kanban/releases/rl-001-test.md --kind releases
-hugo new content kanban/requests/rq-001-test.md --kind requests
-hugo new content kanban/scaffold/sf-001-test.md --kind scaffold
-hugo new content kanban/specifications/sp-001-test.md --kind specifications
-hugo new content kanban/testing/ts-001-test.md --kind testing
-hugo new content kanban/user-stories/us-001-test.md --kind user-stories
+hugo new content kanban/01-to-do/p2-ac-test.md --kind acceptance
+hugo new content kanban/01-to-do/p2-dl-test.md --kind deliverables
+hugo new content kanban/01-to-do/p2-dp-test.md --kind deployment
+hugo new content kanban/01-to-do/p2-ep-test.md --kind epics
+hugo new content kanban/01-to-do/p2-ft-test.md --kind features
+hugo new content kanban/01-to-do/p2-id-test.md --kind ideation
+hugo new content kanban/01-to-do/p2-is-test.md --kind issues
+hugo new content kanban/01-to-do/p2-rl-test.md --kind releases
+hugo new content kanban/01-to-do/p2-sf-test.md --kind scaffold
+hugo new content kanban/01-to-do/p2-sp-test.md --kind specifications
+hugo new content kanban/01-to-do/p2-ts-test.md --kind testing
+hugo new content kanban/01-to-do/p2-us-test.md --kind user-stories
 
 # Your new dashboard is served at http://localhost:1313/dashboard/admin/.
 # The archetype already adds a `menus: main:` entry, so it shows on the
 # main menu without extra front matter.
 ```
 
-A Go helper in `cmd/kan` wraps these commands with auto-incremented serial
-numbers: `go run ./cmd/kan <kind-or-prefix> <title words…>` (e.g.
-`go run ./cmd/kan rq my new card`).
+The Go helper in `cmd/kan` wraps those commands:
+
+```bash
+# New cards always land in 01-to-do at priority 2 unless asked otherwise.
+go run ./cmd/kan is my new card
+# -> content/kanban/01-to-do/p2-is-my-new-card.md
+
+go run ./cmd/kan -p 1 -s 2/ui ft polish the menu
+# -> content/kanban/02-in-progress/ui/p1-ft-polish-the-menu.md
+```
+
+The kind may be its full name (`issues`), its prefix (`is`) or an alias (`us`,
+`user stories`); the rest of the command line is the title, lowercased into a
+dash-separated slug of at most 40 characters. `kan` refuses to write an ID that
+any stage already uses, and rewrites Hugo's filename-derived `title:` ("P2 Is My
+New Card") into a readable title. Put it on your PATH with
+`go build -o ~/.local/bin/kan ./cmd/kan`.

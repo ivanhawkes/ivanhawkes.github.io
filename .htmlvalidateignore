@@ -1,0 +1,7 @@
+# Hugo writes these pagination redirect stubs itself: a <head> with a refresh
+# and no <body>. Nothing in the theme to fix, so they are not validated.
+public/**/page/*/index.html
+
+# Hand-authored CSS test fixtures: they exist to show odd markup, so their
+# formatting is deliberate and any complaints are ignored.
+public/dashboard/raw/**

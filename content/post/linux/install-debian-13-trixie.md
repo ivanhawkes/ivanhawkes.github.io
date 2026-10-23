@@ -154,7 +154,7 @@ Now is a good time to CTRL-D out of the shell and log back in again. This will
 apply group permissions and your .bashrc script to the new shell. You now have
 colour in your shell and access to aliases for "ls -al" and friends.
 
-# Install some improved terminal fonts
+## Install some improved terminal fonts
 
 ```bash
 sudo apt install fonts-jetbrains-mono fonts-hack fonts-terminus fonts-dejavu-mono fonts-cascadia-code fonts-roboto

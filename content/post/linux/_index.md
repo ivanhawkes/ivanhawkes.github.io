@@ -28,5 +28,3 @@ menus:
         parent: Posts
         weight: 340
 ---
-
-# Linux

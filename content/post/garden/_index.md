@@ -18,5 +18,3 @@ menus:
         parent: Posts
         weight: 320
 ---
-
-# Gardening

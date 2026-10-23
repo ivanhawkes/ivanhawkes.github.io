@@ -22,8 +22,6 @@ with croutons or flatbread.
 
 <!--more-->
 
-# Heading
-
 The classic middle-eastern dish.
 
 ## Soak your beans

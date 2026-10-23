@@ -45,7 +45,8 @@ in the content tree, queryable via shortcodes.
 ## Commands
 
 ```bash
-pnpm run test         # CSS, Hugo, HTML and card schema checks; use to validate changes
+pnpm run test         # CSS, Hugo, HTML, heading and card schema checks; use to validate changes
+pnpm run test:headings # count h1 elements over public/; fail on pages without exactly one
 pnpm run test:kanban  # validate card front matter against the schema in assets/
 pnpm run build        # CSS + minified production build
 pnpm run css-watch    # Tailwind watch mode (run alongside hugo)

@@ -19,8 +19,6 @@ A rich version of the lemon bars recipe created by Claire Saffitz.
 
 <!--more-->
 
-# Lemon Bars (Claire Saffitz)
-
 My ideal lemon squares are anchored with a buttery shortbread crust that’s just
 sweet enough. The dry ingredients come together quickly in a food processor.
 After pulsing in the butter (plus an egg yolk for richness), the mixture will

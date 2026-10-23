@@ -17,6 +17,6 @@ menus:
         weight: 50
 ---
 
-# Latest Posts
+## Latest Posts
 
 A sampling of the latests posts.

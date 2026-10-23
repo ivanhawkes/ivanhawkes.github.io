@@ -1,1 +1,8 @@
-<p>404 File is missing - Make a better version of this file.</p>
+{{ define "main" }}
+  <h1>{{ .Title }}</h1>
+
+  <p>
+    The page you asked for is missing. Try the
+    <a href="{{ .Site.Home.RelPermalink }}">home page</a>.
+  </p>
+{{ end }}

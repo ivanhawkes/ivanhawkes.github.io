@@ -13,8 +13,6 @@ title: Project Development Quick Guide
 layout: post
 ---
 
-# Project Development Quick Guide
-
 A quick start guide designed to remind you of the steps needed to bring a
 project to completion. Some are optional, depending on the scope of the project.
 

@@ -14,5 +14,3 @@ menus:
         parent: Posts
         weight: 330
 ---
-
-# General Interest

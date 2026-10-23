@@ -21,5 +21,3 @@ menus:
         parent: Posts
         weight: 360
 ---
-
-# Recipes

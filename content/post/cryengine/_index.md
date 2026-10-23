@@ -1,5 +1,5 @@
 ---
-title: CRYENGINE posts
+title: CRYENGINE
 date: '2026-04-24'
 description: CRYENGINE post section.
 menus:

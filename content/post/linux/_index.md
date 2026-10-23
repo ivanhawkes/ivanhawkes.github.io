@@ -1,5 +1,5 @@
 ---
-title: Linux posts
+title: Linux
 date: '2026-04-24'
 description: Linux post section.
 menus:

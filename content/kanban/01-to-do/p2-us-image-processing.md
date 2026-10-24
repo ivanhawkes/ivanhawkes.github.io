@@ -4,7 +4,7 @@ description: 'Provide image processing to posts.'
 date: '2026-04-28'
 author: Ivan Hawkes
 params:
-    due: null
+    due: 2026-10-28
     completionDate: null
     dependencies: null
     references: null

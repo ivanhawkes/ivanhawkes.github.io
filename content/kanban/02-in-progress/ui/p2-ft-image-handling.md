@@ -4,7 +4,7 @@ description: Move post images into page branch bundles.
 date: '2026-04-28'
 author: Ivan Hawkes
 params:
-    due: null
+    due: 2026-10-27
     completionDate: null
     dependencies: null
     references: null

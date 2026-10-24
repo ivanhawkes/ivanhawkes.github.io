@@ -4,7 +4,7 @@ description: 'A list of simple fast tasks.'
 date: '2026-04-29'
 author: Ivan Hawkes
 params:
-    due: null
+    due: 2026-11-15
     completionDate: null
     dependencies: null
     references: null

@@ -11,14 +11,19 @@ import { parse as parseYaml } from 'yaml';
 const definitionFile = 'assets/kanban-card-front-matter.yaml';
 const cardsDir = 'content/kanban';
 
-// Every markdown file in the Kanban tree, skipping section indexes.
+// Card identity is the filename: `p<priority>-<prefix>-<slug>.md`, as the
+// technical specification defines it. So the cards are the markdown files in
+// the Kanban tree named like that: section indexes and the pages that live in
+// the tree, such as the grid view's `grid/index.md`, are not cards.
+const cardName = /^p\d-[a-z]{2}-[a-z0-9-]+\.md$/;
+
 function cardFiles(dir) {
     const files = [];
     for (const entry of readdirSync(dir)) {
         const full = path.join(dir, entry);
         if (statSync(full).isDirectory()) {
             files.push(...cardFiles(full));
-        } else if (entry.endsWith('.md') && !entry.startsWith('_')) {
+        } else if (entry.endsWith('.md') && cardName.test(entry)) {
             files.push(full);
         }
     }

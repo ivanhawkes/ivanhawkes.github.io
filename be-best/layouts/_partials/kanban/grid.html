@@ -1,0 +1,116 @@
+{{/*
+  Kanban board: one lane per stage folder, cards ranked by sort score.
+  Shared by /kanban/grid/ and /kanban/personal/.
+
+  Params:
+    pages  - cards to render; defaults to every card under /kanban
+    author - keep only the cards whose author matches (trimmed,
+             case-insensitive); empty keeps every card
+*/}}
+{{- $root := site.GetPage "section" "kanban" -}}
+{{- $pages := default .pages $root.RegularPagesRecursive -}}
+{{- $author := .author -}}
+{{- $isCard := `^p[0-9]-[a-z]{2}-[a-z0-9-]+$` -}}
+{{- $kanbanDir := path.Clean $root.File.Dir -}}
+{{- $today := time.Format "2006-01-02" (time.Now) -}}
+{{- $cards := slice -}}
+
+{{/* One record per card: id, priority, lane, overdue flag and sort score. */}}
+{{- range $pages -}}
+  {{- if findRE $isCard .File.BaseFileName -}}
+    {{- $page := . -}}
+    {{- $file := .File.BaseFileName -}}
+    {{- $priority := int (slicestr $file 1 2) -}}
+    {{- $id := replaceRE `^p[0-9]-` "" $file -}}
+    {{- $dir := path.Clean .File.Dir -}}
+    {{- $folder := path.Base $dir -}}
+    {{- $parent := path.Dir $dir -}}
+    {{- $lane := $folder -}}
+    {{- if ne $parent $kanbanDir -}}
+      {{- $lane = printf "%s-%s" (slicestr (path.Base $parent) 0 2) $folder -}}
+    {{- end -}}
+    {{- $due := "" -}}
+    {{- $dueKey := "9999-12-31" -}}
+    {{- $overdue := false -}}
+    {{- with .Params.due -}}
+      {{- $due = . -}}
+      {{- $dueKey = time.Format "2006-01-02" . -}}
+      {{- if not $page.Params.completionDate -}}
+        {{- $overdue = gt $today $dueKey -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $score := mul (sub 3 $priority) 100 -}}
+    {{/* The 300 point bonus for the reader's own cards is the personal view's
+    rule, not this page's, so it is not applied here. */}}
+    {{- if $overdue -}}
+      {{- $score = add $score 150 -}}
+    {{- end -}}
+    {{- $cards = $cards | append (dict
+      "page" .
+      "id" $id
+      "priority" $priority
+      "lane" $lane
+      "due" $due
+      "dueKey" $dueKey
+      "overdue" $overdue
+      "score" $score
+      "sortKey" (printf "%05d|%s|%s" (sub 9999 $score) $dueKey $id)
+      )
+    -}}
+  {{- end -}}
+{{- end -}}
+
+{{- if $author -}}
+  {{- $kept := slice -}}
+  {{- range $cards -}}
+    {{- if eq (lower (trim .page.Params.author " ")) (lower (trim $author " ")) -}}
+      {{- $kept = $kept | append . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $cards = $kept -}}
+{{- end -}}
+
+{{- $cards = sort $cards "sortKey" -}}
+
+{{/* Lanes are derived from the folder names under content/kanban/ and from
+nothing else: a lane per stage folder, a lane per topic sub-folder of a stage,
+lanes ordered by ascending folder name. A stage folder is named `<digits>-`,
+which keeps the board page folders out, and `00` is excluded by name: 00-epics
+holds epics, which are not a stage. */}}
+{{- $isStage := `^[0-9]{2}-` -}}
+{{- $lanes := slice -}}
+{{- range os.ReadDir "content/kanban" -}}
+  {{- if and .IsDir (findRE $isStage .Name) (ne (slicestr .Name 0 2) "00") -}}
+    {{- $stage := .Name -}}
+    {{- $topics := slice -}}
+    {{- range os.ReadDir (printf "content/kanban/%s" $stage) -}}
+      {{- if .IsDir -}}
+        {{- $topics = $topics | append (printf "%s-%s" (slicestr $stage 0 2)
+          .Name)
+        -}}
+      {{- end -}}
+    {{- end -}}
+    {{- if where $cards "lane" $stage -}}
+      {{- $lanes = $lanes | append (dict "label" $stage) -}}
+    {{- end -}}
+    {{- range $topics -}}
+      {{- $lanes = $lanes | append (dict "label" .) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+<div
+  class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6">
+  {{- range sort $lanes "label" -}}
+    {{- $laneCards := where $cards "lane" .label -}}
+    <section
+      class="flex flex-col gap-1 rounded border border-foreground bg-background p-1">
+      <h2 class="text-sm leading-tight font-bold">{{ .label }}</h2>
+      {{- range $laneCards -}}
+        {{- partial "kanban/grid-card.html" . -}}
+      {{- else -}}
+        <p class="text-sm text-muted-foreground">No cards.</p>
+      {{- end -}}
+    </section>
+  {{- end -}}
+</div>

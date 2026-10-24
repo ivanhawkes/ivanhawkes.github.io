@@ -1,0 +1,96 @@
+{{/*
+  Card face for the Kanban board grid, kept compact so that five lanes fit
+  across a desktop screen.
+  Params: a card record built by _partials/kanban/grid.html.
+
+  The title bar leads with the priority in a circle, then the title, then the
+  info control. Priority levels are told apart by the circle, and the card by
+  its border, so the indicator text is screen-reader only. The due date and the
+  overdue marker fill the second line. The description and the author are
+  secondary information: they only appear in the tooltip the info control
+  opens, on hover and on keyboard focus.
+*/}}
+{{- $page := .page -}}
+{{- $overdue := .overdue -}}
+{{- $urgent := eq .priority 0 -}}
+{{- $high := eq .priority 1 -}}
+{{- $level := "priority p%s" -}}
+{{- $circle := "border border-foreground text-foreground" -}}
+{{- $border := "border-foreground" -}}
+{{- if $overdue -}}
+  {{- $border = "border-destructive" -}}
+{{- else if $urgent -}}
+  {{- $circle = "bg-primary text-primary-foreground" -}}
+  {{- $border = "border-primary" -}}
+  {{- $level = "priority p%s, urgent" -}}
+{{- else if $high -}}
+  {{- $circle = "bg-secondary text-secondary-foreground" -}}
+  {{- $border = "border-secondary" -}}
+  {{- $level = "priority p%s, high priority" -}}
+{{- end -}}
+{{- $tip := printf "kanban-card-info-%s" .id -}}
+
+<article
+  class="flex flex-col gap-0.5 rounded border bg-card px-1.5 py-1 text-xs text-card-foreground {{ $border }}">
+  <header class="flex items-center gap-1.5">
+    <span
+      class="flex size-4 shrink-0 items-center justify-center rounded-full text-[0.6rem] font-bold {{ $circle }}">
+      {{ .priority }}<span class="sr-only">
+        {{ printf $level (string .priority) }}</span>
+    </span>
+    <h3 class="min-w-0 flex-1 truncate text-xs leading-tight font-bold">
+      <a
+        class="text-inherit hover:underline"
+        href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
+    </h3>
+    <span class="relative shrink-0">
+      <button
+        type="button"
+        class="peer inline-flex size-4 items-center justify-center rounded-full border border-current text-[0.6rem] leading-none peer-hover:bg-foreground peer-hover:text-background peer-focus:bg-foreground peer-focus:text-background"
+        aria-describedby="{{ $tip }}"
+        aria-label="More information about {{ $page.Title }}">
+        i
+      </button>
+      <span
+        id="{{ $tip }}"
+        role="tooltip"
+        class="invisible absolute right-0 z-20 w-56 rounded-md border border-foreground bg-popover p-2 text-xs opacity-0 shadow-lg text-popover-foreground transition-opacity peer-hover:visible peer-hover:opacity-100 peer-focus:visible peer-focus:opacity-100">
+        <span class="block">
+          {{ with $page.Description }}
+            {{- . -}}
+          {{ else }}
+            {{- $page.Summary | transform.Plainify -}}
+          {{ end }}
+        </span>
+        {{ with $page.Params.author }}
+          <span class="mt-1 block">Author: {{ . }}</span>
+        {{ end }}
+      </span>
+    </span>
+  </header>
+
+  <div
+    class="flex items-center gap-1 text-[0.65rem] {{ if $overdue }}
+      font-semibold text-destructive
+    {{ else }}
+      text-muted-foreground
+    {{ end }}">
+    {{ if $overdue }}
+      <svg
+        viewBox="0 0 16 16"
+        aria-hidden="true"
+        class="size-3 shrink-0 fill-current">
+        <path
+          d="M8 1 15 14H1Zm.9 10.4a.9.9 0 1 1-1.8 0v-3a.9.9 0 1 1 1.8 0Z" />
+      </svg>
+      <span class="sr-only">late: overdue on the build date.</span>
+    {{ end }}
+    {{ with .due }}
+      <time datetime="{{ time.Format site.Params.dateFormat . }}">
+        Due {{ time.Format site.Params.dateFormatHuman . }}
+      </time>
+    {{ else }}
+      <span>No due date</span>
+    {{ end }}
+  </div>
+</article>

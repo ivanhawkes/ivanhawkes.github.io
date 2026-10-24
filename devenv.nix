@@ -94,7 +94,10 @@
       echo "Not a Git repository. Skipping Git LFS setup."
     fi
 
-    echo ""
+    # Find the full name of the OS user.
+    export HUGO_AUTHOR=`getent passwd $USER | cut -d: -f5 | cut -d, -f1`
+
+    echo "Welcome $HUGO_AUTHOR"
     echo "Web Dev Environment:"
     echo "  Git: $(git --version)"
     echo "  Go: $(go version)"

@@ -48,7 +48,8 @@ described under Schema Validation.
 A card is identified by its filename, not by a field inside it. The filename is
 `p<priority>-<prefix>-<slug>.md`, for example `p2-us-html-check.md`:
 
-- `p<priority>` is a single digit from `p0` (most urgent) to `p3`.
+- `p<priority>` is a single digit from `p0` (most urgent) to `p9`. The project
+  uses `p0` to `p3` today; the rest of the range is left free for later use.
 - `<prefix>` is the two letter abbreviation of the card's kind, such as `us` for
   user stories or `is` for issues. The kinds each prefix belongs to are listed
   under Card Kinds.
@@ -106,6 +107,32 @@ moving the file between stage folders with `git mv` is the status change, and
 the version control history of the file is the audit trail. Completing a card
 additionally sets `params.completionDate` to the date of completion.
 
+Epics are not a stage. The `00-epics` folder holds the `ep` cards, and an epic
+stays open until the features and user stories it bundles have cleared every
+stage, so a card in `00-epics` has no status and is never read as one. Views
+that group cards by stage skip the folder; the documentation shortcodes still
+find epic cards by their `ep` prefix, and epic progress is reported by the
+overarching management views rather than by the board.
+
+Epics are created with the folder named in full, `kan -s 00-epics ep <title>`:
+the `1`, `2` and `3` shorthands name the three stages only.
+
+A board lane is one stage folder, labelled with its folder name. A topic
+sub-folder is labelled with the stage number of its parent folder, a dash, then
+the sub-folder name, so `02-in-progress/design` is the `02-design` lane: the two
+digit prefix is the stage number, never a priority. Lanes are ordered by
+ascending folder name.
+
+The board that renders those lanes is `/kanban/grid/`, the page
+`content/kanban/grid/index.md` rendered by `be-best/layouts/kanban/grid.html`
+through the shared partial `be-best/layouts/_partials/kanban/grid.html`, which
+the personal view `/kanban/personal/` reuses with an author filter. The partial
+lists the cards with `.RegularPagesRecursive`, so a stage `_index.md` is never
+rendered as a card, and it derives the lanes from the folder names read with
+`os.ReadDir`: a folder is a stage when its name starts with two digits and a
+dash, which keeps the board page folders out, and the `00` folder is skipped
+because epics are not a stage.
+
 ### Front Matter Fields
 
 Cards carry the following fields. The order listed by the archetypes is the
@@ -141,16 +168,20 @@ work and an `Acceptance Criteria` section.
 `assets/kanban-card-front-matter.yaml` with the JSON Schema keywords `type`,
 `required`, `properties`, `additionalProperties`, `maxLength` and `format`. A
 duplicate mapping key is reported by the YAML parser itself, so a key pasted
-twice cannot hide behind the last definition. The script is run by
+twice cannot hide behind the last definition. The script counts a markdown file
+as a card by its filename, the `p<priority>-<prefix>-<slug>.md` pattern of Card
+Identity: section indexes and the board pages that live inside the Kanban tree,
+such as `grid/index.md`, are not cards, so they are not validated and may carry
+a `layout` key that the card definition forbids. The script is run by
 `pnpm run test:kanban`, and its current result is:
 
 ```text
-22 cards validated against assets/kanban-card-front-matter.yaml: no deviations
+30 cards validated against assets/kanban-card-front-matter.yaml: no deviations
 ```
 
-Every card sets all four `params` keys, and no card uses `params.dependencies`
-or `params.references` for anything but `null`: the keys are documented, and
-unused so far.
+Every card sets all four `params` keys. `params.dependencies` and
+`params.references` are used by a minority of cards, which list the ids of the
+cards that gate them or relate to them; the rest keep both keys as `null`.
 
 The definition was repaired by the `is-front-matter-schema-invalid` card, which
 resolved the deviations below.
@@ -218,9 +249,10 @@ Markdown render hooks, in `be-best/layouts/_markup/`:
 Shortcodes, in `be-best/layouts/_shortcodes/`:
 
 - `kanban-list-short` takes a `prefix` parameter, selects the Kanban cards whose
-  filenames match `p[0-9]-<prefix>-.*` across every stage, and renders a table
-  of id, summary and due date. A kind with no cards renders "No documentation
-  was found.", which is the expected output for the kinds kept as examples.
+  filenames match `p[0-9]-<prefix>-.*` under every folder in `content/kanban/`,
+  and renders a table of id, summary and due date. A kind with no cards renders
+  "No documentation was found.", which is the expected output for the kinds kept
+  as examples.
 - `img` takes `src` and `alt` with optional treatment parameters, and renders
   responsive images in widths from 320 to 1920 pixels with generated
   placeholders.
@@ -278,7 +310,7 @@ table:
 hugo new content kanban/01-to-do/p2-ac-test.md --kind acceptance
 hugo new content kanban/01-to-do/p2-dl-test.md --kind deliverables
 hugo new content kanban/01-to-do/p2-dp-test.md --kind deployment
-hugo new content kanban/01-to-do/p2-ep-test.md --kind epics
+hugo new content kanban/00-epics/p2-ep-test.md --kind epics
 hugo new content kanban/01-to-do/p2-ft-test.md --kind features
 hugo new content kanban/01-to-do/p2-id-test.md --kind ideation
 hugo new content kanban/01-to-do/p2-is-test.md --kind issues

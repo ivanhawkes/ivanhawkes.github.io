@@ -15,14 +15,19 @@ in the content tree, queryable via shortcodes.
       plus an `ingredients.yaml` sidecar.
     - `kanban/<stage>/` - Kanban cards. The three stages are `01-to-do`,
       `02-in-progress` (with topic sub-folders: design, features, ui) and
-      `03-done`. A card's filename carries its identity:
-      `p<priority>-<kind-prefix>-<slug>.md`, e.g. `p2-us-html-check.md`. The
+      `03-done`. Epics live in `00-epics`, which is **not** a stage: an epic
+      stays open until the cards it bundles clear every stage, so stage views
+      skip that folder. A card's filename carries its identity:
+      `p<priority>-<kind-prefix>-<slug>.md`, e.g. `p2-us-html-check.md`, with
+      priority `0` (most urgent) to `9`; this project uses `0`-`3` so far. The
       two-letter kind prefix names the kind (`is` = issues, `ep` = epics, `us` =
       user-stories, ...) and must match the `--kind` archetype used to create
       the card. Stage is the card's status: there is **no** `status` front
       matter field, so moving the file between stage folders is the status
       change. The board view is the `kanban` section rendered by
-      `be-best/layouts/kanban/section.html`.
+      `be-best/layouts/kanban/section.html`; a lane is one stage folder, and a
+      topic sub-folder lane is labelled with its parent stage number, e.g.
+      `02-design`.
     - `specification/personal-website/` - specification documents; can embed
       kanban cards with the `kanban-list-short` shortcode, which matches cards
       by the `p[0-9]-<prefix>-.*` filename pattern. Documents render "No

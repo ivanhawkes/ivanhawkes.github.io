@@ -47,4 +47,4 @@ Hugo exposes it as a page resource resolvable by bare filename.
 - Responsive carousel rendering of the enumerated images:
   `p2-ft-post-image-carousel`.
 - Scaling, format conversion and compression: `p2-us-image-processing`.
-- Featured image responsive variants: `p2-us-featured-images`.
+- Featured image srcset sizing in cards: `p2-us-featured-images`.

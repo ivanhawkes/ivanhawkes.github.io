@@ -151,7 +151,7 @@ Once again we begin with a
 > ways, Euler angles being one of them. Euler angles are also used to represent
 > the orientation of a frame of reference (typically, a coordinate system or
 > basis) relative to another. They are typically denoted as _α_, _β_, _γ_, or
-> ![\varphi, \theta, \psi](2794c7dc86ef9681d291abec7bc11de4.png).
+> _φ_, _θ_, _ψ_.
 
 Hopefully you did geometry in school and recognise that Euler angles are those
 familiar old friends represented with degrees and radians. If not, now is the
@@ -182,14 +182,13 @@ quoting a generous chunk here so you can drink deeply at the well of confusion:
 > associative normed division algebra over the real numbers, and therefore also
 > a domain. In fact, the quaternions were the first noncommutative division
 > algebra to be discovered. The algebra of quaternions is often denoted by H
-> (for Hamilton), or in blackboard bold by
-> ![\mathbb H](827d1849944680ea19cd0ea9ee4d598b.png) (Unicode U+210D, ℍ). It can
-> also be given by the Clifford algebra classifications Cℓ0,2(R) ≅ Cℓ03,0(R).
-> The algebra H holds a special place in analysis since, according to the
-> Frobenius theorem, it is one of only two finite-dimensional division rings
-> containing the real numbers as a proper subring, the other being the complex
-> numbers. These rings are also Euclidean Hurwitz algebras, of which quaternions
-> are the largest associative algebra.
+> (for Hamilton), or in blackboard bold by ℍ (Unicode U+210D). It can also be
+> given by the Clifford algebra classifications Cℓ0,2(R) ≅ Cℓ03,0(R). The
+> algebra H holds a special place in analysis since, according to the Frobenius
+> theorem, it is one of only two finite-dimensional division rings containing
+> the real numbers as a proper subring, the other being the complex numbers.
+> These rings are also Euclidean Hurwitz algebras, of which quaternions are the
+> largest associative algebra.
 >
 > The unit quaternions can therefore be thought of as a choice of a group
 > structure on the 3-sphere S3 that gives the group Spin(3), which is isomorphic

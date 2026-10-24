@@ -1,3 +1,30 @@
+/* Table stripe colours, exposed to Tailwind as bg-table-odd / bg-table-even. */
+@theme inline {
+    --color-table-odd: var(--table-odd);
+    --color-table-even: var(--table-even);
+}
+
+:root {
+    /* Light theme: gray-100 and gray-200. */
+    --table-odd: oklch(96.7% 0.003 264.542);
+    --table-even: oklch(92.8% 0.006 264.531);
+}
+
+.dark {
+    /* Dark theme: card and muted surfaces, so text keeps its contrast. */
+    --table-odd: oklch(21.8% 0.008 223.9);
+    --table-even: oklch(27.5% 0.011 216.9);
+}
+
+/* Stripe colour tags: apply to a table, row, cell or header. */
+@utility table-odd {
+    background-color: var(--color-table-odd);
+}
+
+@utility table-even {
+    background-color: var(--color-table-even);
+}
+
 table {
     /* Merges borders together for a clean look */
     border-collapse: collapse;

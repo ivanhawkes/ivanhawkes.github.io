@@ -15,7 +15,7 @@
 {{ with $sorted }}
     <table class="w-full">
         <thead>
-            <tr>
+            <tr class="bg-table-even">
                 <th>Id:</th>
                 <th>Summary:</th>
                 <th>Due:</th>
@@ -30,7 +30,7 @@
                     {{ $due = time.Format .Site.Params.dateFormatHuman .Params.due }}
                 {{ end }}
 
-                <tr class="odd:bg-gray-100 even:bg-gray-200">
+                <tr class="odd:bg-table-odd even:bg-table-even">
                     <td><a href="{{ .RelPermalink }}">{{- $basepath -}}</a></td>
                     <td>{{- .Description | truncate 50 -}}</td>
                     <td>{{- $due -}}</td>

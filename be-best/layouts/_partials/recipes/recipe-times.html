@@ -26,18 +26,18 @@
 {{/* Display Output if times are defined */}}
 {{ if gt $totalMinutes 0.0 }}
   {{ if gt $prepMinutes 0.0 }}
-    <tr class="odd:bg-gray-100 even:bg-gray-200">
+    <tr class="odd:bg-table-odd even:bg-table-even">
       <td>Prep Time: {{ printf "%.0f" $prepMinutes }} minutes</td>
     </tr>
   {{ end }}
 
   {{ if gt $cookMinutes 0.0 }}
-    <tr class="odd:bg-gray-100 even:bg-gray-200">
+    <tr class="odd:bg-table-odd even:bg-table-even">
       <td>Cook Time: {{ printf "%.0f" $cookMinutes }} minutes</td>
     </tr>
   {{ end }}
 
-  <tr class="odd:bg-gray-100 even:bg-gray-200">
+  <tr class="odd:bg-table-odd even:bg-table-even">
     <td>Total: {{ printf "%.0f" $totalMinutes }} minutes</td>
   </tr>
 {{ end }}

@@ -8,7 +8,7 @@
     {{- end }}>
     <thead>
       {{- range .THead }}
-        <tr>
+        <tr class="bg-table-even">
           {{- range . }}
             <th>
               {{- .Text -}}
@@ -19,7 +19,7 @@
     </thead>
     <tbody>
       {{- range .TBody }}
-        <tr class="odd:bg-gray-100 even:bg-gray-200">
+        <tr class="odd:bg-table-odd even:bg-table-even">
           {{- range . }}
             <td{{ with .Alignment }} class="!text-{{ . }}"{{ end }}>
               {{- .Text -}}

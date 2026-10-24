@@ -32,7 +32,7 @@ mortal brain.
 - [ ] Add Google programmable search
       https://programmablesearchengine.google.com/controlpanel/overview?cx=009369891745940219149%3Ahe4cohkrgv4
 - [ ] Print mode
-- [ ] Fix menus to be hierarchical
+- [x] Fix menus to be hierarchical
 - [ ] Remember the basic buttons variants from ShadCN
     - [ ] btn-primary, btn-secondary, btn-accent, btn-ghost, btn-outline,
           btn-dark, btn-light, btn-destructive, btn-overwrite

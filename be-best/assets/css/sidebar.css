@@ -76,7 +76,8 @@ main p {
     }
 }
 
-#sidebar ul li.active a {
+#sidebar ul li.active > a,
+#sidebar ul li.active > .dropdown-btn {
     color: var(--color-primary-100);
 
     svg {
@@ -127,8 +128,10 @@ main p {
     grid-template-rows: 0fr;
     transition: 300ms ease-in-out;
 
-    > div {
+    > ul {
         overflow: hidden;
+        min-height: 0;
+        padding-left: 1.25em;
     }
 }
 
@@ -142,10 +145,6 @@ main p {
 
 .rotate svg:last-child {
     rotate: 180deg;
-}
-
-#sidebar .sub-menu a {
-    padding-left: 2em;
 }
 
 #toggle-btn {
@@ -229,8 +228,10 @@ main p {
             display: flex;
             justify-content: center;
 
-            > div {
+            > ul {
+                display: flex;
                 overflow-x: auto;
+                padding-left: 0;
             }
 
             li {

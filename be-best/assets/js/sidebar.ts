@@ -9,12 +9,15 @@ export function toggleSidebar() {
 }
 
 export function toggleSubMenu(button) {
-    if (!button.nextElementSibling.classList.contains('show')) {
-        closeAllSubMenus();
+    const subMenu = button.nextElementSibling;
+
+    if (!subMenu.classList.contains('show')) {
+        closeAllSubMenus(button);
     }
 
-    button.nextElementSibling.classList.toggle('show');
-    button.classList.toggle('rotate');
+    const opened = subMenu.classList.toggle('show');
+    button.classList.toggle('rotate', opened);
+    button.setAttribute('aria-expanded', String(opened));
 
     if (sidebar.classList.contains('close')) {
         sidebar.classList.toggle('close');
@@ -22,10 +25,21 @@ export function toggleSubMenu(button) {
     }
 }
 
-export function closeAllSubMenus() {
+// Collapse every open sub-menu, keeping the ancestors of `keep` open so that
+// nested sub-menus stay reachable.
+export function closeAllSubMenus(keep) {
     Array.from(sidebar.getElementsByClassName('show')).forEach((ele) => {
+        if (keep && ele.contains(keep)) {
+            return;
+        }
+
         ele.classList.remove('show');
-        ele.previousElementSibling.classList.remove('rotate');
+
+        const button = ele.previousElementSibling;
+        if (button) {
+            button.classList.remove('rotate');
+            button.setAttribute('aria-expanded', 'false');
+        }
     });
 }
 

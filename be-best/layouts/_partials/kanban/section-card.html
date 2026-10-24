@@ -11,7 +11,7 @@
 
 
 <div
-  class="justify-evenly rounded-md border-2 border-primary-300 border-foreground bg-card text-sm p-2">
+  class="justify-evenly overflow-hidden rounded-md border-2 border-primary-300 border-foreground bg-card text-sm p-2">
   <div
     class="{{ $bannerColour }} flex h-8 items-center justify-center bg-accent text-base font-bold p-2">
     <p><a href="{{ .Permalink }}">{{ .Title }}</a></p>
@@ -21,11 +21,5 @@
     <div class="line-clamp-3">
       {{ with .Description }}{{ . }}{{ else }}{{ .Summary | transform.Plainify }}{{ end }}
     </div>
-
-    {{ with .Params.author }}
-      <div class="mt-2 flex justify-center">
-        <p>{{- . -}}</p>
-      </div>
-    {{ end }}
   </div>
 </div>

@@ -4,7 +4,7 @@ description: 'Add a hamburger menu'
 date: '2026-05-05'
 author: 'Ivan Hawkes'
 params:
-    due: 2026-11-01
+    due: 2026-10-19
     completionDate: null
     dependencies: null
     references: null

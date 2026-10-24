@@ -104,12 +104,12 @@ holds epics, which are not a stage. */}}
   {{- range sort $lanes "label" -}}
     {{- $laneCards := where $cards "lane" .label -}}
     <section
-      class="flex flex-col gap-1 rounded border border-foreground bg-background p-1">
-      <h2 class="text-sm leading-tight font-bold">{{ .label }}</h2>
+      class="flex flex-col gap-1 rounded border border-foreground bg-background">
+      <h2 class="text-xl leading-tight font-bold">{{ .label }}</h2>
       {{- range $laneCards -}}
         {{- partial "kanban/grid-card.html" . -}}
       {{- else -}}
-        <p class="text-sm text-muted-foreground">No cards.</p>
+        <p class="text-md text-muted-foreground">No cards.</p>
       {{- end -}}
     </section>
   {{- end -}}

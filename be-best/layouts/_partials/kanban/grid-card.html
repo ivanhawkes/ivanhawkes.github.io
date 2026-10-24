@@ -31,14 +31,14 @@
 {{- $tip := printf "kanban-card-info-%s" .id -}}
 
 <article
-  class="flex flex-col gap-0.5 rounded border bg-card px-1.5 py-1 text-xs text-card-foreground {{ $border }}">
+  class="flex flex-col gap-0.5 rounded-md border-1 bg-card px-1.5 py-1 text-md text-card-foreground {{ $border }}">
   <header class="flex items-center gap-1.5">
     <span
       class="flex size-4 shrink-0 items-center justify-center rounded-full text-[0.6rem] font-bold {{ $circle }}">
       {{ .priority }}<span class="sr-only">
         {{ printf $level (string .priority) }}</span>
     </span>
-    <h3 class="min-w-0 flex-1 truncate text-xs leading-tight font-bold">
+    <h3 class="min-w-0 flex-1 truncate text-sm leading-tight font-bold">
       <a
         class="text-inherit hover:underline"
         href="{{ $page.RelPermalink }}">{{ $page.Title }}</a>
@@ -54,23 +54,26 @@
       <span
         id="{{ $tip }}"
         role="tooltip"
-        class="invisible absolute right-0 z-20 w-56 rounded-md border border-foreground bg-popover p-2 text-xs opacity-0 shadow-lg text-popover-foreground transition-opacity peer-hover:visible peer-hover:opacity-100 peer-focus:visible peer-focus:opacity-100">
+        class="invisible absolute right-0 z-20 w-56 rounded-md border border-foreground bg-popover text-sm opacity-0 shadow-lg text-popover-foreground transition-opacity peer-hover:visible peer-hover:opacity-100 peer-focus:visible peer-focus:opacity-100">
         <span class="block">
           {{ with $page.Description }}
             {{- . -}}
-          {{ else }}
+          {{ end }}
+        </span>
+        <span class="block">
+          {{ with $page.Summary }}
             {{- $page.Summary | transform.Plainify -}}
           {{ end }}
         </span>
         {{ with $page.Params.author }}
-          <span class="mt-1 block">Author: {{ . }}</span>
+          <span class="mt-1 block">Assigned: {{ . }}</span>
         {{ end }}
       </span>
     </span>
   </header>
 
   <div
-    class="flex items-center gap-1 text-[0.65rem] {{ if $overdue }}
+    class="flex items-center gap-1 text-sm {{ if $overdue }}
       font-semibold text-destructive
     {{ else }}
       text-muted-foreground
@@ -87,7 +90,7 @@
     {{ end }}
     {{ with .due }}
       <time datetime="{{ time.Format site.Params.dateFormat . }}">
-        Due {{ time.Format site.Params.dateFormatHuman . }}
+        Due: {{ time.Format site.Params.dateFormatShort . }}
       </time>
     {{ else }}
       <span>No due date</span>

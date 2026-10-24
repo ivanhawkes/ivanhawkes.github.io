@@ -4,8 +4,8 @@ description: 'Data to exercise the grid view sort and indicators'
 date: '2026-10-24'
 author: Ivan Hawkes
 params:
-    completionDate: null
-    due: null
+    completionDate: 2026-10-25
+    due: 2026-10-27
     dependencies: null
     references: ['p2-us-kanban-grid-view']
 ---

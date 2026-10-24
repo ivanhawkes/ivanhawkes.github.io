@@ -4,7 +4,7 @@ description: 'Improvements to the Kanban section menu.'
 date: '2026-05-01'
 author: 'Ivan Hawkes'
 params:
-    due: null
+    due: 2026-10-31
     completionDate: null
     dependencies: null
     references: null

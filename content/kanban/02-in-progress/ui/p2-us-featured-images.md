@@ -4,7 +4,7 @@ description: 'Section cards should display featured images'
 date: '2026-05-04'
 author: 'Ivan Hawkes'
 params:
-    due: 2026-10-30
+    due: 2026-10-24
     completionDate: null
     dependencies: null
     references: null

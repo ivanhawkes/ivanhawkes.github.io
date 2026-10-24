@@ -4,7 +4,7 @@ description: 'Improve the codeblock rendering code'
 date: '2026-04-28'
 author: Ivan Hawkes
 params:
-    due: null
+    due: 2026-10-01
     completionDate: null
     dependencies: null
     references: null

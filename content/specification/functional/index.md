@@ -136,7 +136,7 @@ control that switches between the light, dark and system schemes is outstanding.
 
 ## Publishing Behaviour
 
-A push to the `posts` branch runs the publish workflow, which builds the CSS,
+A push to the `publish` branch runs the publish workflow, which builds the CSS,
 builds the site, validates the generated HTML, and uploads the result as the
 Pages artifact. A build that fails, or a build whose HTML produces any
 validation report, stops there: nothing is published, and the previously

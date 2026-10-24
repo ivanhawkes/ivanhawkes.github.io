@@ -186,10 +186,11 @@ the listing page.
 
 ## Presentation Layer
 
-The theme is `be-best`, a git submodule that is published on its own
-repository's `features` branch. The parent repository records the theme commit
-as a submodule pointer, so a theme change is committed and pushed inside the
-submodule before the parent records it.
+The theme is `be-best/`, an ordinary directory of this repository. Hugo selects
+it with `theme: be-best` and `themesDir: '.'` in `config/_default/hugo.yaml`.
+Its 139 files are versioned by this repository, whose only remote is
+`ivanhawkes/ivanhawkes.github.io`, so a theme change is committed and pushed
+here, in the same commit as the content that needs it.
 
 Styling is Tailwind CSS v4. The theme's source stylesheet is
 `be-best/assets/css/main.css`; the compiled stylesheet is `assets/css/main.css`,
@@ -311,7 +312,7 @@ The publish workflow, `.github/workflows/hugo.yml`, builds the CSS, builds the
 site with
 `--environment production --gc --minify --ignoreCache --cleanDestinationDir`,
 validates the generated HTML, and only then uploads the Pages artifact. Its Hugo
-cache is keyed on the Hugo version, the pinned theme commit and a hash of the
+cache is keyed on the Hugo version, the `be-best` tree hash and a hash of the
 site configuration, so a theme or configuration change starts a cold build.
 
 Implementation constraints:

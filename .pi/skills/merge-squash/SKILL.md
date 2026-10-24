@@ -2,12 +2,12 @@
 name: merge-squash
 description:
     Perform a git merge --squash on the current branch, merging in a feature
-    branch. Use when a feature branch should be merged into the posts branch.
+    branch. Use when a feature branch should be merged into the publish branch.
 ---
 
 # Goal
 
-Squash-merge a feature branch into the current branch, which must be `posts`.
+Squash-merge a feature branch into the current branch, which must be `publish`.
 The result is staged changes, not a commit, and a commit is only made with my
 approval.
 
@@ -30,16 +30,16 @@ approval.
     whether I want to proceed (the feature branch can only be squashed onto a
     clean tree). Stop your turn and wait for my explicit permission.
 
-2. **Ensure the current branch is `posts`.**
+2. **Ensure the current branch is `publish`.**
 
     ```bash
     git rev-parse --abbrev-ref HEAD
     ```
 
-    If the current branch is **not** `posts`, switch to `posts`:
+    If the current branch is **not** `publish`, switch to `publish`:
 
     ```bash
-    git checkout posts
+    git checkout publish
     ```
 
     (This is safe here because the working tree was verified clean in step 1.)

@@ -41,7 +41,6 @@ jobs:
         steps:
             - uses: actions/checkout@v6
               with:
-                  submodules: recursive
                   fetch-depth: 0
                   lfs: true
 
@@ -88,12 +87,12 @@ jobs:
             - name: Compute cache key
               id: cache-key
               run: |
-                  # Hugo version + theme submodule pin + site config. Content
+                  # Hugo version + be-best tree hash + site config. Content
                   # is left out on purpose: the resource cache is keyed by
                   # asset content, and the prefix restore covers partial hits.
                   config_hash=$(find config -type f -print0 | xargs -0 sha256sum | sha256sum | cut -d' ' -f1)
-                  theme_pin=$(git ls-tree HEAD be-best | awk '{print $3}')
-                  key="hugo-${HUGO_VERSION}-${theme_pin}-${config_hash:0:16}"
+                  theme_hash=$(git ls-tree HEAD be-best | awk '{print $3}')
+                  key="hugo-${HUGO_VERSION}-${theme_hash}-${config_hash:0:16}"
                   echo "key=${key}" >> "$GITHUB_OUTPUT"
                   echo "Cache key: ${key}"
 

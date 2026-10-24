@@ -98,7 +98,7 @@ covers only how the program is written.
 3. Implement, validate with `pnpm run test`, then move the card's file to the
    next stage folder, setting `params.completionDate` on completion.
 4. Commit small, focused changes, theme files included - `be-best/` is part of
-   this repository. CI deploys only from the `posts` branch.
+   this repository. CI deploys only from the `publish` branch.
 
 ## Agent skills
 

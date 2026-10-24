@@ -92,7 +92,7 @@ jobs:
                   # is left out on purpose: the resource cache is keyed by
                   # asset content, and the prefix restore covers partial hits.
                   config_hash=$(find config -type f -print0 | xargs -0 sha256sum | sha256sum | cut -d' ' -f1)
-                  theme_pin=$(git ls-tree HEAD themes/be-best | awk '{print $3}')
+                  theme_pin=$(git ls-tree HEAD be-best | awk '{print $3}')
                   key="hugo-${HUGO_VERSION}-${theme_pin}-${config_hash:0:16}"
                   echo "key=${key}" >> "$GITHUB_OUTPUT"
                   echo "Cache key: ${key}"
@@ -108,7 +108,7 @@ jobs:
 
             - name: Build the CSS using Tailwind CSS
               run: |
-                  pnpm dlx @tailwindcss/cli -i themes/be-best/assets/css/main.css -o assets/css/main.css --minify
+                  pnpm dlx @tailwindcss/cli -i be-best/assets/css/main.css -o assets/css/main.css --minify
 
             # Cleaned up multi-line spaces that broke the bash parameters line breaks
             - name: Build the site

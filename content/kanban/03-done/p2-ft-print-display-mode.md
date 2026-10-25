@@ -5,7 +5,7 @@ date: '2026-10-25'
 author: Ivan Hawkes
 params:
     due: null
-    completionDate: null
+    completionDate: '2026-10-25'
     dependencies: null
     references:
         - p0-us-update-site-menu

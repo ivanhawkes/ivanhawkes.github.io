@@ -19,6 +19,14 @@
     --text-muted: var(--muted-foreground);
     --accent-contrast: var(--accent-foreground);
     --focus-ring: var(--primary);
+
+    /* Heading and link ink. The prose plugin is painted from these, and so is
+       a card title, which is a heading that is also a link, so the two agree
+       in every scheme. */
+    --heading: var(--color-primary-700);
+    --link: var(--color-primary-800);
+    --link-hover: var(--accent);
+
     --state-danger: var(--destructive);
     --state-success: oklch(0.45 0.12 155);
 
@@ -56,6 +64,9 @@
 }
 
 .dark {
+    --heading: var(--color-primary-300);
+    --link: var(--color-primary-200);
+
     --state-success: oklch(0.72 0.15 155);
 
     --header-bg: oklch(0.148 0.004 228.8 / 78%);
@@ -76,6 +87,12 @@
             oklch(0.275 0.011 216.9)
         );
         --overlay: light-dark(oklch(0 0 0 / 32%), oklch(0 0 0 / 56%));
+
+        --heading: light-dark(
+            var(--color-primary-700),
+            var(--color-primary-300)
+        );
+        --link: light-dark(var(--color-primary-800), var(--color-primary-200));
     }
 }
 
@@ -97,6 +114,10 @@
         --border: oklch(0.8 0.005 214.3);
         --input: oklch(0.8 0.005 214.3);
         --ring: oklch(0.481 0.17 180);
+
+        --heading: #000;
+        --link: #000;
+        --link-hover: #000;
 
         --header-bg: oklch(1 0 0);
         --header-border: oklch(0.8 0.005 214.3);
@@ -139,6 +160,9 @@
         --shadow-sm: none;
         --shadow: none;
         --focus-ring: Highlight;
+        --heading: CanvasText;
+        --link: CanvasText;
+        --link-hover: Highlight;
 
         --code-bg: Canvas;
         --code-text: CanvasText;

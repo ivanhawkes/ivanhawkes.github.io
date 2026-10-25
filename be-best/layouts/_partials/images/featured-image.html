@@ -1,6 +1,5 @@
 {{/*
-  Featured image for a page: "featured.webp" in the page's own resources,
-  falling back to the parent page's resources.
+  Featured image for a page: "featured.webp" in the page's own resources.
 
   Alt text and the caption under the image come from the page's resource
   config:
@@ -12,37 +11,51 @@
               caption: 'A photograph of...'  # alt text
 
   A page without that metadata falls back to the page title for the alt text,
-  so alt is never empty. Callers pass a dict: "page" the page to render, and
-  "caption" true to ask for the caption under the image, which page layouts do
-  and card partials do not.
+  so alt is never empty. Callers pass a dict:
+
+    page     the page to render, required
+    caption  true to ask for the caption under the image, which page layouts
+             do and card partials do not
+    inherit  true to fall back to the parent section's image, as the page hero
+             does; omitted here for a card, which reads its own bundle only
+    link     a URL to wrap the image in, which a card gives and a page does
+             not; nothing is wrapped when the page has no image of its own
+
+  Nothing is written at all when the lookup finds no image, so a card with no
+  image of its own contributes no `<img>`, no `<picture>` and no wrapper.
 */}}
 
 {{- $page := .page -}}
 {{- $showCaption := .caption -}}
-{{- $prefix := "featured.webp" -}}
-{{- $image := false -}}
-
-{{- with $page -}}
-  {{- with .Resources -}}
-    {{- $image = .GetMatch $prefix -}}
-  {{- end -}}
-  {{- if not $image -}}
-    {{- with .Parent -}}
-      {{- with .Resources -}}
-        {{- $image = .GetMatch $prefix -}}
-      {{- end -}}
-    {{- end -}}
-  {{- end -}}
+{{- $link := .link -}}
+{{- $inherit := true -}}
+{{- if isset . "inherit" -}}
+  {{- $inherit = .inherit -}}
 {{- end -}}
 
-{{- with $image -}}
-  {{- $meta := .Params | default dict -}}
-  {{- $ctx := dict
-    "image" .
-    "destination" .RelPermalink
-    "title" (cond $showCaption $meta.title "")
-    "alt" ($meta.caption | default $page.LinkTitle)
-  -}}
+{{- with $page -}}
+  {{- $image := partial "/images/featured.html" (dict
+    "page" .
+    "inherit" $inherit
+  ) -}}
 
-  {{- partial "/images/image-variants.html" $ctx -}}
+  {{- with $image -}}
+    {{- $meta := .Params | default dict -}}
+    {{- $ctx := dict
+      "image" .
+      "destination" .RelPermalink
+      "title" (cond $showCaption $meta.title "")
+      "alt" ($meta.caption | default $page.LinkTitle)
+    -}}
+
+    {{- with $link -}}
+      <a class="card-media" href="{{ . }}">
+    {{- end -}}
+
+    {{- partial "/images/image-variants.html" $ctx -}}
+
+    {{- with $link -}}
+      </a>
+    {{- end -}}
+  {{- end -}}
 {{- end -}}

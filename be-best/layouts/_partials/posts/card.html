@@ -1,16 +1,13 @@
-{{ $summary := .Summary | default .Description | default "Please add a summary and description to this entry." }}
+{{/*
+  A card for an article, the entry type of every listing. The frame, the image
+  policy and the title link all live in `components/card.html`.
+*/}}
 
-<div class="w-full rounded-md border bg-card p-2">
-  <a href="{{ .Permalink }}">
-    {{- partial "/images/featured-image.html" (dict "page" .) -}}
-  </a>
+{{- $summary := .Summary | default .Description | default "Please add a summary and description to this entry." -}}
 
-  <div>
-    <div>
-      <a href="{{ .Permalink }}">{{ .Title }}</a>
-    </div>
-    <div class="line-clamp-4">
-      {{ with $summary }}{{ . | transform.Plainify }}{{ end }}
-    </div>
-  </div>
-</div>
+{{- partial "components/card.html" (dict
+  "page" .
+  "url" .Permalink
+  "title" .Title
+  "summary" ($summary | transform.Plainify)
+) -}}

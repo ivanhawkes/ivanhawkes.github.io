@@ -1,11 +1,16 @@
 {{ define "main" }}
   {{ partial "page/content.html" . }}
 
-  <div
-    class="container grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-    {{ range hugo.Data.profile.person }}
-      {{- partial "/images/featured-image" (dict "page" .) -}}
-      {{- partial "/profiles/card.html" . -}}
+  {{ $people := default (slice) hugo.Data.profile.person }}
+
+  <div class="container card-list">
+    {{ range .Pages.ByTitle }}
+      {{ $person := where $people "profile" .Params.profile }}
+      {{ if $person }}
+        {{- partial "/profiles/card.html" (dict "page" . "person" (index $person 0)) -}}
+      {{ else }}
+        {{- partial "/profiles/card.html" (dict "page" .) -}}
+      {{ end }}
     {{ end }}
   </div>
 {{ end }}

@@ -1,0 +1,123 @@
+/* Content cards.
+
+   A card frames the summary of one page: its featured image, its title as a
+   link, and its summary. Every listing shares the two classes here, `.card`
+   for the frame and `.card-list` for the flow of a listing, so a card is
+   designed once. The markup is `layouts/_partials/components/card.html`, and
+   the print sheet reflows the listing from `print.css`. */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background-color: var(--surface);
+    break-inside: avoid;
+}
+
+/* The image runs to the frame, so the card clips it and it needs no rounding
+   of its own, no shadow inside the frame, and no width of its own beyond the
+   card. It is a header, not the page: one square column wide is enough, so a
+   tall photograph is cropped to the top of the frame and the listing keeps a
+   shape, while a short card stays short. */
+.card-media {
+    display: block;
+    border-bottom: 1px solid var(--border);
+}
+
+.card-media img {
+    width: 100%;
+    height: auto;
+    max-height: 14rem;
+    object-fit: cover;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* The placeholder box `image-variants.html` wraps the image in carries an
+   `aspect-ratio` and a blurred fill for the full-width hero, which on a card
+   leaves a strip of background under a cropped image. The box takes the shape
+   of the image it holds, and the blur covers it. */
+.card-media .bigImgDiv {
+    aspect-ratio: auto;
+    background-size: cover;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem 0.75rem;
+}
+
+/* The title carries the card, so it is set at the size the prose scale gives
+   an `h3`, in the colour headings use, and it is a link: the link colour and
+   an underline on hover, the focus ring every other control draws. */
+.card-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--heading);
+}
+
+.card-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.card-title a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+.card-title a:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+.card-meta {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.card-summary {
+    color: var(--text);
+}
+
+/* A listing is a masonry of columns. Cards keep the height their own text
+   needs, so a card with no image sits short beside a card with one, and
+   nothing is stretched to fill a grid row the way a fixed grid stretches it. */
+.card-list {
+    columns: 1;
+    column-gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .card-list {
+        columns: 2;
+    }
+}
+
+@media (min-width: 1280px) {
+    .card-list {
+        columns: 3;
+    }
+}
+
+@media (forced-colors: active) {
+    .card {
+        border-color: CanvasText;
+    }
+
+    .card-title a:hover {
+        color: Highlight;
+    }
+
+    .card-title a:focus-visible {
+        outline-color: Highlight;
+    }
+}

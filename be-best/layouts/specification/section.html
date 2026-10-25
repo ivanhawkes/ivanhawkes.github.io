@@ -2,9 +2,9 @@
   {{ partial "page/content.html" . }}
 
 
-  <div class="container grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+  <div class="container card-list">
     {{ $pages := .Pages.ByDate.Reverse }}
-    {{ $paginator := .Paginate $pages.ByTitle 6 }}
+    {{ $paginator := .Paginate $pages.ByTitle 12 }}
 
     {{ range $paginator.Pages }}
       {{- partial "/posts/card.html" . -}}

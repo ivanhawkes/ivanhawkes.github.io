@@ -2,7 +2,7 @@
   {{ partial "page/content.html" . }}
 
   <div
-    class="container grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+    class="container card-list">
     {{ range first 12 (where (where .Site.Pages.ByDate.Reverse "Type" "post") "Kind" "page") }}
       {{- partial "/posts/card.html" . -}}
     {{ end }}

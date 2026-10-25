@@ -1,17 +1,34 @@
 {{ define "main" }}
   {{ partial "page/content.html" . }}
 
-  <div
-    class="container grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-    {{ $paginator := .Paginate .Pages.ByTitle 6 }}
+  {{ $people := default (slice) hugo.Data.profile.person }}
+
+  <div class="container card-list">
+    {{ $paginator := .Paginate .Pages.ByTitle 12 }}
 
     {{ range $paginator.Pages }}
-      {{- partial "/posts/card.html" . -}}
+      {{ if eq .Type "profile" }}
+        {{ $person := where $people "profile" .Params.profile }}
+        {{ if $person }}
+          {{- partial "/profiles/card.html" (dict "page" . "person" (index $person 0)) -}}
+        {{ else }}
+          {{- partial "/profiles/card.html" (dict "page" .) -}}
+        {{ end }}
+      {{ else if eq .Type "project" }}
+        {{- partial "/projects/card.html" . -}}
+      {{ else }}
+        {{- partial "/posts/card.html" . -}}
+      {{ end }}
     {{ end }}
   </div>
 
-  {{ if hugo.Data.about.corevalue }}
-    <div>
+  {{- partial "pagination.html" . -}}
+
+  {{/* The core values are the About page's own content, site data with no page
+     behind them, so they render once: on `/about/`, not on every listing the
+     `about` type shares. */}}
+  {{ if and hugo.Data.about.corevalue (eq .File.Dir "content/about/") }}
+    <div class="container card-list">
       {{ range hugo.Data.about.corevalue }}
         {{- partial "/about/card.html" . -}}
       {{ end }}

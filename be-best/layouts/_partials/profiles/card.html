@@ -1,17 +1,17 @@
-{{ $description := .Description | default .Site.Params.description }}
+{{/*
+  A card for one person of `data/profile.yaml`, shown against the profile page
+  that carries the same `profile` id. The data gives the name, the position and
+  the line under them; the page gives the link and the featured image, so the
+  card points at a real page and carries a real photograph.
+*/}}
 
-<div class="w-full rounded-md border bg-card p-2">
-  <a href="{{ .Permalink }}">
-    {{- partial "/images/featured-image.html" (dict "page" .) -}}
-  </a>
+{{- $page := .page -}}
+{{- $person := .person | default dict -}}
 
-  <div>
-    <div class="text-lg">
-      <a href="{{ .Permalink }}/profiles/{{ .profile }}/">{{ .name }}</a>
-    </div>
-    <div>{{ .position }}</div>
-    <div class="text-sm">
-      {{ $description }}
-    </div>
-  </div>
-</div>
+{{- partial "components/card.html" (dict
+  "page" $page
+  "url" $page.Permalink
+  "title" ($person.name | default $page.Title)
+  "meta" $person.position
+  "summary" ($person.description | default $page.Description)
+) -}}

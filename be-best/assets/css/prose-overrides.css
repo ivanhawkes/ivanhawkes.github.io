@@ -1,9 +1,9 @@
 @utility prose-custom {
     /* Light */
     --tw-prose-body: var(--foreground);
-    --tw-prose-headings: var(--color-primary-700);
+    --tw-prose-headings: var(--heading);
     --tw-prose-lead: var(--color-primary-800);
-    --tw-prose-links: var(--color-primary-800);
+    --tw-prose-links: var(--link);
     --tw-prose-bold: var(--color-primary);
     --tw-prose-counters: var(--color-primary);
     --tw-prose-bullets: var(--color-primary);
@@ -19,9 +19,9 @@
 
     /* Dark */
     --tw-prose-invert-body: var(--color-primary-foreground);
-    --tw-prose-invert-headings: var(--color-primary-300);
+    --tw-prose-invert-headings: var(--heading);
     --tw-prose-invert-lead: var(--color-primary-200);
-    --tw-prose-invert-links: var(--color-primary-200);
+    --tw-prose-invert-links: var(--link);
     --tw-prose-invert-bold: var(--color-primary);
     --tw-prose-invert-counters: var(--color-primary);
     --tw-prose-invert-bullets: var(--color-primary);

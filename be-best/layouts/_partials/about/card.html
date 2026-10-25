@@ -1,6 +1,12 @@
-{{ $description := .Description | default .Site.Params.description }}
+{{/*
+  A card for one core value of `data/about.yaml`. Site data has no page behind
+  it, so the card has no image and links nowhere: the title is plain text at
+  the size and ink of an `h3`.
+*/}}
 
-<div class="w-full rounded-md border bg-card p-2">
-  <p>{{ .title }}</p>
-  <p>{{ $description }}</p>
-</div>
+{{- $description := .description | default site.Params.description -}}
+
+{{- partial "components/card.html" (dict
+  "title" .title
+  "summary" $description
+) -}}

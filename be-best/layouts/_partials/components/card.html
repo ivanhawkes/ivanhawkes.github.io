@@ -1,0 +1,59 @@
+{{/*
+  Content card: the framed summary of one page, used by every listing. One
+  partial, one frame: `be-best/assets/css/cards.css` styles `.card` and the
+  `.card-list` a section lays the cards out in, so the design of a card is not
+  repeated per content type. A card reads its own bundle for the featured
+  image: a card with no image of its own is text only, and never the image of
+  the section it belongs to.
+
+  Callers pass a dict:
+
+    page     the page the card describes; omit for a card built from site data
+    title    the heading, defaulting to the page title
+    url      where the title and the image link; omit for a card that links
+             nowhere
+    meta     one short line under the title, a position or a byline
+    summary  the body text
+
+  A card is a summary of a page, so its title is an `h3`, one level under the
+  `h1` the page carries, and is a link: `cards.css` gives it the heading ink
+  at rest and the link colour, the underline and the focus ring on hover.
+*/}}
+
+{{- $page := .page -}}
+{{- $title := .title -}}
+{{- if not $title -}}
+  {{- with $page -}}
+    {{- $title = .Title -}}
+  {{- end -}}
+{{- end -}}
+{{- $url := .url -}}
+{{- $summary := .summary -}}
+
+<div class="card">
+  {{- with $page -}}
+    {{- partial "/images/featured-image.html" (dict
+      "page" .
+      "inherit" false
+      "link" $url
+    ) -}}
+  {{- end -}}
+
+  <div class="card-body">
+    <h3 class="card-title">
+      {{- with $url -}}
+        <a href="{{ . }}">{{ $title }}</a>
+      {{- else -}}
+        {{- $title -}}
+      {{- end -}}
+    </h3>
+
+    {{- with .meta -}}
+      <div class="card-meta">{{ . }}</div>
+    {{- end -}}
+
+    {{- with $summary -}}
+      <div class="card-summary line-clamp-4">{{ . }}</div>
+    {{- end -}}
+  </div>
+</div>

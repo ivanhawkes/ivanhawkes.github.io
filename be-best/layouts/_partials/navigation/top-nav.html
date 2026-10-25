@@ -1,0 +1,131 @@
+{{/*
+  The primary navigation: the site menus, as the horizontal list in the top bar
+  and as the contents of the drawer below 1024 pixels.
+
+  Which menus to show, how deep to nest them, and which menus sit behind one
+  grouped entry, come from the `navigation` site params. Their entries - names,
+  parents, weights and icons - come from the `menus` front matter of the
+  content files.
+*/}}
+
+{{- $nav := site.Params.navigation -}}
+{{- $menuNames := default (slice "main") $nav.menus -}}
+{{- $maxDepth := default 3 $nav.maxDepth -}}
+{{- $grouped := default (slice) $nav.grouped -}}
+
+{{- $groupedNames := slice -}}
+{{- range $group := $grouped -}}
+  {{- $groupedNames = $groupedNames | append $group.menu -}}
+{{- end -}}
+
+{{- $currentPath := .RelPermalink -}}
+{{- $ancestors := slice -}}
+{{- range $ancestor := .Ancestors -}}
+  {{- if and (ne $ancestor.RelPermalink "/") (ne $ancestor.RelPermalink $currentPath) -}}
+    {{- $ancestors = $ancestors | append $ancestor.RelPermalink -}}
+  {{- end -}}
+{{- end -}}
+
+{{/*  The paths a menu entry has to be on to count as the current section: the
+        current page and the sections above it. The root is not a section, so
+        the home page leaves this list empty and no entry is on a trail.  */}}
+{{- $trailPaths := slice -}}
+{{- range $ancestor := .Ancestors -}}
+  {{- $trailPaths = $trailPaths | append $ancestor.RelPermalink -}}
+{{- end -}}
+{{- $trailPaths = $trailPaths | append $currentPath -}}
+
+{{/*  A grouped menu sits behind one entry of its own, so the entry is on the
+        trail when the page sits under any of that menu's links.  */}}
+
+<nav id="primary-nav" aria-label="Primary">
+  <ul class="nav-list" id="nav-list" role="list">
+    {{- range $menuName := $menuNames -}}
+      {{- if not (in $groupedNames $menuName) -}}
+        {{- with index site.Menus $menuName -}}
+          {{- partial "/navigation/recursive-nav.html" (dict
+            "context" $
+            "menu" .
+            "depth" 0
+            "maxDepth" $maxDepth
+            "ancestors" $ancestors
+          ) -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
+
+    {{- range $group := $grouped -}}
+      {{- with index site.Menus $group.menu -}}
+        {{- $trail := false -}}
+        {{- range $entry := . -}}
+          {{- with $entry.Page -}}
+            {{- if in $trailPaths .RelPermalink -}}
+              {{- $trail = true -}}
+            {{- end -}}
+          {{- end -}}
+        {{- end -}}
+        {{- $panelId := printf "nav-panel-menu-%s" ($group.menu | anchorize) -}}
+        <li
+          class="nav-item has-children{{ if $trail }} is-trail{{ end }}"
+          {{ if $trail }}data-trail="true"{{ end }}>
+          <button
+            type="button"
+            class="nav-trigger"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-controls="{{ $panelId }}">
+            <span class="nav-label">{{ $group.name | default (title $group.menu) }}</span>
+            <svg
+              class="nav-chevron"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 -960 960 960"
+              aria-hidden="true"
+              focusable="false">
+              <path
+                d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z" />
+            </svg>
+          </button>
+
+          <div class="nav-panel" id="{{ $panelId }}">
+            <ul class="nav-sublist" role="list">
+              {{- partial "/navigation/recursive-nav.html" (dict
+                "context" $
+                "menu" .
+                "depth" 0
+                "maxDepth" $maxDepth
+                "ancestors" $ancestors
+              ) -}}
+            </ul>
+          </div>
+        </li>
+      {{- end -}}
+    {{- end -}}
+
+    {{/*  The overflow menu: the script moves the entries the bar has no room
+            for into it, so the list never scrolls sideways and no label is
+            clipped.  */}}
+    <li class="nav-item nav-item--more has-children" id="nav-more" hidden>
+      <button
+        type="button"
+        class="nav-trigger"
+        aria-expanded="false"
+        aria-haspopup="true"
+        aria-controls="nav-panel-more">
+        <span class="nav-label">More</span>
+        <svg
+          class="nav-chevron"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 -960 960 960"
+          aria-hidden="true"
+          focusable="false">
+          <path
+            d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z" />
+        </svg>
+      </button>
+
+      <div class="nav-panel" id="nav-panel-more">
+        <ul class="nav-sublist" role="list"></ul>
+      </div>
+    </li>
+  </ul>
+</nav>

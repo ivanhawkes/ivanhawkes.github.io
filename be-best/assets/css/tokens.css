@@ -1,0 +1,102 @@
+/* Semantic colour tokens.
+
+   Every theme dependent value a component needs is a token from this file: a
+   component names a role (surface, text, border, focus ring), never a colour.
+   Each token is an alias of the palette tokens in main.css, which already flip
+   between schemes through the `dark` class, so an alias usually needs one
+   value. `--border` and `--accent` are palette tokens already, and components
+   use them by those names. Where a value genuinely differs per scheme - a translucent header, a
+   hover, a scrim - the light value is declared first, the `.dark` rule carries
+   the dark one, and a `light-dark()` declaration in an `@supports` block takes
+   over in browsers that resolve it against the `color-scheme` the scripts set
+   on the root element. All three paths give the same result. */
+
+:root {
+    --bg: var(--background);
+    --surface: var(--card);
+    --surface-2: var(--muted);
+    --text: var(--foreground);
+    --text-muted: var(--muted-foreground);
+    --accent-contrast: var(--accent-foreground);
+    --focus-ring: var(--primary);
+    --state-danger: var(--destructive);
+    --state-success: oklch(0.45 0.12 155);
+
+    --page-gutter: min(30px, 7%);
+
+    --header-bg: oklch(1 0 0 / 78%);
+    --header-border: var(--border);
+    --nav-hover: oklch(0.94 0.005 214.3);
+    --overlay: oklch(0 0 0 / 32%);
+    --shadow-sm: 0 1px 2px oklch(0 0 0 / 10%);
+    --shadow: 0 8px 24px oklch(0 0 0 / 18%);
+}
+
+.dark {
+    --state-success: oklch(0.72 0.15 155);
+
+    --header-bg: oklch(0.148 0.004 228.8 / 78%);
+    --nav-hover: oklch(0.275 0.011 216.9);
+    --overlay: oklch(0 0 0 / 56%);
+    --shadow-sm: 0 1px 2px oklch(0 0 0 / 45%);
+    --shadow: 0 8px 24px oklch(0 0 0 / 55%);
+}
+
+@supports (color: light-dark(red, blue)) {
+    :root {
+        --header-bg: light-dark(
+            oklch(1 0 0 / 78%),
+            oklch(0.148 0.004 228.8 / 78%)
+        );
+        --nav-hover: light-dark(
+            oklch(0.94 0.005 214.3),
+            oklch(0.275 0.011 216.9)
+        );
+        --overlay: light-dark(oklch(0 0 0 / 32%), oklch(0 0 0 / 56%));
+    }
+}
+
+/* Print is always light, whatever scheme the screen shows. The palette tokens
+   are reset, so every alias above follows them. */
+@media print {
+    :root,
+    .dark {
+        color-scheme: light;
+
+        --background: oklch(1 0 0);
+        --foreground: oklch(0.148 0.004 228.8);
+        --card: oklch(1 0 0);
+        --card-foreground: oklch(0.148 0.004 228.8);
+        --popover: oklch(1 0 0);
+        --popover-foreground: oklch(0.148 0.004 228.8);
+        --muted: oklch(0.963 0.002 197.1);
+        --muted-foreground: oklch(0.35 0.01 228);
+        --border: oklch(0.8 0.005 214.3);
+        --input: oklch(0.8 0.005 214.3);
+        --ring: oklch(0.481 0.17 180);
+
+        --header-bg: oklch(1 0 0);
+        --header-border: oklch(0.8 0.005 214.3);
+        --nav-hover: oklch(0.963 0.002 197.1);
+        --overlay: transparent;
+        --shadow-sm: none;
+        --shadow: none;
+    }
+}
+
+/* Windows High Contrast and other forced colour schemes: the palette is the
+   user's, so only shapes and text weights are left to us. */
+@media (forced-colors: active) {
+    :root,
+    .dark {
+        --header-bg: Canvas;
+        --surface: Canvas;
+        --surface-2: Canvas;
+        --header-border: CanvasText;
+        --nav-hover: Canvas;
+        --overlay: Canvas;
+        --shadow-sm: none;
+        --shadow: none;
+        --focus-ring: Highlight;
+    }
+}

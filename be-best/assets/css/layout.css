@@ -1,0 +1,62 @@
+/* Page furniture: the shell that header, main and footer sit in.
+
+   The rules are shared by every layout, which is why they live apart from the
+   navigation, which header.css styles. They are the rules the sidebar layout
+   left behind when the sidebar went: the grid it laid the page out in is gone,
+   the page is a single column, and the sticky header takes its own row. */
+
+html {
+    /* The gutter is reserved whether or not the page is tall enough to
+       scroll, and whether the drawer hides the scrollbar or not, so opening
+       the drawer never shifts the page sideways. */
+    scrollbar-gutter: stable;
+
+    /* Nothing may widen the page. Clip, not hidden: a clip is not a scroll
+       container, so the sticky header keeps its viewport. */
+    overflow-x: clip;
+}
+
+html.nav-scroll-lock body {
+    overflow: hidden;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+main {
+    padding: 1.5rem 1rem 2rem;
+}
+
+main p {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.container {
+    border: none;
+    border-radius: 1em;
+    margin-bottom: 20px;
+    padding: 0;
+
+    h2,
+    p {
+        margin-top: 1em;
+    }
+}
+
+/* Content cards keep their frame from this width up, as they did under the
+   sidebar layout's 800 pixel query. */
+@media (min-width: 801px) {
+    main {
+        padding: var(--page-gutter);
+    }
+
+    .container {
+        border: 1px solid var(--border);
+        padding: min(2em, 10%);
+    }
+}

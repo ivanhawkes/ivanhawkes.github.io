@@ -1,14 +1,22 @@
 theme:
   darkMode: true
   responsiveDesign: true
+  # The search box in the top bar: `google` submits a Google search scoped to
+  # this site. Set to false to leave the box out of the bar.
+  search: google
 
-# Sidebar navigation: which site menus to render, in order, and how deep to
-# nest them. The entries themselves come from the `menus` front matter.
-sidebar:
+# Top bar navigation: which site menus to render, in order, and the deepest
+# level to nest them to. The entries themselves come from the `menus` front
+# matter of the content files. A grouped menu sits behind one entry of its own,
+# named by `name`, so the row of the bar stays short.
+navigation:
   menus:
     - main
     - development
   maxDepth: 3
+  grouped:
+    - menu: development
+      name: Development
 description:
   Building software, recipes I like, gardening and sometimes even advice.
 dateFormat: '2006-01-02T15:04:05'

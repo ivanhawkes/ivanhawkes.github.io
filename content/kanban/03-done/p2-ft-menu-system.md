@@ -26,7 +26,10 @@ The menu was hard coded, improve it.
 - Every menu entry, its name, parent, weight and icon come from the `menus`
   front matter of a content file; no entry is hard coded in the theme.
 - Which menus the sidebar renders, and the nesting depth, come from
-  `sidebar.menus` and `sidebar.maxDepth` in `config/_default/params.yaml`.
+  `sidebar.menus` and `sidebar.maxDepth` in `config/_default/params.yaml`. The
+  top bar work of `p0-us-update-site-menu` renamed that block to `navigation`,
+  added `navigation.grouped`, and replaced the `active` class with
+  `aria-current="page"` and the `is-trail` state.
 - Entries nest to three levels: Home, About, Posts at level 1; the sections of
   About and Posts at level 2; the recipe cuisines at level 3.
 - Entries below the configured depth are not rendered.

@@ -228,10 +228,14 @@ Styling is Tailwind CSS v4. The theme's source stylesheet is
 which is build output and is not versioned. Hugo writes `assets/jsconfig.json`
 for Tailwind v4 editor intelligence during the CSS build, and `hugo_stats.json`
 records the classes in use; both are build output. The theme's scripts are
-TypeScript in `be-best/assets/js` (menu, sidebar, colour scheme, and the
+TypeScript in `be-best/assets/js` (the top bar and its navigation in
+`site-header.ts` and `nav-menu.ts`, the colour scheme in `dark-mode.ts`, and the
 codeblock copy button), compiled by Hugo into two small bundles: the deferred
 bundle, and a colour scheme preloader in the head that records the visitor's
-setting on the root element before the first paint.
+setting on the root element before the first paint. That preloader is also the
+signal that scripts ran at all: styles that need a script, such as the drawer
+control, are withdrawn from a page whose root element carries no `data-theme`
+attribute.
 
 ## Interfaces
 

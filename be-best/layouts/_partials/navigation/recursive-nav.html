@@ -1,5 +1,5 @@
 {{/*
-  Render one level of a site menu as <li> items.
+  Render one level of a site menu as the <li> items of the top bar.
 
   dict:
     context     - the current page
@@ -7,6 +7,11 @@
     depth       - 0-based depth of the caller
     maxDepth    - deepest level rendered (default 3)
     ancestors   - relPermalinks of the current page's ancestor sections
+
+  An entry with children is a button that opens a panel; one without is a link.
+  The entry of the current page is marked with aria-current="page", and the
+  entries on the path to it are marked with is-trail, which is both a style and
+  the state the drawer opens on.
 */}}
 
 {{- $depth := add .depth 1 -}}
@@ -20,31 +25,55 @@
     {{- $current := and $entry (eq $entry.RelPermalink $page.RelPermalink) -}}
     {{- $trail := and $entry (in $ancestors $entry.RelPermalink) -}}
     {{- $children := $element.Children -}}
-    {{- $expanded := and $children (or $current $trail) -}}
+    {{/*  A panel needs an id of its own for its trigger's aria-controls. The
+            entry's link is unique, so it is a good basis; a URL entry adds its
+            name in case two share a URL.  */}}
+    {{- $source := "" -}}
+    {{- with $entry -}}
+      {{- $source = .RelPermalink -}}
+    {{- else -}}
+      {{- $source = printf "%s %s" $element.Name $element.URL -}}
+    {{- end -}}
+    {{- $key := printf "%s" $source | anchorize -}}
+    {{- $panelId := printf "nav-panel-d%d-%s" $depth $key -}}
 
     {{- if and $children (lt $depth $maxDepth) -}}
       <li
-        class="has-children{{ if or $current $trail }} active{{ end }}{{ if $expanded }} open{{ end }}">
+        class="nav-item has-children{{ if $current }} is-current{{ end }}{{ if $trail }} is-trail{{ end }}"
+        {{
+          if eq $depth 1
+        }}
+          data-nav-entry=""
+        {{ end }}
+        {{ if $trail }}data-trail="true"{{ end }}>
         <button
           type="button"
-          class="dropdown-btn{{ if $expanded }} rotate{{ end }}"
-          aria-expanded="{{ if $expanded }}true{{ else }}false{{ end }}">
-          {{- $element.Params.icon | safeHTML -}}
-          <span>{{- $element.Name -}}</span>
+          class="nav-trigger"
+          aria-expanded="false"
+          aria-haspopup="true"
+          aria-controls="{{ $panelId }}"
+          {{ if $current }}aria-current="true"{{ end }}>
+          {{- with $element.Params.icon -}}
+            <span class="nav-icon">{{ . | safeHTML }}</span>
+          {{- end -}}
+          <span class="nav-label">{{- $element.Name -}}</span>
           <svg
+            class="nav-chevron"
             xmlns="http://www.w3.org/2000/svg"
-            height="24px"
             viewBox="0 -960 960 960"
-            width="24px"
-            fill="#e8eaed"
-            aria-hidden="true">
+            aria-hidden="true"
+            focusable="false">
             <path
               d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z" />
           </svg>
         </button>
 
-        <div class="sub-menu{{ if $expanded }} show{{ end }}">
-          <ul>
+        {{/*  A wide panel holds a long list, the cuisines under Recipes: it
+                lays out in columns so it stays a panel that fits the screen.  */}}
+        <div
+          class="nav-panel{{ if ge (len $children) 8 }} nav-panel--wide{{ end }}"
+          id="{{ $panelId }}">
+          <ul class="nav-sublist" role="list">
             {{- partial "/navigation/recursive-nav.html" (dict
               "context" $page
               "menu" $children
@@ -56,11 +85,21 @@
         </div>
       </li>
     {{- else -}}
-      <li{{ if or $current $trail }} class="active"{{ end }}>
+      <li
+        class="nav-item{{ if $current }} is-current{{ end }}{{ if $trail }} is-trail{{ end }}"
+        {{
+          if eq $depth 1
+        }}
+          data-nav-entry=""
+        {{ end }}>
         <a
-          href="{{ with $entry }}{{ .RelPermalink }}{{ else }}{{ $element.URL }}{{ end }}">
-          {{- $element.Params.icon | safeHTML -}}
-          <span>{{- $element.Name -}}</span>
+          class="nav-link"
+          href="{{ with $entry }}{{ .RelPermalink }}{{ else }}{{ $element.URL }}{{ end }}"
+          {{ if $current }}aria-current="page"{{ end }}>
+          {{- with $element.Params.icon -}}
+            <span class="nav-icon">{{ . | safeHTML }}</span>
+          {{- end -}}
+          <span class="nav-label">{{- $element.Name -}}</span>
         </a>
       </li>
     {{- end -}}

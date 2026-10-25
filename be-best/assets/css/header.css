@@ -1,0 +1,645 @@
+/* The top bar: brand, primary navigation, search box, colour scheme switch.
+
+   One markup, two presentations. Below 1024 pixels the list is a panel that
+   slides in from the right and its sub-menus are accordion sections; from
+   1024 pixels up it is the horizontal bar and the sub-menus are dropdown and
+   flyout panels. nav-menu.ts and site-header.ts add the open state, the focus
+   trap, the overflow menu and the elevation shadow; with scripts off, the bar
+   opens its panels on hover and on keyboard focus, and below 1024 pixels the
+   list is stacked under the bar with every section open. */
+
+/* The scroll probe. It sits in the flow above the sticky header, so it leaves
+   the viewport as soon as the page scrolls; the script watches it, which is
+   the elevation state's only scroll work. */
+#header-sentinel {
+    height: 1px;
+    margin-bottom: -1px;
+    pointer-events: none;
+}
+
+#site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    border-bottom: 1px solid var(--header-border);
+}
+
+/* The translucent, blurred surface, on a layer of its own. The filter stays off
+   the bar element itself: a backdrop-filter makes an element the containing
+   block of every fixed element under it, and the drawer is one of them. On this
+   layer the drawer keeps the viewport it is measured against. */
+#site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--header-bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Elevation only once the page has moved, so the bar is flush while it is at
+   rest at the top of the page. */
+#site-header.is-elevated {
+    box-shadow: var(--shadow-sm);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1280px;
+    height: 60px;
+    margin-inline: auto;
+    padding-inline: var(--page-gutter);
+}
+
+/* Text kept for assistive technology only. */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Brand */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.5rem 0.25rem;
+    border-radius: var(--radius);
+    color: var(--text);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.brand-mark {
+    padding: 0.25rem 0.4rem;
+    border-radius: 0.35rem;
+    background-color: var(--surface-2);
+    color: var(--text);
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+}
+
+.brand-name {
+    display: none;
+    font-size: 1rem;
+}
+
+.brand:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+/* Right hand actions: search, colour scheme switch, drawer control. */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-left: auto;
+}
+
+#nav-toggle,
+#site-search button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    border-radius: var(--radius);
+    background: none;
+    color: var(--text);
+    fill: currentColor;
+}
+
+#nav-toggle svg,
+#site-search button svg {
+    width: 24px;
+    height: 24px;
+}
+
+#nav-toggle:hover,
+#site-search button:hover {
+    background-color: var(--nav-hover);
+}
+
+#nav-toggle:focus-visible,
+#site-search button:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+/* Search: a Google site search, scoped to this domain by site-header.ts. It
+   needs the width the top bar has, so it stays out of the narrow drawer. */
+
+.site-search {
+    display: none;
+    align-items: center;
+    gap: 0.25rem;
+    margin-right: 0.25rem;
+}
+
+#site-search-input {
+    box-sizing: border-box;
+    width: 11rem;
+    max-width: 28vw;
+    height: 44px;
+    padding: 0 0.75rem;
+    border: 1px solid var(--header-border);
+    border-radius: 9999px;
+    background-color: var(--surface-2);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.9375rem;
+}
+
+#site-search-input::placeholder {
+    color: color-mix(in oklab, var(--text) 65%, transparent);
+}
+
+#site-search-input:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+/* Navigation: the drawer, below 1024 pixels. */
+
+#primary-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 60;
+    box-sizing: border-box;
+    width: min(20rem, 90vw);
+    padding: calc(60px + 0.5rem) 0.75rem 1.5rem;
+    border-left: 1px solid var(--header-border);
+    background-color: var(--surface);
+    box-shadow: var(--shadow);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    transform: translateX(100%);
+    transition:
+        transform 220ms ease-out,
+        background-color 180ms ease-out,
+        border-color 180ms ease-out;
+}
+
+html.nav-open #primary-nav {
+    transform: translateX(0);
+}
+
+#nav-scrim {
+    position: fixed;
+    inset: 0;
+    /* Under the bar, so the bar and the drawer in its stacking context stay
+       above the scrim and keep taking their own clicks. */
+    z-index: 40;
+    background-color: var(--overlay);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity 220ms ease-out,
+        visibility 220ms ease-out;
+}
+
+html.nav-open #nav-scrim {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.nav-list,
+.nav-sublist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link,
+.nav-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    min-height: 44px;
+    padding: 0.5rem 0.75rem;
+    border: 0;
+    border-radius: var(--radius);
+    background: none;
+    color: var(--text);
+    font: inherit;
+    font-size: 0.9375rem;
+    font-weight: 500;
+    text-align: left;
+    text-decoration: none;
+}
+
+.nav-link:hover,
+.nav-trigger:hover {
+    background-color: var(--nav-hover);
+}
+
+.nav-link:focus-visible,
+.nav-trigger:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+.nav-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+}
+
+.nav-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.nav-label {
+    flex-grow: 1;
+}
+
+.nav-chevron {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    fill: currentColor;
+    transition: rotate 200ms ease;
+}
+
+.nav-trigger[aria-expanded='true'] .nav-chevron {
+    rotate: 180deg;
+}
+
+/* The current page and the path to it. The cue is never colour alone: the
+   label gains weight and a bar on its leading edge, and aria-current="page"
+   carries the same fact to assistive technology. */
+.nav-item.is-current > .nav-link,
+.nav-item.is-current > .nav-trigger {
+    font-weight: 600;
+    border-radius: 0 var(--radius) var(--radius) 0;
+    box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.nav-item.is-trail > .nav-link,
+.nav-item.is-trail > .nav-trigger {
+    font-weight: 600;
+}
+
+/* Sub-menus: accordion sections in the drawer. */
+
+.nav-panel {
+    display: none;
+    padding: 0.25rem 0 0.25rem 0.5rem;
+}
+
+.nav-item.is-open > .nav-panel {
+    display: block;
+}
+
+.nav-sublist {
+    gap: 0;
+    border-left: 1px solid var(--header-border);
+    padding-left: 0.25rem;
+}
+
+/* The overflow menu is built by the script, and only in the bar. */
+.nav-item--more {
+    display: none;
+}
+
+/* Scripts off: nothing opens the drawer, so the control that would open it is
+   withdrawn - as the colour scheme switch is - and the list is laid out in the
+   page under the bar, every entry and every section on show. */
+html:not([data-theme]) #nav-toggle {
+    display: none;
+}
+
+@media (max-width: 1023px) {
+    html:not([data-theme]) .header-inner {
+        flex-wrap: wrap;
+        height: auto;
+        padding-block: 0.5rem;
+    }
+
+    html:not([data-theme]) #primary-nav {
+        position: static;
+        order: 3;
+        flex: 0 0 100%;
+        width: auto;
+        padding: 0.25rem 0 0.5rem;
+        border: 0;
+        background: none;
+        box-shadow: none;
+        overflow: visible;
+        transform: none;
+    }
+
+    /* A section has no way to open without a script, so none is shut. The
+       control that would open it is the chevron, so it and the button's
+       affordance go with it: the entry reads as the group label it is. */
+    html:not([data-theme]) .nav-panel {
+        display: block;
+    }
+
+    html:not([data-theme]) .nav-trigger {
+        cursor: default;
+    }
+
+    html:not([data-theme]) .nav-chevron {
+        display: none;
+    }
+}
+
+/* The top bar, from 1024 pixels up. */
+
+@media (min-width: 1024px) {
+    .header-inner {
+        gap: 0.5rem;
+        height: 72px;
+    }
+
+    .brand-name {
+        display: inline;
+    }
+
+    .site-search {
+        display: flex;
+    }
+
+    #nav-toggle,
+    #nav-scrim {
+        display: none;
+    }
+
+    #primary-nav {
+        position: static;
+        width: auto;
+        flex: 1 1 auto;
+        align-self: stretch;
+        min-width: 0;
+        padding: 0;
+        border: 0;
+        background: none;
+        box-shadow: none;
+        overflow: visible;
+        transform: none;
+    }
+
+    /* A drawer left open while the window widens must not shift the bar. */
+    html.nav-open #primary-nav {
+        transform: none;
+    }
+
+    .nav-list {
+        flex-direction: row;
+        align-items: center;
+        height: 100%;
+    }
+
+    .nav-list > .nav-item {
+        flex-shrink: 0;
+        /* The entry fills the bar's height, so its panel hangs from the bottom
+           of the bar and not from the middle of it. */
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    /* The bar is roomier than the drawer: a link needs less height and the
+       entry icons stay in the drawer. */
+    .nav-link,
+    .nav-trigger {
+        width: auto;
+        min-height: 40px;
+        padding: 0.5rem 0.75rem;
+        white-space: nowrap;
+    }
+
+    .nav-list > .nav-item > .nav-link .nav-icon,
+    .nav-list > .nav-item > .nav-trigger .nav-icon {
+        display: none;
+    }
+
+    .nav-item.is-current > .nav-link,
+    .nav-item.is-current > .nav-trigger,
+    .nav-list > .nav-item.is-trail > .nav-trigger {
+        border-radius: var(--radius) var(--radius) 0 0;
+        box-shadow: inset 0 -3px 0 var(--accent);
+    }
+
+    .nav-item--more:not([hidden]) {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    /* Sub-menus: dropdown panels under a top level entry, flyouts beside a
+       nested one. They open on click (the script's is-open class), on hover
+       and on keyboard focus, and they are hidden from the screen reader and
+       from the tab order while shut. */
+    .nav-panel {
+        display: block;
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        z-index: 70;
+        min-width: 15rem;
+        max-width: min(26rem, calc(100vw - (2 * var(--page-gutter))));
+        padding: 0.5rem;
+        border: 1px solid var(--header-border);
+        border-radius: var(--radius);
+        background-color: var(--surface);
+        box-shadow: var(--shadow);
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-4px);
+        transition:
+            opacity 150ms ease-out,
+            transform 150ms ease-out,
+            visibility 150ms ease-out,
+            background-color 180ms ease-out,
+            border-color 180ms ease-out;
+    }
+
+    .nav-panel .nav-sublist {
+        gap: 0.125rem;
+        border-left: 0;
+        padding-left: 0;
+    }
+
+    /* A wide panel is a long list: the cuisines under Recipes. It lays out in
+       columns so it stays a panel and not a page. */
+    .nav-panel--wide .nav-sublist {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(11rem, 1fr));
+    }
+
+    .nav-panel--wide {
+        max-width: min(30rem, calc(100vw - (2 * var(--page-gutter))));
+    }
+
+    .nav-panel .nav-panel {
+        top: 0;
+        left: 100%;
+    }
+
+    /* A panel under the last entry of the row has no room to the right, so it
+       hangs from that entry's right edge and its own flyouts open to the left.
+       The script marks the entry, because it is the one the overflow menu
+       leaves last; with no script, the last entry is the one before the overflow
+       menu, which is never shown. */
+    .nav-list > .nav-item--edge > .nav-panel,
+    .nav-list > .nav-item:has(+ .nav-item--more) > .nav-panel {
+        left: auto;
+        right: 0;
+    }
+
+    .nav-list > .nav-item--edge > .nav-panel .nav-panel,
+    .nav-list > .nav-item:has(+ .nav-item--more) > .nav-panel .nav-panel {
+        left: auto;
+        right: 100%;
+    }
+
+    .nav-list > .nav-item--edge .nav-panel .nav-trigger .nav-chevron,
+    .nav-list
+        > .nav-item:has(+ .nav-item--more)
+        .nav-panel
+        .nav-trigger
+        .nav-chevron {
+        rotate: 90deg;
+    }
+
+    .nav-panel .nav-trigger .nav-chevron {
+        rotate: -90deg;
+    }
+
+    .nav-item:hover > .nav-panel,
+    .nav-item:focus-within > .nav-panel,
+    .nav-item.is-open > .nav-panel {
+        visibility: visible;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Colour changes are animated, and never while the theme is being applied:
+   theme-init.ts records the scheme in the head, before the first paint, so the
+   first paint is already the right one and there is nothing to animate. */
+html[data-theme] #site-header,
+html[data-theme] #site-header::before,
+html[data-theme] .nav-link,
+html[data-theme] .nav-trigger {
+    transition:
+        background-color 180ms ease-out,
+        color 180ms ease-out,
+        border-color 180ms ease-out,
+        fill 180ms ease-out;
+}
+
+html[data-theme] #site-header.is-elevated {
+    transition:
+        box-shadow 180ms ease-out,
+        background-color 180ms ease-out,
+        color 180ms ease-out,
+        border-color 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #site-header,
+    #site-header::before,
+    #primary-nav,
+    #nav-scrim,
+    .nav-panel,
+    .nav-chevron,
+    .nav-link,
+    .nav-trigger,
+    #nav-toggle,
+    #site-search button,
+    #site-search-input {
+        transition: none;
+    }
+}
+
+@media print {
+    #site-header,
+    #nav-scrim,
+    #header-sentinel {
+        display: none;
+    }
+}
+
+@media (forced-colors: active) {
+    #site-header,
+    #primary-nav,
+    .nav-panel {
+        border: 1px solid CanvasText;
+        background-color: Canvas;
+        box-shadow: none;
+    }
+
+    /* No blur: the palette is the visitor's, and there is nothing to see
+       through. */
+    #site-header::before {
+        background-color: Canvas;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .nav-link,
+    .nav-trigger,
+    #nav-toggle,
+    #site-search button {
+        background: Canvas;
+        color: CanvasText;
+        fill: CanvasText;
+    }
+
+    .nav-link:hover,
+    .nav-trigger:hover,
+    #nav-toggle:hover,
+    #site-search button:hover {
+        background: ReverseHighlight;
+        color: HighlightedText;
+    }
+
+    .nav-link:focus-visible,
+    .nav-trigger:focus-visible,
+    .brand:focus-visible,
+    #nav-toggle:focus-visible,
+    #site-search-input:focus-visible,
+    #site-search button:focus-visible {
+        outline: 2px solid Highlight;
+        outline-offset: 2px;
+    }
+
+    #nav-scrim {
+        background-color: Canvas;
+        opacity: 0.6;
+    }
+}

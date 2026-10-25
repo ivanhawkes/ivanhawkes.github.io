@@ -21,7 +21,8 @@ former git submodule was merged into the root). Its layout:
   `archetypes/issues.md`), falling back to the path stem, so the target folder
   must be spelled out in the path.
 - `assets/css/` - Tailwind source CSS; `assets/js/` - TypeScript assets
-  (copy-codeblock, dark-mode, hamburger-menu, sidebar).
+  (copy-codeblock, dark-mode, theme-mode and its head preloader theme-init,
+  nav-menu, site-header).
 - `static/` - theme static assets (favicons, robots.txt).
 
 ## CSS pipeline

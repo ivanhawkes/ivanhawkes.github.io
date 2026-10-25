@@ -104,8 +104,9 @@ with the check that demonstrates it.
 | Availability               | Only the `publish` branch publishes, so work in progress cannot take the site down.                                                                                                                                                        | The branch filter and deployment job in `.github/workflows/hugo.yml`.                                                                                       |
 
 Outstanding work against these expectations is tracked as cards, not recorded
-here: the menu controls are the `hamburger-menu` requirement, and codeblock
-presentation is the `polish-codeblock-copy` requirement.
+here: the theme wide colour tokens are the `site-wide-semantic-colour-tokens`
+requirement, and codeblock presentation is the `polish-codeblock-copy`
+requirement.
 
 ## Verification
 

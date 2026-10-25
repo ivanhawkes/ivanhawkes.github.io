@@ -30,10 +30,10 @@ mobile, or slow internet connections. The SEO features are out of date.
 - [ ] Change the structure to use branch bundles, bringing all the content for a
       single post into one folder
 - [ ] Add modern elements
-    - [ ] Light / dark mode
-    - [ ] Hamburger menu
-    - [ ] Code copy button
-    - [ ] Search engine integration
+    - [x] Light / dark mode
+    - [x] Hamburger menu
+    - [x] Code copy button
+    - [x] Search engine integration
 - [ ] Consider putting some usage monitoring on the site to see which sections
       are being used and how much time I've wasted for so few page impressions
 

@@ -1,20 +1,20 @@
 {{/* prettier-ignore-start */}}
 {{/*
-Renders a highlighted code block using the given options and attributes.
+Renders a highlighted codeblock: the bar with the file name, the language chip
+and the copy control, above the highlighted field.
 
-This partial is shared by the render-codeblock.html markup renderer and the
-yaml shortcode so that both produce identical output.
+This partial is the one source of codeblock markup. The render-codeblock.html
+markup renderer and the print-code shortcode both call it, so a codeblock built
+from a fenced block and one built from a data file are the same card.
 
 @param {string} content The code to highlight.
 @param {string} lang The language to highlight as.
-@param {bool} [copy=true] Whether to display a copy-to-clipboard button.
-@param {string} [file] The file name to display above the rendered code.
-@param {bool} [details=false] Whether to wrap the highlighted code block within a details element.
-@param {string} [open=""] "open" if the details element should be initially open.
-@param {template.HTML} summary The content of the details summary element, already rendered from Markdown to HTML.
+@param {bool} [copy=true] Whether the bar carries the copy control.
+@param {string} [file] The file name to display in the bar.
+@param {bool} [details=false] Whether the card sits inside a details element.
+@param {string} [open=""] "open" when the details element starts open.
+@param {template.HTML} [summary] The details summary, already rendered from Markdown to HTML.
 @param {bool} [trim=true] Whether to trim leading and trailing whitespace from the content.
-@param {string} id A unique ID for the code block.
-@param {string} buttonId A unique ID for the copy button.
 @param {dict} [options] Options passed to transform.Highlight.
 
 @returns {template.HTML}
@@ -56,47 +56,135 @@ yaml shortcode so that both produce identical output.
   {{- end }}
 {{- end }}
 
-{{- if $details }}
-  <details class="cursor-pointer" {{ $open }}>
-    <summary>{{ .summary }}</summary>
-  </details>
+{{- $summary := or .summary "Details" }}
+{{- $file := or .file "" }}
+{{- $options := .options | default dict }}
+
+{{/* The language, normalised once for every producer: the chip label and the
+   highlighter are built from the same value. */}}
+{{- $lang := lower (or .lang "") }}
+{{- if in (slice "html" "gotmpl" "go-html-template" "template" "tpl") $lang }}
+  {{- $lang = "go-html-template" }}
+{{- else if in (slice "md" "markdown" "mkd" "mdown") $lang }}
+  {{- $lang = "markdown" }}
+{{- end }}
+{{- $lang = or $lang "text" }}
+
+{{/* The chip shows the extension of the file, or the language when no file is
+   named, in the name a visitor would write for it. */}}
+{{- $names := dict
+  "bash" "Bash"
+  "bat" "Batch"
+  "basic" "BASIC"
+  "batch" "Batch"
+  "c" "C"
+  "cpp" "C++"
+  "cs" "C#"
+  "css" "CSS"
+  "diff" "Diff"
+  "docker" "Docker"
+  "dockerfile" "Dockerfile"
+  "dosbatch" "Batch"
+  "go" "Go"
+  "go-html-template" "Go Template"
+  "h" "C Header"
+  "html" "HTML"
+  "ini" "INI"
+  "java" "Java"
+  "js" "JavaScript"
+  "json" "JSON"
+  "jsonc" "JSON"
+  "jsx" "JSX"
+  "less" "Less"
+  "lua" "Lua"
+  "makefile" "Makefile"
+  "markdown" "Markdown"
+  "md" "Markdown"
+  "php" "PHP"
+  "plaintext" "Text"
+  "powershell" "PowerShell"
+  "ps1" "PowerShell"
+  "py" "Python"
+  "ruby" "Ruby"
+  "rs" "Rust"
+  "sass" "Sass"
+  "scss" "SCSS"
+  "sh" "Shell"
+  "shell" "Shell"
+  "sql" "SQL"
+  "text" "Text"
+  "toml" "TOML"
+  "ts" "TypeScript"
+  "tsx" "TSX"
+  "txt" "Text"
+  "xml" "HTML"
+  "yaml" "YAML"
+  "yml" "YAML"
+  "zsh" "Zsh"
+}}
+{{- $ext := "" }}
+{{- with $file }}
+  {{- $ext = lower (strings.TrimPrefix "." (path.Ext .)) }}
+{{- end }}
+{{- $key := or $ext $lang }}
+{{- $label := index $names $key }}
+{{- if not $label }}
+  {{- $label = title $key }}
 {{- end }}
 
-{{/* Get the IDs supplied by the caller so that each code block on a page is unique. */}}
-{{ $codeblockId := .id }}
-{{ $buttonId := .buttonId }}
+{{- $copyLabel := "Copy code to clipboard" }}
+{{- with $file }}
+  {{- $copyLabel = printf "Copy %s code to clipboard" . }}
+{{- end }}
 
-
+{{- if $details }}
+  <details class="codeblock-details"{{ with $open }} open{{ end }}>
+    <summary class="codeblock-summary">{{ $summary }}</summary>
+{{- end }}
 <div
-  class="codeblock render-hook-codeblock not-prose bg-card relative container mt-6 mb-8 w-full border border-gray-200 font-mono sm:w-120 md:w-160 dark:border-gray-800">
-  {{- $fileSelectClass := "select-none" }}
-
-  {{- if $copy }}
-    {{- $fileSelectClass = "select-text" }}
-
-    <div class="flex h-10 w-full justify-between bg-gray-600 copy-button">
-      <svg xmlns="http://www.w3.org/2000/svg" height="1.5rem" viewBox="0 -960 960 960" width="1.5rem" fill="#FFFFFF"><path d="M320-213.33q-27 0-46.83-19.84Q253.33-253 253.33-280v-533.33q0-27 19.84-46.84Q293-880 320-880h413.33q27 0 46.84 19.83Q800-840.33 800-813.33V-280q0 27-19.83 46.83-19.84 19.84-46.84 19.84H320ZM186.67-80q-27 0-46.84-19.83Q120-119.67 120-146.67v-600h66.67v600h480V-80h-480Z"/></svg>
-      <p id="{{ $buttonId }}">Copy</p>
-
-      <div class="h-7 w-full">
-        {{/* SVG was here */}}
-      </div>
+  class="codeblock render-hook-codeblock not-prose">
+  {{- if or $file $copy }}
+    <div class="codeblock-bar">
+      {{- with $file }}
+        <span class="codeblock-name" title="{{ . }}">{{ . }}</span>
+      {{- end }}
+      <span class="codeblock-lang">{{ $label }}</span>
+      {{- if $copy }}
+        <button
+          type="button"
+          class="codeblock-copy copy-button"
+          aria-label="{{ $copyLabel }}">
+          <svg
+            class="codeblock-icon codeblock-icon-copy"
+            viewBox="0 -960 960 960"
+            aria-hidden="true"
+            focusable="false">
+            <path
+              d="M320-213.33q-27 0-46.83-19.84Q253.33-253 253.33-280v-533.33q0-27 19.84-46.84Q293-880 320-880h413.33q27 0 46.84 19.83Q800-840.33 800-813.33V-280q0 27-19.83 46.83-19.84 19.84-46.84 19.84H320ZM186.67-80q-27 0-46.84-19.83Q120-119.67 120-146.67v-600h66.67v600h480V-80h-480Z" />
+          </svg>
+          <svg
+            class="codeblock-icon codeblock-icon-check"
+            viewBox="0 -960 960 960"
+            aria-hidden="true"
+            focusable="false">
+            <path d="M425-323 239-509l57-57 129 129 278-278 57 57-335 335Z" />
+          </svg>
+          <span class="codeblock-copy-label">Copy</span>
+        </button>
+        <span class="codeblock-copy-status" role="status" aria-live="polite"></span>
+      {{- end }}
     </div>
   {{- end }}
-
-  {{- with .file }}
-    <div
-      class="san-serif {{ $fileSelectClass }} inline-block w-full bg-gray-300 py-3 pl-2 text-sm leading-none dark:bg-slate-700">
-      {{ . }}
-    </div>
-  {{- end }}
-
-  <div id="{{ $codeblockId }}" class="highlight w-full code">
+  <div class="highlight code">
     {{- $content := .content }}
 
     {{- if $trim }}
-      {{- $content = strings.TrimSpace .content }}
+      {{- $content = strings.TrimSpace $content }}
     {{- end }}
-    {{- transform.Highlight $content .lang (.options | default dict) }}
+    {{- transform.Highlight $content $lang $options }}
   </div>
 </div>
+{{- if $details }}
+  {{- /* The card is the details content, so the summary opens the code. */}}
+  </details>
+{{- end }}

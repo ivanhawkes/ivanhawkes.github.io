@@ -30,6 +30,29 @@
     --overlay: oklch(0 0 0 / 32%);
     --shadow-sm: 0 1px 2px oklch(0 0 0 / 10%);
     --shadow: 0 8px 24px oklch(0 0 0 / 18%);
+
+    /* Code. The field is the dark field the `vulcan` syntax palette is painted
+       on, so it stays dark in the light scheme too: a dark code card in a light
+       page is what GitHub and Vercel do, and it is what keeps every token
+       colour in `syntax-highlight.css` at its measured contrast. The values are
+       therefore scheme independent and declared once. They are hex, not oklch,
+       because they are the syntax palette's own colours. */
+    --code-bg: #282c34;
+    --code-text: #c9c9c9;
+    --code-bar: #2f343a;
+    --code-bar-text: #dfe3e6;
+    --code-chip: oklch(1 0 0 / 10%);
+    --code-chip-text: #cfd6dd;
+    --code-hover: oklch(1 0 0 / 12%);
+    --code-active: oklch(0 0 0 / 18%);
+    --code-focus: #48c9b0;
+    --code-success: #7ee0a8;
+    --code-failed: #ef8a97;
+    --code-border: #3d4148;
+    --code-highlight: #3d4148;
+    --code-hairline: oklch(1 0 0 / 10%);
+    --code-gutter: #9aa3ad;
+    --code-font-family: var(--font-mono);
 }
 
 .dark {
@@ -81,6 +104,24 @@
         --overlay: transparent;
         --shadow-sm: none;
         --shadow: none;
+
+        /* Paper is monochrome, so the field, the bar and the syntax palette all
+           flatten to black ink on white. */
+        --code-bg: #fff;
+        --code-text: #1a1a1a;
+        --code-bar: #fff;
+        --code-bar-text: #1a1a1a;
+        --code-chip: #f2f2f2;
+        --code-chip-text: #1a1a1a;
+        --code-hover: transparent;
+        --code-active: transparent;
+        --code-focus: #1a1a1a;
+        --code-success: #1a1a1a;
+        --code-failed: #1a1a1a;
+        --code-border: #999;
+        --code-highlight: #ededed;
+        --code-hairline: #999;
+        --code-gutter: #767676;
     }
 }
 
@@ -98,5 +139,21 @@
         --shadow-sm: none;
         --shadow: none;
         --focus-ring: Highlight;
+
+        --code-bg: Canvas;
+        --code-text: CanvasText;
+        --code-bar: Canvas;
+        --code-bar-text: CanvasText;
+        --code-chip: Canvas;
+        --code-chip-text: CanvasText;
+        --code-hover: Highlight;
+        --code-active: Highlight;
+        --code-focus: Highlight;
+        --code-success: CanvasText;
+        --code-failed: CanvasText;
+        --code-border: CanvasText;
+        --code-highlight: Canvas;
+        --code-hairline: CanvasText;
+        --code-gutter: CanvasText;
     }
 }

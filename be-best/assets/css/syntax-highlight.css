@@ -1,32 +1,20 @@
-/* Right column (code) */
-/* #codeblock-000 { */
-.highlight {
-    color: #c9c9c9;
-    background-color: #282c34;
-    overflow: scroll;
-    scrollbar-width: auto;
-    scrollbar-color: oklch(41.126% 0.08683 235.724)
-        oklch(85.364% 0.00775 260.869);
-    font-size: 1rem;
-    font-family: var(--code-font-family);
-    overflow-wrap: normal;
-}
+/* The syntax palette: one colour per Chroma token class, painted on the dark
+   code field the card in `codeblock.css` lays out and `tokens.css` names.
+   Layout, size, the surface and the scrollbars belong to that card, so this
+   file is the palette and nothing else.
 
-/* Left column (line numbers) */
-.chroma .lntd,
-.chroma .lntd pre,
-.chroma .ln {
-    font-size: 1rem;
-    font-family: var(--code-font-family);
-}
-
-/* Custom colours based off the Vulcan theme. Some small adjustments
-   have been made by me.*/
+   The colours are the Vulcan theme's. Most are unchanged; the ones marked
+   `AA` below were tuned for a light field and are unreadable on the dark one,
+   so they are lightened to clear WCAG 2.2 AA, 4.5:1 against `--code-bg`
+   (#282c34): `.nt` 1.6:1 to 8.7:1, `.go` 1.5:1 to 5.5:1, the line numbers
+   3.5:1 to 5.5:1, the red group 3.5:1 to 5.8:1, the purple group 4.3:1 to
+   6.0:1. Keyword constants lose their grey chip, which left its own text at
+   4.0:1. */
 
 /* Background */
 .bg {
-    color: #c9c9c9;
-    background-color: #282c34;
+    color: var(--code-text);
+    background-color: var(--code-bg);
 }
 
 /* PreWrapper */
@@ -41,7 +29,7 @@
 
 /* Error */
 .chroma .err {
-    color: #cf5967;
+    color: #ef8a97; /* AA */
 }
 
 /* CodeLine */
@@ -83,7 +71,7 @@
     user-select: none;
     margin-right: 0.4em;
     padding: 0 0.4em 0 0.4em;
-    color: #7f7f7f;
+    color: #9aa3ad; /* AA */
 }
 
 /* LineNumbers */
@@ -93,7 +81,7 @@
     user-select: none;
     margin-right: 0.4em;
     padding: 0 0.4em 0 0.4em;
-    color: #7f7f7f;
+    color: #9aa3ad; /* AA */
 }
 
 /* Line */
@@ -108,8 +96,7 @@
 
 /* KeywordConstant */
 .chroma .kc {
-    color: #cf5967;
-    background-color: #43454f;
+    color: #ef8a97; /* AA */
 }
 
 /* KeywordDeclaration */
@@ -119,12 +106,12 @@
 
 /* KeywordNamespace */
 .chroma .kn {
-    color: #bc74c4;
+    color: #cf96d6; /* AA */
 }
 
 /* KeywordPseudo */
 .chroma .kp {
-    color: #bc74c4;
+    color: #cf96d6; /* AA */
 }
 
 /* KeywordReserved */
@@ -144,7 +131,7 @@
 
 /* NameAttribute */
 .chroma .na {
-    color: #bc74c4;
+    color: #cf96d6; /* AA */
 }
 
 /* NameBuiltin */
@@ -178,7 +165,7 @@
 
 /* NameException */
 .chroma .ne {
-    color: #cf5967;
+    color: #ef8a97; /* AA */
 }
 
 /* NameFunction */
@@ -192,7 +179,7 @@
 
 /* NameLabel */
 .chroma .nl {
-    color: #cf5967;
+    color: #ef8a97; /* AA */
 }
 
 /* NameNamespace */
@@ -209,12 +196,12 @@
 
 /* NameTag */
 .chroma .nt {
-    color: #085926;
+    color: #7ee0a8; /* AA */
 }
 
 /* NameVariable */
 .chroma .nv {
-    color: #bc74c4;
+    color: #cf96d6; /* AA */
     font-style: italic;
 }
 
@@ -354,12 +341,12 @@
 
 /* Operator */
 .chroma .o {
-    color: #bc74c4;
+    color: #cf96d6; /* AA */
 }
 
 /* OperatorWord */
 .chroma .ow {
-    color: #bc74c4;
+    color: #cf96d6; /* AA */
 }
 
 /* Punctuation */
@@ -410,7 +397,7 @@
 
 /* GenericDeleted */
 .chroma .gd {
-    color: #cf5967;
+    color: #ef8a97; /* AA */
 }
 
 /* GenericEmph */
@@ -420,7 +407,7 @@
 
 /* GenericError */
 .chroma .gr {
-    color: #cf5967;
+    color: #ef8a97; /* AA */
     font-weight: bold;
 }
 
@@ -437,7 +424,7 @@
 
 /* GenericOutput */
 .chroma .go {
-    color: #43454f;
+    color: #9aa3ad; /* AA */
 }
 
 /* GenericPrompt */
@@ -446,13 +433,13 @@
 
 /* GenericStrong */
 .chroma .gs {
-    color: #cf5967;
+    color: #ef8a97; /* AA */
     font-weight: bold;
 }
 
 /* GenericSubheading */
 .chroma .gu {
-    color: #cf5967;
+    color: #ef8a97; /* AA */
     font-style: italic;
 }
 

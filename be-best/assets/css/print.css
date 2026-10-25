@@ -342,9 +342,11 @@
         font-size: 9.5pt;
     }
 
-    /* A codeblock is a scroll container on screen, and is set to a fixed
-       160 column width from the breakpoint up: wider than the sheet, it prints
-       clipped. Lines wrap to the paper instead. */
+    /* A codeblock is a scroll container on screen: a line longer than the
+       column is scrolled sideways, never wrapped, and the card's box stays the
+       width of the column. On the sheet the card is the width of the paper, so
+       there is nothing to scroll, and a long line wraps to the sheet rather
+       than run off it. */
     .highlight,
     .code,
     .chroma,
@@ -469,6 +471,37 @@ html.print-mode .chroma .lntable {
 
 html.print-mode .chroma [class] {
     color: #1a1a1a;
+}
+
+/* The card's chrome: the bar, its chip, and the summary that opens a collapsed
+   block. The medium's tokens flatten for paper, and a preview is a screen, so
+   the sheet's ink is named here. The copy control is a button, and the preview
+   hides buttons. */
+html.print-mode .codeblock-bar,
+html.print-mode .codeblock-lang {
+    background-color: #fff;
+    color: #1a1a1a;
+}
+
+html.print-mode .codeblock-bar {
+    border-bottom-color: #9a9a9a;
+}
+
+html.print-mode .codeblock-lang {
+    background-color: #f2f2f2;
+}
+
+html.print-mode .codeblock-details {
+    border-color: #9a9a9a;
+    background-color: #fff;
+}
+
+html.print-mode .codeblock-summary {
+    color: #1a1a1a;
+}
+
+html.print-mode .codeblock-summary::before {
+    border-color: #767676;
 }
 
 html.print-mode .chroma .hl {

@@ -2,6 +2,7 @@
 @plugin '@tailwindcss/typography';
 
 @import './syntax-highlight.css';
+@import './codeblock.css';
 @import './custom.css';
 @import './tokens.css';
 @import './layout.css';
@@ -21,6 +22,7 @@
 @theme inline {
     --font-heading: var(--font-sans);
     --font-sans: 'Source Sans 3 Variable', sans-serif;
+    --font-code: var(--code-font-family);
     --color-chart-5: var(--chart-5);
     --color-chart-4: var(--chart-4);
     --color-chart-3: var(--chart-3);

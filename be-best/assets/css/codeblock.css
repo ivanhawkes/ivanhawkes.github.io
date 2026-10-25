@@ -1,0 +1,318 @@
+/* The codeblock card: one frame holding the bar, the field, and the copy
+   control.
+
+   The markup is the same in every producer: `_partials/codeblock.html` renders
+   it for the `render-codeblock.html` markup renderer and the `print-code`
+   shortcode alike, so there is one shape to style. Every colour is a `--code-*`
+   token from `tokens.css`, and the card keeps the hooks `print.css` and
+   `copy-codeblock.ts` read: `.codeblock`, `.highlight`, `.code`, `.chroma`,
+   `.copy-button`.
+
+   The card is full width, and never a `container`: a `container` is a page
+   column, and it would give the card the frame and the 10 % padding of
+   `layout.css` on top of its own. Long lines scroll inside the field, so the
+   card never widens the page and never paints a second scrollbar. */
+
+.codeblock {
+    overflow: hidden;
+    margin: 1.5rem 0 2rem;
+    border: 1px solid var(--code-border);
+    border-radius: var(--radius);
+    background-color: var(--code-bg);
+    box-shadow: var(--shadow-sm);
+    color: var(--code-text);
+    font-family: var(--code-font-family);
+}
+
+/* The bar: file name, language chip, and the copy control at the right. */
+
+.codeblock-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.3rem 0.3rem 0.3rem 0.75rem;
+    border-bottom: 1px solid var(--code-hairline);
+    background-color: var(--code-bar);
+    color: var(--code-bar-text);
+}
+
+/* A path longer than the bar is cut short, and the whole of it stays in the
+   `title` attribute and in the copy control's own label. */
+.codeblock-name {
+    min-width: 0;
+    overflow: hidden;
+    font-size: 0.875rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    user-select: text;
+}
+
+/* The overline chip: the same shape as the brand mark and the footer copy. */
+.codeblock-lang {
+    flex: none;
+    padding: 0.15rem 0.4rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--code-chip);
+    color: var(--code-chip-text);
+    font-size: 0.6875rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* The copy control. It is a button, so it is in the tab order, answers to
+   Enter and Space, and prints nothing: the medium hides buttons. */
+
+.codeblock-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex: none;
+    margin-left: auto;
+    min-height: 32px;
+    padding: 0 0.6rem;
+    border: 0;
+    border-radius: var(--radius-sm);
+    background-color: transparent;
+    color: var(--code-bar-text);
+    font: inherit;
+    font-size: 0.8125rem;
+    fill: currentColor;
+}
+
+/* Hover lifts the surface and a press sinks it: the raised overlay is under
+   the answer's colour, so the sunk surface keeps the answer at AA. */
+.codeblock-copy:hover {
+    background-color: var(--code-hover);
+}
+
+.codeblock-copy:active {
+    background-color: var(--code-active);
+}
+
+.codeblock-copy:focus-visible {
+    outline: 2px solid var(--code-focus);
+    outline-offset: 2px;
+}
+
+.codeblock-icon {
+    width: 1rem;
+    height: 1rem;
+    flex: none;
+}
+
+.codeblock-icon-check {
+    display: none;
+}
+
+.codeblock-copy.is-copied {
+    color: var(--code-success);
+}
+
+.codeblock-copy.is-copied .codeblock-icon-copy {
+    display: none;
+}
+
+.codeblock-copy.is-copied .codeblock-icon-check {
+    display: block;
+}
+
+.codeblock-copy.is-failed {
+    color: var(--code-failed);
+}
+
+/* The announced result. Nothing to see, and a screen reader is told it. */
+.codeblock-copy-status {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* A narrow bar keeps the icon and the label goes, the accessible name being
+   the button's own label. A finger gets the 44 pixel target. */
+@media (max-width: 479px) {
+    .codeblock-copy {
+        padding: 0 0.45rem;
+    }
+
+    .codeblock-copy-label {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+        border: 0;
+    }
+}
+
+@media (pointer: coarse) {
+    .codeblock-copy {
+        min-width: 44px;
+        min-height: 44px;
+    }
+}
+
+/* The field. The scroller is the field itself, and only sideways: a vertical
+   scrollbar is the page's work, and `overflow: scroll` paints one that has
+   nothing to scroll. */
+
+.codeblock .code {
+    padding: 0.75rem 1rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    tab-size: 4;
+    scrollbar-color: var(--code-gutter) transparent;
+    scrollbar-width: thin;
+}
+
+.codeblock pre {
+    margin: 0;
+    font: inherit;
+}
+
+/* The gutter is a rule of its own, and its numbers are never selected: the
+   copy control hands over code, not numbering. */
+.codeblock .chroma .lntd:first-child {
+    padding-right: 0.6rem;
+    border-right: 1px solid var(--code-hairline);
+}
+
+.codeblock .chroma .lntd:last-child {
+    padding-left: 0.6rem;
+}
+
+.codeblock .chroma .lnt,
+.codeblock .chroma .ln {
+    color: var(--code-gutter);
+}
+
+.codeblock .chroma .hl {
+    background-color: var(--code-highlight);
+}
+
+/* A collapsed block: the summary is the row that opens the card, so the card
+   needs no bar of its own above it. */
+
+.codeblock-details {
+    margin: 1.5rem 0 2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background-color: var(--surface-2);
+}
+
+.codeblock-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.25rem 0.75rem;
+    color: var(--text);
+    font-size: 0.9375rem;
+    cursor: pointer;
+    list-style: none;
+}
+
+.codeblock-summary::-webkit-details-marker {
+    display: none;
+}
+
+.codeblock-summary::before {
+    content: '';
+    width: 0.45rem;
+    height: 0.45rem;
+    flex: none;
+    border-right: 2px solid var(--text-muted);
+    border-bottom: 2px solid var(--text-muted);
+    transform: rotate(-45deg);
+    transition: transform 180ms ease-out;
+}
+
+.codeblock-details[open] .codeblock-summary::before {
+    transform: rotate(45deg);
+}
+
+.codeblock-summary:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: -2px;
+}
+
+/* The card inside an open details element is the details element's content:
+   one frame, so the outer margins and the second border are dropped. */
+.codeblock-details .codeblock {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    border-top: 1px solid var(--code-hairline);
+    box-shadow: none;
+}
+
+/* Colour changes are animated, and never to a visitor who asked for no
+   motion. */
+.codeblock-copy,
+.codeblock-copy .codeblock-icon,
+.codeblock-summary::before {
+    transition:
+        background-color 180ms ease-out,
+        color 180ms ease-out,
+        transform 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .codeblock-copy,
+    .codeblock-copy .codeblock-icon,
+    .codeblock-summary::before {
+        transition: none;
+    }
+}
+
+/* A control that needs a script is withdrawn from a page whose root element
+   carries no `data-theme` attribute, as the colour scheme switch is. */
+html:not([data-theme]) .codeblock-copy {
+    display: none;
+}
+
+@media (forced-colors: active) {
+    .codeblock,
+    .codeblock-bar,
+    .codeblock-details {
+        border-color: CanvasText;
+        background-color: Canvas;
+    }
+
+    .codeblock-lang {
+        border: 1px solid CanvasText;
+    }
+
+    .codeblock-copy {
+        border: 1px solid CanvasText;
+    }
+
+    .codeblock-copy:hover,
+    .codeblock-copy:active {
+        background-color: ReverseHighlight;
+        color: HighlightedText;
+    }
+
+    .codeblock-copy:focus-visible {
+        outline-color: Highlight;
+    }
+
+    .codeblock-icon {
+        fill: CanvasText;
+    }
+
+    .codeblock-summary::before {
+        border-color: CanvasText;
+    }
+}

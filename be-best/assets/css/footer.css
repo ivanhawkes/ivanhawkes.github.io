@@ -1,14 +1,92 @@
-/* Footer */
+/* Footer: the foot of the page, the mirror of the top bar.
 
-.footer-menu {
-    background-color: var(--primary);
-    color: var(--primary-foreground);
+   The bar at the head of the page opens the shell and this closes it, so the
+   two are built from the same parts: the bar's surface colour, a hairline
+   border on the edge that faces the page instead of one on the edge behind it,
+   the same 1280 pixel column with the page gutter inside it, 60 pixels of
+   height, 72 from 1024 pixels up, and a chip at the left of the column - the
+   brand mark above, the copyright below, on the same surface at the same size.
 
-    height: 3rem;
+   The bar is sticky, so it carries its translucent surface on a blurred layer
+   of its own and content scrolls under it. The footer sits in the flow at the
+   foot of the page with nothing behind it, so the same colour goes on the
+   element as a flat fill and needs no layer and no blur. */
 
+#site-footer {
+    box-sizing: border-box;
+    width: 100%;
+    border-top: 1px solid var(--header-border);
+    background-color: var(--header-bg);
+}
+
+.footer-inner {
     display: flex;
-    justify-content: center;
     align-items: center;
+    gap: 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1280px;
+    min-height: 60px;
+    margin-inline: auto;
+    padding-inline: var(--page-gutter);
+}
 
-    margin-top: 1.5rem;
+/* The chip at the left of the column, as the brand mark sits at the left of
+   the bar. */
+.footer-copy {
+    margin: 0;
+    padding: 0.25rem 0.4rem;
+    border-radius: 0.35rem;
+    background-color: var(--surface-2);
+    color: var(--text);
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+}
+
+@media (min-width: 1024px) {
+    .footer-inner {
+        min-height: 72px;
+    }
+}
+
+/* Colour changes are animated, as the bar's are, and never while the theme is
+   being applied: theme-init.ts records the scheme before the first paint. */
+html[data-theme] #site-footer,
+html[data-theme] .footer-copy {
+    transition:
+        background-color 180ms ease-out,
+        color 180ms ease-out,
+        border-color 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #site-footer,
+    .footer-copy {
+        transition: none;
+    }
+}
+
+@media print {
+    /* Print is always light, and the palette is reset, so the band prints as
+       a line of text over a rule. */
+    #site-footer {
+        background-color: transparent;
+    }
+
+    .footer-copy {
+        padding: 0;
+        background-color: transparent;
+    }
+}
+
+@media (forced-colors: active) {
+    #site-footer {
+        border-top: 1px solid CanvasText;
+        background-color: Canvas;
+    }
+
+    .footer-copy {
+        background-color: Canvas;
+        color: CanvasText;
+    }
 }

@@ -20,7 +20,13 @@ html.nav-scroll-lock body {
     overflow: hidden;
 }
 
+/* The shell is a column: the bar at the head, the page in the middle, the
+   foot at the tail. The page takes the height that is left, so the foot sits
+   at the bottom of the viewport on a short page and at the bottom of the
+   content on a long one, and never floats in the middle of a blank page. */
 body {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
     min-height: 100dvh;
     background-color: var(--bg);
@@ -28,6 +34,7 @@ body {
 }
 
 main {
+    flex: 1 0 auto;
     padding: 1.5rem 1rem 2rem;
 }
 

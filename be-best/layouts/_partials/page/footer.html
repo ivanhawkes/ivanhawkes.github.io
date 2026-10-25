@@ -1,5 +1,18 @@
-<footer
-  class="footer-menu">
-  {{- .Site.Params.copyright.year -}}&ensp;&copy;&ensp;{{- .Site.Params.copyright.owner -}}&ensp;-&ensp;
-  {{- .Site.Params.copyright.notice -}}
+{{/*
+  The foot of the page: the mirror of the top bar. The bar opens the shell and
+  this closes it, so the two share a formula - the same surface, a hairline
+  border on the edge that faces the page, the same column, the same height, and
+  a chip at the left of the column where the bar puts its brand.
+
+  footer.css lays it out.
+*/}}
+
+<footer id="site-footer">
+  <div class="footer-inner">
+    <p class="footer-copy">
+      {{- .Site.Params.copyright.year -}}&ensp;&copy;&ensp;{{-
+      .Site.Params.copyright.owner -}}&ensp;-&ensp;
+      {{- .Site.Params.copyright.notice -}}
+    </p>
+  </div>
 </footer>

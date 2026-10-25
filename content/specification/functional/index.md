@@ -150,9 +150,15 @@ controls that need a script are withdrawn.
 The search box submits a Google search scoped to this site; `theme.search` in
 the site parameters includes it or leaves it out.
 
-Codeblocks are rendered with syntax highlighting, an accessible identifier, and
-a copy button. Images are generated in widths from 320 to 1920 pixels with
-placeholders, so a visitor receives an image sized for their device. Colour
+Codeblocks are rendered as a card: a bar naming the file the block came from, a
+chip naming its language, and a copy control, above the highlighted field, in
+which a long line scrolls sideways instead of widening the page. The copy
+control puts the fenced source on the clipboard, line numbers and highlighting
+excluded, and answers with a check, a label, and a result announced to a screen
+reader; it is a real button, so the keyboard reaches it, and it is withdrawn
+from a page where scripts did not run. A block can be collapsed behind a
+summary, which opens it. Images are generated in widths from 320 to 1920 pixels
+with placeholders, so a visitor receives an image sized for their device. Colour
 scheme is chosen with a button in the bar, which cycles the light, dark and
 system settings; the choice is remembered between visits, the system setting
 follows the operating system, and the recorded `dark` class and `data-theme`

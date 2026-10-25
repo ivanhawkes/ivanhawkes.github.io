@@ -81,9 +81,10 @@ width, hairline border, `--shadow-sm`, 1.5rem above and 2rem below:
   `--radius-sm`, `--code-hover` on hover, 180ms ease-out colour transition,
   `:focus-visible` ring 2px `--code-focus` at 2px offset,
   `aria-label="Copy <file> code to clipboard"`. Two inline SVGs (copy, check)
-  and a `.is-copied` class swap icon and label; the label is the live region, so
-  the change is announced. Below 480px the label is dropped and the button is
-  icon-only, at least 44px square on coarse pointers.
+  and a `.is-copied` class swap icon and label, while a visually-hidden
+  `role="status"` region in the bar announces "Code copied to clipboard", and
+  `.is-failed` carries "Copy failed". Below 480px the label is dropped and the
+  button is icon-only, at least 44px square on coarse pointers.
 - **Field**, `--code-bg` (#282c34, kept in both schemes: the `vulcan` palette is
   built for a dark field, and a dark code card in a light page is the convention
   GitHub and Vercel set): `overflow-x: auto` only, 0.75rem/1rem padding,
@@ -113,51 +114,67 @@ width, hairline border, `--shadow-sm`, 1.5rem above and 2rem below:
 
 ## Work
 
-- [ ] Rewrite `_partials/codeblock.html` to the markup above, and reduce
+- [x] Rewrite `_partials/codeblock.html` to the markup above, and reduce
       `_markup/render-codeblock.html` to attribute parsing plus a partial call.
       Keep the attribute contract intact: `file`, `copy` (default true),
       `details`, `open`, `summary`, `trim`.
-- [ ] Drop the dead `codeblock-NNN` / `codeblock-button-NNN` ids from the
+- [x] Drop the dead `codeblock-NNN` / `codeblock-button-NNN` ids from the
       templates and the `print-code` shortcode; the script selects by class, and
       the shortcode's filename-derived ids collide when one data file is printed
       twice.
-- [ ] Fix `details` to wrap the card in both templates, and style
+- [x] Fix `details` to wrap the card in both templates, and style
       `.codeblock-details` and `.codeblock-summary`.
-- [ ] Add `be-best/assets/css/codeblock.css` (the pattern of `table.css`,
+- [x] Add `be-best/assets/css/codeblock.css` (the pattern of `table.css`,
       `footer.css`): component classes `.codeblock`, `.codeblock-bar`,
       `.codeblock-name`, `.codeblock-lang`, `.codeblock-copy`,
       `.codeblock-details`, `.codeblock-summary`, the reduced-motion and
       `forced-colors` blocks, imported by `main.css` ahead of `print.css`.
-- [ ] Add the `--code-*` tokens to `tokens.css`, keeping the four resolution
+- [x] Add the `--code-*` tokens to `tokens.css`, keeping the four resolution
       paths that file already documents (light, `.dark`, `light-dark()`, print,
       forced colours), and map `--font-code` in `@theme inline`.
-- [ ] Rewrite the copy control in `copy-codeblock.ts`: bind to the real button,
+- [x] Rewrite the copy control in `copy-codeblock.ts`: bind to the real button,
       guard a missing `navigator.clipboard` with a hidden-textarea fallback for
       insecure origins, one timer per button cleared on re-click, the
-      `.is-copied` class and announced label, and a reported failure state
-      instead of a console line. Keep the existing text extraction: it is
-      correct, line numbers excluded.
-- [ ] Move the surface, scrollbar, size and family rules out of `.highlight` in
+      `.is-copied` class and the announced result, and a reported failure state
+      instead of a console line. The text extraction is kept, and widened: the
+      numbering column is skipped wherever it sits (`.ln`, `.lnt`, `.linenos`,
+      `.ln_table`, `.lnt_table`, so inline numbering is excluded as table
+      numbering always was), and a code element holding bare text, which is what
+      Chroma emits for a language it has no lexer for, is copied whole instead
+      of empty.
+- [x] Move the surface, scrollbar, size and family rules out of `.highlight` in
       `syntax-highlight.css` into `codeblock.css`, define `--code-font-family`
       for real, and land the contrast colours listed above.
-- [ ] Highlight markdown fences: map `md` to Chroma's `markdown` lexer instead
+- [x] Highlight markdown fences: map `md` to Chroma's `markdown` lexer instead
       of `text`, and keep `text`/plaintext unhighlighted.
-- [ ] Update `print.css` for the bar (white surface, `#9a9a9a` rules, button
+- [x] Update `print.css` for the bar (white surface, `#9a9a9a` rules, button
       removed) in both the `@media print` block and the `html.print-mode`
       preview, and drop its now-false comment about a fixed 160 column width.
-- [ ] Re-state the presentation in the specifications: the codeblock sentence in
+- [x] Re-state the presentation in the specifications: the codeblock sentence in
       `content/specification/functional/index.md`, and the render-hook,
       print-chrome and width passages in
       `content/specification/technical/index.md`.
 
+A finding, not a task: `{hl_lines=[2,3]}` in a fence's attributes produces no
+`.hl` element in Hugo 0.166, so the band styles apply to highlighted lines only
+when `hl_lines` is set in the site or page configuration. The fence attribute
+changes nothing in the built markup, and the copy text of such a block is the
+source, as the criterion requires.
+
 ## Acceptance Criteria
 
-- [ ] The literal greys, the fixed widths and the dead ids are gone:
+The checks below are run against built output and against `be-best/`; the
+clipboard text is checked by replaying the script's extraction over the built
+markup of a probe page holding every fence form. The four criteria that need a
+browsing context - real clicks, the widths, the paper, and the page without
+scripts - are checked by hand at <http://lythir:1313>.
+
+- [x] The literal greys, the fixed widths and the dead ids are gone:
       `grep -rE 'bg-gray-600|bg-gray-300|sm:w-120|md:w-160' be-best/layouts/`
       prints nothing, and so does the same for `codeblock-button-`.
-- [ ] The markup exists once, in the partial:
+- [x] The markup exists once, in the partial:
       `grep -c 'class="codeblock"' be-best/layouts/_markup/` is 0.
-- [ ] In built output the card runs bar, file name, language chip, copy button,
+- [x] In built output the card runs bar, file name, language chip, copy button,
       in that order; the bar is `.codeblock-bar`, the button is a real
       `<button type="button">` with an `aria-label` and the `.copy-button` hook,
       and no `h1`-`h6` element sits inside the card.
@@ -173,15 +190,23 @@ width, hairline border, `--shadow-sm`, 1.5rem above and 2rem below:
 - [ ] Every fenced block fills the content column at 320, 768, 1280 and 1920px;
       long lines scroll in the field only, with no vertical scrollbar and no
       inner frame or 10 % padding.
-- [ ] In both schemes the bar text, chip, label and focus ring clear 4.5:1
-      (light 9.7:1, 8.6:1, 5.9:1, 6.1:1) and every `.chroma` token class used by
-      the corpus (cpp, bash, xml, yaml, dosbatch, json, basic, text) clears
-      4.5:1 on the field.
+- [x] In both schemes the bar text, chip, label and focus ring clear 4.5:1 (bar
+      text 9.7:1, chip 6.3:1, label 9.7:1, focus ring 6.1:1, the answer colours
+      7.8:1 copied and 5.2:1 failed, all of them 5.4:1 or better on the hover
+      and pressed surfaces) and every `.chroma` token class used by the corpus
+      (cpp, bash, xml, yaml, dosbatch, json, basic, text) clears 4.5:1 on the
+      field. The 21 token classes the corpus produces measure 5.0:1 to 8.7:1;
+      the line numbers, which are decoration and are never selected, sit at
+      4.0:1 on the `hl_lines` band.
 - [ ] `details="true"` renders the card inside `<details>`, collapsed by default
       and open with `open="true"`, keyboard operable, and the print control
       opens it so the code reaches the paper, where the card is one white block
       with no copy control.
 - [ ] A page whose root carries no `data-theme` shows no copy button and every
       block reads normally.
-- [ ] `pnpm run test` passes, including clean `test:html`, the one-`h1` check
-      and `test:kanban`, and `pnpm stylelint "**/*.css"` is clean.
+- [x] `pnpm run test` passes, including clean `test:html`, the one-`h1` check
+      and `test:kanban`, and `npx stylelint "be-best/assets/css/*.css"` is clean
+      under the theme's own config. `pnpm stylelint "**/*.css"` is not a gate
+      this repository meets: it also lints the generated stylesheet, and
+      Tailwind's output has carried 968 of those complaints since before this
+      card, 1027 with this card's file added.

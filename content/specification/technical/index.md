@@ -219,7 +219,7 @@ the listing page.
 
 The theme is `be-best/`, an ordinary directory of this repository. Hugo selects
 it with `theme: be-best` and `themesDir: '.'` in `config/_default/hugo.yaml`.
-Its 144 files are versioned by this repository, whose only remote is
+Its 148 files are versioned by this repository, whose only remote is
 `ivanhawkes/ivanhawkes.github.io`, so a theme change is committed and pushed
 here, in the same commit as the content that needs it.
 
@@ -230,13 +230,14 @@ for Tailwind v4 editor intelligence during the CSS build, and `hugo_stats.json`
 records the classes in use; both are build output. The theme's scripts are
 TypeScript in `be-best/assets/js` (the top bar and its navigation in
 `site-header.ts` and `nav-menu.ts`, the colour scheme in `dark-mode.ts`, and the
-codeblock copy button), compiled by Hugo into two small bundles: the deferred
-bundle, and a colour scheme preloader in the head that records the visitor's
-setting on the root element before the first paint. That preloader is also the
-signal that scripts ran at all: styles that need a script, such as the drawer
-control, are withdrawn from a page whose root element carries no `data-theme`
-attribute; the print control is withdrawn with them, since a page with no script
-cannot ask the driver for paper.
+codeblock copy control in `copy-codeblock.ts`), compiled by Hugo into two small
+bundles: the deferred bundle, and a colour scheme preloader in the head that
+records the visitor's setting on the root element before the first paint. That
+preloader is also the signal that scripts ran at all: styles that need a script,
+such as the drawer control, are withdrawn from a page whose root element carries
+no `data-theme` attribute; the print control and the codeblock copy control are
+withdrawn with them, since a page with no script cannot ask the driver for paper
+and cannot put code on a clipboard.
 
 ### The Print Medium
 
@@ -245,9 +246,10 @@ and a colour scheme, and paper, which has none of them.
 `be-best/assets/css/print.css` owns the second and is imported last by
 `main.css`, so its unlayered rules win over the component styles it overrides;
 `tokens.css` resets the palette tokens for the medium, which makes paper always
-light. It is the only source of `@media print` in the compiled stylesheet beyond
-that token reset, which `grep -c '@media print' assets/css/main.css` reports as
-two blocks.
+light. The `--code-*` tokens are reset with the palette, so the code card, whose
+field is dark on every screen, flattens to ink on paper. It is the only source
+of `@media print` in the compiled stylesheet beyond that token reset, which
+`grep -c '@media print' assets/css/main.css` reports as two blocks.
 
 The sheet is defined by `@page` margins only: the paper size is left to the
 driver, so A4 and Letter both work. The `@media print` block removes the chrome
@@ -289,8 +291,16 @@ Markdown render hooks, in `be-best/layouts/_markup/`:
   attribute produces invalid markup such as `<atitle="...">`.
 - `render-image.html` resolves page bundle images and emits a fallback that is
   valid inside a paragraph.
-- `render-codeblock.html` renders a highlighted codeblock with a copy button,
-  and an optional `details` and `summary` wrapper.
+- `render-codeblock.html` parses the fence's attributes and hands them to
+  `_partials/codeblock.html`, which renders the card: a bar holding the file
+  name, the language chip and the copy control, above the highlighted field. Its
+  attributes are `file`, `copy`, `details`, `open`, `summary` and `trim` beside
+  the options of `transform.Highlight`. A fence with no language is highlighted
+  as the extension of the file it names, and as plain text when it names none;
+  `md` is highlighted as Markdown, and a fence naming a template dialect is
+  highlighted as `go-html-template`. The bar is left out when a block names no
+  file and asks for no copy control, and `details=true` wraps the card in a
+  `details` element whose `summary` opens it.
 
 Shortcodes, in `be-best/layouts/_shortcodes/`:
 
@@ -303,8 +313,11 @@ Shortcodes, in `be-best/layouts/_shortcodes/`:
   responsive images in widths from 320 to 1920 pixels with generated
   placeholders.
 - `print-code` takes a `file` parameter relative to `assets/`, and renders the
-  file as a highlighted codeblock with a copy button. It is how the data
-  definitions in this document are reproduced.
+  file through the same `_partials/codeblock.html`, so the card it produces is
+  identical to a fenced block's, copy control included. Its other parameters are
+  `lang` (defaulting to the file's extension, and to `yaml`), `copy`, `details`,
+  `open`, `summary` and `trim`. It is how the data definitions in this document
+  are reproduced.
 
 The Kanban board itself is the `kanban` section, rendered by
 `be-best/layouts/kanban/section.html` as a responsive grid of card partials.

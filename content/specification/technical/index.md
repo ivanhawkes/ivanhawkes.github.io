@@ -235,7 +235,47 @@ bundle, and a colour scheme preloader in the head that records the visitor's
 setting on the root element before the first paint. That preloader is also the
 signal that scripts ran at all: styles that need a script, such as the drawer
 control, are withdrawn from a page whose root element carries no `data-theme`
-attribute.
+attribute; the print control is withdrawn with them, since a page with no script
+cannot ask the driver for paper.
+
+### The Print Medium
+
+The site is styled for two media: the screen, which has a viewport, a pointer
+and a colour scheme, and paper, which has none of them.
+`be-best/assets/css/print.css` owns the second and is imported last by
+`main.css`, so its unlayered rules win over the component styles it overrides;
+`tokens.css` resets the palette tokens for the medium, which makes paper always
+light. It is the only source of `@media print` in the compiled stylesheet beyond
+that token reset, which `grep -c '@media print' assets/css/main.css` reports as
+two blocks.
+
+The sheet is defined by `@page` margins only: the paper size is left to the
+driver, so A4 and Letter both work. The `@media print` block removes the chrome
+(the bar, the sentinel, the scrim, the menu, the search box, the colour scheme
+switch, the foot, the breadcrumbs, the pagers, the taxonomy list, the related
+list, the copy buttons, forms, form controls and embeds), flattens the layout to
+one full width column with no grid, card surface, shadow, blur, transition,
+animation or viewport height, measures type in points on a 12pt root (the same
+size as the 16px root the rem scale is built on), and sets `orphans` and
+`widows` to 3 with page break control on headings, lists, figures, tables, rows
+and codeblocks. Code and tables print black on white: long lines wrap to the
+paper, table headers repeat on every page a table spans, and the stripe fills
+and the dark syntax theme are replaced. A prose link is followed by its target
+in parentheses; an in-page anchor, a mail or telephone link, an image link and a
+card listing link print no target.
+
+The top bar carries the control for the medium: a button in `.header-actions`,
+labelled "Print this page", driven by `be-best/assets/js/site-header.ts`. It
+opens every closed `details` element, so collapsed codeblocks reach the paper,
+puts `html.print-mode` on the root element, and calls `window.print()`. The
+`html.print-mode` rules at the foot of `print.css` are the shared core of the
+medium applied to the screen, so the browser's own preview, which renders the
+page as it stands, shows the sheet that will be printed; the bar keeps only this
+control on screen, so the preview can be left, and it is never printed. The
+browser's keyboard flow (`Ctrl+P`, `Cmd+P`) is handled through the print media
+query and the `beforeprint` and `afterprint` events, which open the same sheet.
+When the dialog closes, and on `Escape`, the preview is put away and the
+`details` elements the control opened are shut again.
 
 ## Interfaces
 

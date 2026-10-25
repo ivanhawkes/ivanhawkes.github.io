@@ -1,11 +1,14 @@
 {{/*
   The banner landmark: the sticky top bar. The brand sits at the left, the site
-  menus follow it, and the search box, the colour scheme switch and the drawer
-  control are right aligned. Below 1024 pixels the menu list is a drawer that
-  slides in from the right; the markup is the same in both cases, so there is
-  one navigation to style, and one set of links to keep reachable.
+  menus follow it, and the search box, the colour scheme switch, the print
+  control and the drawer control are right aligned. Below 1024 pixels the menu
+  list is a drawer that slides in from the right; the markup is the same in both
+  cases, so there is one navigation to style, and one set of links to keep
+  reachable.
 
-  header.css lays it out; nav-menu.ts and site-header.ts drive it.
+  header.css lays it out; nav-menu.ts and site-header.ts drive it, the last of
+  them the print control, which asks the driver for a sheet and previews the
+  paper on screen while the dialog is open.
 */}}
 
 <div id="header-sentinel" aria-hidden="true"></div>
@@ -88,6 +91,24 @@
           </svg>
         </button>
       {{- end -}}
+
+      {{/* Material Icons "print", the printer with its paper, in a 24 unit
+        box: the bar's own icons are Material Symbols, and this one is the glyph
+        the medium asks for. */}}
+      <button
+        type="button"
+        id="print-page"
+        aria-label="Print this page"
+        aria-pressed="false">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false">
+          <path
+            d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3Zm-3 11H8v-5h8v5Zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1Zm-1-9H6v4h12V3Z" />
+        </svg>
+      </button>
 
       <button
         type="button"

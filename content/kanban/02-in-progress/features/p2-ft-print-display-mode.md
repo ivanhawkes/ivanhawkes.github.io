@@ -42,16 +42,16 @@ always light.
 
 ## Top Bar Control
 
-- [ ] Add a print button to `.header-actions` in
+- [x] Add a print button to `.header-actions` in
       `be-best/layouts/_partials/page/header.html`, labelled "Print this page"
-- [ ] Drive it from `be-best/assets/js/site-header.ts`: open `window.print()`,
+- [x] Drive it from `be-best/assets/js/site-header.ts`: open `window.print()`,
       and toggle `html.print-mode`, the on screen preview of the paper
       presentation, which the shared rules in `print.css` already style
-- [ ] Open every `details` element before printing, so collapsed codeblocks
+- [x] Open every `details` element before printing, so collapsed codeblocks
       reach the paper
-- [ ] Keep the button out of the printed page, and give it the same focus,
+- [x] Keep the button out of the printed page, and give it the same focus,
       keyboard and `prefers-reduced-motion` treatment as the other bar controls
-- [ ] Record the print medium in the technical specification
+- [x] Record the print medium in the technical specification
 
 ## Acceptance Criteria
 

@@ -1,4 +1,5 @@
-/* The top bar: brand, primary navigation, search box, colour scheme switch.
+/* The top bar: brand, primary navigation, search box, colour scheme switch,
+   print control, drawer control.
 
    One markup, two presentations. Below 1024 pixels the list is a panel that
    slides in from the right and its sub-menus are accordion sections; from
@@ -103,7 +104,7 @@
     outline-offset: 2px;
 }
 
-/* Right hand actions: search, colour scheme switch, drawer control. */
+/* Right hand actions: search, colour scheme switch, print, drawer control. */
 
 .header-actions {
     display: flex;
@@ -113,6 +114,7 @@
 }
 
 #nav-toggle,
+#print-page,
 #site-search button {
     display: inline-flex;
     align-items: center;
@@ -128,17 +130,20 @@
 }
 
 #nav-toggle svg,
+#print-page svg,
 #site-search button svg {
     width: 24px;
     height: 24px;
 }
 
 #nav-toggle:hover,
+#print-page:hover,
 #site-search button:hover {
     background-color: var(--nav-hover);
 }
 
 #nav-toggle:focus-visible,
+#print-page:focus-visible,
 #site-search button:focus-visible {
     outline: 2px solid var(--focus-ring);
     outline-offset: 2px;
@@ -337,6 +342,13 @@ html.nav-open #nav-scrim {
    withdrawn - as the colour scheme switch is - and the list is laid out in the
    page under the bar, every entry and every section on show. */
 html:not([data-theme]) #nav-toggle {
+    display: none;
+}
+
+/* With no script the print control cannot ask the driver for paper, so it is
+   withdrawn with the controls above: the page still prints from the browser's
+   own menu. */
+html:not([data-theme]) #print-page {
     display: none;
 }
 
@@ -580,6 +592,7 @@ html[data-theme] #site-header.is-elevated {
     .nav-link,
     .nav-trigger,
     #nav-toggle,
+    #print-page,
     #site-search button,
     #site-search-input {
         transition: none;
@@ -606,6 +619,7 @@ html[data-theme] #site-header.is-elevated {
     .nav-link,
     .nav-trigger,
     #nav-toggle,
+    #print-page,
     #site-search button {
         background: Canvas;
         color: CanvasText;
@@ -615,6 +629,7 @@ html[data-theme] #site-header.is-elevated {
     .nav-link:hover,
     .nav-trigger:hover,
     #nav-toggle:hover,
+    #print-page:hover,
     #site-search button:hover {
         background: ReverseHighlight;
         color: HighlightedText;
@@ -624,6 +639,7 @@ html[data-theme] #site-header.is-elevated {
     .nav-trigger:focus-visible,
     .brand:focus-visible,
     #nav-toggle:focus-visible,
+    #print-page:focus-visible,
     #site-search-input:focus-visible,
     #site-search button:focus-visible {
         outline: 2px solid Highlight;

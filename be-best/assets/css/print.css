@@ -17,7 +17,9 @@
    is the way to withdraw one element from a single page.
 
    html.print-mode, at the foot of the file, is the same presentation previewed
-   on screen by the top bar control. */
+   on screen by the top bar control, which stays on the screen it hides so the
+   preview can be left, and whose script puts the dark class away for the
+   preview, paper having one colour scheme. */
 
 @page {
     /* The driver picks the paper - A4, Letter, whatever the office loads - so
@@ -368,11 +370,10 @@
    and the black ink. Extend it with the control, and keep it a preview of the
    sheet, not a second theme. */
 
-html.print-mode #site-header,
 html.print-mode #header-sentinel,
 html.print-mode #nav-scrim,
 html.print-mode #primary-nav,
-html.print-mode .header-actions,
+html.print-mode .brand,
 html.print-mode #site-footer,
 html.print-mode .breadcrumb,
 html.print-mode .pagination,
@@ -381,11 +382,40 @@ html.print-mode .taxonomy,
 html.print-mode .related,
 html.print-mode .copy-button,
 html.print-mode form,
-html.print-mode button {
+html.print-mode button,
+html.print-mode #theme-switch,
+html.print-mode #nav-toggle {
     display: none;
 }
 
+/* The control that shows the sheet is the one that has to stay on the screen
+   to put it away, so the preview keeps the bar and strips everything from it
+   but that control: a blurred, translucent surface is a screen effect, and the
+   reader who cannot leave a preview is trapped in it. Paper keeps the rule of
+   the medium above, which hides the whole bar. The two controls named by id
+   above are the ones the bar's own rules give an id, which `button` alone
+   cannot outweigh; the print control, which is styled by id like them, is put
+   back by id below. */
+html.print-mode #site-header {
+    position: static;
+    border-bottom: 1px solid #bababa;
+}
+
+html.print-mode #site-header::before {
+    display: none;
+}
+
+html.print-mode #print-page {
+    display: inline-flex;
+}
+
 html.print-mode {
+    /* Paper has one scheme. The medium resets the palette tokens in tokens.css;
+       a preview is a screen medium, so it has nothing to reset, and the script
+       puts the dark class away with the sheet, which leaves the light tokens in
+       force. The scheme is named here so that form controls, scrollbars and the
+       canvas follow the sheet. */
+    color-scheme: light;
     background-color: #fff;
 }
 
@@ -408,4 +438,60 @@ html.print-mode .container {
 
 html.print-mode .grid {
     display: block;
+}
+
+/* The surfaces the sheet does not print: the card, the tint, the stripes. A
+   tint's text contrast is tuned for the surface, and a stripe is toner. */
+html.print-mode .bg-card,
+html.print-mode .bg-background,
+html.print-mode .bg-muted,
+html.print-mode .bg-secondary,
+html.print-mode .bg-primary-200,
+html.print-mode .odd\:bg-table-odd,
+html.print-mode .even\:bg-table-even {
+    background-color: transparent;
+}
+
+/* Code: the syntax theme is a screen theme, pale text on a dark field, which
+   the sheet prints black on white. The same ink, and the same wrapped lines, so
+   the block on the screen is the block on the paper. */
+html.print-mode .codeblock,
+html.print-mode .highlight,
+html.print-mode .code,
+html.print-mode .bg,
+html.print-mode .chroma,
+html.print-mode .chroma pre,
+html.print-mode .chroma .lntd,
+html.print-mode .chroma .lntable {
+    background-color: #fff;
+    color: #1a1a1a;
+}
+
+html.print-mode .chroma [class] {
+    color: #1a1a1a;
+}
+
+html.print-mode .chroma .hl {
+    background-color: #ededed;
+}
+
+html.print-mode .chroma .ln,
+html.print-mode .chroma .lnt {
+    color: #767676;
+}
+
+html.print-mode .codeblock {
+    width: 100%;
+    border: 1px solid #9a9a9a;
+}
+
+html.print-mode .highlight,
+html.print-mode .code,
+html.print-mode .chroma,
+html.print-mode .chroma pre,
+html.print-mode .chroma .line,
+html.print-mode .chroma code {
+    overflow: visible;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
 }

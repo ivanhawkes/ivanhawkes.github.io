@@ -4,8 +4,6 @@ date: '{{ time.Now.Format $.Site.Params.dateFormat }}'
 author: "Ivan Hawkes"
 ---
 
-# Bold header
-
 Some text.
 
 ## Less important.

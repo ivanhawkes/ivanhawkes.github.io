@@ -6,8 +6,6 @@ imagecaption: null
 author: "Ivan Hawkes"
 ---
 
-# Bold header
-
 Some text.
 
 ## Less important.

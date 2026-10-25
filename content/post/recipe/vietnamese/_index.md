@@ -24,5 +24,5 @@ resources:
     - src: 'featured.webp'
       params:
           title: 'Vietnamese'
-          caption: 'A green title card with the word Vietnamese.'
+          caption: 'A bowl of pho soup.'
 ---

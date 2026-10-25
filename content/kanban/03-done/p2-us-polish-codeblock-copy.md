@@ -5,7 +5,7 @@ date: '2026-04-28'
 author: Ivan Hawkes
 params:
     due: 2026-10-01
-    completionDate: null
+    completionDate: '2026-10-25'
     dependencies: null
     references:
         - p2-us-code-to-clipboard
@@ -165,9 +165,9 @@ source, as the criterion requires.
 
 The checks below are run against built output and against `be-best/`; the
 clipboard text is checked by replaying the script's extraction over the built
-markup of a probe page holding every fence form. The four criteria that need a
-browsing context - real clicks, the widths, the paper, and the page without
-scripts - are checked by hand at <http://lythir:1313>.
+markup of a probe page holding every fence form. The criteria that need a
+browsing context - real clicks, the clipboard in three browsers, the widths, the
+paper, and the page without scripts - were checked by hand on the served site.
 
 - [x] The literal greys, the fixed widths and the dead ids are gone:
       `grep -rE 'bg-gray-600|bg-gray-300|sm:w-120|md:w-160' be-best/layouts/`
@@ -178,16 +178,16 @@ scripts - are checked by hand at <http://lythir:1313>.
       in that order; the bar is `.codeblock-bar`, the button is a real
       `<button type="button">` with an `aria-label` and the `.copy-button` hook,
       and no `h1`-`h6` element sits inside the card.
-- [ ] Clicking, Enter and Space on the button all copy; the icon and label
+- [x] Clicking, Enter and Space on the button all copy; the icon and label
       change to the copied state, are announced, and revert once, about 2s
       later, whatever the click pattern. The bar outside the button does not
       copy.
-- [ ] On the probe page the clipboard text equals the fenced source exactly for
+- [x] On the probe page the clipboard text equals the fenced source exactly for
       the plain, `file=`, `linenos=true`, `linenos=table`, `hl_lines`,
       tab-indented, trailing-space and `text` cases in Chrome, Firefox and
       Safari, with no line numbers, and `http://` origins copy through the
       fallback.
-- [ ] Every fenced block fills the content column at 320, 768, 1280 and 1920px;
+- [x] Every fenced block fills the content column at 320, 768, 1280 and 1920px;
       long lines scroll in the field only, with no vertical scrollbar and no
       inner frame or 10 % padding.
 - [x] In both schemes the bar text, chip, label and focus ring clear 4.5:1 (bar
@@ -198,11 +198,11 @@ scripts - are checked by hand at <http://lythir:1313>.
       field. The 21 token classes the corpus produces measure 5.0:1 to 8.7:1;
       the line numbers, which are decoration and are never selected, sit at
       4.0:1 on the `hl_lines` band.
-- [ ] `details="true"` renders the card inside `<details>`, collapsed by default
+- [x] `details="true"` renders the card inside `<details>`, collapsed by default
       and open with `open="true"`, keyboard operable, and the print control
       opens it so the code reaches the paper, where the card is one white block
       with no copy control.
-- [ ] A page whose root carries no `data-theme` shows no copy button and every
+- [x] A page whose root carries no `data-theme` shows no copy button and every
       block reads normally.
 - [x] `pnpm run test` passes, including clean `test:html`, the one-`h1` check
       and `test:kanban`, and `npx stylelint "be-best/assets/css/*.css"` is clean

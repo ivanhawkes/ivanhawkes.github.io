@@ -219,7 +219,7 @@ the listing page.
 
 The theme is `be-best/`, an ordinary directory of this repository. Hugo selects
 it with `theme: be-best` and `themesDir: '.'` in `config/_default/hugo.yaml`.
-Its 139 files are versioned by this repository, whose only remote is
+Its 144 files are versioned by this repository, whose only remote is
 `ivanhawkes/ivanhawkes.github.io`, so a theme change is committed and pushed
 here, in the same commit as the content that needs it.
 
@@ -228,8 +228,10 @@ Styling is Tailwind CSS v4. The theme's source stylesheet is
 which is build output and is not versioned. Hugo writes `assets/jsconfig.json`
 for Tailwind v4 editor intelligence during the CSS build, and `hugo_stats.json`
 records the classes in use; both are build output. The theme's scripts are
-TypeScript in `be-best/assets/js` (menu, sidebar, dark mode, and the codeblock
-copy button), compiled by Hugo into one small bundle.
+TypeScript in `be-best/assets/js` (menu, sidebar, colour scheme, and the
+codeblock copy button), compiled by Hugo into two small bundles: the deferred
+bundle, and a colour scheme preloader in the head that records the visitor's
+setting on the root element before the first paint.
 
 ## Interfaces
 

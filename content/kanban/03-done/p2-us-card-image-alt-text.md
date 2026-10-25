@@ -61,7 +61,8 @@ element in `image-variants.html:43` never renders. `public/post/index.html` and
   with `(dict "page" .)`, so cards get alt text and no caption. Every caller now
   passes a dict: a page context has no `page` key to read, and a page errors on
   the missing field, so a bare `.` cannot be told from a dict.
-- Four section images show something other than their section, and their alt
-  text says what the file shows: `recipe/american` and `recipe/australian` carry
-  the same "Pastries" title card, `recipe/mexican` carries the "Middle Eastern"
-  one, and `recipe/japanese` reuses the `recipe/chinese` beef photo.
+- Four section images show something other than their section, tracked as
+  `p1-is-cuisine-images-show-the-wrong-cuisine`, and their alt text says what
+  the file shows: `recipe/american` and `recipe/australian` carry the same
+  "Pastries" title card, `recipe/mexican` carries the "Middle Eastern" one, and
+  `recipe/japanese` reuses the `recipe/chinese` beef photo.

@@ -176,7 +176,7 @@ a `layout` key that the card definition forbids. The script is run by
 `pnpm run test:kanban`, and its current result is:
 
 ```text
-34 cards validated against assets/kanban-card-front-matter.yaml: no deviations
+33 cards validated against assets/kanban-card-front-matter.yaml: no deviations
 ```
 
 Every card sets all four `params` keys. `params.dependencies` and

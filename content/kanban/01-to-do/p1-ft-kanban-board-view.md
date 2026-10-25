@@ -6,12 +6,7 @@ author: Ivan Hawkes
 params:
     completionDate: null
     due: 2026-11-01
-    dependencies:
-        [
-            'p2-us-kanban-grid-view',
-            'p2-us-kanban-personal-view',
-            'p2-us-kanban-dashboard',
-        ]
+    dependencies: ['p2-us-kanban-grid-view', 'p2-us-kanban-personal-view']
     references: null
 ---
 
@@ -25,4 +20,3 @@ indicate if it's overdue.
 
 - [ ] **Grid View** - `p2-us-kanban-grid-view` user story is completed
 - [ ] **Personal View** - `p2-us-kanban-personal-view` user story is completed
-- [ ] **Dashboard** - `p2-us-kanban-dashboard` user story is completed

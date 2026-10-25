@@ -11,8 +11,6 @@ title: Ideation
 type: specification
 ---
 
-## Purpose
-
 The purpose of this document is to state clearly the idea that will be further
 developed into a project. It captures the _why_ and _what_; implementation
 detail lives in the requirements, functional, test, and technical

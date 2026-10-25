@@ -21,4 +21,11 @@ menus:
                 600-560t28.5-11.5ZM310-440h60v-70h70v-60h-70v-70h-60v70h-70v60h70v70Zm170-40Z"/></svg>
         parent: Posts
         weight: 310
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'CRYENGINE'
+          caption:
+              'A sunlit forest clearing with grass, bluebells and rock outcrops,
+              rendered in CryEngine.'
 ---

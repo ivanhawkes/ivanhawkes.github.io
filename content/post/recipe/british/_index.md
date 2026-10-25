@@ -20,4 +20,11 @@ menus:
                 28.5T200-240Zm200-80Z"/></svg>
         parent: Recipes
         weight: 430
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'British'
+          caption:
+              'A full English breakfast of sausages, bacon, fried eggs, beans,
+              mushrooms, grilled tomato and toast.'
 ---

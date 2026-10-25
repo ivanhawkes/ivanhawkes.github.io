@@ -7,6 +7,12 @@ cuisine: Indian
 date: '2023-11-26'
 portions: 4
 prep-time: PT5M
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Bin Bhuna Hua Garam Masala'
+          caption: 'A photograph of bin bhuna hua garam masala.'
+
 tags:
     - Garam Masala
     - Indian

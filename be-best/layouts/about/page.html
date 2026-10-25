@@ -1,5 +1,5 @@
 {{ define "main" }}
-  {{- partial "/images/featured-image.html" . -}}
+  {{- partial "/images/featured-image.html" (dict "page" . "caption" true) -}}
 
   {{- partial "/components/breadcrumbs.html" . -}}
 

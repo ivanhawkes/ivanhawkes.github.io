@@ -5,6 +5,11 @@ author: Ivan Hawkes
 date: '2018-10-05'
 description: A profile for Ivan Hawkes
 title: A profile for Ivan Hawkes
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Ivan Hawkes'
+          caption: 'A QR code linking to this profile.'
 ---
 
 I developed an interest in computers starting in the early 1980's leading me to

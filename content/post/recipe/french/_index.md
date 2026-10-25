@@ -20,4 +20,9 @@ menus:
                 28.5T200-240Zm200-80Z"/></svg>
         parent: Recipes
         weight: 450
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'French'
+          caption: 'A green title card with the word French.'
 ---

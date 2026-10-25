@@ -13,4 +13,11 @@ menus:
                 160h160v-80H640v80Z"/></svg>
         parent: Posts
         weight: 330
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'General Interest'
+          caption:
+              'A green hollow ringed by rock outcrops at sunset, with a stone
+              cairn at the centre of a stone spiral.'
 ---

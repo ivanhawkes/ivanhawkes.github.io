@@ -9,6 +9,12 @@ imagecaption:
     A delicious Welsh rarebit dish with melted cheddar and mustard sauce.
 portions: 4
 prep-time: PT10M
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Welsh Rarebit'
+          caption: 'A photograph of welsh rarebit.'
+
 tags:
     - British
     - Bread

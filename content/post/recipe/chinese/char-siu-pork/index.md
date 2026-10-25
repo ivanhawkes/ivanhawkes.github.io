@@ -7,6 +7,12 @@ cuisine: Chinese
 date: '2025-08-14'
 portions: 12
 prep-time: PT20M
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Char Siu Pork'
+          caption: 'A photograph of char siu pork.'
+
 tags:
     - Char Siu
     - Chinese

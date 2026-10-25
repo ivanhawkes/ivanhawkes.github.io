@@ -17,4 +17,11 @@ menus:
                 28.5T240-160Zm0 0h-40 400-360Z"/></svg>
         parent: About
         weight: 120
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Projects'
+          caption:
+              'A hand pins printed documents and a city map to a whiteboard
+              wall, linked with black thread and coloured pins.'
 ---

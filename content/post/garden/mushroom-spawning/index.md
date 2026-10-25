@@ -3,6 +3,14 @@ author: Ivan Hawkes
 categories:
     - Garden
 date: '2021-12-08'
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Mushroom grain spawn'
+          caption:
+              'A hand holds a glass jar of grain spawn with white mycelium
+              spreading through it.'
+
 title: White Fuzz
 ---
 

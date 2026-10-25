@@ -20,4 +20,9 @@ menus:
                 28.5T200-240Zm200-80Z"/></svg>
         parent: Recipes
         weight: 540
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Vietnamese'
+          caption: 'A green title card with the word Vietnamese.'
 ---

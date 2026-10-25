@@ -20,4 +20,11 @@ menus:
                 28.5T200-240Zm200-80Z"/></svg>
         parent: Recipes
         weight: 530
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Thai'
+          caption:
+              'A bowl of red curry with chicken and pumpkin, garnished with
+              basil leaves.'
 ---

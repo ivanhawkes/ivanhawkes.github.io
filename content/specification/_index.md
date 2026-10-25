@@ -17,6 +17,13 @@ menus:
                 120v-80h360v80H360ZM240-160h360v-80H200v40q0 17 11.5
                 28.5T240-160Zm0 0h-40 400-360Z"/></svg>
         weight: 920
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Specifications'
+          caption:
+              'A street bookstall piled with Vietnamese paperbacks, including
+              Sherlock Holmes and Tom Clancy.'
 ---
 
 ## Dashboard / Specifications

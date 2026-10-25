@@ -3,6 +3,14 @@ author: Ivan Hawkes
 categories:
     - Garden
 date: '2021-11-09'
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Netted raised beds'
+          caption:
+              'Raised beds covered with netting tunnels, protecting seedlings in
+              a garden being brought back into use.'
+
 title: 'Spring 2021 - Time to Try Again'
 ---
 

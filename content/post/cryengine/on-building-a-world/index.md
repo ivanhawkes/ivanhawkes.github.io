@@ -3,6 +3,14 @@ author: Ivan Hawkes
 categories:
     - World Design
 date: '2013-03-25'
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'A volcano island in World Machine'
+          caption:
+              'A 3D preview in World Machine of a sculpted volcano island rising
+              out of the sea.'
+
 tags:
     - Game Programming
     - Terrain

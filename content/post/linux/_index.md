@@ -27,4 +27,11 @@ menus:
                 0-85-35t-35-85ZM480-689Z"/></svg>
         parent: Posts
         weight: 340
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Linux'
+          caption:
+              'A terminal window showing neofetch output for a Debian system,
+              with the Debian logo in ASCII art.'
 ---

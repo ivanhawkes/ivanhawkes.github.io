@@ -8,6 +8,13 @@ categories:
 tags:
     - Chrysalis
     - Cryengine
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Dark Vale'
+          caption:
+              'A dark, foggy industrial corridor lined with pipes and valve
+              wheels, lit by a single lamp.'
 ---
 
 Travel into Dark Vale and take a look into madness.

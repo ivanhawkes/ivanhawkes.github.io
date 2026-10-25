@@ -20,4 +20,11 @@ menus:
                 28.5T200-240Zm200-80Z"/></svg>
         parent: Recipes
         weight: 460
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'General'
+          caption:
+              'A roasted spatchcock chicken on a plate with lemon slices,
+              parsley, salt and crushed peppercorns.'
 ---

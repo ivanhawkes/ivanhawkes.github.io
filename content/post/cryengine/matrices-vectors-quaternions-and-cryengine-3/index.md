@@ -14,6 +14,11 @@ tags:
     - Programming
     - Third Person Camera
     - Vectors
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Quantum mechanics on paper'
+          caption: 'A close-up photograph of printed equations in psi notation.'
 ---
 
 This article will introduce you to matrices, vectors and quaternions and how you

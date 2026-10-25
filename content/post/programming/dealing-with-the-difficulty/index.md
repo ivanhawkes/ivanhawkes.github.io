@@ -14,6 +14,13 @@ tags:
     - Terrain
     - world building
     - World Machine
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Low poly mushroom'
+          caption:
+              'A 3D modelling viewport showing an untextured low poly mushroom
+              model.'
 ---
 
 I've been working on my pet project for almost five months now and I must admit

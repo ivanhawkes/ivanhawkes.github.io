@@ -13,6 +13,13 @@ tags:
     - Photoshop
     - Terrain
     - World Machine
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Terrain in the CryEngine 3 sandbox'
+          caption:
+              'An untextured green terrain landscape in the CryEngine 3 sandbox,
+              with mountains on the horizon.'
 ---
 
 At first blush terrain might seem like a fairly easy thing to be able to create,

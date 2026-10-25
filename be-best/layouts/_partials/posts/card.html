@@ -1,6 +1,6 @@
 <div class="w-full rounded-md border bg-card p-2">
   <a href="{{ .Permalink }}">
-    {{- partial "/images/featured-image.html" . -}}
+    {{- partial "/images/featured-image.html" (dict "page" .) -}}
   </a>
 
   <div>

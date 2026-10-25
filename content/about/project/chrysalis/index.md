@@ -8,6 +8,13 @@ categories:
 tags:
     - Chrysalis
     - CRYENGINE
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Chrysalis in the CryEngine 3 editor'
+          caption:
+              'The CryEngine 3 sandbox showing a test level of white blocks, a
+              highlighted terrain box and a character in an orange coat.'
 ---
 
 Chrysalis is a plugin for CRYENGINE 5.x, written in C++11, that provides a

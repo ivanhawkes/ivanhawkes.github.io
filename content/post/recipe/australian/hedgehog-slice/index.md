@@ -7,6 +7,12 @@ cuisine: Australian
 date: '2024-03-24'
 portions: 16
 prep-time: PT25M
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Hedgehog Slice'
+          caption: 'A photograph of hedgehog slice.'
+
 tags:
     - Chocolate
     - Dessert

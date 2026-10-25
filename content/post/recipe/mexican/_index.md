@@ -19,5 +19,11 @@ menus:
                 28.5T200-240Zm200-80Z"/></svg>
         parent: Recipes
         weight: 510
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Mexican'
+          caption: 'A green title card with the words Middle Eastern.'
+
 title: Mexican
 ---

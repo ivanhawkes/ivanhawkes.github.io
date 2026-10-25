@@ -17,4 +17,11 @@ menus:
                 85t85 35Zm120-200Z"/></svg>
         parent: Posts
         weight: 320
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Garden'
+          caption:
+              'A market garden with beans climbing a metal arch, beds of
+              vegetables and orange flowers.'
 ---

@@ -20,4 +20,11 @@ menus:
                 28.5T200-240Zm200-80Z"/></svg>
         parent: Posts
         weight: 360
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Recipes'
+          caption:
+              'A plate of Mongolian beef with sesame seeds and spring onion,
+              chopsticks resting on the rim.'
 ---

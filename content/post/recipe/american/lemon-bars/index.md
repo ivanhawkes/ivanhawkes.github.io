@@ -7,6 +7,12 @@ cuisine: American
 date: '2024-03-27'
 portions: 16
 prep-time: PT15M
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Lemon Bars'
+          caption: 'A photograph of lemon bars.'
+
 tags:
     - Dessert
     - Lemon

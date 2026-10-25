@@ -20,4 +20,11 @@ menus:
                 28.5T200-240Zm200-80Z"/></svg>
         parent: Recipes
         weight: 490
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Japanese'
+          caption:
+              'A plate of Mongolian beef with sesame seeds and spring onion,
+              seen from above.'
 ---

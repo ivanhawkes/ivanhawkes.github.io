@@ -7,6 +7,13 @@ cuisine: American
 date: '2024-03-27'
 portions: 25
 prep-time: PT15M
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Lemon Bars (Claire Saffitz)'
+          caption:
+              'A photograph of lemon bars made from the Claire Saffitz recipe.'
+
 tags:
     - Dessert
     - Lemon

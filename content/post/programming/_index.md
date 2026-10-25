@@ -16,4 +16,11 @@ menus:
                 0h80v-80h-80v80ZM160-280v-400 400Z"/></svg>
         parent: Posts
         weight: 350
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Programming'
+          caption:
+              'A code editor showing Go source for an HTTP API beside a project
+              file tree.'
 ---

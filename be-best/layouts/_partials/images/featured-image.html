@@ -1,29 +1,48 @@
-{{/* Search the page's resources for an image named "featured.webp". If not found,
-  search the parent page's resources. If found, display the image with its
-  dimensions and an optional caption.
+{{/*
+  Featured image for a page: "featured.webp" in the page's own resources,
+  falling back to the parent page's resources.
+
+  Alt text and the caption under the image come from the page's resource
+  config:
+
+    resources:
+        - src: 'featured.webp'
+          params:
+              title: 'Lemon Bars'            # caption under the image
+              caption: 'A photograph of...'  # alt text
+
+  A page without that metadata falls back to the page title for the alt text,
+  so alt is never empty. Callers pass a dict: "page" the page to render, and
+  "caption" true to ask for the caption under the image, which page layouts do
+  and card partials do not.
 */}}
 
-{{ $found := false }}
-{{ $image := "" }}
-{{ $prefix := "featured.webp" }}
+{{- $page := .page -}}
+{{- $showCaption := .caption -}}
+{{- $prefix := "featured.webp" -}}
+{{- $image := false -}}
 
-{{ $image = .Page.Resources.GetMatch $prefix }}
-{{ if $image }}
-  {{ $found = true }}
-{{ else }}
-  {{ $image = .Parent.Page.Resources.GetMatch $prefix }}
-  {{ if $image }}
-    {{ $found = true }}
-  {{ end }}
-{{ end }}
+{{- with $page -}}
+  {{- with .Resources -}}
+    {{- $image = .GetMatch $prefix -}}
+  {{- end -}}
+  {{- if not $image -}}
+    {{- with .Parent -}}
+      {{- with .Resources -}}
+        {{- $image = .GetMatch $prefix -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
 
-{{ if eq $found true }}
+{{- with $image -}}
+  {{- $meta := .Params | default dict -}}
   {{- $ctx := dict
-    "image" $image
-    "destination" $image.RelPermalink
-    "title" $image.Params.title
-    "alt" $image.Params.caption
-  }}
+    "image" .
+    "destination" .RelPermalink
+    "title" (cond $showCaption $meta.title "")
+    "alt" ($meta.caption | default $page.LinkTitle)
+  -}}
 
-  {{- partial "/images/image-variants.html" $ctx }}
-{{ end }}
+  {{- partial "/images/image-variants.html" $ctx -}}
+{{- end -}}

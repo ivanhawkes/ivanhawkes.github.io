@@ -20,4 +20,11 @@ menus:
                 400Z"/></svg>
         parent: About
         weight: 110
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Profiles'
+          caption:
+              'A group of people sit along a sunlit wooden table, writing in
+              notebooks.'
 ---

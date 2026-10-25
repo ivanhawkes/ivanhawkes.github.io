@@ -7,6 +7,12 @@ cuisine: Indian
 date: '2023-11-26'
 portions: 8
 prep-time: PT20M
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Pork Vindaloo'
+          caption: 'A photograph of pork vindaloo.'
+
 tags:
     - Goan
     - Indian

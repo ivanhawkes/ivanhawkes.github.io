@@ -20,4 +20,9 @@ menus:
                 28.5T200-240Zm200-80Z"/></svg>
         parent: Recipes
         weight: 480
+resources:
+    - src: 'featured.webp'
+      params:
+          title: 'Italian'
+          caption: 'A green title card with the word Italian.'
 ---

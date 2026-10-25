@@ -1,5 +1,6 @@
 allowBuilds:
   '@google/genai': true
   '@parcel/watcher': true
+  core-js: true
   esbuild: true
   protobufjs: true

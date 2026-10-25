@@ -1,0 +1,411 @@
+/* Paper: the page as an office printer renders it.
+
+   A printed sheet has none of what the screen is built on. It has no viewport,
+   no scroll, no hover and no pointer, so nothing that opens, moves, searches,
+   switches scheme, pages or links onward has a use, and it has one colour
+   scheme: the light palette the token layer resets to for this medium. Its
+   width is fixed by the paper, its type is measured in points, and the only
+   page breaks are the ones asked for. Colour costs toner: the translucent bar,
+   the shadows, the table stripes, the card surfaces and the dark syntax theme
+   print as black blocks, or as text a laser cannot read, so they are replaced.
+
+   This file owns the rules no component owns: the page box, the chrome, the
+   column, the prose, links, images, tables and code. The palette reset lives in
+   tokens.css, and a component keeps its own print rules in its own file.
+   main.css imports this file last so that its unlayered rules win over the
+   Tailwind utilities the layouts carry; a Tailwind `print:hidden` on the markup
+   is the way to withdraw one element from a single page.
+
+   html.print-mode, at the foot of the file, is the same presentation previewed
+   on screen by the top bar control. */
+
+@page {
+    /* The driver picks the paper - A4, Letter, whatever the office loads - so
+       the sheet is left alone and only the margins are ours. */
+    margin: 20mm 15mm 18mm;
+}
+
+@media print {
+    /* The sheet. */
+
+    html {
+        /* Points are what paper is measured in, and 12pt is the 16px root the
+           theme's rem scale is built on, so every size stays as authored and
+           only changes the unit it is named in. */
+        font-size: 12pt;
+        background-color: #fff;
+        color: #000;
+        overflow: visible;
+        scrollbar-gutter: auto;
+    }
+
+    body {
+        /* The flex column exists to pin the foot to the bottom of a viewport
+           that no longer exists. */
+        display: block;
+        min-height: 0;
+        background-color: #fff;
+        color: #000;
+        line-height: 1.5;
+        print-color-adjust: economy;
+    }
+
+    main {
+        flex: none;
+        padding: 0;
+    }
+
+    .container {
+        margin-bottom: 8mm;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+    }
+
+    /* Shadows, blurs and motion have no form on paper: a shadow is a smudge,
+       a blur is a gradient of toner, and a transition ends before the sheet
+       leaves the tray. */
+    *,
+    *::before,
+    *::after {
+        box-shadow: none;
+        text-shadow: none;
+        backdrop-filter: none;
+        transition: none;
+        animation: none;
+    }
+
+    /* The chrome: the bar, the drawer, the menus, the search box, the colour
+       scheme switch, the foot, and the pagers and controls that only move the
+       reader through the site. Each is a way of moving, and paper cannot move. */
+    #site-header,
+    #header-sentinel,
+    #nav-scrim,
+    #primary-nav,
+    .header-actions,
+    #site-footer,
+    .breadcrumb,
+    .pagination,
+    .next-prev,
+    .taxonomy,
+    .related,
+    .copy-button,
+    form,
+    button,
+    input,
+    select,
+    textarea,
+    iframe,
+    video,
+    audio,
+    embed,
+    object {
+        display: none;
+    }
+
+    /* One column: a listing reads down the page, and a lane grid squeezes a
+       card into sixty millimetres. */
+    .grid {
+        display: block;
+    }
+
+    .grid > * {
+        margin-bottom: 6mm;
+        break-inside: avoid;
+    }
+
+    /* Surfaces, tints and stripes are toner, and their text contrast is tuned
+       for the surface, not for paper. */
+    .bg-card,
+    .bg-background,
+    .bg-muted,
+    .bg-secondary,
+    .bg-primary-200,
+    .odd\:bg-table-odd,
+    .even\:bg-table-even {
+        background-color: transparent;
+    }
+
+    /* Type. */
+
+    h1 {
+        font-size: 20pt;
+    }
+
+    h2 {
+        font-size: 15pt;
+    }
+
+    h3 {
+        font-size: 12.5pt;
+    }
+
+    h4 {
+        font-size: 11.5pt;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: #000;
+        break-after: avoid-page;
+        break-inside: avoid;
+    }
+
+    p,
+    li,
+    dd,
+    dt,
+    blockquote,
+    figcaption {
+        color: #000;
+        orphans: 3;
+        widows: 3;
+    }
+
+    /* The prose plugin colours by variable, and paper has one palette: black
+       ink on white. Both sets are set, because the dark set is what a page
+       built in the dark scheme asks for. */
+    .prose-custom {
+        --tw-prose-body: #1a1a1a;
+        --tw-prose-headings: #000;
+        --tw-prose-lead: #3a3a3a;
+        --tw-prose-links: #000;
+        --tw-prose-bold: #000;
+        --tw-prose-counters: #5a5a5a;
+        --tw-prose-bullets: #5a5a5a;
+        --tw-prose-hr: #9a9a9a;
+        --tw-prose-quotes: #1a1a1a;
+        --tw-prose-quote-borders: #9a9a9a;
+        --tw-prose-captions: #5a5a5a;
+        --tw-prose-code: #1a1a1a;
+        --tw-prose-pre-code: #1a1a1a;
+        --tw-prose-pre-bg: #fff;
+        --tw-prose-th-borders: #6a6a6a;
+        --tw-prose-td-borders: #bababa;
+
+        --tw-prose-invert-body: #1a1a1a;
+        --tw-prose-invert-headings: #000;
+        --tw-prose-invert-lead: #3a3a3a;
+        --tw-prose-invert-links: #000;
+        --tw-prose-invert-bold: #000;
+        --tw-prose-invert-counters: #5a5a5a;
+        --tw-prose-invert-bullets: #5a5a5a;
+        --tw-prose-invert-hr: #9a9a9a;
+        --tw-prose-invert-quotes: #1a1a1a;
+        --tw-prose-invert-quote-borders: #9a9a9a;
+        --tw-prose-invert-captions: #5a5a5a;
+        --tw-prose-invert-code: #1a1a1a;
+        --tw-prose-invert-pre-code: #1a1a1a;
+        --tw-prose-invert-pre-bg: #fff;
+        --tw-prose-invert-th-borders: #6a6a6a;
+        --tw-prose-invert-td-borders: #bababa;
+    }
+
+    hr {
+        height: 0;
+        margin: 8mm 0;
+        border: 0;
+        border-top: 1px solid #9a9a9a;
+    }
+
+    /* Links: on paper a link is only worth its target once the target is on
+       the paper. The prose is where a reader follows a link, so the prose
+       prints its targets; a card listing's links point at pages that are not
+       on this sheet, so they stay as they are. Fragments, and links whose text
+       is the target, are exempt. */
+    a {
+        color: #000;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+    .prose-custom a[href^='http']::after,
+    .prose-custom a[href^='/']::after {
+        content: ' (' attr(href) ')';
+        font-size: 0.75em;
+        font-weight: normal;
+        color: #5a5a5a;
+        word-break: break-all;
+    }
+
+    .prose-custom a[href^='#']::after,
+    .prose-custom a[href^='mailto:']::after,
+    .prose-custom a[href^='tel:']::after,
+    a:has(img)::after {
+        content: none;
+    }
+
+    /* Nothing that belongs together is torn across a page. A list is not on
+       the list: a long list has to break, and asking it not to leaves a blank
+       gap; its items are. */
+    figure,
+    img,
+    svg,
+    blockquote,
+    li,
+    tr,
+    thead,
+    tfoot,
+    th,
+    td,
+    .codeblock {
+        break-inside: avoid;
+    }
+
+    figure {
+        margin: 4mm 0;
+    }
+
+    figcaption {
+        font-size: 0.85em;
+    }
+
+    /* An image is scaled to the sheet: a wider image is clipped, and a tall
+       one runs off the bottom of the page. */
+    img,
+    svg,
+    video,
+    canvas,
+    iframe {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Tables. */
+
+    table {
+        width: 100%;
+        font-size: 10.5pt;
+    }
+
+    th,
+    td {
+        padding: 1.5mm 2.5mm;
+        border: 1px solid #9a9a9a;
+    }
+
+    /* A table that runs over a page prints its header on every page it spans.
+       A table row may not split, so a long table breaks between rows. */
+    thead {
+        display: table-header-group;
+    }
+
+    tbody tr {
+        break-inside: avoid;
+    }
+
+    /* Code.
+
+       The syntax theme is a screen theme: pale text on a dark field, which a
+       monochrome laser prints as a black bar with nothing readable in it. Code
+       goes to black on white, and the theme's weights and italics carry the
+       structure its colours used to carry. */
+    .codeblock,
+    .highlight,
+    .code,
+    .bg,
+    .chroma,
+    .chroma pre,
+    .chroma .lntd,
+    .chroma .lntable {
+        background-color: #fff;
+        color: #1a1a1a;
+    }
+
+    .chroma [class] {
+        color: #1a1a1a;
+    }
+
+    .chroma .hl {
+        background-color: #ededed;
+    }
+
+    .chroma .ln,
+    .chroma .lnt {
+        color: #767676;
+    }
+
+    .codeblock {
+        width: 100%;
+        border: 1px solid #9a9a9a;
+        break-inside: avoid;
+    }
+
+    pre,
+    code {
+        font-size: 9.5pt;
+    }
+
+    /* A codeblock is a scroll container on screen, and is set to a fixed
+       160 column width from the breakpoint up: wider than the sheet, it prints
+       clipped. Lines wrap to the paper instead. */
+    .highlight,
+    .code,
+    .chroma,
+    .chroma pre,
+    .chroma .line,
+    .chroma code {
+        overflow: visible;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+    }
+
+    /* A closed details element renders no content at all, so no rule can print
+       it: the top bar control opens them before printing. The marker tells the
+       reader that the screen hides something. */
+    summary {
+        font-weight: bold;
+    }
+}
+
+/* The on screen preview of the sheet. The top bar control puts print-mode on
+   the root element, and every rule above is scoped to the medium, so the
+   preview carries the shared core: the chrome, the column, the plain surface
+   and the black ink. Extend it with the control, and keep it a preview of the
+   sheet, not a second theme. */
+
+html.print-mode #site-header,
+html.print-mode #header-sentinel,
+html.print-mode #nav-scrim,
+html.print-mode #primary-nav,
+html.print-mode .header-actions,
+html.print-mode #site-footer,
+html.print-mode .breadcrumb,
+html.print-mode .pagination,
+html.print-mode .next-prev,
+html.print-mode .taxonomy,
+html.print-mode .related,
+html.print-mode .copy-button,
+html.print-mode form,
+html.print-mode button {
+    display: none;
+}
+
+html.print-mode {
+    background-color: #fff;
+}
+
+html.print-mode body {
+    display: block;
+    min-height: 0;
+    background-color: #fff;
+    color: #000;
+}
+
+html.print-mode main {
+    padding: 0;
+}
+
+html.print-mode .container {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+}
+
+html.print-mode .grid {
+    display: block;
+}

@@ -12,6 +12,7 @@
 @import './prose-overrides.css';
 @import './footer.css';
 @import './navigation.css';
+@import './print.css';
 
 @source 'hugo_stats.json';
 

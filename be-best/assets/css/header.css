@@ -586,14 +586,6 @@ html[data-theme] #site-header.is-elevated {
     }
 }
 
-@media print {
-    #site-header,
-    #nav-scrim,
-    #header-sentinel {
-        display: none;
-    }
-}
-
 @media (forced-colors: active) {
     #site-header,
     #primary-nav,

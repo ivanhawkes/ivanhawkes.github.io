@@ -66,19 +66,6 @@ html[data-theme] .footer-copy {
     }
 }
 
-@media print {
-    /* Print is always light, and the palette is reset, so the band prints as
-       a line of text over a rule. */
-    #site-footer {
-        background-color: transparent;
-    }
-
-    .footer-copy {
-        padding: 0;
-        background-color: transparent;
-    }
-}
-
 @media (forced-colors: active) {
     #site-footer {
         border-top: 1px solid CanvasText;

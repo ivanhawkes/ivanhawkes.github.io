@@ -71,12 +71,6 @@ html:not([data-theme]) #theme-switch {
     }
 }
 
-@media print {
-    #theme-switch {
-        display: none;
-    }
-}
-
 @media (forced-colors: active) {
     #theme-switch {
         border-color: CanvasText;

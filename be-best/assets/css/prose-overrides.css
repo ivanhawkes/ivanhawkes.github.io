@@ -1,6 +1,6 @@
 @utility prose-custom {
     /* Light */
-    --tw-prose-body: var(--color-primary-background);
+    --tw-prose-body: var(--foreground);
     --tw-prose-headings: var(--color-primary-700);
     --tw-prose-lead: var(--color-primary-800);
     --tw-prose-links: var(--color-primary-800);

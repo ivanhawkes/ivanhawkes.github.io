@@ -34,8 +34,8 @@ table {
     margin-bottom: 2.5rem; /* Adds space before the NEXT title starts */
 
     /* Adds the top and bottom borders to the outer table */
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    border-top: 2px solid var(--foreground);
+    border-bottom: 2px solid var(--foreground);
 }
 
 /* Optional: Adds space inside the cells so the content doesn't crowd the borders */

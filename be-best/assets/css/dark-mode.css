@@ -1,11 +1,96 @@
-#theme-switch svg:last-child {
+/* Colour scheme: light, dark and system.
+
+   The theme scripts record two things on the root element: data-theme, the
+   setting the visitor chose, and the dark class, the scheme that setting
+   resolves to. The tokens behind the dark palette live in main.css; this file
+   styles the control that switches between them. */
+
+html {
+    color-scheme: light;
+}
+
+html.dark {
+    color-scheme: dark;
+}
+
+/* The banner holds the switch and floats over the page, so it takes no row in
+   the sidebar grid. */
+#site-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 30;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.75rem;
+}
+
+/* Clear the space the switch floats in. */
+main {
+    padding-top: 4.5rem;
+}
+
+#theme-switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background-color: var(--card);
+    color: var(--foreground);
+    fill: currentColor;
+    transition:
+        background-color 150ms ease-in-out,
+        color 150ms ease-in-out;
+}
+
+#theme-switch:hover {
+    background-color: var(--accent);
+    color: var(--accent-foreground);
+    border-color: var(--accent);
+}
+
+#theme-switch:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+}
+
+#theme-switch svg {
+    width: 1.25rem;
+    height: 1.25rem;
+
+    /* Only the icon of the current setting shows. */
     display: none;
 }
 
-.dark #theme-switch svg:first-child {
-    display: none;
-}
-
-.dark #theme-switch svg:last-child {
+html[data-theme='light'] #theme-switch .icon-light,
+html[data-theme='dark'] #theme-switch .icon-dark,
+html[data-theme='system'] #theme-switch .icon-system {
     display: block;
+}
+
+/* The scripts record the setting on the root element. When they never ran -
+   scripts blocked, or a page built from the raw layout - there is no setting to
+   show and pressing the control does nothing, so it is not offered. */
+html:not([data-theme]) #site-header {
+    display: none;
+}
+
+@media (max-width: 800px) {
+    #site-header {
+        padding: 0.5rem;
+    }
+
+    main {
+        padding-top: 4rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #theme-switch {
+        transition: none;
+    }
 }

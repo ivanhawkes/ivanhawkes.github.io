@@ -1,44 +1,58 @@
-// Enable dark mode by adding the 'dark' class to the body
-// and updating localStorage.
-const enableDarkMode = () => {
-    document.body.classList.add('dark');
-    localStorage.setItem('darkMode', 'enabled');
+/* The colour scheme switch: one button, three settings. Each press cycles
+   light, dark and system; the choice is remembered, and system follows the
+   operating system as it changes. */
+
+import {
+    applyTheme,
+    initTheme,
+    nextSetting,
+    readTheme,
+    storeTheme,
+} from './theme-mode.ts';
+
+const LABELS = {
+    light: 'Light theme',
+    dark: 'Dark theme',
+    system: 'System theme, following the operating system',
 };
 
-// Disable dark mode by removing the 'dark' class from the body
-// and updating localStorage.
-const disableDarkMode = () => {
-    document.body.classList.remove('dark');
-    localStorage.setItem('darkMode', 'disabled');
-};
+// The label names the scheme in effect and the one the next press selects.
+const labelFor = (theme) =>
+    `${LABELS[theme]} in effect. Activate to select the ${LABELS[nextSetting(theme)]}.`;
 
-// Initialize dark mode based on user preference.
 export const initDarkMode = () => {
-    const themeSwitch = document.getElementById('theme-switch');
+    const button = document.getElementById('theme-switch');
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
 
-    if (themeSwitch) {
-        themeSwitch.addEventListener(
+    let theme = initTheme();
+
+    const render = () => {
+        if (button) {
+            button.setAttribute('aria-label', labelFor(theme));
+        }
+    };
+
+    render();
+
+    if (button) {
+        button.addEventListener(
             'click',
             () => {
-                const darkMode = localStorage.getItem('darkMode') || 'disabled';
-
-                if (darkMode !== 'enabled') {
-                    enableDarkMode();
-                } else {
-                    disableDarkMode();
-                }
+                theme = applyTheme(nextSetting(theme));
+                storeTheme(theme);
+                render();
             },
             false
         );
-
-        const darkMode = localStorage.getItem('darkMode') || 'disabled';
-        if (darkMode !== 'enabled') {
-            disableDarkMode();
-        } else {
-            enableDarkMode();
-        }
     }
+
+    // Only the system setting depends on the operating system, so re-applying
+    // the stored setting is enough to pick up a change.
+    media.addEventListener('change', () => {
+        theme = applyTheme(readTheme());
+        render();
+    });
 };
 
-// Initialize dark mode on page load.
+// Initialize the colour scheme on page load.
 initDarkMode();

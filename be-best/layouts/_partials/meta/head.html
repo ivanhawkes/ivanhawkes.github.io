@@ -1,6 +1,30 @@
 ﻿<head>
   {{- partial "/meta/meta.html" . -}}
 
+  {{- if site.Params.theme.darkMode -}}
+    {{/*  Colour scheme, applied before the stylesheet loads so a dark scheme
+          never paints light first. Compiled on its own, from the same module
+          the deferred bundle uses.  */}}
+    {{ with resources.Get "js/theme-init.ts" }}
+      {{ $themeOpts := dict
+        "minify" (cond hugo.IsDevelopment false true)
+        "format" "iife"
+      }}
+      {{ with . | js.Build $themeOpts }}
+        {{ if hugo.IsDevelopment }}
+          <script src="{{ .RelPermalink }}"></script>
+        {{ else }}
+          {{ with . | fingerprint }}
+            <script
+              src="{{ .RelPermalink }}"
+              integrity="{{ .Data.Integrity }}"
+              crossorigin="anonymous"></script>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{- end -}}
+
   {{ with (templates.Defer (dict "key" "global")) }}
     {{- partial "/meta/css.html" . -}}
   {{ end }}

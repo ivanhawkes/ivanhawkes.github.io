@@ -3,8 +3,8 @@
 
 @import './syntax-highlight.css';
 @import './custom.css';
-@import './dark-mode.css';
 @import './sidebar.css';
+@import './dark-mode.css';
 @import './table.css';
 @import './brand.css';
 @import './prose-overrides.css';

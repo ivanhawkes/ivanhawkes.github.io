@@ -1,6 +1,5 @@
 {{- $src := .destination -}}
 {{- $image := .image -}}
-{{- $title := .title -}}
 {{- $alt := .alt -}}
 
 {{- $sizeList := slice "320" "640" "960" "1280" "1600" "1920" -}}
@@ -39,9 +38,3 @@
       </picture>
     </div>
   {{- end -}} 
-
-{{- with $title -}}
-    <p class="img-caption">
-        {{ $title }}
-    </p>
-{{- end }}

@@ -1,7 +1,7 @@
 <!-- Next / Previous. -->
 <div class="next-prev mt-4 flex justify-between gap-6 rounded-md">
   <div
-    class="flex w-full flex-row items-center rounded-lg border-2 border-primary-300 bg-primary-200 p-4">
+    class="flex flex-row items-center rounded-lg border-2 border-primary-300 bg-primary-200 p-1">
     {{ with .PrevInSection }}
       <a
         class="flex flex-row items-center justify-start"
@@ -18,7 +18,7 @@
         <div class="text-left">
           Previous
           <br />
-          <span class="text-xl">
+          <span class="text-m">
             {{ .Title | truncate 32 }}
           </span>
         </div>
@@ -26,13 +26,13 @@
     {{ end }}
   </div>
   <div
-    class="flex w-full flex-row items-center justify-end rounded-lg border-2 border-primary-300 bg-primary-200 p-4">
+    class="flex flex-row items-center justify-end rounded-lg border-2 border-primary-300 bg-primary-200 p-1">
     {{ with .NextInSection }}
       <a class="flex flex-row items-center justify-end" href="{{ .Permalink }}">
         <div class="text-right">
           Next
           <br />
-          <span class="text-xl">
+          <span class="text-m">
             {{ .Title | truncate 32 }}
           </span>
         </div>

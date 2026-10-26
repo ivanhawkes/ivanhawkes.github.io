@@ -1,13 +1,13 @@
 {{ define "main" }}
+  {{- partial "/components/breadcrumbs.html" . -}}
+
   {{- partial "/images/featured-image.html" (dict "page" . "caption" true) -}}
 
-  {{- partial "/components/breadcrumbs.html" . -}}
+  {{- partial "/navigation/next-prev-small.html" . -}}
 
   <div>
     {{- partial "/byline/byline.html" . -}}
   </div>
-
-  {{- partial "/navigation/next-prev-small.html" . -}}
 
   {{ partial "page/content.html" . }}
 

@@ -14,7 +14,6 @@
 */ -}}
 
 {{- $src := .Destination -}}
-{{- $caption := .Title -}}
 {{- $alt := .Text -}}
 
 {{- $sizeList := slice "320" "640" "960" "1280" "1600" "1920" -}}
@@ -55,4 +54,3 @@
 {{- else -}}
   <span class="ctr legal"><em>Image unavailable.</em></span>
 {{- end -}}
-{{- with $caption -}}<p class="img-caption">{{ $caption | $.Page.RenderString }}</p>{{- end }}

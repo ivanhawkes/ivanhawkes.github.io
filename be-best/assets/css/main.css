@@ -36,6 +36,8 @@
     --color-ink-muted: var(--text-muted);
     --color-surface: var(--surface);
     --color-surface-2: var(--surface-2);
+    --color-surface-brand: var(--surface-brand);
+    --color-surface-brand-ink: var(--surface-brand-ink);
     --color-edge: var(--edge);
     --color-field: var(--edge-field);
     --color-brand: var(--brand);
@@ -63,21 +65,29 @@
    component reads these: the semantic layer in `tokens.css` gives each colour
    its role names, components read those, and the utilities above are built from
    the roles too. Re-colouring the site is therefore a change to this block
-   alone. `dark` is the class the theme scripts put on the root element for the
-   dark scheme, and it is the only mechanism a palette value needs. */
+   alone.
+
+   Every pair the roles form is measured for WCAG 2.2 AA: 4.5:1 for text and
+   3:1 for an icon, a control's boundary, a focus ring or an indicator, against
+   every surface that role can sit on. `--palette-fill-ink` is the ink a
+   saturated fill carries, so it flips with the brand: near-white on the deep
+   brand of the light scheme, ink on the bright brand of the dark one. The
+   decorative hairline (`--palette-edge`) is exempt: it frames a card whose
+   content carries the meaning, while a control's boundary
+   (`--palette-edge-field`) is not, because a visitor has to find the box. */
 :root {
     --palette-canvas: oklch(1 0 0);
     --palette-ink: oklch(0.148 0.004 228.8);
-    --palette-brand: oklch(0.481 0.17 180);
-    --palette-brand-ink: oklch(0.987 0.022 95.277);
-    --palette-brand-lift: oklch(0.581 0.17 180);
+    --palette-brand: oklch(0.45 0.115 190);
+    --palette-brand-lift: oklch(0.38 0.115 190);
+    --palette-fill-ink: oklch(0.985 0.012 95.277);
     --palette-panel: oklch(0.9 0 0);
     --palette-panel-sunken: oklch(0.963 0.002 197.1);
-    --palette-panel-sunken-ink: oklch(0.56 0.021 213.5);
-    --palette-edge: oklch(0.925 0.005 214.3);
-    --palette-edge-field: oklch(0.925 0.005 214.3);
-    --palette-focus: oklch(0.723 0.014 214.4);
-    --palette-danger: oklch(0.577 0.245 27.325);
+    --palette-panel-sunken-ink: oklch(0.4 0.02 213.5);
+    --palette-edge: oklch(0.88 0.004 214.3);
+    --palette-edge-field: oklch(0.55 0.015 214.3);
+    --palette-danger: oklch(0.5 0.19 27);
+    --palette-success: oklch(0.42 0.13 155);
     --palette-stripe: oklch(96.7% 0.003 264.542);
     --palette-stripe-alt: oklch(92.8% 0.006 264.531);
     --radius: 0.625rem;
@@ -86,16 +96,16 @@
 .dark {
     --palette-canvas: oklch(0.148 0.004 228.8);
     --palette-ink: oklch(0.987 0.002 197.1);
-    --palette-brand: oklch(0.481 0.17 180);
-    --palette-brand-ink: oklch(0.987 0.022 95.277);
-    --palette-brand-lift: oklch(0.581 0.17 180);
+    --palette-brand: oklch(0.74 0.115 190);
+    --palette-brand-lift: oklch(0.82 0.11 190);
+    --palette-fill-ink: oklch(0.16 0.005 228.8);
     --palette-panel: oklch(0.218 0.008 223.9);
     --palette-panel-sunken: oklch(0.275 0.011 216.9);
-    --palette-panel-sunken-ink: oklch(0.723 0.014 214.4);
-    --palette-edge: oklch(1 0 0 / 10%);
-    --palette-edge-field: oklch(1 0 0 / 15%);
-    --palette-focus: oklch(0.56 0.021 213.5);
-    --palette-danger: oklch(0.704 0.191 22.216);
+    --palette-panel-sunken-ink: oklch(0.8 0.014 214.4);
+    --palette-edge: oklch(0.36 0.006 223.9);
+    --palette-edge-field: oklch(0.55 0.012 214.4);
+    --palette-danger: oklch(0.69 0.165 22);
+    --palette-success: oklch(0.76 0.14 155);
     --palette-stripe: oklch(21.8% 0.008 223.9);
     --palette-stripe-alt: oklch(27.5% 0.011 216.9);
 }

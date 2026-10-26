@@ -14,19 +14,29 @@
    brand colour and this file names the steps the theme uses. */
 
 :root {
-    /* Ground, surfaces, ink. */
+    /* Surfaces: the page, the panel on it, the sunken field, the panel tinted
+       with the brand, and their ink. A brand tint is a fill, so it carries ink:
+       the pale mint step in the light scheme takes the page's ink, and the deep
+       one in the dark scheme takes the light ink - the pair is what has to work
+       together, not the step on its own. */
     --bg: var(--palette-canvas);
     --surface: var(--palette-panel);
     --surface-2: var(--palette-panel-sunken);
+    --surface-brand: var(--color-brand-200);
+    --surface-brand-ink: var(--text);
     --text: var(--palette-ink);
     --text-muted: var(--palette-panel-sunken-ink);
 
-    /* Brand. The lift is the brighter step a brand fill becomes under a
-       pointer; the deep and soft steps are the brand as ink and as a rule. */
+    /* Brand. The lift is the step a brand fill takes under a pointer: deeper in
+       the light scheme, brighter in the dark one, because in both it moves
+       toward the ink it carries. The deep and soft steps are the brand as ink
+       and as a rule. `--brand-ink` is the ink a saturated fill carries, so it
+       flips with the brand: near-white on the deep brand of the light scheme,
+       ink on the bright brand of the dark one. */
     --brand: var(--palette-brand);
-    --brand-ink: var(--palette-brand-ink);
+    --brand-ink: var(--palette-fill-ink);
     --accent: var(--palette-brand-lift);
-    --accent-contrast: var(--palette-brand-ink);
+    --accent-contrast: var(--palette-fill-ink);
     --accent-deep: var(--color-brand-800);
     --accent-soft: var(--color-brand-200);
 
@@ -44,7 +54,7 @@
 
     /* States. */
     --state-danger: var(--palette-danger);
-    --state-success: oklch(0.45 0.12 155);
+    --state-success: var(--palette-success);
 
     /* A tooltip's fill: the page's own ground in the light scheme, so it reads
        as paper laid on the panel, and the panel in the dark one, where the page
@@ -86,7 +96,9 @@
     --code-bar: #2f343a;
     --code-bar-text: #dfe3e6;
     --code-chip: oklch(1 0 0 / 10%);
-    --code-chip-text: #cfd6dd;
+    /* The chip sits on the bar, which it lightens by 10%: the ink has to clear
+       4.5:1 against that, at ten pixels and bold. */
+    --code-chip-text: #e6eaee;
     --code-hover: oklch(1 0 0 / 12%);
     --code-active: oklch(0 0 0 / 18%);
     --code-focus: #48c9b0;
@@ -100,12 +112,12 @@
 }
 
 .dark {
-    --heading: var(--color-brand-300);
-    --link: var(--color-brand-200);
+    --surface-brand: var(--color-brand-900);
+
+    --heading: var(--color-brand-400);
+    --link: var(--color-brand-300);
 
     --tooltip: var(--palette-panel);
-
-    --state-success: oklch(0.72 0.15 155);
 
     --header-bg: oklch(0.148 0.004 228.8 / 78%);
     --nav-hover: oklch(0.275 0.011 216.9);
@@ -126,8 +138,13 @@
         );
         --overlay: light-dark(oklch(0 0 0 / 32%), oklch(0 0 0 / 56%));
 
-        --heading: light-dark(var(--color-brand-700), var(--color-brand-300));
-        --link: light-dark(var(--color-brand-800), var(--color-brand-200));
+        --heading: light-dark(var(--color-brand-700), var(--color-brand-400));
+        --link: light-dark(var(--color-brand-800), var(--color-brand-300));
+
+        --surface-brand: light-dark(
+            var(--color-brand-200),
+            var(--color-brand-900)
+        );
 
         --tooltip: light-dark(var(--palette-canvas), var(--palette-panel));
     }
@@ -149,11 +166,16 @@
         --palette-panel-sunken-ink: oklch(0.35 0.01 228);
         --palette-edge: oklch(0.8 0.005 214.3);
         --palette-edge-field: oklch(0.8 0.005 214.3);
-        --palette-focus: oklch(0.481 0.17 180);
+        --palette-fill-ink: oklch(0.148 0.004 228.8);
+        --palette-success: oklch(0.35 0.01 228);
 
         --heading: #000;
         --link: #000;
         --link-hover: #000;
+
+        /* Paper takes no tint: the brand panel is the page, in ink. */
+        --surface-brand: oklch(1 0 0);
+        --surface-brand-ink: oklch(0.148 0.004 228.8);
 
         --header-bg: oklch(1 0 0);
         --header-border: oklch(0.8 0.005 214.3);
@@ -203,6 +225,8 @@
 
         --edge: CanvasText;
         --edge-field: CanvasText;
+        --surface-brand: Canvas;
+        --surface-brand-ink: CanvasText;
         --brand: Canvas;
         --brand-ink: CanvasText;
         --accent: Highlight;

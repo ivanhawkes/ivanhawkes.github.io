@@ -21,7 +21,7 @@ html.dark {
     width: 44px;
     height: 44px;
     padding: 0;
-    border: 1px solid var(--edge);
+    border: 1px solid var(--edge-field);
     border-radius: 50%;
     background-color: var(--surface);
     color: var(--text);
@@ -35,7 +35,7 @@ html.dark {
 #theme-switch:hover {
     background-color: var(--nav-hover);
     color: var(--text);
-    border-color: var(--header-border);
+    border-color: var(--edge-field);
 }
 
 #theme-switch:focus-visible {

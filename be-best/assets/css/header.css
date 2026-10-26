@@ -165,7 +165,9 @@
     max-width: 28vw;
     height: 44px;
     padding: 0 0.75rem;
-    border: 1px solid var(--header-border);
+    /* A field the visitor has to find: its boundary is the control edge, not the
+       header's decorative hairline, so it stays perceptible in both schemes. */
+    border: 1px solid var(--edge-field);
     border-radius: 9999px;
     background-color: var(--surface-2);
     color: var(--text);

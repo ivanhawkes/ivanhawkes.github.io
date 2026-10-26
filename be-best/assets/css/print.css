@@ -132,10 +132,15 @@
     }
 
     /* Surfaces, tints and stripes are toner, and their text contrast is tuned
-       for the surface, not for paper. */
+       for the surface, not for paper. A brand fill goes too: the print palette
+       makes the ink it carries dark, so the banner reads as ink on paper. */
     .bg-surface,
     .bg-canvas,
     .bg-surface-2,
+    .bg-surface-brand,
+    .bg-brand,
+    .bg-accent,
+    .bg-danger,
     .bg-brand-200,
     .odd\:bg-table-odd,
     .even\:bg-table-even {
@@ -474,10 +479,26 @@ html.print-mode .card-media {
 html.print-mode .bg-surface,
 html.print-mode .bg-canvas,
 html.print-mode .bg-surface-2,
+html.print-mode .bg-surface-brand,
+html.print-mode .bg-brand,
+html.print-mode .bg-accent,
+html.print-mode .bg-danger,
 html.print-mode .bg-brand-200,
 html.print-mode .odd\:bg-table-odd,
 html.print-mode .even\:bg-table-even {
     background-color: transparent;
+}
+
+/* A fill that carries its own ink - a brand banner, a tinted panel - has that
+   ink tuned for the fill, not for paper: a near-white ink on a light scheme, a
+   light ink on the deep tint of a dark scheme. With the fill gone from the
+   preview the text would vanish into the sheet, so it takes paper's ink, the
+   way the media print block has the palette do. */
+html.print-mode .bg-brand,
+html.print-mode .bg-accent,
+html.print-mode .bg-danger,
+html.print-mode .bg-surface-brand {
+    color: #1a1a1a;
 }
 
 /* Code: the syntax theme is a screen theme, pale text on a dark field, which

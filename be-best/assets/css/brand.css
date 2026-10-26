@@ -1,39 +1,36 @@
 @theme inline {
-    /* The brand colour as a ramp of brightness, all eleven steps derived from
-       the one brand colour in the palette. A step is a colour, not a role, so
-       the semantic layer in `tokens.css` picks the steps it needs and gives them
-       role names; a component reads a role. The utilities Tailwind builds from
-       these - `bg-brand-500`, `text-brand-200` - are for the pages that show
-       the ramp itself, which have no role to name. */
+    /* The brand colour as a ramp, all eleven steps derived from the one brand
+       colour in the palette. A step is a colour, not a role, so the semantic
+       layer in `tokens.css` picks the steps it needs and gives them role names;
+       a component reads a role. The utilities Tailwind builds from these -
+       `bg-brand-500`, `text-brand-200` - are for the pages that show the ramp
+       itself, which have no role to name.
+
+       A step moves the brand's lightness toward white (a tint) or toward black
+       (a shade) by a share of the room left, so it stays in gamut and keeps its
+       hue at both ends. A multiple of `l` would run past 1 and wash the pale
+       steps to white in the dark scheme, where the brand starts light.
+       `oklch(from …)` is a modern feature, and this is built with `jiti`, which
+       resolves it at build time; browsers get plain oklch. */
     --color-brand-50: oklch(
-        from var(--palette-brand) clamp(0, calc(l * 1.9), 1) c h
+        from var(--palette-brand) calc(l + (1 - l) * 0.95) c h
     );
     --color-brand-100: oklch(
-        from var(--palette-brand) clamp(0, calc(l * 1.72), 1) c h
+        from var(--palette-brand) calc(l + (1 - l) * 0.86) c h
     );
     --color-brand-200: oklch(
-        from var(--palette-brand) clamp(0, calc(l * 1.54), 1) c h
+        from var(--palette-brand) calc(l + (1 - l) * 0.72) c h
     );
     --color-brand-300: oklch(
-        from var(--palette-brand) clamp(0, calc(l * 1.36), 1) c h
+        from var(--palette-brand) calc(l + (1 - l) * 0.55) c h
     );
     --color-brand-400: oklch(
-        from var(--palette-brand) clamp(0, calc(l * 1.18), 1) c h
+        from var(--palette-brand) calc(l + (1 - l) * 0.28) c h
     );
     --color-brand-500: oklch(from var(--palette-brand) l c h);
-    --color-brand-600: oklch(
-        from var(--palette-brand) clamp(0, calc(l * 0.82), 1) c h
-    );
-    --color-brand-700: oklch(
-        from var(--palette-brand) clamp(0, calc(l * 0.64), 1) c h
-    );
-    --color-brand-800: oklch(
-        from var(--palette-brand) clamp(0, calc(l * 0.46), 1) c h
-    );
-    --color-brand-900: oklch(
-        from var(--palette-brand) clamp(0, calc(l * 0.28), 1) c h
-    );
-    --color-brand-950: oklch(
-        from var(--palette-brand) clamp(0, calc(l * 0.1), 1) c h
-    );
+    --color-brand-600: oklch(from var(--palette-brand) calc(l * 0.78) c h);
+    --color-brand-700: oklch(from var(--palette-brand) calc(l * 0.55) c h);
+    --color-brand-800: oklch(from var(--palette-brand) calc(l * 0.35) c h);
+    --color-brand-900: oklch(from var(--palette-brand) calc(l * 0.2) c h);
+    --color-brand-950: oklch(from var(--palette-brand) calc(l * 0.1) c h);
 }

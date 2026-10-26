@@ -248,23 +248,34 @@ colour the site is painted from, written once per scheme, each named for what
 the colour is for and nothing else. The `:root` block is the light scheme and
 the `.dark` block the dark one, which is the only mechanism a palette value
 needs. The names are `--palette-canvas`, `--palette-ink`, `--palette-brand`,
-`--palette-brand-ink`, `--palette-brand-lift`, `--palette-panel`,
+`--palette-brand-lift`, `--palette-fill-ink`, `--palette-panel`,
 `--palette-panel-sunken`, `--palette-panel-sunken-ink`, `--palette-edge`,
-`--palette-edge-field`, `--palette-focus`, `--palette-danger`,
+`--palette-edge-field`, `--palette-danger`, `--palette-success`,
 `--palette-stripe` and `--palette-stripe-alt`. Nothing outside the token layer
 reads a palette name, so re-colouring the site is a change to those two blocks
 alone.
 
+Every pair the roles form is measured for WCAG 2.2 AA: 4.5:1 for text, and 3:1
+for an icon, a control's boundary, a focus ring or an indicator, against every
+surface that role can sit on. Two of the names exist because of how that works.
+`--palette-fill-ink` is the ink a saturated fill carries, so it flips with the
+brand: near-white on the deep brand of the light scheme, ink on the bright brand
+of the dark one. `--palette-edge-field` is the boundary of a control a visitor
+has to find, and clears 3:1; `--palette-edge` is the decorative hairline that
+frames a card, and is exempt, because the content inside the frame carries the
+meaning.
+
 The semantic layer is `be-best/assets/css/tokens.css`: each token names a role,
 and is an alias of the palette. The roles are `--bg`, `--surface`,
-`--surface-2`, `--text`, `--text-muted`, `--brand`, `--brand-ink`, `--accent`,
-`--accent-contrast`, `--accent-deep`, `--accent-soft`, `--edge`, `--edge-field`,
-`--focus-ring`, `--state-danger`, `--state-success`, `--heading`, `--link`,
-`--link-hover`, `--tooltip`, `--stripe-odd`, `--stripe-even`, `--header-bg`,
-`--header-border`, `--nav-hover`, `--overlay`, `--shadow-sm`, `--shadow`, and
-the `--code-*` group. An alias needs one value, because the palette entry it
-names already flips per scheme. Where a role genuinely differs per scheme - a
-translucent header, a hover, a scrim, a tooltip
+`--surface-2`, `--surface-brand`, `--surface-brand-ink`, `--text`,
+`--text-muted`, `--brand`, `--brand-ink`, `--accent`, `--accent-contrast`,
+`--accent-deep`, `--accent-soft`, `--edge`, `--edge-field`, `--focus-ring`,
+`--state-danger`, `--state-success`, `--heading`, `--link`, `--link-hover`,
+`--tooltip`, `--stripe-odd`, `--stripe-even`, `--header-bg`, `--header-border`,
+`--nav-hover`, `--overlay`, `--shadow-sm`, `--shadow`, and the `--code-*` group.
+An alias needs one value, because the palette entry it names already flips per
+scheme. Where a role genuinely differs per scheme - a translucent header, a
+hover, a scrim, a tooltip, a step of the brand ramp
 
 - the light value is declared first, the `.dark` rule carries the dark one, and
   a `light-dark()` declaration in an `@supports` block takes over in browsers
@@ -273,20 +284,27 @@ translucent header, a hover, a scrim, a tooltip
 
 `brand.css` derives an eleven step ramp, `--color-brand-50` to
 `--color-brand-950`, from the palette's brand colour with `oklch(from …)`, so
-the ramp stays one value in the palette. The token layer picks the steps the
-theme uses and gives them role names: `--heading`, `--link`, `--accent-deep`
-(the brand as ink and as a dark fill) and `--accent-soft` (the brand as a
-hairline). The ramp's own utilities are for the page that displays the ramp,
-which has no role to name.
+the ramp stays one value in the palette. A step moves the brand's lightness
+toward white, then toward black, by a share of the room left: a multiple of the
+lightness runs past 1 in the dark scheme, where the brand starts light, and
+washes the pale steps to white. The token layer picks the steps the theme uses
+and gives them role names: `--heading`, `--link`, `--surface-brand` (a panel
+tinted with the brand, which names the ink it carries, `--surface-brand-ink`),
+`--accent-deep` (the brand as ink and as a dark fill) and `--accent-soft` (the
+brand as a hairline). Because the light brand of the dark scheme starts high, it
+reads the 400 and 300 steps where the light scheme reads the 700 and 800. The
+ramp's own utilities are for the page that displays the ramp, which has no role
+to name.
 
 The bridge to templates is the `@theme inline` block in `main.css`, which gives
 every colour utility a role behind it: `bg-canvas`, `text-ink`,
-`text-ink-muted`, `bg-surface`, `bg-surface-2`, `border-edge`, `border-field`,
-`bg-brand`, `text-brand-ink`, `bg-accent`, `bg-danger`, `bg-tooltip`,
-`text-heading`, `text-link` and `outline-focus-ring`. A class in a template
-therefore names what a thing is, never a colour, and `inline` puts the role's
-own `var()` into the utility, so a scheme change recolours the whole site with
-no utility compiled twice.
+`text-ink-muted`, `bg-surface`, `bg-surface-2`, `bg-surface-brand`,
+`text-surface-brand-ink`, `border-edge`, `border-field`, `bg-brand`,
+`text-brand-ink`, `bg-accent`, `bg-danger`, `bg-tooltip`, `text-heading`,
+`text-link` and `outline-focus-ring`. A class in a template therefore names what
+a thing is, never a colour, and `inline` puts the role's own `var()` into the
+utility, so a scheme change recolours the whole site with no utility compiled
+twice.
 
 Two media leave the layers on purpose, and both do it in the token layer. Paper:
 `tokens.css` resets the palette for `@media print`, so every role follows, and

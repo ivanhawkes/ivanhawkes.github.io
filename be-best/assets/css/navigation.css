@@ -1,7 +1,9 @@
-/* Size and colour the SVG icons */
+/* Size and colour the SVG icons. The icon is ink on the deep brand disc, so it
+   takes the ink a brand fill is written in, and the disc takes the deepest step
+   of the brand: both are roles from `tokens.css`. */
 .navigation svg {
     background-color: transparent;
-    fill: var(--primary-foreground);
+    fill: var(--brand-ink);
     height: 1.75rem;
     width: 1.75rem;
     margin: 0.25rem;
@@ -9,7 +11,7 @@
 
 /* This puts a little dark circle around the SVG icons */
 .navigation button {
-    background-color: var(--color-primary-800);
+    background-color: var(--accent-deep);
     border-radius: 50%;
     cursor: pointer;
     margin: 0.25rem;

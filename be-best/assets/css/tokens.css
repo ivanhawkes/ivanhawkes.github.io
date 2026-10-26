@@ -1,34 +1,59 @@
-/* Semantic colour tokens.
+/* Semantic colour tokens: the roles a component is painted with.
 
    Every theme dependent value a component needs is a token from this file: a
-   component names a role (surface, text, border, focus ring), never a colour.
-   Each token is an alias of the palette tokens in main.css, which already flip
-   between schemes through the `dark` class, so an alias usually needs one
-   value. `--border` and `--accent` are palette tokens already, and components
-   use them by those names. Where a value genuinely differs per scheme - a translucent header, a
+   component names a role (surface, text, edge, focus ring), never a colour and
+   never a palette entry. Each token is an alias of the palette in `main.css`,
+   which already flips between schemes through the `dark` class, so an alias
+   usually needs one value, and the roles of the whole site are mapped from
+   here. Where a value genuinely differs per scheme - a translucent header, a
    hover, a scrim - the light value is declared first, the `.dark` rule carries
    the dark one, and a `light-dark()` declaration in an `@supports` block takes
    over in browsers that resolve it against the `color-scheme` the scripts set
-   on the root element. All three paths give the same result. */
+   on the root element. All three paths give the same result. Where a role wants
+   a step of the brand ramp, `brand.css` derives the ramp from the palette's
+   brand colour and this file names the steps the theme uses. */
 
 :root {
-    --bg: var(--background);
-    --surface: var(--card);
-    --surface-2: var(--muted);
-    --text: var(--foreground);
-    --text-muted: var(--muted-foreground);
-    --accent-contrast: var(--accent-foreground);
-    --focus-ring: var(--primary);
+    /* Ground, surfaces, ink. */
+    --bg: var(--palette-canvas);
+    --surface: var(--palette-panel);
+    --surface-2: var(--palette-panel-sunken);
+    --text: var(--palette-ink);
+    --text-muted: var(--palette-panel-sunken-ink);
+
+    /* Brand. The lift is the brighter step a brand fill becomes under a
+       pointer; the deep and soft steps are the brand as ink and as a rule. */
+    --brand: var(--palette-brand);
+    --brand-ink: var(--palette-brand-ink);
+    --accent: var(--palette-brand-lift);
+    --accent-contrast: var(--palette-brand-ink);
+    --accent-deep: var(--color-brand-800);
+    --accent-soft: var(--color-brand-200);
+
+    /* Lines, fields, focus. */
+    --edge: var(--palette-edge);
+    --edge-field: var(--palette-edge-field);
+    --focus-ring: var(--brand);
 
     /* Heading and link ink. The prose plugin is painted from these, and so is
        a card title, which is a heading that is also a link, so the two agree
        in every scheme. */
-    --heading: var(--color-primary-700);
-    --link: var(--color-primary-800);
+    --heading: var(--color-brand-700);
+    --link: var(--color-brand-800);
     --link-hover: var(--accent);
 
-    --state-danger: var(--destructive);
+    /* States. */
+    --state-danger: var(--palette-danger);
     --state-success: oklch(0.45 0.12 155);
+
+    /* A tooltip's fill: the page's own ground in the light scheme, so it reads
+       as paper laid on the panel, and the panel in the dark one, where the page
+       is darker than everything laid on it. */
+    --tooltip: var(--palette-canvas);
+
+    /* Table stripes: the two bands a long table is read down. */
+    --stripe-odd: var(--palette-stripe);
+    --stripe-even: var(--palette-stripe-alt);
 
     --page-gutter: min(30px, 7%);
 
@@ -44,7 +69,7 @@
     --prose-measure: 65ch;
 
     --header-bg: oklch(1 0 0 / 78%);
-    --header-border: var(--border);
+    --header-border: var(--edge);
     --nav-hover: oklch(0.94 0.005 214.3);
     --overlay: oklch(0 0 0 / 32%);
     --shadow-sm: 0 1px 2px oklch(0 0 0 / 10%);
@@ -75,8 +100,10 @@
 }
 
 .dark {
-    --heading: var(--color-primary-300);
-    --link: var(--color-primary-200);
+    --heading: var(--color-brand-300);
+    --link: var(--color-brand-200);
+
+    --tooltip: var(--palette-panel);
 
     --state-success: oklch(0.72 0.15 155);
 
@@ -99,32 +126,30 @@
         );
         --overlay: light-dark(oklch(0 0 0 / 32%), oklch(0 0 0 / 56%));
 
-        --heading: light-dark(
-            var(--color-primary-700),
-            var(--color-primary-300)
-        );
-        --link: light-dark(var(--color-primary-800), var(--color-primary-200));
+        --heading: light-dark(var(--color-brand-700), var(--color-brand-300));
+        --link: light-dark(var(--color-brand-800), var(--color-brand-200));
+
+        --tooltip: light-dark(var(--palette-canvas), var(--palette-panel));
     }
 }
 
-/* Print is always light, whatever scheme the screen shows. The palette tokens
-   are reset, so every alias above follows them. */
+/* Print is always light, whatever scheme the screen shows. The palette is
+   reset, so every role above follows it, and no component needs a print rule of
+   its own. The stripes are not reset: the sheet prints them transparent from
+   `print.css`, and a preview is a screen medium with the screen palette. */
 @media print {
     :root,
     .dark {
         color-scheme: light;
 
-        --background: oklch(1 0 0);
-        --foreground: oklch(0.148 0.004 228.8);
-        --card: oklch(1 0 0);
-        --card-foreground: oklch(0.148 0.004 228.8);
-        --popover: oklch(1 0 0);
-        --popover-foreground: oklch(0.148 0.004 228.8);
-        --muted: oklch(0.963 0.002 197.1);
-        --muted-foreground: oklch(0.35 0.01 228);
-        --border: oklch(0.8 0.005 214.3);
-        --input: oklch(0.8 0.005 214.3);
-        --ring: oklch(0.481 0.17 180);
+        --palette-canvas: oklch(1 0 0);
+        --palette-ink: oklch(0.148 0.004 228.8);
+        --palette-panel: oklch(1 0 0);
+        --palette-panel-sunken: oklch(0.963 0.002 197.1);
+        --palette-panel-sunken-ink: oklch(0.35 0.01 228);
+        --palette-edge: oklch(0.8 0.005 214.3);
+        --palette-edge-field: oklch(0.8 0.005 214.3);
+        --palette-focus: oklch(0.481 0.17 180);
 
         --heading: #000;
         --link: #000;
@@ -158,7 +183,8 @@
 }
 
 /* Windows High Contrast and other forced colour schemes: the palette is the
-   user's, so only shapes and text weights are left to us. */
+   user's, so every role is answered with a system colour, and only shapes and
+   text weights are left to us. */
 @media (forced-colors: active) {
     :root,
     .dark {
@@ -174,6 +200,20 @@
         --heading: CanvasText;
         --link: CanvasText;
         --link-hover: Highlight;
+
+        --edge: CanvasText;
+        --edge-field: CanvasText;
+        --brand: Canvas;
+        --brand-ink: CanvasText;
+        --accent: Highlight;
+        --accent-contrast: HighlightedText;
+        --accent-deep: CanvasText;
+        --accent-soft: CanvasText;
+        --tooltip: Canvas;
+        --stripe-odd: Canvas;
+        --stripe-even: Canvas;
+        --state-danger: CanvasText;
+        --state-success: CanvasText;
 
         --code-bg: Canvas;
         --code-text: CanvasText;

@@ -15,23 +15,23 @@
 {{- $urgent := eq .priority 0 -}}
 {{- $high := eq .priority 1 -}}
 {{- $level := "priority p%s" -}}
-{{- $circle := "border border-foreground text-foreground" -}}
-{{- $border := "border-foreground" -}}
+{{- $circle := "border border-ink text-ink" -}}
+{{- $border := "border-ink" -}}
 {{- if $overdue -}}
-  {{- $border = "border-destructive" -}}
+  {{- $border = "border-danger" -}}
 {{- else if $urgent -}}
-  {{- $circle = "bg-primary text-primary-foreground" -}}
-  {{- $border = "border-primary" -}}
+  {{- $circle = "bg-brand text-brand-ink" -}}
+  {{- $border = "border-brand" -}}
   {{- $level = "priority p%s, urgent" -}}
 {{- else if $high -}}
-  {{- $circle = "bg-secondary text-secondary-foreground" -}}
-  {{- $border = "border-secondary" -}}
+  {{- $circle = "bg-surface-2 text-ink" -}}
+  {{- $border = "border-surface-2" -}}
   {{- $level = "priority p%s, high priority" -}}
 {{- end -}}
 {{- $tip := printf "kanban-card-info-%s" .id -}}
 
 <article
-  class="flex flex-col gap-0.5 rounded-md border-1 bg-card px-1.5 py-1 text-md text-card-foreground {{ $border }}">
+  class="flex flex-col gap-0.5 rounded-md border-1 bg-surface px-1.5 py-1 text-md text-ink {{ $border }}">
   <header class="flex items-center gap-1.5">
     <span
       class="flex size-4 shrink-0 items-center justify-center rounded-full text-[0.6rem] font-bold {{ $circle }}">
@@ -46,7 +46,7 @@
     <span class="relative shrink-0">
       <button
         type="button"
-        class="peer inline-flex size-4 items-center justify-center rounded-full border border-current text-[0.6rem] leading-none peer-hover:bg-foreground peer-hover:text-background peer-focus:bg-foreground peer-focus:text-background"
+        class="peer inline-flex size-4 items-center justify-center rounded-full border border-current text-[0.6rem] leading-none peer-hover:bg-ink peer-hover:text-canvas peer-focus:bg-ink peer-focus:text-canvas"
         aria-describedby="{{ $tip }}"
         aria-label="More information about {{ $page.Title }}">
         i
@@ -54,7 +54,7 @@
       <span
         id="{{ $tip }}"
         role="tooltip"
-        class="invisible absolute right-0 z-20 w-56 rounded-md border border-foreground bg-popover text-sm opacity-0 shadow-lg text-popover-foreground transition-opacity peer-hover:visible peer-hover:opacity-100 peer-focus:visible peer-focus:opacity-100">
+        class="invisible absolute right-0 z-20 w-56 rounded-md border border-ink bg-tooltip text-sm opacity-0 shadow-lg text-ink transition-opacity peer-hover:visible peer-hover:opacity-100 peer-focus:visible peer-focus:opacity-100">
         <span class="block">
           {{ with $page.Description }}
             {{- . -}}
@@ -74,9 +74,9 @@
 
   <div
     class="flex items-center gap-1 text-sm {{ if $overdue }}
-      font-semibold text-destructive
+      font-semibold text-danger
     {{ else }}
-      text-muted-foreground
+      text-ink-muted
     {{ end }}">
     {{ if $overdue }}
       <svg

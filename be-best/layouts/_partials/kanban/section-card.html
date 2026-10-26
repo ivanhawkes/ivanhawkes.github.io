@@ -1,17 +1,17 @@
-{{ $bannerColour := "bg-primary" }}
+{{ $bannerColour := "bg-brand" }}
 
 {{ if .Params.due }}
   {{ $due := time .Params.due }}
   {{ if and (not .Params.completionDate) .Params.due }}
     {{ if gt time.Now $due }}
-      {{ $bannerColour = "bg-destructive" }}
+      {{ $bannerColour = "bg-danger" }}
     {{ end }}
   {{ end }}
 {{ end }}
 
 
 <div
-  class="justify-evenly overflow-hidden rounded-md border-2 border-primary-300 border-foreground bg-card text-sm p-2">
+  class="justify-evenly overflow-hidden rounded-md border-2 border-brand-300 border-ink bg-surface text-sm p-2">
   <div
     class="{{ $bannerColour }} flex h-8 items-center justify-center bg-accent text-base font-bold p-2">
     <p><a href="{{ .Permalink }}">{{ .Title }}</a></p>

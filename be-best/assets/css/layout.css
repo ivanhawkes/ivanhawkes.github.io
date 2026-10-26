@@ -89,7 +89,7 @@ main p {
    sidebar layout's 800 pixel query. */
 @media (min-width: 801px) {
     .container {
-        border: 1px solid var(--border);
+        border: 1px solid var(--edge);
         padding: min(2em, 10%);
     }
 }

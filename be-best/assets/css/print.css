@@ -133,11 +133,10 @@
 
     /* Surfaces, tints and stripes are toner, and their text contrast is tuned
        for the surface, not for paper. */
-    .bg-card,
-    .bg-background,
-    .bg-muted,
-    .bg-secondary,
-    .bg-primary-200,
+    .bg-surface,
+    .bg-canvas,
+    .bg-surface-2,
+    .bg-brand-200,
     .odd\:bg-table-odd,
     .even\:bg-table-even {
         background-color: transparent;
@@ -472,11 +471,10 @@ html.print-mode .card-media {
 
 /* The surfaces the sheet does not print: the card, the tint, the stripes. A
    tint's text contrast is tuned for the surface, and a stripe is toner. */
-html.print-mode .bg-card,
-html.print-mode .bg-background,
-html.print-mode .bg-muted,
-html.print-mode .bg-secondary,
-html.print-mode .bg-primary-200,
+html.print-mode .bg-surface,
+html.print-mode .bg-canvas,
+html.print-mode .bg-surface-2,
+html.print-mode .bg-brand-200,
 html.print-mode .odd\:bg-table-odd,
 html.print-mode .even\:bg-table-even {
     background-color: transparent;

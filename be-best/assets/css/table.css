@@ -1,19 +1,10 @@
-/* Table stripe colours, exposed to Tailwind as bg-table-odd / bg-table-even. */
+/* Table stripes, exposed to Tailwind as bg-table-odd / bg-table-even. The two
+   bands are roles, so they come from the semantic layer in `tokens.css`, which
+   aliases the pair in the palette: a stripe is defined once per scheme, in the
+   palette, and named once, as a stripe. */
 @theme inline {
-    --color-table-odd: var(--table-odd);
-    --color-table-even: var(--table-even);
-}
-
-:root {
-    /* Light theme: gray-100 and gray-200. */
-    --table-odd: oklch(96.7% 0.003 264.542);
-    --table-even: oklch(92.8% 0.006 264.531);
-}
-
-.dark {
-    /* Dark theme: card and muted surfaces, so text keeps its contrast. */
-    --table-odd: oklch(21.8% 0.008 223.9);
-    --table-even: oklch(27.5% 0.011 216.9);
+    --color-table-odd: var(--stripe-odd);
+    --color-table-even: var(--stripe-even);
 }
 
 /* Stripe colour tags: apply to a table, row, cell or header. */
@@ -33,9 +24,10 @@ table {
     margin-top: 1.5rem;
     margin-bottom: 2.5rem; /* Adds space before the NEXT title starts */
 
-    /* Adds the top and bottom borders to the outer table */
-    border-top: 2px solid var(--foreground);
-    border-bottom: 2px solid var(--foreground);
+    /* Adds the top and bottom borders to the outer table, in the ink of the
+       page so the table opens and closes the same way in both schemes. */
+    border-top: 2px solid var(--text);
+    border-bottom: 2px solid var(--text);
 }
 
 /* Optional: Adds space inside the cells so the content doesn't crowd the borders */

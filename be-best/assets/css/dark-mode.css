@@ -21,7 +21,7 @@ html.dark {
     width: 44px;
     height: 44px;
     padding: 0;
-    border: 1px solid var(--border);
+    border: 1px solid var(--edge);
     border-radius: 50%;
     background-color: var(--surface);
     color: var(--text);

@@ -239,6 +239,69 @@ no `data-theme` attribute; the print control and the codeblock copy control are
 withdrawn with them, since a page with no script cannot ask the driver for paper
 and cannot put code on a clipboard.
 
+### Colour Tokens
+
+Colour is declared in two layers, and a component reads only the upper one.
+
+The palette layer is a pair of blocks in `be-best/assets/css/main.css`: every
+colour the site is painted from, written once per scheme, each named for what
+the colour is for and nothing else. The `:root` block is the light scheme and
+the `.dark` block the dark one, which is the only mechanism a palette value
+needs. The names are `--palette-canvas`, `--palette-ink`, `--palette-brand`,
+`--palette-brand-ink`, `--palette-brand-lift`, `--palette-panel`,
+`--palette-panel-sunken`, `--palette-panel-sunken-ink`, `--palette-edge`,
+`--palette-edge-field`, `--palette-focus`, `--palette-danger`,
+`--palette-stripe` and `--palette-stripe-alt`. Nothing outside the token layer
+reads a palette name, so re-colouring the site is a change to those two blocks
+alone.
+
+The semantic layer is `be-best/assets/css/tokens.css`: each token names a role,
+and is an alias of the palette. The roles are `--bg`, `--surface`,
+`--surface-2`, `--text`, `--text-muted`, `--brand`, `--brand-ink`, `--accent`,
+`--accent-contrast`, `--accent-deep`, `--accent-soft`, `--edge`, `--edge-field`,
+`--focus-ring`, `--state-danger`, `--state-success`, `--heading`, `--link`,
+`--link-hover`, `--tooltip`, `--stripe-odd`, `--stripe-even`, `--header-bg`,
+`--header-border`, `--nav-hover`, `--overlay`, `--shadow-sm`, `--shadow`, and
+the `--code-*` group. An alias needs one value, because the palette entry it
+names already flips per scheme. Where a role genuinely differs per scheme - a
+translucent header, a hover, a scrim, a tooltip
+
+- the light value is declared first, the `.dark` rule carries the dark one, and
+  a `light-dark()` declaration in an `@supports` block takes over in browsers
+  that resolve it against the root `color-scheme`; all three paths give the same
+  value.
+
+`brand.css` derives an eleven step ramp, `--color-brand-50` to
+`--color-brand-950`, from the palette's brand colour with `oklch(from …)`, so
+the ramp stays one value in the palette. The token layer picks the steps the
+theme uses and gives them role names: `--heading`, `--link`, `--accent-deep`
+(the brand as ink and as a dark fill) and `--accent-soft` (the brand as a
+hairline). The ramp's own utilities are for the page that displays the ramp,
+which has no role to name.
+
+The bridge to templates is the `@theme inline` block in `main.css`, which gives
+every colour utility a role behind it: `bg-canvas`, `text-ink`,
+`text-ink-muted`, `bg-surface`, `bg-surface-2`, `border-edge`, `border-field`,
+`bg-brand`, `text-brand-ink`, `bg-accent`, `bg-danger`, `bg-tooltip`,
+`text-heading`, `text-link` and `outline-focus-ring`. A class in a template
+therefore names what a thing is, never a colour, and `inline` puts the role's
+own `var()` into the utility, so a scheme change recolours the whole site with
+no utility compiled twice.
+
+Two media leave the layers on purpose, and both do it in the token layer. Paper:
+`tokens.css` resets the palette for `@media print`, so every role follows, and
+`print.css` writes the ink of the sheet literally, toner being outside the
+theme's palette. Forced colours: the same file answers every role with a system
+colour - `Canvas`, `CanvasText`, `Highlight` - because in that mode the palette
+is the visitor's. The syntax palette is a third case: the `--code-*` roles are a
+dark field in every scheme, and `syntax-highlight.css` carries its own measured
+colours.
+
+A scheme change therefore touches palette values and role aliases, and no
+component rule: `grep -n '\.dark' be-best/assets/css/*.css` answers with the
+palette block in `main.css`, the overrides, print reset and forced-colours block
+in `tokens.css`, and the `color-scheme` declaration in `dark-mode.css`.
+
 ### The Print Medium
 
 The site is styled for two media: the screen, which has a viewport, a pointer

@@ -25,29 +25,29 @@
     --font-heading: var(--font-sans);
     --font-sans: 'Source Sans 3 Variable', sans-serif;
     --font-code: var(--code-font-family);
-    --color-chart-5: var(--chart-5);
-    --color-chart-4: var(--chart-4);
-    --color-chart-3: var(--chart-3);
-    --color-chart-2: var(--chart-2);
-    --color-chart-1: var(--chart-1);
-    --color-ring: var(--ring);
-    --color-input: var(--input);
-    --color-border: var(--border);
-    --color-destructive: var(--destructive);
-    --color-accent-foreground: var(--accent-foreground);
+
+    /* Every colour utility is a role from the semantic layer in `tokens.css`,
+       so a class in a template names what a thing is - the page, the ink, a
+       hairline, a danger - and never a colour. The `inline` keyword puts the
+       role's own `var()` into the utility, which is what lets a scheme change
+       recolour the whole site with no utility compiled twice. */
+    --color-canvas: var(--bg);
+    --color-ink: var(--text);
+    --color-ink-muted: var(--text-muted);
+    --color-surface: var(--surface);
+    --color-surface-2: var(--surface-2);
+    --color-edge: var(--edge);
+    --color-field: var(--edge-field);
+    --color-brand: var(--brand);
+    --color-brand-ink: var(--brand-ink);
     --color-accent: var(--accent);
-    --color-muted-foreground: var(--muted-foreground);
-    --color-muted: var(--muted);
-    --color-secondary-foreground: var(--secondary-foreground);
-    --color-secondary: var(--secondary);
-    --color-primary-foreground: var(--primary-foreground);
-    --color-primary: var(--primary);
-    --color-popover-foreground: var(--popover-foreground);
-    --color-popover: var(--popover);
-    --color-card-foreground: var(--card-foreground);
-    --color-card: var(--card);
-    --color-foreground: var(--foreground);
-    --color-background: var(--background);
+    --color-accent-ink: var(--accent-contrast);
+    --color-danger: var(--state-danger);
+    --color-success: var(--state-success);
+    --color-focus-ring: var(--focus-ring);
+    --color-tooltip: var(--tooltip);
+    --color-heading: var(--heading);
+    --color-link: var(--link);
     --radius-sm: calc(var(--radius) * 0.6);
     --radius-md: calc(var(--radius) * 0.8);
     --radius-lg: var(--radius);
@@ -57,65 +57,55 @@
     --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* Palette: every colour the theme is painted from, once per scheme, and the
+   only place a colour value is written. Each name says what the colour is for
+   - the page, the ink, a panel, a hairline, a brand - and nothing else. No
+   component reads these: the semantic layer in `tokens.css` gives each colour
+   its role names, components read those, and the utilities above are built from
+   the roles too. Re-colouring the site is therefore a change to this block
+   alone. `dark` is the class the theme scripts put on the root element for the
+   dark scheme, and it is the only mechanism a palette value needs. */
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.148 0.004 228.8);
-    --card: oklch(0.9 0 0);
-    --card-foreground: oklch(0.148 0.004 228.8);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.148 0.004 228.8);
-    --primary: oklch(0.481 0.17 180);
-    --primary-foreground: oklch(0.987 0.022 95.277);
-    --secondary: oklch(0.967 0.001 286.375);
-    --secondary-foreground: oklch(0.21 0.006 285.885);
-    --muted: oklch(0.963 0.002 197.1);
-    --muted-foreground: oklch(0.56 0.021 213.5);
-    --accent: oklch(0.581 0.17 180);
-    --accent-foreground: oklch(0.987 0.022 95.277);
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.925 0.005 214.3);
-    --input: oklch(0.925 0.005 214.3);
-    --ring: oklch(0.723 0.014 214.4);
-    --chart-1: oklch(0.865 0.127 207.078);
-    --chart-2: oklch(0.715 0.143 215.221);
-    --chart-3: oklch(0.609 0.126 221.723);
-    --chart-4: oklch(0.52 0.105 223.128);
-    --chart-5: oklch(0.45 0.085 224.283);
+    --palette-canvas: oklch(1 0 0);
+    --palette-ink: oklch(0.148 0.004 228.8);
+    --palette-brand: oklch(0.481 0.17 180);
+    --palette-brand-ink: oklch(0.987 0.022 95.277);
+    --palette-brand-lift: oklch(0.581 0.17 180);
+    --palette-panel: oklch(0.9 0 0);
+    --palette-panel-sunken: oklch(0.963 0.002 197.1);
+    --palette-panel-sunken-ink: oklch(0.56 0.021 213.5);
+    --palette-edge: oklch(0.925 0.005 214.3);
+    --palette-edge-field: oklch(0.925 0.005 214.3);
+    --palette-focus: oklch(0.723 0.014 214.4);
+    --palette-danger: oklch(0.577 0.245 27.325);
+    --palette-stripe: oklch(96.7% 0.003 264.542);
+    --palette-stripe-alt: oklch(92.8% 0.006 264.531);
     --radius: 0.625rem;
 }
 
 .dark {
-    --background: oklch(0.148 0.004 228.8);
-    --foreground: oklch(0.987 0.002 197.1);
-    --card: oklch(0.218 0.008 223.9);
-    --card-foreground: oklch(0.987 0.002 197.1);
-    --popover: oklch(0.218 0.008 223.9);
-    --popover-foreground: oklch(0.987 0.002 197.1);
-    --primary: oklch(0.481 0.17 180);
-    --primary-foreground: oklch(0.987 0.022 95.277);
-    --secondary: oklch(0.274 0.006 286.033);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.275 0.011 216.9);
-    --muted-foreground: oklch(0.723 0.014 214.4);
-    --accent: oklch(0.581 0.17 180);
-    --accent-foreground: oklch(0.987 0.022 95.277);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.56 0.021 213.5);
-    --chart-1: oklch(0.865 0.127 207.078);
-    --chart-2: oklch(0.715 0.143 215.221);
-    --chart-3: oklch(0.609 0.126 221.723);
-    --chart-4: oklch(0.52 0.105 223.128);
-    --chart-5: oklch(0.45 0.085 224.283);
+    --palette-canvas: oklch(0.148 0.004 228.8);
+    --palette-ink: oklch(0.987 0.002 197.1);
+    --palette-brand: oklch(0.481 0.17 180);
+    --palette-brand-ink: oklch(0.987 0.022 95.277);
+    --palette-brand-lift: oklch(0.581 0.17 180);
+    --palette-panel: oklch(0.218 0.008 223.9);
+    --palette-panel-sunken: oklch(0.275 0.011 216.9);
+    --palette-panel-sunken-ink: oklch(0.723 0.014 214.4);
+    --palette-edge: oklch(1 0 0 / 10%);
+    --palette-edge-field: oklch(1 0 0 / 15%);
+    --palette-focus: oklch(0.56 0.021 213.5);
+    --palette-danger: oklch(0.704 0.191 22.216);
+    --palette-stripe: oklch(21.8% 0.008 223.9);
+    --palette-stripe-alt: oklch(27.5% 0.011 216.9);
 }
 
 @layer base {
     * {
-        @apply border-border outline-ring/50;
+        @apply border-edge outline-focus-ring/50;
     }
     body {
-        @apply bg-background text-foreground;
+        @apply bg-canvas text-ink;
     }
     button:not(:disabled),
     [role='button']:not(:disabled) {

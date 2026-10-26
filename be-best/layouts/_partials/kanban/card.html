@@ -1,22 +1,22 @@
-{{ $bannerColour := "bg-primary" }}
+{{ $bannerColour := "bg-brand" }}
 
 {{ if .Params.due }}
   {{ $due := time .Params.due }}
   {{ if and (not .Params.completionDate) .Params.due }}
     {{ if gt time.Now $due }}
-      {{ $bannerColour = "bg-destructive" }}
+      {{ $bannerColour = "bg-danger" }}
     {{ end }}
   {{ end }}
 {{ end }}
 
 
-<div class="w-full rounded-none border border-foreground bg-card text-sm">
+<div class="w-full rounded-none border border-ink bg-surface text-sm">
   <div
     class="{{ $bannerColour }} flex h-8 items-center justify-center bg-accent text-base font-bold">
     <p><a href="{{ .Permalink }}">{{ .Title }}</a></p>
   </div>
   <div class="m-3">
-    <div class="border-b border-foreground text-sm">
+    <div class="border-b border-ink text-sm">
       {{ with .Description }}{{ . }}{{ else }}{{ .Summary | transform.Plainify }}{{ end }}
     </div>
 
@@ -52,12 +52,12 @@
       <div></div>
     {{ end }}
 
-    <div class="flex items-center border-t border-foreground">
+    <div class="flex items-center border-t border-ink">
           {{ .Params.priority }}
     </div>
 
     {{ with .Params.dependencies }}
-      <div class="border-t border-foreground">
+      <div class="border-t border-ink">
         Dependencies:
         {{ range $index, $value := . }}
            {{ if $index }} | {{ end }}
@@ -77,7 +77,7 @@
     {{ end }}
 
     {{ with .GetTerms "categories" }}
-      <div class="border-t border-foreground">
+      <div class="border-t border-ink">
         Categories:
         {{ range $index, $value := . }}
            {{ if $index }} | {{ end }}

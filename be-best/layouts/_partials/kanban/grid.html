@@ -110,12 +110,12 @@ holds epics, which are not a stage. */}}
           and every card in the lane are inset by it and start at the same
           edge, and no card touches the frame.  */}}
     <section
-      class="flex flex-col gap-2 rounded border border-foreground bg-muted p-2">
+      class="flex flex-col gap-2 rounded border border-ink bg-surface-2 p-2">
       <h2 class="text-xl leading-tight font-bold">{{ .label }}</h2>
       {{- range $laneCards -}}
         {{- partial "kanban/grid-card.html" . -}}
       {{- else -}}
-        <p class="text-md text-muted-foreground">No cards.</p>
+        <p class="text-md text-ink-muted">No cards.</p>
       {{- end -}}
     </section>
   {{- end -}}

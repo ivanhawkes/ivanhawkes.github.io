@@ -11,7 +11,7 @@
     flex-direction: column;
     margin-bottom: 1rem;
     overflow: hidden;
-    border: 1px solid var(--border);
+    border: 1px solid var(--edge);
     border-radius: var(--radius);
     background-color: var(--surface);
     break-inside: avoid;
@@ -24,7 +24,7 @@
    shape, while a short card stays short. */
 .card-media {
     display: block;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--edge);
 }
 
 .card-media img {

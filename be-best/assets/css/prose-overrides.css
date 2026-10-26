@@ -21,40 +21,45 @@
     margin-inline: auto;
 }
 
+/* The prose is painted from the semantic layer, and from nothing else: the
+   body in the page's ink, headings and links in the roles a heading and a link
+   have, the brand's own ink and its deep and soft steps for everything painted
+   in the brand. `--tw-prose-invert-*` is the set `dark:prose-invert` asks for
+   in the dark scheme, and it reads the same roles, which are what change. */
 @utility prose-custom {
     /* Light */
-    --tw-prose-body: var(--foreground);
+    --tw-prose-body: var(--text);
     --tw-prose-headings: var(--heading);
-    --tw-prose-lead: var(--color-primary-800);
+    --tw-prose-lead: var(--accent-deep);
     --tw-prose-links: var(--link);
-    --tw-prose-bold: var(--color-primary);
-    --tw-prose-counters: var(--color-primary);
-    --tw-prose-bullets: var(--color-primary);
-    --tw-prose-hr: var(--color-primary-200);
-    --tw-prose-quotes: var(--color-primary);
-    --tw-prose-quote-borders: var(--color-primary-200);
-    --tw-prose-captions: var(--color-primary-800);
-    --tw-prose-code: var(--color-primary);
-    --tw-prose-pre-code: var(--color-primary-foreground);
-    --tw-prose-pre-bg: var(--color-primary-800);
-    --tw-prose-th-borders: var(--color-primary-200);
-    --tw-prose-td-borders: var(--color-primary-200);
+    --tw-prose-bold: var(--brand);
+    --tw-prose-counters: var(--brand);
+    --tw-prose-bullets: var(--brand);
+    --tw-prose-hr: var(--accent-soft);
+    --tw-prose-quotes: var(--brand);
+    --tw-prose-quote-borders: var(--accent-soft);
+    --tw-prose-captions: var(--accent-deep);
+    --tw-prose-code: var(--brand);
+    --tw-prose-pre-code: var(--brand-ink);
+    --tw-prose-pre-bg: var(--accent-deep);
+    --tw-prose-th-borders: var(--accent-soft);
+    --tw-prose-td-borders: var(--accent-soft);
 
     /* Dark */
-    --tw-prose-invert-body: var(--color-primary-foreground);
+    --tw-prose-invert-body: var(--brand-ink);
     --tw-prose-invert-headings: var(--heading);
-    --tw-prose-invert-lead: var(--color-primary-200);
+    --tw-prose-invert-lead: var(--accent-soft);
     --tw-prose-invert-links: var(--link);
-    --tw-prose-invert-bold: var(--color-primary);
-    --tw-prose-invert-counters: var(--color-primary);
-    --tw-prose-invert-bullets: var(--color-primary);
-    --tw-prose-invert-hr: var(--color-primary-800);
-    --tw-prose-invert-quotes: var(--color-primary-200);
-    --tw-prose-invert-quote-borders: var(--color-primary-800);
-    --tw-prose-invert-captions: var(--color-primary);
-    --tw-prose-invert-code: var(--color-primary);
-    --tw-prose-invert-pre-code: var(--color-primary-foreground);
-    --tw-prose-invert-pre-bg: var(--color-primary-800);
-    --tw-prose-invert-th-borders: var(--color-primary);
-    --tw-prose-invert-td-borders: var(--color-primary-800);
+    --tw-prose-invert-bold: var(--brand);
+    --tw-prose-invert-counters: var(--brand);
+    --tw-prose-invert-bullets: var(--brand);
+    --tw-prose-invert-hr: var(--accent-deep);
+    --tw-prose-invert-quotes: var(--accent-soft);
+    --tw-prose-invert-quote-borders: var(--accent-deep);
+    --tw-prose-invert-captions: var(--brand);
+    --tw-prose-invert-code: var(--brand);
+    --tw-prose-invert-pre-code: var(--brand-ink);
+    --tw-prose-invert-pre-bg: var(--accent-deep);
+    --tw-prose-invert-th-borders: var(--brand);
+    --tw-prose-invert-td-borders: var(--accent-deep);
 }

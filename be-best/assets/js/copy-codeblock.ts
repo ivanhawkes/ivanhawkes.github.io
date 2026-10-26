@@ -91,7 +91,7 @@ function copyThroughField(text: string): boolean {
     document.body.appendChild(field);
     field.select();
 
-    let copied = false;
+    let copied: boolean;
     try {
         copied = document.execCommand('copy');
     } catch {

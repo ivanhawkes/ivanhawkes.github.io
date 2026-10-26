@@ -11,12 +11,15 @@
         "build:hugo": "hugo build --gc --minify --cleanDestinationDir",
         "build": "pnpm run build:css && pnpm run build:hugo",
         "test:css": "tailwindcss -i be-best/assets/css/main.css -o assets/css/main.css",
+        "lint": "pnpm run test:lint",
+        "lint:fix": "eslint --fix \"scripts/**/*.mjs\" \"be-best/assets/js/**/*.ts\" \"eslint.config.mjs\" \"be-best/*.config.mjs\"",
+        "test:lint": "eslint \"scripts/**/*.mjs\" \"be-best/assets/js/**/*.ts\" \"eslint.config.mjs\" \"be-best/*.config.mjs\"",
         "test:hugo": "hugo build --cleanDestinationDir",
         "test:html": "html-validate \"public/**/*.html\"",
         "test:headings": "node scripts/validate-headings.mjs",
         "test:kanban": "node scripts/validate-kanban-front-matter.mjs",
         "test:prettier": "node scripts/validate-prettier-setup.mjs",
-        "test": "pnpm run test:css && pnpm run test:hugo && pnpm run test:html && pnpm run test:headings && pnpm run test:kanban && pnpm run test:prettier",
+        "test": "pnpm run test:css && pnpm run test:lint && pnpm run test:hugo && pnpm run test:html && pnpm run test:headings && pnpm run test:kanban && pnpm run test:prettier",
         "prepare": "husky",
         "format": "prettier --write \"**/*.{js,ts,json,css,md,html,yaml}\""
     },
@@ -50,10 +53,16 @@
         ]
     },
     "devDependencies": {
+        "@eslint/css": "^1.4.0",
+        "@eslint/js": "^10.0.1",
+        "@eslint/json": "^1.2.0",
+        "@eslint/markdown": "^8.0.3",
         "@tailwindcss/cli": "^4.3.3",
         "@tailwindcss/typography": "^0.5.20",
         "ajv": "^8.20.0",
         "ajv-formats": "^3.0.1",
+        "eslint": "^10.13.0",
+        "globals": "^17.13.0",
         "html-validate": "^11.17.0",
         "husky": "^9.1.7",
         "lint-staged": "^17.6.0",
@@ -62,6 +71,7 @@
         "stylelint-config-standard": "^40.0.0",
         "stylelint-config-tailwindcss": "^1.0.1",
         "tailwindcss": "^4.3.3",
+        "typescript-eslint": "^8.72.0",
         "yaml": "^2.9.1"
     },
     "lint-staged": {

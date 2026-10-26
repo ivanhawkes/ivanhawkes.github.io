@@ -1,3 +1,3 @@
 export default {
-  extends: ['stylelint-config-tailwindcss'],
-}
+    extends: ['stylelint-config-tailwindcss'],
+};

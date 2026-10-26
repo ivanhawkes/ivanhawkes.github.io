@@ -51,7 +51,8 @@ in the content tree, queryable via shortcodes.
 ## Commands
 
 ```bash
-pnpm run test         # CSS, Hugo, HTML, heading and card schema checks; use to validate changes
+pnpm run test         # CSS, lint, Hugo, HTML, heading, card schema and prettier checks; validate changes here
+pnpm run lint         # eslint over the repo's JS/TS: scripts, theme assets, configs
 pnpm run test:headings # count h1 elements over public/; fail on pages without exactly one
 pnpm run test:kanban  # validate card front matter against the schema in assets/
 pnpm run test:prettier # assert layouts ignored, one plugin-free prettier config, editor pins set
@@ -116,6 +117,12 @@ covers only how the program is written.
   plugins - `prettier-plugin-go-template`, its `*.html` parser override and
   `prettier-plugin-tailwindcss` are measured dead: 0 of 329 tracked files change
   without them), and the editor pins in `.vscode/settings.json`.
+- ESLint rules live in `be-best/eslint.config.mjs`, covering the JS, TS, CSS,
+  JSON and Markdown the theme ships. The root `eslint.config.mjs` adds only the
+  ignores for generated output and Node globals for `scripts/`. `pnpm run lint`
+  covers JS and TS, and runs in the test chain as `test:lint`. `.mjs` sits
+  outside the lint-staged glob, so format a touched config by hand with
+  `npx prettier --write`.
 
 ## Workflow
 

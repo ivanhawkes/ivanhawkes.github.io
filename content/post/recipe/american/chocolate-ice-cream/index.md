@@ -22,7 +22,5 @@ A thoroughly rich and creamy dessert that is certain to please.
 ## Chocolate Ice Cream
 
 - Place all the ingredients into a blender and mix until smooth.
-
 - Wait 4 - 8 hours while the mixtures cools in the fridge / freezer.
-
 - Toss into your ice cream machine and follow it's instructions.

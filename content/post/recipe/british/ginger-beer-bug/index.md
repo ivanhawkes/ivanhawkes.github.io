@@ -40,11 +40,9 @@ flavour of the ferment.
 
 - Start the bug off by taking the sugar and water and combining together in a
   jar.
-
 - Use a microplane to grate the ginger, skin and all, into the jar. The skin
   contains a lot of the free wild yeasts that you will need to make this
   ferment.
-
 - Stir the ferment then place a clean cloth over the jar - ensuring it is open
   to the air. Under no conditions seal the jar as this can cause a buildup of
   pressure and an explosion.

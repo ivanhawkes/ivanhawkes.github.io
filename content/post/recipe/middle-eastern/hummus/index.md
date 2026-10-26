@@ -40,18 +40,13 @@ You can choose to either cook the beans in a pot or a pressure cooker.
 
 - Place all the ingredients into a large bowl. Let them soak overnight. They
   will double in size as they soak.
-
 - Transfer the contents of the bowl to a cooking pot. The soaking water should
   be enough to keep the beans from drying out while pressure cooking.
-
 - Bring the pot to a boil and add the weight to begin building up pressure. When
   you have steam escaping the weight you are ready to start a timer.
-
 - Cook the beans for 15 minutes if you soaked them, and 45 minutes if you
   skipped that step.
-
 - Allow the pressure cooker to naturally release.
-
 - Remove the skins from the cooked beans. You might need to cook them for a few
   minutes in water and 1 1/2 tsp baking soda to loosen the skins.
 
@@ -60,14 +55,10 @@ You can choose to either cook the beans in a pot or a pressure cooker.
 - Place all the ingredients into a large bowl. Let them soak overnight. They
   will double in size as they soak. It is not recommended you skip this step as
   it will lead to significantly longer cook times or a worse result.
-
 - Transfer the contents of the bowl to a cooking pot.
-
 - Place a lid on the pot and bring it to a boil. Start a timer.
-
 - Cook the beans for between 1 and 1.5 hours. You will need to check how tender
   they are by smushing some between your fingers.
-
 - Remove the skins from the cooked beans. You might need to cook them for a few
   minutes in water and 1 1/2 tsp baking soda to loosen the skins.
 
@@ -77,13 +68,10 @@ Perhaps try some variations with fresh herbs and chillis.
 
 - Discard the water and add the beans to the food processor. Blend until a
   smooth powder like consistency is achieved.
-
 - With the food processor running add two ice cubes of water, tahini, salt, and
   lemon juice.
-
 - While still running the food processor slowly add more water / ice until you
   reach your desired consistency.
-
 - Set aside a small amount of whole beans for topping the dish.
 
 ## Serving the dish

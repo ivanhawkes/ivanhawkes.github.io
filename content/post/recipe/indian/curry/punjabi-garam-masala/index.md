@@ -24,8 +24,6 @@ to many dishes.
 ## Punjabi Garam Masala
 
 - Dry toast all the ingrediants in a pan then transfer to a plate to cool.
-
 - When cool place the spices in a spice grinder and grind to a medium fine
   powder.
-
 - Store in an air-tight container or jar. It will keep for several months.

@@ -87,7 +87,6 @@ are two possible reasons:
 
 - you didn't process the mixture enough-- return the chickpea mixture to the
   processor to make it more paste-like.
-
 - the chickpeas you used were old. Try buying a fresher batch of dried chickpeas
   next time.
 

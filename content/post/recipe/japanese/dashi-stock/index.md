@@ -25,18 +25,13 @@ Makes 4 cups.
 
 - Place the water and the kombu in a pot and let the kombu soak for about 15
   minutes.
-
 - Place the pot over medium heat.
-
 - Right before the water starts to boil remove the kombu.
-
 - Remove the pot from the heat and scatter the katsuobushi over the surface of
   the water.
-
 - After 3 or 4 minutes (the katsuobushi will have sunk to the bottom of the pot
   by this point), strain the stock through a strainer lined with a tightly woven
   cotton cloth or a coffee-filter.
-
 - Refrigerate the stock in a tightly covered container for up to 4 days in the
   refrigerator.
 
@@ -52,6 +47,5 @@ Makes about 4 cups.
   the mixture for 10 minutes. Remove the pot from the heat and then strain the
   stock through a strainer lined with tightly woven cotton cloth or a
   coffee-filter.
-
 - Refrigerate the stock in a tightly covered container for up to 4 days in the
   refrigerator.

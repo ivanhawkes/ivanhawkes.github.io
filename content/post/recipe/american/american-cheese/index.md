@@ -26,25 +26,17 @@ to lower the melting point.
 
 - Pour the milk, butter, salt, and sodium citrate into a pan and warm it on a
   medium / high heat.
-
 - Stir occasionally as it warms.
-
 - Shred the cheese and add it in a handful at a time. Stir to incorporate it.
   Keep going until it is all in the pot.
-
 - Adjust the thickness if needed by adding some milk if too thick, or cheese if
   too thin.
-
 - Place a sheet of baking paper over an American half sheet pan (457mm x 330mm).
-
 - Pour the cheese over the paper and spread with a rubber spatula. Be quick, it
   sets fast.
-
 - Optionally toss another sheet over the top of the cheese and roll with a
   rolling pin to even it all out a bit.
-
 - Cool it in the fridge.
-
 - When it's set, place it on a large cutting board and use the thinnest and
   sharpest knife (e.g. boning knife) you have to slice it through the paper.
   This will give it perfectly matching sheets of paper to keep it fresh and not

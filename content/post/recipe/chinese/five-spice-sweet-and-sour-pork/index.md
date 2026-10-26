@@ -32,7 +32,6 @@ spring onion.
 
 - Combine the five-spice powder, light soy, Shaoxing wine, ginger juice, beaten
   egg and a pinch of salt in a bowl to make the marinade.
-
 - Cut the pork neck into 3 cm pieces, add them to the marinade and mix well.
   Cover the bowl with plastic wrap and refrigerate to marinate for 15 minutes,
   or overnight. If marinating overnight, leave the egg out and stir it in just
@@ -48,26 +47,20 @@ spring onion.
 - Cut the vegetables and set them aside separately on a tray: pineapple in
   bite-sized pieces, onion and tomato in wedges, capsicums thinly sliced, spring
   onion in batons, chillies thinly sliced (seeded), garlic finely chopped.
-
 - Heat the oil in a wok to 185C. Combine the potato and rice flour, toss the
   marinated pork cubes in it and deep-fry in batches until browned and crisp
   (2-3 minutes each; take care, hot oil spits). Lift the pork out with a slotted
   spoon and drain it on paper towels. Fry a second batch if you want a crisper
   coating, and keep the strained oil in a heatproof container.
-
 - Wipe the wok clean with paper towels, then heat 1 tablespoon of frying oil.
   When hot, add the onion, chillies and garlic and stir-fry until the onion
   starts to colour (about 30 seconds).
-
 - Add the capsicums and pineapple and stir-fry until well combined (about 20
   seconds).
-
 - Pour in the sweet and sour sauce and bring it to the boil, then add the spring
   onion and tomato and stir-fry until warmed through (30-40 seconds).
-
 - Meanwhile, mix the extra tablespoon of potato flour with 1 tablespoon of cold
   water and stir it into the boiling sauce to thicken it. Season to taste.
-
 - Return the pork to the wok to warm through (1-2 minutes), then serve it with
   steamed or fried rice.
 

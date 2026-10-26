@@ -22,22 +22,17 @@ A simple vegetable stock.
 ## Vegetable Stock
 
 - Optional: bake the vegetables in the oven to achieve browning.
-
 - Add the onion, carrot, celery, parsley, leek greens (if using), and bay leaf
   to the pot. Cover with 6-8 litres of cold water.
-
 - Bring to a boil on high heat and reduce to a low simmer. Let simmer at a low
   simmer, uncovered, for 2 to 3 hours.
-
 - Use a large metal spoons with holes in it (or a "spider ladle") to ladle out
   the cooked vegetables. (These aren't really good to eat, by the way, because
   after 4 hours of cooking, all of the nutritional value has been cooked out of
   them.) Discard.
-
 - Use a large sieve lined with dampened cheesecloth (if available) and place
   over a large bowl or another large pot. Pour the stock through the sieve into
   the bowl or pot to strain out any remaining solids.
-
 - Either pour into jars at this point, or if you want, what we like to do is to
   boil the stock on high heat for 1 hour, to reduce it by about half. This way
   you are storing concentrated stock, which takes less room in the freezer or

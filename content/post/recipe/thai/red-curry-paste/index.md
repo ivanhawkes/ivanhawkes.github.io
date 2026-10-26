@@ -26,19 +26,14 @@ Thai dishes.
 - Place cumin, coriander, salt and peppercorns in a small frying pan and dry
   roast over medium heat for 2 minutes or until fragrant. Remove from heat and
   cool to room temperature.
-
 - Add lemongrass and galangal into the mortar. Grind them into rough fibers.
-
 - Add garlic, kaffir lime zest and cilantro roots next. Pound the mixture into a
   paste.
-
 - Leave the shallots for second last. Once when shallots are added, the juice in
   shallots makes it slippery to grind other ingredients effectively. Pound until
   the mixture turns into a fine paste so that you can’t recognise individual
   ingredients.
-
 - Add the chilli peppers. Pound it like it's a rental.
-
 - Add shrimp paste. Pound to mix it in the paste.
 
 ## Optional

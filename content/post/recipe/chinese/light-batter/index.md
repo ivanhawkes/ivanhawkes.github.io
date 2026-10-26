@@ -23,10 +23,8 @@ A simple and light batter; suitable for fish and chicken.
 
 - In a mixing bowl, combine the flour, cornstarch, sodium bicarbonate, and salt.
   Mix together.
-
 - Crack an egg into a bowl and beat it before adding it to the mix and gently
   combining.
-
 - Add the soda water. Try to keep the batter temperature quite low as this will
   prevent the sodium bicarbonate from reacting until it is placed into the
   fryer.

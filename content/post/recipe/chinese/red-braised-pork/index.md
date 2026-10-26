@@ -30,27 +30,19 @@ moreish Chinese red braise sauce.
 
 - Slice the pork into large chunks (2-3 cm). Expect a little shrinkage during
   cooking.
-
 - Blanch the pork in boiling water for 3 minutes to remove impurities. Drain and
   toss out the water.
-
 - Create a caramel in the pot by adding the sugar, water and oil and turning on
   to a high heat. Stir constantly. It should bubble vigorously. Once the right
   colour has been achieved stop the process by adding warm water to the caramel.
   Don't use cold water, it could cause popping. Two to three cups of water
   should be added, depending on the amount of meat.
-
 - OPTIONAL: remove the caramel and use the pot to fry the meat for a few minutes
   to achieve browning.
-
 - Add the main ingrediants and bring to the boil.
-
 - Place a lid on the pot and simmer for about 40-50 minutes.
-
 - Remove the lid and boil off most of the liquid.
-
 - Season with salt and MSG.
-
 - Plate up. Toss on scallions and drizzle with sessame oil.
 
 ## Notes

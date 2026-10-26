@@ -22,20 +22,15 @@ Lovely, soft, buttery scrambled eggs.
 ## Scrambled Eggs
 
 - In a bowl add the water and tapioca flour. Mix well.
-
 - Crack all the eggs into the bowl.
-
 - Add the salt and pepper. Whisk lightly with a fork.
-
 - Get the frying pan nice and hot and add the butter. Wait for it to melt.
-
 - Pour in the eggs and get ready, this part happens fast. Wait for the eggs to
   form a skin on the bottom, then shove them gently to one side of the pan. The
   liquid eggs will flow into the now empty space. Repeat a couple of times until
   all the eggs have been exposed to the pan. You should have a small pile of
   "almost" fully cooked eggs. You want it to just be past the runny stage, but
   maybe a little runny inside the pile.
-
 - Serve on buttered toast.
 
 ## Notes

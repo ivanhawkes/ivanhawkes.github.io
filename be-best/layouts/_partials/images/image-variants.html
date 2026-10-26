@@ -1,10 +1,27 @@
+{{/*
+  An image as a `picture`: webp and jpeg srcsets over a ladder of widths, plus
+  a small jpeg `img` fallback. Callers pass a dict:
+
+    image       the page resource to render, required
+    destination the URL the fallback `img` reads, as a page resource gives
+    title       a caption under the image; omit for no caption
+    alt         the alt text
+    sizes       the `sizes` hint naming the breakpoints the layout box moves
+                across; the full-width page hint when omitted
+    widths      the width ladder to emit; every width up to 1920 when omitted
+
+  `sizes` and `widths` travel together: a caller narrows the ladder to the
+  variants its layout box can actually select, so the browser is never offered
+  a file it cannot use. Each width is skipped when the source is narrower.
+*/}}
+
 {{- $src := .destination -}}
 {{- $image := .image -}}
 {{- $alt := .alt -}}
 
-{{- $sizeList := slice "320" "640" "960" "1280" "1600" "1920" -}}
+{{- $sizeList := .widths | default (slice "320" "640" "960" "1280" "1600" "1920") -}}
 {{- $imageMD5 := md5 $src -}}
-{{- $sizes := "(min-width: 1024px) 100vw, 50vw" -}}
+{{- $sizes := .sizes | default "(min-width: 1024px) 100vw, 50vw" -}}
 {{- $blurFormat := "LQIP" -}}
 {{- $hint := "photo" -}}
 {{- $filter := "box" -}}

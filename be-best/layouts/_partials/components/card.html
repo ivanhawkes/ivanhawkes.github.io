@@ -18,6 +18,16 @@
   A card is a summary of a page, so its title is an `h3`, one level under the
   `h1` the page carries, and is a link: `cards.css` gives it the heading ink
   at rest and the link colour, the underline and the focus ring on hover.
+
+  The featured image is sized for the grid, not the page. `.card-list` is one
+  column below 768px, two to 1280px and three above, with a 1rem column gap,
+  inside a `main` gutter of `min(30px, 7%)` and a `.container` of `min(2em,
+  10%)` padding and a 1px border. At 1280px that leaves 372px for a card
+  image, 744px at 2x density, so the hint names those two breakpoints and the
+  ladder stops at 960: a card is never full width, and the 1280, 1600 and
+  1920 variants of a featured image are never fetched for one. The full-width
+  hint a page hero sends asks 363 KB of a square the browser draws 372px wide,
+  where the 960 variant that fills it is 135 KB.
 */}}
 
 {{- $page := .page -}}
@@ -30,12 +40,17 @@
 {{- $url := .url -}}
 {{- $summary := .summary -}}
 
+{{- $cardSizes := "(min-width: 1280px) calc((100vw - 160px) / 3), (min-width: 768px) calc((100vw - 96px) / 2), calc(100vw - 34px)" -}}
+{{- $cardWidths := slice "320" "640" "960" -}}
+
 <div class="card">
   {{- with $page -}}
     {{- partial "/images/featured-image.html" (dict
       "page" .
       "inherit" false
       "link" $url
+      "sizes" $cardSizes
+      "widths" $cardWidths
     ) -}}
   {{- end -}}
 

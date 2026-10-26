@@ -20,6 +20,9 @@
              does; omitted here for a card, which reads its own bundle only
     link     a URL to wrap the image in, which a card gives and a page does
              not; nothing is wrapped when the page has no image of its own
+    sizes    the `sizes` hint for the layout box the image is drawn in, and
+             `widths` the ladder of variants to offer it; a card gives both to
+             name its grid, and a page omits both for the full-width hero
 
   Nothing is written at all when the lookup finds no image, so a card with no
   image of its own contributes no `<img>`, no `<picture>` and no wrapper.
@@ -28,6 +31,8 @@
 {{- $page := .page -}}
 {{- $showCaption := .caption -}}
 {{- $link := .link -}}
+{{- $sizes := .sizes -}}
+{{- $widths := .widths -}}
 {{- $inherit := true -}}
 {{- if isset . "inherit" -}}
   {{- $inherit = .inherit -}}
@@ -46,6 +51,8 @@
       "destination" .RelPermalink
       "title" (cond $showCaption $meta.title "")
       "alt" ($meta.caption | default $page.LinkTitle)
+      "sizes" $sizes
+      "widths" $widths
     -}}
 
     {{- with $link -}}

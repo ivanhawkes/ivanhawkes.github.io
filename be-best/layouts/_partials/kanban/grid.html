@@ -105,8 +105,12 @@ holds epics, which are not a stage. */}}
 <div class="kanban-board panel grid gap-2">
   {{- range sort $lanes "label" -}}
     {{- $laneCards := where $cards "lane" .label -}}
+    {{/*  A lane is a framed column on the muted surface, one step below the
+          card's own: the padding is the lane's own space, so the lane heading
+          and every card in the lane are inset by it and start at the same
+          edge, and no card touches the frame.  */}}
     <section
-      class="flex flex-col gap-1 rounded border border-foreground bg-background">
+      class="flex flex-col gap-2 rounded border border-foreground bg-muted p-2">
       <h2 class="text-xl leading-tight font-bold">{{ .label }}</h2>
       {{- range $laneCards -}}
         {{- partial "kanban/grid-card.html" . -}}

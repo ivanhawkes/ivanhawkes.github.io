@@ -4,7 +4,7 @@ description: 'Prettier reformats files behind a running agent'
 date: '2026-10-26'
 author: Ivan Hawkes
 params:
-    completionDate: null
+    completionDate: '2026-10-26'
     due: null
     dependencies: null
     references: null
@@ -57,4 +57,9 @@ the text the next edit quotes no longer exists on disk.
 - [x] The config wires in no plugin, and no override routes to a Go-template one
 - [x] `pnpm run test:prettier` asserts those invariants inside `pnpm run test`
 - [x] `pnpm run test` passes against the reflowed theme CSS
-- [ ] A theme CSS edit lands without a follow-up edit quoting stale text
+- [x] A theme CSS edit lands without a follow-up edit quoting stale text
+
+      Since the config landed, edits to theme CSS, TypeScript, JSON and markdown all
+      matched on the first attempt. The one failure in the session was an edit
+      that followed a `prettier --write` I ran myself, which is the documented
+      re-read case, not the editor and commit race this card is about.

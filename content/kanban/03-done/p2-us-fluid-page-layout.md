@@ -33,6 +33,11 @@ presentation they have.
   `.measure` class on the breadcrumb trail, the `byline`, `next-prev`,
   `next-prev-small` and `related`, the hero of `images.css`, and the `copyright`
   chip of the foot.
+- The line of text that stands on its own in that column is centred in it: the
+  page title `h1` of `page/content.html`, the 404 page, which now takes the same
+  column, the byline, and the footer line, which the foot centres in its column.
+  Paragraphs, lists, code and the text of a card keep the ragged right edge they
+  are read with.
 - The Kanban board is set in the panel: `.panel` takes the whole width `main`
   offers and none of the measure, and `.kanban-board` lays the lanes out as
   `repeat(auto-fit, minmax(min(15rem, 100%), 1fr))`, so every lane that fits is
@@ -50,8 +55,11 @@ presentation they have.
 - [x] The prose column, the hero, the byline, both next/previous bars, the
       related block and the breadcrumb trail are centred in the panel, and share
       its middle at every width.
+- [x] The page title, the byline and the footer line are centred within the
+      column they sit in, not merely beside it, and the body text is not.
 - [x] The board at `/kanban/` and `/kanban/grid/` spans the panel and its lanes
       are spread across it: no lane's width of empty panel at the right hand.
+      The lane's own frame is `p2-ft-kanban-lane-padding-and-tint`.
 - [x] The bars are unchanged: the same surface, hairline, height and column.
 - [x] `pnpm run test` passes.
 

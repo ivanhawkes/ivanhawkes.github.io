@@ -1,9 +1,12 @@
 <div class="prose w-full prose-neutral prose-custom dark:prose-invert">
   {{ with .Title }}
-      <h1>{{ . }}</h1>  
+    {{/*  The title is the page's own line, centred in the measure the column
+          is set in; the paragraphs of the body keep the ragged right edge they
+          are read with.  */}}
+    <h1 class="text-center">{{ . }}</h1>
   {{ end }}
 
   {{ with .Content }}
-      {{ . }}
+    {{ . }}
   {{ end }}
-</div>  
+</div>

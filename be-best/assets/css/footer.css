@@ -4,9 +4,10 @@
    two are built from the same parts: the bar's surface colour, a hairline
    border on the edge that faces the page instead of one on the edge behind it,
    the same page column with the page gutter inside it, 60 pixels of height, 72
-   from 1024 pixels up, and a chip at the left of the column - the brand mark
-   above, the copyright below, on the same surface at the same size, and capped
-   at the prose measure so the line stays inside the column of text above it.
+   from 1024 pixels up, and a chip on the brand mark's surface carrying the
+   copyright: the bar sets its brand at the left of the column, the foot centres
+   its line in the column, so the line sits under the centred prose it follows
+   and is capped at the prose measure that column is.
 
    The bar is sticky, so it carries its translucent surface on a blurred layer
    of its own and content scrolls under it. The footer sits in the flow at the
@@ -23,6 +24,7 @@
 .footer-inner {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     box-sizing: border-box;
     width: 100%;
@@ -32,12 +34,14 @@
     padding-inline: var(--page-gutter);
 }
 
-/* The chip at the left of the column, as the brand mark sits at the left of
-   the bar: the last line of the column of text above it, so it is capped at
-   the measure a paragraph of prose is capped at. */
+/* The chip carrying the copyright: the last line of the page, centred in the
+   column with the prose above it, and capped at the measure a paragraph of
+   prose is capped at, so a long notice wraps in that column and not across the
+   bar. */
 .footer-copy {
     margin: 0;
     max-width: var(--prose-measure);
+    text-align: center;
     padding: 0.25rem 0.4rem;
     border-radius: 0.35rem;
     background-color: var(--surface-2);

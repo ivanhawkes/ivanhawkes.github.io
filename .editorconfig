@@ -1,0 +1,30 @@
+root = true
+
+# -------------------------------------------------------------------------
+# Linux-first: LF everywhere, final newline, no trailing whitespace.
+# Prettier reads this file (prettier.useEditorConfig), so keep it aligned
+# with the prettier block in package.json: 4 space indent, 2 for YAML.
+# -------------------------------------------------------------------------
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.{yaml,yml}]
+indent_size = 2
+
+# nixfmt (the style nix-ide formats with) indents two spaces.
+[*.nix]
+indent_size = 2
+
+# Hugo templates: a trailing space after `-}}` chomping, and the space that
+# closes a tag, is load bearing in the rendered markup. Editors must not trim.
+[be-best/layouts/**.html]
+trim_trailing_whitespace = false
+
+# Markdown: a pair of trailing spaces is a hard line break, not sloppiness.
+[*.md]
+trim_trailing_whitespace = false

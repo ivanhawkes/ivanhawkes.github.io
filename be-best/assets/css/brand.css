@@ -12,21 +12,11 @@
        steps to white in the dark scheme, where the brand starts light.
        `oklch(from …)` is a modern feature, and this is built with `jiti`, which
        resolves it at build time; browsers get plain oklch. */
-    --color-brand-50: oklch(
-        from var(--palette-brand) calc(l + (1 - l) * 0.95) c h
-    );
-    --color-brand-100: oklch(
-        from var(--palette-brand) calc(l + (1 - l) * 0.86) c h
-    );
-    --color-brand-200: oklch(
-        from var(--palette-brand) calc(l + (1 - l) * 0.72) c h
-    );
-    --color-brand-300: oklch(
-        from var(--palette-brand) calc(l + (1 - l) * 0.55) c h
-    );
-    --color-brand-400: oklch(
-        from var(--palette-brand) calc(l + (1 - l) * 0.28) c h
-    );
+    --color-brand-50: oklch(from var(--palette-brand) calc(l + (1 - l) * 0.95) c h);
+    --color-brand-100: oklch(from var(--palette-brand) calc(l + (1 - l) * 0.86) c h);
+    --color-brand-200: oklch(from var(--palette-brand) calc(l + (1 - l) * 0.72) c h);
+    --color-brand-300: oklch(from var(--palette-brand) calc(l + (1 - l) * 0.55) c h);
+    --color-brand-400: oklch(from var(--palette-brand) calc(l + (1 - l) * 0.28) c h);
     --color-brand-500: oklch(from var(--palette-brand) l c h);
     --color-brand-600: oklch(from var(--palette-brand) calc(l * 0.78) c h);
     --color-brand-700: oklch(from var(--palette-brand) calc(l * 0.55) c h);

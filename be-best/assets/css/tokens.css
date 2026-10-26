@@ -128,23 +128,14 @@
 
 @supports (color: light-dark(red, blue)) {
     :root {
-        --header-bg: light-dark(
-            oklch(1 0 0 / 78%),
-            oklch(0.148 0.004 228.8 / 78%)
-        );
-        --nav-hover: light-dark(
-            oklch(0.94 0.005 214.3),
-            oklch(0.275 0.011 216.9)
-        );
+        --header-bg: light-dark(oklch(1 0 0 / 78%), oklch(0.148 0.004 228.8 / 78%));
+        --nav-hover: light-dark(oklch(0.94 0.005 214.3), oklch(0.275 0.011 216.9));
         --overlay: light-dark(oklch(0 0 0 / 32%), oklch(0 0 0 / 56%));
 
         --heading: light-dark(var(--color-brand-700), var(--color-brand-400));
         --link: light-dark(var(--color-brand-800), var(--color-brand-300));
 
-        --surface-brand: light-dark(
-            var(--color-brand-200),
-            var(--color-brand-900)
-        );
+        --surface-brand: light-dark(var(--color-brand-200), var(--color-brand-900));
 
         --tooltip: light-dark(var(--palette-canvas), var(--palette-panel));
     }

@@ -15,7 +15,8 @@
         "test:html": "html-validate \"public/**/*.html\"",
         "test:headings": "node scripts/validate-headings.mjs",
         "test:kanban": "node scripts/validate-kanban-front-matter.mjs",
-        "test": "pnpm run test:css && pnpm run test:hugo && pnpm run test:html && pnpm run test:headings && pnpm run test:kanban",
+        "test:prettier": "node scripts/validate-prettier-setup.mjs",
+        "test": "pnpm run test:css && pnpm run test:hugo && pnpm run test:html && pnpm run test:headings && pnpm run test:kanban && pnpm run test:prettier",
         "prepare": "husky",
         "format": "prettier --write \"**/*.{js,ts,json,css,md,html,yaml}\""
     },
@@ -42,6 +43,14 @@
                 "files": ".prettierrc",
                 "options": {
                     "parser": "json"
+                }
+            },
+            {
+                "files": [
+                    "**/*.css"
+                ],
+                "options": {
+                    "printWidth": 100
                 }
             },
             {

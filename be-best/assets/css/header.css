@@ -541,11 +541,7 @@ html:not([data-theme]) #print-page {
     }
 
     .nav-list > .nav-item--edge .nav-panel .nav-trigger .nav-chevron,
-    .nav-list
-        > .nav-item:has(+ .nav-item--more)
-        .nav-panel
-        .nav-trigger
-        .nav-chevron {
+    .nav-list > .nav-item:has(+ .nav-item--more) .nav-panel .nav-trigger .nav-chevron {
         rotate: 90deg;
     }
 

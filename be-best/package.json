@@ -49,6 +49,14 @@
             },
             {
                 "files": [
+                    "**/*.css"
+                ],
+                "options": {
+                    "printWidth": 100
+                }
+            },
+            {
+                "files": [
                     "*.html"
                 ],
                 "options": {

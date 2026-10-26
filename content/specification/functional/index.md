@@ -64,7 +64,10 @@ and use it as the card image and the page hero when it is present. The image is
 read from the bundle of the page itself, never from an ancestor section, for a
 card and for a page hero alike: an image-less card is text alone and a page with
 no image of its own has no hero, so neither a listing nor an article repeats a
-section's photograph. A listing lays its cards out in one, two and three columns
+section's photograph. A page hero is drawn in the column the prose is read in,
+not across the whole window: it is capped at the prose measure, the width its
+own paragraphs reach, and its variants stop at 1280 pixels, which fills that
+column at 2x density. A listing lays its cards out in one, two and three columns
 at the 768px and 1280px breakpoints, each card keeping the height its own text
 needs, and a card title is a heading set at the `h3` size in the ink headings
 use, and links.
@@ -165,11 +168,12 @@ excluded, and answers with a check, a label, and a result announced to a screen
 reader; it is a real button, so the keyboard reaches it, and it is withdrawn
 from a page where scripts did not run. A block can be collapsed behind a
 summary, which opens it. Images are generated in widths from 320 to 1920 pixels
-with placeholders, so a visitor receives an image sized for their device. Colour
-scheme is chosen with a button in the bar, which cycles the light, dark and
-system settings; the choice is remembered between visits, the system setting
-follows the operating system, and the recorded `dark` class and `data-theme`
-attribute drive the theme's styles.
+with placeholders, so a visitor receives an image sized for their device. A card
+image and a page hero ask only for the widths their own boxes reach: 960 and
+1280 pixels. Colour scheme is chosen with a button in the bar, which cycles the
+light, dark and system settings; the choice is remembered between visits, the
+system setting follows the operating system, and the recorded `dark` class and
+`data-theme` attribute drive the theme's styles.
 
 ## Publishing Behaviour
 

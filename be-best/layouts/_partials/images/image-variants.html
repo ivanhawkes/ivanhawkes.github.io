@@ -9,6 +9,8 @@
     sizes       the `sizes` hint naming the breakpoints the layout box moves
                 across; the full-width page hint when omitted
     widths      the width ladder to emit; every width up to 1920 when omitted
+    class       a class on the box around the image, for a caller whose layout
+                sizes that box; omitted for a caller that leaves it alone
 
   `sizes` and `widths` travel together: a caller narrows the ladder to the
   variants its layout box can actually select, so the browser is never offered
@@ -18,6 +20,7 @@
 {{- $src := .destination -}}
 {{- $image := .image -}}
 {{- $alt := .alt -}}
+{{- $class := .class -}}
 
 {{- $sizeList := .widths | default (slice "320" "640" "960" "1280" "1600" "1920") -}}
 {{- $imageMD5 := md5 $src -}}
@@ -29,7 +32,12 @@
 
   {{ with $image }}
   
-    {{- $divClass := print "relative bigImgDiv imgB-" $imageMD5 "-" $blurFormat -}}
+    {{- $classes := slice "relative" "bigImgDiv" -}}
+    {{- with $class -}}
+      {{- $classes = $classes | append . -}}
+    {{- end -}}
+    {{- $classes = $classes | append (print "imgB-" $imageMD5 "-" $blurFormat) -}}
+    {{- $divClass := delimit $classes " " -}}
     {{- $imgRsc := . -}}
     {{- $actualImg := $imgRsc.Process (print "resize 640x jpg " $filter) -}}
 

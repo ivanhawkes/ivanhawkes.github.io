@@ -32,6 +32,12 @@
 
     --page-gutter: min(30px, 7%);
 
+    /* The prose measure: the column a body of text is read in. The typography
+       plugin caps `.prose` at it, and the hero of a page is capped at the same
+       value by `images.css`, so a page's picture and its prose share one
+       column. It is the width the `sizes` hint of a hero names. */
+    --prose-measure: 65ch;
+
     --header-bg: oklch(1 0 0 / 78%);
     --header-border: var(--border);
     --nav-hover: oklch(0.94 0.005 214.3);

@@ -1,7 +1,7 @@
 {{ define "main" }}
   {{ range (where hugo.Data.profile.person "profile" .Params.profile) }}
     <div>
-      {{- partial "/images/featured-image" (dict "page" . "caption" true) -}}
+      {{- partial "/images/featured-image" (dict "page" . "caption" true "hero" true) -}}
       {{ $description := .Description | default .Site.Params.description }}
 
       <div>

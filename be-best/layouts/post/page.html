@@ -1,7 +1,7 @@
 {{ define "main" }}
   {{- partial "/components/breadcrumbs.html" . -}}
 
-  {{- partial "/images/featured-image.html" (dict "page" . "caption" true) -}}
+  {{- partial "/images/featured-image.html" (dict "page" . "caption" true "hero" true) -}}
 
   {{- partial "/navigation/next-prev-small.html" . -}}
 

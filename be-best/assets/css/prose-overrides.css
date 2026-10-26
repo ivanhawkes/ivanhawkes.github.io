@@ -1,3 +1,10 @@
+/* The measure one value, shared by the prose and by the hero `images.css`
+   caps at the same width. The typography plugin's own `65ch` is the value the
+   token carries. */
+.prose {
+    max-width: var(--prose-measure);
+}
+
 @utility prose-custom {
     /* Light */
     --tw-prose-body: var(--foreground);

@@ -27,7 +27,20 @@
              not; nothing is wrapped when the page has no image of its own
     sizes    the `sizes` hint for the layout box the image is drawn in, and
              `widths` the ladder of variants to offer it; a card gives both to
-             name its grid, and a page omits both for the full-width hero
+             name its grid, and a hero leaves both to this partial
+    hero     true for the hero at the head of a page, which sets the hint, the
+             ladder and the class of the box that hero is drawn in; a card
+             omits it
+
+  A page hero is drawn in the measure the prose is read in: `images.css` caps
+  `featured-image`, the class a hero takes, at `--prose-measure`, the `65ch` the
+  typography plugin gives `.prose`, so the picture is no wider than the
+  paragraphs under it however far the window is stretched. The hint and the
+  ladder name that box, so the browser is never offered a variant it cannot
+  use: the measure is a little over 600 CSS pixels at the root size, less on a
+  narrow window, and the ladder stops at 1280, which fills it at 2x density.
+  The full-width hint used to ask for the 1600 and 1920 variants of a featured
+  image, a 363 KB file drawn 600 pixels wide, and a hero never fetches them.
 
   Nothing is written at all when the page has no image of its own, so a page or
   card whose bundle carries no `featured.webp` contributes no `<img>`, no
@@ -39,6 +52,17 @@
 {{- $link := .link -}}
 {{- $sizes := .sizes -}}
 {{- $widths := .widths -}}
+{{- $hero := .hero -}}
+
+{{- $heroSizes := "(min-width: 1024px) 65ch, calc(100vw - 60px)" -}}
+{{- $heroWidths := slice "320" "640" "960" "1280" -}}
+
+{{- $class := "" -}}
+{{- if $hero -}}
+  {{- $sizes = $heroSizes -}}
+  {{- $widths = $heroWidths -}}
+  {{- $class = "featured-image" -}}
+{{- end -}}
 
 {{- with $page -}}
   {{- with .Resources.GetMatch "featured.webp" -}}
@@ -50,6 +74,7 @@
       "alt" ($meta.caption | default $page.LinkTitle)
       "sizes" $sizes
       "widths" $widths
+      "class" $class
     -}}
 
     {{- with $link -}}

@@ -6,7 +6,7 @@
     "scripts": {
         "css": "tailwindcss -i be-best/assets/css/main.css -o assets/css/main.css",
         "css-watch": "tailwindcss -i be-best/assets/css/main.css -o assets/css/main.css --watch",
-        "serve": "pnpm run css && hugo server -D -F --cleanDestinationDir --bind 0.0.0.0 --baseURL http://lythir:1313",
+        "server": "pnpm run css && hugo server -D -F --bind 0.0.0.0 --baseURL http://${HOST:-$(hostname)}:1313",
         "build:css": "tailwindcss -i be-best/assets/css/main.css -o assets/css/main.css --minify",
         "build:hugo": "hugo build --gc --minify --cleanDestinationDir",
         "build": "pnpm run build:css && pnpm run build:hugo",
@@ -53,9 +53,9 @@
         ]
     },
     "devDependencies": {
-        "@eslint/css": "^1.4.0",
+        "@eslint/css": "^2.0.1",
         "@eslint/js": "^10.0.1",
-        "@eslint/json": "^1.2.0",
+        "@eslint/json": "^2.1.1",
         "@eslint/markdown": "^8.0.3",
         "@tailwindcss/cli": "^4.3.3",
         "@tailwindcss/typography": "^0.5.20",
@@ -66,7 +66,7 @@
         "html-validate": "^11.17.0",
         "husky": "^9.1.7",
         "lint-staged": "^17.6.0",
-        "prettier": "3.9.9",
+        "prettier": "3.9.10",
         "stylelint": "^17.15.0",
         "stylelint-config-standard": "^40.0.0",
         "stylelint-config-tailwindcss": "^1.0.1",

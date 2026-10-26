@@ -61,18 +61,6 @@
   # Enable the native delta integration for improved Git diff views.
   delta.enable = true;
 
-  languages.python = {
-    enable = true;
-    # Explicitly specify the base package to guide module resolution
-    package = pkgs.python3;
-    venv = {
-      enable = true;
-      requirements = ./requirements.txt;
-    };
-    # Recommended: Use uv to speed up installs and handle binaries cleanly on NixOS
-    uv.enable = true;
-  };
-
   # Enable Node.js
   languages.javascript = {
     enable = true;

@@ -11,14 +11,20 @@
   See also:
   - https://gohugo.io/templates/render-hooks/
   - https://discourse.gohugo.io/t/get-a-remote-resource-with-its-url-defined-in-page-frontmatter/41690
+
+  The image is drawn in the prose, so it takes the `prose` box of
+  `layouts/_partials/images/boxes.html`: the measure the paragraphs around it
+  are read in, and the ladder that box selects. Neither the hint nor the ladder
+  is written here.
 */ -}}
 
 {{- $src := .Destination -}}
 {{- $alt := .Text -}}
 
-{{- $sizeList := slice "320" "640" "960" "1280" "1600" "1920" -}}
+{{- $box := (partial "/images/boxes.html").prose -}}
+{{- $sizeList := $box.widths -}}
 {{- $imgBd5 := md5 $src -}}
-{{- $dataSzes := "(min-width: 1024px) 100vw, 50vw" -}}
+{{- $dataSzes := $box.sizes -}}
 {{- $blurFormat := "LQIP" -}}
 {{- $hint := "photo" -}}
 {{- $filter := "box" -}}

@@ -19,15 +19,12 @@
   `h1` the page carries, and is a link: `cards.css` gives it the heading ink
   at rest and the link colour, the underline and the focus ring on hover.
 
-  The featured image is sized for the grid, not the page. `.card-list` is one
-  column below 768px, two to 1280px and three above, with a 1rem column gap,
-  inside a `main` gutter of `min(30px, 7%)` and a `.container` of `min(2em,
-  10%)` padding and a 1px border. At 1280px that leaves 372px for a card
-  image, 744px at 2x density, so the hint names those two breakpoints and the
-  ladder stops at 960: a card is never full width, and the 1280, 1600 and
-  1920 variants of a featured image are never fetched for one. The full-width
-  hint a page hero sends asks 363 KB of a square the browser draws 372px wide,
-  where the 960 variant that fills it is 135 KB.
+  The featured image is sized for the grid, not the page: a card takes the
+  `card` box of `images/boxes.html`, whose hint names the one, two and three
+  column breakpoints of `.card-list` and whose ladder stops at 960, the width
+  that fills a card image at 2x density. A card is never full width, and the
+  1280, 1600 and 1920 variants of a featured image are never fetched for one.
+  `boxes.html` states the arithmetic of the box.
 */}}
 
 {{- $page := .page -}}
@@ -40,16 +37,15 @@
 {{- $url := .url -}}
 {{- $summary := .summary -}}
 
-{{- $cardSizes := "(min-width: 1280px) calc((100vw - 160px) / 3), (min-width: 768px) calc((100vw - 96px) / 2), calc(100vw - 34px)" -}}
-{{- $cardWidths := slice "320" "640" "960" -}}
+{{- $cardBox := (partial "/images/boxes.html").card -}}
 
 <div class="card">
   {{- with $page -}}
     {{- partial "/images/featured-image.html" (dict
       "page" .
       "link" $url
-      "sizes" $cardSizes
-      "widths" $cardWidths
+      "sizes" $cardBox.sizes
+      "widths" $cardBox.widths
     ) -}}
   {{- end -}}
 

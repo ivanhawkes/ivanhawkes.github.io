@@ -7,24 +7,32 @@
     title       a caption under the image; omit for no caption
     alt         the alt text
     sizes       the `sizes` hint naming the breakpoints the layout box moves
-                across; the full-width page hint when omitted
-    widths      the width ladder to emit; every width up to 1920 when omitted
+                across
+    widths      the width ladder to emit
     class       a class on the box around the image, for a caller whose layout
                 sizes that box; omitted for a caller that leaves it alone
 
-  `sizes` and `widths` travel together: a caller narrows the ladder to the
-  variants its layout box can actually select, so the browser is never offered
-  a file it cannot use. Each width is skipped when the source is narrower.
+  `sizes` and `widths` travel together, and a caller takes both from one box of
+  `images/boxes.html`, which names every box the theme draws an image in: the
+  pair narrows the ladder to the variants the layout box can actually select, so
+  the browser is never offered a file it cannot use. Each width is skipped when
+  the source is narrower. A caller that passes one without the other asks for a
+  box that partial does not name, and the build fails.
 */}}
 
 {{- $src := .destination -}}
 {{- $image := .image -}}
 {{- $alt := .alt -}}
 {{- $class := .class -}}
+{{- $sizes := .sizes -}}
+{{- $widths := .widths -}}
 
-{{- $sizeList := .widths | default (slice "320" "640" "960" "1280" "1600" "1920") -}}
+{{- if not (and $sizes $widths) -}}
+  {{- errorf "image-variants.html: an image needs a box, `sizes` and `widths` from images/boxes.html" -}}
+{{- end -}}
+
+{{- $sizeList := $widths -}}
 {{- $imageMD5 := md5 $src -}}
-{{- $sizes := .sizes | default "(min-width: 1024px) 100vw, 50vw" -}}
 {{- $blurFormat := "LQIP" -}}
 {{- $hint := "photo" -}}
 {{- $filter := "box" -}}

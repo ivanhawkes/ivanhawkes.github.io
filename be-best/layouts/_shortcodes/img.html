@@ -1,5 +1,15 @@
-{{/* init vars */}}
-{{- $respSizes := slice "320" "640" "960" "1280" "1600" "1920" -}}
+{{/*
+  An image in the prose, so the `sizes` hint and the width ladder come from the
+  `prose` box of `layouts/_partials/images/boxes.html`, the measure the
+  paragraphs around the image are read in and the ladder that box selects.
+  Neither is written here. The treatment parameters below are the shortcode's
+  own: `holder` picks the placeholder format, `phn` a portrait that needs no
+  placeholder box, `rounds` a rounded fill behind a screen cap, `hint` and
+  `filter` the processing hints, and `simple` an image with no wrapper.
+*/}}
+{{- /* init vars */}}
+{{- $box := (partial "/images/boxes.html").prose -}}
+{{- $respSizes := $box.widths -}}
 {{- $src := .Get "src" -}}
 {{- $alt := .Get "alt" -}}
 
@@ -34,7 +44,7 @@
 {{- if $phn -}}
   {{- $imgClass = "img-phn ctrImg animate-fade shadow" -}}
 {{- end -}}
-{{- $dataSzes := "(min-width: 1024px) 100vw, 50vw" -}}
+{{- $dataSzes := $box.sizes -}}
 
 {{- if .Page.Resources.GetMatch $src -}}
   {{ with .Page.Resources.GetMatch $src }}

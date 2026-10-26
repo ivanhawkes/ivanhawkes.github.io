@@ -290,7 +290,12 @@ Markdown render hooks, in `be-best/layouts/_markup/`:
   from each other by whitespace, so a template that trims whitespace before an
   attribute produces invalid markup such as `<atitle="...">`.
 - `render-image.html` resolves page bundle images and emits a fallback that is
-  valid inside a paragraph.
+  valid inside a paragraph. Its `sizes` hint and width ladder are the `prose`
+  box of `_partials/images/boxes.html`, which names every box the theme draws an
+  image in, `prose` and `card`, and is the only place a hint and a ladder are
+  written: a page hero and an image in the prose take `prose`, a card takes
+  `card`, and `image-variants.html` fails the build when passed one without the
+  other.
 - `render-codeblock.html` parses the fence's attributes and hands them to
   `_partials/codeblock.html`, which renders the card: a bar holding the file
   name, the language chip and the copy control, above the highlighted field. Its
@@ -310,8 +315,8 @@ Shortcodes, in `be-best/layouts/_shortcodes/`:
   "No documentation was found.", which is the expected output for the kinds kept
   as examples.
 - `img` takes `src` and `alt` with optional treatment parameters, and renders
-  responsive images in widths from 320 to 1920 pixels with generated
-  placeholders.
+  responsive images in the ladder of the `prose` box, 320 to 1280 pixels, with
+  generated placeholders.
 - `print-code` takes a `file` parameter relative to `assets/`, and renders the
   file through the same `_partials/codeblock.html`, so the card it produces is
   identical to a fenced block's, copy control included. Its other parameters are

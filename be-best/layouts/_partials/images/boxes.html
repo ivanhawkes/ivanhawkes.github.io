@@ -1,0 +1,37 @@
+{{/*
+  Every box an image is drawn in, named once.
+
+  A box is a `sizes` hint naming the breakpoints its width moves across, and the
+  `widths` ladder that box can select: the pair `image-variants.html` writes into
+  a `picture`, which offers a file it cannot use when the hint and the ladder
+  disagree with the box. Three paths draw an image, the page hero, an image in
+  the prose and a card, and all three read their box here, so a fourth path
+  cannot invent a hint and drift from the stylesheet.
+
+  prose    the column the prose is read in, and the hero above it: `65ch`, the
+           `--prose-measure` of `tokens.css`, which both `.prose` and
+           `.featured-image` cap at. Below 1024px that column is the window
+           minus the `main` gutter of `min(30px, 7%)`, whose 30px maximum is
+           reached at 430px, so `calc(100vw - 60px)` names it. The ladder
+           reaches 1280, which fills the measure at 2x density.
+  card     one column of `.card-list`: one column below 768px, two to 1280px
+           and three above, with a 1rem column gap, inside the `main` gutter
+           and the `.container` of `min(2em, 10%)` padding and a 1px border,
+           which leaves 372px for a card image at 1280px and 744px at 2x, so
+           the ladder stops at 960. A card is never full width.
+
+  A page whose prose is not in that column, and an image that is not in the
+  prose, is a new box: add it here rather than a hint at the call site.
+*/}}
+
+{{- $prose := dict
+  "sizes" "(min-width: 1024px) 65ch, calc(100vw - 60px)"
+  "widths" (slice "320" "640" "960" "1280")
+-}}
+
+{{- $card := dict
+  "sizes" "(min-width: 1280px) calc((100vw - 160px) / 3), (min-width: 768px) calc((100vw - 96px) / 2), calc(100vw - 34px)"
+  "widths" (slice "320" "640" "960")
+-}}
+
+{{- return (dict "prose" $prose "card" $card) -}}

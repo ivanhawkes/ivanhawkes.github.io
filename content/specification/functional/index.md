@@ -167,13 +167,14 @@ control puts the fenced source on the clipboard, line numbers and highlighting
 excluded, and answers with a check, a label, and a result announced to a screen
 reader; it is a real button, so the keyboard reaches it, and it is withdrawn
 from a page where scripts did not run. A block can be collapsed behind a
-summary, which opens it. Images are generated in widths from 320 to 1920 pixels
-with placeholders, so a visitor receives an image sized for their device. A card
-image and a page hero ask only for the widths their own boxes reach: 960 and
-1280 pixels. Colour scheme is chosen with a button in the bar, which cycles the
-light, dark and system settings; the choice is remembered between visits, the
-system setting follows the operating system, and the recorded `dark` class and
-`data-theme` attribute drive the theme's styles.
+summary, which opens it. Images are generated in a ladder of widths from 320
+pixels up, with placeholders, so a visitor receives an image sized for their
+device. Each box names its own ceiling: 1280 pixels for a page hero and an image
+in the prose, 960 for a card image, so no browser is offered a variant wider
+than the box it draws. Colour scheme is chosen with a button in the bar, which
+cycles the light, dark and system settings; the choice is remembered between
+visits, the system setting follows the operating system, and the recorded `dark`
+class and `data-theme` attribute drive the theme's styles.
 
 ## Publishing Behaviour
 

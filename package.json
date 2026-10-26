@@ -29,36 +29,16 @@
         "singleQuote": true,
         "bracketSpacing": true,
         "bracketSameLine": true,
-        "goTemplateBracketSpacing": true,
         "htmlWhitespaceSensitivity": "ignore",
         "arrowParens": "always",
         "proseWrap": "always",
-        "plugins": [
-            "prettier-plugin-tailwindcss",
-            "prettier-plugin-go-template"
-        ],
-        "tailwindStylesheet": "./assets/css/main.css",
         "overrides": [
-            {
-                "files": ".prettierrc",
-                "options": {
-                    "parser": "json"
-                }
-            },
             {
                 "files": [
                     "**/*.css"
                 ],
                 "options": {
                     "printWidth": 100
-                }
-            },
-            {
-                "files": [
-                    "*.html"
-                ],
-                "options": {
-                    "parser": "go-template"
                 }
             },
             {
@@ -74,13 +54,10 @@
         "@tailwindcss/typography": "^0.5.20",
         "ajv": "^8.20.0",
         "ajv-formats": "^3.0.1",
-        "cross-var": "^1.1.0",
         "html-validate": "^11.17.0",
         "husky": "^9.1.7",
         "lint-staged": "^17.6.0",
         "prettier": "3.9.9",
-        "prettier-plugin-go-template": "^0.0.15",
-        "prettier-plugin-tailwindcss": "^0.8.1",
         "stylelint": "^17.15.0",
         "stylelint-config-standard": "^40.0.0",
         "stylelint-config-tailwindcss": "^1.0.1",

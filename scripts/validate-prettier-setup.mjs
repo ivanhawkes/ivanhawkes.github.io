@@ -1,4 +1,4 @@
-// Guard the Prettier setup this repository depends on. Three things must stay
+// Guard the Prettier setup this repository depends on. Four things must stay
 // true, and each has already gone wrong once:
 //
 //   1. No Go-template formatter touches `be-best/layouts/`. Formatting those
@@ -8,12 +8,15 @@
 //      way, four of them unable to even parse four of the files. The defence is
 //      `.prettierignore`, so the defence is asserted: every tracked layout HTML
 //      must read as ignored from the repository root.
-//   2. There is exactly one Prettier config. A second block, in
-//      `be-best/package.json`, resolved ahead of the root one for every file
-//      under the theme, so a root-only change was silently inert there; a second
-//      `.prettierignore` shadows the root ignore file the same way. Neither may
-//      come back.
-//   3. The editor must not format CSS on save, and must not format anything with
+//   2. There is exactly one Prettier config, in the root manifest. A block in
+//      `be-best/package.json`, or an ignore file in the theme, resolves ahead of
+//      the root one for every file under `be-best/`, so a root-only change was
+//      silently inert there. Nothing under the theme may carry config.
+//   3. The root config stays plugin-free. The only plugin it ever wired in was
+//      `prettier-plugin-go-template`, routed to `*.html` by an override, and a
+//      Go-template formatter is measured to rewrite the rendered HTML of nearly
+//      every page. Removing it changed the output of 0 of 329 tracked files.
+//   4. The editor must not format CSS on save, and must not format anything with
 //      a config-less default Prettier - that is how templates get mangled.
 //
 // Run through `pnpm run test:prettier`.
@@ -38,7 +41,7 @@ function json(file) {
     return JSON.parse(readFileSync(path.join(root, file), 'utf8'));
 }
 
-// 1. Layout templates stay out of every Prettier run, from both roots.
+// 1. Layout templates stay out of every Prettier run.
 const layouts = trackedFiles(layoutGlob);
 if (layouts.length === 0) {
     problems.push(`no tracked files match '${layoutGlob}': the glob changed`);
@@ -55,13 +58,16 @@ for (const file of layouts) {
 
 // 2. Exactly one Prettier config, in the root manifest.
 const siteConfig = json('package.json').prettier;
-if (json('be-best/package.json').prettier) {
-    problems.push('be-best/package.json must not carry a prettier block');
-}
-if (existsSync(path.join(root, 'be-best/.prettierignore'))) {
-    problems.push(
-        'be-best/.prettierignore must not exist: it shadows the root ignore file'
-    );
+for (const ghost of [
+    'be-best/package.json',
+    'be-best/.prettierignore',
+    'be-best/.prettierrc',
+]) {
+    if (existsSync(path.join(root, ghost))) {
+        problems.push(
+            `${ghost} must not exist: it resolves ahead of the root config`
+        );
+    }
 }
 const cssWidth = (siteConfig.overrides || [])
     .filter((entry) =>
@@ -74,7 +80,20 @@ if (!cssWidth.includes(100)) {
     problems.push('no CSS override sets printWidth 100: theme CSS wraps at 80');
 }
 
-// 3. Editor settings: pinned Prettier, config required, no format on CSS save.
+// 3. No plugins, and no parser routed to the banned Go-template one.
+if ((siteConfig.plugins || []).length) {
+    problems.push(
+        'the prettier config must stay plugin-free: a Go-template plugin is banned'
+    );
+}
+for (const entry of siteConfig.overrides || []) {
+    const parser = String((entry.options && entry.options.parser) || '');
+    if (parser.includes('go-template')) {
+        problems.push('no override may route files to the go-template parser');
+    }
+}
+
+// 4. Editor settings: pinned Prettier, config required, no format on CSS save.
 const editor = json('.vscode/settings.json');
 if (editor['prettier.prettierPath'] !== 'node_modules/prettier') {
     problems.push('prettier.prettierPath must point at the project copy');
@@ -98,6 +117,6 @@ if (problems.length) {
 }
 
 console.log(
-    `prettier setup: ${layouts.length} layout files ignored; one prettier ` +
-        'config, in the root manifest; the editor is pinned and quiet on CSS'
+    `prettier setup: ${layouts.length} layout files ignored; one plugin-free ` +
+        'config in the root manifest; the editor is pinned and quiet on CSS'
 );

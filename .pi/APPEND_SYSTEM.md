@@ -28,6 +28,9 @@
   `gotmplfmt` behave the same, so layout HTML stays hand-formatted. Layout HTML
   carries trailing spaces inside template tags; copy them from a fresh read.
   `pnpm run test:prettier` asserts that boundary; make it pass.
+- Keep Prettier config singular: the root `package.json` is the only config, the
+  root config wires in no plugin, and nothing under `be-best/` may carry one - a
+  config there resolves ahead of the root one for every theme file.
 - Line endings are not the problem: `.gitattributes` (`* text=auto eol=lf`),
   `core.autocrlf=input` and `core.eol=lf` keep every tracked file LF; no tracked
   file contains CRLF.

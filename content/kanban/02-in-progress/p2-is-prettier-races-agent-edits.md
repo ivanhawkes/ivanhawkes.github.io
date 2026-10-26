@@ -36,6 +36,12 @@ the text the next edit quotes no longer exists on disk.
   which resolved ahead of the root one for every file under `be-best/`, so a
   root-only override was inert; the block and `be-best/.prettierignore` are gone
   and the root config is the only one.
+- Dead weight is gone with it: `prettier-plugin-go-template` and its `*.html`
+  parser override, `prettier-plugin-tailwindcss` with `tailwindStylesheet`, a
+  `.prettierrc` override for a file that does not exist, `cross-var`, and the
+  theme manifest whose devDependencies were never installed (`be-best/` is not a
+  workspace member). Formatting 329 tracked files without the plugins changed 0
+  of them.
 - `editor.formatOnSave` off for `[css]`, `prettier.prettierPath` pinned to the
   project copy, and `prettier.requireConfig: true`.
 - `.editorconfig` keeps the load bearing trailing space after `-}}` in layouts
@@ -48,6 +54,7 @@ the text the next edit quotes no longer exists on disk.
 
 - [x] Every tracked layout HTML reads as Prettier-ignored by the root file
 - [x] Exactly one Prettier config, the root manifest, covers the theme too
+- [x] The config wires in no plugin, and no override routes to a Go-template one
 - [x] `pnpm run test:prettier` asserts those invariants inside `pnpm run test`
 - [x] `pnpm run test` passes against the reflowed theme CSS
 - [ ] A theme CSS edit lands without a follow-up edit quoting stale text

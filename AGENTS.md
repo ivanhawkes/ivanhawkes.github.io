@@ -54,7 +54,7 @@ in the content tree, queryable via shortcodes.
 pnpm run test         # CSS, Hugo, HTML, heading and card schema checks; use to validate changes
 pnpm run test:headings # count h1 elements over public/; fail on pages without exactly one
 pnpm run test:kanban  # validate card front matter against the schema in assets/
-pnpm run test:prettier # assert layouts stay Prettier-ignored, one prettier config, editor pins set
+pnpm run test:prettier # assert layouts ignored, one plugin-free prettier config, editor pins set
 pnpm run build        # CSS + minified production build
 pnpm run css-watch    # Tailwind watch mode (run alongside hugo)
 pnpm run serve        # compile CSS once, then hugo server -D -F
@@ -110,10 +110,12 @@ covers only how the program is written.
   every page, and the Prettier plugins fail outright on 4 of 69 files.
   `.editorconfig` keeps editors from trimming the load bearing trailing space
   after `-}}` in layouts and the hard-break pair at the end of a markdown line.
-  `pnpm run test:prettier` guards all of it: the root `.prettierignore`, the one
-  Prettier config in `package.json` - a block in `be-best/package.json` resolved
-  ahead of it for every theme file, so it is gone - and the editor pins in
-  `.vscode/settings.json`.
+  `pnpm run test:prettier` guards the whole arrangement: the root
+  `.prettierignore`, the single Prettier config in `package.json` (the theme has
+  no manifest, ignore file or config of its own, and the root config wires in no
+  plugins - `prettier-plugin-go-template`, its `*.html` parser override and
+  `prettier-plugin-tailwindcss` are measured dead: 0 of 329 tracked files change
+  without them), and the editor pins in `.vscode/settings.json`.
 
 ## Workflow
 

@@ -1,9 +1,10 @@
 /* Page furniture: the shell that header, main and footer sit in.
 
    The rules are shared by every layout, which is why they live apart from the
-   navigation, which header.css styles. They are the rules the sidebar layout
-   left behind when the sidebar went: the grid it laid the page out in is gone,
-   the page is a single column, and the sticky header takes its own row. */
+   navigation, which header.css styles. The shell is a fluid column: the panel
+   of `main` follows the width of the screen, and the two widths things are
+   measured against inside it are `--prose-measure`, the column prose is read
+   in (`prose-overrides.css`), and the panel itself, which `.panel` names. */
 
 html {
     /* The gutter is reserved whether or not the page is tall enough to
@@ -33,14 +34,43 @@ body {
     color: var(--text);
 }
 
+/* The panel. `main` is the width the page is laid out in: it takes the whole
+   viewport, keeps the bar's gutter inside itself, and caps at the bar's
+   column, so at any width its content starts where the brand above it and the
+   copyright below it start. Nothing in it is pinned to a viewport width: the
+   gutter is a percentage with a ceiling, and the column is a cap, not a
+   width, so the panel is narrower on a narrow screen and no wider than the
+   bar on a wide one. */
 main {
     flex: 1 0 auto;
-    padding: 1.5rem 1rem 2rem;
+    width: 100%;
+    max-width: var(--page-column);
+    margin-inline: auto;
+    padding: 1.5rem var(--page-gutter) 2rem;
 }
 
 main p {
     margin-top: 5px;
     margin-bottom: 15px;
+}
+
+/* The width of the whole panel, for what is read across rather than down: the
+   board of Kanban cards, which wants every lane the panel can hold. A board
+   asks for the panel and takes none of the measure, so it is measured against
+   `main` and not against the prose. */
+.panel {
+    width: 100%;
+    max-width: none;
+    margin-inline: auto;
+}
+
+/* A board is a row of lanes, and the lanes are the width the panel gives them:
+   as many as fit beside a lane's narrowest, and each of them stretched to fill
+   the row. A board of three lanes therefore fills the panel and reads in its
+   middle, where a fixed count of tracks leaves a lane's width of empty panel
+   at the right hand of it. */
+.kanban-board {
+    grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
 }
 
 .container {
@@ -58,10 +88,6 @@ main p {
 /* Content cards keep their frame from this width up, as they did under the
    sidebar layout's 800 pixel query. */
 @media (min-width: 801px) {
-    main {
-        padding: var(--page-gutter);
-    }
-
     .container {
         border: 1px solid var(--border);
         padding: min(2em, 10%);

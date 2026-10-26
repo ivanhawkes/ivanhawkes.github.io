@@ -1,8 +1,24 @@
 /* The measure one value, shared by the prose and by the hero `images.css`
    caps at the same width. The typography plugin's own `65ch` is the value the
-   token carries. */
+   token carries. The column is centred in the panel, so the page is read down
+   its middle: the measure is the column, and the panel is the room around it.
+   Only the column is centred, never what is set in it: paragraphs keep the
+   ragged right edge they are read with. */
 .prose {
     max-width: var(--prose-measure);
+    margin-inline: auto;
+}
+
+/* The same column for the furniture that is read with the prose: the trail
+   above it, the byline, the next/previous navigation at the head and the foot
+   of a page, and the related block. Each is as wide as the prose, no wider,
+   and centred with it, so a page is one column of text with its furniture
+   stacked on it, whatever the width of the panel it sits in. The hero of
+   `images.css` is capped at the measure, and centred, on its own. */
+.measure {
+    width: 100%;
+    max-width: var(--prose-measure);
+    margin-inline: auto;
 }
 
 @utility prose-custom {

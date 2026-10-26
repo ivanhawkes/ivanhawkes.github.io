@@ -1,9 +1,11 @@
-/* Style the pagination control set. */
+/* Style the pagination control set. The set is one row of controls, centred
+   under the listing it pages. */
 
 .pagination {
     list-style: none;
     padding: 0px;
     margin: 0px;
+    text-align: center;
     background-color: transparent;
     font-size: 1.2rem;
 }

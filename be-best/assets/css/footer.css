@@ -3,9 +3,10 @@
    The bar at the head of the page opens the shell and this closes it, so the
    two are built from the same parts: the bar's surface colour, a hairline
    border on the edge that faces the page instead of one on the edge behind it,
-   the same 1280 pixel column with the page gutter inside it, 60 pixels of
-   height, 72 from 1024 pixels up, and a chip at the left of the column - the
-   brand mark above, the copyright below, on the same surface at the same size.
+   the same page column with the page gutter inside it, 60 pixels of height, 72
+   from 1024 pixels up, and a chip at the left of the column - the brand mark
+   above, the copyright below, on the same surface at the same size, and capped
+   at the prose measure so the line stays inside the column of text above it.
 
    The bar is sticky, so it carries its translucent surface on a blurred layer
    of its own and content scrolls under it. The footer sits in the flow at the
@@ -25,16 +26,18 @@
     gap: 0.5rem;
     box-sizing: border-box;
     width: 100%;
-    max-width: 1280px;
+    max-width: var(--page-column);
     min-height: 60px;
     margin-inline: auto;
     padding-inline: var(--page-gutter);
 }
 
 /* The chip at the left of the column, as the brand mark sits at the left of
-   the bar. */
+   the bar: the last line of the column of text above it, so it is capped at
+   the measure a paragraph of prose is capped at. */
 .footer-copy {
     margin: 0;
+    max-width: var(--prose-measure);
     padding: 0.25rem 0.4rem;
     border-radius: 0.35rem;
     background-color: var(--surface-2);

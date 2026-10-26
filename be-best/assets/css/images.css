@@ -3,13 +3,15 @@
    The hero at the head of a page is written by
    `layouts/_partials/images/featured-image.html`, which a page layout puts in
    `main` above the prose. It carries `featured-image`, and is capped at the
-   prose measure: the picture is drawn in the column its own paragraphs are
-   read in, so a maximised window shows a hero as wide as the text and no
-   wider, and `featured-image.html` offers it the variants that box selects.
+   prose measure, and centred with it: the picture is drawn in the column its
+   own paragraphs are read in, so a maximised window shows a hero as wide as the
+   text and no wider, and `featured-image.html` offers it the variants that box
+   selects.
 
    An image inside the prose is already in that column, and a card is sized by
    `cards.css`, which fits a card's media to the listing's grid. */
 
 .featured-image {
     max-width: var(--prose-measure);
+    margin-inline: auto;
 }

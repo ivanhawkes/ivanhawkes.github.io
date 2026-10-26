@@ -7,7 +7,10 @@
 
   {{- partial "/byline/byline.html" . -}}
 
-  <div class="flex flex-row gap-x-12 gap-y-4">
+  {{/*  The two columns of a recipe: the meta and the ingredients at one hand,
+        the method at the other. They are wrapped at a narrow width, and the
+        pair is centred in the panel.  */}}
+  <div class="flex flex-row flex-wrap justify-center gap-x-12 gap-y-4">
     <div class="">
 
       <span style="font-style: italic; font-weight: bold;">Meta</span>

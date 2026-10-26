@@ -99,8 +99,10 @@ holds epics, which are not a stage. */}}
   {{- end -}}
 {{- end -}}
 
-<div
-  class="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-6">
+{{/* The board is set in the panel, in lanes as wide as the panel gives them:
+     every lane that fits, and the lanes spread across the panel, never capped
+     at the prose measure the page's text above it is capped at. */}}
+<div class="kanban-board panel grid gap-2">
   {{- range sort $lanes "label" -}}
     {{- $laneCards := where $cards "lane" .label -}}
     <section

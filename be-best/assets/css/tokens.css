@@ -32,6 +32,11 @@
 
     --page-gutter: min(30px, 7%);
 
+    /* The page column: the width the bar, the page and the foot are laid out
+       in. All three cap at it and centre, so the brand, the page and the
+       copyright share a left edge. `main` takes it from `layout.css`. */
+    --page-column: 1280px;
+
     /* The prose measure: the column a body of text is read in. The typography
        plugin caps `.prose` at it, and the hero of a page is capped at the same
        value by `images.css`, so a page's picture and its prose share one

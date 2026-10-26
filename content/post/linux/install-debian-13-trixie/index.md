@@ -31,30 +31,20 @@ re-installing it every time.
 It's a bit of a dance getting it all authorised the first time.
 
 - Open Firefox.
-
 - Visit https://bitwarden.com/
-
 - I hope you remember your password! Sign in. Now go to the settings and adjust
   the PIN and how aggressively it will lock you out.
-
 - Be amazed at how I then need to log into Google mail to provide a verification
   code to login to bitwarden.
-
 - Visit https://gmail.com
-
 - Google also doesn't trust you, so it's going to make you use your phone or
   tablet to complete the authorisation.
-
 - Now you can access all your passwords, including the one for Firefox. Use that
   to sync your Firefox account and addons.
-
 - But not before you enter another bloody confirmation code!
-
 - Log into the browser extension for BitWarden. It can fill in the passwords
   from here onwards.
-
 - Guess what! Here comes another verification email.
-
 - Breathe a sigh of relief, knowing you're done until you need to access your
   Microsoft mail account.
 

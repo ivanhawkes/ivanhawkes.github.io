@@ -1,0 +1,40 @@
+{{/*
+  One image a page has drawn, recorded for the placeholder rules.
+
+  Every path that draws an image - `images/image-variants.html`, the `img`
+  shortcode and the Markdown image render hook - calls this partial with the
+  resource it drew, the page the class lands on and the placeholder format that
+  class names: `GIP` for the gradient, `LQIP` for the blurred image. The record
+  is stored under the key of that page render, `images/placeholder-key.html`, as
+  the `<md5>-<format>` suffix of the class on the image box and the image to
+  build it from, so a rule and the class that asks for it are built from one
+  string, and an image drawn twice on a page is covered by one rule.
+
+  The caller names the page because the page function lies for a render hook: a
+  render hook runs wherever the markup is rendered, which for a summary is a
+  listing, while the hook's own page is the article the markup belongs to. The
+  card that plainifies its summary draws no image from it, so a record belongs
+  to the article, and a listing renders no class it has no rule for.
+
+  `images/image-process.html` reads the records of the page, in the second
+  render pass, deferred by `meta/head.html`, so they cover every image the page
+  draws: its own hero, the images in its prose and the images of the pages it
+  lists as cards, which no head-time walk over the page's own resources reaches.
+
+  Draws nothing.
+
+    image   the page resource drawn, required
+    format  the placeholder format the class names, `GIP` or `LQIP`
+    page    the page the class lands on, required
+*/}}
+
+{{- $image := .image -}}
+{{- $format := .format -}}
+{{- $page := .page -}}
+
+{{- with $image -}}
+  {{- $key := partial "/images/placeholder-key.html" (dict "page" $page) -}}
+  {{- $record := dict "key" (print (md5 .RelPermalink) "-" $format) "image" . -}}
+  {{- $records := $page.Scratch.Get $key | default slice -}}
+  {{- $page.Scratch.Set $key ($records | append $record) -}}
+{{- end -}}{{- "" -}}

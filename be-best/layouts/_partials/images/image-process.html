@@ -1,26 +1,60 @@
-{{- with .Resources.ByType "image" }}
+{{/*
+	The placeholder rules of one page, in a `style` block in its head.
+
+	An image is drawn by `images/image-variants.html`, the `img` shortcode or the
+	Markdown image render hook, and each of them records the image, with the
+	placeholder format it used, through `images/placeholder-register.html`. This
+	partial writes one rule per record, and deletes them: the selector is `.imgB-`
+	plus the record key, the same string the class on the image box is built from,
+	so a selector and the class that asks for it always agree, and an image drawn
+	twice on a page is given one rule.
+
+	An image drawn by a card is an image of another page: a walk over the current
+	page's resources never reaches it, so a listing would carry no placeholder for
+	any card, and would carry rules for the images of its own bundle that no card
+	uses. `meta/head.html` therefore defers this partial to the second render
+	pass, by which time the page has drawn everything it draws: the rules cover the
+	images of the pages it lists, and a page that draws no image writes no block at
+	all. The page to read is the one the head passes, because a page in the second
+	pass has lost the pagination that named its pager.
+
+	GIP is a gradient of the dominant colours of the image; LQIP is a 20 pixel wide
+	copy of it, base64 encoded into the rule. Both fill a box at the source's
+	aspect ratio, which is why an image box reserves its space before the image
+	arrives.
+
+	  key  the Scratch key of the page render, from images/placeholder-key.html
+*/}}
+
+{{- $key := .key -}}
+{{- $records := page.Scratch.Get $key | default slice -}}
+{{- $seen := slice }}
+{{- $void := page.Scratch.Delete $key }}
+{{- with $records }}
 	<style media="screen">
-	{{- range . -}}
-		{{- $src := . -}}
-		{{- $imgBd5 := md5 .Name -}}
-		{{- $BkgdStyleEnd := print " center / cover no-repeat; aspect-ratio: " $src.Width " / " $src.Height ";" -}}
-		{{- $GIP_img := $src.Process "resize 20x webp q20" -}}
-		{{- /* ^^ documentation says we get better performance by shrinking first */ -}}
-		{{- $GIP_colors := $GIP_img.Colors -}}
-		{{- if (lt ($GIP_colors | len) 2) -}}
-			{{- $GIP_colors = $GIP_colors | append "#000000" -}}
-		{{- end -}}
-		{{- $GIP_bkgd := delimit ($GIP_colors) ", " -}}
-		{{- $BkgdStyleGIP := print "background: linear-gradient(" $GIP_bkgd ")" $BkgdStyleEnd -}}
-		{{- $LQIP_img := $src.Process "resize 20x webp q20" -}}
-		{{- $LQIP_b64 := $LQIP_img.Content | base64Encode -}}
-		{{- $BkgdStyleLQIP := print "background: url(data:image/webp;base64," $LQIP_b64 ")" $BkgdStyleEnd }}
-		.imgB-{{ $imgBd5 }}-GIP {
-			{{ $BkgdStyleGIP | safeCSS }}
+	{{- range . }}
+		{{- if not (in $seen .key) }}
+			{{- $seen = $seen | append .key -}}
+			{{- $src := .image -}}
+			{{- $BkgdStyleEnd := print " center / cover no-repeat; aspect-ratio: " $src.Width " / " $src.Height ";" -}}
+			{{- $placeholder := $src.Process "resize 20x webp q20" -}}
+			{{/* ^^ documentation says we get better performance by shrinking first */}}
+			{{- if hasSuffix .key "GIP" -}}
+				{{- $colors := $placeholder.Colors -}}
+				{{- if (lt ($colors | len) 2) -}}
+					{{- $colors = $colors | append "#000000" -}}
+				{{- end -}}
+				{{- $BkgdStyle := print "background: linear-gradient(" (delimit $colors ", ") ")" $BkgdStyleEnd -}}
+		.imgB-{{ .key }} {
+			{{ $BkgdStyle | safeCSS }}
 		}
-		.imgB-{{ $imgBd5 }}-LQIP {
-			{{ $BkgdStyleLQIP | safeCSS }}
+			{{- else -}}
+				{{- $BkgdStyle := print "background: url(data:image/webp;base64," ($placeholder.Content | base64Encode) ")" $BkgdStyleEnd -}}
+		.imgB-{{ .key }} {
+			{{ $BkgdStyle | safeCSS }}
 		}
-	{{- end }}
+			{{- end }}
+		{{- end }}
+	{{- end -}}
 	</style>
-{{ end }}
+{{- end -}}

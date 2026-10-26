@@ -1,0 +1,38 @@
+{{/*
+  The images a page's own markdown draws, recorded before its body runs.
+
+  The render hooks and shortcodes record the images they draw, which covers
+  every image a page draws. It does not cover the images of a page whose
+  rendered markdown was already built, and Hugo caches that markup per page:
+  when a listing renders the summary of a child, the child's Markdown image
+  render hook runs in the listing's render, so the record lands on the listing
+  and the child, rendering from the cache, gets none - a class with no rule on
+  the child, and a rule for an image the listing shows in a summary.
+
+  Scanning the page's source for Markdown images at head time is deterministic:
+  every render of the page, every pager of a section, records the images its own
+  content draws, whatever the markup cache holds. `images/image-variants.html`
+  records the hero, and a card records the images of the pages it lists.
+
+  Only Markdown images: the `img` shortcode draws its own class and picks its
+  own placeholder format with `holder`, `phn` and `simple`, which is logic this
+  partial would have to repeat, and it is the render hook's LQIP that the cache
+  hides.
+
+    page  the page rendering, required
+
+  Draws nothing.
+*/}}
+
+{{- $page := .page -}}
+
+{{- range $match := findRE `!\[[^\]]*\]\([^)]*\)` $page.RawContent -}}
+  {{- $dest := replaceRE `^!\[[^\]]*\]\(([^)\s]+).*\)$` `$1` $match -}}
+  {{- with $page.Resources.GetMatch $dest -}}
+    {{- partial "/images/placeholder-register.html" (dict
+      "image" .
+      "format" "LQIP"
+      "page" $page
+    ) -}}
+  {{- end -}}
+{{- end -}}{{- "" -}}

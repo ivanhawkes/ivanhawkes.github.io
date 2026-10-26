@@ -51,9 +51,10 @@ in the content tree, queryable via shortcodes.
 ## Commands
 
 ```bash
-pnpm run test         # CSS, lint, Hugo, HTML, heading, card schema and prettier checks; validate changes here
+pnpm run test         # CSS, lint, Hugo, HTML, heading, placeholder, card schema and prettier checks; validate changes here
 pnpm run lint         # eslint over the repo's JS/TS: scripts, theme assets, configs
 pnpm run test:headings # count h1 elements over public/; fail on pages without exactly one
+pnpm run test:placeholders # pair imgB classes with their rules over public/; fail on an unmatched pair
 pnpm run test:kanban  # validate card front matter against the schema in assets/
 pnpm run test:prettier # assert layouts ignored, one plugin-free prettier config, editor pins set
 pnpm run build        # CSS + minified production build

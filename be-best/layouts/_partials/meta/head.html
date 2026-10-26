@@ -74,6 +74,16 @@
     {{ end }}
   {{ end }}
 
-  {{/*  Image processing  */}}
-  {{- partial "/images/image-process.html" . -}}
+  {{/*  Image processing: the placeholder rules of the images this page draws.
+
+        Deferred to the second render pass, because a listing draws the images
+        of the pages it lists, which its body has not drawn at this point in the
+        head. The key of this render travels with the deferral: a page in the
+        second pass no longer knows which pager of a section it is.
+  */}}
+  {{- $placeholderKey := partial "/images/placeholder-key.html" (dict "page" .Page) -}}
+  {{- partial "/images/placeholder-collect.html" (dict "page" .Page) }}
+  {{ with (templates.Defer (dict "data" (dict "key" $placeholderKey))) }}
+    {{- partial "/images/image-process.html" . -}}
+  {{ end }}
 </head>

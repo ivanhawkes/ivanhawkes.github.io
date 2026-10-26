@@ -1,0 +1,38 @@
+{{/*
+  The Scratch key of one page render.
+
+  A page's placeholder records are stored in the page's Scratch under this key,
+  and read back by `images/image-process.html`, which is deferred to the second
+  render pass. The key names one render of one page, so the records of one page
+  are never read by another.
+
+  A paginated section is the reason it takes three parts. Every pager of a
+  section is the same page object, at the same `RelPermalink`, sharing the one
+  Scratch, so the pager number separates them: a listing gives its placeholders
+  to the pager that drew the cards, and not to the whole section. The number is
+  0 for a kind of page that has no pagers - an article, a `404` - and the
+  language separates the renders of the same address in the site's other
+  languages.
+
+  Hugo names the kinds that paginate: a home page, a section, a taxonomy and a
+  term. The list below is those, and a kind outside it is read as a page with
+  one render, which costs a paginated listing of that kind the separation.
+
+  The key is a Scratch key, so a `.` in it would read as a path into the store:
+  the `RelPermalink` is passed with its dots replaced.
+
+    page  the page rendering, required
+
+  Returns the key.
+*/}}
+
+{{- $page := .page -}}
+
+{{- $num := 0 -}}
+{{- if in (slice "home" "section" "taxonomy" "term") $page.Kind -}}
+  {{- with $page.Paginator -}}
+    {{- $num = .PageNumber -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return (print $page.Lang ":" (replace "." "_" $page.RelPermalink) ":" $num) -}}

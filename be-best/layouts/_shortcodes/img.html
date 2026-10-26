@@ -6,6 +6,12 @@
   own: `holder` picks the placeholder format, `phn` a portrait that needs no
   placeholder box, `rounds` a rounded fill behind a screen cap, `hint` and
   `filter` the processing hints, and `simple` an image with no wrapper.
+
+  The placeholder box is classed with the md5 of the image's `RelPermalink`, the
+  same string `images/image-process.html` hashes for the rule, and the image is
+  registered there through `images/placeholder-register.html`: a `src` written by
+  hand is not the address the rule is keyed on, and the `holder` picks which of
+  the two placeholder formats the page is asked for.
 */}}
 {{- /* init vars */}}
 {{- $box := (partial "/images/boxes.html").prose -}}
@@ -21,25 +27,6 @@
 {{- $simple := default false (.Get "simple") -}}
 {{- $rounds := default false (.Get "rounds") -}}
 
-{{- $imgBd5 := md5 $src -}}
-{{- $divClass := "relative" -}}
-{{- if not $phn -}}
-  {{- $divClass = print $divClass " bigImgDiv" -}}
-  {{- if $rounds -}}
-    {{- $divClass = print $divClass " rounded-bkgd" -}}
-    {{/* For LQIPs behind rounded imgs (e.g., screen caps). */}}
-  {{- end }}
-  {{- $divClass = print $divClass " imgB-" $imgBd5 "-" $holder -}}
-  {{/*
-    The `imgB-`[hash]-GIP` class is
-    generated in a `head` partial;
-    here, we need only get the class's name,
-    using the same method as in that partial
-    (md5-ing the image file name).
-  */}}
-{{- else -}}{{/* if $phn */}}
-  {{- $divClass = print $divClass " bg-center" -}}
-{{- end -}}
 {{- $imgClass := "w-full animate-fade shadow" -}}
 {{- if $phn -}}
   {{- $imgClass = "img-phn ctrImg animate-fade shadow" -}}
@@ -49,6 +36,22 @@
 {{- if .Page.Resources.GetMatch $src -}}
   {{ with .Page.Resources.GetMatch $src }}
     {{- $imgRsc := . -}}
+    {{- $divClass := "relative" -}}
+    {{- if not $phn -}}
+      {{- $divClass = print $divClass " bigImgDiv" -}}
+      {{- if $rounds -}}
+        {{- $divClass = print $divClass " rounded-bkgd" -}}
+        {{/* For LQIPs behind rounded imgs (e.g., screen caps). */}}
+      {{- end }}
+      {{- $divClass = print $divClass " imgB-" (md5 $imgRsc.RelPermalink) "-" $holder -}}
+      {{- partial "/images/placeholder-register.html" (dict
+        "image" $imgRsc
+        "format" $holder
+        "page" $.Page
+      ) -}}
+    {{- else -}}{{/* if $phn */}}
+      {{- $divClass = print $divClass " bg-center" -}}
+    {{- end -}}
     {{- $actualImg := $imgRsc.Process (print "resize 640x jpg " $filter) -}}
     {{- if eq $simple false -}}
     <div class="{{ $divClass }}" data-pagefind-ignore>

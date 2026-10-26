@@ -16,6 +16,12 @@
   `layouts/_partials/images/boxes.html`: the measure the paragraphs around it
   are read in, and the ladder that box selects. Neither the hint nor the ladder
   is written here.
+
+  The placeholder box is classed with the md5 of the image's `RelPermalink`, and
+  the image is registered for the matching rule. The destination is a path
+  written by hand, which names an image by a different string than the resource
+  does, so a key built from it need not match the key the rule generator builds.
+  See `images/placeholder-register.html`.
 */ -}}
 
 {{- $src := .Destination -}}
@@ -23,7 +29,6 @@
 
 {{- $box := (partial "/images/boxes.html").prose -}}
 {{- $sizeList := $box.widths -}}
-{{- $imgBd5 := md5 $src -}}
 {{- $dataSzes := $box.sizes -}}
 {{- $blurFormat := "LQIP" -}}
 {{- $hint := "photo" -}}
@@ -32,8 +37,13 @@
 
 {{- if .Page.Resources.GetMatch $src -}}
   {{ with .Page.Resources.GetMatch $src }}
-    {{- $divClass := print "relative bigImgDiv imgB-" $imgBd5 "-" $blurFormat -}}
     {{- $imgRsc := . -}}
+    {{- $divClass := print "relative bigImgDiv imgB-" (md5 $imgRsc.RelPermalink) "-" $blurFormat -}}
+    {{- partial "/images/placeholder-register.html" (dict
+      "image" $imgRsc
+      "format" $blurFormat
+      "page" $.Page
+    ) -}}
     {{- $actualImg := $imgRsc.Process (print "resize 640x jpg " $filter) -}}
     <div class="{{ $divClass }}" data-pagefind-ignore>
       <picture data-pagefind-ignore>

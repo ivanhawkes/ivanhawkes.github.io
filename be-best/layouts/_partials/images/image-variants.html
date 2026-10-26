@@ -3,7 +3,6 @@
   a small jpeg `img` fallback. Callers pass a dict:
 
     image       the page resource to render, required
-    destination the URL the fallback `img` reads, as a page resource gives
     title       a caption under the image; omit for no caption
     alt         the alt text
     sizes       the `sizes` hint naming the breakpoints the layout box moves
@@ -18,9 +17,16 @@
   the browser is never offered a file it cannot use. Each width is skipped when
   the source is narrower. A caller that passes one without the other asks for a
   box that partial does not name, and the build fails.
+
+  The box is classed `imgB-<hash>-LQIP`, the placeholder that fills it while the
+  picture loads, and the image is registered for that rule. The hash is the md5
+  of the image's `RelPermalink`, its own address: featured images are all named
+  `featured.webp`, so a hash of the name alone gives every image on a page the
+  same placeholder, the last rule written winning. `images/image-process.html`
+  hashes the same string, and `images/placeholder-register.html` is what hands
+  the image to it.
 */}}
 
-{{- $src := .destination -}}
 {{- $image := .image -}}
 {{- $alt := .alt -}}
 {{- $class := .class -}}
@@ -32,7 +38,6 @@
 {{- end -}}
 
 {{- $sizeList := $widths -}}
-{{- $imageMD5 := md5 $src -}}
 {{- $blurFormat := "LQIP" -}}
 {{- $hint := "photo" -}}
 {{- $filter := "box" -}}
@@ -40,13 +45,19 @@
 
   {{ with $image }}
   
+    {{- $imgRsc := . -}}
+    {{- $imageMD5 := md5 $imgRsc.RelPermalink -}}
     {{- $classes := slice "relative" "bigImgDiv" -}}
     {{- with $class -}}
       {{- $classes = $classes | append . -}}
     {{- end -}}
     {{- $classes = $classes | append (print "imgB-" $imageMD5 "-" $blurFormat) -}}
     {{- $divClass := delimit $classes " " -}}
-    {{- $imgRsc := . -}}
+    {{- partial "/images/placeholder-register.html" (dict
+      "image" $imgRsc
+      "format" $blurFormat
+      "page" page
+    ) -}}
     {{- $actualImg := $imgRsc.Process (print "resize 640x jpg " $filter) -}}
 
     <div class="{{ $divClass }}" data-pagefind-ignore>

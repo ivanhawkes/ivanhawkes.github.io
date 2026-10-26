@@ -68,7 +68,6 @@
     {{- $meta := .Params | default dict -}}
     {{- $ctx := dict
       "image" .
-      "destination" .RelPermalink
       "title" (cond $showCaption $meta.title "")
       "alt" ($meta.caption | default $page.LinkTitle)
       "sizes" $sizes

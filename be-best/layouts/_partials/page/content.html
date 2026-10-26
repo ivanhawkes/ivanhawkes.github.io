@@ -1,12 +1,31 @@
-<div class="prose w-full prose-neutral prose-custom dark:prose-invert">
-  {{ with .Title }}
-    {{/*  The title is the page's own line, centred in the measure the column
-          is set in; the paragraphs of the body keep the ragged right edge they
-          are read with.  */}}
-    <h1 class="text-center">{{ . }}</h1>
-  {{ end }}
+{{/*
+  The body of a page: its title as the page's one heading, then its content,
+  both set in the prose.
 
-  {{ with .Content }}
+  Params: a page, or a dict -
+    page       the page to set
+    omitTitle  set when the caller has already set the heading, as the head of
+               a Kanban card page has: a page keeps exactly one heading, and
+               the caller owns where it sits.
+*/}}
+{{- $page := . -}}
+{{- $omitTitle := false -}}
+{{- if reflect.IsMap . -}}
+  {{- $page = .page -}}
+  {{- $omitTitle = default false .omitTitle -}}
+{{- end -}}
+
+<div class="prose w-full prose-neutral prose-custom dark:prose-invert">
+  {{- if not $omitTitle -}}
+    {{ with $page.Title }}
+      {{/*  The title is the page's own line, centred in the measure the column
+            is set in; the paragraphs of the body keep the ragged right edge they
+            are read with.  */}}
+      <h1 class="text-center">{{ . }}</h1>
+    {{ end }}
+  {{- end -}}
+
+  {{ with $page.Content }}
     {{ . }}
   {{ end }}
 </div>

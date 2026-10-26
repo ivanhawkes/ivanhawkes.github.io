@@ -1,0 +1,166 @@
+{{/*
+  The head of one Kanban card page. The page used to lead with a copy of the
+  card itself, which repeated the title the page carries and framed facts that
+  are read, not scanned: the card belongs on the board, not at the top of its
+  own page. This partial sets the same facts as a page head instead - the title
+  with the priority, the ID and the state of the card on its line, the
+  description under it, and every other fact as a definition list in the prose
+  measure: two columns of label and value from the small screen up, one column
+  below it.
+
+  A row is drawn for a fact the card carries and not for one it does not, so a
+  card with no due date, no references and no author shows none of them. A
+  dependency or a reference that names a card of this board is a link to it;
+  one that names a card not written stays the bare ID.
+*/}}
+{{- $page := . -}}
+{{- $root := site.GetPage "section" "kanban" -}}
+
+{{/* The card's identity is its file name: the ID, the priority in its first
+     character, and the stage in the folder it sits in. A topic folder borrows
+     the number of the stage it belongs to, as the board's lanes do. */}}
+{{- $id := $page.File.BaseFileName -}}
+{{- $isCard := findRE `^p[0-9]-[a-z]{2}-[a-z0-9-]+$` $id -}}
+{{- $priority := int (slicestr $id 1 2) -}}
+{{- $kanbanDir := path.Clean $root.File.Dir -}}
+{{- $dir := path.Clean $page.File.Dir -}}
+{{- $folder := path.Base $dir -}}
+{{- $stage := $folder -}}
+{{- if ne (path.Dir $dir) $kanbanDir -}}
+  {{- $stage = printf "%s-%s" (slicestr (path.Base (path.Dir $dir)) 0 2)
+    $folder -}}
+{{- end -}}
+
+{{/* The state: done once a completion date is set, overdue when a due date
+     has passed with the card still open. The stage the card sits in says the
+     rest, so an open card on time states nothing of its own. */}}
+{{- $today := time.Format "2006-01-02" time.Now -}}
+{{- $completed := $page.Params.completionDate -}}
+{{- $overdue := false -}}
+{{- with $page.Params.due -}}
+  {{- $overdue = and (not $completed)
+    (gt $today (time.Format "2006-01-02" .)) -}}
+{{- end -}}
+{{/* A chip is a fill, so each one names the ink it carries: the brand and the
+     state colours fill, and a priority that is not the urgent one is an
+     outline, in the card's own ink. The classes are one string per chip, so no
+     two of them ever paint the same property. */}}
+{{- $chip := "rounded-full border px-2 py-0.5 text-xs font-semibold whitespace-nowrap" -}}
+{{- $ink := "border-ink text-ink" -}}
+{{- $state := dict -}}
+{{- if $completed -}}
+  {{- $state = dict "label" "Done" "colour" "border-success bg-success text-brand-ink" -}}
+{{- else if $overdue -}}
+  {{- $state = dict "label" "Overdue" "colour" "border-danger bg-danger text-brand-ink" -}}
+{{- end -}}
+
+{{/* Every card of the board by its ID, so the lists below can link one. */}}
+{{- $byId := dict -}}
+{{- range $card := $root.RegularPagesRecursive -}}
+  {{- with $card.File.BaseFileName -}}
+    {{- $byId = merge $byId (dict . $card.RelPermalink) -}}
+  {{- end -}}
+{{- end -}}
+
+{{/* A row of the list: the label in the left column, the value in the right. */}}
+{{- $label := "text-xs font-semibold uppercase tracking-wide text-ink-muted" -}}
+{{- $value := "text-ink" -}}
+
+<header class="measure flex flex-col gap-2">
+  <div class="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+    <h1 class="text-3xl leading-tight font-bold text-heading">
+      {{- $page.Title -}}
+    </h1>
+    {{- if $isCard -}}
+      <span class="{{ $chip }} {{ if eq $priority 0 }}border-brand bg-brand text-brand-ink{{ else }}{{ $ink }}{{ end }}">
+        P{{ $priority }}<span class="sr-only"> priority</span>
+      </span>
+      {{- with $state }}
+        <span class="{{ $chip }} {{ .colour }}">{{ .label }}</span>
+      {{- end -}}
+      <code class="font-code text-sm text-ink-muted">{{ $id }}</code>
+    {{- end -}}
+  </div>
+
+  {{- with $page.Description }}
+    <p class="text-lg text-ink-muted">{{ . }}</p>
+  {{- end -}}
+
+  <dl class="grid grid-cols-1 gap-x-6 gap-y-2 text-sm sm:grid-cols-[auto_1fr]">
+    <dt class="{{ $label }}">Stage</dt>
+    <dd class="{{ $value }}">{{ $stage }}</dd>
+
+    {{- with $page.Params.author }}
+      <dt class="{{ $label }}">Author</dt>
+      <dd class="{{ $value }}">{{ . }}</dd>
+    {{- end }}
+
+    <dt class="{{ $label }}">Created</dt>
+    <dd class="{{ $value }}">
+      <time datetime="{{ time.Format site.Params.dateFormatStandard $page.PublishDate }}">
+        {{- time.Format site.Params.dateFormatHuman $page.PublishDate -}}
+      </time>
+    </dd>
+
+    {{- if gt $page.Lastmod $page.PublishDate }}
+      <dt class="{{ $label }}">Updated</dt>
+      <dd class="{{ $value }}">
+        <time datetime="{{ time.Format site.Params.dateFormatStandard $page.Lastmod }}">
+          {{- time.Format site.Params.dateFormatHuman $page.Lastmod -}}
+        </time>
+      </dd>
+    {{- end }}
+
+    {{- with $page.Params.due }}
+      <dt class="{{ $label }}">Due</dt>
+      <dd class="{{ if $overdue }}{{ $value }} font-semibold{{ else }}{{ $value }}{{ end }}">
+        <time datetime="{{ time.Format site.Params.dateFormatStandard . }}">
+          {{- time.Format site.Params.dateFormatHuman . -}}
+        </time>
+      </dd>
+    {{- end }}
+
+    {{- with $completed }}
+      <dt class="{{ $label }}">Completed</dt>
+      <dd class="{{ $value }} text-success">
+        <time datetime="{{ time.Format site.Params.dateFormatStandard . }}">
+          {{- time.Format site.Params.dateFormatHuman . -}}
+        </time>
+      </dd>
+    {{- end }}
+
+    {{- with $page.Params.dependencies }}
+      <dt class="{{ $label }}">Depends on</dt>
+      <dd class="{{ $value }}">
+        {{- partial "kanban/card-ids.html" (dict "ids" . "links" $byId) -}}
+      </dd>
+    {{- end }}
+
+    {{- with $page.Params.references }}
+      <dt class="{{ $label }}">References</dt>
+      <dd class="{{ $value }}">
+        {{- partial "kanban/card-ids.html" (dict "ids" . "links" $byId) -}}
+      </dd>
+    {{- end }}
+
+    {{- with $page.GetTerms "categories" }}
+      <dt class="{{ $label }}">Categories</dt>
+      <dd class="{{ $value }}">
+        {{- range $index, $term := . }}
+          {{- if $index }}&ensp;{{ end -}}
+          <a class="hover:underline" href="{{ $term.RelPermalink }}">{{ $term.LinkTitle }}</a>
+        {{- end }}
+      </dd>
+    {{- end }}
+
+    {{- with $page.GetTerms "tags" }}
+      <dt class="{{ $label }}">Tags</dt>
+      <dd class="{{ $value }}">
+        {{- range $index, $term := . }}
+          {{- if $index }}&ensp;{{ end -}}
+          <a class="hover:underline" href="{{ $term.RelPermalink }}">{{ $term.LinkTitle }}</a>
+        {{- end }}
+      </dd>
+    {{- end }}
+  </dl>
+</header>

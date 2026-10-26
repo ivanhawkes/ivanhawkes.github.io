@@ -1,0 +1,21 @@
+{{/*
+  The IDs a Kanban card names: its dependencies, its references. Each ID that
+  is a card of this board is a link to that card; each ID that names a card
+  never written stays the bare ID, so a card is never silent about a card that
+  is missing.
+
+  Params:
+    ids   - the IDs to render, in the order the card lists them
+    links - a map of card ID to that card's permalink
+*/}}
+<ul class="flex flex-wrap gap-x-3 gap-y-1">
+  {{- range $id := .ids }}
+    <li>
+      {{- with index $.links $id }}
+        <a class="font-code hover:underline" href="{{ . }}">{{ $id }}</a>
+      {{- else }}
+        <code class="font-code text-ink-muted">{{ $id }}</code>
+      {{- end }}
+    </li>
+  {{- end }}
+</ul>

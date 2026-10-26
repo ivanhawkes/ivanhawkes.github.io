@@ -1,5 +1,8 @@
 {{ define "main" }}
-    {{- partial "/kanban/card.html" . -}}
+  {{/*  The head carries the page's own title, so the body below is set without
+        one: a card page has one heading, and it is at the head with the card's
+        facts.  */}}
+  {{- partial "/kanban/card-header.html" . -}}
 
-    {{ partial "page/content.html" . }}
+  {{- partial "page/content.html" (dict "page" . "omitTitle" true) -}}
 {{ end }}

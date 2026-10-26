@@ -29,7 +29,8 @@ tables are retained deliberately, as a worked example of the shortcode.
 
 ### Decision Record
 
-TODO: Write a shortcode to present this information somehow.
+The project maintains a [decision record](decisions/index.md) which records each
+major decision that has been made to guide future work.
 
 ## Scaffold
 

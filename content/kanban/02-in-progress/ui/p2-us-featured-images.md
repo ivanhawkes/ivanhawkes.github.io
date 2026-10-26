@@ -37,6 +37,10 @@ browser to the 1920w variant. For `garden/featured.webp` that is 363 KB against
       for a card image.
 - [ ] The post page keeps the existing full-width hint; only the card path
       changes.
+- [ ] Posts still show a featured image fallback from the parent folder even
+      when their own page branch doesn't include an image specific to that page.
+      These need to be removed and a decision recorded that featured images are
+      only shown when they are unique to a page.
 
 ## Acceptance Criteria
 

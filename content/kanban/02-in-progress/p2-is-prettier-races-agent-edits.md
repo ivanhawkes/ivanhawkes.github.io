@@ -32,8 +32,10 @@ the text the next edit quotes no longer exists on disk.
 
 ## Fix
 
-- `printWidth: 100` for `**/*.css`, in both Prettier blocks: theme CSS files
-  resolve config from `be-best/package.json`, so a root-only override is inert.
+- `printWidth: 100` for `**/*.css`. The theme carried its own Prettier block,
+  which resolved ahead of the root one for every file under `be-best/`, so a
+  root-only override was inert; the block and `be-best/.prettierignore` are gone
+  and the root config is the only one.
 - `editor.formatOnSave` off for `[css]`, `prettier.prettierPath` pinned to the
   project copy, and `prettier.requireConfig: true`.
 - `.editorconfig` keeps the load bearing trailing space after `-}}` in layouts
@@ -44,8 +46,8 @@ the text the next edit quotes no longer exists on disk.
 
 ## Acceptance Criteria
 
-- [x] Every tracked layout HTML reads as Prettier-ignored from both roots
-- [x] The Prettier blocks in `package.json` and `be-best/package.json` agree
+- [x] Every tracked layout HTML reads as Prettier-ignored by the root file
+- [x] Exactly one Prettier config, the root manifest, covers the theme too
 - [x] `pnpm run test:prettier` asserts those invariants inside `pnpm run test`
 - [x] `pnpm run test` passes against the reflowed theme CSS
 - [ ] A theme CSS edit lands without a follow-up edit quoting stale text

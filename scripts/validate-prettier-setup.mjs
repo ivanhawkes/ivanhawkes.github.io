@@ -7,16 +7,18 @@
 //      `guard` wrapper, the `@htnabe` fork, `djlint`, `gotmplfmt`) fails that
 //      way, four of them unable to even parse four of the files. The defence is
 //      `.prettierignore`, so the defence is asserted: every tracked layout HTML
-//      must read as ignored from the repository root and from `be-best/`.
-//   2. The Prettier block in `package.json` and the one in `be-best/package.json`
-//      are hand-copied duplicates. Theme files resolve config from the theme, so
-//      a root-only change is silently inert; the two must agree.
+//      must read as ignored from the repository root.
+//   2. There is exactly one Prettier config. A second block, in
+//      `be-best/package.json`, resolved ahead of the root one for every file
+//      under the theme, so a root-only change was silently inert there; a second
+//      `.prettierignore` shadows the root ignore file the same way. Neither may
+//      come back.
 //   3. The editor must not format CSS on save, and must not format anything with
 //      a config-less default Prettier - that is how templates get mangled.
 //
 // Run through `pnpm run test:prettier`.
 import { execFileSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import prettier from 'prettier';
@@ -42,31 +44,23 @@ if (layouts.length === 0) {
     problems.push(`no tracked files match '${layoutGlob}': the glob changed`);
 }
 for (const file of layouts) {
-    const fromRoot = await prettier.getFileInfo(file, {
+    const info = await prettier.getFileInfo(file, {
         cwd: root,
         ignorePath: '.prettierignore',
     });
-    const fromTheme = await prettier.getFileInfo(
-        path.relative('be-best', file),
-        {
-            cwd: path.join(root, 'be-best'),
-            ignorePath: '.prettierignore',
-        }
-    );
-    if (!fromRoot.ignored) {
+    if (!info.ignored) {
         problems.push(`${file}: not ignored by the root .prettierignore`);
-    }
-    if (!fromTheme.ignored) {
-        problems.push(`${file}: not ignored by be-best/.prettierignore`);
     }
 }
 
-// 2. The duplicated Prettier blocks agree.
+// 2. Exactly one Prettier config, in the root manifest.
 const siteConfig = json('package.json').prettier;
-const themeConfig = json('be-best/package.json').prettier;
-if (JSON.stringify(siteConfig) !== JSON.stringify(themeConfig)) {
+if (json('be-best/package.json').prettier) {
+    problems.push('be-best/package.json must not carry a prettier block');
+}
+if (existsSync(path.join(root, 'be-best/.prettierignore'))) {
     problems.push(
-        'the prettier block in package.json and in be-best/package.json differ'
+        'be-best/.prettierignore must not exist: it shadows the root ignore file'
     );
 }
 const cssWidth = (siteConfig.overrides || [])
@@ -104,6 +98,6 @@ if (problems.length) {
 }
 
 console.log(
-    `prettier setup: ${layouts.length} layout files ignored by both roots; ` +
-        'the two prettier blocks agree; the editor is pinned and quiet on CSS'
+    `prettier setup: ${layouts.length} layout files ignored; one prettier ` +
+        'config, in the root manifest; the editor is pinned and quiet on CSS'
 );

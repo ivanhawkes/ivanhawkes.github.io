@@ -24,5 +24,7 @@ resources:
     - src: 'featured.webp'
       params:
           title: 'Malaysian'
-          caption: 'A green title card with the word Malaysian.'
+          caption:
+              'A Malaysian curry laksa with a prawn, hard-boiled egg, cucumber,
+              bean sprouts and sambal.'
 ---

@@ -24,5 +24,7 @@ resources:
     - src: 'featured.webp'
       params:
           title: 'Italian'
-          caption: 'A green title card with the word Italian.'
+          caption:
+              'An Italian wood-fired pizza margherita with tomato, mozzarella,
+              basil and cherry tomatoes.'
 ---

@@ -23,7 +23,9 @@ resources:
     - src: 'featured.webp'
       params:
           title: 'Mexican'
-          caption: 'A green title card with the words Middle Eastern.'
+          caption:
+              'A Mexican bowl of chili con carne with kidney beans, sweetcorn
+              and minced beef.'
 
 title: Mexican
 ---

@@ -24,5 +24,7 @@ resources:
     - src: 'featured.webp'
       params:
           title: 'Australian'
-          caption: 'A green title card with the word Pastries.'
+          caption:
+              'An Australian meat pie, minced beef and gravy in flaky puff
+              pastry, cut open.'
 ---

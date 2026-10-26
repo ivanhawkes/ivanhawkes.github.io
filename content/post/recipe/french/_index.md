@@ -24,5 +24,7 @@ resources:
     - src: 'featured.webp'
       params:
           title: 'French'
-          caption: 'A green title card with the word French.'
+          caption:
+              'A French bacon-wrapped chicken dish with peppers and courgette,
+              thick-cut chips and a fennel salad.'
 ---

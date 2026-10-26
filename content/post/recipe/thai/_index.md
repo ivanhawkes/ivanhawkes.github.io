@@ -25,6 +25,6 @@ resources:
       params:
           title: 'Thai'
           caption:
-              'A bowl of red curry with chicken and pumpkin, garnished with
-              basil leaves.'
+              'A Thai plate of pad thai with prawns, egg and bean sprouts,
+              condiments in a dish beside it.'
 ---

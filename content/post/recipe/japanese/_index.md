@@ -25,6 +25,6 @@ resources:
       params:
           title: 'Japanese'
           caption:
-              'A plate of Mongolian beef with sesame seeds and spring onion,
-              seen from above.'
+              'A Japanese unagi don: grilled eel over rice in a lacquer bowl,
+              with sweet omelette.'
 ---

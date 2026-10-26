@@ -23,7 +23,9 @@ resources:
     - src: 'featured.webp'
       params:
           title: 'Middle Eastern'
-          caption: 'A green title card with the words Middle Eastern.'
+          caption:
+              'A Middle Eastern shish kebab: marinated chicken pieces charring
+              on skewers over charcoal.'
 
 title: Middle Eastern
 ---

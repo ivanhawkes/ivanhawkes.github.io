@@ -24,5 +24,7 @@ resources:
     - src: 'featured.webp'
       params:
           title: 'American'
-          caption: 'A green title card with the word Pastries.'
+          caption:
+              'An American hot dog in a soft split bun, drizzled with yellow
+              mustard.'
 ---

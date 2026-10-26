@@ -24,5 +24,7 @@ resources:
     - src: 'featured.webp'
       params:
           title: 'Vietnamese'
-          caption: 'A bowl of pho soup.'
+          caption:
+              'A Vietnamese bowl of beef pho with rice noodles, meatballs, bean
+              sprouts and herbs, chopsticks across it.'
 ---

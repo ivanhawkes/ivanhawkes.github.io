@@ -60,13 +60,14 @@ directory, and has its own behaviour.
 | `bare`          | Pages with no surrounding chrome.                                                                                                                  |
 
 Cards and listing pages search a page bundle for an image named `featured.webp`
-and use it as the card image and the page hero when it is present. A card reads
-the bundle of the page it lists, never its section's, so an image-less card is
-text alone and a listing repeats no image; the page hero does fall back to the
-section image. A listing lays its cards out in one, two and three columns at the
-768px and 1280px breakpoints, each card keeping the height its own text needs,
-and a card title is a heading set at the `h3` size in the ink headings use, and
-links.
+and use it as the card image and the page hero when it is present. The image is
+read from the bundle of the page itself, never from an ancestor section, for a
+card and for a page hero alike: an image-less card is text alone and a page with
+no image of its own has no hero, so neither a listing nor an article repeats a
+section's photograph. A listing lays its cards out in one, two and three columns
+at the 768px and 1280px breakpoints, each card keeping the height its own text
+needs, and a card title is a heading set at the `h3` size in the ink headings
+use, and links.
 
 ## Article Behaviour
 

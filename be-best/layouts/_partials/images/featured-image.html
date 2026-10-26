@@ -1,6 +1,13 @@
 {{/*
   Featured image for a page: "featured.webp" in the page's own resources.
 
+  The page's own bundle is the only place the image is looked for, and an
+  ancestor section is never asked: a featured image is shown only when it is
+  unique to the page. The parent lookup repeated one section photograph as the
+  hero of every page in the section and as the image of every image-less card
+  in a listing, at the widest variant of one large file, and let a page be
+  illustrated by a photograph that does not depict it.
+
   Alt text and the caption under the image come from the page's resource
   config:
 
@@ -16,16 +23,15 @@
     page     the page to render, required
     caption  true to ask for the caption under the image, which page layouts
              do and card partials do not
-    inherit  true to fall back to the parent section's image, as the page hero
-             does; omitted here for a card, which reads its own bundle only
     link     a URL to wrap the image in, which a card gives and a page does
              not; nothing is wrapped when the page has no image of its own
     sizes    the `sizes` hint for the layout box the image is drawn in, and
              `widths` the ladder of variants to offer it; a card gives both to
              name its grid, and a page omits both for the full-width hero
 
-  Nothing is written at all when the lookup finds no image, so a card with no
-  image of its own contributes no `<img>`, no `<picture>` and no wrapper.
+  Nothing is written at all when the page has no image of its own, so a page or
+  card whose bundle carries no `featured.webp` contributes no `<img>`, no
+  `<picture>` and no wrapper.
 */}}
 
 {{- $page := .page -}}
@@ -33,18 +39,9 @@
 {{- $link := .link -}}
 {{- $sizes := .sizes -}}
 {{- $widths := .widths -}}
-{{- $inherit := true -}}
-{{- if isset . "inherit" -}}
-  {{- $inherit = .inherit -}}
-{{- end -}}
 
 {{- with $page -}}
-  {{- $image := partial "/images/featured.html" (dict
-    "page" .
-    "inherit" $inherit
-  ) -}}
-
-  {{- with $image -}}
+  {{- with .Resources.GetMatch "featured.webp" -}}
     {{- $meta := .Params | default dict -}}
     {{- $ctx := dict
       "image" .

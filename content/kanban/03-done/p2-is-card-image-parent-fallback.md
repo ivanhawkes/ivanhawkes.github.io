@@ -56,3 +56,9 @@ weighs 363 KB, so the page requests 2.2 MB of one picture.
   entries, as the functional specification has always said, and the card
   redesign moved the four paginated sections from 6 to 12 to match, so the
   listings named above are measured at 12.
+- **Superseded 2026-10-26** by the removal of the parent-section fallback on the
+  page-hero path, recorded in the decision record. The third item below, which
+  kept `inherit` defaulting to true for pages, no longer describes the theme:
+  the flag and the `.Parent` lookup are gone, `featured.html` is folded into
+  `featured-image.html`, and no page shows an ancestor section's image. The card
+  behaviour recorded here is unchanged.

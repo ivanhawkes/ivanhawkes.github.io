@@ -37,10 +37,11 @@ variant. For `garden/featured.webp` that is 363 KB against 135 KB at 960w.
       for a card image.
 - [x] The post page keeps the existing full-width hint; only the card path
       changes.
-- [ ] Posts still show a featured image fallback from the parent folder even
-      when their own page branch doesn't include an image specific to that page.
-      These need to be removed and a decision recorded that featured images are
-      only shown when they are unique to a page.
+- [x] No page is illustrated by an ancestor section's image: the `inherit` flag
+      and the `.Parent` lookup are deleted, a hero is read from the page's own
+      bundle as a card image already is, and the decision that a featured image
+      is shown only when it is unique to a page is recorded in the decision
+      record.
 
 ## Acceptance Criteria
 
@@ -52,9 +53,22 @@ variant. For `garden/featured.webp` that is 363 KB against 135 KB at 960w.
 - `public/post/garden/spring-2021-try-again/index.html` is byte-identical to the
   build before the change. Its ladder has always stopped at 960w: its
   `featured.webp` is 1230px wide, so the source caps the ladder below 1280.
-  Page-level heroes with a wider source, as under `post/general/`, still list
-  1280, 1600 and 1920 with the full-width hint.
+  Page-level heroes with a wider source, as
+  `public/post/cryengine/matrices-vectors-quaternions-and-cryengine-3/index.html`
+  at 1920w, still list 1280, 1600 and 1920 with the full-width hint.
 - `pnpm run test` passes.
+- `grep -rn '\.Parent\|inherit' be-best/layouts/_partials/images/` reports
+  nothing: the fallback has no code left behind, and `images/featured.html`,
+  written for the two lookup paths, is folded into `featured-image.html`.
+- No page is drawn with an ancestor section's image. For each page under
+  `public/`, no `featured_h*` URL on that page names a directory above the
+  page's own: 0 pages, against 95 pages and 1140 such URLs in the build before
+  the change. 37 pages render a featured image, down from 132: the 95 that lose
+  a hero are articles whose bundle carries no `featured.webp`.
+- Listings are byte-identical to the build before the change:
+  `public/index.html` and `public/post/index.html` are unchanged, as a card
+  already read the bundle of the page it lists. Pages that own their image, as
+  `public/post/garden/spring-2021-try-again/index.html`, are unchanged too.
 
 ## Not in scope
 
@@ -64,3 +78,9 @@ variant. For `garden/featured.webp` that is 363 KB against 135 KB at 960w.
 - The section-image fallback that repeats one image across a listing:
   `p2-is-card-image-parent-fallback`.
 - Variant quality and weight: `p2-us-image-processing`.
+
+## Notes
+
+- Completing the last item removes the page-hero half of
+  `p2-is-card-image-parent-fallback`, which had kept the fallback for pages; the
+  card's own image path is untouched.

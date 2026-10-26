@@ -18,5 +18,5 @@ indicate if it's overdue.
 
 ## Acceptance Criteria
 
-- [ ] **Grid View** - `p2-us-kanban-grid-view` user story is completed
+- [x] **Grid View** - `p2-us-kanban-grid-view` user story is completed
 - [ ] **Personal View** - `p2-us-kanban-personal-view` user story is completed

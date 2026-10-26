@@ -8,4 +8,27 @@
   sets `params.completionDate`.
 - Theme changes: `be-best/` is a plain directory in this repo (not a submodule),
   so commit theme files together with the rest of the change.
+- Prettier rewrites files after you: VSCodium `editor.formatOnSave` and the
+  husky pre-commit hook (`lint-staged` → `prettier --write`) reformat staged
+  css, md, html, yaml, json and js. Re-read a file immediately before each edit;
+  never reuse `oldText` from an older read or from your own write.
+- Prettier runs with `printWidth: 80` (`100` for `*.css`) and `tabWidth: 4`: a
+  CSS declaration at indent 1 wraps past 96 columns into three lines, and
+  markdown prose reflows at 80. Keep CSS declarations under 96 columns and prose
+  lines under 80 so disk text equals your text; after editing theme CSS run
+  `npx prettier --write <file>` and re-read it before editing again.
+- Never edit `assets/css/main.css`: the Tailwind CLI regenerates it (`css`,
+  `serve`, `test:css`, `build:css`); it is gitignored and 85 KB, past the read
+  limit. Theme CSS sources live in `be-best/assets/css/`.
+- Never run Prettier over `be-best/layouts/**` (already in `.prettierignore`),
+  `--no-ignore` included, and do not adopt a replacement plugin: measured on
+  this tree, `prettier-plugin-go-template` 0.0.15, its `guard` wrapper and the
+  active `@htnabe` fork all fail to parse 4 of 69 layouts, churn 1870+/1710-
+  lines, and change the rendered HTML of 458 of 441 pages. `djlint` and
+  `gotmplfmt` behave the same, so layout HTML stays hand-formatted. Layout HTML
+  carries trailing spaces inside template tags; copy them from a fresh read.
+  `pnpm run test:prettier` asserts that boundary; make it pass.
+- Line endings are not the problem: `.gitattributes` (`* text=auto eol=lf`),
+  `core.autocrlf=input` and `core.eol=lf` keep every tracked file LF; no tracked
+  file contains CRLF.
 - Keep replies and commit messages concise.

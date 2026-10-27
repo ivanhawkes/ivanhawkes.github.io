@@ -1,5 +1,6 @@
 /* Style the pagination control set. The set is one row of controls, centred
-   under the listing it pages. */
+   under the listing it pages. The list itself is a list of the furniture, not of
+   the prose, so `typography.css` leaves it unindented and unmarked. */
 
 .pagination {
     list-style: none;
@@ -7,27 +8,16 @@
     margin: 0px;
     text-align: center;
     background-color: transparent;
-    font-size: 1.2rem;
+    font-size: var(--text-lg);
 }
 
-.pagination li {
+/* The name is more specific than the unindented reset `typography.css` gives the
+   page controls, so the space between the controls survives it. */
+ul.pagination > li {
     display: inline-block;
-    padding: 0 0.33rem;
+    padding-inline: 0.33rem;
 }
 
-/* Indent regular lists. */
-ul {
-    padding-left: 0rem;
-    margin-bottom: 1rem;
-    list-style-position: inside;
-}
-
-/* Forces nested lists to indent */
-ul ul,
-ul ol,
-ol ul,
-ol ol {
-    padding-left: 0rem;
-    margin-bottom: 1rem;
-    list-style-position: inside;
-}
+/* Lists are indented, hung and marked in `typography.css`, which sets them in
+   `em` of the text they hold: one gutter per level, and the same gap from marker
+   to text at every level. */

@@ -5,8 +5,14 @@
   {{/*  The cards of the stage, in lanes as wide as the panel gives them: the
         board takes the whole width `main` offers, spread across it, and not the
         prose measure above it.  */}}
+  {{/*  The cards of the stage, in lanes as wide as the panel gives them: the
+        board takes the whole width `main` offers, spread across it, and not the
+        prose measure above it. Only the files a card is - `p<n>-<kind>-<slug>`
+        - are listed: a stage's own `_index.md` has no priority, no state and
+        nothing to frame, and it is the page this list is written on.  */}}
   <div class="kanban-board panel grid gap-4">
-    {{ range .Pages }}
+    {{- $cards := where .Pages "ContentBaseName" "findRE" "^p[0-9]-[a-z]{2}-" -}}
+    {{ range $cards }}
       {{- partial "/kanban/section-card.html" . -}}
     {{ end }}
   </div>

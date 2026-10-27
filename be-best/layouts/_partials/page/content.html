@@ -7,12 +7,17 @@
     omitTitle  set when the caller has already set the heading, as the head of
                a Kanban card page has: a page keeps exactly one heading, and
                the caller owns where it sits.
+    byline     set to put the byline under that heading, as an article has it:
+               the note about the page, set in the measure of the page's own
+               title, and not above it.
 */}}
 {{- $page := . -}}
 {{- $omitTitle := false -}}
+{{- $byline := false -}}
 {{- if reflect.IsMap . -}}
   {{- $page = .page -}}
   {{- $omitTitle = default false .omitTitle -}}
+  {{- $byline = default false .byline -}}
 {{- end -}}
 
 <div class="prose w-full prose-neutral prose-custom dark:prose-invert">
@@ -23,6 +28,10 @@
             are read with.  */}}
       <h1 class="text-center">{{ . }}</h1>
     {{ end }}
+  {{- end -}}
+
+  {{- if $byline -}}
+    {{- partial "/byline/byline.html" $page -}}
   {{- end -}}
 
   {{ with $page.Content }}

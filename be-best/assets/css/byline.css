@@ -1,0 +1,130 @@
+/* Byline: the line under a page's title that says who wrote it, when it was
+   written, and where the author is elsewhere.
+
+   The line is metadata about the page, not the page's own voice, so it is set
+   under the body it introduces rather than over it: 0.9 times the reading size,
+   in the muted ink, centred under a title that is centred, and a step quieter
+   than the paragraphs that follow. Its one loud element is the author's name,
+   which takes the heading ink and a weight of 600; the dates stay muted, and
+   the icons are the quietest thing on the page at rest and take the link colour
+   on hover, so a pointer finds them.
+
+   The parts of the line meet at a dot the CSS draws: a box in the colour of the
+   text, sized in `em` so it scales with the line, in place of a character. No
+   font is asked for a glyph, so no font substitutes one, and a phone that draws
+   the codepoint as a pictograph on a coloured plate shows a dot like every other
+   screen. */
+
+.byline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    margin-block: 0 2em;
+    font-size: var(--text-sm);
+    line-height: 1.4;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* The parts of one line, in a row that wraps to more rows when the viewport
+   runs out of room for it, with every row centred. */
+.byline-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: center;
+    column-gap: 0.55rem;
+    row-gap: 0.25rem;
+    margin: 0;
+}
+
+.byline-author {
+    color: var(--heading);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.byline-updated {
+    font-style: italic;
+}
+
+/* The dot between the parts: centred on the line, the colour of the text it
+   sits in, at half its weight. */
+.byline-sep {
+    flex: none;
+    align-self: center;
+    width: 0.3em;
+    height: 0.3em;
+    border-radius: 9999px;
+    background-color: currentcolor;
+    opacity: 0.55;
+}
+
+/* The author's own pages. The marks are the size of the line they sit in, in
+    the muted ink, and take the link colour the page links take. */
+.byline-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.byline-links a {
+    color: var(--text-muted);
+    transition:
+        color 150ms ease-out,
+        opacity 150ms ease-out;
+}
+
+.byline-links a:hover,
+.byline-links a:focus-visible {
+    color: var(--link);
+}
+
+.byline-links svg {
+    display: block;
+    width: 1.1em;
+    height: 1.1em;
+    fill: currentcolor;
+}
+
+/* The play mark of the YouTube tile is a cut-out: it shows the ground the line
+   is set on, in both schemes, because the ground is one token. */
+.byline-links svg .icon-cutout {
+    fill: var(--bg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .byline-links a {
+        transition: none;
+    }
+}
+
+/* Paper takes the byline as ink: the tokens reset the muted ink and the heading
+   ink for the medium. The marks of the author's own pages are links to pages
+   that are not on the sheet, so they go, as the rest of the navigation goes. */
+@media print {
+    .byline-links {
+        display: none;
+    }
+}
+
+@media (forced-colors: active) {
+    .byline,
+    .byline-author {
+        color: CanvasText;
+    }
+
+    .byline-sep {
+        background-color: CanvasText;
+        opacity: 1;
+    }
+
+    .byline-links a {
+        color: LinkText;
+    }
+
+    .byline-links svg .icon-cutout {
+        fill: Canvas;
+    }
+}

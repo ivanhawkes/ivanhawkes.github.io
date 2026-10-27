@@ -1,0 +1,158 @@
+/* Kanban cards: the frame carries the priority.
+
+   A card on the board is scanned and not read. The question a lane answers is
+   "what is urgent, what is late, what can wait", and the answer has to be
+   legible from the far end of a room, where the title is not. So the frame is
+   the signal, and the frame is graded, most insistent first:
+
+     priority 0    a danger frame, two pixels wide, and a danger rail
+     priority 1    a brand frame, two pixels wide, and a brand rail
+     priority 2    a hairline frame in the dark edge, and a brand rail
+     priority 3    a hairline frame, and a rail in the pale blue
+     priority 4 up a hairline frame and a rail in the faint edge: a card that
+                   asks for nothing
+
+   The rail is the wide edge facing the reading direction. It is the part that
+   carries the colour while the frame stays a line, and it is the edge every
+   card in a lane starts at, so a column of cards gathers its priorities into a
+   stripe down the lane. A frame is drawn for every priority, the first and the
+   last included: a card with a priority has a frame, and a card with no frame
+   is a card whose priority was never read.
+
+   A state outranks a priority. A card whose due date has passed is late at any
+   priority, and a card that is finished asks for nothing more, so the state
+   rules come after the priority rules, at the same weight, and win. */
+
+.kanban-card {
+    box-sizing: border-box;
+    border: 1px solid var(--edge);
+    border-inline-start-width: 5px;
+    border-inline-start-color: var(--edge-strong);
+    border-radius: var(--radius);
+    background-color: var(--surface);
+    box-shadow: var(--shadow-sm);
+    transition:
+        border-color 150ms ease-out,
+        box-shadow 150ms ease-out,
+        transform 150ms ease-out;
+}
+
+/* A card on a dark page takes a hairline of light along its top edge: the one
+   step a dark scheme has to show a surface raised, since a cast shadow alone
+   disappears into the ground it falls on. */
+.dark .kanban-card {
+    box-shadow:
+        var(--shadow-sm),
+        inset 0 1px 0 oklch(1 0 0 / 7%);
+}
+
+/* The highlight: a card under a pointer lifts a pixel, and the shadow it
+   throws grows. The frame keeps the priority it was given. */
+.kanban-card:hover,
+.kanban-card:focus-within {
+    box-shadow: var(--shadow);
+    transform: translateY(-1px);
+}
+
+.kanban-card[data-priority='0'] {
+    border: 2px solid var(--state-danger);
+    border-inline-start-width: 5px;
+    border-inline-start-color: var(--state-danger);
+}
+
+.kanban-card[data-priority='1'] {
+    border: 2px solid var(--brand);
+    border-inline-start-width: 5px;
+    border-inline-start-color: var(--brand);
+}
+
+.kanban-card[data-priority='2'] {
+    border-color: var(--edge-strong);
+    border-inline-start-color: var(--brand);
+}
+
+.kanban-card[data-priority='3'] {
+    border-color: var(--edge-strong);
+    border-inline-start-color: var(--accent-soft);
+}
+
+.kanban-card[data-priority='4'],
+.kanban-card[data-priority='5'] {
+    border-inline-start-color: var(--edge-strong);
+}
+
+/* The states, last: the fact the card has earned outranks the fact it was
+   given. */
+.kanban-card[data-state='overdue'] {
+    border: 2px solid var(--state-danger);
+    border-inline-start-width: 5px;
+    border-inline-start-color: var(--state-danger);
+}
+
+.kanban-card[data-state='done'] {
+    border-color: var(--edge);
+    border-inline-start-color: var(--state-success);
+}
+
+.kanban-card[data-state='done']:hover,
+.kanban-card[data-state='done']:focus-within {
+    border-color: var(--edge-strong);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .kanban-card {
+        transition: none;
+    }
+
+    .kanban-card:hover,
+    .kanban-card:focus-within {
+        transform: none;
+    }
+}
+
+/* Paper prints in one ink. The grade survives as width: a card that was loud
+   is a thick frame, a card that was quiet is a hairline, and a late card is
+   the one frame in the only colour the page keeps. The tokens flatten shadows
+   to nothing on paper, so the frame is all that is left to grade. */
+@media print {
+    .kanban-card {
+        border-color: #bbb;
+        border-inline-start-color: #bbb;
+    }
+
+    .kanban-card[data-priority='0'],
+    .kanban-card[data-priority='1'],
+    .kanban-card[data-state='overdue'] {
+        border: 2px solid #666;
+        border-inline-start-width: 5px;
+        border-inline-start-color: #b00;
+    }
+
+    .kanban-card[data-state='done'] {
+        border-inline-start-color: #666;
+    }
+}
+
+/* A forced palette owns the colours, so the grade moves to the one thing the
+   palette leaves to the author: the width of the edges. */
+@media (forced-colors: active) {
+    .kanban-card {
+        border: 1px solid CanvasText;
+        border-inline-start-width: 4px;
+        border-inline-start-color: CanvasText;
+        background-color: Canvas;
+    }
+
+    .kanban-card[data-priority='0'],
+    .kanban-card[data-priority='1'],
+    .kanban-card[data-state='overdue'] {
+        border-width: 3px;
+        border-inline-start-width: 7px;
+    }
+
+    .kanban-card[data-priority='2'],
+    .kanban-card[data-priority='3'] {
+        border-width: 2px;
+        border-inline-start-width: 5px;
+    }
+}

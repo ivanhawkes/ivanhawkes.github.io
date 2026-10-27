@@ -5,8 +5,11 @@
 @import './codeblock.css';
 @import './custom.css';
 @import './tokens.css';
+@import './typography.css';
 @import './layout.css';
 @import './cards.css';
+@import './byline.css';
+@import './kanban.css';
 @import './images.css';
 @import './header.css';
 @import './dark-mode.css';
@@ -23,7 +26,23 @@
 
 @theme inline {
     --font-heading: var(--font-sans);
-    --font-sans: 'Source Sans 3 Variable', sans-serif;
+    /* The theme names no webfont: `Source Sans 3 Variable` is a font a reader
+       has, not one the site ships, so most readers start at the chain below
+       it. The chain therefore names the faces readers actually have, in the
+       order they should be read - the system's own text face before the
+       generic `sans-serif`, which on Linux and Android means Helvetica or
+       Liberation Sans - and it ends with the colour-emoji fonts, which a text
+       family never carries and a page full of them must not lose. The serif
+       is the same arrangement, with the old book faces first: it is the face
+       of a quotation and a caption, where a text design reads better than the
+       UI face the page is built in. */
+    --font-sans:
+        'Source Sans 3 Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+        'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Noto Color Emoji';
+    --font-serif:
+        'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, Charis,
+        'Bitstream Charter', 'Source Serif 4', serif;
     --font-code: var(--code-font-family);
 
     /* Every colour utility is a role from the semantic layer in `tokens.css`,
@@ -90,7 +109,6 @@
     --palette-success: oklch(0.42 0.13 155);
     --palette-stripe: oklch(96.7% 0.003 264.542);
     --palette-stripe-alt: oklch(92.8% 0.006 264.531);
-    --radius: 0.625rem;
 }
 
 .dark {

@@ -1,42 +1,70 @@
-<div class="measure byline flex flex-row justify-center items-center">
-  {{- .Params.author -}}&nbsp;-&nbsp;
+{{/*
+  The byline: who wrote the page, when it was written, and where the author can
+  be found elsewhere.
 
-  <time datetime="{{ .PublishDate.Format .Site.Params.dateFormat }}">
-    {{ .PublishDate.Format .Site.Params.dateFormatHuman }}
-  </time>&nbsp;&nbsp;
-  
-  <div class="flex flex-row justify-between">
-    {{ with  .Site.Params.social.github }}
-      <a
-        href="http://www.github.com/{{ $.Site.Params.social.github }}"
-        target="_blank">
-        <svg xmlns="http://w3.org" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-        </svg>
-      </a>&nbsp;&nbsp;
-    {{ end }}
+  The line sits under the title of the page, as the head of the prose, and not
+  above it: the title is the page's own words, and the byline is a note about
+  them, which is what a byline has always been. `page/content.html` puts it
+  there for the pages that ask for it, in the measure the title is set in.
 
-    {{ with .Site.Params.social.facebook }}
-      <a
-        href="https://www.facebook.com/sharer/sharer.php?u={{ $.Site.Params.social.facebook }}"
-        target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="#1877F2">
-          <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/>
-        </svg>
-      </a>&nbsp;&nbsp;
-    {{ end }}
-  </div>
+  Its type is one step under the body it introduces, in the muted ink, so it
+  reads as metadata and not as a second heading, and only the author's name is
+  emphasised. `be-best/assets/css/byline.css` sets the line, the dot between its
+  parts, and the size and colour of the marks.
 
-    {{ with .Site.Params.social.youtube }}
-      <a
-        href="https://www.youtube.com/@{{ $.Site.Params.social.youtube }}"
-        target="_blank">
-        <svg xmlns="http://w3.org" viewBox="0 0 24 24" width="32" height="32">
-          <path fill="#FF0000" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814z"/>
-          <path fill="#FFFFFF" d="M9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-        </svg>
-      </a>
-    {{ end }}
-  </div>
+  data/author.yaml is the single source of truth for the links listed here.
+*/}}
+{{- $page := . -}}
+{{- $fmt := default "2006-01-02" site.Params.dateFormatStandard -}}
+{{- $human := default "2006, Jan 02" site.Params.dateFormatHuman -}}
+<div class="measure byline">
+  <p class="byline-line">
+    <span class="byline-author">Ivan Hawkes</span>
+    <span class="byline-sep" aria-hidden="true"></span>
+    <time
+      class="byline-date"
+      datetime="{{ time.Format $fmt $page.PublishDate }}">
+      {{- time.Format $human $page.PublishDate -}}
+    </time>
+    {{- if gt $page.Lastmod $page.PublishDate }}
+      <span class="byline-sep" aria-hidden="true"></span>
+      <span class="byline-updated">
+        updated
+        <time datetime="{{ time.Format $fmt $page.Lastmod }}">
+          {{- time.Format $human $page.Lastmod -}}
+        </time>
+      </span>
+    {{- end }}
+  </p>
 
+  <span class="byline-links">
+    <a
+      href="https://github.com/ivanhawkes"
+      aria-label="GitHub profile of Ivan Hawkes">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M12 0c-6.626 0 -12 5.373 -12 12c0 5.302 3.438 9.8 8.207 11.387c0.6.22 0.793-.261 0.793-.577v-2.234c-3.338.726 -4.033-1.416 -4.033-1.416c-.546-2.196 -1.387-2.781 -1.387-2.781c-1.11-.76 .084-.745 0.084-.745c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c0.108-.776.417-1.305 0.76-1.605c-2.665-.305 -5.467-1.334 -5.467-5.931c0-1.311 4.685-2.387 4.685-2.387c0-.636 1.235-1.305 1.235-1.305c0 1.041 1.675 1.041 1.675 1.041c1.626.12 3.56 1.705 3.56 4.553c0 3.438 -3.568 4.403 -6.941 4.881c0.546.47 1.023 1.394 1.023 1.394v3.169c0 0.31 .18.797 0.79.577c4.764-1.585 8.199-6.086 8.199-11.386C24 5.373 18.627 0 12 0z" />
+      </svg>
+    </a>
+
+    <a
+      href="https://www.facebook.com/ivan.hawkes.5055"
+      aria-label="Facebook profile of Ivan Hawkes">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M24 12.073c0-6.627 -2.683 -12.073 -6.005 -12.073c-3.32 0 -6.004 5.446 -6.004 12.073c0 6.628 2.684 12.073 6.004 12.073c3.322 0 6.005 -5.445 6.005 -12.073zm-11.023 0c0-6.088 2.228 -11.011 5.018 -11.011c2.765 0 5.019 4.923 5.019 11.011c0 6.088 -2.254 11.011 -5.019 11.011c-2.79 0 -5.018 -4.923 -5.018 -11.011z" />
+        <path
+          d="M9.256 6.864v4.188H6.895v3.06h2.361v9.106c2.3 1.11 4.723 1.526 7.255 1.728v-3.504c-1.528-.127 -1.832-.28 -2.747-.555v-6.775h4.154l-.324-3.06h-3.83V6.23z" />
+      </svg>
+    </a>
+
+    <a href="https://www.youtube.com/@IvanHawkes" aria-label="YouTube channel of Ivan Hawkes">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path
+          d="M23.495 6.185a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.504A3.017 3.017 0 0 0 .502 6.185C0 8.07 0 12 0 12s0 3.93.502 5.815a3.016 3.016 0 0 0 2.122 2.136c1.871.504 9.376.504 9.376.504s7.505 0 9.377-.504a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.505-5.815zM9.545 15.568V8.432L15.817 12l-6.272 3.568z" />
+        <path class="icon-cutout" d="M9.545 15.568 15.817 12 9.545 8.432z" />
+      </svg>
+    </a>
+  </span>
 </div>
+

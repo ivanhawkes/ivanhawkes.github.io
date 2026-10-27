@@ -1,21 +1,58 @@
-<div class="taxonomy text-md flex flex-col items-center justify-center mt-4">
-  <ul>
-    <!-- Taxonomy - Categories. -->
-    {{ range $index, $value := .Params.categories }}
-      <li class="inline">
-        {{ if $index }}&ensp;&#9210;&ensp;{{ end }}
-        <a href="/categories/{{ . | urlize }}">{{- $value -}}</a>
-      </li>
-    {{ end }}
-  </ul>
+{{/*
+  Taxonomy: the tags and categories a page is filed under, in one line at its
+  foot, under the prose that names them.
 
-    <!-- Taxonomy - Tags. -->
-  <ul>
-    {{ range $index, $value := .Params.tags }}
-      <li class="inline">
-        {{ if $index }}&ensp;&#9210;&ensp;{{ end }}
-          <a href="/tags/{{ . | urlize }}">{{- $value -}}</a>
-      </li>
-    {{ end }}
-  </ul>
-</div>
+  The old line set the kinds apart with `⏺`, which is U+23FA in the Enclosed
+  Alphanumeric Supplement: where emoji presentation is the default a phone
+  draws it as a black circle on a coloured plate, so the separator arrived as a
+  square of colour unrelated to the theme. The kinds now meet at a dot the CSS
+  draws, in the colour of the line it sits in, sized in `em` so it scales with
+  the type it separates; `navigation.css` owns the line, the label, the link and
+  the dot, and this partial states the terms and links them to the term pages.
+
+  A kind with no terms renders nothing, and a page filed under nothing renders
+  no line at all, so a page is never given an empty rule where its taxonomies
+  should have been.
+*/}}
+{{- $taxonomies := .Params.taxonomies -}}
+{{- $categories := .Params.categories -}}
+{{- if and (not .Params.omitTaxonomy) (or $taxonomies $categories) -}}
+  <nav
+    class="measure taxonomy"
+    aria-label="Tags and categories">
+    <ul class="taxonomy-list">
+      {{- with $taxonomies }}
+        <li class="taxonomy-item">
+          <span class="taxonomy-label">Tags</span>
+          {{- range . -}}
+            {{- $permalink := (printf "%s%s/" ($.Site.GetPage "taxonomy" "tags").RelPermalink (urlize .)) -}}
+            <a
+              role="link"
+              href="{{- $permalink -}}"
+              aria-label="Tag: {{ . }}"
+              itemProp="http://schema.org/keywords"
+              data-pagefind-tags='{{ printf "[[%s]]" (lower .) | safeHTMLAttr }}'>
+              {{- . -}}
+            </a>
+          {{- end }}
+        </li>
+      {{- end }}
+      {{- with $categories }}
+        <li class="taxonomy-item">
+          <span class="taxonomy-label">Categories</span>
+          {{- range . -}}
+            {{- $permalink := (printf "%s%s/" ($.Site.GetPage "taxonomy" "categories").RelPermalink (urlize .)) -}}
+            <a
+              role="link"
+              href="{{- $permalink -}}"
+              aria-label="Category: {{ . }}"
+              itemProp="http://schema.org/keywords"
+              data-pagefind-tags='{{ printf "[[%s]]" (lower .) | safeHTMLAttr }}'>
+              {{- . -}}
+            </a>
+          {{- end }}
+        </li>
+      {{- end }}
+    </ul>
+  </nav>
+{{- end }}

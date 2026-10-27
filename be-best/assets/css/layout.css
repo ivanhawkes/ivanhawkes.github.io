@@ -46,12 +46,22 @@ main {
     width: 100%;
     max-width: var(--page-column);
     margin-inline: auto;
-    padding: 1.5rem var(--page-gutter) 2rem;
+    padding: 2.25rem var(--page-gutter) 3.5rem;
 }
 
+/* The space between the blocks of a page: the bread crumb, the hero, the page,
+   the notes at its foot. A margin, not a gap, so a block that wraps keeps its
+   own space from the block before it, and every page meets its blocks at the
+   same measure. */
+main > * + * {
+    margin-top: 1.75rem;
+}
+
+/* The rhythm of a paragraph outside the prose, which sets its own from
+   `typography.css`: a gap under a block, never above it, so two blocks meet at
+   one gap and not at two. */
 main p {
-    margin-top: 5px;
-    margin-bottom: 15px;
+    margin-block: 0 1.15em;
 }
 
 /* The width of the whole panel, for what is read across rather than down: the
@@ -75,8 +85,8 @@ main p {
 
 .container {
     border: none;
-    border-radius: 1em;
-    margin-bottom: 20px;
+    border-radius: var(--radius);
+    margin-block: 0 2rem;
     padding: 0;
 
     h2,

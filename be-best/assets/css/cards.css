@@ -9,12 +9,45 @@
 .card {
     display: flex;
     flex-direction: column;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     overflow: hidden;
     border: 1px solid var(--edge);
     border-radius: var(--radius);
     background-color: var(--surface);
+    box-shadow: var(--shadow-sm);
     break-inside: avoid;
+    transition:
+        border-color 150ms ease-out,
+        box-shadow 150ms ease-out,
+        transform 150ms ease-out;
+}
+
+/* The highlight, as a Kanban card takes it: a hairline of light along the top
+   edge on a dark page, a pixel of lift and a deeper cast under a pointer, and
+   the frame one step darker. The card is one surface, lifted a little, and no
+   part of it is louder than the title on it. */
+.dark .card {
+    box-shadow:
+        var(--shadow-sm),
+        inset 0 1px 0 oklch(1 0 0 / 7%);
+}
+
+.card:hover,
+.card:focus-within {
+    border-color: var(--edge-strong);
+    box-shadow: var(--shadow);
+    transform: translateY(-1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: none;
+    }
+
+    .card:hover,
+    .card:focus-within {
+        transform: none;
+    }
 }
 
 /* The image runs to the frame, so the card clips it and it needs no rounding
@@ -57,9 +90,10 @@
    an underline on hover, the focus ring every other control draws. */
 .card-title {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: var(--text-lg);
     font-weight: 600;
     line-height: 1.3;
+    letter-spacing: -0.01em;
     color: var(--heading);
 }
 
@@ -80,7 +114,8 @@
 }
 
 .card-meta {
-    font-size: 0.95rem;
+    font-size: var(--text-xs);
+    letter-spacing: 0.02em;
     color: var(--text-muted);
 }
 
@@ -93,7 +128,7 @@
    nothing is stretched to fill a grid row the way a fixed grid stretches it. */
 .card-list {
     columns: 1;
-    column-gap: 1rem;
+    column-gap: 1.25rem;
 }
 
 @media (min-width: 768px) {
@@ -111,6 +146,13 @@
 @media (forced-colors: active) {
     .card {
         border-color: CanvasText;
+        box-shadow: none;
+    }
+
+    .card:hover,
+    .card:focus-within {
+        border-color: Highlight;
+        transform: none;
     }
 
     .card-title a:hover {

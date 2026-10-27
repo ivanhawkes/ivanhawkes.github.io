@@ -1,50 +1,45 @@
-<!-- Next / Previous. -->
-<div class="measure next-prev mt-4 flex justify-between gap-6 rounded-md">
-  <div
-    class="flex flex-row items-center rounded-lg border-2 border-surface-brand bg-surface-brand p-1 text-surface-brand-ink">
-    {{ with .PrevInSection }}
-      <a
-        class="flex flex-row items-center justify-start"
-        href="{{ .Permalink }}">
+{{/*  Next / previous: the articles on either side of this one in the section.
+
+      Each side is a card of the family the page's furniture is made of - a
+      surface, a hairline, a shadow - and it is quiet: the label of the side is
+      small capitals in the muted ink, and only the title of the article it
+      leads to is in the body's ink. `navigation.css` sets the frame, the arrow
+      and the type, so the two controls of this pair, and the small pair at the
+      head of a page, share one design.
+*/}}
+<div class="measure next-prev flex flex-wrap items-stretch justify-between gap-4">
+  {{ with .PrevInSection }}
+    <div class="next-prev-side">
+      <a href="{{ .Permalink }}">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          height="64"
-          width="64"
-          fill="white"
-          viewBox="0 -960 960 960">
+          viewBox="0 -960 960 960"
+          aria-hidden="true">
           <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
         </svg>
 
-        <div class="text-left">
-          Previous
-          <br />
-          <span class="text-m">
-            {{ .Title | truncate 32 }}
-          </span>
-        </div>
+        <span class="next-prev-text next-prev-text--start">
+          <span class="next-prev-kind">Previous</span>
+          <span class="next-prev-title">{{ .Title | truncate 32 }}</span>
+        </span>
       </a>
-    {{ end }}
-  </div>
-  <div
-    class="flex flex-row items-center justify-end rounded-lg border-2 border-surface-brand bg-surface-brand p-1 text-surface-brand-ink">
-    {{ with .NextInSection }}
-      <a class="flex flex-row items-center justify-end" href="{{ .Permalink }}">
-        <div class="text-right">
-          Next
-          <br />
-          <span class="text-m">
-            {{ .Title | truncate 32 }}
-          </span>
-        </div>
+    </div>
+  {{ end }}
+
+  {{ with .NextInSection }}
+    <div class="next-prev-side ms-auto">
+      <a href="{{ .Permalink }}">
+        <span class="next-prev-text next-prev-text--end">
+          <span class="next-prev-kind">Next</span>
+          <span class="next-prev-title">{{ .Title | truncate 32 }}</span>
+        </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          height="64"
-          width="64"
-          fill="white"
-          viewBox="0 -960 960 960">
+          viewBox="0 -960 960 960"
+          aria-hidden="true">
           <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
         </svg>
       </a>
-    {{ end }}
-  </div>
+    </div>
+  {{ end }}
 </div>

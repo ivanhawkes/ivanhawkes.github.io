@@ -1,45 +1,35 @@
-<!-- Next / Previous. -->
+{{/*  The small pair: the same two steps as `next-prev.html`, labelled with the
+      name of the side alone, for the head of a page, where the article below
+      has not been read yet and has no title to promise.
+*/}}
 <div
-  class="measure next-prev next-prev-small mt-4 mb-4 flex justify-between gap-2 rounded-md">
-  <div
-    class="flex flex-row items-center rounded-lg border-2 border-surface-brand bg-surface-brand p-1 text-surface-brand-ink">
-    {{ with .PrevInSection }}
-      <a
-        class="flex flex-row items-center justify-start"
-        href="{{ .Permalink }}">
+  class="measure next-prev next-prev-small flex flex-wrap items-stretch justify-between gap-2">
+  {{ with .PrevInSection }}
+    <div class="next-prev-side">
+      <a href="{{ .Permalink }}">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          height="32"
-          width="32"
-          fill="white"
-          viewBox="0 -960 960 960">
+          viewBox="0 -960 960 960"
+          aria-hidden="true">
           <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
         </svg>
 
-        <div class="text-left">
-          Previous
-          <br />
-        </div>
+        <span class="next-prev-kind">Previous</span>
       </a>
-    {{ end }}
-  </div>
-  <div
-    class="flex flex-row items-center justify-end rounded-lg border-2 border-surface-brand bg-surface-brand p-1 text-surface-brand-ink">
-    {{ with .NextInSection }}
-      <a class="flex flex-row items-center justify-end" href="{{ .Permalink }}">
-        <div class="text-right">
-          Next
-          <br />
-        </div>
+    </div>
+  {{ end }}
+
+  {{ with .NextInSection }}
+    <div class="next-prev-side ms-auto">
+      <a href="{{ .Permalink }}">
+        <span class="next-prev-kind">Next</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          height="32"
-          width="32"
-          fill="white"
-          viewBox="0 -960 960 960">
+          viewBox="0 -960 960 960"
+          aria-hidden="true">
           <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
         </svg>
       </a>
-    {{ end }}
-  </div>
+    </div>
+  {{ end }}
 </div>

@@ -3,8 +3,9 @@
    The bar at the head of the page opens the shell and this closes it, so the
    two are built from the same parts: the bar's surface colour, a hairline
    border on the edge that faces the page instead of one on the edge behind it,
-   the same page column with the page gutter inside it, 60 pixels of height, 72
-   from 1024 pixels up, and a chip on the brand mark's surface carrying the
+   the same page column with the page gutter inside it, the same height as the
+   bar - 60 pixels at the browser's own root size, in `rem`, so it grows with the
+   type - and a chip on the brand mark's surface carrying the
    copyright: the bar sets its brand at the left of the column, the foot centres
    its line in the column, so the line sits under the centred prose it follows
    and is capped at the prose measure that column is.
@@ -29,7 +30,7 @@
     box-sizing: border-box;
     width: 100%;
     max-width: var(--page-column);
-    min-height: 60px;
+    min-height: 3.75rem;
     margin-inline: auto;
     padding-inline: var(--page-gutter);
 }
@@ -43,16 +44,16 @@
     max-width: var(--prose-measure);
     text-align: center;
     padding: 0.25rem 0.4rem;
-    border-radius: 0.35rem;
+    border-radius: var(--radius-sm);
     background-color: var(--surface-2);
     color: var(--text);
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
     letter-spacing: 0.05em;
 }
 
 @media (min-width: 1024px) {
     .footer-inner {
-        min-height: 72px;
+        min-height: 4.5rem;
     }
 }
 

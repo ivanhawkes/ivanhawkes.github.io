@@ -5,8 +5,6 @@
 
   {{- partial "/navigation/next-prev-small.html" . -}}
 
-  {{- partial "/byline/byline.html" . -}}
-
   {{/*  The two columns of a recipe: the meta and the ingredients at one hand,
         the method at the other. They are wrapped at a narrow width, and the
         pair is centred in the panel.  */}}
@@ -34,7 +32,7 @@
     </div>
 
     <div class="">
-      {{ partial "/page/content.html" . }}
+      {{ partial "/page/content.html" (dict "page" . "byline" true) }}
     </div>
   </div>
 

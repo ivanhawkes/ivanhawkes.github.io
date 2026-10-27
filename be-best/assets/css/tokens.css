@@ -40,10 +40,18 @@
     --accent-deep: var(--color-brand-800);
     --accent-soft: var(--color-brand-200);
 
-    /* Lines, fields, focus. */
+    /* Lines, fields, focus. The strong edge is the step a hairline takes when
+       it has to be seen against a fill: a rail on a card, an underline under a
+       heading. */
     --edge: var(--palette-edge);
     --edge-field: var(--palette-edge-field);
+    --edge-strong: color-mix(in oklab, var(--edge), var(--text) 45%);
     --focus-ring: var(--brand);
+
+    /* Shapes. A card, a panel, a code block and a chip share one radius, and
+       the small step is for what sits inside them. */
+    --radius: 0.4rem;
+    --radius-sm: 0.3rem;
 
     /* Heading and link ink. The prose plugin is painted from these, and so is
        a card title, which is a heading that is also a link, so the two agree

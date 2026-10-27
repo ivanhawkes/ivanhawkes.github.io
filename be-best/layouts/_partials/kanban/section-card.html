@@ -1,25 +1,87 @@
-{{ $bannerColour := "bg-brand" }}
+{{/*
+  The card of one Kanban page, as a stage page lays it out.
 
-{{ if .Params.due }}
-  {{ $due := time .Params.due }}
-  {{ if and (not .Params.completionDate) .Params.due }}
-    {{ if gt time.Now $due }}
-      {{ $bannerColour = "bg-danger" }}
-    {{ end }}
-  {{ end }}
-{{ end }}
+  The card is scanned before it is read, so the frame carries what the words
+  cannot reach from the far end of a lane: the priority, in the weight and the
+  colour of the border, and the state, in the colour that outranks it.
+  `be-best/assets/css/kanban.css` owns that grade, and this partial only states
+  the facts it grades - the priority in the first character of the file name,
+  the state in the dates the card carries.
 
+  The banner is the one loud part of the face, and it is the state's: late is
+  the danger colour, done is the success colour, and an open card on time is
+  plain brand. The number in the circle is the same priority the frame states,
+  so a card read close and a card read far agree.
+*/}}
+{{- $page := . -}}
+{{- $id := replaceRE "^p[0-9]-" $page.File.BaseFileName "" -}}
+{{- $isCard := findRE `^p[0-9]-[a-z]{2}-[a-z0-9-]+$` $page.File.BaseFileName -}}
+{{- $priority := 9 -}}
+{{- with findRE "^p([0-9])-" $page.File.BaseFileName -}}
+  {{- $priority = int (replaceRE "^p([0-9])-" "" (index . 0)) -}}
+{{- end -}}
+{{- $today := time.Format "2006-01-02" time.Now -}}
+{{- $completed := $page.Params.completionDate -}}
+{{- $overdue := false -}}
+{{- with $page.Params.due -}}
+  {{- $overdue = and (not $completed)
+    (gt $today (time.Format "2006-01-02" .)) -}}
+{{- end -}}
 
-<div
-  class="justify-evenly overflow-hidden rounded-md border-2 border-brand-300 border-ink bg-surface text-sm p-2">
+{{- $state := "open" -}}
+{{- if $completed -}}
+  {{- $state = "done" -}}
+{{- else if $overdue -}}
+  {{- $state = "overdue" -}}
+{{- end -}}
+
+{{- $banner := "bg-brand" -}}
+{{- $bannerInk := "text-brand-ink" -}}
+{{- if $overdue -}}
+  {{- $banner = "bg-danger" -}}
+{{- else if $completed -}}
+  {{- $banner = "bg-success" -}}
+{{- end -}}
+
+<article
+  class="kanban-card flex flex-col gap-2 overflow-hidden p-2"
+  data-priority="{{ if $isCard }}{{ $priority }}{{ else }}5{{ end }}"
+  data-state="{{ $state }}">
   <div
-    class="{{ $bannerColour }} flex h-8 items-center justify-center text-brand-ink text-base font-bold p-2">
-    <p><a href="{{ .Permalink }}">{{ .Title }}</a></p>
+    class="{{ $banner }} flex h-8 items-center gap-2 rounded-sm px-2 {{ $bannerInk }}">
+    {{- if $isCard }}
+      <span
+        class="flex size-5 shrink-0 items-center justify-center rounded-full border border-current text-xs font-bold">
+        {{ $priority }}<span class="sr-only">
+          priority</span>
+      </span>
+    {{- end }}
+    <h3 class="min-w-0 flex-1 truncate text-base font-bold">
+      <a class="text-inherit hover:underline" href="{{ $page.RelPermalink }}">
+        {{- $page.Title -}}
+      </a>
+    </h3>
   </div>
 
-  <div class="m-3">
-    <div class="line-clamp-3">
-      {{ with .Description }}{{ . }}{{ else }}{{ .Summary | transform.Plainify }}{{ end }}
-    </div>
+  <div class="line-clamp-3 px-1 text-sm text-ink-muted">
+    {{- with $page.Description }}{{ . }}{{ else }}{{ $page.Summary | transform.Plainify }}{{ end -}}
   </div>
-</div>
+
+  <div class="flex flex-wrap items-baseline justify-between gap-x-3 px-1 text-xs">
+    {{- with $page.Params.due }}
+      <time
+        class="{{ if $overdue }}font-semibold text-danger{{ else }}text-ink-muted{{ end }}"
+        datetime="{{ time.Format site.Params.dateFormatStandard . }}">
+        Due: {{- time.Format site.Params.dateFormatShort . -}}
+      </time>
+    {{- else }}
+      <span class="text-ink-muted">No due date</span>
+    {{- end }}
+
+    {{- if $completed }}
+      <span class="text-success">Done</span>
+    {{- else if $overdue }}
+      <span class="font-semibold text-danger">Overdue</span>
+    {{- end }}
+  </div>
+</article>

@@ -4,7 +4,7 @@ description: 'Final design pass'
 date: '2026-10-27'
 author: Ivan Hawkes
 params:
-    completionDate: null
+    completionDate: '2026-10-27'
     due: null
     dependencies: null
     references: null

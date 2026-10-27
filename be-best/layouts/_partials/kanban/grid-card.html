@@ -4,34 +4,42 @@
   Params: a card record built by _partials/kanban/grid.html.
 
   The title bar leads with the priority in a circle, then the title, then the
-  info control. Priority levels are told apart by the circle, and the card by
-  its border, so the indicator text is screen-reader only. The due date and the
-  overdue marker fill the second line. The description and the author are
-  secondary information: they only appear in the tooltip the info control
-  opens, on hover and on keyboard focus.
+  info control. The frame carries the same priority, graded in weight and colour
+  by _partials/kanban/kanban.css and by the state of the card, and the circle
+  states it in words for a screen reader, so a card read from across a room and a
+  card read close say the same thing. The due date and the overdue marker fill
+  the second line. The description and the author are secondary information:
+  they only appear in the tooltip the info control opens, on hover and on
+  keyboard focus.
 */}}
 {{- $page := .page -}}
 {{- $overdue := .overdue -}}
+{{- $completed := $page.Params.completionDate -}}
 {{- $urgent := eq .priority 0 -}}
 {{- $high := eq .priority 1 -}}
 {{- $level := "priority p%s" -}}
 {{- $circle := "border border-ink text-ink" -}}
-{{- $border := "border-ink" -}}
+{{- $state := "open" -}}
+{{- if $completed -}}
+  {{- $state = "done" -}}
+{{- else if $overdue -}}
+  {{- $state = "overdue" -}}
+{{- end -}}
 {{- if $overdue -}}
-  {{- $border = "border-danger" -}}
+  {{- $level = "priority p%s, overdue" -}}
 {{- else if $urgent -}}
   {{- $circle = "bg-brand text-brand-ink" -}}
-  {{- $border = "border-brand" -}}
   {{- $level = "priority p%s, urgent" -}}
 {{- else if $high -}}
   {{- $circle = "bg-surface-2 text-ink" -}}
-  {{- $border = "border-surface-2" -}}
   {{- $level = "priority p%s, high priority" -}}
 {{- end -}}
 {{- $tip := printf "kanban-card-info-%s" .id -}}
 
 <article
-  class="flex flex-col gap-0.5 rounded-md border-1 bg-surface px-1.5 py-1 text-md text-ink {{ $border }}">
+  class="kanban-card flex flex-col gap-0.5 px-1.5 py-1 text-sm text-ink"
+  data-priority="{{ .priority }}"
+  data-state="{{ $state }}">
   <header class="flex items-center gap-1.5">
     <span
       class="flex size-4 shrink-0 items-center justify-center rounded-full text-[0.6rem] font-bold {{ $circle }}">

@@ -42,7 +42,7 @@
 .codeblock-name {
     min-width: 0;
     overflow: hidden;
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
     text-overflow: ellipsis;
     white-space: nowrap;
     user-select: text;
@@ -55,7 +55,7 @@
     border-radius: var(--radius-sm);
     background-color: var(--code-chip);
     color: var(--code-chip-text);
-    font-size: 0.6875rem;
+    font-size: 0.75em;
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }
@@ -76,7 +76,7 @@
     background-color: transparent;
     color: var(--code-bar-text);
     font: inherit;
-    font-size: 0.8125rem;
+    font-size: 0.8em;
     fill: currentColor;
 }
 
@@ -169,7 +169,7 @@
     padding: 0.75rem 1rem;
     overflow-x: auto;
     overscroll-behavior-x: contain;
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
     line-height: 1.6;
     tab-size: 4;
     scrollbar-color: var(--code-gutter) transparent;
@@ -205,7 +205,7 @@
    needs no bar of its own above it. */
 
 .codeblock-details {
-    margin: 1.5rem 0 2rem;
+    margin: 2rem 0 2.5rem;
     border: 1px solid var(--edge);
     border-radius: var(--radius);
     background-color: var(--surface-2);
@@ -218,7 +218,7 @@
     min-height: 44px;
     padding: 0.25rem 0.75rem;
     color: var(--text);
-    font-size: 0.9375rem;
+    font-size: var(--text-sm);
     cursor: pointer;
     list-style: none;
 }

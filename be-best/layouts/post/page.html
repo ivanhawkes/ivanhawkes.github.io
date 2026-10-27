@@ -5,9 +5,7 @@
 
   {{- partial "/navigation/next-prev-small.html" . -}}
 
-  {{- partial "/byline/byline.html" . -}}
-
-  {{- partial "/page/content.html" . -}}
+  {{- partial "/page/content.html" (dict "page" . "byline" true) -}}
 
   {{- partial "/navigation/related.html" . -}}
 {{ end }}

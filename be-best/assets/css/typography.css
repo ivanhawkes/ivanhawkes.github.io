@@ -1,0 +1,229 @@
+/* Typography: one root size, one scale, and the rhythm the prose is set in.
+
+   The root is a percentage, not a pixel size: 120 per cent of the size the
+   reader asked the browser for, 19.2 pixels against the 16 pixel default, 17
+   against a 14 pixel one. Preflight leaves `html` at the browser's own size, so
+   raising it here lifts the site by a fifth and leaves a reader in charge of the
+   floor it lifts from: every size below is in `rem`, and follows the root up and
+   down with it. `print.css` sets a 12 point root for paper and the print preview
+   pins 16 pixels on screen: both are unlayered rules, so both keep winning over
+   this layered one, and neither is disturbed by it.
+
+   Above the root the scale steps about 1.2 — a minor third — between the sizes
+   that carry a heading, and about 1.1 between the small sizes that label a card,
+   a chip or a caption, where one more step is a pixel and a half. Leading runs
+   the other way: 1.65 at the reading size, closing to 1.12 at the display sizes,
+   the way a column is set by hand.
+
+   The rules below are unlayered, as the prose overrides are, so they outvote the
+   typography plugin: the plugin sets its sizes in `em` on the prose box, and
+   writes its selectors inside `:where()`, which carries no weight of its own. */
+
+@theme {
+    --text-xs: 0.8rem;
+    --text-xs--line-height: 1.5;
+    --text-sm: 0.9rem;
+    --text-sm--line-height: 1.55;
+    --text-base: 1rem;
+    --text-base--line-height: 1.65;
+    --text-lg: 1.2rem;
+    --text-lg--line-height: 1.4;
+    --text-xl: 1.45rem;
+    --text-xl--line-height: 1.3;
+    --text-2xl: 1.75rem;
+    --text-2xl--line-height: 1.28;
+    --text-3xl: 2.1rem;
+    --text-3xl--line-height: 1.2;
+    --text-4xl: 2.55rem;
+    --text-4xl--line-height: 1.12;
+    --text-5xl: 3rem;
+    --text-5xl--line-height: 1.08;
+}
+
+@layer base {
+    html {
+        /* A percentage, so a reader's own font size stays the floor the site
+           scales from, and never a size the site overwrites. */
+        font-size: 120%;
+        line-height: 1.65;
+
+        /* A widow on the last line of a paragraph is a typographic fault, not a
+           content one: the browser is asked to avoid it, and pages that do not
+           know the property ignore the request. */
+        text-wrap: pretty;
+    }
+}
+
+/* Body copy: the reading size is the root size, and the measure is the one
+   `prose-overrides.css` sets from `--prose-measure`. A `ch` is a fraction of the
+   font, so the measure keeps its 65 characters as the root moves: the column
+   grows with the type, and the line never grows longer. */
+.prose {
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+/* Headings. The plugin sets these at 2.25, 1.5 and 1.25 times the body, a ratio
+   of 1.5 to the reading size, and weights to 800: at a 19.2 pixel body that is
+   a 43 pixel title set heavy, which is a shout. The scale below steps by the
+   same 1.2 as the utilities, keeps the top of it under two times the body, and
+   lets the weight fall as the size rises, since a large size carries its own
+   weight. Tracking closes at the display sizes, and opens at the one size set
+   in capitals. */
+.prose :is(h1, h2, h3, h4, h5, h6) {
+    text-wrap: balance;
+}
+
+.prose h1 {
+    font-size: 1.9em;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    margin-block: 0 0.5em;
+}
+
+.prose h2 {
+    font-size: 1.5em;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-block: 1.9em 0.7em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid var(--edge);
+}
+
+.prose h3 {
+    font-size: 1.25em;
+    line-height: 1.35;
+    font-weight: 600;
+    margin-block: 1.6em 0.5em;
+}
+
+.prose h4 {
+    font-size: 1.1em;
+    line-height: 1.45;
+    font-weight: 600;
+    margin-block: 1.5em 0.4em;
+}
+
+.prose h5 {
+    font-size: 1em;
+    line-height: 1.5;
+    font-weight: 600;
+    margin-block: 1.5em 0.4em;
+}
+
+.prose h6 {
+    font-size: 0.85em;
+    line-height: 1.5;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-block: 1.5em 0.4em;
+}
+
+/* A quotation is the one place the page speaks in someone else's voice, so it
+   is set in the book face: the prose plugin makes it italic, gives it the brand
+   ink and a rule of the soft brand, and `--font-serif` - the old book faces a
+   reader has, named in `main.css`, nothing downloaded - carries it. A caption
+   takes the same face for the same reason: it stands outside the running text
+   and explains a thing, which is what a caption on a printed page has always
+   been. Both are the theme's one flourish of face, and they are the two places
+   a reader stops to look at a thing rather than read through it. */
+.prose blockquote {
+    font-family: var(--font-serif);
+    padding-inline-start: 1.1em;
+}
+
+.prose figcaption {
+    font-family: var(--font-serif);
+}
+
+/* The rhythm of the running text: one gap under a block, never a gap above it,
+   so adjacent blocks meet at one measure of space and the measure does not
+   double up where two blocks meet, as it does when a top and a bottom margin
+   face each other. The plugin's 1.25em is close to the measure of a line of
+   text, which is what a gap between paragraphs should read as. */
+.prose :is(p, ul, ol, dl, blockquote, pre, table) {
+    margin-block: 0 1.15em;
+}
+
+.prose > :first-child,
+.prose :is(h1, h2, h3, h4, h5, h6) + * {
+    margin-top: 0;
+}
+
+/* Lists. A list is indented in `em`, so the indent belongs to the text it holds
+   and scales with it, and each level hangs its marker in the gutter the level
+   above leaves:
+
+     block edge
+       └─ 1.25em gutter, the marker box of the first level
+            └─ 0.5em from marker to text, the same gap at every level
+                 └─ 1.5em gutter for a nested list: one step deeper than the
+                      first, so nesting is legible before it is read
+
+   The gap from marker to text is authored, not the browser's, so it does not
+   wander between levels: a marker is the bullet and one space, the space is an
+   `em` quantity, and every level sets its text half an em past the marker box.
+   A wrapped item hangs at the edge of its own first line, since the gap is
+   padding on the item and not text the item has to repeat. */
+ul,
+ol {
+    list-style-position: outside;
+    margin-block: 1.15em;
+    padding-inline-start: 1.25em;
+}
+
+li {
+    padding-inline-start: 0.5em;
+}
+
+li > ul,
+li > ol {
+    padding-inline-start: 1.5em;
+    margin-block: 0.4em;
+}
+
+/* The marker of each level, drawn by the browser as text: a bullet, then a
+   hollow one, then a small square. `content` is what sets the gap after a
+   marker, so naming the glyph is what keeps the gap equal; the plugin's marker
+   colour still paints it, since these rules set the content and nothing else. */
+.prose ul > li::marker {
+    content: '\2022\00a0';
+}
+
+.prose li > ul > li::marker {
+    content: '\25e6\00a0';
+}
+
+.prose li > ul > li > ul > li::marker {
+    content: '\25aa\00a0';
+}
+
+/* The furniture is not prose: a breadcrumb, a nav list, a page control and a
+   row of tags are laid out by their own rules, and none of them wants an
+   indent, a marker or a margin. `header.css` already clears the nav lists; the
+   rest are named here. */
+nav ul,
+nav ol,
+.pagination,
+.taxonomy ul,
+.card-ids {
+    list-style: none;
+    margin-block: 0;
+    padding-inline-start: 0;
+}
+
+nav li,
+.pagination li,
+.taxonomy li,
+.card-ids li {
+    padding-inline-start: 0;
+}
+
+/* A heading a fragment link points at has to clear the sticky bar the page
+   opens with, or the jump lands under it and the target is invisible. */
+main :is(h1, h2, h3, h4, h5, h6) {
+    scroll-margin-top: 5rem;
+}

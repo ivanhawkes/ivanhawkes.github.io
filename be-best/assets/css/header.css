@@ -46,6 +46,11 @@
     box-shadow: var(--shadow-sm);
 }
 
+/* The bar is as tall as 60 pixels at the browser's own root size, and it grows
+   with the type it carries: the height is in `rem`, so a page whose text is set
+   larger keeps a bar tall enough for it, and a bar is never a fixed strip with
+   type spilling over it. The foot of `footer.css` is the mirror of this bar and
+   takes the same height. */
 .header-inner {
     display: flex;
     align-items: center;
@@ -53,7 +58,7 @@
     box-sizing: border-box;
     width: 100%;
     max-width: var(--page-column);
-    height: 60px;
+    height: 3.75rem;
     margin-inline: auto;
     padding-inline: var(--page-gutter);
 }
@@ -87,16 +92,16 @@
 
 .brand-mark {
     padding: 0.25rem 0.4rem;
-    border-radius: 0.35rem;
+    border-radius: var(--radius-sm);
     background-color: var(--surface-2);
     color: var(--text);
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
     letter-spacing: 0.05em;
 }
 
 .brand-name {
     display: none;
-    font-size: 1rem;
+    font-size: var(--text-base);
 }
 
 .brand:focus-visible {
@@ -194,7 +199,7 @@
     z-index: 60;
     box-sizing: border-box;
     width: min(20rem, 90vw);
-    padding: calc(60px + 0.5rem) 0.75rem 1.5rem;
+    padding: calc(3.75rem + 0.5rem) 0.75rem 1.5rem;
     border-left: 1px solid var(--header-border);
     background-color: var(--surface);
     box-shadow: var(--shadow);
@@ -395,7 +400,7 @@ html:not([data-theme]) #print-page {
 @media (min-width: 1024px) {
     .header-inner {
         gap: 0.5rem;
-        height: 72px;
+        height: 4.5rem;
     }
 
     .brand-name {

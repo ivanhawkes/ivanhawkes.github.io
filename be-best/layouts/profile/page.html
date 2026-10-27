@@ -1,27 +1,7 @@
 {{ define "main" }}
-  {{ range (where hugo.Data.profile.person "profile" .Params.profile) }}
-    <div>
-      {{- partial "/images/featured-image" (dict "page" . "caption" true "hero" true) -}}
-      {{ $description := .Description | default .Site.Params.description }}
+  {{- partial "/components/breadcrumbs.html" . -}}
 
-      <div>
-        <img src="{{ .avatar }}" alt="Avatar of {{ .name }}" />
-      </div>
+  {{- partial "/images/featured-image.html" (dict "page" . "caption" true "hero" true) -}}
 
-      <div>
-        <div>{{ .name }}</div>
-        <div>{{ .position }}</div>
-
-        <div>{{- partial "/social-media/social-media-small.html" . -}}</div>
-
-        
-        <div>&quot;{{ $description }}&quot;</div>
-      </div>
-    </div>
-  {{ end }}
-
-  {{ partial "page/content.html" . }}
-
-  {{- partial "/navigation/related.html" . -}}
-
-  {{ end }}
+  {{ partial "/page/content.html" . }}
+{{ end }}

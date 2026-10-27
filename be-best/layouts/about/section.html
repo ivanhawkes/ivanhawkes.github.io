@@ -1,5 +1,5 @@
 {{ define "main" }}
-  {{ partial "page/content.html" . }}
+  {{ partial "/page/content.html" . }}
 
   {{ $people := default (slice) hugo.Data.profile.person }}
 
@@ -22,7 +22,7 @@
     {{ end }}
   </div>
 
-  {{- partial "pagination.html" . -}}
+  {{- partial "/pagination.html" . -}}
 
   {{/* The core values are the About page's own content, site data with no page
      behind them, so they render once: on `/about/`, not on every listing the

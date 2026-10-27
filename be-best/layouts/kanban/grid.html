@@ -1,9 +1,9 @@
 {{ define "main" }}
-  {{- partial "page/content.html" . }}
+  {{- partial "/page/content.html" . }}
 
   {{/*
     The board markup is shared with the personal view, which passes the author
     it filters on. This page shows every card, so it passes no filter.
   */}}
-  {{- partial "kanban/grid.html" (dict) }}
+  {{- partial "/kanban/grid.html" (dict) }}
 {{ end }}

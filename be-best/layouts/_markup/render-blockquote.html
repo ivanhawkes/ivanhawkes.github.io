@@ -15,7 +15,7 @@
 
   {{- $alertType := strings.ToLower .AlertType }}
   {{- if in $alertTypes $alertType }}
-    {{- partial "layouts/blocks/alert.html" (dict
+    {{- partial "/layouts/blocks/alert.html" (dict
       "color" (or ((index $alerts $alertType).color) "blue")
       "icon" (or ((index $alerts $alertType).icon) "information-circle")
       "text" .Text

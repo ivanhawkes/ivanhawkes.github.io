@@ -34,7 +34,7 @@ may also specify the following parameters:
 {{/* A fence with no language takes the extension of the file it names. */}}
 {{- $lang := or .Type (strings.TrimPrefix "." (path.Ext $file)) }}
 
-{{- partial "codeblock.html" (dict
+{{- partial "/codeblock.html" (dict
   "content" .Inner
   "lang" $lang
   "copy" .Attributes.copy

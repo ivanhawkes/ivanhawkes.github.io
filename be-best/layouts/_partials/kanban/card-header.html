@@ -132,14 +132,14 @@
     {{- with $page.Params.dependencies }}
       <dt class="{{ $label }}">Depends on</dt>
       <dd class="{{ $value }}">
-        {{- partial "kanban/card-ids.html" (dict "ids" . "links" $byId) -}}
+        {{- partial "/kanban/card-ids.html" (dict "ids" . "links" $byId) -}}
       </dd>
     {{- end }}
 
     {{- with $page.Params.references }}
       <dt class="{{ $label }}">References</dt>
       <dd class="{{ $value }}">
-        {{- partial "kanban/card-ids.html" (dict "ids" . "links" $byId) -}}
+        {{- partial "/kanban/card-ids.html" (dict "ids" . "links" $byId) -}}
       </dd>
     {{- end }}
 

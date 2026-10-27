@@ -28,7 +28,7 @@ render-codeblock.html markup renderer uses, so the output is the same card.
     {{- $ext := strings.TrimPrefix "." (path.Ext $file) }}
     {{- $lang := or (.Get "lang") $ext "yaml" }}
 
-    {{- partial "codeblock.html" (dict
+    {{- partial "/codeblock.html" (dict
       "content" $res.Content
       "lang" $lang
       "copy" (.Get "copy")

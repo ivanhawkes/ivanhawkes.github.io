@@ -5,7 +5,7 @@
 
 {{- $summary := .Summary | default .Description | default "Please add a summary and description to this entry." -}}
 
-{{- partial "components/card.html" (dict
+{{- partial "/components/card.html" (dict
   "page" .
   "url" .Permalink
   "title" .Title

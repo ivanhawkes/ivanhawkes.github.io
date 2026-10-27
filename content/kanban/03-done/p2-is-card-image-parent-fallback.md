@@ -49,7 +49,7 @@ weighs 363 KB, so the page requests 2.2 MB of one picture.
 ## Notes
 
 - Fixed with the card redesign of `p2-ft-card-design-improvements`, which owns
-  the card path. The lookup is `partial "images/featured.html"`;
+  the card path. The lookup is `partial "/images/featured.html"`;
   `featured-image.html` keeps the page-hero path with `inherit` defaulting to
   true, and the card partials pass `inherit false`.
 - The criteria counted 6 cards per listing. Section listings paginate at twelve

@@ -6,7 +6,7 @@
 
 {{- $description := .description | default site.Params.description -}}
 
-{{- partial "components/card.html" (dict
+{{- partial "/components/card.html" (dict
   "title" .title
   "summary" $description
 ) -}}

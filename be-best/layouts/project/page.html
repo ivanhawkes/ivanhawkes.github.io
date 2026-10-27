@@ -1,9 +1,7 @@
 {{ define "main" }}
-  {{- partial "/images/featured-image" (dict "page" . "caption" true "hero" true) -}}
+  {{- partial "/components/breadcrumbs.html" . -}}
 
-  {{- partial "/byline/byline.html" . -}}
+  {{- partial "/images/featured-image.html" (dict "page" . "caption" true "hero" true) -}}
 
-  {{ partial "page/content.html" . }}
-
-  {{- partial "/navigation/related.html" . -}}
+  {{- partial "/page/content.html" . -}}
 {{ end }}

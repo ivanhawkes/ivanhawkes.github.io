@@ -117,7 +117,7 @@ either of these shortcodes in conjunction with this render hook.
     "renderHookName" $renderHookName
     "text" .Text
   }}
-  {{- $attrs = partial "inline/h-rh-l/get-glossary-link-attributes.html" $ctx }}
+  {{- $attrs = partial "/inline/h-rh-l/get-glossary-link-attributes.html" $ctx }}
 {{- else if $u.IsAbs }}
   {{- /* Destination is a remote resource. */}}
   {{- $attrs = merge $attrs (dict "rel" "external") }}
@@ -137,7 +137,7 @@ either of these shortcodes in conjunction with this render hook.
           "parsedURL" $u
           "renderHookName" $renderHookName
         }}
-        {{- partial "inline/h-rh-l/validate-fragment.html" $ctx }}
+        {{- partial "/inline/h-rh-l/validate-fragment.html" $ctx }}
         {{- $href = printf "%s#%s" $href . }}
       {{- end }}
       {{- $attrs = dict "href" $href }}
@@ -170,7 +170,7 @@ either of these shortcodes in conjunction with this render hook.
         "parsedURL" $u
         "renderHookName" $renderHookName
       }}
-      {{- partial "inline/h-rh-l/validate-fragment.html" $ctx }}
+      {{- partial "/inline/h-rh-l/validate-fragment.html" $ctx }}
       {{- $attrs = dict "href" (printf "%s#%s" $.Page.RelPermalink .) }}
     {{- else }}
       {{- if eq $errorLevel "warning" }}

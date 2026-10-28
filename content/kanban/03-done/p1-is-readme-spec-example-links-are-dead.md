@@ -32,14 +32,14 @@ exist, so the fix is to repoint them, not to create pages.
 
 ## Goals
 
-- [ ] Repoint the three links at the paths the build produces.
-- [ ] Keep the same three documents as the examples: summary, ideation and
+- [x] Repoint the three links at the paths the build produces.
+- [x] Keep the same three documents as the examples: summary, ideation and
       requirements.
-- [ ] Check every other in-site link in the README for the same drift.
+- [x] Check every other in-site link in the README for the same drift.
 
 ## Acceptance Criteria
 
-- [ ] Each of the three README links resolves to a file under `public/`.
-- [ ] No README in-site link contains a path segment the build does not produce.
-- [ ] The README renders the examples list unchanged apart from the URLs.
-- [ ] `pnpm run test` passes.
+- [x] Each of the three README links resolves to a file under `public/`.
+- [x] No README in-site link contains a path segment the build does not produce.
+- [x] The README renders the examples list unchanged apart from the URLs.
+- [x] `pnpm run test` passes.

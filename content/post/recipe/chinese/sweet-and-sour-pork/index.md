@@ -26,7 +26,7 @@ less sweet than usual.
 - Prepare the sweet and sour sauce by combining all the ingredients into a pot
   and bringing to a simmer for 5 minutes.
 - Cut all the vegetables and have them ready.
-- Prepare a paper towell lined wire rack.
+- Prepare a paper towel lined wire rack.
 - Add oil (enough for a shallow fry) to a wok and heat to 170 C.
 - Batter:
     - Option 1: Dredge in even mix of potato starch and corn flour. Let pieces

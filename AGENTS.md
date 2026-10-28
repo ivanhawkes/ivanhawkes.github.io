@@ -8,16 +8,17 @@ in the content tree, queryable via shortcodes.
 ## Layout
 
 - `content/` - all markdown content. Hugo content types: `post`, `recipe`,
-  `kanban`, `specification`, `about`, `project`, `profile`, `dashboard`, `bare`.
-    - `post/<section>/` - blog articles (cryengine, garden, general, linux,
+  `kanban`, `specification`, `about`, `project`, `profile`.
+    - `post/<section>/` - blog articles (CRYENGINE, garden, general, linux,
       programming).
     - `post/recipe/<cuisine>/` - recipes; each recipe directory has `index.md`
       plus an `ingredients.yaml` sidecar.
     - `kanban/<stage>/` - Kanban cards. The three stages are `01-to-do`,
       `02-in-progress` (with topic sub-folders: design, features, ui) and
-      `03-done`. Epics live in `00-epics`, which is **not** a stage: an epic
-      stays open until the cards it bundles clear every stage, so stage views
-      skip that folder. A card's filename carries its identity:
+      `03-done`. The sub-folders must exist, even when they don't have any
+      remaining cards in them. Epics live in `00-epics`, which is **not** a
+      stage: an epic stays open until the cards it bundles clear every stage, so
+      stage views skip that folder. A card's filename carries its identity:
       `p<priority>-<kind-prefix>-<slug>.md`, e.g. `p2-us-html-check.md`, with
       priority `0` (most urgent) to `9`; this project uses `0`-`3` so far. The
       two-letter kind prefix names the kind (`is` = issues, `ep` = epics, `us` =
@@ -34,10 +35,7 @@ in the content tree, queryable via shortcodes.
       documentation was found." for kinds with no cards. Most kinds have no
       cards on purpose: `summary.md` keeps one table per kind as a worked
       example of the shortcode, so leave those empty tables empty.
-    - `dashboard/` - development scratch pages (`raw/all-html-elements.html` is
-      the CSS test page, `layout: raw`).
-- `be-best/` - the site theme, a plain directory tracked in this repository (it
-  used to be a git submodule; it no longer is, and has no remote of its own).
+- `be-best/` - the site theme, a plain directory tracked in this repository.
   Hugo selects it via `theme: be-best` / `themesDir: '.'` in
   `config/_default/hugo.yaml`. Theme edits are ordinary files: commit and push
   them with the rest of the change, in the parent repo, on the current branch.
@@ -135,21 +133,3 @@ covers only how the program is written.
    next stage folder, setting `params.completionDate` on completion.
 4. Commit small, focused changes, theme files included - `be-best/` is part of
    this repository. CI deploys only from the `publish` branch.
-
-## Agent skills
-
-### Issue tracker
-
-Issues and specs are tracked as GitHub Issues in
-`ivanhawkes/ivanhawkes.github.io`. See `docs/agents/issue-tracker.md`.
-
-### Triage labels
-
-Five canonical triage labels; each label string is identical to its role name.
-See `docs/agents/triage-labels.md`.
-
-### Domain docs
-
-Single-context. Neither `GLOSSARY.md` nor `docs/adr/` exists yet; the skills
-create them lazily when terms or decisions actually get resolved, so proceed
-without them and do not flag their absence. See `docs/agents/domain.md`.

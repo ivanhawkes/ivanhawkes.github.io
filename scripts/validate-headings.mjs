@@ -8,12 +8,7 @@ import path from 'node:path';
 const publicDir = 'public';
 
 // Pages we do not check, with the reason:
-// - Hugo's pagination stubs (`.../page/1/index.html`) are meta-refresh
-//   redirects with no body, so they can never hold a heading.
-// - `dashboard/raw/` holds the CSS test page, whose whole purpose is to show
-//   every element, headings included.
-// A page can also opt out with an `<!-- h1-check: ignore -->` comment.
-const skippedDirs = ['dashboard/raw'];
+const skippedDirs = [];
 
 function htmlFiles(dir) {
     const files = [];

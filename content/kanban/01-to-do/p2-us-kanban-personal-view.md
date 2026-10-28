@@ -4,7 +4,7 @@ description: 'Grid based view for the OS user'
 date: '2026-10-23'
 author: Ivan Hawkes
 params:
-    completionDate: 2026-10-30
+    completionDate:
     due: null
     dependencies: null
     references: ['p2-us-kanban-grid-view']

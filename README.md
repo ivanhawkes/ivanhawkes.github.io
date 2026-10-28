@@ -29,9 +29,9 @@ card information.
 
 You can see some examples:
 
-- [project summary](/specification/personal-website/summary/)
-- [ideation](/specification/personal-website/ideation/)
-- [requirements specification](/specification/personal-website/requirements-specification/)
+- [project summary](/specification/summary/index.html)
+- [ideation](/specification/ideation/index.html)
+- [requirements specification](/specification/requirements/index.html)
 
 ## Getting started
 

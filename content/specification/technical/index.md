@@ -203,9 +203,12 @@ use are `post`, `recipe`, `kanban`, `specification`, `project`, `profile` and
 `about`, each with a layout directory in `be-best/layouts/`. An archetype in
 `be-best/archetypes/` authors every Kanban card kind, every post, every recipe
 and every specification document; the project, profile and about pages are
-authored by hand. A bundle keeps the markdown of a page together with the images
-and other assets it uses, which is what makes page-relative resources, featured
-images and per-bundle caches possible.
+authored by hand. The `dashboard/` tree in that directory is no card kind: it is
+the scaffold of a new project, writing a dashboard page, a Kanban section with
+one folder per card kind, and the opening epic. Nothing under `content/` is
+built from it, and it is kept for that reason. A bundle keeps the markdown of a
+page together with the images and other assets it uses, which is what makes
+page-relative resources, featured images and per-bundle caches possible.
 
 Recipes add a sidecar file, `ingredients.yaml`, next to the bundle's `index.md`.
 The recipe front matter carries `cuisine`, `categories`, `tags`, `portions`,

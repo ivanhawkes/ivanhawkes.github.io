@@ -1,6 +1,6 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
-date: '{{ time.Now.Format $.Site.Params.dateFormat }}'
+date: '{{ time.Now.Format $.Site.Params.dateFormatStandard }}'
 type: specification
 description: "Design Specification"
 categories: ["Documentation"]

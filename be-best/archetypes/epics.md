@@ -1,7 +1,7 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
 description: 'Limit to 50 characters'
-date: '{{ time.Now.Format $.Site.Params.dateFormat }}'
+date: '{{ time.Now.Format $.Site.Params.dateFormatStandard }}'
 author: Ivan Hawkes
 params:
   completionDate: null

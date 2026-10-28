@@ -93,6 +93,17 @@ covers only how the program is written.
   so give the full target path. Omit `--kind` and you get the default draft, not
   a card. Archetypes title-case the filename into `title`, so rewrite it by
   hand.
+- Archetypes stamp `date:` with `$.Site.Params.dateFormatStandard`, the
+  date-only layout. `$.Site.Params.dateFormat` carries a time of day, and
+  `time.Now` in an archetype runs a moment after the build captures its clock,
+  so the page is future-dated and Hugo does not write it: a scaffolded page
+  stays invisible until the clock passes its timestamp. `cmd/kan` normalizes the
+  date the same way.
+- `be-best/archetypes/dashboard/` is the project scaffold, not a card kind.
+  `hugo new content dashboard/<name>` writes a dashboard page, a Kanban section
+  holding one folder per card kind, and the opening epic. Nothing under
+  `content/` is built from it, so a reference search reads it as dead weight: it
+  is not, and it must never be deleted.
 - Recipe front matter: `type: recipe`, `cuisine`, `categories`, `tags`, `date`,
   `author`, `portions`, `prep-time`, `cook-time` (ISO 8601 duration, e.g.
   `PT5M`). The `ingredients.yaml` sidecar holds an `ingredient-list`.

@@ -137,3 +137,12 @@ dash-separated slug of at most 40 characters. `kan` refuses to write an ID that
 any stage already uses, and rewrites Hugo's filename-derived `title:` ("P2 Is My
 New Card") into a readable title. Put it on your PATH with
 `go build -o ~/.local/bin/kan ./cmd/kan`.
+
+## Scaffolding a project
+
+`hugo new content dashboard/<name>` lays out the tracking system from the
+`be-best/archetypes/dashboard/` tree: a dashboard page, a Kanban section holding
+one folder per card kind, and `kanban/epics/ep-001.md` to open the work. Hugo
+only scaffolds a directory archetype for a path below it, so give the command
+that named sub-folder. The tree exists to start a new project: no page under
+`content/` is built from it, and it stays in the theme for that reason.

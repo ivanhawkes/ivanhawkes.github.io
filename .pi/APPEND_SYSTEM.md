@@ -8,6 +8,11 @@
   sets `params.completionDate`.
 - Theme changes: `be-best/` is a plain directory in this repo (not a submodule),
   so commit theme files together with the rest of the change.
+- Never delete `be-best/archetypes/dashboard/`: it scaffolds a new project.
+  `hugo new content dashboard/<name>` writes a dashboard page, a Kanban section
+  with one folder per card kind, and the opening epic. Nothing under `content/`
+  is built from it, so a reference search reads the tree as dead weight; it is
+  not.
 - Prettier rewrites files after you: VSCodium `editor.formatOnSave` and the
   husky pre-commit hook (`lint-staged` → `prettier --write`) reformat staged
   css, md, html, yaml, json and js. Re-read a file immediately before each edit;

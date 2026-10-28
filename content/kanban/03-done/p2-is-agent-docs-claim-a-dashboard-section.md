@@ -7,8 +7,7 @@ params:
     completionDate: '2026-10-28'
     dependencies: null
     due: null
-    references:
-        - p3-is-css-element-fixture-page
+    references: null
 ---
 
 AGENTS.md documents a dashboard section that no longer exists.
@@ -60,8 +59,9 @@ deleting the claim.
 ## Notes
 
 - The tree won every claim: the documents moved to it, and the dashboard section
-  stayed dead. Its CSS test page is worth having, and the card that asks for
-  one, `p3-is-css-element-fixture-page`, tracks that half.
+  stayed dead. A CSS element fixture of the kind the section carried is worth
+  having; the card that tracked one was withdrawn as based on outdated ideas, so
+  the fixture is untracked now.
 - `bb4f3ee` had already deleted `dashboard` from the `AGENTS.md` content type
   list and emptied the `skippedDirs` list in `scripts/validate-headings.mjs`, so
   the two claims the card opens with were fixed before it was worked. What it

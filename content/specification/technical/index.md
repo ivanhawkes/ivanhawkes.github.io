@@ -218,8 +218,8 @@ A page with no site chrome is the `raw` layout, `be-best/layouts/raw.html`,
 selected page by page with `layout: raw` in the front matter. Nothing gets
 embedded in a listing: a whole page placed inside one nests `main`, `nav` and
 `footer` landmarks in the listing page, which is invalid markup. No page sets
-`layout: raw` today: the development scratch pages that had it are gone, and
-`p3-is-css-element-fixture-page` asks for a CSS element fixture in their place.
+`layout: raw` today: the development scratch pages that had it are gone, and no
+CSS element fixture has taken their place.
 
 ## Presentation Layer
 

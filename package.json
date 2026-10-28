@@ -20,7 +20,9 @@
         "test:placeholders": "node scripts/validate-placeholders.mjs",
         "test:kanban": "node scripts/validate-kanban-front-matter.mjs",
         "test:prettier": "node scripts/validate-prettier-setup.mjs",
-        "test": "pnpm run test:css && pnpm run test:lint && pnpm run test:hugo && pnpm run test:html && pnpm run test:headings && pnpm run test:placeholders && pnpm run test:kanban && pnpm run test:prettier",
+        "test:checks": "pnpm run test:lint && pnpm run test:html && pnpm run test:headings && pnpm run test:placeholders && pnpm run test:kanban && pnpm run test:prettier",
+        "test": "pnpm run test:css && pnpm run test:hugo && pnpm run test:checks",
+        "test:ci": "pnpm run test:checks && go test ./cmd/kan",
         "prepare": "husky",
         "format": "prettier --write \"**/*.{js,ts,json,css,md,html,yaml}\""
     },

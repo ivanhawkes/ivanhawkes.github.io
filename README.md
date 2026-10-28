@@ -71,6 +71,10 @@ pnpm run test
 pnpm run build
 ```
 
+A push to `publish` is gated by `pnpm run test:ci`: the checks above, run over
+the minified build the workflow has already made, plus `go test ./cmd/kan`. The
+Pages artifact is uploaded only when every one of them passes.
+
 To develop against a live server, run a pair of terminals, one for Hugo and one
 for the Tailwind watcher:
 

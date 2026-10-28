@@ -65,6 +65,8 @@ pnpm run test:headings # count h1 elements over public/; fail on pages without e
 pnpm run test:placeholders # pair imgB classes with their rules over public/; fail on an unmatched pair
 pnpm run test:kanban  # validate card front matter against the schema in assets/
 pnpm run test:prettier # assert layouts ignored, one plugin-free prettier config, editor pins set
+pnpm run test:checks  # the six checks over public/, no build: lint, html, headings, placeholders, kanban, prettier
+pnpm run test:ci      # test:checks + go test ./cmd/kan; the publish gate
 pnpm run build        # CSS + minified production build
 pnpm run css-watch    # Tailwind watch mode (run alongside hugo)
 pnpm run server        # compile CSS once, then hugo server -D -F
@@ -72,6 +74,12 @@ pnpm stylelint "**/*.css"
 hugo new content kanban/01-to-do/p2-is-slug.md --kind issues
 go run ./cmd/kan is my card title
 ```
+
+`pnpm run test:ci` is the publish gate: `.github/workflows/hugo.yml` runs it
+over the minified build the workflow has already performed, and a check that
+fails stops the job before the Pages artifact is uploaded. The chain's own
+`test:css` and `test:hugo` steps are dropped there because the workflow builds
+the site once, in production form.
 
 `cmd/kan` is a Go helper that scaffolds cards:
 `go run ./cmd/kan [-p <0-9>] [-s <stage>] <kind> <title words...>`, where the

@@ -128,9 +128,12 @@ jobs:
                   path: ${{ runner.temp }}/hugo_cache
                   key: ${{ steps.cache-key.outputs.key }}
 
-            # Fails the build before the Pages artifact is uploaded.
-            - name: Validate the generated HTML
-              run: pnpm run test:html
+            # Fails the job before the Pages artifact is uploaded. Every check of
+            # `pnpm run test` runs here, plus the scaffolder's tests, against the
+            # build this job already performed: the site is built once, and the
+            # chain's own CSS and Hugo build steps are the minified pair above.
+            - name: Run the test suite
+              run: pnpm run test:ci
 
             - name: Upload artifact
               uses: actions/upload-pages-artifact@v5

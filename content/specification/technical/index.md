@@ -485,18 +485,26 @@ repository, and the installed binary is a convenience copy of it.
 
 ## Build And Publishing
 
-The scripts in `package.json` are the entry points: `test:css`, `test:hugo`,
-`test:html` and `test:kanban` are combined by `pnpm run test`, which is also the
-local equivalent of the publish pipeline. `pnpm run build` compiles the CSS and
-the minified production site, `pnpm run css-watch` runs the Tailwind watcher,
-and `pnpm run serve` builds the CSS once and then serves the site.
+The scripts in `package.json` are the entry points. `test:css` and `test:hugo`
+build; the six checks that read the build - `test:lint`, `test:html`,
+`test:headings`, `test:placeholders`, `test:kanban` and `test:prettier` - are
+combined by `test:checks`. `pnpm run test` is the CSS build, the site build and
+`test:checks`. `pnpm run test:ci` is `test:checks` and `go test ./cmd/kan`, the
+set a build already made can be judged by, and is what CI runs. `pnpm run build`
+compiles the CSS and the minified production site, `pnpm run css-watch` runs the
+Tailwind watcher, and `pnpm run server` builds the CSS once and then serves the
+site.
 
-The publish workflow, `.github/workflows/hugo.yml`, builds the CSS, builds the
-site with
+The publish workflow, `.github/workflows/hugo.yml`, builds the CSS and builds
+the site with
 `--environment production --gc --minify --ignoreCache --cleanDestinationDir`,
-validates the generated HTML, and only then uploads the Pages artifact. Its Hugo
-cache is keyed on the Hugo version, the `be-best` tree hash and a hash of the
-site configuration, so a theme or configuration change starts a cold build.
+then runs `pnpm run test:ci`: every check of `pnpm run test` less its two build
+steps, which the workflow has already performed in minified form, and
+`go test ./cmd/kan`. A check that fails stops the job before the Pages artifact
+is uploaded, so the site is built once per job and nothing publishes that the
+checks did not clear. Its Hugo cache is keyed on the Hugo version, the `be-best`
+tree hash and a hash of the site configuration, so a theme or configuration
+change starts a cold build.
 
 Implementation constraints:
 

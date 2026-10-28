@@ -42,7 +42,7 @@ func TestHumanizeTitle(t *testing.T) {
 // archetypes, which are looked up by kind name.
 func TestEveryKindHasArchetype(t *testing.T) {
 	for _, k := range kinds {
-		path := filepath.Join("..", "..", "themes", "be-best", "archetypes", k.name+".md")
+		path := filepath.Join("..", "..", "be-best", "archetypes", k.name+".md")
 		if _, err := os.Stat(path); err != nil {
 			t.Errorf("kind %q has no archetype at %s", k.name, path)
 		}

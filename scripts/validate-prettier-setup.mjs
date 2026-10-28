@@ -15,7 +15,8 @@
 //   3. The root config stays plugin-free. The only plugin it ever wired in was
 //      `prettier-plugin-go-template`, routed to `*.html` by an override, and a
 //      Go-template formatter is measured to rewrite the rendered HTML of nearly
-//      every page. Removing it changed the output of 0 of 329 tracked files.
+//      every page. Removing it changed the output of 0 of the 329 tracked
+//      files of the tree as measured on 2026-10-26 (518 files today).
 //   4. The editor must not format CSS on save, and must not format anything with
 //      a config-less default Prettier - that is how templates get mangled.
 //

@@ -44,8 +44,14 @@ specification.
 
 ## Content Types
 
-Each content type is authored from an archetype, is rendered by its own layout
-directory, and has its own behaviour.
+Each content type is rendered by its own layout directory in `be-best/layouts/`.
+Posts, recipes, specification documents and every Kanban card kind are authored
+from an archetype in `be-best/archetypes/`; the project, profile and about pages
+are authored by hand.
+
+Chrome-free markup is a layout, not a content type: a page that sets
+`layout: raw` is rendered by `be-best/layouts/raw.html`, which writes the page's
+content with no site chrome around it. No page sets it today.
 
 | Type            | Purpose and behaviour                                                                                                                              |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -55,9 +61,7 @@ directory, and has its own behaviour.
 | `specification` | The project's own documents, which read the cards so that documentation is generated from the project's data.                                      |
 | `project`       | Project descriptions, presented as cards with a featured image.                                                                                    |
 | `profile`       | Author profile pages, presented as cards with a featured image.                                                                                    |
-| `dashboard`     | Development scratch pages, listed as links, and rendered without site chrome when a page sets `layout: raw`.                                       |
 | `about`         | The about page and its section listing.                                                                                                            |
-| `bare`          | Pages with no surrounding chrome.                                                                                                                  |
 
 Cards and listing pages search a page bundle for an image named `featured.webp`
 and use it as the card image and the page hero when it is present. The image is

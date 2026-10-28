@@ -23,9 +23,10 @@
   Those sizes are a 2026-10-27 `stat -c %s` measurement: measure again before
   quoting one. Theme CSS sources live in `be-best/assets/css/`.
 - Never run Prettier over `be-best/layouts/**` (already in `.prettierignore`),
-  `--no-ignore` included, and do not adopt a replacement plugin: measured on
-  this tree, `prettier-plugin-go-template` 0.0.15, its `guard` wrapper and the
-  active `@htnabe` fork all fail to parse 4 of 69 layouts, churn 1870+/1710-
+  `--no-ignore` included, and do not adopt a replacement plugin: the 2026-10-26
+  measurement, over that tree's 69 layouts and 329 tracked files (71 and 518
+  today), is that `prettier-plugin-go-template` 0.0.15, its `guard` wrapper and
+  the active `@htnabe` fork all fail to parse 4 layouts, churn 1870+/1710-
   lines, and change the rendered HTML of 458 of 441 pages. `djlint` and
   `gotmplfmt` behave the same, so layout HTML stays hand-formatted. Layout HTML
   carries trailing spaces inside template tags; copy them from a fresh read.

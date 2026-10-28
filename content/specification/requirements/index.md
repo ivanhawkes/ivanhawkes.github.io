@@ -24,8 +24,8 @@ on the site inside the same repository as the site.
 In scope:
 
 - Authoring and presentation of content in a single Hugo content tree: posts in
-  sections, recipes with structured ingredient data, dashboard scratch pages,
-  and specification documents.
+  sections, recipes with structured ingredient data, and specification
+  documents.
 - A file based Kanban system that records requirements, epics, defects and other
   work as markdown cards, and renders them as tables inside the documentation.
 - The `be-best` theme, its Tailwind CSS pipeline, and the Markdown render hooks

@@ -199,27 +199,30 @@ resolved the deviations below.
 ## Card Names And Content Types
 
 Content is organised as Hugo page bundles under `content/`. The content types in
-use are `post`, `recipe`, `kanban`, `specification`, `project`, `profile`,
-`dashboard`, `about` and `bare`, each with a layout directory in
-`be-best/layouts/` and an archetype in `be-best/archetypes/`. A bundle keeps the
-markdown of a page together with the images and other assets it uses, which is
-what makes page-relative resources, featured images and per-bundle caches
-possible.
+use are `post`, `recipe`, `kanban`, `specification`, `project`, `profile` and
+`about`, each with a layout directory in `be-best/layouts/`. An archetype in
+`be-best/archetypes/` authors every Kanban card kind, every post, every recipe
+and every specification document; the project, profile and about pages are
+authored by hand. A bundle keeps the markdown of a page together with the images
+and other assets it uses, which is what makes page-relative resources, featured
+images and per-bundle caches possible.
 
 Recipes add a sidecar file, `ingredients.yaml`, next to the bundle's `index.md`.
 The recipe front matter carries `cuisine`, `categories`, `tags`, `portions`,
 `prep-time` and `cook-time`, the last two as ISO 8601 durations such as `PT5M`.
 
-Dashboard pages are development scratch pages. They are listed as links; the
-`dashboard/section.html` layout does not embed their content in a listing,
-because embedding a whole page nests `main`, `nav` and `footer` landmarks inside
-the listing page.
+A page with no site chrome is the `raw` layout, `be-best/layouts/raw.html`,
+selected page by page with `layout: raw` in the front matter. Nothing gets
+embedded in a listing: a whole page placed inside one nests `main`, `nav` and
+`footer` landmarks in the listing page, which is invalid markup. No page sets
+`layout: raw` today: the development scratch pages that had it are gone, and
+`p3-is-css-element-fixture-page` asks for a CSS element fixture in their place.
 
 ## Presentation Layer
 
 The theme is `be-best/`, an ordinary directory of this repository. Hugo selects
 it with `theme: be-best` and `themesDir: '.'` in `config/_default/hugo.yaml`.
-Its 148 files are versioned by this repository, whose only remote is
+Its 151 files are versioned by this repository, whose only remote is
 `ivanhawkes/ivanhawkes.github.io`, so a theme change is committed and pushed
 here, in the same commit as the content that needs it.
 

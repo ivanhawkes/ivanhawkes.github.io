@@ -79,7 +79,7 @@ for the Tailwind watcher:
 pnpm run css-watch
 
 # Build the CSS once, then serve the site locally with Hugo.
-pnpm run serve
+pnpm run server
 ```
 
 ## Style
@@ -93,22 +93,15 @@ pnpm stylelint "**/*.css"
 ## Adding a new Kanban card to the stack
 
 Cards live in a stage folder - `01-to-do`, `02-in-progress` (optionally under a
-topic sub-folder such as `design/`, `features/`, `ui/`) or `03-done` - and are
-named `p<priority>-<kind-prefix>-<slug>.md`, for example `p2-us-html-check.md`.
-Moving a card's file between stage folders is how its status changes; there is
-no `status` front matter field. The kind is recorded by the two-letter prefix in
-the filename and by the `--kind` archetype it was created with. That prefix plus
-the slug is the card's ID, and it is unique across every stage: card names carry
-no serial numbers.
+topic sub-folder, and `features/` is the only one on disk) or `03-done` - and
+are named `p<priority>-<kind-prefix>-<slug>.md`, for example
+`p2-us-html-check.md`. Moving a card's file between stage folders is how its
+status changes; there is no `status` front matter field. The kind is recorded by
+the two-letter prefix in the filename and by the `--kind` archetype it was
+created with. That prefix plus the slug is the card's ID, and it is unique
+across every stage: card names carry no serial numbers.
 
 ```bash
-# Create a dashboard if you haven't done that already. This scaffolds a
-# folder structure and places one initial epic card.
-#
-# NOTE: Hugo needs the dashboard archetype to have a named sub-folder,
-# hence the extra path 'admin'. Feel free to move it afterwards.
-hugo new content dashboard/admin
-
 # Add a fresh Kanban card, then fill out its front matter. The --kind flag
 # selects the archetype from be-best/archetypes/; without it Hugo
 # falls back to the default template and you get a plain draft, not a card.
@@ -125,10 +118,6 @@ hugo new content kanban/01-to-do/p2-sf-test.md --kind scaffold
 hugo new content kanban/01-to-do/p2-sp-test.md --kind specifications
 hugo new content kanban/01-to-do/p2-ts-test.md --kind testing
 hugo new content kanban/01-to-do/p2-us-test.md --kind user-stories
-
-# Your new dashboard is served at http://localhost:1313/dashboard/admin/.
-# The archetype already adds a `menus: main:` entry, so it shows on the
-# main menu without extra front matter.
 ```
 
 The Go helper in `cmd/kan` wraps those commands:
@@ -138,8 +127,8 @@ The Go helper in `cmd/kan` wraps those commands:
 go run ./cmd/kan is my new card
 # -> content/kanban/01-to-do/p2-is-my-new-card.md
 
-go run ./cmd/kan -p 1 -s 2/ui ft polish the menu
-# -> content/kanban/02-in-progress/ui/p1-ft-polish-the-menu.md
+go run ./cmd/kan -p 1 -s 2/features ft polish the menu
+# -> content/kanban/02-in-progress/features/p1-ft-polish-the-menu.md
 ```
 
 The kind may be its full name (`issues`), its prefix (`is`) or an alias (`us`,

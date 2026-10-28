@@ -7,8 +7,7 @@ params:
     completionDate: '2026-10-28'
     dependencies: null
     due: null
-    references:
-        - 'p2-ts-completion-date-must-match-stage'
+    references: null
 ---
 
 The deploy gate checks generated HTML only: seven checks are local.

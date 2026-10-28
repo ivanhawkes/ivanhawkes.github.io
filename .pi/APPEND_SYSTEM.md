@@ -18,8 +18,10 @@
   lines under 80 so disk text equals your text; after editing theme CSS run
   `npx prettier --write <file>` and re-read it before editing again.
 - Never edit `assets/css/main.css`: the Tailwind CLI regenerates it (`css`,
-  `serve`, `test:css`, `build:css`); it is gitignored and 85 KB, past the read
-  limit. Theme CSS sources live in `be-best/assets/css/`.
+  `server`, `test:css`, `build:css`); it is gitignored, 94.9 KB as written and
+  77.9 KB minified by `build:css`, so past the 50 KB read limit either way.
+  Those sizes are a 2026-10-27 `stat -c %s` measurement: measure again before
+  quoting one. Theme CSS sources live in `be-best/assets/css/`.
 - Never run Prettier over `be-best/layouts/**` (already in `.prettierignore`),
   `--no-ignore` included, and do not adopt a replacement plugin: measured on
   this tree, `prettier-plugin-go-template` 0.0.15, its `guard` wrapper and the

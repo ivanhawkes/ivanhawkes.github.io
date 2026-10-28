@@ -7,9 +7,6 @@ import path from 'node:path';
 
 const publicDir = 'public';
 
-// Pages we do not check, with the reason:
-const skippedDirs = [];
-
 function htmlFiles(dir) {
     const files = [];
     for (const entry of readdirSync(dir)) {
@@ -25,11 +22,12 @@ function htmlFiles(dir) {
 
 const rel = (file) => path.relative(publicDir, file).split(path.sep).join('/');
 
+// Pages the check cannot judge, with the reason. Every entry here must name
+// markup the build really writes: a skip that can never fire hides a page that
+// has gone missing, which is what the check is for.
 function skipReason(file) {
     const page = rel(file);
     if (/(^|\/)page\/\d+\//.test(page)) return 'pagination stub';
-    if (skippedDirs.some((dir) => page.startsWith(`${dir}/`)))
-        return 'layout: raw test page';
     return null;
 }
 

@@ -18,17 +18,17 @@ No structured data, and thin social meta tags.
 
 Measured over `public/` of the current build.
 `be-best/layouts/_partials/meta/meta.html` writes a canonical link, a
-description, `og:title`, `og:description`, `og:url`, `og:type`, `og:image`,
-`twitter:card`, `twitter:title`, `twitter:description`, `twitter:image` and
-`twitter:site`. The gaps:
+description, `og:title`, `og:description`, `og:url`, `og:type`, `twitter:card`,
+`twitter:title` and `twitter:description`, plus `og:image`, `twitter:image` and
+`twitter:site` when the params behind them are set. The gaps:
 
 - Structured data is absent: no page carries an `application/ld+json` block, so
   the structured data audit scores 0/100 and no page is eligible for rich
   results.
-- `og:image` and `twitter:image` render `content=""`: the partial reads
-  `.Site.Params.socialImage`, and `config/_default/params.yaml` defines no
-  `socialImage`. `twitter:site` renders empty for the same reason, reading
-  `.Site.Params.twitterHandle`.
+- `og:image` and `twitter:image` are written only when
+  `.Site.Params.socialImage` is set, and `config/_default/params.yaml` sets no
+  `socialImage`, so a shared link carries no image. `twitter:site` emits
+  `@ivanhawkes`, read from `social.twitter`, added on 2026-10-29.
 - `og:type` is hard-coded to `website` on every page, so posts and recipes carry
   no article properties (`article:published_time`, `article:author`,
   `article:section`).
@@ -39,9 +39,9 @@ description, `og:title`, `og:description`, `og:url`, `og:type`, `og:image`,
 
 ## Work
 
-- [ ] **Params** - define `socialImage` and `twitterHandle` in
-      `config/_default/params.yaml`, and add the share image to `static/`
-      through Git LFS: 1200x630 suits `twitter:card` `summary_large_image`.
+- [ ] **Params** - define `socialImage` in `config/_default/params.yaml`, and
+      add the share image to `static/` through Git LFS: 1200x630 suits
+      `twitter:card` `summary_large_image`.
 - [ ] **Types** - select `og:type` by content type: `article` for `post` pages,
       `website` for the home page and section pages, and the matching properties
       (published, modified, author, section) on articles.
@@ -61,8 +61,8 @@ description, `og:title`, `og:description`, `og:url`, `og:type`, `og:image`,
 - [ ] Every page carries a JSON-LD block of the type above, and the blocks
       validate against Google's Rich Results Test with no errors; the warnings
       are listed on this card
-- [ ] `og:image`, `twitter:image` and `twitter:site` carry real values on the
-      home page and on a post, and a shared link shows the image
+- [ ] `og:image` and `twitter:image` carry a real image on the home page and on
+      a post, and a shared link shows it
 - [ ] A post page reports `og:type` `article` with published and modified times,
       an author and a publisher
 - [ ] The `robots`, `author`, `publisher`, `creator` and `keywords` tags are

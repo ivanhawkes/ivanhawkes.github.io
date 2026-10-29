@@ -14,11 +14,22 @@
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:type" content="website">
-<meta property="og:image" content="{{ .Site.Params.socialImage }}">
+{{/* The share image is optional: no image, no tag, so an unset param never
+writes an empty content. */}}
+{{ with .Site.Params.socialImage }}
+<meta property="og:image" content="{{ . }}">
+{{ end }}
 <meta name="twitter:card" content="summary_large_image">
 <meta
   name="twitter:title"
   content="{{ .Site.Title }}{{ with .Title }}| {{ . }}{{ end }}">
 <meta name="twitter:description" content="{{ $description }}">
-<meta name="twitter:image" content="{{ .Site.Params.socialImage }}">
-<meta name="twitter:site" content="{{ .Site.Params.twitterHandle }}">
+{{ with .Site.Params.socialImage }}
+<meta name="twitter:image" content="{{ . }}">
+{{ end }}
+{{/* The account tag takes a leading @: the param stores the bare handle, so it
+reads with the site's other social accounts and renders in the form X.com
+expects. */}}
+{{ with .Site.Params.social.twitter }}
+<meta name="twitter:site" content="@{{ strings.TrimPrefix "@" . }}">
+{{ end }}

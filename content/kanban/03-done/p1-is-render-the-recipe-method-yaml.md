@@ -35,8 +35,10 @@ of a recipe page were gone from the page until this card landed.
       which the prose steps did not do.
 - [x] **Dish heading** - `<h3 class="recipe-method-dish">` names a dish when the
       recipe has more than one dish to name, and a dish called by the page's own
-      title is not headed twice. 77 dishes over 58 recipes, so 44 recipes print
-      no dish heading at all.
+      title is not headed twice: 29 of the 77 dishes are headed, across 14
+      pages. The 48 that are not are the 44 recipes with one dish, and the 4
+      dishes that carry the page's title - `Banana Bread`, `Ginger Beer Bug`,
+      `Hummus`, `Tom Yum Soup`.
 - [x] **Missing sidecar** - a bundle with no `method.yaml`, and a file with no
       `method-list`, print nothing: no heading, no placeholder, no warning.
       `ingredients.html` keeps its "No ingredients.yaml file found" line, as
@@ -76,6 +78,15 @@ of a recipe page were gone from the page until this card landed.
 
 ## Notes
 
+- Three pages name a dish twice, once as the prose heading of the notes that
+  section keeps and once as the heading of its steps: `Filling` on lemon-bars
+  and lemon-bars-claire-saffitz, `Ichiban Dashi` and `Niban Dashi` on
+  dashi-stock. The prose heading is not the method's to remove - "Do this while
+  the crust is baking!" and "Makes 4 cups." are background, and the split left
+  them where they were. A dish heading is not suppressed for the collision: a
+  page with two lists needs both labels, and an unlabelled pair of numbered
+  lists reads worse than a name set twice. Hugo's `.Page.Fragments.Identifiers`
+  would find the collision from the template.
 - The check runs on the minified build the publish gate uses, and that build is
   not the dev build read from: Hugo's minifier drops the quotes around
   `class=recipe-method-steps`, and smartypants writes the ellipsis of felafel's

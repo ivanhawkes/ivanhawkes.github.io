@@ -12,7 +12,11 @@
   emphasised. `be-best/assets/css/byline.css` sets the line, the dot between its
   parts, and the size and colour of the marks.
 
-  data/author.yaml is the single source of truth for the links listed here.
+  The marks are written here: each profile, its URL and its path, in the order
+  they are read. Nothing is read from a data file: `data/` holds no author file,
+  and the `social:` map in `config/_default/params.yaml`, which feeds the share
+  meta tags, is not the source of these links: its `facebook` value names a
+  different profile from the one linked below.
 */}}
 {{- $page := . -}}
 {{- $fmt := default "2006-01-02" site.Params.dateFormatStandard -}}
@@ -66,7 +70,7 @@
       </svg>
     </a>
 
-    <a href="https://x.com/ivanhawkes" aria-label="X profile of Ivan Hawkes">
+    <a href="https://x.com/ivanhawkes" aria-label="X profile of Ivan Hawkes, formerly Twitter">
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path
           d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584l-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />

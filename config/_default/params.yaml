@@ -31,7 +31,7 @@ copyright:
 # share meta tags read `twitter`, and `_partials/social-media/social-media-small.html`
 # builds one profile link per key from it.
 social:
-  facebook: ivan.hawkes.5055
+  facebook: ivan.hawkes
   github: ivanhawkes
   twitter: ivanhawkes
   youtube: IvanHawkes

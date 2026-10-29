@@ -18,7 +18,7 @@ SDK and today I want to go into more depth.
 <!--more-->
 
 I briefly covered the 40 odd listeners that I was able to locate in my article
-[Introducing CryEngine 3 Event Listeners](http://ivan.hawkes.info/2014/03/07/introducing-cryengine-3-event-listeners/ 'Introducing CryEngine 3 Event Listeners').
+[Introducing CryEngine 3 Event Listeners](introducing-cryengine-3-event-listeners/ 'Introducing CryEngine 3 Event Listeners').
 Today I would like to revisit just one of those listeners,
 **ISystemEventListener**.
 

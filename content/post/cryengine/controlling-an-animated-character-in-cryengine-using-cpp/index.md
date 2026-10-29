@@ -112,7 +112,7 @@ results of applying rotations and translation to an object in a virtual 3D
 space.
 
 I have written a basic introduction to
-[matrices, vectors and quaternions](https://hawkes.info/2014/06/21/matrices-vectors-quaternions-and-cryengine-3/)
+[matrices, vectors and quaternions](/post/cryengine/matrices-vectors-quaternions-and-cryengine-3/)
 to help get you started. Further learning is recommended beyond that in order to
 improve your understanding.
 
@@ -352,10 +352,9 @@ Typically you will register several action maps; enabling and disabling them as
 needed e.g. when switching to the UI.
 
 You can learn more about
-[event listeners](https://hawkes.info/2014/03/07/introducing-cryengine-3-event-listeners/)
-and
-[event dispatchers](https://hawkes.info/2014/03/15/cryengine-3-system-event-dispatcher/)
-in a pair of earlier articles.
+[event listeners](/post/cryengine/introducing-cryengine-3-event-listeners/) and
+[event dispatchers](/post/cryengine/cryengine-3-system-event-dispatcher/) in a
+pair of earlier articles.
 
 ### Register Action Maps
 

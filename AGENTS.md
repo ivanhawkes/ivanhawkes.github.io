@@ -14,7 +14,7 @@ in the content tree, queryable via shortcodes.
     - `post/<section>/` - blog articles (cryengine, garden, general, linux,
       programming).
     - `post/recipe/<cuisine>/` - recipes; each recipe directory has `index.md`
-      plus an `ingredients.yaml` sidecar.
+      plus the `ingredients.yaml` and `method.yaml` sidecars.
     - `about/project/<slug>/` - project pages (`type: project`).
     - `about/profile/<slug>/` - profile pages (`type: profile`).
     - `kanban/<stage>/` - Kanban cards. The three stages are `01-to-do`,
@@ -59,13 +59,14 @@ in the content tree, queryable via shortcodes.
 ## Commands
 
 ```bash
-pnpm run test         # CSS, lint, Hugo, HTML, heading, placeholder, card schema and prettier checks; validate changes here
+pnpm run test         # CSS, lint, Hugo, HTML, heading, placeholder, card, method and prettier checks; validate changes here
 pnpm run lint         # eslint over the repo's JS/TS: scripts, theme assets, configs
 pnpm run test:headings # count h1 elements over public/; fail on pages without exactly one
 pnpm run test:placeholders # pair imgB classes with their rules over public/; fail on an unmatched pair
 pnpm run test:kanban  # validate card front matter against the schema in assets/
+pnpm run test:methods # validate method.yaml against the schema in assets/, and its rendering over public/
 pnpm run test:prettier # assert layouts ignored, one plugin-free prettier config, editor pins set
-pnpm run test:checks  # the six checks over public/, no build: lint, html, headings, placeholders, kanban, prettier
+pnpm run test:checks  # the seven checks over public/, no build: lint, html, headings, placeholders, kanban, methods, prettier
 pnpm run test:ci      # test:checks + go test ./cmd/kan; the publish gate
 pnpm run build        # CSS + minified production build
 pnpm run css-watch    # Tailwind watch mode (run alongside hugo)
@@ -114,7 +115,10 @@ covers only how the program is written.
   is not, and it must never be deleted.
 - Recipe front matter: `type: recipe`, `cuisine`, `categories`, `tags`, `date`,
   `author`, `portions`, `prep-time`, `cook-time` (ISO 8601 duration, e.g.
-  `PT5M`). The `ingredients.yaml` sidecar holds an `ingredient-list`.
+  `PT5M`). The `ingredients.yaml` sidecar holds an `ingredient-list`; the
+  `method.yaml` sidecar holds a `method-list`, one `dish` per component, each
+  with a `method` list of step strings. A step is markdown: a link and bold
+  labels survive into the page.
 - Kanban cards carry a `params` block with: `due`, `completionDate`,
   `dependencies`, `references`. Unused entries are `null`, not empty.
 - Card descriptions are short (50 characters or less) with a `<!--more-->` body

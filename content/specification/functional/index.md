@@ -30,7 +30,7 @@ exactly what was built and validated.
 | Input                                                                                 | Output                                                                                                |
 | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | Markdown pages and page bundles in `content/`                                         | One HTML page per page, in `public/`.                                                                 |
-| Recipe `index.md` front matter with the `ingredients.yaml` and `method.yaml` sidecars | Recipe pages with an ingredient list, a portions value, and a times table.                            |
+| Recipe `index.md` front matter with the `ingredients.yaml` and `method.yaml` sidecars | Recipe pages with an ingredient list, a method list, a portions value, and a times table.             |
 | Kanban card files in `content/kanban/<stage>/`                                        | The Kanban board, and the card tables embedded in the specification documents.                        |
 | YAML files in `data/`                                                                 | Data files exposed to the resource filesystem, reproduced in documents by the `print-code` shortcode. |
 | Markdown in `content/specification/`                                                  | The specification documents, with live tables generated from the cards.                               |
@@ -95,9 +95,14 @@ read from `ingredients.yaml`, so the ingredients of a recipe can be queried and
 rendered separately from its prose. Each dish of a recipe has its steps in
 `method.yaml`, a `method-list` of dishes whose `method` lists hold the steps in
 order, one string per step; the steps of `## Directions` sections are named by
-the recipe title, because that heading names no component. No layout reads
-`method.yaml` yet, so the steps of a recipe are data today and reach the page
-only when `is-render-the-recipe-method-yaml` lands. Background prose -
+the recipe title, because that heading names no component. The method partial
+reads the file and puts the steps in the second column, under the prose that
+introduces them: one ordered list per dish, numbered, each step rendered as
+markdown so a step may carry a link or a label in bold. A dish is headed by its
+name when the recipe has more than one dish to name, and a name equal to the
+page's title is not repeated as a heading. A bundle with no `method.yaml`, or
+with a file that names no dish, prints no method at all: the sidecar is
+optional, and the recipe page is whole without it. Background prose -
 descriptions, notes, variations, storage - stays in `index.md`.
 
 ## Kanban Behaviour

@@ -33,6 +33,9 @@
 
     <div class="">
       {{ partial "/page/content.html" (dict "page" . "byline" true) }}
+
+      {{/*  The steps of each dish, under the prose that introduces them.  */}}
+      {{- partial "/recipes/method.html" . -}}
     </div>
   </div>
 

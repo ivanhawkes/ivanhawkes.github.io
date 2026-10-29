@@ -194,6 +194,9 @@ cards that gate them or relate to them; the rest keep both keys as `null`.
 The definition was repaired by the `is-front-matter-schema-invalid` card, which
 resolved the deviations below.
 
+The recipe method sidecar is defined and checked the same way; see Recipe Method
+Validator.
+
 | Deviation                                                                               | Resolution                                                                                       |
 | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | The definition required a `layout` field that no card has.                              | Dropped from `required`: Hugo derives the layout from the content type.                          |
@@ -227,6 +230,15 @@ names the same component in the other. Both files are optional, and a bundle
 without one renders the other alone. The recipe front matter carries `cuisine`,
 `categories`, `tags`, `portions`, `prep-time` and `cook-time`, the last two as
 ISO 8601 durations such as `PT5M`.
+
+`assets/recipe-method.yaml` defines the shape of `method.yaml`, and
+`pnpm run test:methods` enforces it: every file is validated with Ajv, and the
+built page is read back, so each dish is one ordered list of
+`recipe-method-steps` items, in the order the file lists them, and no step
+stands in the page's prose as well. The partial that renders the file,
+`be-best/layouts/_partials/recipes/method.html`, sits in the second column of
+the recipe page, under its prose, and was added by
+`is-render-the-recipe-method-yaml`.
 
 A page with no site chrome is the `raw` layout, `be-best/layouts/raw.html`,
 selected page by page with `layout: raw` in the front matter. Nothing gets
@@ -497,17 +509,38 @@ The `kan` tool is built and installed for interactive use with
 `go build -o ~/.local/bin/kan ./cmd/kan`; the source of the program is the
 repository, and the installed binary is a convenience copy of it.
 
+### Recipe Method Validator
+
+`scripts/validate-recipe-method.mjs` validates every
+`content/post/recipe/**/method.yaml` against `assets/recipe-method.yaml` with
+Ajv, as the front matter validator does for cards, and then reads the built page
+of that recipe - resolved from the bundle's `url` front matter when it carries
+one, and from its content path otherwise. The check asks for one
+`recipe-method-steps` ordered list per dish, its items equal to the steps of
+that dish in file order, and for no step to stand in the prose beside the lists,
+which would render it twice. Text is compared with markup stripped and the
+typographic substitutions of goldmark's smartypants reduced back to the
+characters the data writes, so a step and its rendering compare. The pattern
+tolerates a class attribute with no quotes, which is what the minified build the
+publish gate runs writes, and an entity the decoder has no rule for is reported
+as that, not as a mismatch. A recipe whose bundle has no sidecar is not in the
+check. Its current result:
+
+```text
+58 method files validated against assets/recipe-method.yaml: no deviations; rendered: 442 steps in 77 dish lists over 58 pages, each step once
+```
+
 ## Build And Publishing
 
 The scripts in `package.json` are the entry points. `test:css` and `test:hugo`
-build; the six checks that read the build - `test:lint`, `test:html`,
-`test:headings`, `test:placeholders`, `test:kanban` and `test:prettier` - are
-combined by `test:checks`. `pnpm run test` is the CSS build, the site build and
-`test:checks`. `pnpm run test:ci` is `test:checks` and `go test ./cmd/kan`, the
-set a build already made can be judged by, and is what CI runs. `pnpm run build`
-compiles the CSS and the minified production site, `pnpm run css-watch` runs the
-Tailwind watcher, and `pnpm run server` builds the CSS once and then serves the
-site.
+build; the seven checks that read the build - `test:lint`, `test:html`,
+`test:headings`, `test:placeholders`, `test:kanban`, `test:methods` and
+`test:prettier` - are combined by `test:checks`. `pnpm run test` is the CSS
+build, the site build and `test:checks`. `pnpm run test:ci` is `test:checks` and
+`go test ./cmd/kan`, the set a build already made can be judged by, and is what
+CI runs. `pnpm run build` compiles the CSS and the minified production site,
+`pnpm run css-watch` runs the Tailwind watcher, and `pnpm run server` builds the
+CSS once and then serves the site.
 
 The publish workflow, `.github/workflows/hugo.yml`, builds the CSS and builds
 the site with

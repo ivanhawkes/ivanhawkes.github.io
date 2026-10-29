@@ -1,0 +1,39 @@
+{{/*
+  The method of a recipe: the steps of each dish, read from the bundle's
+  method.yaml.
+
+  The file is a `method-list`, one entry per dish, and each entry names a `dish`
+  and carries the `method` list of its steps, one string per step. A step is
+  markdown, and is rendered, not printed: a step may carry a link, as
+  sweet-and-sour-pork's batter does, or a label in bold, as chile-colorado's
+  stages do.
+
+  A dish gets a heading when a recipe has more than one dish to name, and a name
+  is not printed twice, so a dish called by the page's own title is set without
+  one. A bundle with no method.yaml, and a file that names no dish, prints
+  nothing: the sidecar is optional, and a recipe is whole without it.
+*/}}
+{{ $page := . }}
+{{ with .Resources.GetMatch "method.yaml" }}
+  {{ $data := transform.Unmarshal . }}
+  {{ with index $data "method-list" }}
+    {{ $dishes := . }}
+    {{ $names := gt (len $dishes) 1 }}
+    <div class="recipe-method prose w-full prose-neutral prose-custom dark:prose-invert">
+      {{ range $dishes }}
+        {{ $dish := .dish }}
+        {{ with .method }}
+          {{ if and $names (ne ($dish | lower) ($page.Title | lower)) }}
+            <h3 class="recipe-method-dish">{{ $dish }}</h3>
+          {{ end }}
+
+          <ol class="recipe-method-steps">
+            {{ range . }}
+              <li>{{ $page.RenderString . }}</li>
+            {{ end }}
+          </ol>
+        {{ end }}
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}

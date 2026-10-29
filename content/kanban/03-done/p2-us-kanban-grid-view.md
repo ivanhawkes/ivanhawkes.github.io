@@ -151,6 +151,3 @@ words, as the numeral alone says only the priority.
 - The stage folder layout, the topic sub-folder lane label and the priority
   range are now described in `content/specification/technical/index.md`,
   resolved by `p2-is-kanban-stage-folder-spec-drift`.
-- The personal view needs the OS user full name in the environment
-  (`HUGO_AUTHOR`, set by `devenv.nix`), so the agent session must be restarted
-  before that card is started.

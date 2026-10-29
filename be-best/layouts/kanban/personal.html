@@ -1,0 +1,12 @@
+{{ define "main" }}
+  {{- partial "/page/content.html" . }}
+
+  {{/*
+    The board markup is shared with the grid view. This page owns the reader's
+    identity: the OS user full name, exported as HUGO_AUTHOR by devenv.nix. The
+    name is read from the environment, which only exists where the site is built
+    with it: an empty name asks the partial for no filter and no bonus, so the
+    page renders the whole board.
+  */}}
+  {{- partial "/kanban/grid.html" (dict "author" (os.Getenv "HUGO_AUTHOR")) }}
+{{ end }}

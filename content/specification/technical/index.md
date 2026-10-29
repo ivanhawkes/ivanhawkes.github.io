@@ -125,13 +125,21 @@ ascending folder name.
 
 The board that renders those lanes is `/kanban/grid/`, the page
 `content/kanban/grid/index.md` rendered by `be-best/layouts/kanban/grid.html`
-through the shared partial `be-best/layouts/_partials/kanban/grid.html`, which
-the personal view `/kanban/personal/` reuses with an author filter. The partial
-lists the cards with `.RegularPagesRecursive`, so a stage `_index.md` is never
-rendered as a card, and it derives the lanes from the folder names read with
-`os.ReadDir`: a folder is a stage when its name starts with two digits and a
-dash, which keeps the board page folders out, and the `00` folder is skipped
-because epics are not a stage.
+through the shared partial `be-best/layouts/_partials/kanban/grid.html`. The
+personal view `/kanban/personal/` (`content/kanban/personal/index.md`,
+`layout: personal`, rendered by `be-best/layouts/kanban/personal.html`) reuses
+that partial and passes it a reader: the OS user full name, read from
+`os.Getenv "HUGO_AUTHOR"`, which `devenv.nix` exports from the `getent passwd`
+GECOS field. Only the cards whose `author` equals that name, trimmed and matched
+case-insensitively, are kept, and each kept card scores 300 higher, so the
+reader's own cards rise within their lane. `getent` is Linux only and the Pages
+workflow sets no `HUGO_AUTHOR`: with an empty name the partial filters nothing
+and awards no bonus, and the page renders the whole board. The partial lists the
+cards with `.RegularPagesRecursive`, so a stage `_index.md` is never rendered as
+a card, and it derives the lanes from the folder names read with `os.ReadDir`: a
+folder is a stage when its name starts with two digits and a dash, which keeps
+the board page folders out, and the `00` folder is skipped because epics are not
+a stage.
 
 ### Front Matter Fields
 

@@ -4,12 +4,16 @@
 
   Params:
     pages  - cards to render; defaults to every card under /kanban
-    author - keep only the cards whose author matches (trimmed,
-             case-insensitive); empty keeps every card
+    author - reader's name; keep only the cards whose author matches it
+             (trimmed, case-insensitive) and score them 300 higher, so the
+             reader's own cards rise in their lane. Empty keeps every card
+             with no bonus: a build with no reader identity, e.g. GitHub
+             Pages, renders the whole board.
 */}}
 {{- $root := site.GetPage "section" "kanban" -}}
 {{- $pages := default .pages $root.RegularPagesRecursive -}}
-{{- $author := .author -}}
+{{- $author := trim (string .author) " " -}}
+{{- $reader := lower $author -}}
 {{- $isCard := `^p[0-9]-[a-z]{2}-[a-z0-9-]+$` -}}
 {{- $kanbanDir := path.Clean $root.File.Dir -}}
 {{- $today := time.Format "2006-01-02" (time.Now) -}}
@@ -39,9 +43,16 @@
         {{- $overdue = gt $today $dueKey -}}
       {{- end -}}
     {{- end -}}
+    {{/* The reader's own cards: matched trimmed and case-insensitively, and
+    worth 300 points more, so they rise within their lane. */}}
+    {{- $match := false -}}
+    {{- if and $author (eq (lower (trim (string .Params.author) " ")) $reader) -}}
+      {{- $match = true -}}
+    {{- end -}}
     {{- $score := mul (sub 3 $priority) 100 -}}
-    {{/* The 300 point bonus for the reader's own cards is the personal view's
-    rule, not this page's, so it is not applied here. */}}
+    {{- if $match -}}
+      {{- $score = add $score 300 -}}
+    {{- end -}}
     {{- if $overdue -}}
       {{- $score = add $score 150 -}}
     {{- end -}}
@@ -53,6 +64,7 @@
       "due" $due
       "dueKey" $dueKey
       "overdue" $overdue
+      "match" $match
       "score" $score
       "sortKey" (printf "%05d|%s|%s" (sub 9999 $score) $dueKey $id)
       )
@@ -61,13 +73,7 @@
 {{- end -}}
 
 {{- if $author -}}
-  {{- $kept := slice -}}
-  {{- range $cards -}}
-    {{- if eq (lower (trim .page.Params.author " ")) (lower (trim $author " ")) -}}
-      {{- $kept = $kept | append . -}}
-    {{- end -}}
-  {{- end -}}
-  {{- $cards = $kept -}}
+  {{- $cards = where $cards "match" true -}}
 {{- end -}}
 
 {{- $cards = sort $cards "sortKey" -}}

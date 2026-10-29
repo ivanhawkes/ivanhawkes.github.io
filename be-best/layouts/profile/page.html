@@ -4,4 +4,29 @@
   {{- partial "/images/featured-image.html" (dict "page" . "caption" true "hero" true) -}}
 
   {{ partial "/page/content.html" . }}
+
+  {{/*
+    The marks of the person's accounts, the same marks an article carries under
+    its byline: one partial, one link per account, each named in `aria-label`.
+    The accounts come from this person's entry of `data/profile.yaml`, with the
+    `social:` map of `config/_default/params.yaml` filling any account the entry
+    does not name, so the marks of a person whose data is thin are the site's.
+    The label reads the person's name, falling back to the site's owner.
+
+    The class is the one the article's marks wear: size, ink, hover, paper and
+    forced colours all come from those rules, never from this layout.
+  */}}
+  {{- $people := where hugo.Data.profile.person "profile" .Params.profile -}}
+  {{- $person := default dict (index $people 0) -}}
+  {{- $accounts := merge (dict) $person site.Params.social -}}
+  {{- $owner := default site.Params.copyright.owner $person.name -}}
+
+  <div class="measure flex justify-center">
+    {{- partial "/social-media/social-media-small.html" (dict
+      "accounts" $accounts
+      "owner" $owner
+      "class" "byline-links"
+      )
+    -}}
+  </div>
 {{ end }}

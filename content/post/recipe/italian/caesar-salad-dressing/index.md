@@ -18,7 +18,3 @@ type: recipe
 A dressing for a Caesar salad. It's also good for pretty much any salad.
 
 <!--more-->
-
-## Caesar Salad Dressing
-
-Place all the ingredients in a jar and shake till mixed.

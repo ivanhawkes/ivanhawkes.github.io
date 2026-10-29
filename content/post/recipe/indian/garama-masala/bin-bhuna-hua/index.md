@@ -24,7 +24,3 @@ type: recipe
 An untoasted garam masala.
 
 <!--more-->
-
-## Bin Bhuna Hua Garam Masala
-
-- Place all the ingredients into a spice grinder and grind to a fine powder.

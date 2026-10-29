@@ -18,7 +18,3 @@ type: recipe
 A classic Thai curry.
 
 <!--more-->
-
-## Massaman Curry Paste
-
-Pound it out in a mortar and pestle.

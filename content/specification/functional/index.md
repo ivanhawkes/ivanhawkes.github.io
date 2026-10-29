@@ -27,15 +27,15 @@ exactly what was built and validated.
 
 ## Inputs And Outputs
 
-| Input                                                             | Output                                                                                                |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| Markdown pages and page bundles in `content/`                     | One HTML page per page, in `public/`.                                                                 |
-| Recipe `index.md` front matter and the `ingredients.yaml` sidecar | Recipe pages with an ingredient list, a portions value, and a times table.                            |
-| Kanban card files in `content/kanban/<stage>/`                    | The Kanban board, and the card tables embedded in the specification documents.                        |
-| YAML files in `data/`                                             | Data files exposed to the resource filesystem, reproduced in documents by the `print-code` shortcode. |
-| Markdown in `content/specification/`                              | The specification documents, with live tables generated from the cards.                               |
-| Theme layouts, partials, shortcodes, and Tailwind source CSS      | The markup and the single compiled stylesheet.                                                        |
-| Static files and LFS media in the bundles and `static/`           | Served images, documents, and feeds unchanged.                                                        |
+| Input                                                                                 | Output                                                                                                |
+| ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Markdown pages and page bundles in `content/`                                         | One HTML page per page, in `public/`.                                                                 |
+| Recipe `index.md` front matter with the `ingredients.yaml` and `method.yaml` sidecars | Recipe pages with an ingredient list, a portions value, and a times table.                            |
+| Kanban card files in `content/kanban/<stage>/`                                        | The Kanban board, and the card tables embedded in the specification documents.                        |
+| YAML files in `data/`                                                                 | Data files exposed to the resource filesystem, reproduced in documents by the `print-code` shortcode. |
+| Markdown in `content/specification/`                                                  | The specification documents, with live tables generated from the cards.                               |
+| Theme layouts, partials, shortcodes, and Tailwind source CSS                          | The markup and the single compiled stylesheet.                                                        |
+| Static files and LFS media in the bundles and `static/`                               | Served images, documents, and feeds unchanged.                                                        |
 
 The build also emits a sitemap and RSS feeds. Rules that every input must
 satisfy are stated in the technical specification; the checks that enforce them
@@ -56,7 +56,7 @@ content with no site chrome around it. No page sets it today.
 | Type            | Purpose and behaviour                                                                                                                              |
 | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `post`          | Articles, grouped into the sections `cryengine`, `garden`, `general`, `linux` and `programming`. Each post is a page bundle holding its own media. |
-| `recipe`        | Recipes, grouped by cuisine, with structured portions, timings, and an ingredient list held in the sidecar file.                                   |
+| `recipe`        | Recipes, grouped by cuisine, with structured portions, timings, and an ingredient list and method held in sidecar files.                           |
 | `kanban`        | The task cards that make up the Kanban board, held in a stage folder.                                                                              |
 | `specification` | The project's own documents, which read the cards so that documentation is generated from the project's data.                                      |
 | `project`       | Project descriptions, presented as cards with a featured image.                                                                                    |
@@ -86,13 +86,19 @@ publish an RSS feed of at most fifty items. A page whose bundle contains
 
 ## Recipe Behaviour
 
-A recipe page is generated from its front matter and its sidecar file. The front
-matter provides the cuisine, the categories, the tags, the portions, and the
-prep and cook times as ISO 8601 durations. The recipe partials convert the
+A recipe page is generated from its front matter and its sidecar files. The
+front matter provides the cuisine, the categories, the tags, the portions, and
+the prep and cook times as ISO 8601 durations. The recipe partials convert the
 durations to minutes and present prep time, cook time, and their sum in a table,
 which is emitted only when at least one duration is set. The ingredient list is
 read from `ingredients.yaml`, so the ingredients of a recipe can be queried and
-rendered separately from its prose.
+rendered separately from its prose. Each dish of a recipe has its steps in
+`method.yaml`, a `method-list` of dishes whose `method` lists hold the steps in
+order, one string per step; the steps of `## Directions` sections are named by
+the recipe title, because that heading names no component. No layout reads
+`method.yaml` yet, so the steps of a recipe are data today and reach the page
+only when `is-render-the-recipe-method-yaml` lands. Background prose -
+descriptions, notes, variations, storage - stays in `index.md`.
 
 ## Kanban Behaviour
 

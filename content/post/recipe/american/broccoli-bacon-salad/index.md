@@ -26,15 +26,6 @@ out with some nuttiness.
 
 <!--more-->
 
-## Broccoli Bacon Salad
-
-- Lay out the bacon in an air fryer and blast at 200c for 10 minutes or until
-  dried and crispy. Chop into small chunks when ready.
-- Finely dice the onion.
-- Cut the broccoli into small florettes.
-- Put the dijon mustard, mayonaise, and salt in the serving bowl. Combine well.
-- Toss in everything else. Combine well.
-
 ## Notes
 
 You may wish to add a splash of vinegar or lemon juice along with the mayonaise.

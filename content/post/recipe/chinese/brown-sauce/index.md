@@ -21,10 +21,4 @@ A sauce rich with umami flavours which is great for stir frys.
 
 ## Chinese Brown Sauce
 
-- Combine all the ingredients together and stir well.
-
-For stir fry: chop up some ginger, garlic and chilli to taste, and then add this
-sauce into the pan after the main ingredients have had time to cook. Continue
-cooking until the sauce thickens.
-
 Feel free to substitute chicken or vegetable stock for the beef stock.

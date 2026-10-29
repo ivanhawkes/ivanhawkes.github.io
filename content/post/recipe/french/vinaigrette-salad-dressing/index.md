@@ -17,7 +17,3 @@ type: recipe
 A simple and traditional French salad dressing.
 
 <!--more-->
-
-## Vinaigrette Salad Dressing
-
-Place all the ingredients in a jar and shake till mixed.

@@ -218,9 +218,15 @@ built from it, and it is kept for that reason. A bundle keeps the markdown of a
 page together with the images and other assets it uses, which is what makes
 page-relative resources, featured images and per-bundle caches possible.
 
-Recipes add a sidecar file, `ingredients.yaml`, next to the bundle's `index.md`.
-The recipe front matter carries `cuisine`, `categories`, `tags`, `portions`,
-`prep-time` and `cook-time`, the last two as ISO 8601 durations such as `PT5M`.
+Recipes add two sidecar files next to the bundle's `index.md`.
+`ingredients.yaml` is an `ingredient-list` of `dish` entries, each holding an
+`ingredients` list of `quantity`, `measure` and `ingredient` strings.
+`method.yaml` is a `method-list` of `dish` entries, each holding a `method` list
+whose items are the steps of that dish, one string each; a dish name in one file
+names the same component in the other. Both files are optional, and a bundle
+without one renders the other alone. The recipe front matter carries `cuisine`,
+`categories`, `tags`, `portions`, `prep-time` and `cook-time`, the last two as
+ISO 8601 durations such as `PT5M`.
 
 A page with no site chrome is the `raw` layout, `be-best/layouts/raw.html`,
 selected page by page with `layout: raw` in the front matter. Nothing gets

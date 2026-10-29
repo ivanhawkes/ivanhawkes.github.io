@@ -1,0 +1,26 @@
+method-list:
+  - dish: Initial Ingredients
+    method:
+      - 'On the first day make the recipe according to the initial ingredient
+        list.'
+  - dish: Daily / Weekly Ingredients
+    method:
+      - 'After the bug has been started add the daily list of ingredients every
+        day when it is active. This can be done once a week instead if you keep
+        the bug in the fridge.'
+      - 'This process should be repeated every day for at least five days. Keep
+        repeating until you have a mature bug.'
+  - dish: Ginger Beer Bug
+    method:
+      - 'Start the bug off by taking the sugar and water and combining together
+        in a jar.'
+      - 'Use a microplane to grate the ginger, skin and all, into the jar. The
+        skin contains a lot of the free wild yeasts that you will need to make
+        this ferment.'
+      - 'Stir the ferment then place a clean cloth over the jar - ensuring it is
+        open to the air. Under no conditions seal the jar as this can cause a
+        buildup of pressure and an explosion.'
+      - 'After a week or so you can place the ferment into the fridge and cover
+        losely with a fitted lid. Do not screw up or afix the lid as this can
+        cause a buildup of pressure and an explosion. Feed the bug every week
+        when it is stored in the fridge.'

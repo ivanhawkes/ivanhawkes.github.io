@@ -18,7 +18,3 @@ type: recipe
 A fairly simple herb roasted pork dish.
 
 <!--more-->
-
-## Directions
-
-- Re-watch the ATK video.

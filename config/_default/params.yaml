@@ -27,8 +27,11 @@ copyright:
   year: '2026'
   owner: Ivan Hawkes
   notice: all rights reserved
+# The author's accounts, each the bare path in the site's own URL for it: the
+# share meta tags read `twitter`, and `_partials/social-media/social-media-small.html`
+# builds one profile link per key from it.
 social:
-  facebook: ivan.hawkes
+  facebook: ivan.hawkes.5055
   github: ivanhawkes
   twitter: ivanhawkes
   youtube: IvanHawkes

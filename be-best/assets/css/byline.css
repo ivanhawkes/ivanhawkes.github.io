@@ -61,8 +61,10 @@
     opacity: 0.55;
 }
 
-/* The author's own pages. The marks are the size of the line they sit in, in
-    the muted ink, and take the link colour the page links take. */
+/* The author's own pages: the marks that
+   `_partials/social-media/social-media-small.html` writes, called by the byline
+   with this class. They are the size of the line they sit in, in the muted ink,
+   and take the link colour the page links take. */
 .byline-links {
     display: inline-flex;
     align-items: center;

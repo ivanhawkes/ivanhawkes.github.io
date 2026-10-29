@@ -21,8 +21,10 @@
 
   Size and colour are CSS, never attributes: the paths are monochrome and take
   `currentColor`, so the calling context recolours and resizes the marks with
-  its own rules, in both schemes, on paper, and under forced colours. The
-  YouTube play mark is a cut-out, classed for the CSS to paint with the ground.
+  its own rules, in both schemes, on paper, and under forced colours. Where a
+  mark shows the page through itself - the YouTube play, the Facebook letter -
+  that section is a cut-out, classed for the CSS to paint with the ground, never
+  a colour baked into the path.
 */}}
 {{- $accounts := default site.Params.social .accounts -}}
 {{- $owner := default site.Params.copyright.owner .owner -}}
@@ -35,9 +37,9 @@
       target="_blank"
       rel="noopener"
       aria-label="GitHub profile of {{ $owner }}">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
+      <svg viewBox="0 0 16 16" aria-hidden="true">
         <path
-          d="M12 0c-6.626 0 -12 5.373 -12 12c0 5.302 3.438 9.8 8.207 11.387c0.6.22 0.793-.261 0.793-.577v-2.234c-3.338.726 -4.033-1.416 -4.033-1.416c-.546-2.196 -1.387-2.781 -1.387-2.781c-1.11-.76 .084-.745 0.084-.745c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c0.108-.776.417-1.305 0.76-1.605c-2.665-.305 -5.467-1.334 -5.467-5.931c0-1.311 4.685-2.387 4.685-2.387c0-.636 1.235-1.305 1.235-1.305c0 1.041 1.675 1.041 1.675 1.041c1.626.12 3.56 1.705 3.56 4.553c0 3.438 -3.568 4.403 -6.941 4.881c0.546.47 1.023 1.394 1.023 1.394v3.169c0 0.31 .18.797 0.79.577c4.764-1.585 8.199-6.086 8.199-11.386C24 5.373 18.627 0 12 0z" />
+          d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 2.05.88 2.76.67.07-.52.28-.87.51-1.07-1.78-.18-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
       </svg>
     </a>
   {{ end }}
@@ -49,9 +51,9 @@
       rel="noopener"
       aria-label="Facebook profile of {{ $owner }}">
       <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0z" />
         <path
-          d="M24 12.073c0-6.627 -2.683 -12.073 -6.005 -12.073c-3.32 0 -6.004 5.446 -6.004 12.073c0 6.628 2.684 12.073 6.004 12.073c3.322 0 6.005 -5.445 6.005 -12.073zm-11.023 0c0-6.088 2.228 -11.011 5.018 -11.011c2.765 0 5.019 4.923 5.019 11.011c0 6.088 -2.254 11.011 -5.019 11.011c-2.79 0 -5.018 -4.923 -5.018 -11.011z" />
-        <path
+          class="icon-cutout"
           d="M9.256 6.864v4.188H6.895v3.06h2.361v9.106c2.3 1.11 4.723 1.526 7.255 1.728v-3.504c-1.528-.127 -1.832-.28 -2.747-.555v-6.775h4.154l-.324-3.06h-3.83V6.23z" />
       </svg>
     </a>

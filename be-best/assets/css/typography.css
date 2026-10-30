@@ -52,6 +52,51 @@
            know the property ignore the request. */
         text-wrap: pretty;
     }
+
+    /* Every link, dressed only by the browser's reset. Preflight hands an anchor
+       the ink of its parent and the decoration of its parent, so a link in an
+       ingredient row, a footer, a list of results or a table of data reads as
+       the text around it: nothing says it can be clicked. The link role paints
+       it, underlined, with the rule quiet at rest and full under the pointer, so
+       the state a component dresses its own link with is the state every link
+       has. What is dressed stays as it is: `cards.css`, `navigation.css`,
+       `header.css`, `byline.css` and `print.css` write unlayered, and an
+       unlayered rule outranks this layer, so a card title, a trail, a byline and
+       a header keep the indicator and the hover each of them already sets. */
+    a {
+        color: var(--link);
+        text-decoration: underline;
+        text-decoration-color: color-mix(in oklab, var(--link) 45%, transparent);
+        text-underline-offset: 0.2em;
+        transition:
+            color 150ms ease-out,
+            text-decoration-color 150ms ease-out;
+    }
+
+    a:hover,
+    a:focus-visible {
+        color: var(--link-hover);
+        text-decoration-color: currentcolor;
+    }
+
+    /* A picture is its own indicator: a rule drawn under one is a line across
+       the page, and says nothing about where a click goes. */
+    a:has(img) {
+        text-decoration: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        a {
+            transition: none;
+        }
+    }
+
+    @media (forced-colors: active) {
+        a {
+            color: LinkText;
+            text-decoration-color: currentcolor;
+        }
+    }
 }
 
 /* Body copy: the reading size is the root size, and the measure is the one

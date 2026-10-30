@@ -1,8 +1,0 @@
-#:schema node_modules/wrangler/config-schema.json
-name = "ivanhawkes-dev"
-compatibility_date = "2026-10-30"
-
-[vars]
-NODE_VERSION = "24.20.0"
-GO_VERSION = "1.26.7"
-CF_HUGO_VERSION = "extended_0.166.0"

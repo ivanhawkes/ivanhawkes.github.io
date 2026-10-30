@@ -82,8 +82,10 @@
     "lint-staged": {
         "*.{js,ts,json,css,md,html,yaml}": "prettier --write"
     },
-    "allowScripts": {
-        "@parcel/watcher@2.5.1": true
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "@parcel/watcher"
+        ]
     },
     "engines": {
         "node": "24.20.0",

@@ -40,6 +40,10 @@
 
       {{/*  The steps of each dish, under the prose that introduces them.  */}}
       {{- partial "/recipes/method.html" . -}}
+
+      {{/*  The notes, under the steps: the prose of a bundle's notes.md, and
+            nothing where a recipe has none.  */}}
+      {{- partial "/recipes/notes.html" . -}}
     </div>
   </div>
 

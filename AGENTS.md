@@ -14,7 +14,8 @@ in the content tree, queryable via shortcodes.
     - `post/<section>/` - blog articles (cryengine, garden, general, linux,
       programming).
     - `post/recipe/<cuisine>/` - recipes; each recipe directory has `index.md`
-      plus the `ingredients.yaml` and `method.yaml` sidecars.
+      plus the `ingredients.yaml` and `method.yaml` sidecars, and the optional
+      `notes.md`.
     - `about/project/<slug>/` - project pages (`type: project`).
     - `about/profile/<slug>/` - profile pages (`type: profile`).
     - `kanban/<stage>/` - Kanban cards. The three stages are `01-to-do`,
@@ -118,7 +119,11 @@ covers only how the program is written.
   `PT5M`). The `ingredients.yaml` sidecar holds an `ingredient-list`; the
   `method.yaml` sidecar holds a `method-list`, one `dish` per component, each
   with a `method` list of step strings. A step is markdown: a link and bold
-  labels survive into the page.
+  labels survive into the page. The optional `notes.md` sidecar is markdown
+  prose, rendered after the method by
+  `be-best/layouts/_partials/recipes/notes.html`. Hugo reads a markdown file in
+  a leaf bundle as a resource of its page, so `notes.md` builds no page of its
+  own.
 - Kanban cards carry a `params` block with: `due`, `completionDate`,
   `dependencies`, `references`. Unused entries are `null`, not empty.
 - Card descriptions are short (50 characters or less) with a `<!--more-->` body

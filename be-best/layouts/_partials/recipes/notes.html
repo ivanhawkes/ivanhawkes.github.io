@@ -1,0 +1,17 @@
+{{/*
+  The notes of a recipe: the prose of the bundle's notes.md, set under the
+  method.
+
+  The file is markdown, and is rendered, not printed. Its own headings open
+  each note, and they start at level two: a note sits under the page's title,
+  as the method's dish headings do.
+
+  A bundle with no notes.md prints nothing. Notes are optional, most recipes
+  carry none, and such a page renders exactly as it did before the sidecar
+  existed.
+*/}}
+{{ with .Resources.GetMatch "notes.md" }}
+  <div class="recipe-notes prose w-full prose-neutral prose-custom dark:prose-invert">
+    {{ .Content }}
+  </div>
+{{ end }}

@@ -221,7 +221,7 @@ built from it, and it is kept for that reason. A bundle keeps the markdown of a
 page together with the images and other assets it uses, which is what makes
 page-relative resources, featured images and per-bundle caches possible.
 
-Recipes add two sidecar files next to the bundle's `index.md`.
+Recipes add three sidecar files next to the bundle's `index.md`.
 `ingredients.yaml` is an `ingredient-list` of `dish` entries, each holding an
 `ingredients` list of `quantity`, `measure` and `ingredient` strings.
 `method.yaml` is a `method-list` of `dish` entries, each holding a `method` list
@@ -229,7 +229,14 @@ whose items are the steps of that dish, one string each; a dish name in one file
 names the same component in the other. Both files are optional, and a bundle
 without one renders the other alone. The recipe front matter carries `cuisine`,
 `categories`, `tags`, `portions`, `prep-time` and `cook-time`, the last two as
-ISO 8601 durations such as `PT5M`.
+ISO 8601 durations such as `PT5M`. `notes.md` is the third sidecar, and the only
+markdown one: prose to be read after the steps, rendered by
+`be-best/layouts/_partials/recipes/notes.html` at the foot of the method's
+column, under the `recipe-notes` class. It is optional too, and most recipes
+carry none, which leaves such a page exactly as it was. Hugo makes a markdown
+file inside a leaf bundle a resource of its page, not a page in its own right,
+so a `notes.md` builds no URL and joins no listing, and the layout reads it with
+`.Resources.GetMatch`.
 
 `assets/recipe-method.yaml` defines the shape of `method.yaml`, and
 `pnpm run test:methods` enforces it: every file is validated with Ajv, and the

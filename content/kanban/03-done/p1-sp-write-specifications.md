@@ -5,7 +5,7 @@ date: '2026-04-28'
 author: Ivan Hawkes
 params:
     due: '2026-10-28'
-    completionDate: '1026-10-27'
+    completionDate: '2026-10-27'
     dependencies: null
     references:
         [

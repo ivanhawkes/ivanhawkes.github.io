@@ -12,11 +12,11 @@
       {{/* Loop through the ingredients list */}}
 
       {{ if .ingredients }}
-      <table class="ingredients-table border-collapse">
+      <table class="ingredients-table table-fixed border-collapse">
         <tbody class="divide-y divide-black">
           {{ range .ingredients }}
           <tr class="odd:bg-table-odd even:bg-table-even">
-            <td>{{ .quantity }}{{ if .measure }} {{ .measure }}{{ end }} {{ .ingredient }}</td>
+            <td class="break-words">{{ .quantity }}{{ if .measure }} {{ .measure }}{{ end }} {{ .ingredient }}</td>
           </tr>
           {{ end }}
         </tbody>

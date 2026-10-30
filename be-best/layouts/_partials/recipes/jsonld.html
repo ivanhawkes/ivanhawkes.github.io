@@ -1,0 +1,186 @@
+{{/*
+  The structured data of a recipe: one Schema.org Recipe block, written to the
+  page that shows the recipe as JSON-LD.
+
+  A crawler reads the block, not the page: the recipe arrives as a recipe, with
+  its ingredients, its steps, its times and its yield, and becomes eligible for
+  the recipe rich result. The block states what the page already shows, read
+  from the same front matter and the same two sidecars the two columns are
+  built from, and nothing is invented: a field the content has no value for is
+  left out of the block rather than filled with a guess. `image` is therefore
+  absent from the 46 of the 58 recipe pages whose bundle carries no featured
+  image, the rule of `images/featured-image.html` against borrowing a section's
+  photograph standing here too.
+
+  The keys are Schema.org Recipe: the three Google's rich result requires (name,
+  recipeIngredient, recipeInstructions, with image required of a page that has
+  a photograph to state) and those it recommends. An optional key is merged in
+  only when it has a value, so no key reads `null` or `""` to a crawler.
+
+  The steps are HowToStep objects, which is what Google asks for in place of an
+  array of raw strings. `name` is the dish a step belongs to, under the rule
+  `recipes/method.html` sets for the dish heading: a name is printed where a
+  recipe has more than one dish to name, and is not printed twice, so the dish a
+  page is named for is set without one. `text` is plain: markdown is rendered
+  and reduced, so a link arrives as the words it shows and its markup does not.
+  `recipes/plain-text.html` makes that text, for an ingredient, a step and the
+  summary alike.
+
+  `jsonify` escapes `<`, `>` and `&` as unicode escapes, so no text can close the
+  script element, and writes a map's keys in a fixed order, so a rebuild writes
+  the same block. `safe.JS` is what makes the block data and not a string: a
+  script element writes a value it does not trust as a quoted JavaScript literal,
+  which wraps the JSON in a layer of quoting a crawler does not read. The
+  partial writes `template.HTML` through `jsonify`, and a script element trusts
+  `template.JS` only, so the mark is what makes the JSON arrive as it stands.
+  `pnpm run test:jsonld` reads every block back against
+  `assets/recipe-jsonld.yaml` and against the sidecars.
+*/}}
+
+{{- $page := . -}}
+
+{{/*  The times. `prep-time` and `cook-time` are already ISO 8601 durations, the
+      shape Schema asks for, so they pass through: the hyphen in their names
+      keeps them out of dot notation. `totalTime` is the sum, written from the
+      minutes the two add to, the way `recipes/recipe-times.html` adds them for
+      the table the page shows. A duration the page does not carry is 0 minutes,
+      and a total of none is `PT0M`, which Schema reads as no time.  */}}
+{{- $prep := index .Params "prep-time" -}}
+{{- $cook := index .Params "cook-time" -}}
+{{- $prepMinutes := 0.0 -}}
+{{- with lower (replaceRE "^P?T?" "" (string $prep)) -}}
+  {{- $prepMinutes = (time.ParseDuration .).Minutes -}}
+{{- end -}}
+{{- $cookMinutes := 0.0 -}}
+{{- with lower (replaceRE "^P?T?" "" (string $cook)) -}}
+  {{- $cookMinutes = (time.ParseDuration .).Minutes -}}
+{{- end -}}
+{{- $total := int (add $prepMinutes $cookMinutes) -}}
+{{- $totalIso := "PT0M" -}}
+{{- if gt $total 0 -}}
+  {{- $totalIso = printf "PT%s%s"
+        (cond (gt (div $total 60) 0) (printf "%dH" (div $total 60)) "")
+        (cond (gt (mod $total 60) 0) (printf "%dM" (mod $total 60)) "") -}}
+{{- end -}}
+
+{{/*  The yield. Schema's recipeYield is text, so the count the front matter
+      carries is written with the word that counts it.  */}}
+{{- $yield := "" -}}
+{{- with .Params.portions -}}
+  {{- $yield = printf "%v %s" . (cond (eq . 1) "portion" "portions") -}}
+{{- end -}}
+
+{{/*  The language tag, from the site's locale: `en-us` in the site config, and
+      the case BCP 47 asks of a region subtag.  */}}
+{{- $language := .Site.Language.Locale | default "en" -}}
+{{- if gt (len $language) 2 -}}
+  {{- $language = printf "%s-%s"
+        (lower (slicestr $language 0 2))
+        (upper (slicestr $language 3 (len $language))) -}}
+{{- end -}}
+
+{{/*  The ingredients of every dish, one line each: quantity, measure and
+      ingredient, the composition `recipes/ingredients.html` prints, with the
+      markdown of an ingredient reduced to the words it shows.  */}}
+{{- $ingredients := slice -}}
+{{- with .Resources.GetMatch "ingredients.yaml" -}}
+  {{- with index (transform.Unmarshal .) "ingredient-list" -}}
+    {{- range . -}}
+      {{- range .ingredients -}}
+        {{- $line := printf "%s %s %s"
+              (.quantity | string)
+              (.measure | string)
+              (partial "/recipes/plain-text.html" (dict "page" $page "text" .ingredient)) -}}
+        {{- $ingredients = $ingredients | append (strings.TrimSpace (replaceRE `\s+` " " $line)) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{/*  The steps of every dish, in the order the dishes and the steps are
+      written, each a HowToStep carrying its position in the one sequence.  */}}
+{{- $instructions := slice -}}
+{{- $position := 0 -}}
+{{- with .Resources.GetMatch "method.yaml" -}}
+  {{- with index (transform.Unmarshal .) "method-list" -}}
+    {{- $dishes := . -}}
+    {{- $named := gt (len $dishes) 1 -}}
+    {{- range $dishes -}}
+      {{- $dish := .dish -}}
+      {{- $name := and $named (ne ($dish | lower) ($page.Title | lower)) -}}
+      {{- range .method -}}
+        {{- $position = add $position 1 -}}
+        {{- $step := dict
+              "@type" "HowToStep"
+              "position" $position
+              "text" (partial "/recipes/plain-text.html" (dict "page" $page "text" .)) -}}
+        {{- if $name -}}
+          {{- $step = merge $step (dict "name" $dish) -}}
+        {{- end -}}
+        {{- $instructions = $instructions | append $step -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{/*  The block. `@id` names the recipe as the main entity of the page that
+      carries it. `author` is the recipe's own, the source its text is drawn
+      from, and one of the 58 names none, where the site's author stands in.
+      `publisher` is the site's author, the name the byline and the footer
+      show, and a Person: no publisher logo is stated, which is one of the
+      warnings Google's test reports for every recipe page.  */}}
+{{- $data := dict
+      "@context" "https://schema.org"
+      "@type" "Recipe"
+      "@id" (printf "%s#recipe" .Permalink)
+      "name" .Title
+      "url" .Permalink
+      "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+      "datePublished" (.Date.Format "2006-01-02")
+      "dateModified" (.Lastmod.Format "2006-01-02")
+      "author" (dict
+        "@type" "Person"
+        "name" (.Params.author | default .Site.Params.author.name))
+      "publisher" (dict
+        "@type" "Person"
+        "name" (.Site.Params.author.name | default .Site.Title))
+      "recipeIngredient" $ingredients
+      "recipeInstructions" $instructions
+      "prepTime" $prep
+      "cookTime" $cook
+      "totalTime" $totalIso -}}
+
+{{/*  The optional keys, each added only where the content carries a value:
+      a featured image, a description, a yield, a cuisine, categories, tags and
+      the site language. The description falls back to the summary of the page,
+      Hugo having no summary in `.Description`, as the card partials state.  */}}
+{{- $optional := slice -}}
+{{- with .Resources.GetMatch "featured.webp" -}}
+  {{- $optional = $optional | append (dict "image" (slice .Permalink)) -}}
+{{- end -}}
+{{- with .Description | default (partial "/recipes/plain-text.html"
+      (dict "page" $page "text" $page.Summary "rendered" true)) -}}
+  {{- $optional = $optional | append (dict "description" .) -}}
+{{- end -}}
+{{- with $yield -}}
+  {{- $optional = $optional | append (dict "recipeYield" .) -}}
+{{- end -}}
+{{- with .Params.cuisine -}}
+  {{- $optional = $optional | append (dict "recipeCuisine" .) -}}
+{{- end -}}
+{{- with .Params.categories -}}
+  {{- $optional = $optional | append (dict "recipeCategory" .) -}}
+{{- end -}}
+{{- with .Params.tags -}}
+  {{- $optional = $optional | append (dict "keywords" (delimit . ", ")) -}}
+{{- end -}}
+{{- with $language -}}
+  {{- $optional = $optional | append (dict "inLanguage" .) -}}
+{{- end -}}
+{{- range $entry := $optional -}}
+  {{- $data = merge $data $entry -}}
+{{- end -}}
+
+<script type="application/ld+json">
+  {{- $data | jsonify | safe.JS -}}
+</script>

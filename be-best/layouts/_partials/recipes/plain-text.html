@@ -1,0 +1,45 @@
+{{/*
+  The words a recipe's markdown shows, as plain text.
+
+  A page renders a step, an ingredient or a summary as markup: a link, a label
+  in bold, and the typographic substitutions goldmark's smartypants makes, which
+  arrive in the markup as entities. Structured data states the same words as
+  text, so the markup is reduced and the substitutions are written back as the
+  characters the source carries, the pair of them making a crawler read what a
+  reader sees. Whitespace is collapsed: a folded line in a sidecar, and the
+  newline a block element leaves behind, are one space to a reader.
+
+  The ampersand is decoded first: reducing markup to text escapes the ampersand
+  of every entity, so `&rsquo;` reaches the reduction as `&amp;rsquo;` and is an
+  entity only once that ampersand is one again. Each substitution is written back
+  twice over, as the entity a build marks it with and as the literal character
+  another build writes, so the text a crawler reads does not depend on which.
+
+  The text leaves the partial marked `safe.HTML`: writing a partial's output
+  escapes HTML, and an escaping pass after the reduction would put back the
+  apostrophes and ampersands the reduction has just taken out.
+
+  Callers pass a dict:
+
+    page     the page whose RenderString parses the markdown, required
+    text     the markdown to reduce, required
+    rendered true when `text` is markup already, as a page's own summary is, and
+             needs no render pass of its own
+
+  `recipes/jsonld.html` is the caller: the page shows this markup, and the
+  Recipe block states the text behind it.
+*/}}
+
+{{- $text := cond (.rendered | default false) .text (.page.RenderString .text) -}}
+{{- $text = transform.Plainify $text -}}
+{{- $text = replaceRE `(?i)&amp;` "&" $text -}}
+{{- $text = replaceRE `(?i)&nbsp;` " " $text -}}
+{{- $text = replaceRE `(?i)&rsquo;|&lsquo;|&apos;|&#x27;|&#39;` "'" $text -}}
+{{- $text = replaceRE "[\u2018\u2019\u201A\u201B]" "'" $text -}}
+{{- $text = replaceRE `(?i)&rdquo;|&ldquo;|&quot;|&#x22;|&#34;` "\"" $text -}}
+{{- $text = replaceRE "[\u201C\u201D]" "\"" $text -}}
+{{- $text = replaceRE `(?i)&hellip;|&mldr;` "..." $text -}}
+{{- $text = replaceRE "\u2026" "..." $text -}}
+{{- $text = replaceRE `(?i)&mdash;|&ndash;|&minus;` "-" $text -}}
+{{- $text = replaceRE "[\u2013\u2014]" "-" $text -}}
+{{- strings.TrimSpace (replaceRE `\s+` " " $text) | safe.HTML -}}

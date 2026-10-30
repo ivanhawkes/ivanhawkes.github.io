@@ -129,9 +129,18 @@ for (const file of files) {
     }
     pages++;
     const html = readFileSync(page, 'utf8');
-    // The page with the method lists cut out: what a reader sees beside the
-    // steps. A step written there is a step rendered twice, prose and data.
-    const beside = plain(html.replace(listPattern, ''));
+    // The page with the method lists and the script elements cut out: what a
+    // reader sees beside the steps. A step written there is a step rendered
+    // twice, prose and data. The Recipe block states every step as text, and
+    // states it for a crawler: `recipes/jsonld.html` writes it, no reader reads
+    // it, so it is cut out with the lists. Styles are cut out for the same
+    // reason: a step is prose, and no rule of the stylesheet quotes one.
+    const beside = plain(
+        html
+            .replace(listPattern, '')
+            .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+            .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+    );
 
     const rendered = [];
     for (const match of html.matchAll(listPattern)) {

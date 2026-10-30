@@ -60,14 +60,15 @@ in the content tree, queryable via shortcodes.
 ## Commands
 
 ```bash
-pnpm run test         # CSS, lint, Hugo, HTML, heading, placeholder, card, method and prettier checks; validate changes here
+pnpm run test         # CSS, lint, Hugo, HTML, heading, placeholder, card, method, JSON-LD and prettier checks; validate changes here
 pnpm run lint         # eslint over the repo's JS/TS: scripts, theme assets, configs
 pnpm run test:headings # count h1 elements over public/; fail on pages without exactly one
 pnpm run test:placeholders # pair imgB classes with their rules over public/; fail on an unmatched pair
 pnpm run test:kanban  # validate card front matter against the schema in assets/
 pnpm run test:methods # validate method.yaml against the schema in assets/, and its rendering over public/
+pnpm run test:jsonld  # validate each recipe page's Recipe JSON-LD against assets/ and the sidecars it states
 pnpm run test:prettier # assert layouts ignored, one plugin-free prettier config, editor pins set
-pnpm run test:checks  # the seven checks over public/, no build: lint, html, headings, placeholders, kanban, methods, prettier
+pnpm run test:checks  # the eight checks over public/, no build: lint, html, headings, placeholders, kanban, methods, jsonld, prettier
 pnpm run test:ci      # test:checks + go test ./cmd/kan; the publish gate
 pnpm run build        # CSS + minified production build
 pnpm run css-watch    # Tailwind watch mode (run alongside hugo)
@@ -124,6 +125,20 @@ covers only how the program is written.
   `be-best/layouts/_partials/recipes/notes.html`. Hugo reads a markdown file in
   a leaf bundle as a resource of its page, so `notes.md` builds no page of its
   own.
+- Every recipe page carries Schema.org `Recipe` JSON-LD, built by
+  `be-best/layouts/_partials/recipes/jsonld.html` from the front matter and the
+  two sidecars, and from nothing else: a field the content has no value for is
+  left out, never guessed, so `image` appears only on a page whose bundle has a
+  `featured.webp` of its own. Steps are `HowToStep` objects, with the dish as
+  `name` where the recipe has more than one dish. The text of a step, an
+  ingredient or the summary a description falls back to comes from
+  `recipes/plain-text.html`, which renders the markdown and reduces it to the
+  words the page shows. That partial returns `safe.HTML`, and the block is
+  written `jsonify | safe.JS`: without the first, writing a partial's output
+  re-escapes the entities the reduction has decoded; without the second,
+  `html/template` quotes the JSON as a JavaScript string in a script element.
+  `assets/recipe-jsonld.yaml` defines the block and `pnpm run test:jsonld` reads
+  it back against the bundle.
 - Kanban cards carry a `params` block with: `due`, `completionDate`,
   `dependencies`, `references`. Unused entries are `null`, not empty.
 - Card descriptions are short (50 characters or less) with a `<!--more-->` body

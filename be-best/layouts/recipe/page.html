@@ -1,4 +1,11 @@
 {{ define "main" }}
+  {{/*  The structured data of the recipe: a Schema.org Recipe block, read from
+        the front matter and the two sidecars the columns below are built from,
+        and written as JSON-LD. Google reads JSON-LD from the body of a page, so
+        the block stands with the recipe it describes, and the page renders
+        exactly as it did without it.  */}}
+  {{- partial "/recipes/jsonld.html" . -}}
+
   {{- partial "/components/breadcrumbs.html" . -}}
 
   {{- partial "/images/featured-image" (dict "page" . "caption" true "hero" true) -}}

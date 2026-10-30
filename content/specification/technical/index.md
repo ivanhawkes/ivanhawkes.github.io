@@ -195,7 +195,8 @@ The definition was repaired by the `is-front-matter-schema-invalid` card, which
 resolved the deviations below.
 
 The recipe method sidecar is defined and checked the same way; see Recipe Method
-Validator.
+Validator, and Recipe JSON-LD Validator for the structured data a recipe page
+carries.
 
 | Deviation                                                                               | Resolution                                                                                       |
 | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
@@ -206,6 +207,53 @@ Validator.
 | The archetypes emitted `categories` and `tags`, which the definition does not describe. | Removed from the card archetypes and from the one card that kept them; kind is the prefix.       |
 | The definition allowed a description of 80 characters; the convention is 50.            | `maxLength` is 50, and the two longer descriptions were shortened.                               |
 | The definition said nothing about keys a card must not carry.                           | `additionalProperties: false` on the card and on `params`, whose four keys are required.         |
+
+### Recipe Structured Data
+
+Every recipe page carries one Schema.org `Recipe` block, written as JSON-LD by
+`be-best/layouts/_partials/recipes/jsonld.html`, the first call in the page's
+`main`. A crawler reads the block and not the page, so the recipe is indexed as
+a recipe, with its ingredients, its steps, its times and its yield, and is
+eligible for the recipe rich result. Google reads JSON-LD from the body of a
+page, so the block stands beside the recipe it describes.
+
+The block states the page, and nothing the page does not show. Its whole input
+is the front matter and the `ingredients.yaml` and `method.yaml` sidecars. The
+three fields Google's rich result requires, `name`, `recipeIngredient` and
+`recipeInstructions`, are always present, `image` present where the bundle
+carries a photograph, and an optional key is written only where the content
+carries a value, so no key ever reads `null` or `""`. A field with no value is
+left out, never guessed: 46 of the 58 bundles carry no `featured.webp` of their
+own and state no image, because the section photographs of the cuisine pages are
+not a recipe's picture, the rule `images/featured-image.html` sets.
+
+The steps are `HowToStep` objects, which is what Google asks for in place of an
+array of raw strings: `position` in the one sequence of the recipe, `text`, and
+`name` for the dish the step belongs to, under the rule the dish heading of
+`recipes/method.html` sets, so a dish is named where a recipe has more than one
+dish to name and the page's own title is never named twice. The text of a step,
+of an ingredient and of the summary a description falls back to is made by
+`be-best/layouts/_partials/recipes/plain-text.html`: the markdown rendered, the
+markup reduced to the words it shows, the substitutions of goldmark's
+smartypants written back as the characters the source carries, and the
+whitespace of a folded sidecar line collapsed to one space.
+
+Two marks of the template layer carry the block, and neither is decoration. In a
+`script` element `html/template` writes a value it does not trust as a quoted
+JavaScript literal, so `jsonify` on its own emits the JSON as a string a crawler
+does not read: the block is marked `safe.JS`. Writing a partial's output escapes
+HTML, so a reduction that has just decoded every entity is re-encoded on its way
+out: the text the partial returns is marked `safe.HTML`. `jsonify` then escapes
+`<`, `>` and `&` as unicode escapes, so no ingredient, step or note text can
+close the script element, and writes a map's keys in a fixed order, so a rebuild
+writes the same bytes.
+
+`assets/recipe-jsonld.yaml` defines the block in the same style as the card
+front matter, and `pnpm run test:jsonld` enforces it: every block is validated
+with Ajv and read back against the bundle it is built from, as described under
+Recipe JSON-LD Validator.
+
+{{< print-code file="recipe-jsonld.yaml" >}}
 
 ## Card Names And Content Types
 
@@ -242,10 +290,17 @@ so a `notes.md` builds no URL and joins no listing, and the layout reads it with
 `pnpm run test:methods` enforces it: every file is validated with Ajv, and the
 built page is read back, so each dish is one ordered list of
 `recipe-method-steps` items, in the order the file lists them, and no step
-stands in the page's prose as well. The partial that renders the file,
-`be-best/layouts/_partials/recipes/method.html`, sits in the second column of
-the recipe page, under its prose, and was added by
+stands in the page's prose as well. The prose is what a reader sees, the page's
+script elements cut out with the lists, so the Recipe block that states every
+step as text is not read as a second copy of it. The partial that renders the
+file, `be-best/layouts/_partials/recipes/method.html`, sits in the second column
+of the recipe page, under its prose, and was added by
 `is-render-the-recipe-method-yaml`.
+
+The same two sidecars, with the recipe front matter, are the whole input of the
+Recipe block every recipe page carries as JSON-LD, defined by
+`assets/recipe-jsonld.yaml` and enforced by `pnpm run test:jsonld`: see Recipe
+Structured Data and Recipe JSON-LD Validator.
 
 A page with no site chrome is the `raw` layout, `be-best/layouts/raw.html`,
 selected page by page with `layout: raw` in the front matter. Nothing gets
@@ -537,17 +592,42 @@ check. Its current result:
 58 method files validated against assets/recipe-method.yaml: no deviations; rendered: 442 steps in 77 dish lists over 58 pages, each step once
 ```
 
+### Recipe JSON-LD Validator
+
+`scripts/validate-recipe-jsonld.mjs` validates the block of every recipe page
+against `assets/recipe-jsonld.yaml` with Ajv and `ajv-formats`, as the front
+matter validator does for cards, then reads the block back against the bundle it
+is built from: the title, the dates, the author and the publisher, the cuisine,
+the categories, the tags, the yield and the language, the two durations and
+their sum, every ingredient line and every step in the order the sidecars write
+them, each step at its position and named by the dish the layout gives it, and a
+description that has to stand in the page's own prose. A bundle with a
+`featured.webp` must have a block stating exactly that one image, at the URL of
+the bundle; a bundle without one must state none. The page of a recipe is
+resolved as the method check resolves it, from the `url` front matter where the
+bundle sets one and from its content path otherwise. The check then scans every
+other built page for a Recipe block that no page shows, and reports any entity
+substitution the reduction of `recipes/plain-text.html` has no rule for. Text is
+compared with markup stripped and entities decoded, and a description with its
+whitespace dropped as well, because the minified build the publish gate runs
+leaves no space at a paragraph break, where a summary spans one. Its current
+result:
+
+```text
+58 recipe pages validated against assets/recipe-jsonld.yaml: no deviations; 698 ingredients and 442 steps match the sidecars, 12 pages state their featured image, 46 state none; 0 entity substitutions the reduction has no rule for
+```
+
 ## Build And Publishing
 
 The scripts in `package.json` are the entry points. `test:css` and `test:hugo`
-build; the seven checks that read the build - `test:lint`, `test:html`,
-`test:headings`, `test:placeholders`, `test:kanban`, `test:methods` and
-`test:prettier` - are combined by `test:checks`. `pnpm run test` is the CSS
-build, the site build and `test:checks`. `pnpm run test:ci` is `test:checks` and
-`go test ./cmd/kan`, the set a build already made can be judged by, and is what
-CI runs. `pnpm run build` compiles the CSS and the minified production site,
-`pnpm run css-watch` runs the Tailwind watcher, and `pnpm run server` builds the
-CSS once and then serves the site.
+build; the eight checks that read the build - `test:lint`, `test:html`,
+`test:headings`, `test:placeholders`, `test:kanban`, `test:methods`,
+`test:jsonld` and `test:prettier` - are combined by `test:checks`.
+`pnpm run test` is the CSS build, the site build and `test:checks`.
+`pnpm run test:ci` is `test:checks` and `go test ./cmd/kan`, the set a build
+already made can be judged by, and is what CI runs. `pnpm run build` compiles
+the CSS and the minified production site, `pnpm run css-watch` runs the Tailwind
+watcher, and `pnpm run server` builds the CSS once and then serves the site.
 
 The publish workflow, `.github/workflows/hugo.yml`, builds the CSS and builds
 the site with

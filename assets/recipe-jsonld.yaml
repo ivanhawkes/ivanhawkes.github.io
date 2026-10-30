@@ -1,0 +1,144 @@
+recipe-jsonld:
+  type: object
+  required:
+    - '@context'
+    - '@type'
+    - '@id'
+    - url
+    - name
+    - datePublished
+    - dateModified
+    - author
+    - publisher
+    - recipeIngredient
+    - recipeInstructions
+    - prepTime
+    - cookTime
+    - totalTime
+  additionalProperties: false
+  properties:
+    '@context':
+      type: string
+      const: 'https://schema.org'
+    '@type':
+      type: string
+      const: 'Recipe'
+    '@id':
+      type: string
+      pattern: '^https?://[^#]+#recipe$'
+    mainEntityOfPage:
+      $ref: '#/components/schemas/webPage'
+    url:
+      type: string
+      format: uri
+    name:
+      type: string
+      minLength: 1
+    image:
+      type: array
+      minItems: 1
+      items:
+        type: string
+        format: uri
+    description:
+      type: string
+      minLength: 1
+    inLanguage:
+      type: string
+      pattern: '^[a-z]{2,3}(-[A-Z]{2})?$'
+    keywords:
+      type: string
+      minLength: 1
+    datePublished:
+      $ref: '#/components/schemas/date'
+    dateModified:
+      $ref: '#/components/schemas/date'
+    author:
+      $ref: '#/components/schemas/person'
+    publisher:
+      $ref: '#/components/schemas/person'
+    recipeYield:
+      type: string
+      minLength: 1
+    recipeCuisine:
+      type: string
+      minLength: 1
+    recipeCategory:
+      type: array
+      minItems: 1
+      items:
+        type: string
+        minLength: 1
+    prepTime:
+      $ref: '#/components/schemas/duration'
+    cookTime:
+      $ref: '#/components/schemas/duration'
+    totalTime:
+      $ref: '#/components/schemas/duration'
+    recipeIngredient:
+      type: array
+      minItems: 1
+      items:
+        type: string
+        minLength: 1
+    recipeInstructions:
+      type: array
+      minItems: 1
+      items:
+        $ref: '#/components/schemas/howToStep'
+components:
+  schemas:
+    person:
+      type: object
+      required:
+        - '@type'
+        - name
+      additionalProperties: false
+      properties:
+        '@type':
+          type: string
+          const: 'Person'
+        name:
+          type: string
+          minLength: 1
+    webPage:
+      type: object
+      required:
+        - '@type'
+        - '@id'
+      additionalProperties: false
+      properties:
+        '@type':
+          type: string
+          const: 'WebPage'
+        '@id':
+          type: string
+          format: uri
+    howToStep:
+      type: object
+      required:
+        - '@type'
+        - 'position'
+        - text
+      additionalProperties: false
+      properties:
+        '@type':
+          type: string
+          const: 'HowToStep'
+        'position':
+          type: integer
+          minimum: 1
+        name:
+          type: string
+          minLength: 1
+        text:
+          type: string
+          minLength: 1
+    date:
+      type: string
+      format: date
+      example: '2026-10-01'
+    duration:
+      type: string
+      pattern: '^PT(\d+H)?(\d+M)?$'
+      example: 'PT1H30M'

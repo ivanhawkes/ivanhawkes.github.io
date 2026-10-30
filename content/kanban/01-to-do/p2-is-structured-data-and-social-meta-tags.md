@@ -7,7 +7,7 @@ params:
     completionDate: null
     due: null
     dependencies: null
-    references: null
+    references: ['p1-is-recipe-pages-emit-no-json-ld']
 ---
 
 No structured data, and thin social meta tags.
@@ -22,9 +22,12 @@ description, `og:title`, `og:description`, `og:url`, `og:type`, `twitter:card`,
 `twitter:title` and `twitter:description`, plus `og:image`, `twitter:image` and
 `twitter:site` when the params behind them are set. The gaps:
 
-- Structured data is absent: no page carries an `application/ld+json` block, so
-  the structured data audit scores 0/100 and no page is eligible for rich
-  results.
+- Structured data is absent from every page that is not a recipe. The 58 recipe
+  pages carry a `Recipe` block, added by `is-recipe-pages-emit-no-json-ld` and
+  checked by `pnpm run test:jsonld`; the home page, a post, a section, a kanban
+  card and a specification page carry no `application/ld+json` block, so the
+  structured data audit scores 0/100 on those, and none of them is eligible for
+  a rich result.
 - `og:image` and `twitter:image` are written only when
   `.Site.Params.socialImage` is set, and `config/_default/params.yaml` sets no
   `socialImage`, so a shared link carries no image. `twitter:site` emits
@@ -50,7 +53,10 @@ description, `og:title`, `og:description`, `og:url`, `og:type`, `twitter:card`,
       `datePublished` and `dateModified`), `Recipe` on `type: recipe` reading
       the `ingredients.yaml` sidecar and the `prep-time` / `cook-time` ISO
       durations, `BreadcrumbList` on every page below the home page, and
-      `AboutPage` for the `about/` pages.
+      `AboutPage` for the `about/` pages. The `Recipe` type is done, by
+      `is-recipe-pages-emit-no-json-ld`: its block is built by
+      `be-best/layouts/_partials/recipes/jsonld.html` and written first in the
+      recipe page's `main`, where Google reads it, not from a head partial.
 - [ ] **Meta tags** - add `robots`, `author`, `publisher`, `creator` and
       `keywords` (from the page `tags`), and state the indexing decision for the
       working sections: `kanban` and `specification` are working documents, so

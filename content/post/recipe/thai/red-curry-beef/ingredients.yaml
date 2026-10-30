@@ -10,8 +10,7 @@ ingredient-list:
       - quantity: '8'
         measure: 'tbsp'
         ingredient:
-          'red curry paste (approximately 1/4 the amount in the
-          [recipe](/recipe/thai/red-curry-paste/index.html))'
+          '[red curry paste](/post/recipe/thai/red-curry-paste/index.html)'
       - quantity: '1'
         measure: 'tin'
         ingredient: 'coconut cream (400 mls)'
@@ -20,10 +19,10 @@ ingredient-list:
         ingredient: 'red bell pepper'
       - quantity: '1'
         measure: 'whole'
-        ingredient: 'carrot (julienned)'
+        ingredient: 'carrot (julienne)'
       - quantity: '1'
         measure: 'whole'
-        ingredient: 'bamboo shoot (julienned)'
+        ingredient: 'bamboo shoot (julienne)'
       - quantity: '4'
         measure: 'whole'
         ingredient: 'fried tofu (halved)'

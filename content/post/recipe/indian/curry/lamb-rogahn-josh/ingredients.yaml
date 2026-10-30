@@ -1,5 +1,5 @@
 ingredient-list:
-  - dish: Ingredients
+  - dish: Marinade
     ingredients:
       - quantity: '1/2'
         measure: 'cup'
@@ -21,7 +21,7 @@ ingredient-list:
       - quantity: '1/2'
         measure: 'leg'
         ingredient: 'lamb (1 inch cubes) approximately 1.8kg'
-  - dish: Ingredients
+  - dish: Main Dish
     ingredients:
       - quantity: '4'
         measure: 'tbsp'

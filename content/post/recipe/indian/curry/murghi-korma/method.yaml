@@ -5,7 +5,7 @@ method-list:
       - 'Add the yoghurt, ginger, and garlic into a dish with the chicken. Make
         sure all the chicken is coated.'
       - 'Let it marinate for a few hours.'
-  - dish: Sauce
+  - dish: Main Dish
     method:
       - 'Dry fry the spices if desired.'
       - 'Grind the spices in a mortar and pestle.'

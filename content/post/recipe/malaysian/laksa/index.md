@@ -20,7 +20,3 @@ A terrific Malaysian soup. Rich, creamy and warming. It can be served with a
 range of toppings to suit the individual.
 
 <!--more-->
-
-## Laksa
-
-Optional: add a bit of chilli.

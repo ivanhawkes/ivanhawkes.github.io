@@ -18,5 +18,3 @@ type: recipe
 Britain's national dish. A curry that is mild enough for anyone to eat.
 
 <!--more-->
-
-## Notes

@@ -9,7 +9,8 @@ ingredient-list:
         ingredient: 'peanut oil'
       - quantity: '125'
         measure: 'g'
-        ingredient: 'homemade laksa paste (see recipe)'
+        ingredient:
+          '[homemade laksa paste](/post/recipe/malaysian/laksa-paste/)'
       - quantity: '500'
         measure: 'ml'
         ingredient: 'coconut milk'

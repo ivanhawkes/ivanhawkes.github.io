@@ -1,5 +1,5 @@
 ingredient-list:
-  - dish: Ingredients
+  - dish: Marinade
     ingredients:
       - quantity: '1/4'
         measure: 'cup'
@@ -10,7 +10,7 @@ ingredient-list:
       - quantity: '2'
         measure: 'tbsp'
         ingredient: 'ginger (crushed)'
-  - dish: Ingredients
+  - dish: Main Dish
     ingredients:
       - quantity: '1'
         measure: 'whole'

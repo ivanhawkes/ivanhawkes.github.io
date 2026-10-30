@@ -1,6 +1,7 @@
 {{/* Find the ingredients.yaml file in the current page bundle */}}
 {{ $ingredientsResource := .Resources.GetMatch "ingredients.yaml" }}
 
+{{ $page := . }}
 {{ with $ingredientsResource }}
   {{/* Unmarshal the YAML content into a Hugo variable */}}
   {{ $data := . | transform.Unmarshal }}
@@ -16,7 +17,7 @@
         <tbody class="divide-y divide-black">
           {{ range .ingredients }}
           <tr class="odd:bg-table-odd even:bg-table-even">
-            <td class="break-words">{{ .quantity }}{{ if .measure }} {{ .measure }}{{ end }} {{ .ingredient }}</td>
+            <td class="break-words">{{ .quantity }}{{ if .measure }} {{ .measure }}{{ end }} {{ $page.RenderString .ingredient }}</td>
           </tr>
           {{ end }}
         </tbody>

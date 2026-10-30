@@ -34,9 +34,9 @@ doesn’t, add cold water 1 tsp. at a time, pulsing between each addition.) This
 is just the right consistency for pressing into the bottom of a parchment-lined
 baking dish (I prefer 20 x 20 cm for thicker layers).
 
-For maximum lemon flavor, you’ll rub the lemon zest into the sugar with the tips
-of your fingers, extracting the lemon oils and allowing them to permeate the
-filling.
+For maximum lemon flavour, you’ll rub the lemon zest into the sugar with the
+tips of your fingers, extracting the lemon oils and allowing them to permeate
+the filling.
 
 You’ll pour the tart lemon filling on top of the still-warm shortbread, then
 continue baking until the curd is set and the crust is crisp. Set a timer for 5

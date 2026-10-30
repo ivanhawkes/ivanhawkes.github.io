@@ -14,14 +14,14 @@
   no line at all, so a page is never given an empty rule where its taxonomies
   should have been.
 */}}
-{{- $taxonomies := .Params.taxonomies -}}
+{{- $tags := .Params.tags -}}
 {{- $categories := .Params.categories -}}
-{{- if and (not .Params.omitTaxonomy) (or $taxonomies $categories) -}}
+{{- if and (not .Params.omitTaxonomy) (or $tags $categories) -}}
   <nav
     class="measure taxonomy"
     aria-label="Tags and categories">
     <ul class="taxonomy-list">
-      {{- with $taxonomies }}
+      {{- with $tags }}
         <li class="taxonomy-item">
           <span class="taxonomy-label">Tags</span>
           {{- range . -}}

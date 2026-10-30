@@ -21,8 +21,3 @@ A rich cream and butter sauce infused with earthy mushroom fragrence.
 This pairs very well with steak and chips.
 
 <!--more-->
-
-## Notes
-
-The stock I use is quite salty, so this recipe does not call for extra salt.
-Season it with more salt to taste if required.

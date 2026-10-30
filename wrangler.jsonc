@@ -1,6 +1,6 @@
 {
     "$schema": "node_modules/wrangler/config-schema.json",
-    "name": "ivan-hawkes-blog",
+    "name": "ivanhawkes-dev",
     "main": "src/index.js", // Points to your server entry point if you have one
     "assets": {
         "directory": "./public",

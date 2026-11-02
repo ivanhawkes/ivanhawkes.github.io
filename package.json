@@ -83,8 +83,7 @@
         "*.{js,ts,json,css,md,html,yaml}": "prettier --write"
     },
     "engines": {
-        "node": "24.20.0",
-        "pnpm": "11.0.0"
-    },
-    "packageManager": "pnpm@11.0.0"
+        "node": "^24.0.0",
+        "pnpm": "^11.0.0"
+    }
 }

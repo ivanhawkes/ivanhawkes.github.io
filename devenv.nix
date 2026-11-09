@@ -7,48 +7,55 @@
 }:
 
 {
-  packages = [
+  packages = with pkgs; [
     # Git LFS for repository management.
-    pkgs.git
-    pkgs.git-lfs
-    pkgs.github-cli
+    git
+    git-lfs
+    github-cli
 
     # Node and PNPM added directly via standard system package attributes
-    pkgs.nodejs_24
-    pkgs.pnpm
-
-    # Bring worktrunk into the project.
-    pkgs.worktrunk
+    nodejs_24
+    pnpm
 
     # Pi Coding Agent - simple, light, customise for the project.
-    pkgs.pi-coding-agent
+    pi-coding-agent
 
-    # Oh My Pi Coding Agent - evaluate for useful features.
-    pkgs.omp
+    # Bring worktrunk into the project.
+    worktrunk
 
     # Get access to copy and paste.
-    pkgs.wl-clipboard
+    wl-clipboard
+    
+    # Extra command line tools for agents.
+    go
+    curl
+    ripgrep
+    jq
+    fd
 
-    # Languages for Pi and the local AI model to use.
-    pkgs.go
-
-    # Allow downloads from the web.
-    pkgs.curl
+    # Python tooling (version-agnostic CLIs; the interpreter comes from languages.python)
+    uv
+    ruff
+    black
+    mypy
+    python314Packages.pytest
+    python314Packages.ipython
 
     # Fast static site generator
-    pkgs.hugo
+    hugo
 
     # Standalone Tailwind CSS CLI
-    pkgs.tailwindcss
+    tailwindcss
 
     # Provide bubblewrap if you plan to use Linux sandboxing features
-    pkgs.bubblewrap
-
-    # Extra command line tools for agents.
-    pkgs.ripgrep
-    pkgs.jq
-    pkgs.fd
+    bubblewrap
   ];
+
+  languages.python = {
+    enable = true;
+    package = pkgs.python314;
+    venv.enable = true;
+  };
 
   # Environment Variables
   env = {
@@ -59,9 +66,6 @@
 
   # Enable the native delta integration for improved Git diff views.
   delta.enable = true;
-
-  # Commented out completely to break the global fallback dependency chain
-  # languages.javascript = { ... };
 
   enterShell = ''
     if [ -d .git ]; then

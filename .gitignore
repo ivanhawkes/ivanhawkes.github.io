@@ -1,4 +1,4 @@
-# No secrets here.
+# Keep environment files out.
 .env
 
 # Devenv

@@ -7,6 +7,9 @@
 }:
 
 {
+  # Enable dotenv support for loading environment variables from a .env file.
+  dotenv.enable = true;
+
   packages = with pkgs; [
     # Git LFS for repository management.
     git
@@ -25,7 +28,7 @@
 
     # Get access to copy and paste.
     wl-clipboard
-    
+
     # Extra command line tools for agents.
     go
     curl
@@ -85,6 +88,15 @@
     echo "  Node.js: $(node --version)"
     echo "  pnpm: $(pnpm --version)"
     echo "  Tailwind: $(tailwindcss --help | head -n 1)"
+
+    # Automatically register Context7 MCP if the key was loaded from your .env
+    if [ -n "''${CONTEXT7_API_KEY:-}" ]; then
+      echo "🔄 Found Context7 API key. Registering MCP server in Pi Agent..."
+      pi mcp add context7 --url https://context7.com \
+        --bearer-token-env-var CONTEXT7_API_KEY --exposure direct 2>/dev/null || true
+    else
+      echo "⚠️ Warning: CONTEXT7_API_KEY is not set. Check your .env file."
+    fi
 
     if [ ! -f ".config/wt.toml" ]; then
       echo "💡 Run 'wt config create --project' to link this repo."

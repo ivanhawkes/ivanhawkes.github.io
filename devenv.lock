@@ -33,10 +33,44 @@
         "type": "github"
       }
     },
+    "nixpkgs-hugo": {
+      "locked": {
+        "lastModified": 1791048980,
+        "narHash": "sha256-KgItSKML8Xvte0B7/uGnBDsYzSnnKHcOaiUbgWBXLXw=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a7868a727837f3c09cee2ce0ca671c76b1589fed",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a7868a727837f3c09cee2ce0ca671c76b1589fed",
+        "type": "github"
+      }
+    },
+    "nixpkgs-toolchain": {
+      "locked": {
+        "lastModified": 1789343839,
+        "narHash": "sha256-UPppeVYpO3hMMxkB7XwqQdd1q2SoCVnYQkGj62hBto4=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "cfc6aaf78ed1abefde721dc4dbdca62b926d1532",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "cfc6aaf78ed1abefde721dc4dbdca62b926d1532",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "devenv": "devenv",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-hugo": "nixpkgs-hugo",
+        "nixpkgs-toolchain": "nixpkgs-toolchain"
       }
     }
   },

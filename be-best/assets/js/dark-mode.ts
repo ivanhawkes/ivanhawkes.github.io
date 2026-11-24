@@ -8,16 +8,17 @@ import {
     nextSetting,
     readTheme,
     storeTheme,
+    type Theme,
 } from './theme-mode.ts';
 
-const LABELS = {
+const LABELS: Record<Theme, string> = {
     light: 'Light theme',
     dark: 'Dark theme',
     system: 'System theme, following the operating system',
 };
 
 // The label names the scheme in effect and the one the next press selects.
-const labelFor = (theme) =>
+const labelFor = (theme: Theme) =>
     `${LABELS[theme]} in effect. Activate to select the ${LABELS[nextSetting(theme)]}.`;
 
 export const initDarkMode = () => {

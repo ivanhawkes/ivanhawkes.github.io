@@ -5,7 +5,7 @@
 export type Theme = 'light' | 'dark' | 'system';
 
 /* The settings, in the order the button cycles through them. */
-export const THEME_ORDER = ['light', 'dark', 'system'];
+export const THEME_ORDER: Theme[] = ['light', 'dark', 'system'];
 
 export const STORAGE_KEY = 'theme';
 
@@ -13,11 +13,11 @@ export const STORAGE_KEY = 'theme';
    'disabled' was light. Migrated on the next read. */
 const LEGACY_KEY = 'darkMode';
 
-const isTheme = (value) =>
+const isTheme = (value: unknown): value is Theme =>
     value === 'light' || value === 'dark' || value === 'system';
 
 /* The stored setting, defaulting to following the operating system. */
-export const readTheme = () => {
+export const readTheme = (): Theme => {
     try {
         const stored = localStorage.getItem(STORAGE_KEY);
         if (isTheme(stored)) {
@@ -39,7 +39,7 @@ export const readTheme = () => {
 };
 
 /* Remember the setting so the next visit starts with the same scheme. */
-export const storeTheme = (theme) => {
+export const storeTheme = (theme: Theme) => {
     try {
         localStorage.setItem(STORAGE_KEY, theme);
         localStorage.removeItem(LEGACY_KEY);
@@ -49,20 +49,20 @@ export const storeTheme = (theme) => {
 };
 
 /* The setting the switch selects next. */
-export const nextSetting = (theme) =>
+export const nextSetting = (theme: Theme): Theme =>
     THEME_ORDER[(THEME_ORDER.indexOf(theme) + 1) % THEME_ORDER.length];
 
 export const prefersDark = () =>
     window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 /* The scheme in effect. The system setting follows the operating system. */
-export const isDark = (theme) =>
+export const isDark = (theme: Theme) =>
     theme === 'dark' || (theme === 'system' && prefersDark());
 
 /* Record the setting and the resolved scheme on the root element. The
    data-theme attribute selects the icon on the switch; the dark class drives
    Tailwind's dark: variant and the token overrides in the stylesheet. */
-export const applyTheme = (theme) => {
+export const applyTheme = (theme: Theme): Theme => {
     const root = document.documentElement;
 
     root.dataset.theme = theme;

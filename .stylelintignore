@@ -1,0 +1,5 @@
+# Generated CSS: the Tailwind build output and Hugo's copies of it.
+assets/css/main.css
+public/
+resources/
+node_modules/

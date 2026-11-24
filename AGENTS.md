@@ -61,6 +61,7 @@ system live in the content tree, queryable via shortcodes.
 
 ```bash
 pnpm run test         # CSS, lint, Hugo, HTML, heading, placeholder, card, method, JSON-LD and prettier checks; validate changes here
+pnpm run test:types   # tsc --noEmit over the theme TypeScript (be-best/tsconfig.json)
 pnpm run lint         # eslint over the repo's JS/TS: scripts, theme assets, configs
 pnpm run test:headings # count h1 elements over public/; fail on pages without exactly one
 pnpm run test:placeholders # pair imgB classes with their rules over public/; fail on an unmatched pair
@@ -68,7 +69,7 @@ pnpm run test:kanban  # validate card front matter against the schema in assets/
 pnpm run test:methods # validate method.yaml against the schema in assets/, and its rendering over public/
 pnpm run test:jsonld  # validate each recipe page's Recipe JSON-LD against assets/ and the sidecars it states
 pnpm run test:prettier # assert layouts ignored, one plugin-free prettier config, editor pins set
-pnpm run test:checks  # the eight checks over public/, no build: lint, html, headings, placeholders, kanban, methods, jsonld, prettier
+pnpm run test:checks  # the nine checks over public/, no build: lint, types, html, headings, placeholders, kanban, methods, jsonld, prettier
 pnpm run test:ci      # test:checks + go test ./cmd/kan; the publish gate
 pnpm run build        # CSS + minified production build
 pnpm run build:ci     # build + test:ci; the Cloudflare Pages build command

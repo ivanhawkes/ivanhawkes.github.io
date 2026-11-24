@@ -1,4 +1,4 @@
-﻿<head>
+<head>
   {{- partial "/meta/meta.html" . -}}
 
   {{- if site.Params.theme.darkMode -}}
@@ -38,12 +38,7 @@
     {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}
   {{ end }}
 
-  {{/* TypeScript and JavaScript
-  
-  NOTES: Read up on the format option. See if esm is right for our use case.
-  "format" "esm", "iife", "cjs"
-  
-  */}}
+  {{/* The deferred bundle, an iife: every module starts itself on import. */}}
   {{ with resources.Get "js/index.ts" }}
     {{ $opts := dict
       "minify" (cond hugo.IsDevelopment false true)

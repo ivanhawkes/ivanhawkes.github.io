@@ -620,15 +620,16 @@ result:
 ## Build And Publishing
 
 The scripts in `package.json` are the entry points. `test:css` and `test:hugo`
-build; the eight checks that read the build - `test:lint`, `test:html`,
-`test:headings`, `test:placeholders`, `test:kanban`, `test:methods`,
-`test:jsonld` and `test:prettier` - are combined by `test:checks`.
-`pnpm run test` is the CSS build, the site build and `test:checks`.
-`pnpm run test:ci` is `test:checks` and `go test ./cmd/kan`, the set a build
-already made can be judged by. `pnpm run build:ci` is `pnpm run build` then
-`test:ci`, and is the Cloudflare Pages build command. `pnpm run build` compiles
-the CSS and the minified production site, `pnpm run css-watch` runs the Tailwind
-watcher, and `pnpm run server` builds the CSS once and then serves the site.
+build; the nine checks that read the build - `test:lint`, `test:types`,
+`test:html`, `test:headings`, `test:placeholders`, `test:kanban`,
+`test:methods`, `test:jsonld` and `test:prettier` - are combined by
+`test:checks`. `pnpm run test` is the CSS build, the site build and
+`test:checks`. `pnpm run test:ci` is `test:checks` and `go test ./cmd/kan`, the
+set a build already made can be judged by. `pnpm run build:ci` is
+`pnpm run build` then `test:ci`, and is the Cloudflare Pages build command.
+`pnpm run build` compiles the CSS and the minified production site,
+`pnpm run css-watch` runs the Tailwind watcher, and `pnpm run server` builds the
+CSS once and then serves the site.
 
 The site is published by Cloudflare Pages, which builds the `publish` branch
 from Git with `pnpm run build:ci` and serves `public/`. The build compiles the
@@ -643,12 +644,12 @@ workflow that did this until 2026-10-30, with its Hugo cache, is gone.
 
 Implementation constraints:
 
-- Hugo 0.166.0 extended, Go 1.26.7, Node 24.20.0 and pnpm. Hugo stays at
+- Hugo 0.166.0 extended, Go 1.26.7, Node 24.20.0 and pnpm 12.9.0. Hugo stays at
   0.166.0: the extended build does the webp processing, and later versions break
   the site.
-- Hugo's `security.exec` allowlist permits `node`, `go` and `npx`, which is what
-  the CSS build and the Go tooling need; `module.mounts` exposes `assets/` and
-  `data/` to the resource filesystem.
+- Hugo's `security.exec` allowlist permits only `node`: no template runs an
+  external tool, and Tailwind and Go run from the `pnpm` scripts, outside Hugo;
+  `module.mounts` exposes `assets/` and `data/` to the resource filesystem.
 - Formatting is Prettier with `printWidth: 80`, `tabWidth: 4`,
   `proseWrap: "always"`, `singleQuote: true`, and the go-template parser for
   `*.html`. It runs on staged files through husky and lint-staged.

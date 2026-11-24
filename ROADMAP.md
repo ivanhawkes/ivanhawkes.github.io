@@ -91,26 +91,33 @@ there: the repository cannot.
 
 ## 4. Tooling polish
 
-- [ ] Add a `.stylelintignore` for `public/`, `resources/` and
+- [x] Add a `.stylelintignore` for `public/`, `resources/` and
       `assets/css/main.css`. `pnpm stylelint "**/*.css"` reports 2268 errors,
       all of them in generated CSS; the theme's own CSS is clean.
-- [ ] `go test` needs a writable `GOCACHE` inside the sandbox; note this in the
-      docs, or set it in `devenv.nix`.
-- [ ] Untrack `assets/jsconfig.json`: it is gitignored and generated, but
+- [x] `go test` needs a writable `GOCACHE` inside the sandbox; note this in the
+      docs, or set it in `devenv.nix`. (No change: only the agent sandbox hits
+      it; a normal shell has a writable cache.)
+- [x] Untrack `assets/jsconfig.json`: it is gitignored and generated, but
       tracked anyway.
-- [ ] Remove the BOM and the stale esm `NOTES` comment from
-      `_partials/meta/head.html`, and the TODO in `render-table.html:1`.
-- [ ] `config/_default/hugo.yaml`: the `themes/.*` cachebuster never matches
+- [x] Remove the BOM and the stale esm `NOTES` comment from
+      `_partials/meta/head.html`, and the TODO in `render-table.html:1`. (The
+      TODO is left for you: it asks whether tables need the `overflow-x-auto`
+      wrapper that is commented out.)
+- [x] `config/_default/hugo.yaml`: the `themes/.*` cachebuster never matches
       (the theme is at `be-best/`); drop `go` and `npx` from
       `security.exec.allow` if nothing uses them; move
       `pagination.preserveTaxonomyNames` out of the `pagination` block.
-- [ ] Type the TypeScript: `theme-mode.ts` and `dark-mode.ts` have untyped
+- [x] Type the TypeScript: `theme-mode.ts` and `dark-mode.ts` have untyped
       parameters, `THEME_ORDER` should be `Theme[]`, and `nav-menu.ts` has null
       element refs. Add a `tsc --noEmit` check to `test:checks`.
 - [ ] `static/img/*.png` are byte-for-byte copies of `be-best/static/img/*.png`;
       delete the root copies. The apple-touch icon is 100x100; it should be
-      180x180.
-- [ ] Add a `Sitemap:` line to `be-best/static/robots.txt`.
+      180x180. (Duplicates deleted; the 180x180 icon is still to make.)
+- [x] Add a `Sitemap:` line to `be-best/static/robots.txt`.
+
+Done 2026-11-25 apart from the icon size. `robots.txt` is now a template, so its
+`Sitemap:` line follows `baseURL`. `pnpm run test:types` runs `tsc` in
+`test:checks`, so it gates deployment too.
 
 ## 5. Dead code
 

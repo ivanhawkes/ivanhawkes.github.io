@@ -15,11 +15,12 @@ const bar = window.matchMedia(BAR_QUERY);
 
 const root = document.documentElement;
 
-const header = document.getElementById('site-header');
-const nav = document.getElementById('primary-nav');
-const topList = document.getElementById('nav-list');
-const toggle = document.getElementById('nav-toggle');
-const scrim = document.getElementById('nav-scrim');
+/* Typed as present: initNavMenu wires nothing when any of them is missing. */
+const header = document.getElementById('site-header') as HTMLElement;
+const nav = document.getElementById('primary-nav') as HTMLElement;
+const topList = document.getElementById('nav-list') as HTMLElement;
+const toggle = document.getElementById('nav-toggle') as HTMLElement;
+const scrim = document.getElementById('nav-scrim') as HTMLElement;
 
 const CONTROL =
     'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])';

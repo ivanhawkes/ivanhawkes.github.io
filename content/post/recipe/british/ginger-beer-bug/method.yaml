@@ -12,6 +12,9 @@ method-list:
         repeating until you have a mature bug.'
   - dish: Ginger Beer Bug
     method:
+      - "Keep your work space clean. It doesn't have to be sterile, but any
+        bacteria on your tools will end up in the jar and may taint the flavour
+        of the ferment."
       - 'Start the bug off by taking the sugar and water and combining together
         in a jar.'
       - 'Use a microplane to grate the ginger, skin and all, into the jar. The

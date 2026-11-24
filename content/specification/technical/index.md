@@ -75,20 +75,20 @@ archetype is named by. The table below is the single source of truth for that
 mapping; the board, the documentation shortcodes and the `kan` tool all read it
 from here.
 
-| Prefix | Kind (`--kind`)  | Type          | Example                   | Description                              |
-| ------ | ---------------- | ------------- | ------------------------- | ---------------------------------------- |
-| `id`   | `ideation`       | Ideation      | `p1-id-initial-concept`   | Ideas and concept capture                |
-| `sp`   | `specifications` | Specification | `p1-sp-write-specs`       | Specs (requirements, tech, test, design) |
-| `dl`   | `deliverables`   | Deliverables  | `p2-dl-write-the-pdf`     | Produced deliverables                    |
-| `sf`   | `scaffold`       | Scaffold      | `p2-sf-repo-skeleton`     | Services, repo, skeleton, scaffolding    |
-| `ep`   | `epics`          | Epics         | `p2-ep-kanban-system`     | Bundles of related features              |
-| `ft`   | `features`       | Features      | `p2-ft-image-handling`    | Major and minor features                 |
-| `ac`   | `acceptance`     | Acceptance    | `p2-ac-board-is-readable` | Criteria required for acceptance         |
-| `dp`   | `deployment`     | Deployment    | `p2-dp-publish-to-pages`  | Steps required to deploy the app         |
-| `is`   | `issues`         | Issues        | `p1-is-menu-overlap`      | Defects in the code and content          |
-| `rl`   | `releases`       | Releases      | `p2-rl-v1-launch`         | Versioned releases, tied to GitHub       |
-| `ts`   | `testing`        | Testing       | `p2-ts-html-validation`   | Test and QA work                         |
-| `us`   | `user-stories`   | User stories  | `p2-us-read-a-post`       | Requirements expressed as user stories   |
+| Prefix | Kind (`--kind`)  | Type          | Example                       | Description                              |
+| ------ | ---------------- | ------------- | ----------------------------- | ---------------------------------------- |
+| `id`   | `ideation`       | Ideation      | `p1-id-initial-concept`       | Ideas and concept capture                |
+| `sp`   | `specifications` | Specification | `p1-sp-write-specs`           | Specs (requirements, tech, test, design) |
+| `dl`   | `deliverables`   | Deliverables  | `p2-dl-write-the-pdf`         | Produced deliverables                    |
+| `sf`   | `scaffold`       | Scaffold      | `p2-sf-repo-skeleton`         | Services, repo, skeleton, scaffolding    |
+| `ep`   | `epics`          | Epics         | `p2-ep-kanban-system`         | Bundles of related features              |
+| `ft`   | `features`       | Features      | `p2-ft-image-handling`        | Major and minor features                 |
+| `ac`   | `acceptance`     | Acceptance    | `p2-ac-board-is-readable`     | Criteria required for acceptance         |
+| `dp`   | `deployment`     | Deployment    | `p2-dp-publish-to-cloudflare` | Steps required to deploy the app         |
+| `is`   | `issues`         | Issues        | `p1-is-menu-overlap`          | Defects in the code and content          |
+| `rl`   | `releases`       | Releases      | `p2-rl-v1-launch`             | Versioned releases, tied to GitHub       |
+| `ts`   | `testing`        | Testing       | `p2-ts-html-validation`       | Test and QA work                         |
+| `us`   | `user-stories`   | User stories  | `p2-us-read-a-post`           | Requirements expressed as user stories   |
 
 A kind with no cards is normal: the summary document keeps one table per kind,
 so kinds that are not in use render their empty table on purpose.
@@ -132,14 +132,14 @@ that partial and passes it a reader: the OS user full name, read from
 `os.Getenv "HUGO_AUTHOR"`, which `devenv.nix` exports from the `getent passwd`
 GECOS field. Only the cards whose `author` equals that name, trimmed and matched
 case-insensitively, are kept, and each kept card scores 300 higher, so the
-reader's own cards rise within their lane. `getent` is Linux only and the Pages
-workflow sets no `HUGO_AUTHOR`: with an empty name the partial filters nothing
-and awards no bonus, and the page renders the whole board. The partial lists the
-cards with `.RegularPagesRecursive`, so a stage `_index.md` is never rendered as
-a card, and it derives the lanes from the folder names read with `os.ReadDir`: a
-folder is a stage when its name starts with two digits and a dash, which keeps
-the board page folders out, and the `00` folder is skipped because epics are not
-a stage.
+reader's own cards rise within their lane. `getent` is Linux only and the
+Cloudflare Pages build sets no `HUGO_AUTHOR`: with an empty name the partial
+filters nothing and awards no bonus, and the page renders the whole board. The
+partial lists the cards with `.RegularPagesRecursive`, so a stage `_index.md` is
+never rendered as a card, and it derives the lanes from the folder names read
+with `os.ReadDir`: a folder is a stage when its name starts with two digits and
+a dash, which keeps the board page folders out, and the `00` folder is skipped
+because epics are not a stage.
 
 ### Front Matter Fields
 
@@ -625,24 +625,27 @@ build; the eight checks that read the build - `test:lint`, `test:html`,
 `test:jsonld` and `test:prettier` - are combined by `test:checks`.
 `pnpm run test` is the CSS build, the site build and `test:checks`.
 `pnpm run test:ci` is `test:checks` and `go test ./cmd/kan`, the set a build
-already made can be judged by, and is what CI runs. `pnpm run build` compiles
+already made can be judged by. `pnpm run build:ci` is `pnpm run build` then
+`test:ci`, and is the Cloudflare Pages build command. `pnpm run build` compiles
 the CSS and the minified production site, `pnpm run css-watch` runs the Tailwind
 watcher, and `pnpm run server` builds the CSS once and then serves the site.
 
-The publish workflow, `.github/workflows/hugo.yml`, builds the CSS and builds
-the site with
-`--environment production --gc --minify --ignoreCache --cleanDestinationDir`,
-then runs `pnpm run test:ci`: every check of `pnpm run test` less its two build
-steps, which the workflow has already performed in minified form, and
-`go test ./cmd/kan`. A check that fails stops the job before the Pages artifact
-is uploaded, so the site is built once per job and nothing publishes that the
-checks did not clear. Its Hugo cache is keyed on the Hugo version, the `be-best`
-tree hash and a hash of the site configuration, so a theme or configuration
-change starts a cold build.
+The site is published by Cloudflare Pages, which builds the `publish` branch
+from Git with `pnpm run build:ci` and serves `public/`. The build compiles the
+minified CSS, builds the site with `--gc --minify --cleanDestinationDir`, then
+runs `pnpm run test:ci`: every check of `pnpm run test` less its two build
+steps, which `pnpm run build` has already performed in minified form, and
+`go test ./cmd/kan`. A check that fails fails the build, so the site is built
+once per deployment and nothing publishes that the checks did not clear. The
+build command, output directory, production branch and toolchain variables are
+set in the Cloudflare dashboard and listed in `README.md`. The GitHub Actions
+workflow that did this until 2026-10-30, with its Hugo cache, is gone.
 
 Implementation constraints:
 
-- Hugo 0.166.0 extended, Node 24, pnpm, and Go 1.26 for `cmd/kan`.
+- Hugo 0.166.0 extended, Go 1.26.7, Node 24.20.0 and pnpm. Hugo stays at
+  0.166.0: the extended build does the webp processing, and later versions break
+  the site.
 - Hugo's `security.exec` allowlist permits `node`, `go` and `npx`, which is what
   the CSS build and the Go tooling need; `module.mounts` exposes `assets/` and
   `data/` to the resource filesystem.

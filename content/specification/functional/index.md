@@ -193,13 +193,13 @@ class and `data-theme` attribute drive the theme's styles.
 
 ## Publishing Behaviour
 
-A push to the `publish` branch runs the publish workflow, which builds the CSS,
-builds the site, runs the whole suite of checks against that build -
-`pnpm run test:ci`, every check of `pnpm run test` and the tests of the
-`cmd/kan` scaffolder - and uploads the result as the Pages artifact. A build
-that fails, or a build any check reports a problem in, stops there: nothing is
-published, and the previously published site stays live. Work on other branches
-is never published.
+A push to the `publish` branch starts a Cloudflare Pages build, which runs
+`pnpm run build:ci`: it builds the CSS and the minified site, then runs the
+whole suite of checks against that build - `pnpm run test:ci`, every check of
+`pnpm run test` and the tests of the `cmd/kan` scaffolder. A build that fails,
+or a build any check reports a problem in, stops there: nothing is published,
+and the previously published site stays live. Work on other branches is never
+published to the live site.
 
 ## Outstanding Functionality
 

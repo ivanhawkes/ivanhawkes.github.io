@@ -28,28 +28,20 @@ findings:
 
 ## Deployment Constraint
 
-The site is published to GitHub Pages by `.github/workflows/hugo.yml` from the
-`publish` branch. Pages serves the artifact with headers of its own choosing:
-the repository cannot attach a `Content-Security-Policy`,
-`Strict-Transport-Security`, `Cross-Origin-Opener-Policy` or `X-Frame-Options`
-response header to a Pages page. Record, before writing any policy, which of the
-five findings is closable where:
+Since 2026-10-30 the site is built and served by Cloudflare Pages from the
+`publish` branch. Pages applies the response headers named in a `_headers` file
+at the root of the output, and Hugo copies `static/_headers` into `public/`, so
+all five findings can be closed by headers:
 
-- HSTS: GitHub sets the header when the repository's Pages "Enforce HTTPS"
-  setting is on. Check the setting, and record the `Strict-Transport-Security`
-  value a live request returns.
-- CSP: the policy can travel inside the document, as
-  `<meta http-equiv="Content-Security-Policy">` in
-  `be-best/layouts/_partials/meta/meta.html`. The CSP spec ignores
-  `frame-ancestors`, `sandbox` and `report-uri` in a meta, so a meta policy does
-  not close the frame control finding.
-- Trusted Types: needs the `Require-Trusted-Types` response header plus a
-  `trustedTypes.createPolicy` call in script. There is no meta equivalent.
-
-A perfect security score is therefore out of reach while the site is hosted on
-Pages. State the score that is reachable, and name the hosting change (a host
-that serves custom headers, e.g. a `_headers` file on Cloudflare Pages) if that
-is the decision taken.
+- HSTS: a `Strict-Transport-Security` rule in `_headers`, or the HSTS setting of
+  the Cloudflare zone. Record which one provides it, and the value a live
+  request returns.
+- CSP: a `Content-Security-Policy` header, which, unlike a `<meta>` policy,
+  honours `frame-ancestors`.
+- COOP and frame control: `Cross-Origin-Opener-Policy`, and `frame-ancestors` in
+  the CSP (or `X-Frame-Options`).
+- Trusted Types: the CSP directive `require-trusted-types-for 'script'`, plus a
+  `trustedTypes.createPolicy` call wherever a script writes markup.
 
 ## Policy Content
 
@@ -73,13 +65,13 @@ Measured on the current build, the policy has to allow exactly this:
 ## Acceptance Criteria
 
 - [ ] **HSTS** - a live request returns `Strict-Transport-Security`, and the
-      Pages setting that provides it is named on this card
+      `_headers` rule or Cloudflare setting that provides it is named on this
+      card
 - [ ] **CSP** - the policy covers `default-src`, `script-src`, `style-src`,
-      `img-src` and `form-action` (plus `frame-ancestors` on a header route),
-      and the site's own features work under it: navigation, theme toggle,
-      search box, images and placeholders, code-to-clipboard, kanban board
-- [ ] **COOP, frame control, Trusted Types** - each is closed by a header, or
-      recorded as unreachable on GitHub Pages together with the hosting change
-      that would close it
+      `img-src` and `form-action` plus `frame-ancestors`, and the site's own
+      features work under it: navigation, theme toggle, search box, images and
+      placeholders, code-to-clipboard, kanban board
+- [ ] **COOP, frame control, Trusted Types** - each is closed by a header in
+      `static/_headers`
 - [ ] **No regression** - `pnpm run test` is green with the policy in place, and
       the score reported by the review tool is recorded here

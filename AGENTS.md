@@ -1,9 +1,9 @@
 # Project Context: Ivan Hawkes Blog
 
-This repository is a personal static blog built with Hugo and deployed to GitHub
-Pages. Everything is versioned plain files - no backend, no database. It doubles
-as a playground: a static Kanban board and a markdown documentation system live
-in the content tree, queryable via shortcodes.
+This repository is a personal static blog built with Hugo and deployed to
+Cloudflare Pages. Everything is versioned plain files - no backend, no database.
+It doubles as a playground: a static Kanban board and a markdown documentation
+system live in the content tree, queryable via shortcodes.
 
 ## Layout
 
@@ -71,6 +71,7 @@ pnpm run test:prettier # assert layouts ignored, one plugin-free prettier config
 pnpm run test:checks  # the eight checks over public/, no build: lint, html, headings, placeholders, kanban, methods, jsonld, prettier
 pnpm run test:ci      # test:checks + go test ./cmd/kan; the publish gate
 pnpm run build        # CSS + minified production build
+pnpm run build:ci     # build + test:ci; the Cloudflare Pages build command
 pnpm run css-watch    # Tailwind watch mode (run alongside hugo)
 pnpm run server        # compile CSS once, then hugo server -D -F
 pnpm stylelint "**/*.css"
@@ -78,11 +79,13 @@ hugo new content kanban/01-to-do/p2-is-slug.md --kind issues
 go run ./cmd/kan is my card title
 ```
 
-`pnpm run test:ci` is the publish gate: `.github/workflows/hugo.yml` runs it
-over the minified build the workflow has already performed, and a check that
-fails stops the job before the Pages artifact is uploaded. The chain's own
-`test:css` and `test:hugo` steps are dropped there because the workflow builds
-the site once, in production form.
+`pnpm run test:ci` is the publish gate. Cloudflare Pages builds the site from
+Git with the build command `pnpm run build:ci` and the output directory
+`public`: the minified build, then `test:ci` over it. A check that fails fails
+the build, and Pages keeps serving the last good deployment. `test:ci` leaves
+out the chain's own `test:css` and `test:hugo` steps, so the site is built once,
+in production form. The build command lives in the Cloudflare dashboard, not in
+this repository.
 
 `cmd/kan` is a Go helper that scaffolds cards:
 `go run ./cmd/kan [-p <0-9>] [-s <stage>] <kind> <title words...>`, where the
@@ -186,4 +189,5 @@ covers only how the program is written.
 3. Implement, validate with `pnpm run test`, then move the card's file to the
    next stage folder, setting `params.completionDate` on completion.
 4. Commit small, focused changes, theme files included - `be-best/` is part of
-   this repository. CI deploys only from the `publish` branch.
+   this repository. Cloudflare Pages deploys the live site only from the
+   `publish` branch.

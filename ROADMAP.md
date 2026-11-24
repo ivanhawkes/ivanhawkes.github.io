@@ -70,20 +70,24 @@ builds and passes html-validate.
 
 ## 3. Deployment and the publish gate
 
-- [ ] **Nothing gates a publish.** `.github/workflows/hugo.yml` was removed on
+- [x] **Nothing gates a publish.** `.github/workflows/hugo.yml` was removed on
       2026-10-30 in the move off GitHub Pages, so `pnpm run test:ci` no longer
       runs before a deploy. Make the new host's build command run it, e.g. on
       Cloudflare Pages `pnpm run build && pnpm run test:ci`, and record that
       setting in the repo.
-- [ ] **Docs still describe GitHub Pages.** Bring these up to date: `AGENTS.md`
+- [x] **Docs still describe GitHub Pages.** Bring these up to date: `AGENTS.md`
       (lines 3-4, 72, 81-85, 189), `README.md:74-76`, `specification/functional`
       (194-202), `specification/requirements` (33, 92, 95, 96, 104, 120-122) and
       `specification/technical` (135, 586, 612, 627-641). In
       `specification/decisions`, add a superseding entry dated 2026-10-30 rather
       than editing the old ones. Card `p1-is-security-headers` assumes Pages
       too.
-- [ ] Fix the check count: the docs say "six checks" in places and "eight" in
+- [x] Fix the check count: the docs say "six checks" in places and "eight" in
       others; there are eight.
+
+Done 2026-11-25. `pnpm run build:ci` (build, then `test:ci`) is the Cloudflare
+Pages build command; the dashboard settings are listed in `README.md`. Set them
+there: the repository cannot.
 
 ## 4. Tooling polish
 

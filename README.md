@@ -49,9 +49,10 @@ devenv shell
 Install the required software on your machine:
 
 - Git
-- Node.js 24
+- Node.js 24.20.0
 - PNPM
-- Hugo 0.166.0
+- Hugo 0.166.0 extended
+- Go 1.26.7
 - Tailwind CSS + Typography
 
 ```bash
@@ -71,9 +72,19 @@ pnpm run test
 pnpm run build
 ```
 
-A push to `publish` is gated by `pnpm run test:ci`: the checks above, run over
-the minified build the workflow has already made, plus `go test ./cmd/kan`. The
-Pages artifact is uploaded only when every one of them passes.
+The site is hosted on Cloudflare Pages, which builds it from Git; a push to
+`publish` updates the live site. Its build command is `pnpm run build:ci`: the
+minified build, then `pnpm run test:ci` over it, which is the checks above plus
+`go test ./cmd/kan`. A failing check fails the build, and the last good
+deployment stays live. Set in the Cloudflare dashboard:
+
+- Production branch: `publish`
+- Build command: `pnpm run build:ci`
+- Build output directory: `public`
+- Environment variables: `HUGO_VERSION=extended_0.166.0`, `GO_VERSION=1.26.7`
+  and `NODE_VERSION=24.20.0`. Keep Hugo at 0.166.0 extended: the extended build
+  does the webp image processing, and later versions break the site. Go 1.26.7
+  matches that Hugo release.
 
 To develop against a live server, run a pair of terminals, one for Hugo and one
 for the Tailwind watcher:

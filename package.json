@@ -25,6 +25,7 @@
         "test:checks": "pnpm run test:lint && pnpm run test:html && pnpm run test:headings && pnpm run test:placeholders && pnpm run test:kanban && pnpm run test:methods && pnpm run test:jsonld && pnpm run test:prettier",
         "test": "pnpm run test:css && pnpm run test:hugo && pnpm run test:checks",
         "test:ci": "pnpm run test:checks && go test ./cmd/kan",
+        "build:ci": "pnpm run build && pnpm run test:ci",
         "prepare": "husky",
         "format": "prettier --write \"**/*.{js,ts,json,css,md,html,yaml}\""
     },

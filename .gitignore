@@ -13,7 +13,7 @@ devenv.local.yaml
 .vs/
 
 # Jetbrains
-.idea/
+.idea
 
 # pre-commit
 .pre-commit-config.yaml
@@ -35,3 +35,15 @@ hugo_stats.json
 
 # Krita
 *~
+
+# Shell, editor and agent files that appear in the repository root.
+/.bash_profile
+/.bashrc
+/.profile
+/.zprofile
+/.zshrc
+/.gitconfig
+/.gitmodules
+/.ripgreprc
+/.mcp.json
+/.claude/

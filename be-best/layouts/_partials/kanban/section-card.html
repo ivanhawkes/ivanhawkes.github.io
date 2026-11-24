@@ -14,11 +14,10 @@
   so a card read close and a card read far agree.
 */}}
 {{- $page := . -}}
-{{- $id := replaceRE "^p[0-9]-" $page.File.BaseFileName "" -}}
 {{- $isCard := findRE `^p[0-9]-[a-z]{2}-[a-z0-9-]+$` $page.File.BaseFileName -}}
 {{- $priority := 9 -}}
 {{- with findRE "^p([0-9])-" $page.File.BaseFileName -}}
-  {{- $priority = int (replaceRE "^p([0-9])-" "" (index . 0)) -}}
+  {{- $priority = int (replaceRE "^p([0-9])-" "$1" (index . 0)) -}}
 {{- end -}}
 {{- $today := time.Format "2006-01-02" time.Now -}}
 {{- $completed := $page.Params.completionDate -}}

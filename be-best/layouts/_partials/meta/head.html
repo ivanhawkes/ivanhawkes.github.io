@@ -33,9 +33,6 @@
   <link rel="apple-touch-icon" href="/img/apple-icon.png">
   <link rel="icon" href="/img/favicon.png">
 
-  <!-- Site title -->
-  <title>{{- .Site.Title -}}</title>
-
   <!-- RSS Feed -->
   {{ with .OutputFormats.Get "rss" }}
     {{ printf `<link rel=%q type=%q href=%q title=%q>` .Rel .MediaType.Type .Permalink site.Title | safeHTML }}

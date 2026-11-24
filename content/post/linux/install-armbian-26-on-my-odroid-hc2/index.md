@@ -80,8 +80,8 @@ Install git and git-lfs. This will save you a little effort later on.
 After the basic installation has been completed I like to settle in as a new
 home owner and put some of the comforts of home onto my new machine.
 
-Start by following the [instructions](../install-ubuntu-24.04) provided for a
-Ubuntu machine. At a minimum you will want to copy over your SSH keys, run an
+Start by following the [instructions](../install-debian-13-trixie/) provided for
+a Debian machine. At a minimum you will want to copy over your SSH keys, run an
 apt update, and install your dot files.
 
 ## Swapfile

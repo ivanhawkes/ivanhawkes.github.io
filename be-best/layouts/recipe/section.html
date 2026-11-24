@@ -3,8 +3,8 @@
 
 
   <div class="container card-list">
-    {{ $pages := .Pages.ByDate.Reverse }}
-    {{ $paginator := .Paginate $pages.ByTitle 12 }}
+    {{/* Recipes are looked up by name, so they list alphabetically. */}}
+    {{ $paginator := .Paginate .Pages.ByTitle 12 }}
 
     {{ range $paginator.Pages }}
       {{- partial "/recipes/card.html" . -}}

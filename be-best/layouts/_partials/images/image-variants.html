@@ -29,6 +29,7 @@
 
 {{- $image := .image -}}
 {{- $alt := .alt -}}
+{{- $title := .title -}}
 {{- $class := .class -}}
 {{- $sizes := .sizes -}}
 {{- $widths := .widths -}}
@@ -60,6 +61,7 @@
     ) -}}
     {{- $actualImg := $imgRsc.Process (print "resize 640x jpg " $filter) -}}
 
+    {{- if $title }}<figure>{{ end }}
     <div class="{{ $divClass }}" data-pagefind-ignore>
       <picture data-pagefind-ignore>
         <source type="image/webp" srcset="
@@ -81,4 +83,5 @@
         <img class="{{ $imgClass }}" src="{{ $actualImg.RelPermalink }}" width="{{ $imgRsc.Width }}" height="{{ $imgRsc.Height }}" alt="{{ $alt }}" title="{{ $alt }}" loading="lazy" data-pagefind-ignore />
       </picture>
     </div>
+    {{- with $title }}<figcaption>{{ . }}</figcaption></figure>{{ end }}
   {{- end -}} 

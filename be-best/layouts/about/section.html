@@ -27,7 +27,7 @@
   {{/* The core values are the About page's own content, site data with no page
      behind them, so they render once: on `/about/`, not on every listing the
      `about` type shares. */}}
-  {{ if and hugo.Data.about.corevalue (eq .File.Dir "content/about/") }}
+  {{ if and hugo.Data.about.corevalue (eq .Path "/about") }}
     <div class="container card-list">
       {{ range hugo.Data.about.corevalue }}
         {{- partial "/about/card.html" . -}}

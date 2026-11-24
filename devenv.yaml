@@ -1,6 +1,14 @@
 inputs:
   nixpkgs:
     url: github:nixos/nixpkgs/nixos-unstable
+  # The build toolchain, pinned to the versions the Cloudflare Pages build uses.
+  # Go 1.26.7 and Node 24.20.0 are never in one nixos-unstable revision, so they
+  # come from the nixpkgs commit that bumped Node to 24.20.0.
+  nixpkgs-toolchain:
+    url: github:nixos/nixpkgs/aefbfa796e0203f83584422979d2a7e7558fa820
+  # Hugo 0.166.0 extended: later versions break the site's webp processing.
+  nixpkgs-hugo:
+    url: github:nixos/nixpkgs/a7868a727837f3c09cee2ce0ca671c76b1589fed
 
 # Native devenv top-level flag to bypass unfree evaluation checks
 allow_unfree: true

@@ -6,6 +6,12 @@
   ...
 }:
 
+let
+  # Pinned in devenv.yaml to match the Cloudflare Pages build: Go 1.26.7,
+  # Node 24.20.0 and Hugo 0.166.0 extended.
+  toolchain = inputs.nixpkgs-toolchain.legacyPackages.${pkgs.stdenv.system};
+  hugoPkgs = inputs.nixpkgs-hugo.legacyPackages.${pkgs.stdenv.system};
+in
 {
   # Enable dotenv support for loading environment variables from a .env file.
   dotenv.enable = true;
@@ -17,7 +23,7 @@
     github-cli
 
     # Node and PNPM added directly via standard system package attributes
-    nodejs_24
+    toolchain.nodejs_24
     pnpm
 
     # Pi Coding Agent - simple, light, customise for the project.
@@ -30,7 +36,7 @@
     wl-clipboard
 
     # Extra command line tools for agents.
-    go
+    toolchain.go_1_26
     curl
     ripgrep
     jq
@@ -45,7 +51,7 @@
     python314Packages.ipython
 
     # Fast static site generator
-    hugo
+    hugoPkgs.hugo
 
     # Standalone Tailwind CSS CLI
     tailwindcss

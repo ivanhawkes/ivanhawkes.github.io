@@ -6,7 +6,8 @@ inputs:
   # so the binary cache serves them rather than Nix building from source.
   nixpkgs-toolchain:
     url: github:nixos/nixpkgs/cfc6aaf78ed1abefde721dc4dbdca62b926d1532
-  # Hugo 0.166.0 extended: later versions break the site's webp processing.
+  # Hugo 0.166.0 extended (later versions break the site's webp processing),
+  # and pnpm 12.9.0 from the same revision.
   nixpkgs-hugo:
     url: github:nixos/nixpkgs/a7868a727837f3c09cee2ce0ca671c76b1589fed
 

@@ -50,7 +50,7 @@ Install the required software on your machine:
 
 - Git
 - Node.js 24.20.0
-- PNPM
+- pnpm 12.9.0
 - Hugo 0.166.0 extended
 - Go 1.26.7
 - Tailwind CSS + Typography
@@ -81,10 +81,10 @@ deployment stays live. Set in the Cloudflare dashboard:
 - Production branch: `publish`
 - Build command: `pnpm run build:ci`
 - Build output directory: `public`
-- Environment variables: `HUGO_VERSION=extended_0.166.0`, `GO_VERSION=1.26.7`
-  and `NODE_VERSION=24.20.0`. Keep Hugo at 0.166.0 extended: the extended build
-  does the webp image processing, and later versions break the site. Go 1.26.7
-  matches that Hugo release.
+- Environment variables: `HUGO_VERSION=extended_0.166.0`, `GO_VERSION=1.26.7`,
+  `NODE_VERSION=24.20.0` and `PNPM_VERSION=12.9.0`. Keep Hugo at 0.166.0
+  extended: the extended build does the webp image processing, and later
+  versions break the site. Go 1.26.7 matches that Hugo release.
 
 To develop against a live server, run a pair of terminals, one for Hugo and one
 for the Tailwind watcher:

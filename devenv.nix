@@ -8,7 +8,7 @@
 
 let
   # Pinned in devenv.yaml to match the Cloudflare Pages build: Go 1.26.7,
-  # Node 24.20.0 and Hugo 0.166.0 extended.
+  # Node 24.20.0, Hugo 0.166.0 extended and pnpm 12.9.0.
   toolchain = inputs.nixpkgs-toolchain.legacyPackages.${pkgs.stdenv.system};
   hugoPkgs = inputs.nixpkgs-hugo.legacyPackages.${pkgs.stdenv.system};
 in
@@ -24,7 +24,7 @@ in
 
     # Node and PNPM added directly via standard system package attributes
     toolchain.nodejs_24
-    pnpm
+    hugoPkgs.pnpm
 
     # Pi Coding Agent - simple, light, customise for the project.
     pi-coding-agent
@@ -118,7 +118,7 @@ in
   '';
 
   tasks."project:init" = {
-    exec = "${pkgs.pnpm}/bin/pnpm install";
+    exec = "${hugoPkgs.pnpm}/bin/pnpm install";
     before = [ "devenv:enterShell" ];
   };
 }

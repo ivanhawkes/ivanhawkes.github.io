@@ -2,11 +2,11 @@
 author: Ivan Hawkes
 categories:
     - Recipe
-cook-time: PT55M
+cook-time: PT1H10M
 cuisine: Chinese
 date: '2021-10-14'
 portions: 6
-prep-time: PT15M
+prep-time: PT10M
 resources:
     - src: 'featured.webp'
       params:

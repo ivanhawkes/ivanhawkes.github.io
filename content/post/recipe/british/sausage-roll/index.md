@@ -6,7 +6,7 @@ cook-time: PT20M
 cuisine: British
 date: '2023-11-08'
 portions: 16
-prep-time: PT15M
+prep-time: PT25M
 tags:
     - British
     - Pastry

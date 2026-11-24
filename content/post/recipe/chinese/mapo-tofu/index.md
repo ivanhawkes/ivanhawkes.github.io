@@ -2,7 +2,7 @@
 author: Ivan Hawkes
 categories:
     - Recipe
-cook-time: PT15M
+cook-time: PT20M
 cuisine: Chinese
 date: '2021-11-19'
 portions: 4

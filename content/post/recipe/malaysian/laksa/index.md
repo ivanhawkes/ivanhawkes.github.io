@@ -6,7 +6,7 @@ cook-time: PT15M
 cuisine: Malaysian
 date: '2018-11-26'
 portions: 4
-prep-time: PT15M
+prep-time: PT10M
 tags:
     - Coconut Milk
     - Laksa

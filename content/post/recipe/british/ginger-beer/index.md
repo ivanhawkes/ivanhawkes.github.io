@@ -2,11 +2,11 @@
 author: Ivan Hawkes
 categories:
     - Recipe
-cook-time: PT30M
+cook-time: PT40M
 cuisine: British
 date: '2019-05-31'
 portions: 12
-prep-time: PT15M
+prep-time: PT10M
 tags:
     - Drink
     - Ferment

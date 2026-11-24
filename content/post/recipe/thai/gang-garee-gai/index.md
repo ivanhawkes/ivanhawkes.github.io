@@ -2,7 +2,7 @@
 author: Ivan Hawkes
 categories:
     - Recipe
-cook-time: PT20M
+cook-time: PT30M
 cuisine: Thai
 date: '2025-10-19'
 portions: 8

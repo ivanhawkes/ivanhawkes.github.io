@@ -6,7 +6,7 @@ cook-time: PT10M
 cuisine: American
 date: '2025-10-29'
 portions: 12
-prep-time: PT20M
+prep-time: PT15M
 tags:
     - American
     - Cheese

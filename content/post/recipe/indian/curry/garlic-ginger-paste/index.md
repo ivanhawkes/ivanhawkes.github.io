@@ -6,7 +6,7 @@ cook-time: PT0M
 cuisine: Indian
 date: '2025-10-19'
 portions: 8
-prep-time: PT10M
+prep-time: PT20M
 tags:
     - Garlic
     - Ginger

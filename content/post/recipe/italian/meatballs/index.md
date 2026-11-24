@@ -2,7 +2,7 @@
 author: Unknown
 categories:
     - Recipe
-cook-time: PT50M
+cook-time: PT40M
 cuisine: Italian
 date: '2026-09-23'
 portions: 4

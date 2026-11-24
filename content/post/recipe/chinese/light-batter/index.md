@@ -6,7 +6,7 @@ cook-time: PT0M
 cuisine: Chinese
 date: '2018-11-28'
 portions: 12
-prep-time: PT10M
+prep-time: PT5M
 tags:
     - Batter
     - Coating

@@ -6,7 +6,7 @@ cook-time: PT5M
 cuisine: Indian
 date: '2019-04-10'
 portions: 2
-prep-time: PT10M
+prep-time: PT5M
 tags:
     - Garam Masala
     - Indian

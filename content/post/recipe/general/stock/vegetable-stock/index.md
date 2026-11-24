@@ -2,7 +2,7 @@
 author: Ivan Hawkes
 categories:
     - Recipe
-cook-time: PT3H
+cook-time: PT2H30M
 cuisine: General
 date: '2018-11-28'
 portions: 10

@@ -6,7 +6,7 @@ cook-time: PT10M
 cuisine: American
 date: '2023-12-07'
 portions: 8
-prep-time: PT10M
+prep-time: PT15M
 resources:
     - src: 'featured.webp'
       params:

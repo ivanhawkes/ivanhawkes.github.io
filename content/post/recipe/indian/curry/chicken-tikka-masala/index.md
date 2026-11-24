@@ -2,7 +2,7 @@
 author: Raghavan Iyer
 categories:
     - Recipe
-cook-time: PT30M
+cook-time: PT40M
 cuisine: Indian
 date: '2020-03-12'
 portions: 2

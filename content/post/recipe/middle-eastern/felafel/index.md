@@ -2,7 +2,7 @@
 author: Ivan Hawkes
 categories:
     - Recipe
-cook-time: PT20M
+cook-time: PT35M
 cuisine: Middle Eastern
 date: '2018-11-26'
 portions: 12

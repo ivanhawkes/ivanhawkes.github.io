@@ -2,7 +2,7 @@
 author: Ivan Hawkes
 categories:
     - Recipe
-cook-time: PT10M
+cook-time: PT15M
 cuisine: British
 date: 2025-09-23
 imagecaption:

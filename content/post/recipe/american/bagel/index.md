@@ -2,7 +2,7 @@
 author: Ivan Hawkes
 categories:
     - Recipe
-cook-time: PT35M
+cook-time: PT55M
 cuisine: American
 date: '2018-01-26'
 portions: 12

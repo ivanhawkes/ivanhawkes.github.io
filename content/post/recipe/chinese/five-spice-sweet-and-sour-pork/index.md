@@ -2,14 +2,14 @@
 author: Ivan Hawkes
 categories:
     - Recipe
-cook-time: PT20M
+cook-time: PT25M
 cuisine: Chinese
 date: '2026-10-10'
 imagecaption:
     Crisp pork neck cubes in a glossy sweet and sour sauce with pineapple,
     capsicum and spring onion, served on rice.
 portions: 4
-prep-time: PT20M
+prep-time: PT30M
 tags:
     - Cantonese
     - Chinese

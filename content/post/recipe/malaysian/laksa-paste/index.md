@@ -6,7 +6,7 @@ cook-time: PT0M
 cuisine: Malaysian
 date: '2018-11-26'
 portions: 4
-prep-time: PT30M
+prep-time: PT25M
 tags:
     - Chilli
     - Laksa

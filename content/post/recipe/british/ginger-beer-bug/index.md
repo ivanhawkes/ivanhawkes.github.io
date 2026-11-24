@@ -6,7 +6,7 @@ cook-time: PT0M
 cuisine: British
 date: '2019-05-31'
 portions: 4
-prep-time: PT15M
+prep-time: PT5M
 tags:
     - Drink
     - Ferment

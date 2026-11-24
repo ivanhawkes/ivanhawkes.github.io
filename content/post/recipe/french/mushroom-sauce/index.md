@@ -2,7 +2,7 @@
 author: Ivan Hawkes
 categories:
     - Recipe
-cook-time: PT20M
+cook-time: PT25M
 cuisine: French
 date: '2024-05-14'
 portions: 5

@@ -6,7 +6,7 @@ cook-time: PT15M
 cuisine: Chinese
 date: '2021-09-21'
 portions: 2
-prep-time: PT10M
+prep-time: PT15M
 tags:
     - Beef
     - Chinese

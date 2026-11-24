@@ -6,7 +6,7 @@ cook-time: PT20M
 cuisine: American
 date: '2021-01-03'
 portions: 12
-prep-time: PT30M
+prep-time: PT40M
 tags:
     - Bread
     - Cinnamon

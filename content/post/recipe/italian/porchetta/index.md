@@ -2,7 +2,7 @@
 author: Ivan Hawkes
 categories:
     - Recipe
-cook-time: PT2H
+cook-time: PT4H
 cuisine: Italian
 date: '2020-02-21'
 portions: 4

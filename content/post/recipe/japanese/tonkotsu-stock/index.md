@@ -2,7 +2,7 @@
 author: Ivan Hawkes
 categories:
     - Recipe
-cook-time: PT10H
+cook-time: PT12H
 cuisine: Japanese
 date: '2018-11-28'
 portions: 10

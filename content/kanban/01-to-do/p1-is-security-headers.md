@@ -93,7 +93,7 @@ unaffected.
 
 ## Acceptance Criteria
 
-- [ ] **HSTS** - a live request returns `Strict-Transport-Security`, and the
+- [x] **HSTS** - a live request returns `Strict-Transport-Security`, and the
       `_headers` rule or Cloudflare setting that provides it is named on this
       card
 - [x] **CSP** - the policy covers `default-src`, `script-src`, `style-src`,
@@ -102,5 +102,5 @@ unaffected.
       placeholders, code-to-clipboard, kanban board
 - [x] **COOP, frame control, Trusted Types** - each is closed by a header in
       `static/_headers`
-- [ ] **No regression** - `pnpm run test` is green with the policy in place, and
-      the score reported by the review tool is recorded here
+- [ ] **No regression** - `pnpm run test` is green with the policy in place (met
+      2026-11-25), and the score reported by the review tool is recorded here

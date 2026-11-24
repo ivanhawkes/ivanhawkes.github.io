@@ -26,7 +26,3 @@ living organism containing yeast from your work area.
 Try to maintain a clean work space at all times. It doesn't have to be sterile,
 but any bacteria that is on your tools will end up in the jar and may taint the
 flavour of the ferment.
-
-## Notes
-
-See also [Ginger Beer](../ginger-beer) recipe.

@@ -17,6 +17,7 @@ title: Pho
 type: recipe
 ---
 
-The famous beef soup dish from Vietnam.
+The famous beef soup dish from Vietnam. A broth of roasted bones, charred onion,
+ginger and star anise simmers for hours, then goes over rice noodles.
 
 <!--more-->

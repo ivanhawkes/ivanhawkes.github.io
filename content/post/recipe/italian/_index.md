@@ -1,4 +1,7 @@
 ---
+description:
+    'Italian recipes, including Caesar salad dressing, meatballs in sauce with
+    pasta, and porchetta.'
 title: Italian
 date: '2026-05-05'
 menus:

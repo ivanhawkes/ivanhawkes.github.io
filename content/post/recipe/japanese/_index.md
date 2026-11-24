@@ -1,4 +1,7 @@
 ---
+description:
+    'Japanese stocks, covering dashi made from kombu and bonito flakes, and a
+    pork bone tonkotsu broth.'
 title: Japanese
 date: '2026-05-05'
 menus:

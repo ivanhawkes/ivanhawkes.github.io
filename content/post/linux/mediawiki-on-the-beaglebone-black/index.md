@@ -1,7 +1,7 @@
 ---
 author: Ivan Hawkes
 categories:
-    - general
+    - General
 date: '2014-08-08'
 tags:
     - Beaglebone Black
@@ -19,7 +19,7 @@ nerds - the BeagleBone Black (BB).
 
 <!--more-->
 
-While the Pi is a great teaching tool, and capable in it's own right, it is
+While the Pi is a great teaching tool, and capable in its own right, it is
 eclipsed by the BB. On paper they don't seem too different but there are a
 couple of small things that make the BB better suited to slightly heavier work
 loads like running a (very) small PHP web site.

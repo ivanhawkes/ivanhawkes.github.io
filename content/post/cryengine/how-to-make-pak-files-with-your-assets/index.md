@@ -66,7 +66,7 @@ sample.
 ```xml
 <RCJobs>
     <!--
-DefaultProperties - these can be overriden from command line.
+DefaultProperties - these can be overridden from command line.
 pak_root - defines the output folder for PAK files (required for NAnt build system)
 -->
     <DefaultProperties cry_root="c:\cryengine3" game="Game" engine="Engine" target="TempRC\${p}" pak_root="OutRC\${p}" enable_cuda="true" />
@@ -115,7 +115,7 @@ jobs I have defined - cleanjob, copyjob and pakjob.
 It's pretty much stock in this implementation.
 
 **Copyjob** is going to copy just the files I want over into the packing
-folders. In this case I am after the Entites, Scripts and Shaders folders.
+folders. In this case I am after the Entities, Scripts and Shaders folders.
 
 **Pakjob** does the hard work of packing the target files into a .PAK file for
 you. You can see I added three jobs, one for the Entities, one for the Scripts

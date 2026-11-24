@@ -11,6 +11,9 @@ resources:
               'A hand holds a glass jar of grain spawn with white mycelium
               spreading through it.'
 
+tags:
+    - Mushroom
+    - Growing Food
 title: White Fuzz
 ---
 

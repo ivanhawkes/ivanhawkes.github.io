@@ -1,4 +1,7 @@
 ---
+description:
+    'Mexican recipes, currently a chile colorado, a slowly simmered sauce of
+    toasted guajillo and ancho chiles.'
 date: '2026-05-05'
 menus:
     main:

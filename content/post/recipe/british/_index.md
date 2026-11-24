@@ -1,4 +1,7 @@
 ---
+description:
+    'British recipes, from date and walnut loaf, sausage rolls and Welsh rarebit
+    to scrambled eggs, ginger beer and the ginger beer bug.'
 title: British
 date: '2026-05-05'
 menus:

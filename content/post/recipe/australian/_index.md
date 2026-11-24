@@ -1,4 +1,7 @@
 ---
+description:
+    'Australian recipes, currently a chocolate biscuit slice known in our family
+    as fudgecake.'
 title: Australian
 date: '2026-05-05'
 menus:

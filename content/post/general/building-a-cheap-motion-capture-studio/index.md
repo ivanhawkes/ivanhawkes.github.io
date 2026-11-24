@@ -2,7 +2,7 @@
 title: Building A Cheap Motion Capture Studio
 author: Ivan Hawkes
 categories:
-    - general
+    - General
 date: '2013-07-16'
 description:
     I bought up some cheap PS3 cameras and used iPi Software to make a fairly

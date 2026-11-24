@@ -14,7 +14,7 @@ month.
 Some ingredients have no decent substitutions. If you can't find them, perhaps
 cook something else. Ginger is _not_ a substitute for galangal, no matter what
 some recipes might state. Kaffir lime leaves and thai basil are key to the
-flavour. Kaffir lime rind is desireable, but it won't ruin the dish if you can't
+flavour. Kaffir lime rind is desirable, but it won't ruin the dish if you can't
 find it.
 
 Make sure to buy the coriander with roots. A lot of the flavour is in the roots

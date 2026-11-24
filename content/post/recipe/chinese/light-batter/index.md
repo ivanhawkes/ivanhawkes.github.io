@@ -23,5 +23,5 @@ A simple and light batter; suitable for fish and chicken.
 
 Try to replace some of the soda water with milk and see how that affects the
 lightness of the batter. It should allow the sodium bicarbonate to react earlier
-with the soda water. It's unknown if this is desireable since it will affect
+with the soda water. It's unknown if this is desirable since it will affect
 colour, taste and lightness of the batter.

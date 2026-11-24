@@ -75,7 +75,7 @@ to do a full reboot.
 
 ## Avoid using my password for common tasks
 
-By adding myself to a list of sudoers that are excempt from providing a password
+By adding myself to a list of sudoers that are exempt from providing a password
 I can make this whole process a little bit easier.
 
 ```bash
@@ -85,7 +85,7 @@ sudo visudo
 Add these entries underneath the existing ones.
 
 ```bash {file = none.sh, }
-## Allow non-priveleged users to run common commands without being pestered.
+## Allow non-privileged users to run common commands without being pestered.
 ivan ALL=(ALL) NOPASSWD: /usr/bin/systemctl /usr/sbin/service
 ivan ALL=(ALL) NOPASSWD: /usr/bin/apt, /usr/bin/snap
 ivan ALL=(ALL) NOPASSWD: /usr/bin/mount /usr/bin/umount
@@ -191,7 +191,7 @@ sudo update-grub
 In a home lab setup it's best to stick with basic authentication and user
 account synchronisation. In it's simplest form you use the same GID and UID for
 each user, copying those to every machine on the network. This can be as simple
-as cutting and pasteing a list of entries in the _/etc/group_ and _/etc/passwd_
+as cutting and pasting a list of entries in the _/etc/group_ and _/etc/passwd_
 files.
 
 I like to control the GID and UID for service accounts as well as general users.
@@ -217,7 +217,7 @@ sudo groupadd -g 1009 xxxx
 ```
 
 I keep the group service accounts in a specific range so it's easy to know their
-purpose. I add myself as a group memeber to make managing the files possible
+purpose. I add myself as a group member to make managing the files possible
 without needing to use _sudo_.
 
 Use the lines below to quickly create your service account groups. Just replace
@@ -535,7 +535,7 @@ First, the recommended method of installing Docker for
 [Raspberry Pi OS](https://docs.docker.com/engine/install/raspberry-pi-os/).
 
 Set it up for users to run it
-[without root priveleges](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
+[without root privileges](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user).
 
 WARNING: Double check the distribution you are installing. Debian, Ubuntu and
 Raspbian are often identical for installations but not for this one. They have
@@ -555,7 +555,7 @@ sudo usermod -a -G dialout $USER
 
 ## Outboard equipment
 
-This is pretty specifig to me. I have a piece of outboard audio gear that needs
+This is pretty specific to me. I have a piece of outboard audio gear that needs
 some firmware installed.
 
 ```bash
@@ -650,7 +650,7 @@ sudo update-grub
 
 ## Install OpenOCD
 
-Make sure it's not already installed. Remove it if necesssary.
+Make sure it's not already installed. Remove it if necessary.
 
 ```bash
 sudo apt -y autoremove --purge openocd

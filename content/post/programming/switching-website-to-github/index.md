@@ -1,7 +1,13 @@
 ---
 author: Ivan Hawkes
+categories:
+    - Programming
 date: '2022-02-03'
 description: How I switched this website over to being hosted on Github.
+tags:
+    - Git
+    - Hugo
+    - Web Hosting
 title: Switching Website to Github
 ---
 
@@ -11,6 +17,9 @@ motivation for me. Today I'd like to talk about moving this site from self
 hosting to [Github Pages](https://pages.github.com/).
 
 <!--more-->
+
+> **Update, 2026-10-30:** the site has since moved again, from GitHub Pages to
+> Cloudflare Pages, which builds it from the same repository.
 
 There are two really good things about self hosting:
 

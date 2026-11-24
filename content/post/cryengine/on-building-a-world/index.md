@@ -40,7 +40,7 @@ this:
 
 Once I scouted out where I wanted my main zones to be I simply needed to raise a
 little bit of extra land there and try and ensure it was an appropriate size.
-That get's fed into my World Machine, massaged till it's in the shape I want and
+That gets fed into my World Machine, massaged till it's in the shape I want and
 I end up with something along these lines.
 
 ![Caldera](featured.webp)

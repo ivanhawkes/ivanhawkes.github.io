@@ -17,6 +17,7 @@ title: Red Curry Beef
 type: recipe
 ---
 
-A Thai red curry using beef.
+A Thai red curry using beef, coconut cream and red curry paste, with capsicum,
+bamboo shoot, fried tofu, cashews and Thai basil.
 
 <!--more-->

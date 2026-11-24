@@ -1,4 +1,7 @@
 ---
+description:
+    'Vietnamese recipes, currently pho, the famous beef noodle soup, made with a
+    long-simmered bone broth.'
 title: Vietnamese
 date: '2026-05-05'
 menus:

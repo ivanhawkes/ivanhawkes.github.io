@@ -21,6 +21,7 @@ title: Bin Bhuna Hua Garam Masala
 type: recipe
 ---
 
-An untoasted garam masala.
+An untoasted garam masala of coriander, cumin, pepper, cloves, cardamom and
+Indian bay leaf, ground to a fine powder.
 
 <!--more-->

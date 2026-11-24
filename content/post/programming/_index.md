@@ -1,4 +1,7 @@
 ---
+description:
+    'Programming articles on Go, Google App Engine, REST API design, using AI,
+    working through difficult tasks and moving this site to Github.'
 title: Programming
 date: '2026-04-27'
 menus:

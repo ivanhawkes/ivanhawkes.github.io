@@ -64,8 +64,8 @@ As I am crafting the general layout of the land I mark into place the towns,
 mains roads and rivers. These are painted into Mudbox on top of the model I am
 sculpting and are indicative of where I want these features to be placed.
 
-For towns I use about a 75% black on it's own layer. This allows me to export
-the layer to a PNG which I can import into World Machine. I use this in a later
+For towns I use about a 75% black on its own layer. This allows me to export the
+layer to a PNG which I can import into World Machine. I use this in a later
 process to flatten out an area around the township.
 
 Rivers are painted in lurid blue on their own layer. These can be used for
@@ -114,6 +114,6 @@ too obvious for my taste so I am re-working that part of the machine. Until
 then, the scene appears overly green.
 
 The outputs of this machine can be fed directly into CRYENGINE, without the need
-to composite withing Photoshop, like many tutorials.
+to composite within Photoshop, like many tutorials.
 
 It's taken a lot of time, but things are starting to gel. More to come soon.

@@ -16,7 +16,8 @@ title: Lamb Doner Kebab
 type: recipe
 ---
 
-A fairly traditional lamb kebab recipe.
+A fairly traditional lamb kebab recipe. The seasoned mince is frozen as skewers,
+then cooked in the air fryer on meal night.
 
 <!--more-->
 

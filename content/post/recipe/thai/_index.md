@@ -1,4 +1,7 @@
 ---
+description:
+    'Thai curries, curry pastes and soups, from massaman and red curry paste to
+    gang garee gai, red curry beef and tom yum.'
 title: Thai
 date: '2026-05-05'
 menus:

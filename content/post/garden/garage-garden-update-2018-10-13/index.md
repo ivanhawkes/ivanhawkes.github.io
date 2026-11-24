@@ -4,6 +4,10 @@ categories:
     - Garden
 date: '2018-10-13'
 description: An update of the small garden just outside my living space door.
+tags:
+    - Herbs
+    - Planting
+    - Raised Beds
 title: Garage Garden Update
 ---
 

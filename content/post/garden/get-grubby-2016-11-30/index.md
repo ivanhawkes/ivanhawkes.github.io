@@ -4,6 +4,9 @@ categories:
     - Garden
 date: '2016-11-30'
 description: Making my Beds
+tags:
+    - Compost
+    - Raised Beds
 title: Get Grubby
 ---
 

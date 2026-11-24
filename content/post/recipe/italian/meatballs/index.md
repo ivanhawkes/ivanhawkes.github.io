@@ -17,6 +17,7 @@ title: Italian Meatballs in Sauce with Pasta
 type: recipe
 ---
 
-A classic meatball and pasta recipe.
+A classic meatball and pasta recipe. Beef meatballs are browned, baked, then
+simmered in a tomato and herb sauce and served over pasta.
 
 <!--more-->

@@ -1,4 +1,7 @@
 ---
+description:
+    'General recipes that do not belong to a single cuisine, such as home made
+    stocks.'
 title: General
 date: '2026-05-05'
 menus:

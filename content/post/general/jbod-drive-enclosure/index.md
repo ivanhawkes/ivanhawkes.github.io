@@ -4,6 +4,10 @@ categories:
     - Hard Drives
     - Linux
 date: '2025-05-25'
+tags:
+    - Hardware
+    - Linux
+    - Storage
 title: New JBOD, Old Drives
 ---
 

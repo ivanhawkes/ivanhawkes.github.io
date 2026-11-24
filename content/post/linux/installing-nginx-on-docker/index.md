@@ -21,7 +21,7 @@ server.
 I installed Nginx using the default app templates. At one point I tried using a
 set being developed by Novaspirit Tech, but they didn't include 'apt' and so I
 couldn't install Certbot. I reverted to the old app templates after removing the
-install, and then proceded as usual.
+install, and then proceeded as usual.
 
 First step - make a new container and call it 'nginx'.
 

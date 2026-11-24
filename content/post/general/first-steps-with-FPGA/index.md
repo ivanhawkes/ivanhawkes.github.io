@@ -3,6 +3,10 @@ author: Ivan Hawkes
 categories:
     - FPGA
 date: '2022-01-17'
+tags:
+    - Electronics
+    - FPGA
+    - Hardware
 title: First Steps with FPGA
 ---
 
@@ -69,7 +73,7 @@ This stupidly cheap board has insanely high clock rates, a lot of pins, and
 c++17. I was hooked.
 
 I'm currently using the Pi Pico to make an old fashioned arcade joystick which
-can immitate several USB devices. My plan is to sit on my comfy armchair with a
+can imitate several USB devices. My plan is to sit on my comfy armchair with a
 home-made joystick and play 1980s arcade games like Space Invaders and Galaga.
 
 ## Go for Gold
@@ -79,7 +83,7 @@ home-made joystick and play 1980s arcade games like Space Invaders and Galaga.
 I'd like to offer an alternative version to Conan's answer:
 
 - Program a game using Verilog
-- Build an arcade stick from orignal parts using a suitable micro-controller
+- Build an arcade stick from original parts using a suitable micro-controller
 - Get the high score before your friends arrive and make you look like a bitch
 
 ## Long Way to go

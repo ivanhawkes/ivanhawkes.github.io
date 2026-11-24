@@ -1,4 +1,7 @@
 ---
+description:
+    'Chinese recipes, from black bean and brown sauces to char siu, mapo tofu,
+    Mongolian beef, red braised pork and sweet and sour pork.'
 title: Chinese
 date: '2026-05-05'
 menus:

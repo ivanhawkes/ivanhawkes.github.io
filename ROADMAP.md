@@ -198,16 +198,29 @@ Ingredient file problems are now build warnings, not text on the page.
 
 ## 8. Content and documentation
 
-- [ ] Spelling: Independance, dependance and neighboors (`data/about.yaml`),
+- [x] Spelling: Independance, dependance and neighboors (`data/about.yaml`),
       firey and existance, Brocoli, "the the", "and and", five "it's own", and
-      "dependant" used for "dependent".
-- [ ] Descriptions: 104 of 147 pages have none, all 58 recipes included, and
-      many of the rest repeat the title.
-- [ ] Tags and categories missing on 12 posts; `author` missing on
+      "dependant" used for "dependent". (done 2026-11-25 with codespell over
+      content/ and data/; code blocks left alone except two comments you
+      approved)
+- [x] Descriptions: 104 of 147 pages have none, all 58 recipes included, and
+      many of the rest repeat the title. (done 2026-11-25: a page without a
+      description is described by its summary, the text before `<!--more-->`; 72
+      of the 105 already had a usable one. The 16 recipes whose summary was a
+      single short line have a fuller summary, written from their ingredients
+      and method. The 17 section pages, which have no text of their own, have a
+      front matter description. Tag and category pages get a generated one.)
+- [x] Tags and categories missing on 12 posts; `author` missing on
       `chocolate-chip-cookie`; the front matter of the cryengine blacklists post
-      is indented.
-- [ ] Featured images: only 18 of 147 pages have one.
-- [ ] Unused images: `building-a-joystick/arcade-joystick-0*.jpeg` and
-      `spring-2021-try-again/carousel-0*.webp`. Use them or remove them.
-- [ ] Add a dated note to `switching-website-to-github` that the site has moved
-      since.
+      is indented. (done 2026-11-25; also merged `Admin` into `Administration`
+      and `general` into `General`. "First Results", an unfinished placeholder,
+      is deleted)
+- [x] Featured images: only 18 of 147 pages have one. (closed 2026-11-25:
+      intentional; no AI or stock images. How image-less posts display is a
+      separate design choice.)
+- [x] Unused images: `building-a-joystick/arcade-joystick-0*.jpeg` and
+      `spring-2021-try-again/carousel-0*.webp`. Use them or remove them. (done
+      2026-11-25: both posts show them in a `gallery` shortcode with a lightbox;
+      `carousel-01.webp` was a copy of the featured image and is deleted)
+- [x] Add a dated note to `switching-website-to-github` that the site has moved
+      since. (done 2026-11-25)

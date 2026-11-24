@@ -30,7 +30,7 @@ directly now.
 
 Make sure you customise the installation media. Set your user name and password,
 public key, and the name of the machine. This will save you effort later as well
-as making it far easier to find the machine and perform the inital SSH logon.
+as making it far easier to find the machine and perform the initial SSH logon.
 
 ## First boot
 

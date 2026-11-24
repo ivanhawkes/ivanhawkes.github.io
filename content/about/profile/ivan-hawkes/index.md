@@ -94,21 +94,21 @@ databases for various businesses.
 
 Around 1991 I fell into the business of writing multi-media software. A company
 was writing software to present training programs combining video from laser
-disks and computer generated graphics which were overlayed onto the video. At
-the time they wrote each one by hand, which was excessively laborious and slow.
-They needed a programmer to design a system that would allow them to control the
+disks and computer generated graphics which were overlaid onto the video. At the
+time they wrote each one by hand, which was excessively laborious and slow. They
+needed a programmer to design a system that would allow them to control the
 laser disk player and graphics presentation software using a data driven
 approach.
 
 I wrote the first iteration of that software in C++ for the company contracted
 to the media company producing the training programs.
 
-On request, I re-wrote all the software from scratch, and targetted Windows
-3.1 - allowing our client to produce the world's first CD-ROM based training
-software, including full motion video. We had to import a very expensive video
-capture card from China, and simply hope it could capture video we could play
-back. According to it's specs it could capture Q-SIF MPEG video which was
-absolutely amazing for the time.
+On request, I re-wrote all the software from scratch, and targeted Windows 3.1 -
+allowing our client to produce the world's first CD-ROM based training software,
+including full motion video. We had to import a very expensive video capture
+card from China, and simply hope it could capture video we could play back.
+According to it's specs it could capture Q-SIF MPEG video which was absolutely
+amazing for the time.
 
 After producing about 7 CD-ROM based training programs (and 10 or so laserdisk
 programs) for that client, we ended the relationship.

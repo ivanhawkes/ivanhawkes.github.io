@@ -15,7 +15,8 @@ title: Dashi Stock
 type: recipe
 ---
 
-A basic stock used for a lot of Japanese recipes.
+A basic stock used for a lot of Japanese recipes, made from kombu and
+katsuobushi. It covers both the first (ichiban) and second (niban) dashi.
 
 <!--more-->
 

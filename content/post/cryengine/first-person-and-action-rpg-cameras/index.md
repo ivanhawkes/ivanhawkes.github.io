@@ -32,8 +32,8 @@ other things in there which you might want to poke through, but be aware it's a
 work in progress and is definitely not production ready.
 
 The manager is not strictly necessary at this point, and is definitely overkill
-for just flipping between a pair of cameras, but it will come into it's own
-later down the track when more camera types are added.
+for just flipping between a pair of cameras, but it will come into its own later
+down the track when more camera types are added.
 
 You can see a very simple demo of the camera in action on my
 [YouTube page](https://youtu.be/lX4KiZly0oY).
@@ -65,7 +65,7 @@ eyes.
 Our first stop is a visit to the player input code, which you can find in the
 **/Player/Input** folder of the project. Since the camera is likely to share
 some inputs with other parts of the game, in particular mouse movements, there
-is some dependant code in the player input system.
+is some dependent code in the player input system.
 
 ```cpp
 /**

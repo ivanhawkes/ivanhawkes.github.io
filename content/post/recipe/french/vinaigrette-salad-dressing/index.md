@@ -14,6 +14,7 @@ title: Vinaigrette Salad Dressing
 type: recipe
 ---
 
-A simple and traditional French salad dressing.
+A simple and traditional French salad dressing of olive oil, balsamic vinegar,
+Dijon mustard and garlic, shaken together in a jar.
 
 <!--more-->

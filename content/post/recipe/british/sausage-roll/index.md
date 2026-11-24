@@ -15,6 +15,7 @@ title: Sausage Roll
 type: recipe
 ---
 
-A basic sausage roll.
+A basic sausage roll. Beef and pork mince, seasoned with herbs and pepper,
+rolled up in puff pastry and baked.
 
 <!--more-->

@@ -1,4 +1,6 @@
 ---
+description:
+    'Middle Eastern recipes, including felafel, hummus and lamb doner kebab.'
 date: '2026-05-05'
 menus:
     main:

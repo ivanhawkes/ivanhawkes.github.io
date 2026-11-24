@@ -15,6 +15,7 @@ title: Massaman Curry Paste
 type: recipe
 ---
 
-A classic Thai curry.
+A classic Thai curry paste of roasted spices, shallots, garlic, lemongrass,
+galangal and dried chillies, pounded in a mortar and pestle.
 
 <!--more-->

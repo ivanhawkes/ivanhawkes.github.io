@@ -6,6 +6,9 @@ date: '2018-07-02'
 description:
     It's time to fix the mistakes of the past by digging out all the rocks and
     starting new garden beds in their place.
+tags:
+    - Earthworks
+    - Drainage
 title: Too Much Rock, Too Little Roll
 ---
 

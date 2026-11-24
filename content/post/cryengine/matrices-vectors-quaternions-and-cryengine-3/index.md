@@ -35,7 +35,7 @@ various types of third person camera views.
 The code is stored in a Git repository on
 [BitBucket](https://bitbucket.org/ivanhawkes/plugin-camera 'Plugin Camera Code').
 
-The article is not looking to be a comprehensive guide to matrics, vectors and
+The article is not looking to be a comprehensive guide to matrices, vectors and
 quaternions, but rather introduce them in a way that is relevant to authors of
 3D games.
 
@@ -116,7 +116,7 @@ useful operations that can be performed on them.
 
 - Matrices can be added to or subtracted from each other
 - Matrices can be scaled
-- Matricies can be multiplied by other matrices
+- Matrices can be multiplied by other matrices
 
 These operations will help us to perform 3D movements such as translation
 (move), rotation and scaling.
@@ -571,7 +571,7 @@ slerp speed paramteter (range 0.0f to 1.0f). This causes the camera to lag a
 little behind where the player wants the camera to be (the goal) but in the
 process smooths out it's path.
 
-A few lines further up the page you can revist the line:
+A few lines further up the page you can revisit the line:
 
 ```cpp
 Quat quatTargetRotation = Quat::CreateSlerp (m_quatLastTargetRotation, quatTargetRotationGoal, frameTime * m_slerpSpeed);

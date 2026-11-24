@@ -1,7 +1,7 @@
 ---
 author: Ivan Hawkes
 categories:
-    - general
+    - General
 date: '2014-03-24'
 tags:
     - Hardware

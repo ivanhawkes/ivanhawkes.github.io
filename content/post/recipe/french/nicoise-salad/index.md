@@ -16,6 +16,6 @@ type: recipe
 ---
 
 A French salad with tuna, green beans, hard boiled eggs, tomatoes, onion,
-capers, and potatos.
+capers, and potatoes.
 
 <!--more-->

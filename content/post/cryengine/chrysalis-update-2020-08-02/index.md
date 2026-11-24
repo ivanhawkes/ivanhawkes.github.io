@@ -25,7 +25,7 @@ based on this
 Last time, I spoke about putting the EnTT ECS system into Chrysalis. The idea
 was to use this as a way to prototype spells and eventually items, which might
 in turn have one or more spells they can cast. Since then I've decided to use it
-as the basis for pretty much all interation in the game.
+as the basis for pretty much all interaction in the game.
 
 Now, a spell system is a great idea for an RPG, but it's outside the scope of my
 initial plan - which is to write enough code to support a decent walking
@@ -239,7 +239,7 @@ being cast and ensure all the feedback effects are being triggered. It's all
 well and good to be able to cast a spell with an up-front damage and a DoT
 component and have the simulation track that and the caster's qi
 regeneration...but no-one will care until they see the hands waving about, and a
-firey ball exploding into existance and rushing towards the enemy.
+fiery ball exploding into existence and rushing towards the enemy.
 
 We might as well close out with a little code. I'm reasonably pleased with how
 clean the code is considering we're working with simple components which are

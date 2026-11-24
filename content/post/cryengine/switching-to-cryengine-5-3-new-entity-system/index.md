@@ -208,7 +208,7 @@ extensions. Things will go wrong if you mismatch this code.
 You might also notice I am using the "Light.bmp" icon for my entity. It's
 because I suck and haven't bothered to learn how to add new icons.
 
-Our old **PostInit** routine is now the new **Initalize** routine, with a few
+Our old **PostInit** routine is now the new **Initialize** routine, with a few
 small changes. Previously we called
 
 ```cpp

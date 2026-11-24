@@ -152,8 +152,11 @@
 {{- with .Resources.GetMatch "featured.webp" -}}
   {{- $optional = $optional | append (dict "image" (slice .Permalink)) -}}
 {{- end -}}
-{{- with .Description | default (partial "/recipes/plain-text.html"
-      (dict "page" $page "text" $page.Summary "rendered" true)) -}}
+{{- /* The summary the page shows comes first: structured data states what a
+      reader can see, and a front matter description, written for search
+      results, is not on the page. It stands in only where there is no summary. */ -}}
+{{- with (partial "/recipes/plain-text.html"
+      (dict "page" $page "text" $page.Summary "rendered" true) | string) | default .Description -}}
   {{- $optional = $optional | append (dict "description" .) -}}
 {{- end -}}
 {{- with $yield -}}

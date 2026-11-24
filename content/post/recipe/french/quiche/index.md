@@ -14,7 +14,8 @@ title: Quiche
 type: recipe
 ---
 
-A basic quiche.
+A basic quiche of eggs and cream with smoked ham hock, shallots and two cheeses
+in a shortcrust case.
 
 <!--more-->
 

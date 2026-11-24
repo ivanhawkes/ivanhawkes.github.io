@@ -15,6 +15,7 @@ title: Murghi Korma
 type: recipe
 ---
 
-A curry that is mild enough for anyone to eat.
+A curry that is mild enough for anyone to eat. Chicken marinated in yoghurt,
+ginger and garlic, cooked in a sauce of whole spices, onion and ground almonds.
 
 <!--more-->

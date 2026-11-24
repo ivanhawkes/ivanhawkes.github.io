@@ -1,4 +1,7 @@
 ---
+description:
+    'American recipes, including bagels, banana bread, cinnamon scrolls,
+    chocolate chip cookies, lemon bars and a broccoli bacon salad.'
 title: American
 date: '2026-05-05'
 menus:

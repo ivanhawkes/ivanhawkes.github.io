@@ -224,7 +224,7 @@ TActionHandler<CFlowPlayerCameraNode> CFlowPlayerCameraNode::s_actionHandler;
 
 ```
 
-That's the bulk of the changes needed to extend any class to handle it's own
+That's the bulk of the changes needed to extend any class to handle its own
 action mapped events. You can view the complete source as a part of the
 [plugin camera code](https://github.com/hendrikp/Plugin_Camera 'Plugin Camera Code').
 

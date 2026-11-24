@@ -5,6 +5,36 @@ categories:
     - Gaming
 date: '2021-12-15'
 description: Building A Joystick
+resources:
+    - src: 'arcade-joystick-01.jpeg'
+      params:
+          title: 'The finished case, before staining'
+          caption:
+              'A plywood arcade stick with a red ball-top joystick and eight
+              coloured buttons, sitting on a desk in front of a keyboard.'
+    - src: 'arcade-joystick-02.jpeg'
+      params:
+          title: 'Buttons and joystick fitted from below'
+          caption:
+              'The open case from underneath, with the eight buttons and the
+              joystick mechanism fitted through their holes.'
+    - src: 'arcade-joystick-03.jpeg'
+      params:
+          title: 'Stained, with the controller on a breadboard'
+          caption:
+              'The stick stained a warm brown, with a breadboard of wiring and
+              microcontroller boards on top, and yellow and white buttons along
+              the front and side.'
+    - src: 'arcade-joystick-04.jpeg'
+      params:
+          title: 'The breadboard wiring'
+          caption:
+              'A closer view of the breadboard and its coloured jumper wires on
+              the stained case, beside the buttons.'
+tags:
+    - Hardware
+    - Retro Gaming
+    - Video Games
 title: Building A Joystick
 ---
 
@@ -14,7 +44,7 @@ the 80's.
 
 <!--more-->
 
-Flashback to the the very early 80s. I'm an almost teenage boy, and I've just
+Flashback to the very early 80s. I'm an almost teenage boy, and I've just
 discovered both arcade machines and general purpose computers. Both of these
 discoveries will have significant impact on the rest of my life.
 
@@ -50,7 +80,7 @@ Every day I run straight from school to the library. I book a time slot and
 borrow a cassette with a game on it. I load that game and play it.
 
 At some point, a change agent enters the scene. A slighter older teen with a
-little arcane knowledge. They show me how to hold down CTRL-C and interupt the
+little arcane knowledge. They show me how to hold down CTRL-C and interrupt the
 game.
 
 This doesn't always work. Some cassettes switch off this ability, but enough
@@ -130,3 +160,5 @@ now thirteen, can program in 6502 assembler, and is hoping like heck to write
 their own version of Space Invaders. I never complete that dream, though I come
 pretty close at the time. I'm still planning on finishing my teenage
 aspirations...but first, some side quests.
+
+{{< gallery match="arcade-joystick-*" label="Building the joystick" >}}

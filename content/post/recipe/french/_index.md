@@ -1,4 +1,7 @@
 ---
+description:
+    'French recipes, including mushroom and peppercorn sauces, quiche, Nicoise
+    salad, vinaigrette and a Pullman pain de mie loaf.'
 title: French
 date: '2026-05-05'
 menus:

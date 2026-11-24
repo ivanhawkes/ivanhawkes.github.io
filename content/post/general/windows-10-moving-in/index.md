@@ -1,7 +1,7 @@
 ---
 author: Ivan Hawkes
 categories:
-    - Admin
+    - Administration
 date: '2023-10-09'
 description: Moving into Windows 10 Installation
 tags:
@@ -48,7 +48,7 @@ usually install.
 - [Easeus](https://www.easeus.com/)
 - [Rufus](https://rufus.ie/en/)
 - [Sublime 4](https://www.sublimetext.com/download)
-- [Tranmission Remote GUI](https://github.com/transmission-remote-gui/transgui/releases)
+- [Transmission Remote GUI](https://github.com/transmission-remote-gui/transgui/releases)
 
 ## Drivers
 

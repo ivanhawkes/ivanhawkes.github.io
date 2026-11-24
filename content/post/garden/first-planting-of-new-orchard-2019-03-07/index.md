@@ -4,6 +4,9 @@ categories:
     - Garden
 date: '2019-03-07'
 description: Summer is coming...
+tags:
+    - Orchard
+    - Planting
 title: The First Planting of Our New Orchard
 ---
 

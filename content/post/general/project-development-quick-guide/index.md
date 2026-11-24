@@ -32,7 +32,7 @@ ruthlessly cut this list down as the project progresses.
 
 ## Requirements Specification
 
-The requirement specification details what the user wants to achive, but does
+The requirement specification details what the user wants to achieve, but does
 not concern itself with how this will be done.
 
     - Gathering

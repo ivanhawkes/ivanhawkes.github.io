@@ -1,4 +1,7 @@
 ---
+description:
+    'Malaysian recipes, covering the coconut milk noodle soup laksa and the
+    laksa paste that flavours it.'
 title: Malaysian
 date: '2026-05-05'
 menus:

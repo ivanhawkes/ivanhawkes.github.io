@@ -20,7 +20,3 @@ results will depend on the lacto bateria in your kitchen and will likely vary
 from your friend's efforts.
 
 <!--more-->
-
-## Notes
-
-Here is the recipe for a [ginger beer bug](../ginger-beer-bug).

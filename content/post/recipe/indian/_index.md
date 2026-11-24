@@ -1,4 +1,7 @@
 ---
+description:
+    'Indian recipes, including curries such as tikka masala, korma and vindaloo,
+    plus garam masala blends and a garlic and ginger paste.'
 title: Indian
 date: '2026-05-05'
 menus:

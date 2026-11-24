@@ -20,7 +20,7 @@ ODROID-HC2.
 
 ## Install media
 
-The operating system I have choosen is [Armbian](https://www.armbian.com/). It
+The operating system I have chosen is [Armbian](https://www.armbian.com/). It
 has [images](https://www.armbian.com/odroid-xu4/) available for the ODROID
 series of SBC from HardKernel. It is recommended you install the image using
 their own [installation manager](https://github.com/armbian/imager/releases).

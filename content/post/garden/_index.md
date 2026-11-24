@@ -1,4 +1,7 @@
 ---
+description:
+    'Posts on my garden: earthworks, compost, garlic, a new orchard, chickens
+    and a bush turkey, plus growing ginger, galangal and turmeric.'
 title: Garden
 date: '2026-04-27'
 menus:

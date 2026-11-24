@@ -16,6 +16,7 @@ title: Lamb Rogahn Josh
 type: recipe
 ---
 
-A wonderfully hot and spicy dish from Kashmir.
+A wonderfully hot and spicy dish from Kashmir. The lamb is marinated in yoghurt,
+ginger, garlic and garam masala, then cooked with whole spices.
 
 <!--more-->

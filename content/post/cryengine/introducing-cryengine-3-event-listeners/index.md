@@ -38,7 +38,7 @@ Let's get started!
 
 One of the key design patterns you will see throughout the CRYENGINE SDK is the
 [observer pattern](http://en.wikipedia.org/wiki/Observer_pattern 'Observer Pattern').
-In this pattern one object maintains a list of dependant objects and is
+In this pattern one object maintains a list of dependent objects and is
 responsible for notifying them of changes in it's state. Within CRYENGINE they
 are generally denoted as classes and structs whose name end in **Listener** e.g.
 IGameRulesKillListener.
@@ -556,7 +556,7 @@ public:
 
 ### ISquadEventListener
 
-Squad managment notifications.
+Squad management notifications.
 
 ```cpp
 class ISquadEventListener

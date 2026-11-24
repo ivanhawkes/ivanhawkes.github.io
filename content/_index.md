@@ -3,7 +3,8 @@ layout: post
 title: Home
 author: Ivan Hawkes
 date: '2026-04-27'
-description: Home page
+description:
+    Building software, recipes I like, gardening and sometimes even advice.
 menus:
     main:
         name: Home

@@ -1,7 +1,13 @@
 ---
 author: Ivan Hawkes
+categories:
+    - General
 date: '2026-04-25'
 description: AI Recipe Translation
+tags:
+    - AI
+    - Markdown
+    - Recipe
 title: AI Recipe Translation
 layout: post
 ---

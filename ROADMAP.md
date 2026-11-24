@@ -51,17 +51,22 @@ it exists. Items already on a card name that card.
 
 ## 2. Fixes: these break the build on content the site doesn't have yet
 
-- [ ] `_markup/render-blockquote.html:18` calls the missing
+- [x] `_markup/render-blockquote.html:18` calls the missing
       `/layouts/blocks/alert.html`, so a `> [!NOTE]` alert fails the build; line
       30 writes `<blockquoteclass=...>`.
-- [ ] `recipes/recipe-times.html:10-22` fails the build on a recipe with no
+- [x] `recipes/recipe-times.html:10-22` fails the build on a recipe with no
       `prep-time` or `cook-time`.
-- [ ] `render-link.html:112,251-321`: remove the Hugo-docs glossary branch it
+- [x] `render-link.html:112,251-321`: remove the Hugo-docs glossary branch it
       still carries.
-- [ ] `profile/page.html:21`: the merge order lets the site's social accounts
+- [x] `profile/page.html:21`: the merge order lets the site's social accounts
       override the person's, the opposite of what its comment says.
-- [ ] `image-variants.html:68` and its two copies write an empty `srcset` for
+- [x] `image-variants.html:68` and its two copies write an empty `srcset` for
       images narrower than 320px.
+
+Done 2026-11-25. Alerts render as `<blockquote class="alert alert-<type>">` with
+a title line; they have no styling of their own yet. Checked with temporary
+pages (alerts, a classed quote, a 100px image, a recipe with no times): each
+builds and passes html-validate.
 
 ## 3. Deployment and the publish gate
 

@@ -18,7 +18,7 @@
   */}}
   {{- $people := where hugo.Data.profile.person "profile" .Params.profile -}}
   {{- $person := default dict (index $people 0) -}}
-  {{- $accounts := merge (dict) $person site.Params.social -}}
+  {{- $accounts := merge (dict) site.Params.social $person -}}
   {{- $owner := default site.Params.copyright.owner $person.name -}}
 
   <div class="measure flex justify-center">

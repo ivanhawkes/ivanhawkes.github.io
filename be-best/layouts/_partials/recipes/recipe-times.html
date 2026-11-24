@@ -1,14 +1,14 @@
 {{/* Retrieve the hyphenated parameters safely */}}
-{{ $isoPrep := index .Params "prep-time" }}
-{{ $isoCook := index .Params "cook-time" }}
+{{ $isoPrep := index .Params "prep-time" | default "" }}
+{{ $isoCook := index .Params "cook-time" | default "" }}
 
 {{/* Helper logic to convert ISO 8601 (e.g., PT1H30M) to Go format (e.g., 1h30m) */}}
 {{ $goPrepStr := lower (replaceRE "^P?T?" "" $isoPrep) }}
 {{ $goCookStr := lower (replaceRE "^P?T?" "" $isoCook) }}
 
 {{/* Initialize duration objects */}}
-{{ $prepDuration := 0 }}
-{{ $cookDuration := 0 }}
+{{ $prepDuration := time.ParseDuration "0s" }}
+{{ $cookDuration := time.ParseDuration "0s" }}
 
 {{/* Parse strings using time.ParseDuration if they exist */}}
 {{ if $goPrepStr }}

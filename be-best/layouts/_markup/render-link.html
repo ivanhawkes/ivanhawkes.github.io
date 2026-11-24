@@ -109,16 +109,7 @@ either of these shortcodes in conjunction with this render hook.
 
 {{- /* Set attributes for anchor element. */}}
 {{- $attrs := dict "href" $u.String }}
-{{- if eq $u.String "g" }}
-  {{- /* Destination is a glossary term. */}}
-  {{- $ctx := dict
-    "contentPath" $contentPath
-    "errorLevel" $errorLevel
-    "renderHookName" $renderHookName
-    "text" .Text
-  }}
-  {{- $attrs = partial "/inline/h-rh-l/get-glossary-link-attributes.html" $ctx }}
-{{- else if $u.IsAbs }}
+{{- if $u.IsAbs }}
   {{- /* Destination is a remote resource. */}}
   {{- $attrs = merge $attrs (dict "rel" "external") }}
 {{- else }}
@@ -246,76 +237,4 @@ either of these shortcodes in conjunction with this render hook.
       {{- end }}
     {{- end }}
   {{- end }}
-{{- end }}
-
-{{- define "_partials/inline/h-rh-l/get-glossary-link-attributes.html" }}
-  {{- /*
-    Returns the anchor element attributes for a link to the given glossary term.
-
-    It first checks for the existence of a glossary page for the given term. If
-    no page is found, it then checks for a glossary page for the singular form of
-    the term. If neither page exists it throws a warning or error dependent on
-    the errorLevel setting
-
-    The returned href attribute does not point to the glossary term page.
-    Instead, via its fragment, it points to an entry on the glossary page.
-
-    @context {string} contentPath The page containing the link.
-    @context {string} errorLevel The error level when unable to resolve destination; ignore (default), warning, or error.
-    @context {string} renderHookName The name of the render hook.
-    @context {string} text The link text.
-  */}}
-
-  {{- /* Get context.. */}}
-  {{- $contentPath := .contentPath }}
-  {{- $errorLevel := .errorLevel }}
-  {{- $renderHookName := .renderHookName }}
-  {{- $text := .text | transform.Plainify | strings.ToLower }}
-
-  {{- /* Initialize. */}}
-  {{- $glossaryPath := "/quick-reference/glossary" }}
-  {{- $termGiven := $text }}
-  {{- $termActual := "" }}
-  {{- $termSingular := inflect.Singularize $termGiven }}
-
-  {{- /* Verify that the glossary page exists. */}}
-  {{- $glossaryPage := site.GetPage $glossaryPath }}
-  {{- if not $glossaryPage }}
-    {{- errorf "The %q render hook was unable to find %s: see %s" $renderHookName $glossaryPath $contentPath }}
-  {{- end }}
-
-  {{- /* There's a better way to handle this, but it works for now. */}}
-  {{- $cheating := dict
-    "chaining" "chain"
-    "ci/cd" "cicd"
-    "interleaved" "interleave"
-    "localize" "localization"
-    "localized" "localization"
-    "paginating" "paginate"
-    "walking" "walk"
-  }}
-
-  {{- /* Verify that a glossary term page exists for the given term. */}}
-  {{- if site.GetPage (urls.JoinPath $glossaryPath ($termGiven | urlize)) }}
-    {{- $termActual = $termGiven }}
-  {{- else if site.GetPage (urls.JoinPath $glossaryPath ($termSingular | urlize)) }}
-    {{- $termActual = $termSingular }}
-  {{- else }}
-    {{- $termToTest := index $cheating $termGiven }}
-    {{- if site.GetPage (urls.JoinPath $glossaryPath ($termToTest | urlize)) }}
-      {{- $termActual = $termToTest }}
-    {{- end }}
-  {{- end }}
-
-  {{- if not $termActual }}
-    {{- errorf "The %q render hook was unable to find a glossary page for either the singular or plural form of the term %q: see %s" $renderHookName $termGiven $contentPath }}
-  {{- end }}
-
-  {{- /* Create the href attribute. */}}
-  {{- $href := "" }}
-  {{- if $termActual }}
-    {{- $href = fmt.Printf "%s#%s" $glossaryPage.RelPermalink (anchorize $termActual) }}
-  {{- end }}
-
-  {{- return (dict "href" $href) }}
 {{- end -}}

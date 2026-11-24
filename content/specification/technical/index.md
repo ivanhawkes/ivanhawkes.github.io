@@ -617,6 +617,28 @@ result:
 58 recipe pages validated against assets/recipe-jsonld.yaml: no deviations; 698 ingredients and 442 steps match the sidecars, 12 pages state their featured image, 46 state none; 0 entity substitutions the reduction has no rule for
 ```
 
+It picks the `Recipe` block out by its type: a recipe page also carries the
+site-wide block below, in its head.
+
+### Site JSON-LD Validator
+
+Every page but the 404 carries one JSON-LD block in its head, written by
+`be-best/layouts/_partials/meta/jsonld.html`: an `@graph` of `WebSite` on the
+home page, `BlogPosting` on an article, `AboutPage` on the About section, its
+listings and the project pages, `ProfilePage` on a profile page, and a
+`BreadcrumbList` on every page below the home page. Posts and recipes also carry
+`og:type` `article` with its `article:` properties.
+`scripts/validate-jsonld.mjs`, the second half of `pnpm run test:jsonld`,
+validates each block against `assets/jsonld.yaml` and reads it back against its
+page: the node types the page's kind should carry, each node's URL against the
+canonical link, a headline against the `h1`, the dates against the `article:`
+meta tags, and the breadcrumb trail against the one the page shows. Hugo's
+redirect stubs are skipped. Its current result:
+
+```text
+459 pages validated against assets/jsonld.yaml: no deviations; 5 AboutPage, 55 BlogPosting, 457 BreadcrumbList, 1 ProfilePage, 1 WebSite
+```
+
 ## Build And Publishing
 
 The scripts in `package.json` are the entry points. `test:css` and `test:hugo`

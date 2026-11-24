@@ -1,0 +1,13 @@
+{{/*
+  The site's language as a BCP 47 tag: `en-us` in the site config becomes
+  `en-US`, the case a region subtag takes. Used by the structured data.
+
+  Returns the tag.
+*/}}
+
+{{- $tag := site.Language.Locale | default "en" -}}
+{{- if gt (len $tag) 2 -}}
+  {{- $tag = printf "%s-%s" (lower (slicestr $tag 0 2)) (upper (slicestr $tag 3 (len $tag))) -}}
+{{- end -}}
+
+{{- return $tag -}}

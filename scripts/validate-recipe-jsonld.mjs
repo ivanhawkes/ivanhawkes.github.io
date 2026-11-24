@@ -169,10 +169,14 @@ for (const bundle of bundles) {
         continue;
     }
     const html = readFileSync(page, 'utf8');
-    const found = [...html.matchAll(blockPattern)];
+    // The page also carries the site-wide block in its head
+    // (validate-jsonld.mjs checks that one); this check reads the Recipe block.
+    const found = [...html.matchAll(blockPattern)].filter((match) =>
+        /"@type":\s*"Recipe"/.test(match[1])
+    );
     if (found.length !== 1) {
         problems.push(
-            `${label}: ${found.length} application/ld+json blocks in ${rel(page)}, expected 1`
+            `${label}: ${found.length} Recipe blocks in ${rel(page)}, expected 1`
         );
         continue;
     }

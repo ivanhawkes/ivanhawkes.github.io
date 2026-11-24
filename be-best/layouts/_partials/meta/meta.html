@@ -16,7 +16,21 @@
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:url" content="{{ .Permalink }}">
+{{/* An article or a recipe is an og:type of article, with its dates, its
+section and its tags; everything else is a website. */}}
+{{ if and (eq .Kind "page") (in (slice "post" "recipe") .Type) }}
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02" }}">
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02" }}">
+{{ with .CurrentSection }}{{ if ne .Path "/post" }}
+<meta property="article:section" content="{{ .Title }}">
+{{ end }}{{ end }}
+{{ range .Params.tags }}
+<meta property="article:tag" content="{{ . }}">
+{{ end }}
+{{ else }}
 <meta property="og:type" content="website">
+{{ end }}
 {{/* The share image is optional: no image, no tag, so an unset param never
 writes an empty content. */}}
 {{ with .Site.Params.socialImage }}

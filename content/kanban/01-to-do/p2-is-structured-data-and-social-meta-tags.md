@@ -45,10 +45,10 @@ description, `og:title`, `og:description`, `og:url`, `og:type`, `twitter:card`,
 - [ ] **Params** - define `socialImage` in `config/_default/params.yaml`, and
       add the share image to `static/` through Git LFS: 1200x630 suits
       `twitter:card` `summary_large_image`.
-- [ ] **Types** - select `og:type` by content type: `article` for `post` pages,
+- [x] **Types** - select `og:type` by content type: `article` for `post` pages,
       `website` for the home page and section pages, and the matching properties
       (published, modified, author, section) on articles.
-- [ ] **JSON-LD** - a head partial emitting, per page: `WebSite` on the home
+- [x] **JSON-LD** - a head partial emitting, per page: `WebSite` on the home
       page, `BlogPosting` on a post (author `Person`, publisher, image,
       `datePublished` and `dateModified`), `Recipe` on `type: recipe` reading
       the `ingredients.yaml` sidecar and the `prep-time` / `cook-time` ISO
@@ -62,14 +62,44 @@ description, `og:title`, `og:description`, `og:url`, `og:type`, `twitter:card`,
       working sections: `kanban` and `specification` are working documents, so
       say whether they are indexed or `noindex`.
 
+## Results
+
+Done 2026-11-25 for the JSON-LD and `og:type`; the share image and the meta tags
+are still open.
+
+`be-best/layouts/_partials/meta/jsonld.html` writes one JSON-LD block in the
+head of every page but the 404, its nodes in an `@graph`: `WebSite` on the home
+page, `BlogPosting` on the 55 articles, `AboutPage` on the About section, its
+two listings and the two project pages, `ProfilePage` with its `Person` (job
+title and `sameAs` profile links) on the profile page, and a `BreadcrumbList` on
+all 457 pages below the home page, matching the trail each page shows. Recipes
+keep their `Recipe` block and gain the breadcrumbs. A key is written only where
+the content has a value, as the recipe block does.
+
+Posts and recipes now carry `og:type` `article`, with `article:published_time`,
+`article:modified_time`, `article:section` and one `article:tag` per tag; every
+other page stays `website`. `article:author` is left out: Open Graph wants a
+profile URL there, and a recipe's author is often the cook it came from, not a
+page on this site.
+
+`pnpm run test:jsonld` now also runs `scripts/validate-jsonld.mjs`, which checks
+every page's block against `assets/jsonld.yaml` and reads it back against the
+page: the node types its kind should carry, the canonical URL, the `h1`, the
+`article:` dates and the visible breadcrumbs. It found one real fault while
+being written: Hugo's `truncate` HTML-escapes a title, so a headline with quotes
+carried `&#34;`; headlines are now cut only when longer than 110 characters,
+without escaping. Schema.org's validator reports no errors and no warnings on
+the home page, a post, the profile page and a recipe. Google's Rich Results Test
+was not run.
+
 ## Acceptance Criteria
 
-- [ ] Every page carries a JSON-LD block of the type above, and the blocks
+- [x] Every page carries a JSON-LD block of the type above, and the blocks
       validate against Google's Rich Results Test with no errors; the warnings
       are listed on this card
 - [ ] `og:image` and `twitter:image` carry a real image on the home page and on
       a post, and a shared link shows it
-- [ ] A post page reports `og:type` `article` with published and modified times,
+- [x] A post page reports `og:type` `article` with published and modified times,
       an author and a publisher
 - [ ] The `robots`, `author`, `publisher`, `creator` and `keywords` tags are
       present, and the indexing decision for `kanban` and `specification` is

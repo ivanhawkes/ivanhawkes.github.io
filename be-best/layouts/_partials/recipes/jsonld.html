@@ -70,14 +70,8 @@
   {{- $yield = printf "%v %s" . (cond (eq . 1) "portion" "portions") -}}
 {{- end -}}
 
-{{/*  The language tag, from the site's locale: `en-us` in the site config, and
-      the case BCP 47 asks of a region subtag.  */}}
-{{- $language := .Site.Language.Locale | default "en" -}}
-{{- if gt (len $language) 2 -}}
-  {{- $language = printf "%s-%s"
-        (lower (slicestr $language 0 2))
-        (upper (slicestr $language 3 (len $language))) -}}
-{{- end -}}
+{{/*  The language tag, from the site's locale.  */}}
+{{- $language := partial "/meta/language-tag.html" . -}}
 
 {{/*  The ingredients of every dish, one line each: quantity, measure and
       ingredient, the composition `recipes/ingredients.html` prints, with the

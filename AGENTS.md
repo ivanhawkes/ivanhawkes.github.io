@@ -67,7 +67,7 @@ pnpm run test:headings # count h1 elements over public/; fail on pages without e
 pnpm run test:placeholders # pair imgB classes with their rules over public/; fail on an unmatched pair
 pnpm run test:kanban  # validate card front matter against the schema in assets/
 pnpm run test:methods # validate method.yaml against the schema in assets/, and its rendering over public/
-pnpm run test:jsonld  # validate each recipe page's Recipe JSON-LD against assets/ and the sidecars it states
+pnpm run test:jsonld  # validate each recipe's Recipe JSON-LD, then every page's head JSON-LD against assets/jsonld.yaml
 pnpm run test:prettier # assert layouts ignored, one plugin-free prettier config, editor pins set
 pnpm run test:checks  # the nine checks over public/, no build: lint, types, html, headings, placeholders, kanban, methods, jsonld, prettier
 pnpm run test:ci      # test:checks + go test ./cmd/kan; the publish gate

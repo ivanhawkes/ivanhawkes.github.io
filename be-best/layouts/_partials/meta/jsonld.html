@@ -1,0 +1,146 @@
+{{/*
+  The structured data of every page but a recipe's own Recipe block: one
+  JSON-LD script in the head, its nodes in an `@graph`.
+
+    WebSite         the home page
+    BlogPosting     an article (`type: post`)
+    AboutPage       the About section, its profile and project listings, and a
+                    project page
+    ProfilePage     a profile page, whose main entity is the Person it profiles
+    BreadcrumbList  every page below the home page, the trail the breadcrumbs
+                    show, ending with the page itself
+
+  As in `recipes/jsonld.html`, a key is written only when the content holds a
+  value: no key reads `null` or `""`, `image` appears only where the page's
+  own bundle has a `featured.webp`, and `description` falls back to the page's
+  summary. Recipes keep their `Recipe` block in the body, where it already was;
+  this block gives them the breadcrumbs. `jsonify | safe.JS` writes the JSON as
+  data, for the reasons `recipes/jsonld.html` gives.
+
+  `pnpm run test:jsonld` reads every block back against `assets/jsonld.yaml`.
+
+    .  the page rendering
+*/}}
+
+{{- $page := . -}}
+{{- $language := partial "/meta/language-tag.html" . -}}
+{{- $siteAuthor := site.Params.author.name | default site.Title -}}
+{{- $publisher := dict "@type" "Person" "name" $siteAuthor "url" site.Home.Permalink -}}
+{{- $graph := slice -}}
+
+{{- /* The words a page is described by: its description, or its summary. */ -}}
+{{- $description := .Description -}}
+{{- if not $description -}}
+  {{- $description = partial "/recipes/plain-text.html" (dict "page" . "text" .Summary "rendered" true) | string -}}
+{{- end -}}
+
+{{- if .IsHome -}}
+  {{- $site := dict
+        "@type" "WebSite"
+        "@id" (printf "%s#website" .Permalink)
+        "url" .Permalink
+        "name" site.Title
+        "inLanguage" $language
+        "publisher" $publisher -}}
+  {{- with site.Params.description -}}
+    {{- $site = merge $site (dict "description" .) -}}
+  {{- end -}}
+  {{- $graph = $graph | append $site -}}
+{{- end -}}
+
+{{- if and (eq .Kind "page") (eq .Type "post") -}}
+  {{- /* Google cuts a headline past 110 characters. truncate is not used: it
+        HTML-escapes the title, and the JSON would carry the entities. */ -}}
+  {{- $headline := .Title -}}
+  {{- if gt (strings.RuneCount .Title) 110 -}}
+    {{- $headline = print (strings.TrimSpace (substr .Title 0 109)) "…" -}}
+  {{- end -}}
+  {{- $post := dict
+        "@type" "BlogPosting"
+        "@id" (printf "%s#article" .Permalink)
+        "url" .Permalink
+        "mainEntityOfPage" (dict "@type" "WebPage" "@id" .Permalink)
+        "headline" $headline
+        "datePublished" (.Date.Format "2006-01-02")
+        "dateModified" (.Lastmod.Format "2006-01-02")
+        "author" (dict "@type" "Person" "name" (.Params.author | default $siteAuthor))
+        "publisher" $publisher
+        "inLanguage" $language -}}
+  {{- with .Resources.GetMatch "featured.webp" -}}
+    {{- $post = merge $post (dict "image" (slice .Permalink)) -}}
+  {{- end -}}
+  {{- with $description -}}
+    {{- $post = merge $post (dict "description" .) -}}
+  {{- end -}}
+  {{- with .CurrentSection -}}
+    {{- if ne .Path "/post" -}}
+      {{- $post = merge $post (dict "articleSection" .Title) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- with .Params.tags -}}
+    {{- $post = merge $post (dict "keywords" (delimit . ", ")) -}}
+  {{- end -}}
+  {{- $graph = $graph | append $post -}}
+{{- end -}}
+
+{{- if or (and (eq .Kind "section") (eq .Type "about")) (and (eq .Kind "page") (eq .Type "project")) -}}
+  {{- $about := dict
+        "@type" "AboutPage"
+        "@id" .Permalink
+        "url" .Permalink
+        "name" .Title
+        "inLanguage" $language -}}
+  {{- with $description -}}
+    {{- $about = merge $about (dict "description" .) -}}
+  {{- end -}}
+  {{- with .Resources.GetMatch "featured.webp" -}}
+    {{- $about = merge $about (dict "primaryImageOfPage" (dict "@type" "ImageObject" "url" .Permalink)) -}}
+  {{- end -}}
+  {{- $graph = $graph | append $about -}}
+{{- end -}}
+
+{{- if and (eq .Kind "page") (eq .Type "profile") -}}
+  {{- $entry := index (where (default (slice) hugo.Data.profile.person) "profile" .Params.profile) 0 | default dict -}}
+  {{- $person := dict
+        "@type" "Person"
+        "name" ($entry.name | default .Params.author | default $siteAuthor)
+        "url" .Permalink -}}
+  {{- with $entry.position -}}
+    {{- $person = merge $person (dict "jobTitle" .) -}}
+  {{- end -}}
+  {{- /* The same profile URLs the page links to, in social-media-small.html. */ -}}
+  {{- $accounts := merge (dict) site.Params.social $entry -}}
+  {{- $sameAs := slice -}}
+  {{- with $accounts.github }}{{ $sameAs = $sameAs | append (printf "https://github.com/%s" .) }}{{ end -}}
+  {{- with $accounts.facebook }}{{ $sameAs = $sameAs | append (printf "https://www.facebook.com/%s/" .) }}{{ end -}}
+  {{- with $accounts.youtube }}{{ $sameAs = $sameAs | append (printf "https://www.youtube.com/@%s/" .) }}{{ end -}}
+  {{- with $accounts.twitter }}{{ $sameAs = $sameAs | append (printf "https://x.com/%s" .) }}{{ end -}}
+  {{- with $sameAs -}}
+    {{- $person = merge $person (dict "sameAs" .) -}}
+  {{- end -}}
+  {{- $profile := dict
+        "@type" "ProfilePage"
+        "@id" .Permalink
+        "url" .Permalink
+        "name" .Title
+        "inLanguage" $language
+        "dateCreated" (.Date.Format "2006-01-02")
+        "dateModified" (.Lastmod.Format "2006-01-02")
+        "mainEntity" $person -}}
+  {{- $graph = $graph | append $profile -}}
+{{- end -}}
+
+{{- if and (not .IsHome) (ne .Kind "404") -}}
+  {{- $items := slice -}}
+  {{- range $i, $p := .Ancestors.Reverse -}}
+    {{- $items = $items | append (dict "@type" "ListItem" "position" (add $i 1) "name" $p.LinkTitle "item" $p.Permalink) -}}
+  {{- end -}}
+  {{- $items = $items | append (dict "@type" "ListItem" "position" (add (len $items) 1) "name" .LinkTitle "item" .Permalink) -}}
+  {{- $graph = $graph | append (dict "@type" "BreadcrumbList" "@id" (printf "%s#breadcrumb" .Permalink) "itemListElement" $items) -}}
+{{- end -}}
+
+{{- with $graph -}}
+  <script type="application/ld+json">
+    {{- dict "@context" "https://schema.org" "@graph" . | jsonify | safe.JS -}}
+  </script>
+{{- end -}}

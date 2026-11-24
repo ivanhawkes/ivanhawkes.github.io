@@ -183,7 +183,8 @@ Ingredient file problems are now build warnings, not text on the page.
       `_headers` file, so the card's "unreachable on Pages" notes no longer
       apply. (headers added 2026-11-25 in `static/_headers`; live checks pending
       on the card)
-- [ ] Hero image priority: card `p2-is-hero-image-load-priority`.
+- [x] Hero image priority: card `p2-is-hero-image-load-priority`. (done
+      2026-11-25; the audit re-run is left for you)
 - [ ] Structured data and social meta, plus a `socialImage`: card
       `p2-is-structured-data-and-social-meta-tags`.
 - [ ] Epic `p2-ep-kanban-system`: burn-down chart, epic progress taken from its

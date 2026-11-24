@@ -4,7 +4,7 @@ description: 'No security headers: CSP, HSTS, COOP, frames'
 date: '2026-10-29'
 author: Ivan Hawkes
 params:
-    completionDate: null
+    completionDate: '2026-11-25'
     due: null
     dependencies: null
     references: null
@@ -102,5 +102,7 @@ unaffected.
       placeholders, code-to-clipboard, kanban board
 - [x] **COOP, frame control, Trusted Types** - each is closed by a header in
       `static/_headers`
-- [ ] **No regression** - `pnpm run test` is green with the policy in place (met
+- [x] **No regression** - `pnpm run test` is green with the policy in place (met
       2026-11-25), and the score reported by the review tool is recorded here
+      The review-tool score is not recorded: the owner closed the card without
+      it on 2026-11-25.

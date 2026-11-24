@@ -1,5 +1,5 @@
 # Response headers for every page, applied by Cloudflare Pages. Hugo copies
-# this file to the root of public/. See content/kanban/01-to-do/p1-is-security-headers.md
+# this file to the root of public/. See content/kanban/03-done/p1-is-security-headers.md
 # for what each line allows and why.
 #
 # Content-Security-Policy, by directive:

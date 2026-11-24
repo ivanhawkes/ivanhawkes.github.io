@@ -11,6 +11,9 @@
     class       a class on the box around the image, for a caller whose layout
                 sizes that box; omitted for a caller that leaves it alone
     imgClass    the classes of the img itself; the default rounds its corners
+    priority    true for the image at the top of a page, the largest thing it
+                draws: fetched first and never lazily; below the fold, leave
+                it out and the image loads lazily
     page        the page that owns the image; defaults to the page rendering,
                 which in a render hook can be a listing showing the summary
 
@@ -37,6 +40,7 @@
 {{- $class := .class -}}
 {{- $sizes := .sizes -}}
 {{- $widths := .widths -}}
+{{- $priority := .priority -}}
 
 {{- if not (and $sizes $widths) -}}
   {{- errorf "image-variants.html: an image needs a box, `sizes` and `widths` from images/boxes.html" -}}
@@ -44,7 +48,6 @@
 
 {{- $sizeList := $widths -}}
 {{- $blurFormat := "LQIP" -}}
-{{- $hint := "photo" -}}
 {{- $filter := "box" -}}
 {{- $imgClass := .imgClass | default "w-full rounded-md h-auto shadow animate-fade" -}}
 
@@ -68,27 +71,14 @@
     {{- if $title }}<figure>{{ end }}
     <div class="{{ $divClass }}" data-pagefind-ignore>
       <picture data-pagefind-ignore>
-        {{- /* The widths the source can fill; an image narrower than every one gets no source, only the img. */}}
-        {{- $fit := slice }}{{ range $sizeList }}{{ if ge $imgRsc.Width (int .) }}{{ $fit = $fit | append . }}{{ end }}{{ end }}
-        {{- if $fit }}
-        <source type="image/webp" srcset="
-        {{- with $fit -}}
-          {{- range $i, $e := . -}}
-            {{- if ge $imgRsc.Width . -}}
-              {{- if $i }}, {{ end -}}{{- ($imgRsc.Process (print "resize " . "x webp " $hint " " $filter) ).RelPermalink }} {{ . }}w
-            {{- end -}}
-          {{- end -}}
-        {{- end -}}" sizes="{{ $sizes }}" />
-        <source type="image/jpeg" srcset="
-        {{- with $fit -}}
-          {{- range $i, $e := . -}}
-            {{- if ge $imgRsc.Width . -}}
-              {{- if $i }}, {{ end -}}{{- ($imgRsc.Process (print "resize " . "x jpg " $filter) ).RelPermalink }} {{ . }}w
-            {{- end -}}
-          {{- end -}}
-        {{- end -}}" sizes="{{ $sizes }}" />
+        {{- $webp := partial "/images/srcset.html" (dict "image" $imgRsc "widths" $sizeList "format" "webp") }}
+        {{- $jpeg := partial "/images/srcset.html" (dict "image" $imgRsc "widths" $sizeList "format" "jpg") }}
+        {{- /* An image narrower than every width gets no source, only the img. */}}
+        {{- if $webp }}
+        <source type="image/webp" srcset="{{ $webp }}" sizes="{{ $sizes }}" />
+        <source type="image/jpeg" srcset="{{ $jpeg }}" sizes="{{ $sizes }}" />
         {{- end }}
-        <img class="{{ $imgClass }}" src="{{ $actualImg.RelPermalink }}" width="{{ $imgRsc.Width }}" height="{{ $imgRsc.Height }}" alt="{{ $alt }}" title="{{ $alt }}" loading="lazy" data-pagefind-ignore />
+        <img class="{{ $imgClass }}" src="{{ $actualImg.RelPermalink }}" width="{{ $imgRsc.Width }}" height="{{ $imgRsc.Height }}" alt="{{ $alt }}" title="{{ $alt }}" {{ if $priority }}loading="eager" fetchpriority="high"{{ else }}loading="lazy"{{ end }} data-pagefind-ignore />
       </picture>
     </div>
     {{- with $title }}<figcaption>{{ . }}</figcaption></figure>{{ end }}

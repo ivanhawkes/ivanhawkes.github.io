@@ -1,0 +1,23 @@
+{{/*
+  The srcset of an image: one processed variant per width of the ladder the
+  image is wide enough to fill, in one format. Used by `image-variants.html` for
+  each of its two `<source>` elements.
+
+    image   the page resource, required
+    widths  the width ladder, from `images/boxes.html`
+    format  "webp" or "jpg"
+
+  Returns the srcset string; empty when the image is narrower than every width.
+*/}}
+
+{{- $image := .image -}}
+{{- $hint := cond (eq .format "webp") " photo" "" -}}
+{{- $parts := slice -}}
+{{- range .widths -}}
+  {{- if ge $image.Width (int .) -}}
+    {{- $variant := $image.Process (print "resize " . "x " $.format $hint " box") -}}
+    {{- $parts = $parts | append (print $variant.RelPermalink " " . "w") -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return (delimit $parts ", ") -}}

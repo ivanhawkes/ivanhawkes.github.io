@@ -225,7 +225,7 @@
     color: var(--text-muted);
 }
 
-.breadcrumb ul {
+.breadcrumb ol {
     display: flex;
     flex-wrap: wrap;
     align-items: center;

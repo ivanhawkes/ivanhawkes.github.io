@@ -152,19 +152,30 @@ the first time. The same call had also made 14 home-page pagers, `/page/2/` to
 
 ## 6. Accessibility
 
-- [ ] Drawer: the close control `#nav-toggle` sits outside the Tab trap, and
+- [x] Drawer: the close control `#nav-toggle` sits outside the Tab trap, and
       `closeDrawer` leaves a stale `is-open` behind (`nav-menu.ts:175,252-273`).
-- [ ] Drop `aria-haspopup="true"` from the plain-list panels
+- [x] Drop `aria-haspopup="true"` from the plain-list panels
       (`recursive-nav.html:53`, `top-nav.html:75,112`).
-- [ ] Breadcrumbs: take the `»` out of the link, and add the current page with
+- [x] Breadcrumbs: take the `»` out of the link, and add the current page with
       `aria-current`.
-- [ ] Heading levels: fix the `h1` → `h3` jumps in `taxonomy.html` and
+- [x] Heading levels: fix the `h1` → `h3` jumps in `taxonomy.html` and
       `term.html`, and the `h3` in `recipes/method.html`.
-- [ ] `recipes/ingredients.html`: make the dish names real headings, remove the
+- [x] `recipes/ingredients.html`: make the dish names real headings, remove the
       `&nbsp;` spacer, and stop the authoring error from reaching the public
       page.
-- [ ] `taxonomy.html`: remove the redundant `role="link"`, the invalid
+- [x] `taxonomy.html`: remove the redundant `role="link"`, the invalid
       `itemProp` and `data-pagefind-tags`.
+
+Done 2026-11-25. Checked in headless Chrome at phone width: Tab and Shift+Tab
+cycle the close control and every drawer entry, and closing leaves no panel
+open. Recipe dish names in the ingredients column stay styled text, not
+headings: that column comes before the page's `h1` in the markup, so headings
+there would break the outline; the method column gets a hidden "Method" `h2`.
+Ingredient file problems are now build warnings, not text on the page.
+
+- [ ] Follow-up: when the drawer opens from a click, focus may stay on the page
+      instead of moving to the first entry. Seen in headless Chrome, before and
+      after this change; check on a real phone.
 
 ## 7. Features (open cards and epics)
 

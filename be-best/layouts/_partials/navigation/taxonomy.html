@@ -27,11 +27,8 @@
           {{- range . -}}
             {{- $permalink := (printf "%s%s/" ($.Site.GetPage "taxonomy" "tags").RelPermalink (urlize .)) -}}
             <a
-              role="link"
               href="{{- $permalink -}}"
-              aria-label="Tag: {{ . }}"
-              itemProp="http://schema.org/keywords"
-              data-pagefind-tags='{{ printf "[[%s]]" (lower .) | safeHTMLAttr }}'>
+              aria-label="Tag: {{ . }}">
               {{- . -}}
             </a>
           {{- end }}
@@ -43,11 +40,8 @@
           {{- range . -}}
             {{- $permalink := (printf "%s%s/" ($.Site.GetPage "taxonomy" "categories").RelPermalink (urlize .)) -}}
             <a
-              role="link"
               href="{{- $permalink -}}"
-              aria-label="Category: {{ . }}"
-              itemProp="http://schema.org/keywords"
-              data-pagefind-tags='{{ printf "[[%s]]" (lower .) | safeHTMLAttr }}'>
+              aria-label="Category: {{ . }}">
               {{- . -}}
             </a>
           {{- end }}

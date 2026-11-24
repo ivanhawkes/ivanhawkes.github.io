@@ -46,6 +46,7 @@
       {{ partial "/page/content.html" (dict "page" . "byline" true) }}
 
       {{/*  The steps of each dish, under the prose that introduces them.  */}}
+      <h2 class="sr-only">Method</h2>
       {{- partial "/recipes/method.html" . -}}
 
       {{/*  The notes, under the steps: the prose of a bundle's notes.md, and

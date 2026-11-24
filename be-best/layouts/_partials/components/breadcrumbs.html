@@ -1,14 +1,9 @@
-<nav aria-label="breadcrumb" class="measure breadcrumb">
-  <ul>
-    {{ range $index, $value := .Ancestors.Reverse }}
-      <li class="inline">
-        <a href="{{ .RelPermalink }}">
-          {{ .LinkTitle }}
-          {{ if ne (add $index 1) (len $.Ancestors) }}
-            <span>&ensp;»&ensp;</span>
-          {{ end }}
-        </a>
-      </li>
-    {{ end }}
-  </ul>
+<nav aria-label="Breadcrumb" class="measure breadcrumb">
+  <ol>
+    {{- range .Ancestors.Reverse }}
+      <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+      <li aria-hidden="true">&ensp;»&ensp;</li>
+    {{- end }}
+    <li><a href="{{ .RelPermalink }}" aria-current="page">{{ .LinkTitle }}</a></li>
+  </ol>
 </nav>

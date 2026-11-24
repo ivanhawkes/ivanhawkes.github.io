@@ -8,7 +8,7 @@
     {{ range $term, $weightedPages := $taxonomyObject }}
       <div class="card">
         <div class="card-body">
-          <h3 class="card-title"><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a></h3>
+          <h2 class="card-title"><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a></h2>
           <div class="card-meta">{{ $weightedPages.Count }} entries</div>
         </div>
       </div>

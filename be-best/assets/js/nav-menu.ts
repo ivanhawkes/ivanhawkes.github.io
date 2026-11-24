@@ -183,7 +183,11 @@ const closeDrawer = (returnFocus = true) => {
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Open the site menu');
 
-    closeAll();
+    // Every panel, the hidden ones too: closeAll skips what is off screen,
+    // and the drawer's panels left the screen with it.
+    Array.from(nav.querySelectorAll<HTMLElement>('.nav-item.is-open')).forEach(
+        closeItem
+    );
 
     if (returnFocus) {
         toggle.focus();
@@ -249,27 +253,8 @@ const wireUp = () => {
         const inDrawer = drawerOpen();
         const inBar = !inDrawer && bar.matches;
 
-        /* The focus trap: Tab stays inside the drawer while it is open. */
+        /* Tab in the open drawer belongs to the focus trap on the document. */
         if (event.key === 'Tab' && inDrawer) {
-            const controls = focusables(nav);
-
-            if (controls.length > 0) {
-                const first = controls[0];
-                const last = controls[controls.length - 1];
-                const active = document.activeElement as HTMLElement | null;
-
-                if (
-                    event.shiftKey &&
-                    (active === first || !nav.contains(active))
-                ) {
-                    last.focus();
-                    event.preventDefault();
-                } else if (!event.shiftKey && active === last) {
-                    first.focus();
-                    event.preventDefault();
-                }
-            }
-
             return;
         }
 
@@ -372,6 +357,29 @@ const wireUp = () => {
         if (event.key === 'Escape' && drawerOpen()) {
             closeDrawer();
         }
+    });
+
+    /* The focus trap: Tab cycles through the drawer and the control that
+       closes it, which sits in the bar outside the drawer. */
+    document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Tab' || !drawerOpen()) {
+            return;
+        }
+
+        const controls = [toggle, ...focusables(nav)];
+        const active = document.activeElement as HTMLElement;
+        const step = event.shiftKey ? -1 : 1;
+        const at = controls.indexOf(active);
+        const next =
+            at < 0
+                ? step > 0
+                    ? 0
+                    : controls.length - 1
+                : (at + step + controls.length) % controls.length;
+
+        // Moved by hand: the drawer's DOM order is not its reading order.
+        controls[next].focus();
+        event.preventDefault();
     });
 
     toggle.addEventListener('click', () => {

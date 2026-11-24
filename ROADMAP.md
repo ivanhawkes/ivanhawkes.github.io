@@ -186,8 +186,8 @@ Ingredient file problems are now build warnings, not text on the page.
 - [x] Hero image priority: card `p2-is-hero-image-load-priority`. (done
       2026-11-25; the audit re-run is left for you)
 - [ ] Structured data and social meta, plus a `socialImage`: card
-      `p2-is-structured-data-and-social-meta-tags`. (JSON-LD and `og:type` done
-      2026-11-25; the share image and the meta tags still open)
+      `p2-is-structured-data-and-social-meta-tags`. (JSON-LD, `og:type` and meta
+      tags done 2026-11-25; only the share image is open)
 - [ ] Epic `p2-ep-kanban-system`: burn-down chart, epic progress taken from its
       cards.
 - [ ] Epic `p2-ep-documentation-system`: the remaining specification documents.

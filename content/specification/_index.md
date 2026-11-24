@@ -1,4 +1,10 @@
 ---
+# Working documents: noindex (meta.html) and out of the sitemap.
+sitemap:
+    disable: true
+cascade:
+    sitemap:
+        disable: true
 type: specification
 title: Specifications
 author: Ivan Hawkes

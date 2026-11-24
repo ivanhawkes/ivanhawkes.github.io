@@ -627,7 +627,9 @@ Every page but the 404 carries one JSON-LD block in its head, written by
 home page, `BlogPosting` on an article, `AboutPage` on the About section, its
 listings and the project pages, `ProfilePage` on a profile page, and a
 `BreadcrumbList` on every page below the home page. Posts and recipes also carry
-`og:type` `article` with its `article:` properties.
+`og:type` `article` with its `article:` properties. Every page carries `robots`,
+`author` and, where it has tags, `keywords`; the kanban and specification pages
+are `noindex, follow` and left out of `sitemap.xml`.
 `scripts/validate-jsonld.mjs`, the second half of `pnpm run test:jsonld`,
 validates each block against `assets/jsonld.yaml` and reads it back against its
 page: the node types the page's kind should carry, each node's URL against the
@@ -636,7 +638,7 @@ meta tags, and the breadcrumb trail against the one the page shows. Hugo's
 redirect stubs are skipped. Its current result:
 
 ```text
-459 pages validated against assets/jsonld.yaml: no deviations; 5 AboutPage, 55 BlogPosting, 457 BreadcrumbList, 1 ProfilePage, 1 WebSite
+459 pages validated against assets/jsonld.yaml: no deviations; 5 AboutPage, 55 BlogPosting, 457 BreadcrumbList, 1 ProfilePage, 1 WebSite; 66 working pages noindex and out of the sitemap
 ```
 
 ## Build And Publishing

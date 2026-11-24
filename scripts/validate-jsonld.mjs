@@ -64,6 +64,15 @@ const pages = [];
 const problems = [];
 const counts = {};
 let checked = 0;
+
+// The working documents are kept out of search: noindex in the page, and out
+// of the sitemap, so the two never disagree.
+const working = /^(kanban|specification)\//;
+const sitemap = readFileSync(path.join(publicDir, 'sitemap.xml'), 'utf8');
+const listed = new Set(
+    [...sitemap.matchAll(/<loc>([^<]*)<\/loc>/g)].map((m) => decode(m[1]))
+);
+let noindexed = 0;
 for (const file of pages.sort()) {
     const html = readFileSync(file, 'utf8');
     const rel = path.relative(publicDir, file).split(path.sep).join('/');
@@ -73,6 +82,26 @@ for (const file of pages.sort()) {
     }
     checked++;
     const say = (message) => problems.push(`${rel}: ${message}`);
+    const robots = attr(
+        html.match(/<meta[^>]*name=["']?robots[^>]*>/i)?.[0] ?? '',
+        'content'
+    );
+    const noindex = /noindex/.test(robots ?? '');
+    if (noindex !== working.test(rel)) {
+        say(`robots is "${robots}"`);
+    }
+    if (noindex) {
+        noindexed++;
+        const url = decode(
+            attr(
+                html.match(/<link[^>]*rel=["']?canonical[^>]*>/i)?.[0] ?? '',
+                'href'
+            ) ?? ''
+        );
+        if (listed.has(url)) {
+            say('is noindex, and listed in sitemap.xml');
+        }
+    }
     const head = html.split(/<\/head>/i)[0];
     const blocks = [...head.matchAll(blockPattern)];
     const isHome = rel === 'index.html';
@@ -211,5 +240,6 @@ console.log(
         Object.entries(counts)
             .sort()
             .map(([type, n]) => `${n} ${type}`)
-            .join(', ')
+            .join(', ') +
+        `; ${noindexed} working pages noindex and out of the sitemap`
 );

@@ -13,6 +13,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $description }}">
+{{/* The kanban board and the specifications are working documents: kept out
+of search results and out of the sitemap, their links still followed. */}}
+{{ if in (slice "kanban" "specification") .Section }}
+<meta name="robots" content="noindex, follow">
+{{ else }}
+<meta name="robots" content="index, follow, max-image-preview:large">
+{{ end }}
+<meta name="author" content="{{ .Params.author | default site.Params.author.name }}">
+{{ with .Params.tags }}
+<meta name="keywords" content="{{ delimit . ", " }}">
+{{ end }}
 <meta property="og:title" content="{{ $title }}">
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:url" content="{{ .Permalink }}">

@@ -57,7 +57,7 @@ description, `og:title`, `og:description`, `og:url`, `og:type`, `twitter:card`,
       `is-recipe-pages-emit-no-json-ld`: its block is built by
       `be-best/layouts/_partials/recipes/jsonld.html` and written first in the
       recipe page's `main`, where Google reads it, not from a head partial.
-- [ ] **Meta tags** - add `robots`, `author`, `publisher`, `creator` and
+- [x] **Meta tags** - add `robots`, `author`, `publisher`, `creator` and
       `keywords` (from the page `tags`), and state the indexing decision for the
       working sections: `kanban` and `specification` are working documents, so
       say whether they are indexed or `noindex`.
@@ -92,6 +92,17 @@ without escaping. Schema.org's validator reports no errors and no warnings on
 the home page, a post, the profile page and a recipe. Google's Rich Results Test
 was not run.
 
+Meta tags, 2026-11-25: every page carries `robots` and `author`, and a page with
+tags carries `keywords`. The indexing decision: the kanban board and the
+specifications are working documents, so their 66 pages carry `noindex, follow`
+and are left out of `sitemap.xml` (425 entries down to 363) through
+`sitemap.disable` cascaded from the two section `_index.md` files. Every other
+page is `index, follow, max-image-preview:large`. `publisher` and `creator` are
+not written: neither is a standard HTML meta name, and no search engine reads
+them; the JSON-LD names the publisher and the author instead.
+`scripts/validate-jsonld.mjs` checks that `noindex` falls on exactly those pages
+and that the sitemap lists none of them.
+
 ## Acceptance Criteria
 
 - [x] Every page carries a JSON-LD block of the type above, and the blocks
@@ -101,7 +112,7 @@ was not run.
       a post, and a shared link shows it
 - [x] A post page reports `og:type` `article` with published and modified times,
       an author and a publisher
-- [ ] The `robots`, `author`, `publisher`, `creator` and `keywords` tags are
+- [x] The `robots`, `author`, `publisher`, `creator` and `keywords` tags are
       present, and the indexing decision for `kanban` and `specification` is
       visible in the built pages
 - [ ] The re-run review reports the structured data and meta tags scores,

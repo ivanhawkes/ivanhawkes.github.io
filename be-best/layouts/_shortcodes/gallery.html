@@ -1,0 +1,66 @@
+{{/*
+  A gallery: the page's images whose names match a pattern, as a grid of
+  thumbnails, each a link to a larger copy. `assets/js/gallery.ts` turns the
+  links into a lightbox with previous and next; without scripts a link opens
+  the larger copy on its own.
+
+    {{< gallery match="carousel-*" >}}
+
+    match  a glob over the page's resources, required; images are shown in
+           name order
+    label  the accessible name of the gallery; defaults to "Photo gallery"
+
+  Alt text and a caption come from the page's resource config, as for a
+  featured image: `caption` is the alt text, `title` the caption the lightbox
+  shows under the image. An image without a `caption` fails the build, so no
+  picture is published without alt text.
+
+  The thumbnails are drawn by `images/image-variants.html` in the `gallery`
+  box of `images/boxes.html`, lazily, with placeholders. The larger copy is the
+  image fitted inside 1600 pixels and re-encoded as webp, so the lightbox never
+  loads the camera original.
+*/}}
+
+{{- $match := .Get "match" -}}
+{{- if not $match -}}
+  {{- errorf "gallery: %s needs match=\"<glob>\"" .Position -}}
+{{- end -}}
+{{- $images := sort (.Page.Resources.Match $match) "Name" -}}
+{{- if not $images -}}
+  {{- errorf "gallery: %q matches no image in %s" $match .Position -}}
+{{- end -}}
+{{- $box := (partial "/images/boxes.html").gallery -}}
+{{- $page := .Page -}}
+{{- $count := len $images -}}
+
+<section class="gallery not-prose" aria-label="{{ .Get "label" | default "Photo gallery" }}">
+  <ul class="gallery-grid">
+    {{- range $i, $image := $images -}}
+      {{- $meta := $image.Params | default dict -}}
+      {{- $alt := $meta.caption -}}
+      {{- if not $alt -}}
+        {{- errorf "gallery: %s has no caption (alt text) in the front matter of %s" $image.Name $page.File.Path -}}
+      {{- end -}}
+      {{- $large := $image.Fit "1600x1600 webp photo" -}}
+      <li>
+        <a
+          class="gallery-link"
+          href="{{ $large.RelPermalink }}"
+          data-width="{{ $large.Width }}"
+          data-height="{{ $large.Height }}"
+          data-caption="{{ $meta.title }}"
+          aria-label="Open photo {{ add $i 1 }} of {{ $count }}: {{ $alt }}">
+          {{- partial "/images/image-variants.html" (dict
+            "image" $image
+            "alt" $alt
+            "sizes" $box.sizes
+            "widths" $box.widths
+            "class" "gallery-thumb"
+            "imgClass" "gallery-img"
+            "page" $page
+          ) -}}
+        </a>
+      </li>
+    {{- end -}}
+  </ul>
+</section>

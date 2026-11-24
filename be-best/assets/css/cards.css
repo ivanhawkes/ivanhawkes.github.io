@@ -78,6 +78,41 @@
     background-size: cover;
 }
 
+/* The section icon an image-less card shows in place of a photograph: the
+   menu's own glyph, large, in the brand ink on the brand's quiet surface, so the
+   card keeps a header band without borrowing a picture. Shorter than a photo,
+   since it carries no detail to look at. */
+.card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 6.5rem;
+    background-color: color-mix(in oklab, var(--surface-brand) 30%, var(--surface));
+    color: var(--heading);
+}
+
+.card-icon svg {
+    width: 3.25rem;
+    height: 3.25rem;
+    fill: currentColor;
+    opacity: 0.85;
+    transition: transform 150ms ease-out;
+}
+
+.card:hover .card-icon svg {
+    transform: scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card-icon svg {
+        transition: none;
+    }
+
+    .card:hover .card-icon svg {
+        transform: none;
+    }
+}
+
 .card-body {
     display: flex;
     flex-direction: column;

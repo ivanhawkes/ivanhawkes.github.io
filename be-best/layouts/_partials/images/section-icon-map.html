@@ -1,0 +1,27 @@
+{{/*
+  Every menu entry's icon, keyed by the path of the page it points to, across
+  every site menu and two levels of children. Built once per build through
+  `partialCached` by `images/section-icon.html`.
+
+  Returns a dict of page path to SVG markup.
+*/}}
+
+{{- $map := dict -}}
+{{- range $name, $menu := site.Menus -}}
+  {{- range $menu -}}
+    {{- $entries := slice . -}}
+    {{- range .Children -}}
+      {{- $entries = $entries | append . -}}
+      {{- range .Children -}}
+        {{- $entries = $entries | append . -}}
+      {{- end -}}
+    {{- end -}}
+    {{- range $entries -}}
+      {{- if and .Page .Params.icon -}}
+        {{- $map = merge $map (dict .Page.Path .Params.icon) -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $map -}}

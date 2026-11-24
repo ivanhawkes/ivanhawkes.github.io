@@ -1,0 +1,169 @@
+/* Galleries, written by `layouts/_shortcodes/gallery.html`: a grid of
+   thumbnails in the prose measure, and the lightbox `assets/js/gallery.ts`
+   opens over the page. */
+
+.gallery {
+    max-width: var(--prose-measure);
+    margin: 1.5rem auto;
+}
+
+/* The list resets are scoped to the gallery so the prose list styles, which
+   indent and mark every list, do not reach it. */
+.gallery .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.gallery .gallery-grid > li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.gallery .gallery-grid > li::marker {
+    content: none;
+}
+
+@media (min-width: 1024px) {
+    .gallery .gallery-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.gallery-link {
+    display: block;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.gallery-link:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 2px;
+}
+
+/* Every thumbnail is the same shape, cropped from the middle of its photo, so
+   portrait and landscape shots sit in one even grid. Two classes outrank the
+   placeholder rule, which states each photo's own aspect ratio and is written
+   after this stylesheet. */
+.gallery-link .gallery-thumb {
+    aspect-ratio: 4 / 3;
+}
+
+.gallery-thumb picture {
+    display: block;
+    height: 100%;
+}
+
+.gallery-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 180ms ease-out;
+}
+
+.gallery-link:hover .gallery-img {
+    transform: scale(1.03);
+}
+
+/* The lightbox: the photo as large as the window allows, its caption and its
+   place in the set under it, and the controls in reach of a thumb. */
+.lightbox {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: oklch(0 0 0 / 92%);
+    color: #fff;
+}
+
+.lightbox::backdrop {
+    background: oklch(0 0 0 / 60%);
+}
+
+.lightbox[open] {
+    display: grid;
+    grid-template-rows: 1fr auto;
+}
+
+.lightbox-stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 0;
+    padding: 3.5rem 0.5rem 0.5rem;
+}
+
+.lightbox-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.lightbox-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem 1.25rem;
+    font-size: var(--text-sm);
+    text-align: center;
+}
+
+.lightbox-caption {
+    flex: 1;
+    max-width: var(--prose-measure);
+}
+
+.lightbox button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid oklch(1 0 0 / 35%);
+    border-radius: 50%;
+    background: oklch(0 0 0 / 40%);
+    color: inherit;
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.lightbox button:hover {
+    background: oklch(1 0 0 / 18%);
+}
+
+.lightbox button:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gallery-img {
+        transition: none;
+    }
+
+    .gallery-link:hover .gallery-img {
+        transform: none;
+    }
+}
+
+@media print {
+    .lightbox {
+        display: none;
+    }
+}

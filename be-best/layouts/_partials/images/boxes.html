@@ -34,4 +34,11 @@
   "widths" (slice "320" "640" "960")
 -}}
 
-{{- return (dict "prose" $prose "card" $card) -}}
+{{- /* A gallery thumbnail: three to a row of the prose measure from 1024px,
+      two to a row of the column below it. */ -}}
+{{- $gallery := dict
+  "sizes" "(min-width: 1024px) calc(65ch / 3), calc((100vw - 60px) / 2)"
+  "widths" (slice "320" "640")
+-}}
+
+{{- return (dict "prose" $prose "card" $card "gallery" $gallery) -}}

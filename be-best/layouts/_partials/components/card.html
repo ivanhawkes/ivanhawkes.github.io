@@ -3,8 +3,11 @@
   partial, one frame: `be-best/assets/css/cards.css` styles `.card` and the
   `.card-list` a section lays the cards out in, so the design of a card is not
   repeated per content type. A card reads its own bundle for the featured
-  image: a card with no image of its own is text only, and never the image of
-  the section it belongs to.
+  image. A card with no image of its own never borrows a photograph: it shows
+  the icon of the section it belongs to, from `images/section-icon.html`, in a
+  tinted band where the photograph would be. The band is decoration, hidden from
+  assistive technology and out of the tab order, since the title link already
+  leads to the page.
 
   Callers pass a dict:
 
@@ -41,12 +44,22 @@
 
 <div class="card">
   {{- with $page -}}
-    {{- partial "/images/featured-image.html" (dict
-      "page" .
-      "link" $url
-      "sizes" $cardBox.sizes
-      "widths" $cardBox.widths
-    ) -}}
+    {{- if .Resources.GetMatch "featured.webp" -}}
+      {{- partial "/images/featured-image.html" (dict
+        "page" .
+        "link" $url
+        "sizes" $cardBox.sizes
+        "widths" $cardBox.widths
+      ) -}}
+    {{- else -}}
+      {{- with partial "/images/section-icon.html" . -}}
+        {{- if $url -}}
+          <a class="card-media card-icon" href="{{ $url }}" tabindex="-1" aria-hidden="true">{{ . | safeHTML }}</a>
+        {{- else -}}
+          <div class="card-media card-icon" aria-hidden="true">{{ . | safeHTML }}</div>
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
   {{- end -}}
 
   <div class="card-body">

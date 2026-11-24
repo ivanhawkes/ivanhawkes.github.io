@@ -119,6 +119,11 @@ covers only how the program is written.
   holding one folder per card kind, and the opening epic. Nothing under
   `content/` is built from it, so a reference search reads it as dead weight: it
   is not, and it must never be deleted.
+- A photo set in a post is a `{{< gallery match="<glob>" >}}` shortcode
+  (`be-best/layouts/_shortcodes/gallery.html`): a thumbnail grid whose links
+  `be-best/assets/js/gallery.ts` opens in a lightbox. Each image needs a
+  `resources` entry with `caption` (the alt text; the build fails without it)
+  and `title` (the caption the lightbox shows).
 - Recipe front matter: `type: recipe`, `cuisine`, `categories`, `tags`, `date`,
   `author`, `portions`, `prep-time`, `cook-time` (ISO 8601 duration, e.g.
   `PT5M`). The `ingredients.yaml` sidecar holds an `ingredient-list`; the

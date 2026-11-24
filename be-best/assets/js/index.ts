@@ -1,4 +1,5 @@
-export { copyCodeToClipboard } from './copy-codeblock.ts';
-export { initDarkMode } from './dark-mode.ts';
-export { initNavMenu } from './nav-menu.ts';
-export { initSiteHeader } from './site-header.ts';
+// The deferred bundle. Each module wires itself up when it is imported.
+import './copy-codeblock.ts';
+import './dark-mode.ts';
+import './nav-menu.ts';
+import './site-header.ts';

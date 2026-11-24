@@ -1,9 +1,9 @@
 {{/*
-  A card for an article, the entry type of every listing. The frame, the image
-  policy and the title link all live in `components/card.html`.
+  A card for one entry of a listing: an article, a recipe or a project. The
+  frame, the image policy and the title link all live in `components/card.html`.
 */}}
 
-{{- $summary := .Summary | default .Description | default "Please add a summary and description to this entry." -}}
+{{- $summary := .Summary | default .Description -}}
 
 {{- partial "/components/card.html" (dict
   "page" .

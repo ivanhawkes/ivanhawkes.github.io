@@ -1,12 +1,7 @@
 {{- /*
-  This gives **normal** Markdown images --- i.e., using the
-  `![Alt](imageURL)` syntax (which VS Code auto-completes) ---
-  nearly all functionality of the `img` shortcode, except that
-  this: (a.) hard-codes the `blurFormat`, `hint`, and `filter`
-  parameters; and, (b.) assumes no use of either `phn` or `simple`.
-  
-  None of these additional items can be supplied via a render hook
-  but, instead, would require use of the full `img` shortcode.
+  A Markdown image, `![Alt](imageURL)`, drawn by `images/image-variants.html`
+  like every other image of a page. The `img` shortcode offers the treatments
+  a render hook cannot be given: `phn`, `simple`, `rounds` and the hints.
 
   See also:
   - https://gohugo.io/templates/render-hooks/
@@ -28,49 +23,16 @@
 {{- $alt := .Text -}}
 
 {{- $box := (partial "/images/boxes.html").prose -}}
-{{- $sizeList := $box.widths -}}
-{{- $dataSzes := $box.sizes -}}
-{{- $blurFormat := "LQIP" -}}
-{{- $hint := "photo" -}}
-{{- $filter := "box" -}}
-{{- $imgClass := "w-full h-auto shadow animate-fade" -}}
 
-{{- if .Page.Resources.GetMatch $src -}}
-  {{ with .Page.Resources.GetMatch $src }}
-    {{- $imgRsc := . -}}
-    {{- $divClass := print "relative bigImgDiv imgB-" (md5 $imgRsc.RelPermalink) "-" $blurFormat -}}
-    {{- partial "/images/placeholder-register.html" (dict
-      "image" $imgRsc
-      "format" $blurFormat
-      "page" $.Page
-    ) -}}
-    {{- $actualImg := $imgRsc.Process (print "resize 640x jpg " $filter) -}}
-    <div class="{{ $divClass }}" data-pagefind-ignore>
-      <picture data-pagefind-ignore>
-        {{- /* The widths the source can fill; an image narrower than every one gets no source, only the img. */}}
-        {{- $fit := slice }}{{ range $sizeList }}{{ if ge $imgRsc.Width (int .) }}{{ $fit = $fit | append . }}{{ end }}{{ end }}
-        {{- if $fit }}
-        <source type="image/webp" srcset="
-        {{- with $fit -}}
-          {{- range $i, $e := . -}}
-            {{- if ge $imgRsc.Width . -}}
-              {{- if $i }}, {{ end -}}{{- ($imgRsc.Process (print "resize " . "x webp " $hint " " $filter) ).RelPermalink }} {{ . }}w
-            {{- end -}}
-          {{- end -}}
-        {{- end -}}" sizes="{{ $dataSzes }}" />
-        <source type="image/jpeg" srcset="
-        {{- with $fit -}}
-          {{- range $i, $e := . -}}
-            {{- if ge $imgRsc.Width . -}}
-              {{- if $i }}, {{ end -}}{{- ($imgRsc.Process (print "resize " . "x jpg " $filter) ).RelPermalink }} {{ . }}w
-            {{- end -}}
-          {{- end -}}
-        {{- end -}}" sizes="{{ $dataSzes }}" />
-        {{- end }}
-        <img class="{{ $imgClass }}" src="{{ $actualImg.RelPermalink }}" width="{{ $imgRsc.Width }}" height="{{ $imgRsc.Height }}" alt="{{ $alt }}" title="{{ $alt }}" loading="lazy" data-pagefind-ignore />
-      </picture>
-    </div>
-  {{- end -}}
+{{- with .Page.Resources.GetMatch $src -}}
+  {{- partial "/images/image-variants.html" (dict
+    "image" .
+    "alt" $alt
+    "sizes" $box.sizes
+    "widths" $box.widths
+    "imgClass" "w-full h-auto shadow animate-fade"
+    "page" $.Page
+  ) -}}
 {{- else -}}
   <span class="ctr legal"><em>Image unavailable.</em></span>
 {{- end -}}

@@ -4,7 +4,7 @@
   {{ $people := default (slice) hugo.Data.profile.person }}
 
   <div class="container card-list">
-    {{ $paginator := .Paginate .Pages.ByTitle 12 }}
+    {{ $paginator := .Paginate (partial "/listing-pages.html" .) }}
 
     {{ range $paginator.Pages }}
       {{ if eq .Type "profile" }}
@@ -15,7 +15,7 @@
           {{- partial "/profiles/card.html" (dict "page" .) -}}
         {{ end }}
       {{ else if eq .Type "project" }}
-        {{- partial "/projects/card.html" . -}}
+        {{- partial "/posts/card.html" . -}}
       {{ else }}
         {{- partial "/posts/card.html" . -}}
       {{ end }}

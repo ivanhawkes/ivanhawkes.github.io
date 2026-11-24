@@ -17,7 +17,3 @@ ul.pagination > li {
     display: inline-block;
     padding-inline: 0.33rem;
 }
-
-/* Lists are indented, hung and marked in `typography.css`, which sets them in
-   `em` of the text they hold: one gutter per level, and the same gap from marker
-   to text at every level. */

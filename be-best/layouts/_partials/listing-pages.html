@@ -1,0 +1,24 @@
+{{/*
+  The pages a listing paginates, in the order it shows them.
+
+  Called both by `images/placeholder-key.html` in the head and by the section
+  layouts: Hugo builds a page's paginator on its first use and keeps it, so both
+  must paginate the same collection, or the layout's order is ignored. Recipes
+  and the About section are looked up by name and list alphabetically; every
+  other section lists newest first. Other kinds keep Hugo's default order.
+
+    .  the listing page
+
+  Returns the pages.
+*/}}
+
+{{- $pages := .Pages -}}
+{{- if eq .Kind "section" -}}
+  {{- if or (eq .Type "about") (strings.HasPrefix .Path "/post/recipe") -}}
+    {{- $pages = .Pages.ByTitle -}}
+  {{- else -}}
+    {{- $pages = .Pages.ByDate.Reverse -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $pages -}}

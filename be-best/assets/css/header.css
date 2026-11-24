@@ -99,11 +99,6 @@
     letter-spacing: 0.05em;
 }
 
-.brand-name {
-    display: none;
-    font-size: var(--text-base);
-}
-
 .brand:focus-visible {
     outline: 2px solid var(--focus-ring);
     outline-offset: 2px;
@@ -401,10 +396,6 @@ html:not([data-theme]) #print-page {
     .header-inner {
         gap: 0.5rem;
         height: 4.5rem;
-    }
-
-    .brand-name {
-        display: inline;
     }
 
     .site-search {

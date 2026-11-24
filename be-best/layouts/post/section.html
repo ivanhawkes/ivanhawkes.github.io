@@ -4,7 +4,7 @@
 
   <div
     class="container card-list">
-    {{ $paginator := .Paginate .Pages.ByDate.Reverse 12 }}
+    {{ $paginator := .Paginate (partial "/listing-pages.html" .) }}
 
     {{ range $paginator.Pages }}
 

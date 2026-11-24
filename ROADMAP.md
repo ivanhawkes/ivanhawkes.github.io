@@ -26,10 +26,11 @@ it exists. Items already on a card name that card.
 - [x] **og/twitter titles read "Ivan Hawkes| Title".** There is no space before
       the pipe, and the home page repeats the site name (`meta.html:12,25`).
       (done 2026-11-25)
-- [x] **Section lists sort alphabetically, not by date.**
-      `post/section.html:7-8`, `recipe/section.html` and
-      `specification/section.html` re-sort by title. (done 2026-11-25: posts and
-      specifications list newest first; recipes deliberately stay alphabetical.)
+- [x] **Section lists sort alphabetically, not by date.** (wrong finding: posts
+      were already newest first; see section 5) `post/section.html:7-8`,
+      `recipe/section.html` and `specification/section.html` re-sort by title.
+      (done 2026-11-25: posts and specifications list newest first; recipes
+      deliberately stay alphabetical.)
 - [x] **Broken links.** (done 2026-11-25)
     - [x] `post/recipe/chinese/sweet-and-sour-pork/method.yaml:13`: should be
           `/post/recipe/chinese/light-batter/`
@@ -121,22 +122,33 @@ Done 2026-11-25 apart from the icon size. `robots.txt` is now a template, so its
 
 ## 5. Dead code
 
-- [ ] Delete the 13 templates Hugo reports unused
+- [x] Delete the 13 templates Hugo reports unused
       (`hugo --printUnusedTemplates`): `all.html` (a debug page),
       `components/carousel.html`, `components/colour-swatch.html`,
       `navigation/all.html`, `about/card.html`, `about/page.html`,
       `recipes/card.html` and the unused `section.html` variants. Keep
       `kanban/section-card.html` (item 1.1) and `_shortcodes/img.html` (content
       may call it).
-- [ ] Merge `posts/`, `projects/` and `recipes/card.html`, which are identical,
+- [x] Merge `posts/`, `projects/` and `recipes/card.html`, which are identical,
       and remove their "Please add a summary..." placeholder.
-- [ ] Merge the three copies of the `<picture>`/`srcset` code
+- [x] Merge the three copies of the `<picture>`/`srcset` code
       (`image-variants.html`, `render-image.html`, `img.html`).
-- [ ] Remove the unused CSS: `.brand-name` (`header.css`),
+- [x] Remove the unused CSS: `.brand-name` (`header.css`),
       `@utility     table-odd/even` (`table.css`) and the empty comment in
       `custom.css`.
-- [ ] Remove the repeated comment in `kanban/section.html:5-7`, and the
+- [x] Remove the repeated comment in `kanban/section.html:5-7`, and the
       re-exports in `index.ts` that do nothing in an iife bundle.
+
+Done 2026-11-25. Kept: `_shortcodes/img.html` (no page uses it yet) and the
+default `section.html` (the fallback for a new section). The Markdown image hook
+now draws through `images/image-variants.html`; `img.html` keeps its own copy
+for its extra options. Found on the way: `images/placeholder-key.html` built
+each listing's paginator in the head with Hugo's default order, so the order the
+section layouts asked for was ignored (the section 1 "sort by date" fix changed
+nothing; posts were already newest first). Both now paginate
+`_partials/listing-pages.html`, and recipe and About lists are alphabetical for
+the first time. The same call had also made 14 home-page pagers, `/page/2/` to
+`/page/15/`, each a copy of the home page; they are gone.
 
 ## 6. Accessibility
 

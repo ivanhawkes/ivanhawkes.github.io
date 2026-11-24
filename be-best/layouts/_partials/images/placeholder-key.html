@@ -30,7 +30,7 @@
 
 {{- $num := 0 -}}
 {{- if in (slice "home" "section" "taxonomy" "term") $page.Kind -}}
-  {{- with $page.Paginator -}}
+  {{- with $page.Paginate (partial "/listing-pages.html" $page) -}}
     {{- $num = .PageNumber -}}
   {{- end -}}
 {{- end -}}

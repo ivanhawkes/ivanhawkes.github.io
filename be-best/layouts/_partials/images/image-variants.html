@@ -10,6 +10,9 @@
     widths      the width ladder to emit
     class       a class on the box around the image, for a caller whose layout
                 sizes that box; omitted for a caller that leaves it alone
+    imgClass    the classes of the img itself; the default rounds its corners
+    page        the page that owns the image; defaults to the page rendering,
+                which in a render hook can be a listing showing the summary
 
   `sizes` and `widths` travel together, and a caller takes both from one box of
   `images/boxes.html`, which names every box the theme draws an image in: the
@@ -29,6 +32,7 @@
 
 {{- $image := .image -}}
 {{- $alt := .alt -}}
+{{- $owner := .page | default page -}}
 {{- $title := .title -}}
 {{- $class := .class -}}
 {{- $sizes := .sizes -}}
@@ -42,7 +46,7 @@
 {{- $blurFormat := "LQIP" -}}
 {{- $hint := "photo" -}}
 {{- $filter := "box" -}}
-{{- $imgClass := "w-full rounded-md h-auto shadow animate-fade" -}}
+{{- $imgClass := .imgClass | default "w-full rounded-md h-auto shadow animate-fade" -}}
 
   {{ with $image }}
   
@@ -57,7 +61,7 @@
     {{- partial "/images/placeholder-register.html" (dict
       "image" $imgRsc
       "format" $blurFormat
-      "page" page
+      "page" $owner
     ) -}}
     {{- $actualImg := $imgRsc.Process (print "resize 640x jpg " $filter) -}}
 

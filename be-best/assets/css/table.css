@@ -7,15 +7,6 @@
     --color-table-even: var(--stripe-even);
 }
 
-/* Stripe colour tags: apply to a table, row, cell or header. */
-@utility table-odd {
-    background-color: var(--color-table-odd);
-}
-
-@utility table-even {
-    background-color: var(--color-table-even);
-}
-
 table {
     /* Merges borders together for a clean look */
     border-collapse: collapse;

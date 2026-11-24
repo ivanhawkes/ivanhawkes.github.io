@@ -62,16 +62,45 @@ Measured on the current build, the policy has to allow exactly this:
   policy: allow it only when `hugo.IsServer`, or accept that development runs
   with the policy off.
 
+## Policy
+
+`static/_headers` sets five headers on every response (2026-11-25):
+
+- `Strict-Transport-Security: max-age=31536000; includeSubDomains`
+- `Content-Security-Policy`: `default-src 'none'`, then `script-src 'self'` plus
+  the Cloudflare Web Analytics beacon, `style-src 'self' 'unsafe-inline'`,
+  `img-src 'self' data:`, `font-src 'self'`, `connect-src 'self'` plus
+  `cloudflareinsights.com`, `form-action https://www.google.com`,
+  `frame-ancestors 'none'`, `base-uri 'self'` and
+  `require-trusted-types-for 'script'`
+- `Cross-Origin-Opener-Policy: same-origin`
+- `X-Frame-Options: DENY`
+
+`style-src` keeps `'unsafe-inline'`: each page carries its own `<style>` block
+of image placeholders, so no hash in a site-wide header can name it. Moving
+those rules into a stylesheet would allow dropping it. No inline script needs
+allowing: the only inline `<script>` elements are JSON-LD data blocks, which the
+browser does not run. Cloudflare injects its analytics beacon into each page, so
+the beacon's origins are allowed, per Cloudflare's documentation.
+
+Checked in headless Chrome against a production build served with these headers:
+no policy violation on the home page, a post, a recipe, the kanban board and
+grid, or the phone-width drawer; the theme switch, the menus, the drawer,
+images, placeholders, JSON-LD, code copy and the search form all work; and a
+page that frames the site is refused, where the same page loads without the
+headers. `hugo server` sends none of these headers, so development is
+unaffected.
+
 ## Acceptance Criteria
 
 - [ ] **HSTS** - a live request returns `Strict-Transport-Security`, and the
       `_headers` rule or Cloudflare setting that provides it is named on this
       card
-- [ ] **CSP** - the policy covers `default-src`, `script-src`, `style-src`,
+- [x] **CSP** - the policy covers `default-src`, `script-src`, `style-src`,
       `img-src` and `form-action` plus `frame-ancestors`, and the site's own
       features work under it: navigation, theme toggle, search box, images and
       placeholders, code-to-clipboard, kanban board
-- [ ] **COOP, frame control, Trusted Types** - each is closed by a header in
+- [x] **COOP, frame control, Trusted Types** - each is closed by a header in
       `static/_headers`
 - [ ] **No regression** - `pnpm run test` is green with the policy in place, and
       the score reported by the review tool is recorded here

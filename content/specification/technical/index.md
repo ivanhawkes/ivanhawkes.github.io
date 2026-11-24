@@ -639,7 +639,9 @@ steps, which `pnpm run build` has already performed in minified form, and
 `go test ./cmd/kan`. A check that fails fails the build, so the site is built
 once per deployment and nothing publishes that the checks did not clear. The
 build command, output directory, production branch and toolchain variables are
-set in the Cloudflare dashboard and listed in `README.md`. The GitHub Actions
+set in the Cloudflare dashboard and listed in `README.md`. `static/_headers`,
+copied to the root of `public/`, gives every response its security headers:
+HSTS, a Content Security Policy, COOP and frame control. The GitHub Actions
 workflow that did this until 2026-10-30, with its Hugo cache, is gone.
 
 Implementation constraints:

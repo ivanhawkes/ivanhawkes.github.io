@@ -179,9 +179,10 @@ Ingredient file problems are now build warnings, not text on the page.
 
 ## 7. Features (open cards and epics)
 
-- [ ] Security headers: card `p1-is-security-headers`. The new host can serve a
+- [x] Security headers: card `p1-is-security-headers`. The new host can serve a
       `_headers` file, so the card's "unreachable on Pages" notes no longer
-      apply.
+      apply. (headers added 2026-11-25 in `static/_headers`; live checks pending
+      on the card)
 - [ ] Hero image priority: card `p2-is-hero-image-load-priority`.
 - [ ] Structured data and social meta, plus a `socialImage`: card
       `p2-is-structured-data-and-social-meta-tags`.
@@ -189,6 +190,9 @@ Ingredient file problems are now build warnings, not text on the page.
       cards.
 - [ ] Epic `p2-ep-documentation-system`: the remaining specification documents.
 - [ ] Epic `p2-ep-website-redesign`: SEO refresh, usage monitoring.
+- [ ] Later: move the per-page image placeholder `<style>` block into a
+      stylesheet, so the Content Security Policy can drop
+      `style-src 'unsafe-inline'` (see `p1-is-security-headers`).
 
 ## 8. Content and documentation
 

@@ -1,0 +1,20 @@
+# Response headers for every page, applied by Cloudflare Pages. Hugo copies
+# this file to the root of public/. See content/kanban/01-to-do/p1-is-security-headers.md
+# for what each line allows and why.
+#
+# Content-Security-Policy, by directive:
+#   default-src 'none'        nothing loads unless a directive below allows it
+#   script-src                the site's own two bundles, and the Cloudflare Web
+#                             Analytics beacon Cloudflare injects into each page
+#   style-src 'unsafe-inline' the per-page <style> block of image placeholders,
+#                             which differs on every page, so no hash can name it
+#   img-src data:             the placeholders are data: URLs in that block
+#   connect-src               where the analytics beacon reports
+#   form-action               the header search box submits to Google
+#   frame-ancestors 'none'    no other site may frame a page
+#   require-trusted-types-for the site's scripts write no HTML into the page
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Content-Security-Policy: default-src 'none'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://cloudflareinsights.com; form-action https://www.google.com; frame-ancestors 'none'; base-uri 'self'; require-trusted-types-for 'script'
+  Cross-Origin-Opener-Policy: same-origin
+  X-Frame-Options: DENY

@@ -1,22 +1,22 @@
 ---
-title: Adding New Actions to CryEngine 3 FreeSDK
+title: Adding New Actions to CRYENGINE 3 FreeSDK
 author: Ivan Hawkes
 categories:
     - CRYENGINE
 date: '2013-12-09'
 tags:
-    - CryEngine 3
+    - CRYENGINE 3
     - C++
     - Flowgraph
     - Programming
 ---
 
-This tutorial will help you add new actions into CryEngine 3 FreeSDK projects
+This tutorial will help you add new actions into CRYENGINE 3 FreeSDK projects
 without needing to make any changes to the base code provided by CryTek.
 
 <!--more-->
 
-Recently I went to add a new feature to my CryEngine 3 FreeSDK project. This
+Recently I went to add a new feature to my CRYENGINE 3 FreeSDK project. This
 feature needed to add new actions (camera zoom in and out), and it seemed at
 first it wasn't possible to add them without at least making some changes to
 Gameactions.actions and GameActions.cpp. It actually seemed to require a lot of
@@ -35,8 +35,8 @@ For this example, I am going to use a FlowNode class, that needs to extend
 itself to handle a couple of action events - namely, mouse key presses. This
 FlowNode is part of the
 [camera plugin](https://github.com/hendrikp/Plugin_Camera 'Camera Plugin') for
-CryEngine, based on the
-[plugin SDK](https://github.com/hendrikp/Plugin_SDK 'CryEngine Plugin SDK') from
+CRYENGINE, based on the
+[plugin SDK](https://github.com/hendrikp/Plugin_SDK 'CRYENGINE Plugin SDK') from
 Hendrik.
 
 First things first, whatever class you wish to extend, you need to make sure it

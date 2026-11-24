@@ -5,7 +5,7 @@ categories:
     - CRYENGINE
 date: '2013-09-02'
 tags:
-    - CryEngine 3
+    - CRYENGINE 3
     - Game Programming
     - Software
     - StoneRage
@@ -25,7 +25,7 @@ the things I will need to do to bring
 completion. This provides me with a great opportunity to work on something fun,
 meet some new people, and get some learning / code written.
 
-Now, learning the CryEngine is no easy feat for a programmer. There's
+Now, learning the CRYENGINE is no easy feat for a programmer. There's
 approximately 220,000 lines of c++ code to peruse, and perhaps 40,000 more lines
 of LUA code - and that's not taking into account all the metadata that is stored
 inside XML documents. To make matters worse, the documentation is sparse and
@@ -47,5 +47,5 @@ most part - and a lot of what was mixed with the CryTek code can simply be
 dropped. Now the challenge is on fixing all the parts that broke, working out
 what's needs updating and where we can improve the current work.
 
-Along the way I hope to build a really solid understanding of the CryEngine SDK
+Along the way I hope to build a really solid understanding of the CRYENGINE SDK
 and pass along as much of this as I can.

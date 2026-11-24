@@ -5,7 +5,7 @@ categories:
     - CRYENGINE
 date: '2015-05-01'
 tags:
-    - CryEngine 3
+    - CRYENGINE 3
     - Git
     - Perforce
     - Source Control

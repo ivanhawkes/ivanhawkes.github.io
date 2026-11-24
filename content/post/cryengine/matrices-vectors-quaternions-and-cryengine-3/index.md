@@ -1,11 +1,11 @@
 ---
-title: Matrices, Vectors, Quaternions and CryEngine 3
+title: Matrices, Vectors, Quaternions and CRYENGINE 3
 author: Ivan Hawkes
 categories:
     - CRYENGINE
 date: '2014-06-21'
 tags:
-    - CryEngine 3
+    - CRYENGINE 3
     - Mathematics
     - Math and Physics
     - Matrices
@@ -23,9 +23,9 @@ resources:
 
 This article will introduce you to matrices, vectors and quaternions and how you
 can use them for programming games using the
-[CryEngine SDK](http://cryengine.com 'CryEngine'). You will only need a basic
+[CRYENGINE SDK](http://cryengine.com 'CRYENGINE'). You will only need a basic
 understanding of mathematics, beginner level c++ and a general knowledge of the
-CryEngine SDK; in particular, the gamesdk.dll code which is written in c++.
+CRYENGINE SDK; in particular, the gamesdk.dll code which is written in c++.
 
 <!--more-->
 
@@ -95,11 +95,11 @@ There's a
 [comprehensive definition of matrices](<http://en.wikipedia.org/wiki/Matrix_(mathematics)> 'Matrices')
 at Wikipedia, but I'm going to cut right through all that and tell you the only
 thing you really need to know about them. In simple terms, matrices are one or
-more dimensional arrays. In CryEngine those arrays are almost always going to
+more dimensional arrays. In CRYENGINE those arrays are almost always going to
 contain floating point numbers that represent a coordinate in three or four
 dimensions. We'll get back to why they can have four dimensions when I introduce
 you to quaternions. For now it's enough to know that the sorts of matrix you are
-likely to run into when working with CryEngine are:
+likely to run into when working with CRYENGINE are:
 
 - vector - 1 x 3 floats
 - quaternion - 1 x 4 floats
@@ -139,7 +139,7 @@ origin. A vector is always an offset from a position, it doesn't actually define
 a position in space - but rather a distance and a direction. You will use
 vectors to translate (move) things around in the 3D space.
 
-Vectors are represented in CryEngine as a one dimensional array with three
+Vectors are represented in CRYENGINE as a one dimensional array with three
 floating point elements \[x, y, z\]. For example, a vector that represents an
 offset of 1 metre in the positive x direction would be \[1.0f, 0.0f, 0.0f\]. In
 camera space that would equate for a position 1 metre to the right of the
@@ -215,7 +215,7 @@ animation tutorial. It's both fun and informative.
 
 ## Putting It All Together
 
-CryEngine, like many other 3D game engines represents everything inside the game
+CRYENGINE, like many other 3D game engines represents everything inside the game
 world using just these basic building blocks; every entity within the game has a
 position, a rotation and a scale.
 
@@ -225,7 +225,7 @@ position, a rotation and a scale.
   independent scaling in all three dimensions
 
 It's time to look at some real code and see not only what we can do with these
-concepts, but also how to do it using CryEngine. I'm using code from my camera
+concepts, but also how to do it using CRYENGINE. I'm using code from my camera
 project because it uses a fair amount of different concepts in a way that is
 easy to understand.
 
@@ -233,7 +233,7 @@ We'll be looking at what steps are needed in order to implement an action RPG
 style of camera. This sort of camera freely orbits around the player following
 the outline of an imaginary sphere that surrounds the player. The player can
 zoom in and out, and rotate around their character while adjusting their pitch
-and yaw. Each game frame CryEngine will make a call to our camera routine and
+and yaw. Each game frame CRYENGINE will make a call to our camera routine and
 ask us to calculate the position and rotation of the camera relative to the
 player's character. We'll start with a look at the entire function and then
 break it down from there:
@@ -448,7 +448,7 @@ made to the chair - the initial one which turned it towards you, and the second
 one where it is turned away at a 45 degree angle.
 
 NOTE: you will need to convert degrees to radians when constructing a quaternion
-based on Euler angles since CryEngine uses radians - and humans usually find
+based on Euler angles since CRYENGINE uses radians - and humans usually find
 degrees easier to work with.
 
 You should now understand that the expression **m_quatTargetRotation \*

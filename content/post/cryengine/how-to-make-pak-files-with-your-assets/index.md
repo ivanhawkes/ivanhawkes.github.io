@@ -6,7 +6,7 @@ categories:
 date: '2013-07-25'
 tags:
     - Asset Management
-    - CryEngine 3
+    - CRYENGINE 3
     - Game Programming
     - Programming
 ---
@@ -128,7 +128,7 @@ file which can be shipped to testing / end users / etc.
 
 There's a second pair of examples which are more complex, but follow the same
 basic principle. These example files will pack all the 'core' files for me. I am
-keeping all my work separate from the CryEngine sample files and placing them
+keeping all my work separate from the CRYENGINE sample files and placing them
 under sub-folders, generally named 'core' or 'user' or 'team' in these examples.
 You are free to place your files wherever you wish and amend the examples as
 needed.

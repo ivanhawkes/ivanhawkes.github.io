@@ -6,7 +6,7 @@ categories:
 date: '2013-02-23'
 description: Learning how to make terrain using World Machine and other tools.
 tags:
-    - CryEngine 3
+    - CRYENGINE 3
     - Programming
     - Game Programming
     - Mudbox
@@ -16,9 +16,9 @@ tags:
 resources:
     - src: 'featured.webp'
       params:
-          title: 'Terrain in the CryEngine 3 sandbox'
+          title: 'Terrain in the CRYENGINE 3 sandbox'
           caption:
-              'An untextured green terrain landscape in the CryEngine 3 sandbox,
+              'An untextured green terrain landscape in the CRYENGINE 3 sandbox,
               with mountains on the horizon.'
 ---
 
@@ -100,7 +100,7 @@ as files.
 
 I've combined several posts worth of information into one machine. I'm still
 tweaking it, but so far am liking the results. The machine is turning a simple
-Mudbox sculpt into a fairly decent terrain I can import into CryEngine. We go
+Mudbox sculpt into a fairly decent terrain I can import into CRYENGINE. We go
 from this:
 
 ![Mudbox Sculpt](mudbox.webp 'Grid view of a landscape sculpted in Mudbox')
@@ -113,7 +113,7 @@ to this (not same view angle):
 too obvious for my taste so I am re-working that part of the machine. Until
 then, the scene appears overly green.
 
-The outputs of this machine can be fed directly into CryEngine, without the need
+The outputs of this machine can be fed directly into CRYENGINE, without the need
 to composite withing Photoshop, like many tutorials.
 
 It's taken a lot of time, but things are starting to gel. More to come soon.

@@ -415,7 +415,7 @@ void CSimulation::UpdateTick(const float deltaTime)
 }
 ```
 
-We're using the update event from CryEngine to process the simulation each
+We're using the update event from CRYENGINE to process the simulation each
 frame. Spells are split into two camps, ones that need processing each frame and
 ones that can wait for an internal tick to occur. For now the tick is happening
 once every 0.5 seconds. This would be easy to adjust in future. It might be

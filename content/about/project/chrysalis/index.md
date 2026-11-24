@@ -11,9 +11,9 @@ tags:
 resources:
     - src: 'featured.webp'
       params:
-          title: 'Chrysalis in the CryEngine 3 editor'
+          title: 'Chrysalis in the CRYENGINE 3 editor'
           caption:
-              'The CryEngine 3 sandbox showing a test level of white blocks, a
+              'The CRYENGINE 3 sandbox showing a test level of white blocks, a
               highlighted terrain box and a character in an orange coat.'
 ---
 

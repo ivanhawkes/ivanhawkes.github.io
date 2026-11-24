@@ -28,7 +28,7 @@ at all.
 - Key both sides on the md5 of the image's own `RelPermalink`. The card asked
   for `md5 .Name`, the bare filename every featured image shares: one filename
   gives one rule per section, not one per card, and a listing would paint a
-  recipe card with the LQIP of a Cryengine post.
+  recipe card with the LQIP of a CRYENGINE post.
 - Record an image where it is drawn. A head cannot walk a body that renders
   after it, and a page's own resources reach only its hero and prose, not the
   images of the pages it lists as cards. Each drawing path

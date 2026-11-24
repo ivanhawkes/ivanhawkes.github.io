@@ -4,7 +4,7 @@ date: '2026-04-24'
 description: CRYENGINE post section.
 menus:
     main:
-        name: Cryengine
+        name: CRYENGINE
         params:
             icon:
                 <svg xmlns="http://www.w3.org/2000/svg"  width="24px" viewBox="0
@@ -27,5 +27,5 @@ resources:
           title: 'CRYENGINE'
           caption:
               'A sunlit forest clearing with grass, bluebells and rock outcrops,
-              rendered in CryEngine.'
+              rendered in CRYENGINE.'
 ---

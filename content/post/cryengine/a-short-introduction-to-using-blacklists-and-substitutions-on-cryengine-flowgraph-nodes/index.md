@@ -5,7 +5,7 @@
     - CRYENGINE
   date: '2015-03-20'
   tags:
-    - CryEngine 3
+    - CRYENGINE 3
     - Flowgraph
     - Game Programming
 ---

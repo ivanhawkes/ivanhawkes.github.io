@@ -7,7 +7,7 @@ categories:
     - Projects
 tags:
     - Chrysalis
-    - Cryengine
+    - CRYENGINE
 resources:
     - src: 'featured.webp'
       params:

@@ -1,24 +1,24 @@
 ---
-title: CryEngine 3 System Event Dispatcher
+title: CRYENGINE 3 System Event Dispatcher
 author: Ivan Hawkes
 categories:
     - CRYENGINE
 date: '2014-03-15'
 tags:
-    - CryEngine 3
+    - CRYENGINE 3
     - Dispatcher
     - Event Listener
     - Programming
 ---
 
-Earlier this week I wrote about CryEngine listener classes in a brief overview.
-I intimated that they are an excellent way to write code against the CryEngine
+Earlier this week I wrote about CRYENGINE listener classes in a brief overview.
+I intimated that they are an excellent way to write code against the CRYENGINE
 SDK and today I want to go into more depth.
 
 <!--more-->
 
 I briefly covered the 40 odd listeners that I was able to locate in my article
-[Introducing CryEngine 3 Event Listeners](introducing-cryengine-3-event-listeners/ 'Introducing CryEngine 3 Event Listeners').
+[Introducing CRYENGINE 3 Event Listeners](introducing-cryengine-3-event-listeners/ 'Introducing CRYENGINE 3 Event Listeners').
 Today I would like to revisit just one of those listeners,
 **ISystemEventListener**.
 
@@ -27,7 +27,7 @@ Today I would like to revisit just one of those listeners,
 But first, a little background. I'm a big fan of the
 [Plugin SDK](https://github.com/hendrikp/Plugin_SDK 'Plugin SDK'). Being able to
 write code that just slips into place without requiring changes to the existing
-codebase is...well, awesome. CryEngine SDK is a moving target, and the less
+codebase is...well, awesome. CRYENGINE SDK is a moving target, and the less
 changes I need to make to the existing codebase, the easier my job will be in
 the future. Plugin SDK does an excellent job at making that happen, though it's
 up to you as to how well it happens.
@@ -35,12 +35,12 @@ up to you as to how well it happens.
 My first attempts to make a camera work with the Plugin SDK were...let's say not
 good. I felt constricted by it's initialisation routines and much of my code
 ended up entangled inside the template Plugin SDK code. It took a little
-re-factoring, and a little more knowledge of the internals of CryEngine SDK, but
+re-factoring, and a little more knowledge of the internals of CRYENGINE SDK, but
 I finally made my peace with Plugin SDK.
 
 Before we get started, let me just mention the motivation that pushed me this
 way. Just recently CryTek announced that they will for the first time support a
-fully functional version of the CryEngine on Linux. Unfortunately, Linux does
+fully functional version of the CRYENGINE on Linux. Unfortunately, Linux does
 not support Windows DLLs and so nothing I write using the Plugin SDK will be
 available for a Linux version of my client. That's clearly unacceptable, so I
 went about finding a way to have my cake and eat it too.
@@ -55,7 +55,7 @@ The Plugin SDK kindly provides a callback to start any initialisation you
 require, but for my needs it was being called a little too soon in the start-up
 process. I had added some calls to filter the input maps, but those were not
 available at the time my init routine was being called. Initially I moved the
-Plugin SDK initialisation routines further down inside the CryEngine Game SDK
+Plugin SDK initialisation routines further down inside the CRYENGINE Game SDK
 code, but as I dug a little deeper I found a way to do it without resorting to
 such means.
 
@@ -73,7 +73,7 @@ struct ISystemEventListener
 ```
 
 It doesn't appear to be very much from the definition, but don't be fooled, this
-is truly an intrinsic part of the CryEngine.
+is truly an intrinsic part of the CRYENGINE.
 
 You can disregard pretty much everything except for the **OnSystemEvent**
 function which will be called within a listener at key points in program
@@ -122,7 +122,7 @@ gEnv->pGame->GetIGameFramework()->GetISystem()->GetISystemEventDispatcher()->Reg
 
 which attaches the **this** pointer as a listener for **ISystemEventListener**.
 From here we just need to implement the **OnSystemEvent** function and we can
-eavesdrop on all the cool things happening inside CryEngine.
+eavesdrop on all the cool things happening inside CRYENGINE.
 
 For this example I'll use the third person camera code I am working on.
 
@@ -157,7 +157,7 @@ Better yet, the init is called at a time when all of the SDK features are ready.
 As long as I am able to call the init routine provided above I can ensure both
 initialisation and destruction for any code I wish to add to the game SDK. I
 can't stress how important it will be to decouple your code from the base code
-that ships with the CryEngine SDK.
+that ships with the CRYENGINE SDK.
 
 This example registers a few CVARS, sets up some action maps and filters for
 those maps, and provides for clean-up when shutting down. Nothing too exciting,
@@ -174,4 +174,4 @@ SDK.
 ## Summary
 
 Registering a listener for **ISystemEventListener** can give you deep access to
-CryEngine while allowing you to stay decoupled.
+CRYENGINE while allowing you to stay decoupled.

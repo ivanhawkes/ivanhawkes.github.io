@@ -1,18 +1,18 @@
 ---
-title: 'CryEngine 3 - Flowgraph Events'
+title: 'CRYENGINE 3 - Flowgraph Events'
 author: Ivan Hawkes
 categories:
     - CRYENGINE
 date: '2013-06-27'
 tags:
     - C Sharp
-    - CryEngine 3
+    - CRYENGINE 3
     - Events
     - FlowGraph
     - Programming
 ---
 
-As you begin to learn how to program for CryEngine 3 you will run into a lot of
+As you begin to learn how to program for CRYENGINE 3 you will run into a lot of
 barriers. The code is dense, filled with magic numbers, brimming with
 pre-processor code, macros, and templates and all sorts of traps.
 

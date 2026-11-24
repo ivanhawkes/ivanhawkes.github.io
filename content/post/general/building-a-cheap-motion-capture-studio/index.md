@@ -8,8 +8,8 @@ description:
     I bought up some cheap PS3 cameras and used iPi Software to make a fairly
     basic motion capture studio.
 tags:
-    - Cryengine
-    - CryEngine 3
+    - CRYENGINE
+    - CRYENGINE 3
     - Development
     - Game
     - Game Programming

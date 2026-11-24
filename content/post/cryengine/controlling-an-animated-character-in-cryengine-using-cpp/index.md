@@ -8,7 +8,7 @@ description: Controlling an Animated Character in CRYENGINE using C++
 tags:
     - C++
     - Chrysalis
-    - CryEngine 3
+    - CRYENGINE 3
     - Programming
     - Game Programming
 ---

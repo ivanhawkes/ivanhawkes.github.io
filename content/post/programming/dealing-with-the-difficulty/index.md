@@ -6,7 +6,7 @@ categories:
 date: '2013-04-10'
 tags:
     - 3ds max
-    - CryEngine 3
+    - CRYENGINE 3
     - Programming
     - Game Programming
     - Mudbox

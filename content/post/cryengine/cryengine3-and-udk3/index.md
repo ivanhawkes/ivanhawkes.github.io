@@ -1,11 +1,11 @@
 ---
-title: CryEngine3 and UDK3
+title: CRYENGINE3 and UDK3
 author: Ivan Hawkes
 categories:
     - CRYENGINE
 date: '2012-11-11'
 tags:
-    - CryEngine 3
+    - CRYENGINE 3
     - Engine
     - Game
     - Game Programming
@@ -27,9 +27,9 @@ time-frame.
 That's been slowly changing over the years and lately I found myself wondering
 just how far I could get if I were to try out the latest toolsets for making 3D
 software. I pulled down a copy of UDK and played with it for a few days but
-found myself agonising over the idea that I hadn't tried CryEngine 3; I mean,
+found myself agonising over the idea that I hadn't tried CRYENGINE 3; I mean,
 what if it was better or faster or had a good workflow. I had to try it, so I
-pulled that down too. After a week of obsessive toying CryEngine 3 came out on
+pulled that down too. After a week of obsessive toying CRYENGINE 3 came out on
 top, though no doubt UDK 4 will close the gap again.
 
 Now...what to build with it?

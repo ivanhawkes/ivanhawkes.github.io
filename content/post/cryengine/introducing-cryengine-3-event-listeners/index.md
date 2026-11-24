@@ -1,12 +1,12 @@
 ---
-title: Introducing CryEngine 3 Event Listeners
+title: Introducing CRYENGINE 3 Event Listeners
 author: Ivan Hawkes
 categories:
     - CRYENGINE
 date: '2014-03-07'
 tags:
     - C Sharp
-    - CryEngine 3
+    - CRYENGINE 3
     - event
     - gamesdk.dll
     - listener
@@ -14,13 +14,13 @@ tags:
     - Programming
 ---
 
-In this article I will introduce you to event handling within CryEngine 3 and
+In this article I will introduce you to event handling within CRYENGINE 3 and
 give a brief overview of the many listeners you can utilise within your project.
 
 <!--more-->
 
-Learning the CryEngine code can be daunting at first. It's large, non-trivial
-and complex. Approximately 220,000 lines of C++ are provided with the CryEngine
+Learning the CRYENGINE code can be daunting at first. It's large, non-trivial
+and complex. Approximately 220,000 lines of C++ are provided with the CRYENGINE
 FreeSDK, and much of that is densely packed headers. A good first step is to
 purchase one or more of the books which introduce you to programming with the
 engine. I have personally read and can recommend:
@@ -32,14 +32,14 @@ engine. I have personally read and can recommend:
 Each of them has their strengths and weaknesses, and despite overlaps in some
 areas of content you should more than get your money's worth from reading them.
 They're a steal if you buy them for Kindle. For this article I will assume you
-have at least basic knowledge of CryEngine, and decent C++ skills.
+have at least basic knowledge of CRYENGINE, and decent C++ skills.
 
 Let's get started!
 
-One of the key design patterns you will see throughout the CryEngine SDK is the
+One of the key design patterns you will see throughout the CRYENGINE SDK is the
 [observer pattern](http://en.wikipedia.org/wiki/Observer_pattern 'Observer Pattern').
 In this pattern one object maintains a list of dependant objects and is
-responsible for notifying them of changes in it's state. Within CryEngine they
+responsible for notifying them of changes in it's state. Within CRYENGINE they
 are generally denoted as classes and structs whose name end in **Listener** e.g.
 IGameRulesKillListener.
 

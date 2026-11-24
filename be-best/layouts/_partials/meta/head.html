@@ -30,9 +30,13 @@
     {{- partial "/meta/css.html" . -}}
   {{ end }}
 
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" href="/img/apple-icon.png">
-  <link rel="icon" href="/img/favicon.png">
+  {{/* Favicons: an SVG that turns white in a dark browser theme, a PNG for
+        browsers without SVG favicons, and the 180px home-screen icon iOS asks
+        for, white on the brand colour since iOS fills transparency with black.
+        All three are drawn from one vector trace of the typewriter.  */}}
+  <link rel="icon" href="/img/favicon.png" sizes="96x96" type="image/png">
+  <link rel="icon" href="/img/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/img/apple-icon.png" sizes="180x180">
 
   <!-- RSS Feed -->
   {{ with .OutputFormats.Get "rss" }}

@@ -111,9 +111,12 @@ there: the repository cannot.
 - [x] Type the TypeScript: `theme-mode.ts` and `dark-mode.ts` have untyped
       parameters, `THEME_ORDER` should be `Theme[]`, and `nav-menu.ts` has null
       element refs. Add a `tsc --noEmit` check to `test:checks`.
-- [ ] `static/img/*.png` are byte-for-byte copies of `be-best/static/img/*.png`;
+- [x] `static/img/*.png` are byte-for-byte copies of `be-best/static/img/*.png`;
       delete the root copies. The apple-touch icon is 100x100; it should be
-      180x180. (Duplicates deleted; the 180x180 icon is still to make.)
+      180x180. (Duplicates deleted. 2026-11-25: the typewriter traced to a
+      vector; the 180x180 apple-touch icon is white on the brand teal, the
+      favicon is an SVG that turns white in dark mode, with a 96px PNG
+      fallback.)
 - [x] Add a `Sitemap:` line to `be-best/static/robots.txt`.
 
 Done 2026-11-25 apart from the icon size. `robots.txt` is now a template, so its

@@ -15,3 +15,11 @@
     max-width: var(--prose-measure);
     margin-inline: auto;
 }
+
+.profile-hero .featured-image {
+    max-width: min(22rem, 100%);
+}
+
+.profile-hero figcaption {
+    text-align: center;
+}

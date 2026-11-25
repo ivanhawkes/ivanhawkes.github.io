@@ -58,16 +58,35 @@ section and its tags; everything else is a website. */}}
 {{ else }}
 <meta property="og:type" content="website">
 {{ end }}
-{{/* The share image is optional: no image, no tag, so an unset param never
-writes an empty content. */}}
-{{ with .Site.Params.socialImage }}
+{{/* The share image: the page's own featured image, cropped to the 1200x630
+link-preview shape as a JPEG (some apps show no webp preview), else the site
+card in socialImage. No image at all, no tag. */}}
+{{ $shareImage := "" }}
+{{ $shareAlt := "" }}
+{{/* A profile's picture is a portrait, which the wide crop would cut to a
+face; the site card already shows it whole. */}}
+{{ $own := cond (eq .Type "profile") nil (.Resources.GetMatch "featured.webp") }}
+{{ with $own }}
+  {{ $shareImage = (.Fill "1200x630 Center jpg q82").Permalink }}
+  {{ $shareAlt = .Params.caption | default $.Title }}
+{{ else }}
+  {{ with .Site.Params.socialImage }}
+    {{ $shareImage = absURL . }}
+    {{ $shareAlt = $.Site.Params.socialImageAlt }}
+  {{ end }}
+{{ end }}
+{{ with $shareImage }}
 <meta property="og:image" content="{{ . }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+{{ with $shareAlt }}<meta property="og:image:alt" content="{{ . }}">{{ end }}
 {{ end }}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ $title }}">
 <meta name="twitter:description" content="{{ $description }}">
-{{ with .Site.Params.socialImage }}
+{{ with $shareImage }}
 <meta name="twitter:image" content="{{ . }}">
+{{ with $shareAlt }}<meta name="twitter:image:alt" content="{{ . }}">{{ end }}
 {{ end }}
 {{/* The account tag takes a leading @: the param stores the bare handle, so it
 reads with the site's other social accounts and renders in the form X.com

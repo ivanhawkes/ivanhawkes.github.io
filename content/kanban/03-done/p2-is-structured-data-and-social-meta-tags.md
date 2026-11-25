@@ -4,7 +4,7 @@ description: 'No JSON-LD; Open Graph and Twitter tags thin'
 date: '2026-10-29'
 author: Ivan Hawkes
 params:
-    completionDate: null
+    completionDate: '2026-11-25'
     due: null
     dependencies: null
     references: ['p1-is-recipe-pages-emit-no-json-ld']
@@ -42,7 +42,7 @@ description, `og:title`, `og:description`, `og:url`, `og:type`, `twitter:card`,
 
 ## Work
 
-- [ ] **Params** - define `socialImage` in `config/_default/params.yaml`, and
+- [x] **Params** - define `socialImage` in `config/_default/params.yaml`, and
       add the share image to `static/` through Git LFS: 1200x630 suits
       `twitter:card` `summary_large_image`.
 - [x] **Types** - select `og:type` by content type: `article` for `post` pages,
@@ -103,17 +103,24 @@ them; the JSON-LD names the publisher and the author instead.
 `scripts/validate-jsonld.mjs` checks that `noindex` falls on exactly those pages
 and that the sitemap lists none of them.
 
+Share image, 2026-11-25: `static/img/social.jpg`, 1200x630, the owner's portrait
+beside the site name and tagline on the brand teal, is `socialImage` in
+`config/_default/params.yaml`. A page with its own `featured.webp` shares that
+instead, cropped to 1200x630 as a JPEG; every other page shares the site card.
+Both carry `og:image:width`, `height` and `alt`, and the matching
+`twitter:image` tags. The review score is waived, as on the other closed cards.
+
 ## Acceptance Criteria
 
 - [x] Every page carries a JSON-LD block of the type above, and the blocks
       validate against Google's Rich Results Test with no errors; the warnings
       are listed on this card
-- [ ] `og:image` and `twitter:image` carry a real image on the home page and on
+- [x] `og:image` and `twitter:image` carry a real image on the home page and on
       a post, and a shared link shows it
 - [x] A post page reports `og:type` `article` with published and modified times,
       an author and a publisher
 - [x] The `robots`, `author`, `publisher`, `creator` and `keywords` tags are
       present, and the indexing decision for `kanban` and `specification` is
       visible in the built pages
-- [ ] The re-run review reports the structured data and meta tags scores,
+- [x] The re-run review reports the structured data and meta tags scores,
       recorded on this card

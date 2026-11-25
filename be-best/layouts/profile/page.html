@@ -1,7 +1,11 @@
 {{ define "main" }}
   {{- partial "/components/breadcrumbs.html" . -}}
 
-  {{- partial "/images/featured-image.html" (dict "page" . "caption" true "hero" true) -}}
+  {{/* A profile's picture is a portrait, so it is drawn narrower than the
+        prose: at the full measure it would fill the screen. */}}
+  <div class="profile-hero">
+    {{- partial "/images/featured-image.html" (dict "page" . "caption" true "hero" true) -}}
+  </div>
 
   {{ partial "/page/content.html" . }}
 

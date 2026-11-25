@@ -10,8 +10,8 @@ resources:
       params:
           title: 'Ivan Hawkes'
           caption:
-              'A drawn portrait of Ivan Hawkes with short brown hair, a dark
-              shirt and a carved bone hook pendant.'
+              'A drawn portrait of Ivan Hawkes with short curly brown hair, a
+              dark shirt and a carved bone hook pendant.'
 ---
 
 I developed an interest in computers starting in the early 1980's leading me to

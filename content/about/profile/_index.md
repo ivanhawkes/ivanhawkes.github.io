@@ -1,7 +1,9 @@
 ---
 title: Profiles
 date: '2026-04-27'
-description: A software developer.
+description:
+    'Ivan Hawkes, a software developer writing games since the 6502, now
+    building an action RPG toolkit for CRYENGINE.'
 menus:
     main:
         name: Profiles
@@ -27,3 +29,14 @@ resources:
               'A group of people sit along a sunlit wooden table, writing in
               notebooks.'
 ---
+
+The people behind this site. For now that is just me, Ivan Hawkes: a software
+developer who started out writing games in BASIC and 6502 assembler on an OSI
+Challenger C1P in the early 1980s, bought with money from washing cars.
+[My profile](/about/profile/ivan-hawkes) is the long version: studying computer
+science at Queensland University of Technology, building databases for local
+businesses, then data-driven multimedia training software that grew from
+laserdisc programs to early CD-ROM titles with full motion video. After that
+came contract work at Suncorp, a move to London and an internet services
+company, and finally a return to games, with an action RPG toolkit for
+CRYENGINE. It links to my GitHub, YouTube and other accounts as well.

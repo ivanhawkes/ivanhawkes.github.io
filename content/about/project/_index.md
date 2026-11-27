@@ -2,7 +2,9 @@
 layout: post
 title: Projects
 date: '2026-04-27'
-description: Project section.
+description:
+    'Chrysalis, an action RPG toolkit for CRYENGINE, and Dark Vale, a CRYENGINE
+    horror game from Transient Light Studio.'
 menus:
     main:
         name: Projects
@@ -25,3 +27,17 @@ resources:
               'A hand pins printed documents and a city map to a whiteboard
               wall, linked with black thread and coloured pins.'
 ---
+
+Two projects, both built with CRYENGINE. [Chrysalis](/about/project/chrysalis)
+is my own: a C++ plugin for CRYENGINE 5.x that lays the foundations an action
+RPG needs, from first and third person cameras, player input, characters and
+locomotion to interactive entities such as doors and switches, and item and
+equipment systems, with weapons, combat and vehicles as the next goals. Its
+source is on [GitHub](https://github.com/ivanhawkes/Chrysalis).
+[Dark Vale](/about/project/dark-vale) is a horror game from Transient Light
+Studio, also on CRYENGINE 5.x: a story of obsession and loss that follows James
+Pickett and two friends east in search of his missing parents. The
+[CRYENGINE posts](/post/cryengine) cover the work behind Chrysalis in more
+detail, such as
+[its cameras](/post/cryengine/first-person-and-action-rpg-cameras) and
+[adding an entity component system](/post/cryengine/adding-an-ecs-to-chrysalis).

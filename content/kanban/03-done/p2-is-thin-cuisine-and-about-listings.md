@@ -4,7 +4,7 @@ description: 'Cuisine and about listings carry few words'
 date: '2026-11-27'
 author: Ivan Hawkes
 params:
-    completionDate: null
+    completionDate: '2026-11-27'
     due: null
     dependencies: null
     references: null
@@ -28,3 +28,12 @@ own voice: why the cuisine matters, what is here and what to start with. The
 profile and project listings either gain the same, or are made noindex and
 dropped from the sitemap as the tag listings are (`meta.html`, the `cascade` in
 `config/_default/hugo.yaml` and `scripts/validate-jsonld.mjs`).
+
+## Done
+
+- The Vietnamese, Malaysian, Japanese, Australian, Italian, General, Middle
+  Eastern and Mexican listings open with 98 to 131 words drawn from their
+  recipes, linking to them.
+- The profile and project listings open with introductions of their own, and
+  their descriptions, "A software developer." and "Project section.", are
+  rewritten.

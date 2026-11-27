@@ -20,18 +20,25 @@ back to the site's tagline, so pages do not share one snippet. */}}
   {{ $description = $summary }}
 {{ end }}
 {{ $description = $description | default .Site.Params.description }}
-{{ $title := .Site.Title }}
+{{/* The home page is titled by its own title, which describes the site; every
+other page is "<title> | <site>", and a title too long for that is left alone
+rather than cut by the search result. */}}
+{{ $title := .Title | default .Site.Title }}
 {{ if and (not .IsHome) .Title }}
-  {{ $title = printf "%s | %s" .Title .Site.Title }}
+  {{ $suffixed := printf "%s | %s" .Title .Site.Title }}
+  {{ if le (strings.RuneCount $suffixed) 65 }}
+    {{ $title = $suffixed }}
+  {{ end }}
 {{ end }}
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $description }}">
-{{/* The kanban board and the specifications are working documents: kept out
-of search results and out of the sitemap, their links still followed. */}}
-{{ if in (slice "kanban" "specification") .Section }}
+{{/* The kanban board and the specifications are working documents, and the
+tag and category listings are lists of titles: all kept out of search results
+and out of the sitemap, their links still followed. */}}
+{{ if or (in (slice "kanban" "specification") .Section) (in (slice "taxonomy" "term") .Kind) }}
 <meta name="robots" content="noindex, follow">
 {{ else }}
 <meta name="robots" content="index, follow, max-image-preview:large">

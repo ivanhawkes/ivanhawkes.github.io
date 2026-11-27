@@ -1,6 +1,7 @@
 ---
 layout: post
-title: Home
+title: 'Ivan Hawkes: software, recipes and gardening'
+linkTitle: Home
 author: Ivan Hawkes
 date: '2026-04-27'
 description:
@@ -18,6 +19,11 @@ menus:
         weight: 50
 ---
 
+I'm Ivan Hawkes, a software developer who started out writing games on a 6502 in
+the early 1980s. This blog is where I write up what I build and learn: game
+engine programming with CRYENGINE and C++, Go, and Linux on servers and small
+boards, alongside the recipes I cook at home and notes from the garden.
+
 ## Latest Posts
 
-A sampling of the latests posts.
+The twelve most recent articles, newest first.

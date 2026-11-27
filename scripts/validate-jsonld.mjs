@@ -65,9 +65,9 @@ const problems = [];
 const counts = {};
 let checked = 0;
 
-// The working documents are kept out of search: noindex in the page, and out
-// of the sitemap, so the two never disagree.
-const working = /^(kanban|specification)\//;
+// The working documents and the tag and category listings are kept out of
+// search: noindex in the page, and out of the sitemap, so the two never disagree.
+const working = /^(kanban|specification|tags|categories)\//;
 const sitemap = readFileSync(path.join(publicDir, 'sitemap.xml'), 'utf8');
 const listed = new Set(
     [...sitemap.matchAll(/<loc>([^<]*)<\/loc>/g)].map((m) => decode(m[1]))
@@ -241,5 +241,5 @@ console.log(
             .sort()
             .map(([type, n]) => `${n} ${type}`)
             .join(', ') +
-        `; ${noindexed} working pages noindex and out of the sitemap`
+        `; ${noindexed} pages noindex and out of the sitemap`
 );

@@ -116,4 +116,10 @@ sitemap:
 taxonomies:
   category: categories
   tag: tags
-  series: series
+
+# The tag and category listings are noindex (meta.html): out of the sitemap too.
+cascade:
+  - sitemap:
+      disable: true
+    target:
+      kind: '{taxonomy,term}'

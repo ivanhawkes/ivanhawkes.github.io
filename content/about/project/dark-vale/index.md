@@ -34,6 +34,11 @@ the Ukraine to discover once and for all what happened, and whether or not they
 are still alive. What you uncover is chilling, and horrific. And _if_ you make
 it home, you may find you left a lot more in the mountains than your footprints.
 
+### Chrysalis in Dark Vale
+
+I provided the [Chrysalis](/about/project/chrysalis) code to the Dark Vale team,
+and made customisations to it for their game.
+
 ### Learn More
 
 Find out more about the project by visiting the

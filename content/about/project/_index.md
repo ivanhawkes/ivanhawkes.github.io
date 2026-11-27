@@ -36,7 +36,8 @@ equipment systems, with weapons, combat and vehicles as the next goals. Its
 source is on [GitHub](https://github.com/ivanhawkes/Chrysalis).
 [Dark Vale](/about/project/dark-vale) is a horror game from Transient Light
 Studio, also on CRYENGINE 5.x: a story of obsession and loss that follows James
-Pickett and two friends east in search of his missing parents. The
+Pickett and two friends east in search of his missing parents. I provided the
+Chrysalis code to the Dark Vale team, and customised it for their game. The
 [CRYENGINE posts](/post/cryengine) cover the work behind Chrysalis in more
 detail, such as
 [its cameras](/post/cryengine/first-person-and-action-rpg-cameras) and

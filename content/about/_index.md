@@ -2,7 +2,9 @@
 layout: about
 title: About
 date: '2026-04-27'
-description: About
+description:
+    'About Ivan Hawkes and this blog: the profile, the projects, and the values
+    behind the software and the garden.'
 menus:
     main:
         name: About
@@ -26,4 +28,13 @@ menus:
         weight: 100
 ---
 
-Orphaned by the menu system.
+This section is about the person and the work behind the blog. The
+[profile](/about/profile) tells the long story, from writing games on a 6502 in
+the early 1980s to building game technology today. The
+[projects](/about/project) are the larger pieces of work the posts keep
+returning to. Below them are the values that guide both the software and the
+garden: being mindful, preserving what is already good, enriching the soil,
+investing in what matters, propagating and saving seed, and finding ways to be
+more self sufficient, alongside bringing new ideas to life and improving on old
+ones. The posts are where those values turn into practice: code, recipes and the
+slow work of turning a plot of land into a productive garden.

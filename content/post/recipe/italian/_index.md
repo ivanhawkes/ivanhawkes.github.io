@@ -31,3 +31,14 @@ resources:
               'An Italian wood-fired pizza margherita with tomato, mozzarella,
               basil and cherry tomatoes.'
 ---
+
+Three Italian recipes for now, from a weeknight dinner to a Sunday roast.
+[Meatballs in sauce with pasta](/post/recipe/italian/meatballs) is the everyday
+one: beef meatballs browned, baked, then simmered in a tomato and herb sauce and
+served over pasta. [Porchetta](/post/recipe/italian/porchetta) is the
+centrepiece: pork shoulder rubbed with fennel seed, rosemary, sage, garlic and
+lemon zest, then roasted with olive oil and white wine. The
+[Caesar salad dressing](/post/recipe/italian/caesar-salad-dressing) makes enough
+for twelve and is good on almost any salad, not only a Caesar. Strictly the
+Caesar salad comes from Tijuana, where the Italian-born restaurateur Caesar
+Cardini created it, but it sits here with its Italian roots.

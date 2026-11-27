@@ -31,3 +31,15 @@ resources:
 
 title: Middle Eastern
 ---
+
+Three Middle Eastern recipes that make a meal together.
+[Felafel](/post/recipe/middle-eastern/felafel) are dried chickpeas soaked
+overnight, ground with onion, garlic, parsley and spices, and deep fried until
+crisp and nutty. [Hummus](/post/recipe/middle-eastern/hummus) is the smooth
+chickpea dip to go with them, cooked in a pot or, faster, in a pressure cooker.
+The [lamb doner kebab](/post/recipe/middle-eastern/lamb-doner-kebab) is fatty
+lamb and beef mince churned with cumin, sumac, smoked paprika and cinnamon until
+sticky, then shaped into skewers and frozen. On the night it goes from the
+freezer to the air fryer and into a pita with salad and garlic yoghurt, which
+makes a kebab dinner a short job. Felafel and hummus both start from dried
+chickpeas, so soak one batch and make both.

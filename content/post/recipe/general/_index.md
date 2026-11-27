@@ -31,3 +31,16 @@ resources:
               'A roasted spatchcock chicken on a plate with lemon slices,
               parsley, salt and crushed peppercorns.'
 ---
+
+Recipes that belong to no single cuisine: for now, the stocks that other recipes
+on this site build on. [Beef](/post/recipe/general/stock/beef-stock) and
+[chicken stock](/post/recipe/general/stock/chicken-stock) simmer for four to six
+hours, and [vegetable stock](/post/recipe/general/stock/vegetable-stock) for two
+to three. Each covers its pot with six to eight litres of water, so they are
+worth making in bulk. Chicken stock uses wings for their skin and gelatine,
+which give the stock its body. Any of them can be boiled down by half before it
+goes into jars, so the freezer holds concentrate rather than water; skim the fat
+first, leave headroom in each jar, and let them cool sealed before freezing.
+They turn up across the site, in the [laksa](/post/recipe/malaysian/laksa), the
+[peppercorn sauce](/post/recipe/french/peppercorn-sauce) and the
+[chile colorado](/post/recipe/mexican/chile-colorado) among others.

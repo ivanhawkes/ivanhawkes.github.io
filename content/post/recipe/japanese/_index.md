@@ -31,3 +31,15 @@ resources:
               'A Japanese unagi don: grilled eel over rice in a lacquer bowl,
               with sweet omelette.'
 ---
+
+The Japanese recipes here are two of the stocks that Japanese cooking starts
+from, rather than finished dishes. [Dashi](/post/recipe/japanese/dashi-stock) is
+the quick one: kombu soaked and gently heated, then katsuobushi (dried bonito
+flakes) steeped for a few minutes and strained. That first, ichiban dashi is the
+clear, delicate one; the same kombu and flakes simmered again make a second,
+niban dashi. Both keep four days in the fridge.
+[Tonkotsu](/post/recipe/japanese/tonkotsu-stock) is the opposite: pork and
+chicken bones blanched and scrubbed clean, then boiled hard with charred onion,
+garlic and ginger until the broth is milky and rich enough to coat the mouth. It
+is the base of tonkotsu ramen, and it takes a full day or an overnight. Start
+with dashi.

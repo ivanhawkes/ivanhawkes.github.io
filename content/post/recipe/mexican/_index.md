@@ -32,3 +32,12 @@ resources:
 
 title: Mexican
 ---
+
+One Mexican recipe for now:
+[chile colorado](/post/recipe/mexican/chile-colorado), a deep red sauce of
+toasted guajillo and ancho chiles simmered with cumin and oregano and thickened
+with a light roux. Guajillo is fruity and mild, and ancho, the dried poblano,
+brings sweetness and a little smoke, so the sauce is rich rather than fiery. It
+is a base more than a dish: simmer chunks of beef in it for a beef chile
+colorado stew, or use it to fill and season enchiladas and tamales. Toast the
+chiles only until they are fragrant: a burnt chile turns the whole pot bitter.

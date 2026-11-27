@@ -31,3 +31,15 @@ resources:
               'A Malaysian curry laksa with a prawn, hard-boiled egg, cucumber,
               bean sprouts and sambal.'
 ---
+
+Laksa is a spicy coconut noodle soup from Malaysia, and the two recipes here
+make it from scratch. The [laksa paste](/post/recipe/malaysian/laksa-paste)
+comes first: soaked dried chillies, shallots, galangal, lemongrass, fresh
+turmeric, candlenuts and shrimp paste, pounded together in a mortar and pestle.
+A bought paste will do in a hurry, but making it is how you choose the heat and
+the balance. Once the paste is made, the [laksa](/post/recipe/malaysian/laksa)
+itself is quick: fry the paste until fragrant, add coconut milk and chicken
+stock, poach chicken and prawns in it, and ladle it over hokkien noodles and
+bean sprouts, with Vietnamese mint and fried shallots on top. The
+[chicken stock](/post/recipe/general/stock/chicken-stock) makes a good base for
+it.

@@ -31,3 +31,14 @@ resources:
               'An Australian meat pie, minced beef and gravy in flaky puff
               pastry, cut open.'
 ---
+
+One Australian recipe so far, and a family one:
+[hedgehog slice](/post/recipe/australian/hedgehog-slice), which in our family
+was always called fudgecake. Mum made it a few times a year as a treat. It needs
+no oven: crushed Marie biscuits, walnuts and coconut are folded through melted
+butter, condensed milk and cocoa, pressed into a tin, topped with melted
+chocolate and left to set, then cut into sixteen pieces. The ingredients are all
+supermarket staples, and it keeps well in the cupboard or the fridge, so it is
+an easy one to make ahead. Smash the biscuits to a mix of fine, medium and large
+pieces rather than crumbs, and press it into the tin gently: pushed too hard it
+turns into a dense biscuit base.

@@ -31,3 +31,14 @@ resources:
               'A Vietnamese bowl of beef pho with rice noodles, meatballs, bean
               sprouts and herbs, chopsticks across it.'
 ---
+
+Pho is the beef noodle soup Vietnam is best known for, and it is the one
+Vietnamese recipe here so far. Nearly all of the work is in the broth: beef
+bones and a halved onion are roasted until browned and blackened, then simmered
+with ginger, star anise and fish sauce for six to ten hours. Everything after
+that is quick. Rice noodles are soaked and blanched, thinly sliced sirloin goes
+into the bowl raw and cooks in the hot broth, and bean sprouts, Thai basil,
+lime, hoisin and chilli-garlic sauce go on the table so each bowl is finished to
+taste. Start the broth in the morning, or the day before. The
+[beef stock](/post/recipe/general/stock/beef-stock) is the same kind of long
+simmer, if you want a stock for the freezer too.
